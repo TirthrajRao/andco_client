@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro|Manjari&display=swap');
 
-
 body {
     font-family: 'Manjari', sans-serif ;
     padding: 0;
@@ -25,11 +24,6 @@ a {
 	outline: none!important;
 }
 
-html {
-	height: 100%;
-	margin: 0;
-}
-
 /*common css end*/
 
 /* navigation menu and logo and hello text css start */
@@ -49,15 +43,17 @@ html {
     min-width: 100%;
     max-width: 100%;
 }
-
 .andco-logo {
-    margin: 40px 0px;
     position: absolute;
-    top: 1%;
+    top: 2%;
+}
+.andco-logo img {
+    position: relative;
 }
 .hello-text {
     position: absolute;
     top: 16.5%;
+    width: 100%;
 }
 .hello-text h2 {
     font-family: 'Manjari', sans-serif !important;
@@ -77,11 +73,11 @@ html {
 
 /* tooltip design start */
 .tooltip-class:hover:after {
+    content: attr(tooltip-data);
     background: rgba(157, 55, 66, 0.9);
     border-radius: 5px;
     bottom: 110%;
     color: #fff;
-    content: attr(tooltip-data);
     right: 0;
     padding: 10px 15px;
     position: absolute;
@@ -90,14 +86,21 @@ html {
 }
 
 .tooltip-class:hover:before {
+    content: "";
     border: solid;
     border-color: rgba(157, 55, 66, 0.9) transparent;
     border-width: 6px 6px 0 6px;
     bottom: calc(110% - 6px);
-    content: "";
     right: 5px;
     position: absolute;
     z-index: 99;
+}
+.menu-main .tooltip-class:hover:after {
+    background: rgba(185, 88, 217, 0.57);
+}
+.menu-main .tooltip-class:hover:before {
+    border-color: rgba(185, 88, 217, 0.57) transparent;
+    color: #000;
 }
 /* tooltip design end */
 
