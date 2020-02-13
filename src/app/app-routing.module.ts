@@ -4,6 +4,7 @@ import { DisplayHomeComponent } from './display-home/display-home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { CreateEventComponent } from './create-event/create-event.component';
   import { from } from 'rxjs';
 
 const routes: Routes = [
@@ -22,7 +23,11 @@ const routes: Routes = [
     {
       path: 'menu',
       component: MainMenuComponent
-    }
+    },
+    {
+      path: 'create-event',
+      component: CreateEventComponent
+    },
 ];
 
 @NgModule({

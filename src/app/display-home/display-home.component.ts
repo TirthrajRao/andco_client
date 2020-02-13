@@ -14,10 +14,11 @@ export class DisplayHomeComponent implements OnInit {
 
      //display screen slider start
     $('.display-screen-slider').slick({
-        infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        // autoplay: true,
+        // autoplaySpeed: 1500,
         arrows:false,
         verticalSwiping: true,
         vertical: true,
