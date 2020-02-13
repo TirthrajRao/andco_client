@@ -26,12 +26,20 @@
 				</li>
 			</ul>
 		</div>
-		<div class="join-enter-inputs">
-			<input type="text" placeholder="Your email address">
-			<input type="password" placeholder="Your password">
-		</div>
-		<div class="join-submit w-100 text-center">
-			<button class="btn join-submit">Enter</button>
-		</div>
+		<form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
+			<div class="join-enter-inputs">
+				<input type="email" placeholder="Your email address"
+					[ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }" formControlName="email">
+				<div class="col-md-2" *ngIf="f.email.touched && f.email.errors" class="invalid-feedback text-white">
+					<div *ngIf="f.email.errors.required">Email is required</div>
+					<div *ngIf="f.email.errors.email">Please enter valid Email</div>
+				</div>
+				<input type="password" formControlName="password" placeholder="Your password">
+			</div>
+			<div class="join-submit w-100 text-center">
+				<button class="btn join-submit" type="submit" (click)="onSubmitLogin()"
+					[disabled]="isDisable || loginForm.invalid">Enter</button>
+			</div>
+		</form>
 	</div>
 </section>

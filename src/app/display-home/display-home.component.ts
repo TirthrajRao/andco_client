@@ -13,15 +13,15 @@ export class DisplayHomeComponent implements OnInit {
   ngOnInit() {
 
      //display screen slider start
-    $('.display-screen-slider').slick({
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: false,
-        arrows:false,
-        verticalSwiping: true,
-        vertical: true,
-    });
+    // $('.display-screen-slider').slick({
+    //     infinite: false,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     autoplay: false,
+    //     arrows:false,
+    //     verticalSwiping: true,
+    //     vertical: true,
+    // });
     //display screen slider end
     
   }
