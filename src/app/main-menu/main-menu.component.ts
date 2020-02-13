@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from '../services/login.service'
+import { AlertService } from '../services/alert.service';
 declare var $;
 
 @Component({
@@ -7,10 +10,15 @@ declare var $;
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-
-  constructor() { }
+  userName = JSON.parse(sessionStorage.getItem('userName'));
+  constructor(
+    public _loginService: LoginService,
+    public router: Router,
+    public alertService: AlertService
+  ) { }
 
   ngOnInit() {
+    console.log("username", this.userName)
     //tooltip js start
     $(".tooltip-class").hover(function () {
       $(this).attr("tooltip-data", $(this).attr("title"));
@@ -21,5 +29,11 @@ export class MainMenuComponent implements OnInit {
     });
     //tooltip js end
   }
-
+  /**
+   * Logout from application and clear storage
+   */
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }

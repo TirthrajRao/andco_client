@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { AlertService } from '../services/alert.service';
 import { from } from 'rxjs';
 import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
 import { CommentStmt } from '@angular/compiler';
@@ -23,6 +24,7 @@ export class SignUpComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _loginService: LoginService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -101,6 +103,7 @@ export class SignUpComponent implements OnInit {
       this.index = Number(index) + + 1
     }, error => {
       console.log("error while verify user", error)
+      this.alertService.getError(error.error.message)
     })
   }
 

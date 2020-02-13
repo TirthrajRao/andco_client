@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { AlertService } from '../services/alert.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,13 +22,15 @@ export class LoginComponent implements OnInit {
   varificationEmail
   constructor(
     public _loginService: LoginService,
-    public router: Router
-  ) { }
+    public router: Router,
+    public alertService: AlertService
+  ) {
+    if (this._loginService.currentUserValue) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   ngOnInit() {
-    // if (this._loginService.currentUserValue) {
-    //   this.router.navigate(['/home']);
-    // }
 
 
 
@@ -72,7 +76,6 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         console.log("data of invalid user", data);
         let firstName = data.data.firstName
-        let lastName = data.data.lastName
         this.userName = firstName;
         console.log(this.userName);
         console.log("response of login user", data);
@@ -93,14 +96,14 @@ export class LoginComponent implements OnInit {
         } else if (data.data.UserRole == 'user') {
           this.isLoad = false
           this.isUserLoggedIn = true;
-          // sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/menu']);
         }
       }, (err: any) => {
         this.isLoad = false;
         let varification = err.error.data;
         console.log("err of invalid", err)
-        // this.alertService.getError(err.error.message)
+        this.alertService.getError(err.error.message)
         this.isDisable = false;
         this.loginForm.reset();
         this.varificationEmail = varification.useremail

@@ -93,4 +93,11 @@ export class LoginService {
 
   }
 
+  /**
+   * Logout from website
+   */
+  logout() {
+    this.currentUserSubject.next(null);
+    sessionStorage.clear();
+  }
 }
