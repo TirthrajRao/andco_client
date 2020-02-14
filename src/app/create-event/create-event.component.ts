@@ -64,23 +64,26 @@ export class CreateEventComponent implements OnInit {
     })
 
     // Create New event form end
-
+    $('.create-event-type-menu ul li a').click(function (e) {
+      $('.create-event-type-menu ul li.active').removeClass('active');
+      var $parent = $(this).parent();
+      $parent.addClass('active');
+      e.preventDefault();
+    });
     // DropDown Js
     $('.create-event-type-menu li > a').click(function () {
       this.eventTypeValue = $(this).html();
       $('.create-event-type-menu > a').html(this.eventTypeValue);
-      console.log("event selcet thai jaje ========", this.eventTypeValue);
+      console.log("event select thai jaje ========", this.eventTypeValue);
       setControl(this.eventTypeValue);
     });
     var eventFormLocal = this.eventForm;
     var setControl = function (event) {
       eventFormLocal.controls.eventType.setValue(event)
-      console.log("event selcet thai jaje biji var ========", eventFormLocal.controls.eventType.value);
+      console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
     }
 
   }
-
-
   /**
    * Error message of eventDetails 
    */

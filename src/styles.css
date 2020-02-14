@@ -28,6 +28,23 @@ a {
 
 /* navigation menu and logo and hello text css start */
 
+/* .header-content {
+    padding: 20px;
+    display: table;
+    width: 100%;
+}
+.navigation_menu {
+    float: left;
+    max-width: 80px;
+    margin-right: 20px;
+}
+.andco-logo {
+    padding-right: 100px;
+    float: left;
+    text-align: center;
+    width: calc( 100% - 100px);
+} */
+
 .navigation_menu {
     position: absolute;
     height: 80px;
@@ -61,6 +78,7 @@ a {
     font-size: 40px;
     position: relative;
     max-width: 600px;
+    cursor: default;
 }
 .hello-text h2 span{
     display: block;
@@ -78,23 +96,21 @@ a {
     border-radius: 5px;
     bottom: 110%;
     color: #fff;
-    right: 0;
     padding: 10px 15px;
     position: absolute;
     z-index: 98;
     font-size: 13px;
 }
 
-.tooltip-class:hover:before {
+/* .tooltip-class:hover:before {
     content: "";
     border: solid;
     border-color: rgba(157, 55, 66, 0.9) transparent;
     border-width: 6px 6px 0 6px;
     bottom: calc(110% - 6px);
-    right: 5px;
     position: absolute;
     z-index: 99;
-}
+} */
 .menu-main .tooltip-class:hover:after {
     background: rgba(185, 88, 217, 0.57);
 }
@@ -106,8 +122,8 @@ a {
 
 /* create event css start here */
 
-.create-event-slider button.prevarrow.slick-arrow.slick-disabled {
-    opacity: 0;
+.create-event-slider .slick-arrow.slick-disabled {
+    display: none !important;
 }
 
 .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
@@ -121,6 +137,7 @@ a {
     border-radius: 10px;
     position: absolute;
     bottom: -70px;
+    z-index: 12;
 }
 
 .create-event-slider button.prevarrow.slick-arrow {
