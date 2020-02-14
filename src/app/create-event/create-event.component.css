@@ -19,7 +19,9 @@
     right: 0;
     bottom: 0;
 }
-
+.create-event-type-box.slick-slide:focus {
+    outline: none !important;
+}
 .create-event-type {
     text-align: center;
     position: relative;
@@ -53,7 +55,7 @@ button.slick-arrow {
 .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
     color: #fff;
     font-weight: 600;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .create-event-type-menu {
@@ -72,6 +74,13 @@ button.slick-arrow {
     font-weight: 600;
     width: 100%;
     margin: 12px 0;
+    cursor: pointer;
+}
+.create-event-type-menu ul li a:hover{
+    color: #D2A0A1;
+}
+.create-event-type-menu ul li.active a {
+    color: #fff !important;
 }
 
 /* your event type css end */
@@ -161,6 +170,20 @@ button.slick-arrow {
     font-size: 30px;
     text-align: left;
     font-weight: 600;
+}
+button.btn.created-event-custom-button {
+    background-color: #9D3742;
+    color: #fff;
+    font-size: 22px;
+    padding: 7px 54px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: -70px;
+    z-index: 11;
 }
 
 /* your event prising css end */

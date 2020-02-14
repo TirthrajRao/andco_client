@@ -61,23 +61,26 @@ export class CreateEventComponent implements OnInit {
     })
 
     // Create New event form end
-
+    $('.create-event-type-menu ul li a').click(function (e) {
+      $('.create-event-type-menu ul li.active').removeClass('active');
+      var $parent = $(this).parent();
+      $parent.addClass('active');
+      e.preventDefault();
+    });
     // DropDown Js
     $('.create-event-type-menu li > a').click(function () {
       this.eventTypeValue = $(this).html();
       $('.create-event-type-menu > a').html(this.eventTypeValue);
-      console.log("event selcet thai jaje ========", this.eventTypeValue);
+      console.log("event select thai jaje ========", this.eventTypeValue);
       setControl(this.eventTypeValue);
     });
     var eventFormLocal = this.eventForm;
     var setControl = function (event) {
       eventFormLocal.controls.eventType.setValue(event)
-      console.log("event selcet thai jaje biji var ========", eventFormLocal.controls.eventType.value);
+      console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
     }
 
   }
-
-
   /**
    * Error message of eventDetails 
    */
@@ -129,28 +132,3 @@ export class CreateEventComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-// <div class="profile_photo profile_image_box text-center"
-// touranchor = "change-profile" ng - reflect - tour - anchor="change-profile" >
-//   <img * ngIf="createdEventDetails && createdEventDetails.profilePhoto"
-// src = "{{path}}{{createdEventDetails.profilePhoto}}"
-// class="rounded-circle" >
-//   <input type="file" name = "files" value = "files" formControlName = "profile"
-//     (change) = "addFile($event.target.files)" id = "customFile"
-// accept = "image/png, image/jpeg, image/jpg" style = "display: none;" >
-//   <label for= "customFile" class= "profile_and_cover_edit text-center"
-// title = "Change Profile" > <i class= "fa fa-camera"
-// aria - hidden="true" > </i></label >
-//   <span>
-//   <img[src]="imgURL" height = "200" class="float-right rounded-circle"
-// id = "imageFilter"
-// onerror = "this.src='/assets/images/profile_photo.png'" > </span>
-//   < /div>
