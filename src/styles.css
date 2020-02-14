@@ -38,16 +38,6 @@ a {
     z-index: 98;
     font-size: 13px;
 }
-
-/* .tooltip-class:hover:before {
-    content: "";
-    border: solid;
-    border-color: rgba(157, 55, 66, 0.9) transparent;
-    border-width: 6px 6px 0 6px;
-    bottom: calc(110% - 6px);
-    position: absolute;
-    z-index: 99;
-} */
 .menu-main .tooltip-class:hover:after {
     background: rgba(185, 88, 217, 0.57);
 }
@@ -62,7 +52,7 @@ a {
 .create-event-slider .slick-arrow.slick-disabled {
     display: none !important;
 }
-.create-event-hashtag-box.slick-slide{
+.slick-slide{
     outline: none !important;
     box-shadow: none !important;
 }
