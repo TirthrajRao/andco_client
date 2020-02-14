@@ -77,13 +77,19 @@
                     <div class="create-event-profile-box">
                         <h3>Your Event Profile Photo</h3>
                         <div class="profile-picture">
-                            <img src="../../assets/images/profile_img.png" alt="profile picture">
+                            <img * ngIf="createdEventDetails && createdEventDetails.profilePhoto"
+                                src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle">
+                            <img [src]="imgURL" height="200" class="float-right rounded-circle" id="imageFilter"
+                                onerror="this.src='/assets/images/profile_img.png'">
                         </div>
                         <div class="profile-photo-upload mt-3">
                             <label for="upload_profile">
                                 <img src="../../assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                             </label>
-                            <input type="file" id="upload_profile" style="display: none;">
+                            <input type="file" (change)="addFile($event.target.files)"
+                                accept="image/png, image/jpeg, image/jpg" id="upload_profile" style="display: none;">
+                            <span>
+                            </span>
                         </div>
                     </div>
                     <!-- your event profile end -->

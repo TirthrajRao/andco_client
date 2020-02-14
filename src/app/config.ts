@@ -6,8 +6,8 @@
 /**
  * Api calling from local or remote server to client
  */
-const host = 'http://192.168.1.83';
-const port = 3000;
+// const host = 'http://192.168.1.83';
+// const port = 3000;
 
 // const baseMediaUrl = `${host}/Aso-testing-server/server/`;
 // const baseMediaUrl = "https://andcowith.me/test/server/";
@@ -16,14 +16,14 @@ const port = 3000;
 // const baseUrl = `${host}${port}/`;
 // const baseUrl = "https://andcowith.me:3000";
 // const baseUrl = "http://localhost:3000/";
-const baseMediaUrl = "http://localhost/andco_server(final)/";
+const baseMediaUrl = "http://192.168.1.144:3000/andco_server(final)/";
 
 // const baseMediaUrl = "https://test.andcowith.me/server/";
 
 
 
 // const baseUrl = `${host}${port}/`;
-const baseUrl = "http://localhost:3000/api";
+const baseUrl = "http://192.168.1.144:3000/api";
 // const baseUrl = "https://test.andcowith.me:3000/";
 
 
