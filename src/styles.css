@@ -26,69 +26,6 @@ a {
 
 /*common css end*/
 
-/* navigation menu and logo and hello text css start */
-
-/* .header-content {
-    padding: 20px;
-    display: table;
-    width: 100%;
-}
-.navigation_menu {
-    float: left;
-    max-width: 80px;
-    margin-right: 20px;
-}
-.andco-logo {
-    padding-right: 100px;
-    float: left;
-    text-align: center;
-    width: calc( 100% - 100px);
-} */
-
-.navigation_menu {
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    overflow: hidden;
-    top: 30px;
-    left: 30px;
-}
-
-.navigation_menu img {
-    object-fit: cover;
-    color: #fff;
-    min-width: 100%;
-    max-width: 100%;
-}
-.andco-logo {
-    position: absolute;
-    top: 2%;
-}
-.andco-logo img {
-    position: relative;
-}
-.hello-text {
-    position: absolute;
-    top: 16.5%;
-    /* width: 100%; */
-}
-.hello-text h2 {
-    font-family: 'Manjari', sans-serif !important;
-    line-height: normal;
-    font-size: 40px;
-    position: relative;
-    max-width: 600px;
-    cursor: default;
-}
-.hello-text h2 span{
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-/* navigation menu and logo and hello text css end */
-
 /* tooltip design start */
 .tooltip-class:hover:after {
     content: attr(tooltip-data);
@@ -125,7 +62,10 @@ a {
 .create-event-slider .slick-arrow.slick-disabled {
     display: none !important;
 }
-
+.create-event-hashtag-box.slick-slide{
+    outline: none !important;
+    box-shadow: none !important;
+}
 .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
     background-color: #9D3742;
     color: #fff;

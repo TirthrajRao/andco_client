@@ -10,6 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DisplayHomeComponent } from './display-home/display-home.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     SignUpComponent,
     DisplayHomeComponent,
     MainMenuComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,14 @@
     font-family: 'Advent Pro', 'sans-sarif';
 }
 
-.display-screen-single-slide.home, .display-screen-single-slide.ds-1, .display-screen-single-slide.ds-2, .display-screen-single-slide.ds-3, .display-screen-single-slide.ds-4, .display-screen-single-slide.ds-5, .display-screen-single-slide.ds-6 ,.display-screen-single-slide.ds-7 {
+.display-screen-single-slide.home, 
+.display-screen-single-slide.ds-1, 
+.display-screen-single-slide.ds-2, 
+.display-screen-single-slide.ds-3, 
+.display-screen-single-slide.ds-4, 
+.display-screen-single-slide.ds-5, 
+.display-screen-single-slide.ds-6 ,
+.display-screen-single-slide.ds-7 {
     background-position: center;
     background-size: cover;
     height: auto;
