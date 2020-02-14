@@ -35,11 +35,11 @@
     color: #ffffff;
     font-size: 46px;
 }
-.menu-links ul li.active1 a{
+.menu-links ul li.active a{
     color: #686464;
     position: relative;
 }
-.menu-links ul li.active1 a:before{
+.menu-links ul li.active a:before{
     content: "";
     background-color: #ffffff;
     width: 30%;

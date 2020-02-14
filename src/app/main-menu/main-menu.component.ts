@@ -28,6 +28,12 @@ export class MainMenuComponent implements OnInit {
       $(this).removeAttr("tooltip-data");
     });
     //tooltip js end
+    $('.menu-links ul li a').click(function (e) {
+      $('.menu-links ul li.active').removeClass('active');
+      var $parent = $(this).parent();
+      $parent.addClass('active');
+      e.preventDefault();
+    });
   }
   /**
    * Logout from application and clear storage

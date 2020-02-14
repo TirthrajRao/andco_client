@@ -26,16 +26,6 @@
     text-align: center;
     position: relative;
 }
-.hello-text {
-    position: absolute;
-    top: 16.5%;
-    width: 100%;
-}
-.hello-text h2 {
-    color: #D2A0A1;
-    text-shadow: 0 5px 4px rgba(24, 33, 33, 0.23);
-}
-
 .create-event-slider-box-width {
     width: 650px;
     min-width: 100%;

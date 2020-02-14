@@ -1,10 +1,5 @@
 <section class="menu-main single d-flex justify-content-center align-items-center">
-    <div class="navigation_menu">
-        <a href=""><img src="../../assets/images/fireworks.png" alt="menu logo"></a>
-    </div>
-    <div class="andco-logo">
-        <img src="../../assets/images/andco_logo.png" alt="andco logo">
-    </div>
+    <app-header></app-header>
     <div class="hello-text">
         <h2 class="tooltip-class" title="helllo">
             <span>{{userName}}, you're in yayyy !!</span>
@@ -16,12 +11,7 @@
 </section>
 
 <section class="menu-main d-flex justify-content-center align-items-center">
-    <div class="navigation_menu">
-        <a href=""><img src="../../assets/images/fireworks.png" alt="menu logo"></a>
-    </div>
-    <div class="andco-logo">
-        <img src="../../assets/images/andco_logo.png" alt="andco logo">
-    </div>
+    <app-header></app-header>
     <div class="menu-main-box">
         <div class="hello-text">
             <h2 class="tooltip-class" title="hello">
@@ -30,7 +20,7 @@
         </div>
         <div class="menu-links">
             <ul class="mb-0">
-                <li class="active1"><a routerLink="/createEvent">new event</a></li>
+                <li class="active"><a routerLink="/createEvent">new event</a></li>
                 <li><a href="#">my event</a></li>
                 <li><a href="#">add bank account</a></li>
                 <li><a href="#">messages</a></li>
