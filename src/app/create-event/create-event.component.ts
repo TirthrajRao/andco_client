@@ -66,12 +66,16 @@ export class CreateEventComponent implements OnInit {
     })
 
     // Create New event form end
+
+    // Create event active class js start
     $('.create-event-type-menu ul li a').click(function (e) {
       $('.create-event-type-menu ul li.active').removeClass('active');
       var $parent = $(this).parent();
       $parent.addClass('active');
       e.preventDefault();
     });
+    // Create event active class js end
+
     // DropDown Js
     $('.create-event-type-menu li > a').click(function () {
       this.eventTypeValue = $(this).html();
