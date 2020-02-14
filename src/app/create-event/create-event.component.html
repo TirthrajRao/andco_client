@@ -11,7 +11,7 @@
                 <span>Hello {{userName}}</span>
             </h2>
         </div>
-        
+
         <!-- create event slider start -->
         <div class="create-event-slider-box-width">
             <form [formGroup]="eventForm">
@@ -178,9 +178,10 @@
                     <!-- your event prising tip end -->
                 </div>
             </form>
-            <button class="btn created-event-custom-button">Continue</button>
+            <button class="btn created-event-custom-button" (click)="createdEventDetails? updateEvent() : addEvent()"
+                [disabled]="isDisable || eventForm.invalid">Continue</button>
         </div>
         <!-- create event slider end -->
-        
+
     </div>
 </section>
