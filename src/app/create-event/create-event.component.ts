@@ -90,6 +90,7 @@ export class CreateEventComponent implements OnInit {
   initSlickSlider() {
     $('.create-event-slider').not('.slick-initialized').slick({
       infinite: false,
+      draggable: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: false,
