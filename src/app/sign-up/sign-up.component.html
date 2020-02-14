@@ -204,7 +204,7 @@
                     <div *ngIf="f.password.errors.maxlength">Password must be only 20 characters
                     </div>
                 </div>
-                <input type="text" formControlName="confirmPassword" placeholder="kindly confirm"
+                <input type="password" formControlName="confirmPassword" placeholder="kindly confirm"
                     (input)="comparePassword(signUpForm , index)">
             </div>
         </form>
