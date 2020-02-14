@@ -16,7 +16,7 @@ const port = 3000;
 // const baseUrl = `${host}${port}/`;
 // const baseUrl = "https://andcowith.me:3000";
 // const baseUrl = "http://localhost:3000/";
-const baseMediaUrl = "http://192.168.1.83/andco_server(final)/";
+const baseMediaUrl = "http://localhost/andco_server(final)/";
 
 // const baseMediaUrl = "https://test.andcowith.me/server/";
 
