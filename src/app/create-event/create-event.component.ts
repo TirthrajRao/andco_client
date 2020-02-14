@@ -147,7 +147,7 @@ export class CreateEventComponent implements OnInit {
 //     (change) = "addFile($event.target.files)" id = "customFile"
 // accept = "image/png, image/jpeg, image/jpg" style = "display: none;" >
 //   <label for= "customFile" class= "profile_and_cover_edit text-center"
-//                                                 title = "Change Profile" > <i class= "fa fa-camera"
+// title = "Change Profile" > <i class= "fa fa-camera"
 // aria - hidden="true" > </i></label >
 //   <span>
 //   <img[src]="imgURL" height = "200" class="float-right rounded-circle"

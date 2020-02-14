@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     public alertService: AlertService
   ) {
     if (this._loginService.currentUserValue) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/menu']);
     }
   }
 
