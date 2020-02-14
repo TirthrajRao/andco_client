@@ -97,57 +97,65 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
-                            <img src="../../assets/images/background_main.png" alt="profile picture">
+                            <!-- <img src="../../assets/images/background_main.png" alt="profile picture"> -->
+                            <img [src]="themeUrl" id="imageFilter"
+                                onerror="this.src='/assets/images/background_main.png'">
                         </div>
                         <div class="background-photo-upload">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b1.png" alt="background 1">
+                                        <img src="../../assets/images/b1.png" alt="background 1" id="background1"
+                                            (click)="defaultBackgroundImage('../../assets/images/b1.png')">
                                     </div>
                                     <span>floral</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b2.png" alt="background 2">
+                                        <img src="../../assets/images/b2.png" alt="background 2"
+                                            (click)="defaultBackgroundImage('../../assets/images/b2.png')">
                                     </div>
                                     <span>marble</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b3.png" alt="background 3">
+                                        <img src="../../assets/images/b3.png" alt="background 3"
+                                            (click)="defaultBackgroundImage('../../assets/images/b3.png')">
                                     </div>
                                     <span>wood</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b4.png" alt="background 4">
+                                        <img src="../../assets/images/b4.png" alt="background 4"
+                                            (click)="defaultBackgroundImage('../../assets/images/b4.png')">
                                     </div>
                                     <span>origami</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b5.png" alt="background 5">
+                                        <img src="../../assets/images/b5.png" alt="background 5"
+                                            (click)="defaultBackgroundImage('../../assets/images/b5.png')">
                                     </div>
                                     <span>classic</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b6.png" alt="background 6">
+                                        <img src="../../assets/images/b6.png" alt="background 6"
+                                            (click)="defaultBackgroundImage('../../assets/images/b6.png')">
                                     </div>
                                     <span>lines</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b7.png" alt="background 7">
+                                        <img src="../../assets/images/b7.png" alt="background 7"
+                                            (click)="defaultBackgroundImage('../../assets/images/b7.png')">
                                     </div>
                                     <span>luxury</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="sample_bg">
-                                        <img src="../../assets/images/b8.png" alt="background 8
-                                    
-                                    ">
+                                        <img src="../../assets/images/b8.png" alt="background 8"
+                                            (click)="defaultBackgroundImage('../../assets/images/b8.png')">
                                     </div>
                                     <span>instrument</span>
                                 </div>

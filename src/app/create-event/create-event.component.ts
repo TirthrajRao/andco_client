@@ -20,8 +20,11 @@ export class CreateEventComponent implements OnInit {
   eventTypeValue
   createdEventDetails
   files: Array<File> = [];
+  themeFile
   imgURL: any;
+  themeUrl: any;
   public imagePath;
+  public themePath;
 
 
 
@@ -126,6 +129,11 @@ export class CreateEventComponent implements OnInit {
       })
 
     }
+  }
+
+  defaultBackgroundImage(path) {
+    this.themeUrl = path
+    this.eventForm.controls.background.setValue(path)
   }
 }
 
