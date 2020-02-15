@@ -57,8 +57,6 @@ export class SignUpComponent implements OnInit {
   personalDetails() {
     console.log("details of user name=========", this.signUpForm.value)
     // delete this.signUpForm.controls.confirmPassword
-
-
     let password = this.signUpForm.controls.password.value
     console.log("enter password details=========", password)
     let string = String(password)
