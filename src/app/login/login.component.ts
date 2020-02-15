@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.controls.password.value
     console.log("enter password details=========", password)
     let string = String(password)
-    let encrypted = Buffer.from(string).toString('base64');
+    let encrypted = global.Buffer.from(string).toString('base64');
     console.log("password in other language=======", encrypted)
     this.loginForm.controls.password.setValue(encrypted)
     // const data = new FormData();

@@ -105,7 +105,6 @@
 .join-social ul li:last-child {
   filter: brightness(4);
 }
-
 button.btn.forgot-btn {
   outline: none;
   box-shadow: none;
@@ -131,6 +130,7 @@ button.btn.forgot-btn {
 .forgot-modal button.close {
   outline: none;
 }
+
 /* responsive css start here */
 
 @media (max-width: 1600px) {
