@@ -124,7 +124,7 @@ export class LoginService {
     const body = {
       sFaceBookSecretId: accessToken
     }
-    return this.http.post<any>(config.baseApiUrl + "api/login/facebook", body)
+    return this.http.post<any>(config.baseApiUrl + "/login/facebook", body)
       .pipe(map(facebookUser => {
         console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {

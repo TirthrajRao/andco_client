@@ -6,7 +6,7 @@ import { AlertService } from '../services/alert.service';
 import { config } from '../config'
 // Google Login Service
 import { AuthService } from "angularx-social-login";
-import { GoogleLoginProvider ,FacebookLoginProvider} from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
 
 // faceBookLogin
@@ -47,25 +47,25 @@ export class LoginComponent implements OnInit {
     }
 
 
-    // (window as any).fbAsyncInit = function () {
-    //   FB.init({
-    //     appId: '482643935736240',
-    //     cookie: true,
-    //     xfbml: true,
-    //     version: 'v6.0'
-    //   });
+    (window as any).fbAsyncInit = function () {
+      FB.init({
+        appId: '482643935736240',
+        cookie: true,
+        xfbml: true,
+        version: 'v6.0'
+      });
 
-    //   FB.AppEvents.logPageView();
+      FB.AppEvents.logPageView();
 
-    // };
+    };
 
-    // (function (d, s, id) {
-    //   var js, fjs = d.getElementsByTagName(s)[0];
-    //   if (d.getElementById(id)) { return; }
-    //   js = d.createElement(s); js.id = id;
-    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
-    //   fjs.parentNode.insertBefore(js, fjs);
-    // }(document, 'script', 'facebook-jssdk'));
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
 
   }
@@ -211,7 +211,7 @@ export class LoginComponent implements OnInit {
           this.isDisable = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/home']);
+          this.router.navigate(['/menu']);
         }
       }, err => {
         this.isLoad = false;
@@ -231,10 +231,10 @@ export class LoginComponent implements OnInit {
   signWithFacebook() {
 
 
-    FB.getLoginStatus(function (response) {
-      console.log("response of facebook ", response)
-      // statusChangeCallback(response);
-    });
+    // FB.getLoginStatus(function (response) {
+    //   console.log("response of facebook ", response)
+    //   // statusChangeCallback(response);
+    // });
     this.isLoad = true;
     this.isDisable = true;
     console.log("submit login to facebook");
