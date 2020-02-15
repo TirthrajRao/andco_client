@@ -6,6 +6,7 @@ import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
 import { config } from '../config'
 import { from } from 'rxjs';
+import { Buffer } from 'buffer';
 declare const $: any;
 
 
@@ -95,7 +96,19 @@ export class LoginComponent implements OnInit {
   onSubmitLogin() {
     this.isLoad = true;
     this.isDisable = true;
-    console.log("login details", this.loginForm);
+    console.log("login details", this.loginForm.value);
+    let password = this.loginForm.controls.password.value
+    console.log("enter password details=========", password)
+    let string = String(password)
+    let encrypted = Buffer.from(string).toString('base64');
+    console.log("password in other language=======", encrypted)
+    this.loginForm.controls.password.setValue(encrypted)
+    // const data = new FormData();
+
+    // data.append('email', this.loginForm.controls.email.value);
+    // data.append('password', encrypted)
+
+
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("data of invalid user", data);
@@ -144,8 +157,8 @@ export class LoginComponent implements OnInit {
     this.socialLoginService.signInWithGoogleAccount()
   }
 
-  signWithFacebook(){
+  signWithFacebook() {
     this.socialLoginService.signWithFacebook()
   }
-  
+
 }
