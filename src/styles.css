@@ -1,45 +1,54 @@
 /*common css start*/
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro|Manjari&display=swap');
-
 body {
-    font-family: 'Manjari', sans-serif ;
+    font-family: 'Manjari', sans-serif;
     padding: 0;
-	margin: 0;
+    margin: 0;
 }
 
-
 h1, h2, h3, h4, h5, h6, p {
-	margin: 0
+    margin: 0
 }
 
 ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-	display: inline-block;
-	text-decoration: none!important;
-	outline: none!important;
+    display: inline-block;
+    text-decoration: none!important;
+    outline: none!important;
 }
 
 /*common css end*/
+
 .andco-logo {
     position: absolute;
     top: 6%;
-  }
+}
 
+.page-content {
+    min-height: calc(100vh - 226px);
+    -ms-flex-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 232px;
+}
 
 /* create event css start here */
 
 .create-event-slider .slick-arrow.slick-disabled {
     display: none !important;
 }
-.slick-slide{
+
+.slick-slide {
     outline: none !important;
     box-shadow: none !important;
 }
+
 .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
     background-color: #9D3742;
     color: #fff;
@@ -65,6 +74,7 @@ a {
 /* create event css start here */
 
 /* set-price css start here */
+
 .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
     background-color: #A6B138;
     color: #fff;
@@ -84,9 +94,9 @@ a {
 
 .set-price-main-slider button.nextarrow.slick-arrow {
     right: 0;
-}/* set-price css end here */
+}
 
-
+/* set-price css end here */
 
 /* responsive css start */
 
@@ -109,7 +119,6 @@ a {
         padding: 30px 0 30px 45px;
     }
     /* create  event css end */
-
     /* hello text */
     .hello-text h2 {
         font-size: 34px;
@@ -152,7 +161,8 @@ a {
         max-width: 240px;
     }
 }
-@media (max-width: 400px){
+
+@media (max-width: 400px) {
     .andco-logo img {
         height: 40px;
     }
@@ -163,6 +173,7 @@ a {
         left: 20px;
     }
 }
+
 @media(max-width: 320px) {}
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {

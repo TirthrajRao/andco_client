@@ -23,8 +23,8 @@ const baseMediaUrl = "http://192.168.1.144:3000/andco_server(final)/";
 
 
 // const baseUrl = `${host}${port}/`;
-// const baseUrl = "http://192.168.1.144:3000/api";
-const baseUrl = "http://localhost:3000/api"
+const baseUrl = "http://192.168.1.144:3000/api";
+// const baseUrl = "http://localhost:3000/api"
 // const baseUrl = "https://test.andcowith.me:3000/";
 
 

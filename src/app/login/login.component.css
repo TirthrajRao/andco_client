@@ -106,6 +106,31 @@
   filter: brightness(4);
 }
 
+button.btn.forgot-btn {
+  outline: none;
+  box-shadow: none;
+}
+.forgot-modal h4.modal-title {
+  color: #7CBBCD;
+  font-weight: bold;
+}
+.forgot-modal input[type="text"] {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 7px;
+  border: 1px solid #7CBBCD;
+}
+.forgot-modal input[type="text"]:focus{
+  outline: none;
+}
+.forgot-modal button.btn.forgot-submit-btn {
+  background-color: #A20020;
+  color: #fff;
+}
+.forgot-modal button.close {
+  outline: none;
+}
 /* responsive css start here */
 
 @media (max-width: 1600px) {
