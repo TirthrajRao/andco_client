@@ -25,27 +25,11 @@ a {
 }
 
 /*common css end*/
-
-/* tooltip design start */
-.tooltip-class:hover:after {
-    content: attr(tooltip-data);
-    background: rgba(157, 55, 66, 0.9);
-    border-radius: 5px;
-    bottom: 110%;
-    color: #fff;
-    padding: 10px 15px;
+.andco-logo {
     position: absolute;
-    z-index: 98;
-    font-size: 13px;
-}
-.menu-main .tooltip-class:hover:after {
-    background: rgba(185, 88, 217, 0.57);
-}
-.menu-main .tooltip-class:hover:before {
-    border-color: rgba(185, 88, 217, 0.57) transparent;
-    color: #000;
-}
-/* tooltip design end */
+    top: 6%;
+  }
+
 
 /* create event css start here */
 
@@ -101,6 +85,8 @@ a {
 .set-price-main-slider button.nextarrow.slick-arrow {
     right: 0;
 }/* set-price css end here */
+
+
 
 /* responsive css start */
 
