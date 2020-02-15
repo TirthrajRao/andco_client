@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
+import { SocialLoginService } from '../services/social-login.service';
 import { from } from 'rxjs';
-import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
-import { CommentStmt } from '@angular/compiler';
 declare var $: any;
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +12,8 @@ declare var $: any;
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  @Output() loginWithFacebook = new EventEmitter();
+
   index = 0
   totalCount = 4
   signUpForm: FormGroup;
@@ -24,7 +25,8 @@ export class SignUpComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _loginService: LoginService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private socialLoginService: SocialLoginService
   ) { }
 
   ngOnInit() {
@@ -183,5 +185,14 @@ export class SignUpComponent implements OnInit {
     } else {
       message1.innerHTML = "";
     }
+  }
+
+
+  signWithGoogle() {
+    this.socialLoginService.signInWithGoogleAccount()
+  }
+
+  signWithFacebook() {
+    this.socialLoginService.signWithFacebook()
   }
 }

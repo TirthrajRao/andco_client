@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -8,6 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService {
   isUserLoggedIn: false;
+  @Output() faceBookLogin = new EventEmitter();
+
   constructor(
     private http: HttpClient
   ) {
@@ -143,5 +145,12 @@ export class LoginService {
   logout() {
     this.currentUserSubject.next(null);
     sessionStorage.clear();
+  }
+
+
+
+  loginWithFacebook() {
+    console.log("ama ave che")
+   this.faceBookLogin.emit('loginWithFacebook')
   }
 }
