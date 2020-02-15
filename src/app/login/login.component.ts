@@ -155,7 +155,7 @@ export class LoginComponent implements OnInit {
           this.isLoad = false
           // this.router.navigate(['/home/admin-dashboard']);
         } else if (data.data.UserRole == 'user') {
-          let eventList = data.userEvents
+          let eventList = data.data.eventId
           console.log("detils of event list", eventList)
           this.isLoad = false
           this.isUserLoggedIn = true;
