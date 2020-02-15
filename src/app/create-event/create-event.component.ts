@@ -62,11 +62,7 @@ export class CreateEventComponent implements OnInit {
       eventType: new FormControl('', [Validators.required]),
       hashTag: new FormControl('', [Validators.required, Validators.minLength(4)]),
       profile: new FormControl('', [Validators.required]),
-      // deadlineDate: new FormControl(''),
-      // isPublic: new FormControl(this.isPublicVal),
-      // isLogistics: new FormControl(this.isLogistics),
       background: new FormControl(''),
-      // defaultImage: new FormControl('')
     })
 
     // Create New event form end
@@ -146,45 +142,30 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+
+  /** 
+   * @param path background image path
+   * Display selected image 
+   */
   defaultBackgroundImage(path) {
     this.themeUrl = path
     this.eventForm.controls.background.setValue(path)
     console.log("form details========", this.eventForm.value)
   }
 
-
+  /**
+   * Create new event
+   */
   addEvent() {
-
-    // this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
-
-    // console.log("data of event", $('.slick-active').hasClass("done"));
-    // if ($('.slick-active').hasClass("done")) {
     console.log("in twelve_slide");
-    // if (this.files.length) {
-    // this.isLoad = true;
     this.eventService.addEvent(this.eventForm.value, this.files)
       .subscribe((data: any) => {
         console.log("event details", data);
-        // $('.step_1').css({ 'display': 'none' })
-        // $('.step_2').css({ 'display': 'block' });
-        // this.eventId = data.data._id;
-        // console.log("created eventid", this.eventId);
-        // this.isLoad = false;
-        // this.getActivityFrom();
       }, (error: any) => {
         // this.isLoad = false;
         console.log(error);
         this.alertService.getError(error.message);
       })
-    // }
-    // else {
-    //   Swal.fire({
-    //     // type: 'error',
-    //     title: "Profile Photo is required",
-    //     showConfirmButton: false,
-    //     timer: 2000
-    //   })
-    // }
   }
 }

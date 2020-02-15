@@ -93,6 +93,50 @@ export class LoginService {
 
   }
 
+
+  /**
+   * @param {String} id_token
+   * Login with google  
+   */
+  googleLogin(id_token) {
+    const body = {
+      id_token: id_token
+    }
+    console.log(body);
+    return this.http.post<any>(config.baseApiUrl + "/login/google", body)
+      .pipe(map(googleUser => {
+        console.log("google login user accesstoken", googleUser);
+        if (googleUser && googleUser.data.accessToken) {
+          sessionStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
+          sessionStorage.setItem('userRole', JSON.stringify(googleUser.data.UserRole));
+          this.currentUserSubject.next(googleUser);
+        }
+        return googleUser;
+      }))
+  }
+
+  /**
+   * @param {String} accessToken
+   * Login with Facebook 
+   */
+  facebookLogin(accessToken) {
+    console.log("facebook id", accessToken);
+    const body = {
+      sFaceBookSecretId: accessToken
+    }
+    return this.http.post<any>(config.baseApiUrl + "/login/facebook", body)
+      .pipe(map(facebookUser => {
+        console.log("facebook user jwt token", facebookUser);
+        if (facebookUser && facebookUser.data.accessToken) {
+          sessionStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
+          sessionStorage.setItem('userRole', JSON.stringify(facebookUser.data.UserRole));
+          this.currentUserSubject.next(facebookUser);
+
+        }
+        return facebookUser;
+      }))
+  }
+
   /**
    * Logout from website
    */

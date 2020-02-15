@@ -23,7 +23,8 @@ const baseMediaUrl = "http://192.168.1.144:3000/andco_server(final)/";
 
 
 // const baseUrl = `${host}${port}/`;
-const baseUrl = "http://192.168.1.144:3000/api";
+// const baseUrl = "http://192.168.1.144:3000/api";
+const baseUrl = "http://localhost:3000/api"
 // const baseUrl = "https://test.andcowith.me:3000/";
 
 
@@ -35,13 +36,13 @@ export const config = {
 /**
  * To login with yahoo mail using firebase
  */
-export const firebaseConfig = {
-    apiKey: "AIzaSyBpc5SskcxLBusW13gIpsKNYeKK-TlLzsw",
-    authDomain: "aso-ebi-cdbf9-136fb.firebaseapp.com",
-    databaseURL: "https://aso-ebi-cdbf9-136fb.firebaseio.com",
-    projectId: "aso-ebi-cdbf9",
-    storageBucket: "",
-    messagingSenderId: "1021800185546",
-    appId: "1:1021800185546:web:0b3e09d6183792d7"
-};
+// export const firebaseConfig = {
+//     apiKey: "AIzaSyBpc5SskcxLBusW13gIpsKNYeKK-TlLzsw",
+//     authDomain: "aso-ebi-cdbf9-136fb.firebaseapp.com",
+//     databaseURL: "https://aso-ebi-cdbf9-136fb.firebaseio.com",
+//     projectId: "aso-ebi-cdbf9",
+//     storageBucket: "",
+//     messagingSenderId: "1021800185546",
+//     appId: "1:1021800185546:web:0b3e09d6183792d7"
+// };
 
