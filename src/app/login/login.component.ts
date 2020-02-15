@@ -6,10 +6,11 @@ import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
 import { config } from '../config'
 import { from } from 'rxjs';
-import { Buffer } from 'buffer';
+// import { Buffer } from 'buffer';
 declare const $: any;
 
-
+(window as any).global = window;
+(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

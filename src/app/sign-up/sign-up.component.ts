@@ -4,8 +4,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
-import { Buffer } from 'buffer';
+// import { Buffer } from 'buffer';
 import { from } from 'rxjs';
+
+(window as any).global = window;
+(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
+
 declare var $: any;
 @Component({
   selector: 'app-sign-up',
