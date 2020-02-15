@@ -20,6 +20,45 @@
 .andco-logo img{
     margin-bottom: 40px;
 }
+/* hello text css start */
 .hello-text {
     color: #fff;
 }
+.hello-text h2 {
+    font-family: 'Manjari', sans-serif !important;
+    line-height: normal;
+    font-size: 40px;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+.hello-text h2 span{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* hello text css end */
+
+/* tooltip design start */
+
+.tooltip-class:hover:after {
+    content: attr(tooltip-data);
+    background: rgba(157, 55, 66, 0.9);
+    border-radius: 5px;
+    bottom: 110%;
+    color: #fff;
+    padding: 10px 15px;
+    position: absolute;
+    z-index: 98;
+    font-size: 13px;
+}
+.menu-main .tooltip-class:hover:after {
+    background: rgba(185, 88, 217, 0.57);
+}
+.menu-main .tooltip-class:hover:before {
+    border-color: rgba(185, 88, 217, 0.57) transparent;
+    color: #000;
+}
+/* tooltip design end */
