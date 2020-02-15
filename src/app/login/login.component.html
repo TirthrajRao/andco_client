@@ -39,7 +39,31 @@
 			<div class="join-submit w-100 text-center">
 				<button class="btn join-submit" type="submit" (click)="onSubmitLogin()"
 					[disabled]="isDisable || loginForm.invalid">Enter</button>
-			</div>
+				</div>
+				<div class="text-center mt-2">
+					<button class="btn forgot-btn text-white" data-toggle="modal" data-target="#forgotPassModal">Forgot Password ?</button>
+				</div>
 		</form>
 	</div>
 </section>
+
+<!-- forgot password modal start-->
+
+<div class="modal forgot-modal" id="forgotPassModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h4 class="modal-title">Forgot Password</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+		<div class="modal-body">
+		 <input type="text" placeholder="Enter you email">
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn forgot-submit-btn" data-dismiss="modal">Send</button>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+<!-- forgot password modal end -->
