@@ -20,7 +20,7 @@ export class MainMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("username", this.eventOfUser)
+    // console.log("username", this.eventOfUser)
     if (this.eventOfUser == 'false') {
       this.index = 0
     } else if (this.eventOfUser == 'true') {
