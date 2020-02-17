@@ -41,13 +41,13 @@ const routes: Routes = [
     component: HeaderComponent
   },
   {
-    path: 'forgot-password',
+    path: 'forgot-password/:id',
     component: ForgotPasswordComponent
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

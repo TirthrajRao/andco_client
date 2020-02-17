@@ -148,9 +148,24 @@ export class LoginService {
   }
 
 
-
-  loginWithFacebook() {
-    console.log("ama ave che")
-   this.faceBookLogin.emit('loginWithFacebook')
+  /**
+   * @param {Object} data
+   * Send link of forgot password on email  
+   */
+  forgotPassword(data) {
+    console.log("forgot password email", data);
+    return this.http.post(config.baseApiUrl + "/forgotpassword", data);
   }
+
+
+
+  /**
+   * @param {Object} data 
+   * @param {String} id
+   * Create new password if forgot  
+   */
+  forgotPasswordWithLink(data, id) {
+    return this.http.post(config.baseApiUrl + "/reset-password/" + id, data)
+  }
+
 }

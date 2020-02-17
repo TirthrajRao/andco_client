@@ -18,13 +18,18 @@ declare var $: any;
 })
 export class SignUpComponent implements OnInit {
   @Output() loginWithFacebook = new EventEmitter();
-
+  isLoad = false
   index = 0
   totalCount = 4
   signUpForm: FormGroup;
   isDisable = false
+  isEmail: boolean = false
   submitted = false;
   match: boolean = true;
+  show1: boolean;
+  show2: boolean;
+  pwd1: boolean;
+  pwd2: boolean;
   // userDetails = {  firstName: '', lastName: '' }
   constructor(
     private route: ActivatedRoute,
@@ -59,6 +64,7 @@ export class SignUpComponent implements OnInit {
    * Get details of user 
    */
   personalDetails() {
+    this.isLoad = true
     console.log("details of user name=========", this.signUpForm.value)
     // delete this.signUpForm.controls.confirmPassword
     let password = this.signUpForm.controls.password.value
@@ -70,8 +76,10 @@ export class SignUpComponent implements OnInit {
     this.signUpForm.removeControl('confirmPassword')
     this._loginService.signUpOfEmail(this.signUpForm.value).subscribe((res: any) => {
       console.log("user created completed", res)
+      this.isLoad = false
       this.router.navigate(['/login']);
     }, error => {
+      this.isLoad = false
       console.log("error while create new user", error)
     })
   }
@@ -89,14 +97,24 @@ export class SignUpComponent implements OnInit {
    * Send mail to new user for varification code
    */
   verificationCode(index) {
+    this.isLoad = true
     console.log("index of sectioni", index)
     console.log("emails details", this.signUpForm.controls.email.value)
     let email = this.signUpForm.controls.email.value
     this._loginService.mailSendForCode(email).subscribe((res: any) => {
+      this.isLoad = false
+      this.alertService.getSuccess(res.message)
       console.log("code send to uesr", res)
       this.index = Number(index) + + 1
     }, error => {
-      this.alertService.getError(error.error.message)
+      this.isLoad = false
+      if (error.status == 409) {
+        this.alertService.getError(error.error.message)
+        console.log("ama javu joye")
+        this.index = Number(index) + + 1
+      } else {
+        this.alertService.getError(error.error.message)
+      }
       console.log("error while send code to user", error)
     })
   }
@@ -107,10 +125,11 @@ export class SignUpComponent implements OnInit {
    * Verify user email with code
    */
   verifyCode(data, index) {
+    this.isLoad = true
     console.log("data of code", data)
     let code = data
     let string = String(code)
-    let encrypted = Buffer.from(string).toString('base64');
+    let encrypted = global.Buffer.from(string).toString('base64');
     console.log("send code in juda form ma", encrypted)
     const verified = {
       code: encrypted,
@@ -119,8 +138,10 @@ export class SignUpComponent implements OnInit {
     console.log("details to check email is right or not", verified)
     this._loginService.verificationCode(verified).subscribe((res: any) => {
       console.log("verification completed", res)
+      this.isLoad = false
       this.index = Number(index) + + 1
     }, error => {
+      this.isLoad = false
       console.log("error while verify user", error)
       this.alertService.getError(error.error.message)
     })
@@ -204,6 +225,17 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  enterEmail(emailAddress) {
+    // this.isEmail = true
+    // console.log("enter email details", emailAddress)
+    // if (emailAddress) {
+    //   this.isEmail = true
+    //   this.signUpForm.controls.email.setValidators([Validators.required, Validators.email])
+    // } else {
+    //   this.isEmail = false
+    // }
+  }
+
 
   signWithGoogle() {
     this.socialLoginService.signInWithGoogleAccount()
@@ -211,5 +243,17 @@ export class SignUpComponent implements OnInit {
 
   signWithFacebook() {
     this.socialLoginService.signWithFacebook()
+  }
+
+
+  password1() {
+    console.log("call thay che ke nai")
+    this.show1 = !this.show1;
+    this.pwd1 = !this.pwd1;
+  }
+
+  password2() {
+    this.show2 = !this.show2;
+    this.pwd2 = !this.pwd2;
   }
 }

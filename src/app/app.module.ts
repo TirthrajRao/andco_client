@@ -15,6 +15,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginService } from './services/login.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 /**
@@ -43,7 +44,8 @@ export function provideConfig() {
     MainMenuComponent,
     CreateEventComponent,
     HeaderComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

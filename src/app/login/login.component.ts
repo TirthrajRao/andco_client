@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
   isCelebrant
   eventIdWithLogin = JSON.parse(sessionStorage.getItem('newEventId'));
   varificationEmail
+  displayPassword;
+  show: boolean;
+  pwd: boolean;
+
+
   constructor(
     public _loginService: LoginService,
     public router: Router,
@@ -46,6 +51,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    $(".toggle-password").click(function () {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+    });
 
 
     /**
@@ -92,17 +101,12 @@ export class LoginComponent implements OnInit {
     this.isDisable = true;
     console.log("login details", this.loginForm.value);
     let password = this.loginForm.controls.password.value
-    console.log("enter password details=========", password)
+    this.displayPassword = password
+    console.log("enter password details=========", this.displayPassword)
     let string = String(password)
     let encrypted = global.Buffer.from(string).toString('base64');
     console.log("password in other language=======", encrypted)
     this.loginForm.controls.password.setValue(encrypted)
-    // const data = new FormData();
-
-    // data.append('email', this.loginForm.controls.email.value);
-    // data.append('password', encrypted)
-
-
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("data of invalid user", data);
@@ -139,7 +143,8 @@ export class LoginComponent implements OnInit {
         console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
         this.isDisable = false;
-        this.loginForm.reset();
+        // this.
+        // this.loginForm.reset();
         this.varificationEmail = varification.useremail
         sessionStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
         this.router.navigate(['/verification']);
@@ -155,4 +160,29 @@ export class LoginComponent implements OnInit {
     this.socialLoginService.signWithFacebook()
   }
 
+
+  forgotPassword(email) {
+    console.log("value of email======", email)
+  }
+
+  updatePassword() {
+    console.log("forgot password value", this.forgotPasswordForm)
+    this._loginService.forgotPassword(this.forgotPasswordForm.value)
+      .subscribe((data: any) => {
+        console.log("response of forgot password", data);
+        this.alertService.getSuccess(data.message);
+        // this.router.navigate(['/login']);
+      }, err => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
+  }
+
+  /**
+   * Show password when user login 
+   */
+  password() {
+    this.show = !this.show;
+    this.pwd = !this.pwd;
+  }
 }
