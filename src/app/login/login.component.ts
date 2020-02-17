@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.controls.password.value
     console.log("enter password details=========", password)
     let string = String(password)
-    let encrypted = Buffer.from(string).toString('base64');
+    let encrypted = global.Buffer.from(string).toString('base64');
     console.log("password in other language=======", encrypted)
     this.loginForm.controls.password.setValue(encrypted)
     // const data = new FormData();
@@ -160,6 +160,24 @@ export class LoginComponent implements OnInit {
 
   signWithFacebook() {
     this.socialLoginService.signWithFacebook()
+  }
+
+
+  forgotPassword(email) {
+    console.log("value of email======", email)
+  }
+
+  updatePassword() {
+    console.log("forgot password value", this.forgotPasswordForm)
+    this._loginService.forgotPassword(this.forgotPasswordForm.value)
+      .subscribe((data: any) => {
+        console.log("response of forgot password", data);
+        this.alertService.getSuccess(data.message);
+        // this.router.navigate(['/login']);
+      }, err => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
   }
 
 }

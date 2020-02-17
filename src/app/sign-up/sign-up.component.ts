@@ -64,7 +64,7 @@ export class SignUpComponent implements OnInit {
     let password = this.signUpForm.controls.password.value
     console.log("enter password details=========", password)
     let string = String(password)
-    let encrypted = Buffer.from(string).toString('base64');
+    let encrypted = global.Buffer.from(string).toString('base64');
     this.signUpForm.controls.password.setValue(encrypted);
 
     this.signUpForm.removeControl('confirmPassword')
@@ -110,7 +110,7 @@ export class SignUpComponent implements OnInit {
     console.log("data of code", data)
     let code = data
     let string = String(code)
-    let encrypted = Buffer.from(string).toString('base64');
+    let encrypted = global.Buffer.from(string).toString('base64');
     console.log("send code in juda form ma", encrypted)
     const verified = {
       code: encrypted,
