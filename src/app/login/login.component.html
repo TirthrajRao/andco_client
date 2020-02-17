@@ -1,3 +1,5 @@
+<app-loader *ngIf="isLoad"></app-loader>
+
 <section class="enter-screen-main d-flex justify-content-center align-items-center">
 	<div class="andco-logo">
 		<img src="assets/images/andco_logo.png" alt="andco logo">
@@ -34,7 +36,12 @@
 					<div *ngIf="f.email.errors.required">Email is required</div>
 					<div *ngIf="f.email.errors.email">Please enter valid Email</div>
 				</div>
-				<input type="password" formControlName="password" placeholder="Your password">
+				<div class="input_with_icont">
+					<input type="password" formControlName="password" ngModel="{{displayPassword}}"
+						placeholder="Your password" [type]="show ? 'text' : 'password'">
+					<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+						(click)="password()"></span>
+				</div>
 			</div>
 			<div class="join-submit w-100 text-center">
 				<button class="btn join-submit" type="submit" (click)="onSubmitLogin()"
@@ -57,7 +64,7 @@
 				<h4 class="modal-title">Forgot Password</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
-			<form [formGroup]="forgotPasswordForm" >
+			<form [formGroup]="forgotPasswordForm">
 				<div class="modal-body">
 					<input type="email" formControlName="email" placeholder="Enter you email" required="required">
 				</div>
@@ -67,7 +74,7 @@
 						<span class="error">{{error1Msg}}</span> </span>
 				</div> -->
 				<div class="modal-footer">
-					<button type="button" class="btn forgot-submit-btn"
+					<button type="button" class="btn forgot-submit-btn" data-dismiss="modal"
 						[disabled]="isDisable || forgotPasswordForm.invalid" (click)="updatePassword()">Send</button>
 				</div>
 			</form>

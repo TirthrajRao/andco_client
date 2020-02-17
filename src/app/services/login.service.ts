@@ -157,4 +157,15 @@ export class LoginService {
     return this.http.post(config.baseApiUrl + "/forgotpassword", data);
   }
 
+
+
+  /**
+   * @param {Object} data 
+   * @param {String} id
+   * Create new password if forgot  
+   */
+  forgotPasswordWithLink(data, id) {
+    return this.http.post(config.baseApiUrl + "/reset-password/" + id, data)
+  }
+
 }
