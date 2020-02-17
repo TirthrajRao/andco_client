@@ -48,7 +48,8 @@
                         <div class="create-event-name-box">
                             <h3>Your Event Title</h3>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle" formControlName="eventTitle"
+                                <input type="text" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday"
+                                    id="eventTitle" formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
                                 <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"
@@ -91,60 +92,76 @@
                         <div class="background-photo-upload">
                             <div class="row">
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b1.png" alt="background 1" id="background1"
-                                            (click)="defaultBackgroundImage('assets/images/b1.png')">
+                                    <div class="bg-select-div active">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/floral.jpeg" alt="background 1" id="background1"
+                                                (click)="defaultBackgroundImage('assets/images/floral.jpeg')">
+                                        </div>
+                                        <span>floral</span>
                                     </div>
-                                    <span>floral</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b2.png" alt="background 2"
-                                            (click)="defaultBackgroundImage('assets/images/b2.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/marble.jpg" alt="background 2"
+                                                (click)="defaultBackgroundImage('assets/images/marble.jpg')">
+                                        </div>
+                                        <span>marble</span>
                                     </div>
-                                    <span>marble</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b3.png" alt="background 3"
-                                            (click)="defaultBackgroundImage('assets/images/b3.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/wood.jpeg" alt="background 3"
+                                                (click)="defaultBackgroundImage('assets/images/wood.jpeg')">
+                                        </div>
+                                        <span>wood</span>
                                     </div>
-                                    <span>wood</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b4.png" alt="background 4"
-                                            (click)="defaultBackgroundImage('assets/images/b4.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/origami.jpg" alt="background 4"
+                                                (click)="defaultBackgroundImage('assets/images/origami.jpg')">
+                                        </div>
+                                        <span>origami</span>
                                     </div>
-                                    <span>origami</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b5.png" alt="background 5"
-                                            (click)="defaultBackgroundImage('assets/images/b5.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/classic.jpg" alt="background 5"
+                                                (click)="defaultBackgroundImage('assets/images/classic.jpg')">
+                                        </div>
+                                        <span>classic</span>
                                     </div>
-                                    <span>classic</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b6.png" alt="background 6"
-                                            (click)="defaultBackgroundImage('assets/images/b6.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/lines.jpg" alt="background 6"
+                                                (click)="defaultBackgroundImage('assets/images/lines.jpg')">
+                                        </div>
+                                        <span>lines</span>
                                     </div>
-                                    <span>lines</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b7.png" alt="background 7"
-                                            (click)="defaultBackgroundImage('assets/images/b7.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/luxury.jpg" alt="background 7"
+                                                (click)="defaultBackgroundImage('assets/images/luxury.jpg')">
+                                        </div>
+                                        <span>luxury</span>
                                     </div>
-                                    <span>luxury</span>
                                 </div>
                                 <div class="col-3">
-                                    <div class="sample_bg">
-                                        <img src="assets/images/b8.png" alt="background 8"
-                                            (click)="defaultBackgroundImage('assets/images/b8.png')">
+                                    <div class="bg-select-div">
+                                        <div class="sample_bg">
+                                            <img src="assets/images/instrument.jpeg" alt="background 8"
+                                                (click)="defaultBackgroundImage('assets/images/instrument.jpeg')">
+                                        </div>
+                                        <span>instrument</span>
                                     </div>
-                                    <span>instrument</span>
                                 </div>
                             </div>
                         </div>
@@ -170,6 +187,6 @@
             <button class="btn created-event-custom-button" (click)="addEvent()"
                 [disabled]="isDisable || eventForm.invalid">Continue</button>
         </div>
-        <!-- create event slider end -->    
+        <!-- create event slider end -->
     </div>
 </section>

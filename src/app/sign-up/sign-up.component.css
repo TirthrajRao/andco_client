@@ -157,8 +157,9 @@
   .join-enter-inputs input {
     margin-bottom: 10px;
   }
+
   .join-enter {
-    padding: 8% 50px 0;
+    padding: 13% 50px 0;
   }
 }
 
