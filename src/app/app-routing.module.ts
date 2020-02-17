@@ -41,9 +41,9 @@ const routes: Routes = [
     component: HeaderComponent
   },
   {
-    path: 'forgotPassword',
+    path: 'forgot-password',
     component: ForgotPasswordComponent
-  }
+  },
 ];
 
 @NgModule({
