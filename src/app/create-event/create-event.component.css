@@ -153,6 +153,7 @@ button.slick-arrow {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
+    cursor: pointer;
 }
 
 /* your event background css end */
@@ -361,7 +362,7 @@ button.btn.created-event-custom-button {
         font-size: 16px;
     }
     button.btn.created-event-custom-button{
-        bottom: 28px;
+        bottom: 8px;
         border-radius: 5px;
     }
 }
@@ -372,6 +373,10 @@ button.btn.created-event-custom-button {
     }
     .create-event-main{
         background-position: bottom;
+    }
+    button.btn.created-event-custom-button{
+        bottom: 28px;
+        border-radius: 5px;
     }
 }
 /* responsive css end */

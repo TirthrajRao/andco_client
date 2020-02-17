@@ -105,14 +105,17 @@
 .join-social ul li:last-child {
   filter: brightness(4);
 }
+
 button.btn.forgot-btn {
   outline: none;
   box-shadow: none;
 }
+
 .forgot-modal h4.modal-title {
-  color: #7CBBCD;
+  color: #bc041a;
   font-weight: bold;
 }
+
 .forgot-modal input {
   width: 100%;
   padding: 10px 20px;
@@ -122,27 +125,39 @@ button.btn.forgot-btn {
   color: #475993;
   font-weight: bold;
 }
-.forgot-modal input:focus{
+
+.forgot-modal input:focus {
   outline: none;
 }
+
 .forgot-modal button.btn.forgot-submit-btn {
   background-color: #A20020;
   color: #fff;
 }
+
 .forgot-modal button.close {
   outline: none;
 }
-.forgot-modal .modal-header,
-.forgot-modal .modal-footer{
+
+.forgot-modal .modal-header, .forgot-modal .modal-footer {
   border: none;
 }
-.forgot-modal .modal-footer{
+
+.forgot-modal .modal-footer {
   display: block;
   text-align: center;
   margin: auto;
   width: 100%;
 }
 
+.forgot-modal .modal-content {
+  background-image: url('../../assets/images/enter4.jpg');
+  background-position: left 70%;
+  background-size: 160%;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  border: none;
+}
 
 /* responsive css start here */
 
@@ -168,7 +183,7 @@ button.btn.forgot-btn {
     height: 50px;
     width: 50px;
   }
-  .join-enter-inputs input::placeholder{
+  .join-enter-inputs input::placeholder {
     font-size: 22px !important;
   }
 }
@@ -186,10 +201,10 @@ button.btn.forgot-btn {
   .join-social ul {
     margin: 40px auto;
   }
-  .forgot-modal .modal-header h4{
+  .forgot-modal .modal-header h4 {
     font-size: 20px;
   }
-  .forgot-modal input{
+  .forgot-modal input {
     font-size: 16px;
   }
 }
@@ -221,8 +236,7 @@ button.btn.forgot-btn {
   .join-submit button {
     padding: 2px 30px;
   }
-  .forgot-modal .modal-body,
-  .forgot-modal .modal-header{
+  .forgot-modal .modal-body, .forgot-modal .modal-header {
     padding: 5px 10px;
   }
 }

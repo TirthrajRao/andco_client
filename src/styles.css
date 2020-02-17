@@ -32,12 +32,13 @@ a {
   }
   .input_with_icont span{
     position: absolute;
-    top: 25px;
+    top: 0;
     bottom: 0;
-    right: 24px;
+    right: 60px;
     margin: auto;
     z-index: 11;
     color: white;
+    font-size: 24px;
   }
   .input_with_icont:after{
     content: "";
@@ -198,6 +199,9 @@ a {
     .page-content {
         min-height: calc(100vh - 94px);
         padding-top: 94px;
+    }
+    .input_with_icont span{
+        right: 40px;
     }
 }
 
