@@ -5,6 +5,11 @@ import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
 
+
+(window as any).global = window;
+(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
+
+
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -17,8 +22,12 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   match: boolean = false;
   isDisable = false;
-
-
+  isLoad = false
+  show1: boolean;
+  show2: boolean;
+  pwd1: boolean;
+  pwd2: boolean;
+  newPassword;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,21 +57,34 @@ export class ForgotPasswordComponent implements OnInit {
   * Generate new password when user forgot password 
   */
   resetPassword(hash?) {
+    this.isLoad = true
     this.isDisable = true;
+    let password = this.forgotPasswordForm.controls.newPassword.value
+    // this.newPassword = password
+    console.log("enter password details=========", password)
+    let string = String(password)
+    let encrypted = global.Buffer.from(string).toString('base64');
+    this.forgotPasswordForm.controls.newPassword.setValue(encrypted);
     console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
       .subscribe((data: any) => {
         console.log("reset password done by user", data);
+        this.isLoad = false
         this.alertService.getSuccess(data.message);
         this.isDisable = false;
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);
+        this.isLoad = false
         this.alertService.getError(err.message);
       })
   }
 
 
+  /**
+   * Display error message for signUp form
+   */
+  get f() { return this.forgotPasswordForm.controls; }
 
   comparePassword(form) {
     this.isDisable = true
@@ -74,5 +96,18 @@ export class ForgotPasswordComponent implements OnInit {
     } else {
       this.match = false;
     }
+  }
+
+
+
+  password1() {
+    console.log("call thay che ke nai")
+    this.show1 = !this.show1;
+    this.pwd1 = !this.pwd1;
+  }
+
+  password2() {
+    this.show2 = !this.show2;
+    this.pwd2 = !this.pwd2;
   }
 }

@@ -171,14 +171,18 @@ export class LoginComponent implements OnInit {
   }
 
   updatePassword() {
+    this.isLoad = true
     console.log("forgot password value", this.forgotPasswordForm)
     this._loginService.forgotPassword(this.forgotPasswordForm.value)
       .subscribe((data: any) => {
         console.log("response of forgot password", data);
+        this.isLoad = false
         this.alertService.getSuccess(data.message);
         // this.router.navigate(['/login']);
+        this.forgotPasswordForm.reset()
       }, err => {
         console.log(err);
+        this.isLoad = false
         this.alertService.getError(err.message);
       })
   }
