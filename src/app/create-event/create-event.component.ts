@@ -159,6 +159,7 @@ export class CreateEventComponent implements OnInit {
   defaultBackgroundImage(path) {
     this.themeUrl = path
     this.eventForm.controls.background.setValue(path)
+    $('.bg-select-div').addClass('active')
     console.log("form details========", this.eventForm.value)
   }
 
