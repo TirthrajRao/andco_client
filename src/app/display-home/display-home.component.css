@@ -334,6 +334,9 @@
         top: 15%;
         width: 80%;
     }
+    .andco-logo img {
+        height: 40px;
+    }
 }
 
 @media(max-width: 320px) {
