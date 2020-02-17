@@ -4,7 +4,7 @@ import { DisplayHomeComponent } from './display-home/display-home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
-import { CreateEventComponent } from './create-event/create-event.component';
+import { CreateEventComponent } from './createEvent/create-event/create-event.component';
 import { HeaderComponent } from './header/header.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomeModule } from './home/home.module';

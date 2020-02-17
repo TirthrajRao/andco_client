@@ -14,16 +14,18 @@ export class DisplayHomeComponent implements OnInit {
 
     //display screen slider start
     // this.initSlickclider()
-    $('.display-screen-slider').not('.slick-initialized').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3500,
-      arrows: false,
-      verticalSwiping: true,
-      vertical: true,
-    });
+    // setTimeout(() => {
+      $('.display-screen-slider').not('.slick-initialized').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3500,
+        arrows: false,
+        verticalSwiping: true,
+        vertical: true,
+      });
+    // }, 100)
     //display screen slider end
 
   }

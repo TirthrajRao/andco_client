@@ -9,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from '../home/home.component';
 import { HeaderComponent } from '../header/header.component';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
-import { CreateEventComponent } from '../create-event/create-event.component';
+import { CreateEventComponent } from '../createEvent/create-event/create-event.component';
+import { EventActivityComponent } from '../createEvent/event-activity/event-activity.component';
 import { from } from 'rxjs';
 
 
@@ -31,6 +32,10 @@ const routes: Routes = [
         path: 'createEvent',
         component: CreateEventComponent
       },
+      {
+        path: 'eventActivity',
+        component: EventActivityComponent
+      }
     ]
   }
 ]
@@ -42,7 +47,8 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     CreateEventComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    EventActivityComponent
   ],
   imports: [
     CommonModule,

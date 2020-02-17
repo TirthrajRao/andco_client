@@ -4,7 +4,7 @@
     </div>
     <div class="andco-logo">
         <img src="assets/images/andco_logo.png" alt="andco logo">
-        <div class="hello-text">
+        <div class="hello-text" *ngIf="isDisplay == 'false'">
             <h2 class="tooltip-class" title="{{userName}}">
                 <span>Hello {{userName}}</span>
             </h2>
