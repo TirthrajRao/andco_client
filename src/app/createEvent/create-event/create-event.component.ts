@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
-import { config } from '../config'
-import { EventService } from '../services/event.service';
-import { AlertService } from '../services/alert.service';
+import { config } from '../../config'
+import { EventService } from '../../services/event.service';
+import { AlertService } from '../../services/alert.service';
 import Swal from 'sweetalert2';
 declare var $;
 
