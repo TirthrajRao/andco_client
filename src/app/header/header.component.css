@@ -63,3 +63,66 @@
     color: #000;
 }
 /* tooltip design end */
+
+
+@media(max-width: 1366px){
+
+}
+@media(max-width: 1199px){
+    .header-content{
+        padding:20px 30px;
+    }
+    .andco-logo img {
+        margin-bottom: 30px;
+    }
+    .andco-logo {
+        margin: 10px 0px;
+    }
+    .andco-logo img {
+        height: 60px;
+    }
+    .navigation_menu {
+        max-width: 70px;
+    }
+    .navigation_menu a img {
+        height: 60px;
+    }
+}
+@media(max-width: 991px){
+    .andco-logo{
+        margin: 0;
+        padding-right: 50px;
+    }
+}
+@media(max-width: 767px){
+    .andco-logo img, .navigation_menu a img  {
+        height: 50px;
+    }
+}
+@media(max-width: 575px){
+    .navigation_menu a img {
+        height: 40px;
+    }
+    .hello-text h2{
+        font-size: 30px;
+    }
+}
+@media(max-width:480px){
+    .andco-logo{
+        padding-right: 0;
+    }
+}
+@media(max-width: 400px){
+    .header-content{
+        padding:10px;
+    }
+    .navigation_menu a img, .andco-logo img {
+        height: 30px;
+    }
+    .andco-logo img {
+        margin-bottom: 20px;
+    }
+    .hello-text h2{
+        font-size: 20px;
+    }
+}

@@ -40,6 +40,15 @@ export class CreateEventComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //background image select active start
+    $('.sample_bg').click(function (e) {
+      $('.bg-select-div.active').removeClass('active');
+      var $parent = $(this).parent();
+      $parent.addClass('active');
+      e.preventDefault();
+    });
+    //background image select active end
+
     // create event slider start
     this.initSlickSlider()
     // create event slider end

@@ -10,7 +10,7 @@ import { from } from 'rxjs';
 declare const $: any;
 
 (window as any).global = window;
-(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
+(window as any).global.Buffer = (window as any).global.Buffer ;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,16 +43,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/menu']);
     }
 
-
-
-
-
-
   }
 
   ngOnInit() {
-
-
 
 
     /**

@@ -8,7 +8,7 @@ import { SocialLoginService } from '../services/social-login.service';
 import { from } from 'rxjs';
 
 (window as any).global = window;
-(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
+(window as any).global.Buffer = (window as any).global.Buffer;
 
 declare var $: any;
 @Component({
