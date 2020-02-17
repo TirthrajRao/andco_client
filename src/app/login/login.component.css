@@ -113,14 +113,16 @@ button.btn.forgot-btn {
   color: #7CBBCD;
   font-weight: bold;
 }
-.forgot-modal input[type="text"] {
+.forgot-modal input {
   width: 100%;
   padding: 10px 20px;
   font-size: 20px;
   border-radius: 7px;
   border: 1px solid #7CBBCD;
+  color: #475993;
+  font-weight: bold;
 }
-.forgot-modal input[type="text"]:focus{
+.forgot-modal input:focus{
   outline: none;
 }
 .forgot-modal button.btn.forgot-submit-btn {
@@ -129,6 +131,16 @@ button.btn.forgot-btn {
 }
 .forgot-modal button.close {
   outline: none;
+}
+.forgot-modal .modal-header,
+.forgot-modal .modal-footer{
+  border: none;
+}
+.forgot-modal .modal-footer{
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 100%;
 }
 
 
@@ -174,6 +186,12 @@ button.btn.forgot-btn {
   .join-social ul {
     margin: 40px auto;
   }
+  .forgot-modal .modal-header h4{
+    font-size: 20px;
+  }
+  .forgot-modal input{
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -202,6 +220,10 @@ button.btn.forgot-btn {
   }
   .join-submit button {
     padding: 2px 30px;
+  }
+  .forgot-modal .modal-body,
+  .forgot-modal .modal-header{
+    padding: 5px 10px;
   }
 }
 
