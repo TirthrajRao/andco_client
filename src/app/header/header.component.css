@@ -3,6 +3,7 @@
     display: table;
     width: 100%;
     position: absolute;
+    z-index: 11;
 }
 .navigation_menu {
     float: left;

@@ -7,6 +7,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { HeaderComponent } from './header/header.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { HomeModule } from './home/home.module';
 import { from } from 'rxjs';
 
 
@@ -29,16 +30,8 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
-    path: 'menu',
-    component: MainMenuComponent
-  },
-  {
-    path: 'createEvent',
-    component: CreateEventComponent
-  },
-  {
-    path: 'header',
-    component: HeaderComponent
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'forgot-password/:id',

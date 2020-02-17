@@ -10,12 +10,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DisplayHomeComponent } from './display-home/display-home.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { CreateEventComponent } from './create-event/create-event.component';
-import { HeaderComponent } from './header/header.component';
 import { LoginService } from './services/login.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoaderComponent } from './loader/loader.component';
+import { HomeModule } from './home/home.module';
+// import { HomeComponent } from './home/home.component';
 
 
 /**
@@ -41,11 +40,8 @@ export function provideConfig() {
     LoginComponent,
     SignUpComponent,
     DisplayHomeComponent,
-    MainMenuComponent,
-    CreateEventComponent,
-    HeaderComponent,
     ForgotPasswordComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +49,8 @@ export function provideConfig() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HomeModule
   ],
   providers: [
     {

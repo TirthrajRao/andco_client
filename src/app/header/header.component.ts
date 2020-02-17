@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("login user name in heaedr", this.userName)
   }
 
 }
