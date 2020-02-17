@@ -32,6 +32,7 @@
     position: relative;
     max-width: 600px;
     margin: auto;
+    cursor: pointer;
 }
 .hello-text h2 span{
     display: block;
@@ -110,6 +111,9 @@
 @media(max-width:480px){
     .andco-logo{
         padding-right: 0;
+    }
+    .navigation_menu{
+        margin-right: 10px;
     }
 }
 @media(max-width: 400px){
