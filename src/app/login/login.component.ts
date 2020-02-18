@@ -8,9 +8,15 @@ import { config } from '../config'
 import { from } from 'rxjs';
 // import { Buffer } from 'buffer';
 declare const $: any;
+<<<<<<< HEAD
 declare var global: any;
 (window as any).global = window;
 (window as any).global.Buffer = (window as any).global.Buffer;
+=======
+
+(window as any).global = window;
+(window as any).global.Buffer = (window as any).global.Buffer ;
+>>>>>>> d33c8c9473d2c2e2cbdab4b042df702583e52721
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

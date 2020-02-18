@@ -11,6 +11,7 @@ import { HeaderComponent } from '../header/header.component';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { CreateEventComponent } from '../createEvent/create-event/create-event.component';
 import { EventActivityComponent } from '../createEvent/event-activity/event-activity.component';
+import { EventGroupComponent } from '../createEvent/event-group/event-group.component'
 import { from } from 'rxjs';
 
 
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'eventActivity',
         component: EventActivityComponent
+      },
+      {
+        path: 'eventGroup',
+        component: EventGroupComponent
       }
     ]
   }
@@ -48,7 +53,8 @@ const routes: Routes = [
     HeaderComponent,
     CreateEventComponent,
     MainMenuComponent,
-    EventActivityComponent
+    EventActivityComponent,
+    EventGroupComponent
   ],
   imports: [
     CommonModule,
