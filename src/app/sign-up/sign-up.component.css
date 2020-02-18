@@ -1,8 +1,3 @@
-
-
-
-
-
 .join-enter-main {
   background-image: url('../../assets/images/join.png');
   background-repeat: no-repeat;
@@ -14,6 +9,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 20px;
 }
 
 .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
@@ -112,6 +108,16 @@
 }
 
 /* responsive css start */
+@media(max-width:2560px) {
+  .join-enter {
+    padding: 2% 50px 0;
+  }
+}
+@media(max-width:1920px) {
+  .join-enter {
+    padding: 10% 50px 0;
+  }
+}
 
 @media(max-width: 1700px) {
   .join-enter {
@@ -120,6 +126,9 @@
 }
 
 @media(max-width: 1600px) {
+  .join-enter {
+    padding: 10% 50px 0;
+  }
   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
     width: 515px;
     height: 515px;
@@ -140,9 +149,6 @@
   }
   .join-submit button {
     padding: 4px 30px;
-  }
-  .join-enter {
-    padding: 10% 50px 0;
   }
 }
 
@@ -282,6 +288,6 @@
 
 @media(max-width: 812px) and (orientation: landscape) {
   .join-enter-main {
-    background-size: 270%;
+    background-size: 200%;
   }
 }
