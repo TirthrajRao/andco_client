@@ -4,13 +4,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
-<<<<<<< HEAD
-=======
-declare var global: any;
-
-// (window as any).global = window;
-// (window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
->>>>>>> 9f6cb4abfd9f980781efc7dcbc187e4b6f4dbacc
 
 
 @Component({

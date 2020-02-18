@@ -1,50 +1,25 @@
-// import * as firebase from "firebase/app";
-// import "firebase/auth";
-// import "firebase/firestore";
-
-
-/**
- * Api calling from local or remote server to client
- */
-// const host = 'http://192.168.1.83';
-// const port = 3000;
-
-// const baseMediaUrl = `${host}/Aso-testing-server/server/`;
-// const baseMediaUrl = "https://andcowith.me/test/server/";
-
-
-// const baseUrl = `${host}${port}/`;
-// const baseUrl = "https://andcowith.me:3000";
-// const baseUrl = "http://localhost:3000/";
-const baseMediaUrl = "http://192.168.1.144:3000/andco_server(final)/";
-
-// const baseMediaUrl = "https://test.andcowith.me/server/";
-
-
-
-// const baseUrl = `${host}${port}/`;
-const baseUrl = "http://192.168.1.144:3000/api";
-// const baseUrl = "http://localhost:3000/api"
-// const baseUrl = "https://test.andcowith.me:3000/";
-
-
-export const config = {
-    baseApiUrl: baseUrl,
-    baseMediaUrl: baseMediaUrl
+let envs = [];
+let env = "development";
+// const baseUrl = ''
+// const baseMediaUrl = ''
+envs['production'] = {
+    baseApiUrl: 'https://admin.triviapost.in:5000/api/',
+    baseMediaUrl: 'https://admin.triviapost.in/server/',
+    // isvisited: false,
+    // counter: 0,
+}
+envs['development'] = {
+    baseApiUrl: "http://192.168.1.144:3000/api",
+    baseMediaUrl: "http://192.168.1.144:3000/andco_server(final)/",
+    // isvisited: false,
+    // counter: 0,
 }
 
+envs['testing'] = {
+    baseApiUrl: "https://conduct-testing.raoinformationtechnology.com:3001/api/",
+    baseMediaUrl: "https://conduct-testing.raoinformationtechnology.com:3001/",
+    // isvisited: false,
+    // counter: 0,
+}
 
-
-/**
- * To login with yahoo mail using firebase
- */
-// export const firebaseConfig = {
-//     apiKey: "AIzaSyBpc5SskcxLBusW13gIpsKNYeKK-TlLzsw",
-//     authDomain: "aso-ebi-cdbf9-136fb.firebaseapp.com",
-//     databaseURL: "https://aso-ebi-cdbf9-136fb.firebaseio.com",
-//     projectId: "aso-ebi-cdbf9",
-//     storageBucket: "",
-//     messagingSenderId: "1021800185546",
-//     appId: "1:1021800185546:web:0b3e09d6183792d7"
-// };
-
+export const config = envs[env];
