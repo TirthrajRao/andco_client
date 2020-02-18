@@ -37,7 +37,7 @@
 					<div *ngIf="f.email.errors.email">Please enter valid Email</div>
 				</div>
 				<div class="input_with_icont">
-					<input type="password" formControlName="password" ngModel="{{displayPassword}}"
+					<input type="password" formControlName="password"
 						placeholder="Your password" [type]="show ? 'text' : 'password'">
 					<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
 						(click)="password()"></span>

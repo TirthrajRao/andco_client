@@ -4,10 +4,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
-declare var global: any;
-
-// (window as any).global = window;
-(window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
 
 
 @Component({
@@ -59,12 +55,12 @@ export class ForgotPasswordComponent implements OnInit {
   resetPassword(hash?) {
     this.isLoad = true
     this.isDisable = true;
-    let password = this.forgotPasswordForm.controls.newPassword.value
+    // let password = this.forgotPasswordForm.controls.newPassword.value
     // this.newPassword = password
-    console.log("enter password details=========", password)
-    let string = String(password)
-    let encrypted = global.Buffer.from(string).toString('base64');
-    this.forgotPasswordForm.controls.newPassword.setValue(encrypted);
+    // console.log("enter password details=========", password)
+    // let string = String(password)
+    // let encrypted = global.Buffer.from(string).toString('base64');
+    // this.forgotPasswordForm.controls.newPassword.setValue(encrypted);
     console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
       .subscribe((data: any) => {
