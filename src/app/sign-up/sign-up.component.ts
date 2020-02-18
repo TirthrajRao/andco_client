@@ -17,6 +17,7 @@ declare var $: any;
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  
   @Output() loginWithFacebook = new EventEmitter();
   isLoad = false
   index = 0
