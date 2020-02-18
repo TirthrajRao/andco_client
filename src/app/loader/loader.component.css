@@ -4,6 +4,7 @@
     justify-content: center;
     color: #fff;
     font-size: 40px;
+
   }
   
   .holder {
@@ -14,8 +15,9 @@
     bottom: 0px;
     width: 100%;
     height: 100%;
-    background-color: #EBE5DF;
+    background-color: #ffffff;
     min-height: 400px;
+    z-index: 999;
   }
   
   .flip-preloader {
@@ -64,35 +66,35 @@
   
   .flip-preloader div:nth-child(1) {
     left: 0%;
-    background-color: #44B3C2;
+    background-color: #7CBBCD;
     animation-name: flipPreloader1;
     z-index: 1;
   }
   
   .flip-preloader div:nth-child(2) {
     left: 20%;
-    background-color: #F1A94E;
+    background-color: #A1A1A1;
     animation-name: flipPreloader2;
     z-index: 2;
   }
   
   .flip-preloader div:nth-child(3) {
     left: 40%;
-    background-color: #528D69;
+    background-color: #DFA099;
     animation-name: flipPreloader3;
     z-index: 3;
   }
   
   .flip-preloader div:nth-child(4) {
     left: 60%;
-    background-color: #9D3742;
+    background-color: #CED870;
     animation-name: flipPreloader4;
     z-index: 4;
   }
   
   .flip-preloader div:nth-child(5) {
     left: 80%;
-    background-color: #A6B138;
+    background-color: #71AA87;
     animation-name: flipPreloader5;
     z-index: 5;
   }
@@ -102,23 +104,23 @@
       transform: rotateY(-180deg);
       opacity: 0;
       transform-origin: 0% 50%;
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
     4% {
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
     5% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     10% {
       transform: rotateY(0deg);
       opacity: 1;
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform-origin: 0% 50%;
     }
     11% {
       transform-origin: 100% 50%;
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
     48% {
       z-index: 1;
@@ -135,7 +137,7 @@
     60% {
       transform: rotateY(180deg);
       opacity: 1;
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
     61% {
       opacity: 0;
@@ -145,13 +147,13 @@
       transform: rotateY(180deg);
       opacity: 0;
       transform-origin: 100% 50%;
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
   }
   @keyframes flipPreloader2 {
     0% {
       transform: rotateY(-180deg);
-      background-color: #A6B138;
+      background-color: #71AA87;
       opacity: 0;
       transform-origin: 0% 50%;
     }
@@ -163,16 +165,16 @@
       opacity: 1;
     }
     15% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     20% {
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform: rotateY(0deg);
       transform-origin: 0% 50%;
     }
     21% {
       transform-origin: 100% 50%;
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
     }
     48% {
       z-index: 2;
@@ -183,17 +185,17 @@
     60% {
       opacity: 1;
       transform: rotateY(0deg);
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
     }
     61% {
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
       transform-origin: 100% 50%;
     }
     64% {
-      background-color: #44B3C2;
+      background-color: #7CBBCD;
     }
     65% {
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
     }
     70% {
       transform: rotateY(180deg);
@@ -204,7 +206,7 @@
     }
     100% {
       z-index: 9;
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
       transform: rotateY(180deg);
       opacity: 0;
       transform-origin: 100% 50%;
@@ -213,7 +215,7 @@
   @keyframes flipPreloader3 {
     0% {
       transform: rotateY(-180deg);
-      background-color: #A6B138;
+      background-color: #71AA87;
       opacity: 0;
       transform-origin: 0% 50%;
     }
@@ -225,16 +227,16 @@
       opacity: 1;
     }
     25% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     30% {
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform: rotateY(0deg);
       transform-origin: 0% 50%;
     }
     31% {
       transform-origin: 100% 50%;
-      background-color: #528D69;
+      background-color: #DFA099;
     }
     48% {
       z-index: 3;
@@ -245,17 +247,17 @@
     70% {
       transform: rotateY(0deg);
       opactiy: 1;
-      background-color: #528D69;
+      background-color: #DFA099;
     }
     71% {
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
       transform-origin: 100% 50%;
     }
     74% {
-      background-color: #F1A94E;
+      background-color: #A1A1A1;
     }
     75% {
-      background-color: #528D69;
+      background-color: #DFA099;
     }
     80% {
       transform: rotateY(180deg);
@@ -266,7 +268,7 @@
     }
     100% {
       z-index: 8;
-      background-color: #528D69;
+      background-color: #DFA099;
       transform: rotateY(180deg);
       opacity: 0;
       transform-origin: 100% 50%;
@@ -275,7 +277,7 @@
   @keyframes flipPreloader4 {
     0% {
       transform: rotateY(-180deg);
-      background-color: #A6B138;
+      background-color: #71AA87;
       opacity: 0;
       transform-origin: 0% 50%;
     }
@@ -287,16 +289,16 @@
       opacity: 1;
     }
     35% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     40% {
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform: rotateY(0deg);
       transform-origin: 0% 50%;
     }
     41% {
       transform-origin: 100% 50%;
-      background-color: #9D3742;
+      background-color: #CED870;
     }
     48% {
       z-index: 4;
@@ -307,17 +309,17 @@
     80% {
       transform: rotateY(0deg);
       opacity: 1;
-      background-color: #9D3742;
+      background-color: #CED870;
     }
     81% {
-      background-color: #528D69;
+      background-color: #DFA099;
       transform-origin: 100% 50%;
     }
     84% {
-      background-color: #528D69;
+      background-color: #DFA099;
     }
     85% {
-      background-color: #9D3742;
+      background-color: #CED870;
     }
     90% {
       transform: rotateY(180deg);
@@ -328,7 +330,7 @@
     }
     100% {
       z-index: 7;
-      background-color: #9D3742;
+      background-color: #CED870;
       transform: rotateY(180deg);
       opacity: 0;
       transform-origin: 100% 50%;
@@ -337,7 +339,7 @@
   @keyframes flipPreloader5 {
     0% {
       transform: rotateY(-180deg);
-      background-color: #A6B138;
+      background-color: #71AA87;
       opacity: 0;
       transform-origin: 0% 50%;
     }
@@ -349,7 +351,7 @@
       opacity: 1;
     }
     45% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     48% {
       z-index: 5;
@@ -358,32 +360,32 @@
       z-index: 6;
     }
     50% {
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform: rotateY(0deg);
       transform-origin: 0% 50%;
     }
     51% {
       transform-origin: 100% 50%;
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     90% {
       transform: rotateY(0deg);
       opacity: 1;
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     91% {
-      background-color: #9D3742;
+      background-color: #CED870;
       transform-origin: 100% 50%;
     }
     94% {
-      background-color: #9D3742;
+      background-color: #CED870;
     }
     95% {
-      background-color: #A6B138;
+      background-color: #71AA87;
     }
     100% {
       z-index: 6;
-      background-color: #A6B138;
+      background-color: #71AA87;
       transform: rotateY(180deg);
       opacity: 0;
       transform-origin: 100% 50%;
