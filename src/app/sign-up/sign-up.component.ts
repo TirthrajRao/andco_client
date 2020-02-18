@@ -4,11 +4,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
-// import { Buffer } from 'buffer';
 import { from } from 'rxjs';
-declare var global: any;
-(window as any).global = window;
-(window as any).global.Buffer = (window as any).global.Buffer;
 
 declare var $: any;
 @Component({
@@ -68,13 +64,6 @@ export class SignUpComponent implements OnInit {
   personalDetails() {
     this.isLoad = true
     console.log("details of user name=========", this.signUpForm.value)
-    // delete this.signUpForm.controls.confirmPassword
-    let password = this.signUpForm.controls.password.value
-    console.log("enter password details=========", password)
-    let string = String(password)
-    let encrypted = global.Buffer.from(string).toString('base64');
-    this.signUpForm.controls.password.setValue(encrypted);
-
     this.signUpForm.removeControl('confirmPassword')
     this._loginService.signUpOfEmail(this.signUpForm.value).subscribe((res: any) => {
       console.log("user created completed", res)
@@ -129,12 +118,8 @@ export class SignUpComponent implements OnInit {
   verifyCode(data, index) {
     this.isLoad = true
     console.log("data of code", data)
-    let code = data
-    let string = String(code)
-    let encrypted = global.Buffer.from(string).toString('base64');
-    console.log("send code in juda form ma", encrypted)
     const verified = {
-      code: encrypted,
+      verificationNewCode: data,
       email: this.signUpForm.controls.email.value
     }
     console.log("details to check email is right or not", verified)

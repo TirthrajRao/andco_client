@@ -6,11 +6,7 @@ import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
 import { config } from '../config'
 import { from } from 'rxjs';
-// import { Buffer } from 'buffer';
 declare const $: any;
-declare var global: any;
-(window as any).global = window;
-(window as any).global.Buffer = (window as any).global.Buffer;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -100,13 +96,6 @@ export class LoginComponent implements OnInit {
     this.isLoad = true;
     this.isDisable = true;
     console.log("login details", this.loginForm.value);
-    let password = this.loginForm.controls.password.value
-    this.displayPassword = password
-    console.log("enter password details=========", this.displayPassword)
-    let string = String(password)
-    let encrypted = global.Buffer.from(string).toString('base64');
-    console.log("password in other language=======", encrypted)
-    this.loginForm.controls.password.setValue(encrypted)
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("data of invalid user", data);

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import { MatSelectModule } from '@angular/material/fesm2015/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,8 @@ export function provideConfig() {
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-    HomeModule
+    HomeModule,
+    // MatSelectModule
   ],
   providers: [
     {

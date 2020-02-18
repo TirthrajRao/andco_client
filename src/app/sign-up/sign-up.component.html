@@ -111,7 +111,7 @@
             <div class="join-enter-inputs">
                 <input type="email" placeholder="Your email address" formControlName="email"
                     [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
-                    (change)="enterEmail($event.target.value)">
+                    (keyup)="enterEmail($event.target.value)">
                 <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
                     <div *ngIf="f.email.errors.required">Email is required</div>
                     <div *ngIf="f.email.errors.email">Please enter valid Email</div>

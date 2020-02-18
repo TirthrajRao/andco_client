@@ -3,10 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as CryptoJS from 'crypto-js';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  key = "andCo@testing";
   isUserLoggedIn: false;
   @Output() faceBookLogin = new EventEmitter();
 
@@ -46,6 +48,8 @@ export class LoginService {
    */
   verificationCode(data) {
     console.log(data);
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), this.key).toString();
+    data['verificationNewCode'] = encrypted
     return this.http.put(config.baseApiUrl + "/email-verify", data);
   }
 
@@ -55,6 +59,9 @@ export class LoginService {
   * SignUp form form new user  
   */
   signUpOfEmail(details) {
+    console.log("details of new user", details)
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(details.password), this.key).toString();
+    details['password'] = encrypted
     return this.http.post(config.baseApiUrl + "/signup", details);
   }
 
@@ -67,6 +74,12 @@ export class LoginService {
     console.log("helloooooooo", userCredentials);
     const eventToken = JSON.parse(sessionStorage.getItem('newEventId'));
     console.log("login with link ", eventToken);
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
+    // const json = { encrypted }
+    // console.log("encrypted password form", json)
+    userCredentials['password'] = encrypted
+
+    // userCredentials.password =
     if (eventToken) {
       // userCredentials.eventId = eventToken;
       // console.log("userdata", userCredentials);
@@ -165,6 +178,10 @@ export class LoginService {
    * Create new password if forgot  
    */
   forgotPasswordWithLink(data, id) {
+
+
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data.newPassword), this.key).toString();
+    data['newPassword'] = encrypted
     return this.http.post(config.baseApiUrl + "/reset-password/" + id, data)
   }
 

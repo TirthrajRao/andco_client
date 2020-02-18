@@ -8,8 +8,9 @@
                         <img src="../../../assets/images/remove.png" alt="remove icon">
                     </button>
                     <select class="custom-select w-25">
-                        <option selected>DD</option>
-                        <option value="01">01</option>
+                        <!-- <option selected>DD</option> -->
+                        <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
+                        <!-- <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
                         <option value="04">04</option>
@@ -20,11 +21,12 @@
                         <option value="09">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
-                        <option value="12">12</option>
+                        <option value="12">12</option> -->
                     </select>
                     <select class="custom-select w-25">
-                        <option selected>MM</option>
-                        <option value="01">01</option>
+                        <!-- <option selected disabled>MM</option> -->
+                        <option value="" *ngFor="let month of months">{{month.Name}}</option>
+                        <!-- <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
                         <option value="04">04</option>
@@ -35,11 +37,12 @@
                         <option value="09">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
-                        <option value="12">12</option>
+                        <option value="12">12</option> -->
                     </select>
                     <select class="custom-select w-25">
-                        <option selected>YYYY</option>
-                        <option value="2020">2020</option>
+                        <!-- <option selected>YYYY</option> -->
+                        <option value="" *ngFor="let year of years">{{year.Name}}</option>
+                        <!-- <option value="2020">2020</option>
                         <option value="2021">2021</option>
                         <option value="2022">2022</option>
                         <option value="01">04</option>
@@ -51,7 +54,7 @@
                         <option value="01">10</option>
                         <option value="01">11</option>
                         <option value="01">12</option>
-                        <option value="01">13</option>
+                        <option value="01">13</option> -->
                     </select>
                 </section>
             </div>
