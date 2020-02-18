@@ -9,8 +9,8 @@ import { from } from 'rxjs';
 // import { Buffer } from 'buffer';
 declare const $: any;
 
-// (window as any).global = window;
-// (window as any).global.Buffer = (window as any).global.Buffer ;
+(window as any).global = window;
+(window as any).global.Buffer = (window as any).global.Buffer ;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

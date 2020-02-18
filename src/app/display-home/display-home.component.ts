@@ -19,7 +19,7 @@ export class DisplayHomeComponent implements OnInit {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 3500,
         arrows: false,
         verticalSwiping: true,

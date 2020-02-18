@@ -18,7 +18,7 @@
                     (input)="validateFirstName(signUpForm.value)" id="firstName" formControlName="firstName"
                     [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                 <div id="message1"></div>
-                <div *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback text-white">
+                <div *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback ">
                     <div *ngIf="f.firstName.errors.required">Name is required</div>
                     <div *ngIf="f.firstName.errors.minlength">Name must be at least 2 characters
                     </div>
@@ -28,7 +28,7 @@
                     (input)="validateLastName(signUpForm.value)" id="lastName"
                     [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                 <div id="message2"></div>
-                <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback text-white text-left">
+                <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback  text-left">
                     <div *ngIf="f.lastName.errors.required">Name is required</div>
                     <div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters
                     </div>
@@ -112,7 +112,7 @@
                 <input type="email" placeholder="Your email address" formControlName="email"
                     [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
                     (change)="enterEmail($event.target.value)">
-                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback text-white">
+                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
                     <div *ngIf="f.email.errors.required">Email is required</div>
                     <div *ngIf="f.email.errors.email">Please enter valid Email</div>
                 </div>
@@ -205,7 +205,7 @@
                         [type]="show1 ? 'text' : 'password'">
                     <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
                         (click)="password1()"></span>
-                    <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback text-white">
+                    <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback ">
                         <div *ngIf="f.password.errors.required">Password is required</div>
                         <div *ngIf="f.password.errors.minlength">Password must contain atleast 6
                             characters</div>

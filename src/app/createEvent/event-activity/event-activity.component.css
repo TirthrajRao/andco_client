@@ -13,6 +13,7 @@
 .event-add-box{
     position: relative;
     max-height: 500px;
+    width: 600px;
 }
 .wrapper {
     padding-bottom: 80px;
@@ -44,7 +45,7 @@
 
 .element {
     background: transparent;
-    width: 600px;
+    width: 100%;
     margin: 15px 0;
 }
 
@@ -94,4 +95,34 @@ button.remove {
 }
 .remove_sec{
     display: none;
+}
+
+/* responsive css start */
+
+
+@media(max-width:1199px){
+
+}
+@media(max-width:991px){
+    .element input {
+        font-size: 22px;
+    }
+    button.remove img {
+        height: 20px;
+        width: 20px;
+    }
+}
+@media(max-width:767px){
+    .wrapper {
+        padding-bottom: 60px;
+    }
+    .inner-box {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-top: 100px;
+        position: relative;
+    }
+}
+@media(max-width:575px){
+    
 }
