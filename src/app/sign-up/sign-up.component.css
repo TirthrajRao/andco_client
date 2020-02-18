@@ -108,6 +108,16 @@
 }
 
 /* responsive css start */
+@media(max-width:2560px) {
+  .join-enter {
+    padding: 2% 50px 0;
+  }
+}
+@media(max-width:1920px) {
+  .join-enter {
+    padding: 10% 50px 0;
+  }
+}
 
 @media(max-width: 1700px) {
   .join-enter {
@@ -116,6 +126,9 @@
 }
 
 @media(max-width: 1600px) {
+  .join-enter {
+    padding: 10% 50px 0;
+  }
   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
     width: 515px;
     height: 515px;
@@ -136,9 +149,6 @@
   }
   .join-submit button {
     padding: 4px 30px;
-  }
-  .join-enter {
-    padding: 10% 50px 0;
   }
 }
 
