@@ -29,30 +29,22 @@ export class HeaderComponent implements OnInit {
     // console.log("login user name in heaedr", this.userName)
     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     // console.log("url of previous page", this.returnUrl)
-
+    if (this.router.url.includes('/#/menu')) {
+      this.isDisplay = false
+      console.log("check which route is display============")
+    } else {
+      console.log("else part")
+      this.isDisplay = true
+    }
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
       .subscribe((events: RoutesRecognized[]) => {
         console.log("event of url find", events)
         // console.log("index of page", this.index)
         this.currentUrl = events[1].urlAfterRedirects
-        //     if (events[1].urlAfterRedirects == '/menu') {
-        //       console.log("to ama ave")
-        //       this.isDisplay = false
-        //     } else if (events[1].urlAfterRedirects != '/menu') {
-        //       console.log("added in else part", this.isDisplay)
-        //       this.displayData()
-        //     }
-        //     console.log('previous url', events[0].urlAfterRedirects);
-        // this._change.detectChanges()
         console.log('current url', events[1].urlAfterRedirects);
       });
     this.currentUrl = this.router.url
-    // if (loadEvent != '/menu') {
-    //   this.isDisplay = true
-    // } else {
-    //   this.isDisplay = false
-    // }
     console.log("whne page is load display route", this.currentUrl)
   }
 

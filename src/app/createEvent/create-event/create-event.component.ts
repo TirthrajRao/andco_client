@@ -172,6 +172,7 @@ export class CreateEventComponent implements OnInit {
     this.eventService.addEvent(this.eventForm.value, this.files)
       .subscribe((data: any) => {
         console.log("event details", data);
+        this.router.navigate(['/eventActivity']);
       }, (error: any) => {
         // this.isLoad = false;
         console.log(error);
