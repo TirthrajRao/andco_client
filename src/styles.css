@@ -31,6 +31,10 @@ button:focus{
 :disabled{
     cursor: not-allowed;
 }
+.invalid-feedback{
+    font-size: 18px;
+    margin-top: -10px;
+  }
 
 /* Show password css start */
 

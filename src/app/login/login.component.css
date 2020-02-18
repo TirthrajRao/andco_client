@@ -20,6 +20,10 @@
   width: 100%;
   display: inline-block;
 }
+.join-enter  .invalid-feedback{
+  font-size: 18px;
+  margin-top: -10px;
+}
 
 .join-enter a.float-left, .join-enter a.float-right {
   font-size: 20px;
@@ -67,9 +71,9 @@
   width: 80%;
   height: 40px;
   font-size: 24px;
-  margin-bottom: 20px;
   color: #f7f7ff;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .join-enter-inputs input:focus {
