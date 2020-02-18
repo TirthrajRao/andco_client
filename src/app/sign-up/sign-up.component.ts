@@ -6,7 +6,7 @@ import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
 // import { Buffer } from 'buffer';
 import { from } from 'rxjs';
-
+declare var global: any;
 (window as any).global = window;
 (window as any).global.Buffer = (window as any).global.Buffer;
 
@@ -22,7 +22,8 @@ export class SignUpComponent implements OnInit {
   index = 0
   totalCount = 4
   signUpForm: FormGroup;
-  isDisable = false
+  isDisable = true
+  isNot: boolean = false
   isEmail: boolean = false
   submitted = false;
   match: boolean = true;
@@ -226,14 +227,13 @@ export class SignUpComponent implements OnInit {
   }
 
   enterEmail(emailAddress) {
-    // this.isEmail = true
-    // console.log("enter email details", emailAddress)
-    // if (emailAddress) {
-    //   this.isEmail = true
-    //   this.signUpForm.controls.email.setValidators([Validators.required, Validators.email])
-    // } else {
-    //   this.isEmail = false
-    // }
+    console.log("email of yser", this.signUpForm.controls.email)
+    let newEmail = this.signUpForm.controls.email
+    if (newEmail.status == 'VALID') {
+      this.isDisable = false
+    } else {
+      this.isDisable = true
+    }
   }
 
 
