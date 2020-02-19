@@ -2,36 +2,27 @@
     <div class="event-add-box">
         <div class="wrapper">
             <div class="inner-box">
-                <section class="element">
-                    <form [formGroup]="activityForm">
-                        <div formArrayName="activity">
-                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
-                                <input type="text" placeholder="Enter activity name">
-                                <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1">
-                                    <a (click)="removeActivityField(i,tech.value)">
-                                        <img src="../../../assets/images/remove.png" alt="remove icon">
-                                    </a>
-                                </button>
-                                <select class="custom-select w-25">
-                                    
-                                    <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
-                                    
-                                </select>
-                                <select class="custom-select w-25">
-                                    
-                                    <option value="" *ngFor="let month of months">{{month.Name}}</option>
-
-                                </select>
-                                <select class="custom-select w-25">
-
-                                    <option value="" *ngFor="let year of years">{{year.Name}}</option>
-                                    
-                                </select>
-                                <input id="datepicker" type="date" width="276" />
-                            </div>
-                        </div>
-                    </form>
-                </section>
+                <div class="element">
+                    <input type="text" placeholder="Enter activity name">
+                    <button class="remove">
+                        <img src="../../../assets/images/remove.png" alt="remove icon">
+                    </button>
+                    <div class="select-box-div">
+                    <select class="custom-select">
+                        <option selected>DD</option>
+                        <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
+                    </select>
+                    <select class="custom-select">
+                        <option selected disabled>MM</option>
+                        <option value="" *ngFor="let month of months">{{month.Name}}</option>
+                    </select>
+                    <select class="custom-select">
+                        <option selected>YYYY</option>
+                        <option value="" *ngFor="let year of years">{{year.Name}}</option>
+                    </select>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                </div>
             </div>
             <div class="buttons">
                 <button class="clone" (click)="addActivityField()"><i class="fa fa-plus"

@@ -44,7 +44,6 @@ button:focus{
   .input_with_icont span{
     position: absolute;
     top: 0;
-    bottom: 0;
     right: 60px;
     margin: auto;
     z-index: 11;
@@ -189,6 +188,10 @@ button:focus{
     .hello-text h2 {
         max-width: 300px;
     }
+    .invalid-feedback {
+        font-size: 15px;
+        margin-top: -15px;
+    }
 }
 
 @media(max-width: 575px) {
@@ -214,6 +217,7 @@ button:focus{
     }
     .input_with_icont span{
         right: 10px;
+        font-size: 20px;
     }
 }
 
@@ -227,9 +231,15 @@ button:focus{
         top: 20px;
         left: 20px;
     }
+    .invalid-feedback {
+        font-size: 11px;
+        margin-top: -7px;
+    }
 }
 
-@media(max-width: 320px) {}
+@media(max-width: 320px) {
+    
+}
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
