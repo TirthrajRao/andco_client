@@ -37,7 +37,7 @@
             </div>
         </form>
         <div class="join-submit w-100 text-center">
-            <button class="btn" type="submit" (click)="personalDetails()" [disabled]="isDisable">Hello</button>
+            <button class="btn" [disabled]="isDisable" (click)="personalDetails()">Hello</button>
         </div>
     </div>
 </section>
@@ -107,7 +107,7 @@
                 </li>
             </ul>
         </div>
-        <form [formGroup]="signUpForm" autocomplete="off">
+        <form [formGroup]="signUpForm" autocomplete="off" (ngSubmit)="verificationCode(index)">
             <div class="join-enter-inputs">
                 <input type="email" placeholder="Your email address" formControlName="email"
                     [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
@@ -120,7 +120,7 @@
         </form>
         <div class="join-submit w-100 text-center">
             <!-- {{isDisable}} -->
-            <button class="btn join-submit" [disabled]="isDisable" (click)="verificationCode(index)">Go</button>
+            <button class="btn join-submit" [disabled]="isDisable">Go</button>
         </div>
     </div>
 </section>
