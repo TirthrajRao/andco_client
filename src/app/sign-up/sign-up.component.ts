@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
@@ -13,7 +13,8 @@ declare var $: any;
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  
+  @ViewChild('buttonValue', { static: true }) searchElement: ElementRef;
+
   @Output() loginWithFacebook = new EventEmitter();
   isLoad = false
   index = 0
@@ -22,12 +23,14 @@ export class SignUpComponent implements OnInit {
   isDisable = true
   isNot: boolean = false
   isEmail: boolean = false
+  isVerified: boolean = true
   submitted = false;
   match: boolean = true;
   show1: boolean;
   show2: boolean;
   pwd1: boolean;
   pwd2: boolean;
+  callVerifyCode = false
   // userDetails = {  firstName: '', lastName: '' }
   constructor(
     private route: ActivatedRoute,
@@ -135,22 +138,56 @@ export class SignUpComponent implements OnInit {
   }
 
 
+  backBtn() {
+    console.log("enter or not")
+  }
+
+  enterCode(codeDetails, event, index) {
+    const input = document.getElementById("codeInput");
+    this.isVerified = true
+    console.log("enter code", codeDetails.length, event)
+    if (codeDetails.length == 6) {
+      this.isVerified = false
+      input.addEventListener("keyup", function (event) {
+        console.log("event of click", event);
+        if (event.keyCode == 13) {
+          console.log("ama javu joye to");
+          // const model = function () {
+          // this.callVerifyCode = true;
+          // }
+        }
+      })
+      // this.searchElement.nativeElement.focus();
+      // if (this.callVerifyCode == true) {
+      //   this.verifyCode(codeDetails, index)
+      // }
+    }
+
+    else {
+      this.isVerified = true
+    }
+  }
+
+
+  /** 
+   * @param form (both password)
+   * @param index index of section
+   * Compare new password with confirm password
+   */
   comparePassword(form, index) {
-    // console.log("new password with =====", newPassword)
-    // this.isDisable = true
     console.log(form.value.password == form.value.confirmPassword, this.match);
     if (form.value.password === form.value.confirmPassword) {
       console.log("In true condition");
       this.match = false;
-      // this.isDisable = false
-
     } else {
       this.match = true;
     }
-
   }
 
-
+  /** 
+   * @param index Index of section
+   * Send to another section
+   */
   passwordUpdate(index) {
     console.log("index of current section", index)
     this.index = Number(index) + + 1
@@ -212,6 +249,10 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  /** 
+   * @param emailAddress email address
+   * Check enter email value is validate or not
+   */
   enterEmail(emailAddress) {
     console.log("email of yser", this.signUpForm.controls.email)
     let newEmail = this.signUpForm.controls.email
@@ -222,22 +263,33 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Sign in with google
+   */
   signWithGoogle() {
     this.socialLoginService.signInWithGoogleAccount()
   }
 
+  /**
+   * Sign in with facebook
+   */
   signWithFacebook() {
     this.socialLoginService.signWithFacebook()
   }
 
-
+  /**
+   * Show enter new password
+   */
   password1() {
     console.log("call thay che ke nai")
     this.show1 = !this.show1;
     this.pwd1 = !this.pwd1;
   }
 
+
+  /**
+   * Show confirm password
+   */
   password2() {
     this.show2 = !this.show2;
     this.pwd2 = !this.pwd2;

@@ -3,14 +3,19 @@
         <div class="wrapper">
             <div class="inner-box">
                 <section class="element">
-                    <input type="text" placeholder="Enter activity name">
-                    <button class="remove">
-                        <img src="../../../assets/images/remove.png" alt="remove icon">
-                    </button>
-                    <select class="custom-select w-25">
-                        <!-- <option selected>DD</option> -->
-                        <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
-                        <!-- <option value="01">01</option>
+                    <form [formGroup]="activityForm">
+                        <div formArrayName="activity">
+                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                <input type="text" placeholder="Enter activity name">
+                                <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1">
+                                    <a (click)="removeActivityField(i,tech.value)">
+                                        <img src="../../../assets/images/remove.png" alt="remove icon">
+                                    </a>
+                                </button>
+                                <select class="custom-select w-25">
+                                    <!-- <option selected>DD</option> -->
+                                    <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
+                                    <!-- <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
                         <option value="04">04</option>
@@ -22,11 +27,11 @@
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option> -->
-                    </select>
-                    <select class="custom-select w-25">
-                        <!-- <option selected disabled>MM</option> -->
-                        <option value="" *ngFor="let month of months">{{month.Name}}</option>
-                        <!-- <option value="01">01</option>
+                                </select>
+                                <select class="custom-select w-25">
+                                    <!-- <option selected disabled>MM</option> -->
+                                    <option value="" *ngFor="let month of months">{{month.Name}}</option>
+                                    <!-- <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
                         <option value="04">04</option>
@@ -38,11 +43,11 @@
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option> -->
-                    </select>
-                    <select class="custom-select w-25">
-                        <!-- <option selected>YYYY</option> -->
-                        <option value="" *ngFor="let year of years">{{year.Name}}</option>
-                        <!-- <option value="2020">2020</option>
+                                </select>
+                                <select class="custom-select w-25">
+                                    <!-- <option selected>YYYY</option> -->
+                                    <option value="" *ngFor="let year of years">{{year.Name}}</option>
+                                    <!-- <option value="2020">2020</option>
                         <option value="2021">2021</option>
                         <option value="2022">2022</option>
                         <option value="01">04</option>
@@ -55,11 +60,16 @@
                         <option value="01">11</option>
                         <option value="01">12</option>
                         <option value="01">13</option> -->
-                    </select>
+                                </select>
+                                <input id="datepicker" type="date" width="276" />
+                            </div>
+                        </div>
+                    </form>
                 </section>
             </div>
             <div class="buttons">
-                <button class="clone"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <button class="clone" (click)="addActivityField()"><i class="fa fa-plus"
+                        aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
