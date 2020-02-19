@@ -2,61 +2,27 @@
     <div class="event-add-box">
         <div class="wrapper">
             <div class="inner-box">
-                <section class="element">
+                <div class="element">
                     <input type="text" placeholder="Enter activity name">
                     <button class="remove">
                         <img src="../../../assets/images/remove.png" alt="remove icon">
                     </button>
-                    <select class="custom-select w-25">
-                        <!-- <option selected>DD</option> -->
+                    <div class="select-box-div">
+                    <select class="custom-select">
+                        <option selected>DD</option>
                         <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
-                        <!-- <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option> -->
                     </select>
-                    <select class="custom-select w-25">
-                        <!-- <option selected disabled>MM</option> -->
+                    <select class="custom-select">
+                        <option selected disabled>MM</option>
                         <option value="" *ngFor="let month of months">{{month.Name}}</option>
-                        <!-- <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option> -->
                     </select>
-                    <select class="custom-select w-25">
-                        <!-- <option selected>YYYY</option> -->
+                    <select class="custom-select">
+                        <option selected>YYYY</option>
                         <option value="" *ngFor="let year of years">{{year.Name}}</option>
-                        <!-- <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="01">04</option>
-                        <option value="01">05</option>
-                        <option value="01">06</option>
-                        <option value="01">07</option>
-                        <option value="01">08</option>
-                        <option value="01">09</option>
-                        <option value="01">10</option>
-                        <option value="01">11</option>
-                        <option value="01">12</option>
-                        <option value="01">13</option> -->
                     </select>
-                </section>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                </div>
             </div>
             <div class="buttons">
                 <button class="clone"><i class="fa fa-plus" aria-hidden="true"></i></button>
