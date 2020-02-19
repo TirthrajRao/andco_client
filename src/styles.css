@@ -22,26 +22,31 @@ a {
     outline: none!important;
     cursor: pointer;
 }
-button{
+
+button {
     outline: none !important;
 }
-button:focus{
+
+button:focus {
     box-shadow: none !important;
 }
-:disabled{
+
+:disabled {
     cursor: not-allowed;
 }
-.invalid-feedback{
+
+.invalid-feedback {
     font-size: 18px;
     margin-top: -10px;
-  }
+}
 
 /* Show password css start */
 
-.input_with_icont{
+.input_with_icont {
     position: relative;
-  }
-  .input_with_icont span{
+}
+
+.input_with_icont span {
     position: absolute;
     top: 0;
     right: 60px;
@@ -50,8 +55,9 @@ button:focus{
     color: white;
     font-size: 24px;
     cursor: pointer;
-  }
-  .input_with_icont:after{
+}
+
+.input_with_icont:after {
     content: "";
     position: absolute;
     top: 0;
@@ -60,16 +66,11 @@ button:focus{
     margin: auto;
     background-color: #d6d6d6;
     z-index: 11;
-  }
-  /* Show password css end */
+}
 
+/* Show password css end */
 
 /*common css end*/
-
-.andco-logo {
-    position: absolute;
-    top: 6%;
-}
 
 .page-content {
     min-height: calc(100vh - 226px);
@@ -143,12 +144,6 @@ button:focus{
 /* responsive css start */
 
 @media(max-width: 1366px) {
-    .andco-logo {
-        margin: 20px 0px;
-    }
-    .andco-logo img {
-        height: 70px;
-    }
     /* create event css start */
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
         font-size: 20px;
@@ -175,14 +170,7 @@ button:focus{
     }
 }
 
-@media(max-width: 991px) {
-    .andco-logo {
-        margin: 10px 0px 0;
-    }
-    .andco-logo img {
-        height: 50px;
-    }
-}
+@media(max-width: 991px) {}
 
 @media(max-width: 767px) {
     .hello-text h2 {
@@ -195,9 +183,6 @@ button:focus{
 }
 
 @media(max-width: 575px) {
-    .andco-logo img {
-        height: 50px;
-    }
     /* create event css start */
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
         font-size: 16px;
@@ -215,16 +200,13 @@ button:focus{
         min-height: calc(100vh - 94px);
         padding-top: 94px;
     }
-    .input_with_icont span{
+    .input_with_icont span {
         right: 10px;
         font-size: 20px;
     }
 }
 
 @media (max-width: 400px) {
-    .andco-logo img {
-        height: 40px;
-    }
     .navigation_menu {
         height: 40px;
         width: 40px;
@@ -237,9 +219,7 @@ button:focus{
     }
 }
 
-@media(max-width: 320px) {
-    
-}
+@media(max-width: 320px) {}
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {

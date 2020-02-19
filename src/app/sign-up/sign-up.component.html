@@ -28,7 +28,7 @@
                     (input)="validateLastName($event)" id="lastName"
                     [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                 <div id="message2"></div>
-                <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback  text-left">
+                <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Name is required</div>
                     <div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters
                     </div>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </form>
-        <div class="join-submit w-100 text-center">
+        <div class="join-submit mt-2 w-100 text-center">
             <button class="btn" [disabled]="isDisable" (click)="personalDetails()">Hello</button>
         </div>
     </div>
@@ -88,6 +88,7 @@
             <a routerLink="/signUp" class="float-left">join</a>
             <a routerLink="/login" class="float-right">enter</a>
         </div>
+        <div class="join-enter-quote"></div>
         <div class="join-social">
             <ul>
                 <li>
