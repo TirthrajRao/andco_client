@@ -26,25 +26,25 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log("login user name in heaedr", this.userName)
+    console.log("login user name in heaedr", this.userName)
     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     // console.log("url of previous page", this.returnUrl)
-    if (this.router.url.includes('/#/menu')) {
-      this.isDisplay = false
-      console.log("check which route is display============")
-    } else {
-      console.log("else part")
-      this.isDisplay = true
-    }
+    // if (this.router.url.includes('/#/menu')) {
+    //   this.isDisplay = false
+    //   console.log("check which route is display============")
+    // } else {
+    //   console.log("else part")
+    //   this.isDisplay = true
+    // }
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
       .subscribe((events: RoutesRecognized[]) => {
         console.log("event of url find", events)
         // console.log("index of page", this.index)
         this.currentUrl = events[1].urlAfterRedirects
-        console.log('current url', events[1].urlAfterRedirects);
+        console.log('current url',this.currentUrl);
       });
-    this.currentUrl = this.router.url
+    // this.currentUrl = this.router.url
     console.log("whne page is load display route", this.currentUrl)
   }
 

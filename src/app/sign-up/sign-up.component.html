@@ -158,11 +158,12 @@
             </ul>
         </div>
         <div class="join-enter-inputs">
-            <input type="text" #joinCode placeholder="Enter code sent">
+            <input type="text" #joinCode placeholder="Enter code sent" id="codeInput" (input)="enterCode(joinCode.value , $event , index)">
         </div>
         <div class="join-submit w-100 text-center">
-            <button class="btn join-submit">Back</button>
-            <button class="btn join-submit ml-3" (click)="verifyCode(joinCode.value , index)">Almost done</button>
+            <button class="btn join-submit" id="btn1" (click)="backBtn()">Back</button>
+            <button class="btn join-submit ml-3" #buttonValue id="btn2" (click)="verifyCode(joinCode.value , index)"
+                [disabled]="isVerified">Almost done</button>
         </div>
     </div>
 </section>
