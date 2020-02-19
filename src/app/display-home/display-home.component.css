@@ -176,6 +176,9 @@
     position: absolute;
     top: 20%;
     width: 60%;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .join-enter a{
     font-size: 60px;
