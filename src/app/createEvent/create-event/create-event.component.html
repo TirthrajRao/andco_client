@@ -47,7 +47,7 @@
                         <div class="create-event-name-box">
                             <h3>Your Event Title</h3>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday"
+                                <input type="text" autocomplete="off" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday"
                                     id="eventTitle" formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">

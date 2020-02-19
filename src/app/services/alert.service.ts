@@ -18,7 +18,9 @@ export class AlertService {
     Swal.fire({
       title: message,
       showConfirmButton: false,
-      timer: 5000
+      timer: 5000,
+      icon: 'success',
+      focusConfirm: true,
     })
   }
 
@@ -32,7 +34,9 @@ export class AlertService {
     Swal.fire({
       title: message,
       showConfirmButton: false,
-      timer: 5000
+      timer: 5000,
+      icon: 'error',
+      focusConfirm: true,
     })
   }
 }
