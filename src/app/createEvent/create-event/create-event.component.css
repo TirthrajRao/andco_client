@@ -86,6 +86,7 @@ button.slick-arrow {
     padding: 0 50px;
     position: relative;
     color: #fff;
+    margin-bottom: 10px;
 }
 .create-event-hashtag-box input::placeholder,
 .create-event-name-box input::placeholder{
@@ -96,7 +97,6 @@ button.slick-arrow {
     outline: none !important;
     box-shadow: none;
 }
-
 .create-event-hashtag-box span {
     content: "#";
     font-size: 50px;
@@ -153,6 +153,9 @@ button.slick-arrow {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
+    cursor: pointer;
+}
+.bg-select-div{
     cursor: pointer;
 }
 
