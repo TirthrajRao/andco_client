@@ -70,7 +70,7 @@ export class SocialLoginService {
         console.log(this.userName);
         console.log("response of login user", data);
         this.userRole = data.data.UserRole;
-        // console.log("admin login entry", data.data.UserRole);
+        console.log("admin login entry", data.data.UserRole);
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
         console.log("response positive of google", data);
@@ -82,8 +82,8 @@ export class SocialLoginService {
         }
         else {
           this.isUserLoggedIn = true;
-          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/menu']);
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           return true
         }
       }, err => {

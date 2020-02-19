@@ -16,8 +16,8 @@ envs['development'] = {
 }
 
 envs['testing'] = {
-    baseApiUrl: "https://conduct-testing.raoinformationtechnology.com:3001/api/",
-    baseMediaUrl: "https://conduct-testing.raoinformationtechnology.com:3001/",
+    baseApiUrl: "https://test.andcowith.me:9001/api",
+    // baseMediaUrl: "https://test.andcowith.me:3001/",
     // isvisited: false,
     // counter: 0,
 }
