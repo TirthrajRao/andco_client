@@ -373,3 +373,8 @@
     background-size: 200%;
   }
 }
+@media(max-height: 400px) {
+  .join-enter-main {
+    background-size: 310%;
+  }
+}

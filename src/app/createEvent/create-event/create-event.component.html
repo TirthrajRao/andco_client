@@ -37,6 +37,9 @@
                                 <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4
                                     Characters
                                 </div>
+                                <div *ngIf="f.hashTag.errors.pattern">Enter only alphabets
+                                    Characters
+                                </div>
                             </div>
                             <span>#</span>
                         </div>
@@ -47,8 +50,9 @@
                         <div class="create-event-name-box">
                             <h3>Your Event Title</h3>
                             <div class="form-group">
-                                <input type="text" autocomplete="off" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday"
-                                    id="eventTitle" formControlName="eventTitle"
+                                <input type="text" autocomplete="off" class="form-control"
+                                    placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle"
+                                    formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
                                 <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"

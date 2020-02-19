@@ -1,15 +1,17 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as CryptoJS from 'crypto-js';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   key = "andCo@testing";
   isUserLoggedIn: false;
+  private subject = new Subject<any>();
   @Output() faceBookLogin = new EventEmitter();
 
   constructor(
@@ -185,4 +187,12 @@ export class LoginService {
     return this.http.post(config.baseApiUrl + "/reset-password/" + id, data)
   }
 
+
+  returnLogin(val) {
+    this.subject.next({ id: val });
+    return true;
+  }
+  getObservableResponse() {
+    return this.subject.asObservable();
+  }
 }

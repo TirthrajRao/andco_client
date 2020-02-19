@@ -69,7 +69,7 @@ export class CreateEventComponent implements OnInit {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
-      hashTag: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[a-zA-Z]+$")]),
       profile: new FormControl('', [Validators.required]),
       background: new FormControl(''),
     })
