@@ -9,7 +9,7 @@ declare var $: any;
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  styleUrls: ['../sign-up/sign-up.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
 

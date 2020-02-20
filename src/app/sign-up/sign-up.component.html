@@ -14,8 +14,7 @@
         </div>
         <form [formGroup]="signUpForm" autocomplete="off">
             <div class="join-enter-inputs">
-                <input type="text" placeholder="Forename" pattern="[a-zA-Z]+"
-                     id="firstName" formControlName="firstName"
+                <input type="text" placeholder="Forename" pattern="[a-zA-Z]+" id="firstName" formControlName="firstName"
                     [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                 <div id="message1"></div>
                 <div *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback ">
@@ -37,7 +36,7 @@
             </div>
         </form>
         <div class="join-submit mt-2 w-100 text-center">
-            <button class="btn" [disabled]="isDisable" (click)="personalDetails()">Hello</button>
+            <button class="btn" [disabled]="isDisable || signUpForm.invalid" (click)="personalDetails()">Hello</button>
         </div>
     </div>
 </section>

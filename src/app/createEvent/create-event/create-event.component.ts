@@ -29,7 +29,7 @@ export class CreateEventComponent implements OnInit {
   public themePath;
   isDisable = false
   submitted = false;
-
+  isLoad = false
 
 
 
@@ -40,6 +40,11 @@ export class CreateEventComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.isLoad = true
+    }, 100)
+    this.isLoad = false
     //background image select active start
     $('.sample_bg').click(function (e) {
       $('.bg-select-div.active').removeClass('active');
@@ -109,18 +114,20 @@ export class CreateEventComponent implements OnInit {
    * Init slick slider for create new event
    */
   initSlickSlider() {
-    $('.create-event-slider').not('.slick-initialized').slick({
-      infinite: false,
-      draggable: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: false,
-      arrows: true,
-      adaptiveHeight: true,
-      fade: true,
-      prevArrow: '<button class="prevarrow">Back</button>',
-      nextArrow: '<button class="nextarrow">Next</button>',
-    });
+    setTimeout(() => {
+      $('.create-event-slider').not('.slick-initialized').slick({
+        infinite: false,
+        draggable: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        adaptiveHeight: true,
+        fade: true,
+        prevArrow: '<button class="prevarrow">Back</button>',
+        nextArrow: '<button class="nextarrow">Next</button>',
+      });
+    }, 100)
   }
 
 
@@ -172,11 +179,51 @@ export class CreateEventComponent implements OnInit {
     this.eventService.addEvent(this.eventForm.value, this.files)
       .subscribe((data: any) => {
         console.log("event details", data);
-        this.router.navigate(['/eventActivity']);
+        this.alertService.getSuccess(data.message)
+        this.eventForm.reset()
+        this.router.navigate(['/menu']);
       }, (error: any) => {
         // this.isLoad = false;
         console.log(error);
         this.alertService.getError(error.message);
       })
   }
+
+
+  // removeSpace(event) {
+  //   console.log("hash tag details", event.target.value)
+  //   let form = event.target.value;
+  //   let message1 = document.getElementById('message1');
+  //   let reg = new RegExp("[a-zA-Z]");
+  //   if (reg.test(form)) {
+  //     console.log("message==========", message1)
+  //     message1.innerHTML = "Name can not start with digit"
+  //   } else {
+  //     message1.innerHTML = null;
+  //   }
+  // }
+
+  removeSpace(value) {
+    // let form = event.target.value
+    // console.log("name", form)
+    const nameInput = /[a-zA-Z ]/;
+    $("#hashTag").on({
+      keydown: function (e) {
+        if (e.which === 32)
+          return false;
+      },
+      change: function () {
+        this.value = this.value.replace(/\s/g, "");
+      }
+    });
+    let message1 = document.getElementById('message1');
+    if (!value.hashTag.match(nameInput)) {
+      console.log("message==========", message1)
+      message1.innerHTML = "Name can not start with digit"
+    } else {
+      message1.innerHTML = null;
+    }
+  }
+
 }
+

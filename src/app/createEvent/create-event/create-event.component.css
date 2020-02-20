@@ -195,6 +195,11 @@ button.btn.created-event-custom-button {
     color: #000 !important;
 }
 
+div#message1 {
+    color: red;
+}
+
+
 /* your event prising css end */
 
 /* responsive css start */

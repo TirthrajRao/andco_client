@@ -13,21 +13,20 @@ export class DisplayHomeComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
 
-      this.initSlickclider()
+
+      $('.display-screen-slider').not('.slick-initialized').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3500,
+        arrows: false,
+        verticalSwiping: true,
+        vertical: true,
+      });
     }, 100)
   }
   initSlickclider() {
 
-
-    $('.display-screen-slider').not('.slick-initialized').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3500,
-      arrows: false,
-      verticalSwiping: true,
-      vertical: true,
-    });
   }
 }

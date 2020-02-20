@@ -1,8 +1,9 @@
 <section class="create-event-main">
     <div class="page-content">
+        <!-- <app-loader *ngIf="isLoad"></app-loader> -->
         <!-- create event slider start -->
         <div class="create-event-slider-box-width">
-            <form [formGroup]="eventForm">
+            <form [formGroup]="eventForm" autocomplete="off">
                 <div class="create-event-slider text-center">
                     <!-- your event type start -->
                     <div class="create-event-type-box">
@@ -29,7 +30,9 @@
                             <input type="text" class="form-control" formControlName="hashTag"
                                 ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
                                 [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
-                                placeholder="hashtag">
+                                placeholder="hashtag" pattern="[a-zA-Z]+" (input)="removeSpace(eventForm.value)"
+                                id="hashTag">
+                            <div id="message1"></div>
                             <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
                                 class="invalid-feedback">
                                 <div *ngIf="f.hashTag.errors.required">Event HashTag is Required
