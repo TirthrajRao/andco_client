@@ -13,6 +13,7 @@ import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { CreateEventComponent } from '../createEvent/create-event/create-event.component';
 import { EventActivityComponent } from '../createEvent/event-activity/event-activity.component';
 import { EventGroupComponent } from '../createEvent/event-group/event-group.component'
+import { LoaderComponent } from '../loader/loader.component';
 import { from } from 'rxjs';
 
 
@@ -55,7 +56,8 @@ const routes: Routes = [
     CreateEventComponent,
     MainMenuComponent,
     EventActivityComponent,
-    EventGroupComponent
+    EventGroupComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -63,6 +65,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     // MatSelectModule
+  ],
+  exports: [
+    LoaderComponent
   ]
 })
 export class HomeModule { }

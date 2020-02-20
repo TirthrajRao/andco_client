@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { config } from '../../config'
@@ -30,21 +30,23 @@ export class CreateEventComponent implements OnInit {
   isDisable = false
   submitted = false;
   isLoad = false
+  // elRef: any;
 
 
 
   constructor(
     public router: Router,
     public eventService: EventService,
-    public alertService: AlertService
+    public alertService: AlertService,
+    private renderer: Renderer2,
+    private elRef:ElementRef
   ) { }
+//   ngAfterViewInit() {
+//     let loader = this.elRef.nativeElement.querySelector('#loader'); 
+//     loader.style.display = "none"; //hide loader
+//  }
 
   ngOnInit() {
-
-    setTimeout(() => {
-      this.isLoad = true
-    }, 100)
-    this.isLoad = false
     //background image select active start
     $('.sample_bg').click(function (e) {
       $('.bg-select-div.active').removeClass('active');
@@ -104,6 +106,10 @@ export class CreateEventComponent implements OnInit {
     }
 
   }
+
+
+  
+
   /**
    * Error message of eventDetails 
    */
