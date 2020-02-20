@@ -21,7 +21,7 @@
     position: relative;
 }
 .inner-box {
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: auto;
     margin-top: 100px;
     position: relative;
@@ -112,6 +112,7 @@ button.remove {
     font-size: 20px;
     cursor: pointer;
 }
+
 
 
 /* responsive css start */
