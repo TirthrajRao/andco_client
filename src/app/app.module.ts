@@ -13,7 +13,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DisplayHomeComponent } from './display-home/display-home.component';
 import { LoginService } from './services/login.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { LoaderComponent } from './loader/loader.component';
+// import { LoaderComponent } from './loader/loader.component';
 import { HomeModule } from './home/home.module';
 // import { HomeComponent } from './home/home.component';
 
@@ -42,7 +42,7 @@ export function provideConfig() {
     SignUpComponent,
     DisplayHomeComponent,
     ForgotPasswordComponent,
-    LoaderComponent,
+    // LoaderComponent,
   ],
   imports: [
     BrowserModule,

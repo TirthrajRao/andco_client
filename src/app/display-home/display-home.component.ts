@@ -12,8 +12,6 @@ export class DisplayHomeComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-
-
       $('.display-screen-slider').not('.slick-initialized').slick({
         infinite: true,
         slidesToShow: 1,
@@ -24,9 +22,6 @@ export class DisplayHomeComponent implements OnInit {
         verticalSwiping: true,
         vertical: true,
       });
-    }, 100)
-  }
-  initSlickclider() {
-
+    }, 50)
   }
 }
