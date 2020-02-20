@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config';
 import { LoginService } from './login.service';
@@ -16,6 +16,8 @@ export class SocialLoginService {
   userName
   userRole
   isUserLoggedIn = false;
+  @Output() isLoad = new EventEmitter();
+
   eventIdWithLogin = JSON.parse(sessionStorage.getItem('newEventId'));
 
   constructor(
@@ -55,7 +57,7 @@ export class SocialLoginService {
    * Login with google account  
    */
   signInWithGoogleAccount() {
-    // this.isLoad = true;
+    this.isLoad.emit('true');
     // this.isDisable = true;
     console.log("In func")
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
@@ -81,6 +83,7 @@ export class SocialLoginService {
           // this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
+          this.isLoad.emit('false')
           this.isUserLoggedIn = true;
           this.router.navigate(['/menu']);
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -103,6 +106,7 @@ export class SocialLoginService {
    * Login with facebook account
    */
   signWithFacebook() {
+    this.isLoad.emit('true')
     // this.isLoad = true;
     // this.isDisable = true;
     console.log("submit login to facebook");
@@ -127,6 +131,7 @@ export class SocialLoginService {
               this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
             }
             else {
+              this.isLoad.emit('false')
               // this.isLoad = false
               this.router.navigate(['/menu']);
               // this.isDisable = false;

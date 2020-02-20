@@ -6,9 +6,9 @@ import Swal from 'sweetalert2';
 })
 export class AlertService {
   // const Swal = require('sweetalert2')
-//  colors = [
-//    ""
-//  ]
+  //  colors = [
+  //    ""
+  //  ]
   constructor() { }
 
   /**
@@ -23,7 +23,7 @@ export class AlertService {
       imageHeight: 70,
       title: message,
       showConfirmButton: false,
-      // timer: 5000,
+      timer: 4000,
       icon: 'success',
       focusConfirm: true,
     })
@@ -42,7 +42,7 @@ export class AlertService {
       imageHeight: 70,
       title: message,
       showConfirmButton: false,
-      // timer: 5000,
+      timer: 4000,
       icon: 'error',
       focusConfirm: true,
     })
