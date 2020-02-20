@@ -3,7 +3,10 @@
     height: 100%;
     font-family: 'Advent Pro', 'sans-sarif';
 }
-
+.andco-logo{
+    position: absolute;
+    top: 7%;
+}
 .display-screen-single-slide.home, 
 .display-screen-single-slide.ds-1, 
 .display-screen-single-slide.ds-2, 
@@ -20,6 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .display-screen-single-slide.home {
