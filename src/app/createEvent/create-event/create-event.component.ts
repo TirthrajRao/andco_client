@@ -60,15 +60,7 @@ export class CreateEventComponent implements OnInit {
     this.initSlickSlider()
     // create event slider end
 
-    //tooltip js start
-    $(".tooltip-class").hover(function () {
-      $(this).attr("tooltip-data", $(this).attr("title"));
-      $(this).removeAttr("title");
-    }, function () {
-      $(this).attr("title", $(this).attr("tooltip-data"));
-      $(this).removeAttr("tooltip-data");
-    });
-    //tooltip js end
+   
 
 
     // Create New event form start

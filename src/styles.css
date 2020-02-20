@@ -141,6 +141,20 @@ button:focus {
 
 /* set-price css end here */
 
+/* date picker css start here */
+
+.datepicker.dropdown-menu th {
+    color: #a5b138;
+}
+.datepicker table tr td.active.active{
+    background-color: #a5b138 !important;
+}
+.datepicker table tr td.active{
+    background-image: none !important;
+}
+
+/* date picker css end here */
+
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -160,6 +174,9 @@ button:focus {
     .hello-text h2 {
         font-size: 34px;
         max-width: 400px;
+    }
+    .page-content {
+        padding-top: 162px;
     }
 }
 

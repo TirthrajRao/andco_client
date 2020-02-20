@@ -58,11 +58,12 @@
                                     formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
-                                <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"
+                                <div *ngIf="f.eventTitle.touched && f.eventTitle.errors"
                                     class="invalid-feedback">
                                     <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

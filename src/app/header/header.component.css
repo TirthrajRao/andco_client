@@ -69,7 +69,15 @@
 
 
 @media(max-width: 1366px){
-
+    .navigation_menu img {
+        height: 60px;
+    }
+    .andco-logo img {
+        margin-bottom: 20px;
+    }
+    .andco-logo img {
+        height: 60px;
+    }
 }
 @media(max-width: 1199px){
     .header-content{

@@ -170,6 +170,7 @@
   }
   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
     width: 520px;
+    height: 470px;
   }
   .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
     margin-top: 40px;

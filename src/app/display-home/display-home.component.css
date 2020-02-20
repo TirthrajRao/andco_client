@@ -210,14 +210,17 @@
 }
 @media(max-width: 1366px) {
     .home-box, .ds-1-box {
-        width: 450px;
-        height: 450px;
+        width: 370px;
+        height: 370px;
     }
     .ds-1-box h1 {
-        font-size: 70px;
+        font-size: 60px;
     }
     .ds-7-box {
         padding: 30px 90px;
+    }
+    .andco-logo{
+        top: 6%;
     }
 }
 
