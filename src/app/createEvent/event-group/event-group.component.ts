@@ -7,6 +7,7 @@ declare var $;
   styleUrls: ['./event-group.component.css']
 })
 export class EventGroupComponent implements OnInit {
+  userName = JSON.parse(sessionStorage.getItem('userName'));
 
   constructor() { }
 

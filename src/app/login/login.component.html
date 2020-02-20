@@ -30,14 +30,14 @@
 		</div>
 		<form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
 			<div class="join-enter-inputs">
-				<input type="email" placeholder="Your email address"
+				<input type="email" autocomplete="off" placeholder="Your email address"
 					[ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }" formControlName="email">
 				<div class="col-md-2" *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
 					<div *ngIf="f.email.errors.required">Email is required</div>
 					<div *ngIf="f.email.errors.email">Please enter valid Email</div>
 				</div>
 				<div class="input_with_icont">
-					<input type="password" formControlName="password"
+					<input type="password" autocomplete="off" formControlName="password"
 						placeholder="Your password" [type]="show ? 'text' : 'password'">
 					<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
 						(click)="password()"></span>
