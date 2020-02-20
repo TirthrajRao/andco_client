@@ -70,6 +70,16 @@ export class EventActivityComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    $(function () {
+      $("#datepicker").datepicker({ 
+            autoclose: true, 
+            todayHighlight: true
+      }).datepicker('update', new Date());
+    });
+    
+
+
+
     console.log("today date=======", this.today)
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();

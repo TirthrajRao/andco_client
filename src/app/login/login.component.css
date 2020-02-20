@@ -21,7 +21,8 @@
   width: 100%;
   display: inline-block;
 }
-.join-enter  .invalid-feedback{
+
+.join-enter .invalid-feedback {
   font-size: 18px;
   margin-top: -10px;
 }
@@ -164,10 +165,12 @@ button.btn.forgot-btn {
   border-radius: 20px;
   border: none;
 }
+
 .andco-logo {
   margin-top: -100px;
   margin-bottom: 70px;
 }
+
 /* responsive css start here */
 
 @media (max-width: 1600px) {
@@ -188,6 +191,14 @@ button.btn.forgot-btn {
   }
   .andco-logo img {
     height: 70px;
+  }
+  .join-social ul {
+    margin: 30px auto;
+  }
+  .enter-inner-box {
+    width: 580px;
+    height: 460px;
+    padding: 40px;
   }
 }
 
@@ -271,6 +282,7 @@ button.btn.forgot-btn {
     border-radius: 10px;
   }
 }
+
 @media (max-width: 480px) {
   .enter-inner-box {
     width: 400px;
@@ -281,7 +293,7 @@ button.btn.forgot-btn {
 @media (max-width: 400px) {
   .andco-logo img {
     height: 40px;
-}
+  }
   .enter-inner-box {
     width: 330px;
     height: 320px;

@@ -107,9 +107,13 @@ button.remove {
     margin-right: 20px;
     font-size: 20px;
 }
-.select-box-div select{
-    
+.select-box-div i{
+    color: #A6B138;
+    font-size: 20px;
+    cursor: pointer;
 }
+
+
 /* responsive css start */
 
 

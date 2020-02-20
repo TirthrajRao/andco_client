@@ -5,6 +5,7 @@ import { filter, pairwise } from 'rxjs/operators';
 import { LoginService } from '../services/login.service';
 // import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/pairwise';
+declare var $;
 
 
 
@@ -49,6 +50,17 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
+    //tooltip js start
+    $(".tooltip-class").hover(function () {
+      $(this).attr("tooltip-data", $(this).attr("title"));
+      $(this).removeAttr("title");
+    }, function () {
+      $(this).attr("title", $(this).attr("tooltip-data"));
+      $(this).removeAttr("tooltip-data");
+    });
+    //tooltip js end
+
+
     this.currentUrl = this.router.url
     console.log("login user name in heaedr", this.router.url)
     // this.router.events
@@ -63,6 +75,7 @@ export class HeaderComponent implements OnInit {
     // this.currentUrl = this.router.url
     console.log("whne page is load display route", this.currentUrl)
   }
+
   getHeader(event) {
     let output = this._loginService.returnLogin(event);
     if (output == true) {

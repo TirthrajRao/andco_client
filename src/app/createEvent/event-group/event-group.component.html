@@ -1,3 +1,202 @@
 <section class="event-group-main">
-
+        <section class="sales-pricing-main">
+            <div class="navigation_menu">
+                <a routerLink='/menu'><img src="../images/firework.png" alt="menu logo"></a>
+            </div>
+            <div class="andco-logo">
+                <img src="../images/andco_logo.png" alt="andco logo">
+            </div>
+            <div class="hello-text">
+                <h2 class="tooltip-class" title="{{userName}}">
+                    <span>Hello Tolani</span>
+                </h2>
+            </div>
+            <div class="hashtag">
+                <h2>#WonDer2019</h2>
+            </div>
+            <div class="main-box-for-slider">
+                <div class="set-price-main-slider1">
+                    <div class="sales-inner sales-inner-box-main-box">
+                        <div class="add-event">
+                            <button class="btn">+</button>
+                        </div>
+                        <div class="event-slider">
+                            <div class="event-single-slide">
+                                <div class="event-name">
+                                    <p>Engagement</p>
+                                </div>
+                            </div>
+                            <div class="event-single-slide">
+                                <div class="event-name">
+                                    <p>Wedding</p>
+                                </div>
+                            </div>
+                            <div class="event-single-slide">
+                                <div class="event-name">
+                                    <p>marriege</p>
+                                </div>
+                            </div>
+                            <div class="event-single-slide">
+                                <div class="event-name">
+                                    <p>Engagement</p>
+                                </div>
+                            </div>
+                            <div class="event-single-slide">
+                                <div class="event-name">
+                                    <p>Engagement</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group-box">
+                            <div class="group-header">
+                                <div class="add-group">
+                                    <button class="btn" data-toggle="modal"
+                                    data-target="#addGroupItemModal">+</button>
+                                </div>
+                                <div class="group-slider">
+                                    <div class="group-single-slide active">
+                                        <div class="group-name">
+                                            <span>Family</span>
+                                        </div>
+                                    </div>
+                                    <div class="group-single-slide">
+                                        <div class="group-name">
+                                            <span>Friend</span>
+                                        </div>
+                                    </div>
+                                    <div class="group-single-slide">
+                                        <div class="group-name">
+                                            <span>Family</span>
+                                        </div>
+                                    </div>
+                                    <div class="group-single-slide">
+                                        <div class="group-name">
+                                            <span>Friend</span>
+                                        </div>
+                                    </div>
+                                    <div class="group-single-slide">
+                                        <div class="group-name">
+                                            <span>Family</span>
+                                        </div>
+                                    </div>
+                                    <div class="group-single-slide">
+                                        <div class="group-name">
+                                            <span>Friend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="col-md-6">
+                                    <h6 class="text-left my-2">
+                                        <img src="../images/person.png" class="icon-img" alt="male icon"> Male</h6>
+                                    <div class="inner-box-group">
+                                        <ul>
+                                            <li class="w-100 d-inline-block">
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                            <li class="w-100 d-inline-block">
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                            <li class="w-100 d-inline-block">
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="btn add-btn" data-toggle="modal"
+                                        data-target="#addMaleItemModal">Add</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-left my-2">
+                                        <img src="../images/person.png" class="icon-img" alt="female icon"> Female</h6>
+                                    <div class="inner-box-group">
+                                        <ul>
+                                            <li>
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                            <li>
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                            <li>
+                                                <h5 class="float-left">Item1</h5>
+                                                <h5 class="float-right">N 300</h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="btn add-btn" data-toggle="modal"
+                                        data-target="#addFemaleItemModal">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- add group modal content start -->
+         <div class="modal" id="addGroupItemModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="add-items">
+                            <input type="text" placeholder="Enter group name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn add-btn m-auto" data-dismiss="modal">Add</button>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <!-- add group modal content end -->
+        <!-- male modal content start -->
+        <div class="modal" id="addMaleItemModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="add-items">
+                            <input type="text" placeholder="Enter Item Name">
+                            <input type="text" placeholder="Enter Item Price">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn add-btn m-auto" data-dismiss="modal">Add</button>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <!-- male modal content end -->
+        <!-- female modal content start -->
+        <div class="modal" id="addFemaleItemModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="add-items">
+                            <input type="text" placeholder="Enter item name">
+                            <input type="text" placeholder="Enter item price">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn add-btn m-auto" data-dismiss="modal">Add</button>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <!-- female modal content end -->
 </section>
