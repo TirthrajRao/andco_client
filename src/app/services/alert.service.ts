@@ -6,7 +6,9 @@ import Swal from 'sweetalert2';
 })
 export class AlertService {
   // const Swal = require('sweetalert2')
-
+//  colors = [
+//    ""
+//  ]
   constructor() { }
 
   /**
