@@ -1,8 +1,9 @@
 <section class="create-event-main">
     <div class="page-content">
+        <!-- <app-loader *ngIf="isLoad"></app-loader> -->
         <!-- create event slider start -->
         <div class="create-event-slider-box-width">
-            <form [formGroup]="eventForm">
+            <form [formGroup]="eventForm" autocomplete="off">
                 <div class="create-event-slider text-center">
                     <!-- your event type start -->
                     <div class="create-event-type-box">
@@ -29,12 +30,17 @@
                             <input type="text" class="form-control" formControlName="hashTag"
                                 ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
                                 [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
-                                placeholder="hashtag">
+                                placeholder="hashtag" pattern="[a-zA-Z]+" (input)="removeSpace(eventForm.value)"
+                                id="hashTag">
+                            <div id="message1"></div>
                             <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
                                 class="invalid-feedback">
                                 <div *ngIf="f.hashTag.errors.required">Event HashTag is Required
                                 </div>
                                 <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4
+                                    Characters
+                                </div>
+                                <div *ngIf="f.hashTag.errors.pattern">Enter only alphabets
                                     Characters
                                 </div>
                             </div>
@@ -47,8 +53,9 @@
                         <div class="create-event-name-box">
                             <h3>Your Event Title</h3>
                             <div class="form-group">
-                                <input type="text" autocomplete="off" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday"
-                                    id="eventTitle" formControlName="eventTitle"
+                                <input type="text" autocomplete="off" class="form-control"
+                                    placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle"
+                                    formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
                                 <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"

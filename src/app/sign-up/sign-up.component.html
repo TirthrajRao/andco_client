@@ -14,8 +14,7 @@
         </div>
         <form [formGroup]="signUpForm" autocomplete="off">
             <div class="join-enter-inputs">
-                <input type="text" placeholder="Forename" pattern="[a-zA-Z]+"
-                    (input)="validateFirstName(signUpForm.value)" id="firstName" formControlName="firstName"
+                <input type="text" placeholder="Forename" pattern="[a-zA-Z]+" id="firstName" formControlName="firstName"
                     [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                 <div id="message1"></div>
                 <div *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback ">
@@ -25,7 +24,7 @@
                     <div *ngIf="f.firstName.errors.pattern">Please enter only alphabates</div>
                 </div>
                 <input type="text" placeholder="Lastname" pattern="[a-zA-Z]+" formControlName="lastName"
-                    (input)="validateLastName(signUpForm.value)" id="lastName"
+                    (input)="validateLastName($event)" id="lastName"
                     [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                 <div id="message2"></div>
                 <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback">
@@ -37,7 +36,7 @@
             </div>
         </form>
         <div class="join-submit mt-2 w-100 text-center">
-            <button class="btn" [disabled]="isDisable" (click)="personalDetails()">Hello</button>
+            <button class="btn" [disabled]="isDisable || signUpForm.invalid" (click)="personalDetails()">Hello</button>
         </div>
     </div>
 </section>
@@ -121,7 +120,7 @@
         </form>
         <div class="join-submit w-100 text-center">
             <!-- {{isDisable}} -->
-            <button class="btn join-submit" [disabled]="isDisable">Go</button>
+            <button class="btn join-submit" [disabled]="isDisable" (click)="verificationCode(index)">Go</button>
         </div>
     </div>
 </section>
@@ -159,10 +158,11 @@
             </ul>
         </div>
         <div class="join-enter-inputs">
-            <input type="text" #joinCode placeholder="Enter code sent" id="codeInput" (input)="enterCode(joinCode.value , $event , index)">
+            <input type="text" #joinCode placeholder="Enter code sent" id="codeInput"
+                (input)="enterCode(joinCode.value , $event , index)">
         </div>
         <div class="join-submit w-100 text-center">
-            <button class="btn join-submit" id="btn1" (click)="backBtn()">Back</button>
+            <button class="btn join-submit" id="btn1" (click)="backFromJoin(index)">Back</button>
             <button class="btn join-submit ml-3" #buttonValue id="btn2" (click)="verifyCode(joinCode.value , index)"
                 [disabled]="isVerified">Almost done</button>
         </div>
@@ -225,7 +225,7 @@
             </div>
         </form>
         <div class="join-submit w-100 text-center">
-            <button class="btn join-submit" (click)="passwordUpdate(index)" [disabled]="match">one more
+            <button class="btn join-submit" type="submit" (click)="passwordUpdate(index)" [disabled]="match">one more
                 step</button>
         </div>
     </div>

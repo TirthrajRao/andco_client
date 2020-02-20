@@ -1,312 +1,312 @@
- .join-enter-main {
-   background-image: url("../../assets/images/join_enter.png");
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-   height: auto;
-   min-height: 100vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   padding: 20px;
-   position: relative;
- }
+.join-enter-main {
+  background-image: url("../../assets/images/join_enter.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+}
 
- .join-enter-main .input_with_icont span {
-   color: #5D8B60;
- }
+.join-enter-main .input_with_icont span {
+  color: #5D8B60;
+}
 
- .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-   width: 700px;
-   height: 600px;
-   background-color: #EBF1EC;
-   border-radius: 20px;
- }
+.join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+  width: 700px;
+  height: 600px;
+  background-color: #EBF1EC;
+  border-radius: 20px;
+}
 
- .join-enter {
-   width: 100%;
-   display: inline-block;
-   vertical-align: top;
-   padding: 20px 30px;
- }
+.join-enter {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px 30px;
+}
 
- .join-enter a.float-left, .join-enter a.float-right {
-   font-size: 40px;
-   font-weight: bold;
- }
+.join-enter a.float-left, .join-enter a.float-right {
+  font-size: 40px;
+  font-weight: bold;
+}
 
- .join-enter a.float-left {
-   color: #5D8B60;
- }
+.join-enter a.float-left {
+  color: #5D8B60;
+}
 
- .join-enter a.float-right {
-   color: #000000;
- }
+.join-enter a.float-right {
+  color: #000000;
+}
 
- .join-enter-quote {
-   color: #ffffff;
-   text-align: center;
-   width: 100%;
-   background-color: rgba(53, 120, 77, 0.80);
-   box-shadow: 0 2px 10px #3D8059;
-   padding: 10px;
-   height: 60px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
+.join-enter-quote {
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(53, 120, 77, 0.80);
+  box-shadow: 0 2px 10px #3D8059;
+  padding: 10px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
- .join-enter-quote p {
-   font-size: 40px;
-   color: #fff;
-   margin-bottom: 0;
- }
+.join-enter-quote p {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 0;
+}
 
- .join-enter-inputs {
-   text-align: center;
+.join-enter-inputs {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.join-enter-inputs input::placeholder {
+  color: #ACC9B1 !important;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.join-enter-inputs input {
+  font-family: 'Advent Pro', 'sans-sarif';
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #2B879B;
+  width: 80%;
+  height: 50px;
+  font-size: 40px;
+  color: #528D69;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.join-enter-inputs input:focus {
+  box-shadow: none;
+}
+
+.join-submit button {
+  background-color: #528D69;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 7px 30px;
+  outline: none;
+}
+
+.join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
+  margin-top: 80px;
+}
+
+.join-with-your-social .join-social {
+  margin-top: 30px;
+}
+
+.join-social ul {
+  width: 100%;
+  text-align: center;
+}
+
+.join-social ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.join-social ul li a img {
+  height: 70px;
+  width: 70px;
+}
+
+.andco-logo {
+  margin-top: -100px;
+  margin-bottom: 70px;
+}
+#message1 ,#message2{
+ color: #dc3545;
+ margin-top: -10px;
+ margin-bottom: 7px;
+}
+@media(max-width: 1600px) {
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 600px;
+    height: 500px;
+  }
+  .join-enter-inputs input {
+    height: 40px;
+    font-size: 30px;
+  }
+  .join-enter-quote p {
+    font-size: 30px;
+  }
+  .join-enter-inputs input::placeholder {
+    font-size: 26px !important;
+  }
+  .join-social ul li a img {
+    height: 60px;
+    width: 60px;
+  }
+  .join-submit button {
+    padding: 4px 30px;
+  }
+  .join-enter-quote {
+    height: 50px;
+  }
+}
+
+@media(max-width: 1366px) {
+  .andco-logo {
+    margin-top: -70px;
+    margin-bottom: 20px;
+  }
+  .andco-logo img {
+    height: 70px;
+  }
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 520px;
+  }
+  .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
+    margin-top: 40px;
+  }
+}
+
+@media(max-width: 1199px) {
+  .join-enter a.float-left, .join-enter a.float-right {
+    font-size: 34px;
+  }
+  .join-enter-quote p {
+    font-size: 26px;
+  }
+  .join-social ul li a img {
+    height: 50px;
+    width: 50px;
+  }
+  .join-submit button {
+    font-size: 18px;
+  }
+}
+
+@media(max-width: 991px) {
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 550px;
+    height: 480px;
+  }
+  .andco-logo {
+    margin: -10px 0px 30px;
+  }
+  .andco-logo img {
+    height: 50px;
+  }
+  .join-enter a.float-left, .join-enter a.float-right {
+    font-size: 30px;
+  }
+  .join-enter-quote p {
+    font-size: 26px;
+  }
+  .join-enter-inputs input {
+    font-size: 26px;
+  }
+  .join-social ul li a img {
+    height: 40px;
+    width: 40px;
+  }
+  .join-enter-inputs input {
+    border-bottom: 1px solid #2B879B;
+  }
+}
+
+@media(max-width: 767px) {
+  .join-enter-main {
+    background-position: center right calc(50% - 4px);
+  }
+}
+
+@media(max-width: 575px) {
+ .input_with_icont span {
+   right: 30px;
+   font-size: 20px;
+   top: 10px;
+}
+ .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
    margin-top: 20px;
  }
-
- .join-enter-inputs input::placeholder {
-   color: #ACC9B1 !important;
-   font-size: 30px;
-   font-weight: 400;
- }
-
- .join-enter-inputs input {
-   font-family: 'Advent Pro', 'sans-sarif';
-   background-color: transparent;
-   border: none;
-   outline: none;
-   border-bottom: 2px solid #2B879B;
-   width: 80%;
-   height: 50px;
-   font-size: 40px;
-   color: #528D69;
-   font-weight: 600;
-   margin-bottom: 20px;
- }
-
- .join-enter-inputs input:focus {
-   box-shadow: none;
- }
-
- .join-submit button {
-   background-color: #528D69;
-   color: #fff;
-   font-size: 20px;
-   font-weight: 600;
-   padding: 7px 30px;
-   outline: none;
- }
-
- .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
-   margin-top: 80px;
- }
-
- .join-with-your-social .join-social {
-   margin-top: 30px;
- }
-
- .join-social ul {
-   width: 100%;
-   text-align: center;
- }
-
- .join-social ul li {
-   display: inline-block;
-   margin: 0 10px;
- }
-
- .join-social ul li a img {
-   height: 70px;
-   width: 70px;
- }
-
- .andco-logo {
-   margin-top: -100px;
-   margin-bottom: 70px;
- }
-#message1 ,#message2{
-  color: #dc3545;
-  margin-top: -10px;
-  margin-bottom: 7px;
-}
- @media(max-width: 1600px) {
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 600px;
-     height: 500px;
-   }
-   .join-enter-inputs input {
-     height: 40px;
-     font-size: 30px;
-   }
-   .join-enter-quote p {
-     font-size: 30px;
-   }
-   .join-enter-inputs input::placeholder {
-     font-size: 26px !important;
-   }
-   .join-social ul li a img {
-     height: 60px;
-     width: 60px;
-   }
-   .join-submit button {
-     padding: 4px 30px;
-   }
-   .join-enter-quote {
-     height: 50px;
-   }
- }
-
- @media(max-width: 1366px) {
-   .andco-logo {
-     margin-top: -70px;
-     margin-bottom: 20px;
-   }
-   .andco-logo img {
-     height: 70px;
-   }
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 520px;
-   }
-   .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
-     margin-top: 40px;
-   }
- }
-
- @media(max-width: 1199px) {
-   .join-enter a.float-left, .join-enter a.float-right {
-     font-size: 34px;
-   }
-   .join-enter-quote p {
-     font-size: 26px;
-   }
-   .join-social ul li a img {
-     height: 50px;
-     width: 50px;
-   }
-   .join-submit button {
-     font-size: 18px;
-   }
- }
-
- @media(max-width: 991px) {
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 550px;
-     height: 480px;
-   }
-   .andco-logo {
-     margin: -10px 0px 30px;
-   }
-   .andco-logo img {
-     height: 50px;
-   }
-   .join-enter a.float-left, .join-enter a.float-right {
-     font-size: 30px;
-   }
-   .join-enter-quote p {
-     font-size: 26px;
-   }
-   .join-enter-inputs input {
-     font-size: 26px;
-   }
-   .join-social ul li a img {
-     height: 40px;
-     width: 40px;
-   }
-   .join-enter-inputs input {
-     border-bottom: 1px solid #2B879B;
-   }
- }
-
- @media(max-width: 767px) {
-   .join-enter-main {
-     background-position: center right calc(50% - 4px);
-   }
- }
-
- @media(max-width: 575px) {
-  .input_with_icont span {
-    right: 30px;
-    font-size: 20px;
-    top: 10px;
-}
-  .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
-    margin-top: 20px;
+  .join-enter-quote {
+    height: 40px;
   }
-   .join-enter-quote {
-     height: 40px;
-   }
-   .andco-logo img {
-     height: 50px;
-   }
-   .join-enter a.float-left, .join-enter a.float-right {
-     font-size: 28px;
-   }
-   .join-enter-quote p, .join-enter-inputs input {
-     font-size: 24px;
-     width: 90%;
-   }
-   .join-enter-inputs input::placeholder {
-     font-size: 26px !important;
-   }
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 470px;
-     height: 420px;
-   }
- }
+  .andco-logo img {
+    height: 50px;
+  }
+  .join-enter a.float-left, .join-enter a.float-right {
+    font-size: 28px;
+  }
+  .join-enter-quote p, .join-enter-inputs input {
+    font-size: 24px;
+    width: 90%;
+  }
+  .join-enter-inputs input::placeholder {
+    font-size: 26px !important;
+  }
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 470px;
+    height: 420px;
+  }
+}
 
- @media(max-width:480px) {
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 400px;
-     height: 360px;
-   }
- }
+@media(max-width:480px) {
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 400px;
+    height: 360px;
+  }
+}
 
- @media(max-width: 400px) {
-   .andco-logo img {
-     height: 40px;
-   }
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 330px;
-     height: 370px;
-   }
-   .join-enter a.float-left, .join-enter a.float-right {
-     font-size: 24px;
-   }
-   .join-enter-quote p {
-     margin-top: 10px;
-     font-size: 22px;
-   }
-   .join-enter-inputs input::placeholder, .join-enter-inputs input {
-     font-size: 22px !important;
-   }
-   .join-submit button {
-     padding: 0px 20px;
-   }
- }
+@media(max-width: 400px) {
+  .andco-logo img {
+    height: 40px;
+  }
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 330px;
+    height: 370px;
+  }
+  .join-enter a.float-left, .join-enter a.float-right {
+    font-size: 24px;
+  }
+  .join-enter-quote p {
+    margin-top: 10px;
+    font-size: 22px;
+  }
+  .join-enter-inputs input::placeholder, .join-enter-inputs input {
+    font-size: 22px !important;
+  }
+  .join-submit button {
+    padding: 0px 20px;
+  }
+}
 
- @media(max-width: 330px) {
-   .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
-     width: 290px;
-     height: 300px;
-   }
-   .join-enter-quote p {
-     font-size: 18px;
-   }
-   .join-enter-inputs input {
-     height: 26px;
-   }
-   .join-submit button {
-     font-size: 16px;
-   }
-   .join-social ul li a img {
-     height: 30px;
-     width: 30px;
-   }
-   .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
-     margin-top: 30px;
-   }
- }
+@media(max-width: 330px) {
+  .join-fl-name, .join-with-your-social, .join-with-your-email, .join-with-your-code, .join-enter-password {
+    width: 290px;
+    height: 300px;
+  }
+  .join-enter-quote p {
+    font-size: 18px;
+  }
+  .join-enter-inputs input {
+    height: 26px;
+  }
+  .join-submit button {
+    font-size: 16px;
+  }
+  .join-social ul li a img {
+    height: 30px;
+    width: 30px;
+  }
+  .join-with-your-email .join-social, .join-with-your-code .join-social, .join-enter-password .join-social {
+    margin-top: 30px;
+  }
+}

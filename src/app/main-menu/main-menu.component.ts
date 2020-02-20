@@ -55,4 +55,10 @@ export class MainMenuComponent implements OnInit {
     this.index = Number(index) + +1
     console.log("index of menu", this.index)
   }
+  getHeader(event ){
+    let output = this._loginService.returnLogin(event);
+    if(output == true){
+      this.router.navigate(['/createEvent']); 
+    }
+  }
 }

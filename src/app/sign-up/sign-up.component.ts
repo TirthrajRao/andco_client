@@ -202,51 +202,53 @@ export class SignUpComponent implements OnInit {
    * @param {String} form
    * Validation of firstName in signUp form  
    */
-  validateFirstName(form) {
-    console.log(form);
-    const nameInput = /[a-zA-Z ]/;
+  validateFirstName(event) {
+    console.log(event.target.value);
+    let form = event.target.value;
+    // const nameInput = /[a-zA-Z ]/;
 
-    $("#firstName").on({
-      keydown: function (e) {
-        if (e.which === 32)
-          return false;
-      },
-      change: function () {
-        this.value = this.value.replace(/\s/g, "");
-      }
-    });
+    // $("#firstName").on({
+    //   keydown: function (e) {
+    //     if (e.which === 32)
+    //       return false;
+    //   },
+    //   change: function () {
+    //     this.value = this.value.replace(/\s/g, "");
+    //   }
+    // });
     let message1 = document.getElementById('message1');
-    if (!form.firstName.match(nameInput)) {
+    let reg = new RegExp("[a-zA-Z]");
+    if (reg.test(form)) {
       console.log("message==========", message1)
       message1.innerHTML = "Name can not start with digit"
     } else {
-      message1.innerHTML = "";
+      message1.innerHTML = null;
     }
   }
   /**
      * @param {String} form
      * Validation of lastName in signUp form  
      */
-  validateLastName(form) {
+  validateLastName(value) {
     this.isDisable = false;
-    console.log(form);
-    const nameInput = /[a-zA-Z ]/;
-    $("#lastName").on({
-      keydown: function (e) {
-        if (e.which === 32)
-          return false;
-      },
-      change: function () {
-        this.value = this.value.replace(/\s/g, "");
-      }
-    });
-    let message1 = document.getElementById('message2');
-    if (!form.firstName.match(nameInput)) {
-      console.log("message==========", message1)
-      message1.innerHTML = "Name can not start with digit"
-    } else {
-      message1.innerHTML = "";
-    }
+    console.log(value);
+    // const nameInput = /[a-zA-Z ]/;
+    // $("#lastName").on({
+    //   keydown: function (e) {
+    //     if (e.which === 32)
+    //       return false;
+    //   },
+    //   change: function () {
+    //     this.value = this.value.replace(/\s/g, "");
+    //   }
+    // });
+    // let message1 = document.getElementById('message2');
+    // if (!form.firstName.match(nameInput)) {
+    //   console.log("message==========", message1)
+    //   message1.innerHTML = "Name can not start with digit"
+    // } else {
+    //   message1.innerHTML = null;
+    // }
   }
 
   /** 
@@ -293,5 +295,11 @@ export class SignUpComponent implements OnInit {
   password2() {
     this.show2 = !this.show2;
     this.pwd2 = !this.pwd2;
+  }
+
+  backFromJoin(index) {
+    console.log("index of section", index)
+    this.index = Number(this.index) - 1
+    console.log("after event", this.index)
   }
 }
