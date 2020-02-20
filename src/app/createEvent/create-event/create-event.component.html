@@ -33,7 +33,7 @@
                                 placeholder="hashtag" pattern="[a-zA-Z]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">
                             <div id="message1"></div>
-                            <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
+                            <div *ngIf="f.hashTag.touched && f.hashTag.errors"
                                 class="invalid-feedback">
                                 <div *ngIf="f.hashTag.errors.required">Event HashTag is Required
                                 </div>
@@ -44,7 +44,6 @@
                                     Characters
                                 </div>
                             </div>
-                            <span>#</span>
                         </div>
                     </div>
                     <!-- your event hashtag end -->
@@ -62,9 +61,6 @@
                                     class="invalid-feedback">
                                     <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
                                     </div>
-                                </div>
-                                <div class="input-title-icon">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>

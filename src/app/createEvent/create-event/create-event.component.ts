@@ -60,7 +60,7 @@ export class CreateEventComponent implements OnInit {
     this.initSlickSlider()
     // create event slider end
 
-   
+
 
 
     // Create New event form start
@@ -68,7 +68,7 @@ export class CreateEventComponent implements OnInit {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
-      hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[a-zA-Z]+$")]),
+      hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[a-zA-Z0-9]+$")]),
       profile: new FormControl('', [Validators.required]),
       background: new FormControl(''),
     })
@@ -176,20 +176,25 @@ export class CreateEventComponent implements OnInit {
     this.isDisable = true
     console.log(this.eventForm.value);
     console.log("in twelve_slide");
-    this.eventService.addEvent(this.eventForm.value, this.files)
-      .subscribe((data: any) => {
-        console.log("event details", data);
-        // this.isDisable = true
-        this.isLoad = false
-        this.alertService.getSuccess(data.message)
-        this.eventForm.reset()
-        this.router.navigate(['/menu']);
-      }, (error: any) => {
-        this.isDisable = false
-        this.isLoad = false
-        console.log(error);
-        this.alertService.getError(error.message);
-      })
+    if (this.files) {
+      this.eventService.addEvent(this.eventForm.value, this.files)
+        .subscribe((data: any) => {
+          console.log("event details", data);
+          // this.isDisable = true
+          this.isLoad = false
+          this.alertService.getSuccess(data.message)
+          this.eventForm.reset()
+          this.router.navigate(['/menu']);
+        }, (error: any) => {
+          this.isDisable = false
+          this.isLoad = false
+          console.log(error);
+          this.alertService.getError(error.message);
+        })
+    } else {
+      let message = 'Please select profile photo'
+      this.alertService.getError(message)
+    }
   }
 
 

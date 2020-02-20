@@ -75,7 +75,16 @@ button.slick-arrow {
 /* your event type css end */
 
 /* your event hashtag and name css start */
-
+.create-event-hashtag-box input{
+    background-image: url('../../../assets/images/hashtag.png');
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+}
+.create-event-name-box input{
+    background-image: url('../../../assets/images/pencil.png');
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+}
 .create-event-hashtag-box input, .create-event-name-box input {
     background-color: transparent;
     border: 3px solid #fff;
@@ -96,25 +105,6 @@ button.slick-arrow {
 .create-event-name-box input:focus{
     outline: none !important;
     box-shadow: none;
-}
-.create-event-hashtag-box span {
-    content: "#";
-    font-size: 50px;
-    font-weight: 600;
-    color: #9D3742;
-    position: absolute;
-    left: 20px;
-    top: 50px;
-}
-.input-title-icon i {
-    color: #9d3742;
-    font-size: 26px;
-    margin-left: 15px;
-}
-.input-title-icon {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: -52px;
 }
 /* your event hashtag and name css end */
 
