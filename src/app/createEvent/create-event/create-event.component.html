@@ -30,12 +30,11 @@
                             <input type="text" class="form-control" formControlName="hashTag"
                                 ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
                                 [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
-                                placeholder="hashtag" pattern="[a-zA-Z]+" (input)="removeSpace(eventForm.value)"
+                                placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">
                             <div id="message1"></div>
-                            <div *ngIf="f.hashTag.touched && f.hashTag.errors"
-                                class="invalid-feedback">
-                                <div *ngIf="f.hashTag.errors.required">Event HashTag is Required
+                            <div *ngIf="f.hashTag.touched && f.hashTag.errors" class="invalid-feedback">
+                                <div *ngIf="f.hashTag.errors.required" id="hashTag1">Event HashTag is Required
                                 </div>
                                 <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4
                                     Characters
@@ -57,9 +56,8 @@
                                     formControlName="eventTitle"
                                     ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                     [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
-                                <div *ngIf="f.eventTitle.touched && f.eventTitle.errors"
-                                    class="invalid-feedback">
-                                    <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
+                                <div *ngIf="f.eventTitle.touched && f.eventTitle.errors" class="invalid-feedback">
+                                    <div *ngIf="f.eventTitle.errors.required" id="title1">Event Title is Required.
                                     </div>
                                 </div>
                             </div>
@@ -189,8 +187,7 @@
                     <!-- your event prising tip end -->
                 </div>
             </form>
-            <button class="btn created-event-custom-button" (click)="addEvent()"
-                [disabled]="isDisable || eventForm.invalid">Continue</button>
+            <button class="btn created-event-custom-button" (click)="addEvent()">Continue</button>
         </div>
         <!-- create event slider end -->
     </div>

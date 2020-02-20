@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { config } from '../../config'
@@ -68,7 +68,7 @@ export class CreateEventComponent implements OnInit {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
-      hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[a-zA-Z0-9]+$")]),
+      hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[A-Za-z0-9]+$")]),
       profile: new FormControl('', [Validators.required]),
       background: new FormControl(''),
     })
@@ -93,8 +93,14 @@ export class CreateEventComponent implements OnInit {
     });
     var eventFormLocal = this.eventForm;
     var setControl = function (event) {
+      console.log("type is selected========", event)
+      // if (event) {
       eventFormLocal.controls.eventType.setValue(event)
       console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
+      // } else {
+      //   let displayMessage = 'Event Type Is Required'
+      //   this.alertService.getError(displayMessage)
+      // }
     }
 
   }
@@ -123,16 +129,20 @@ export class CreateEventComponent implements OnInit {
         adaptiveHeight: true,
         fade: true,
         prevArrow: '<button class="prevarrow">Back</button>',
-        nextArrow: '<button class="nextarrow">Next</button>',
+        nextArrow: '<button class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
     }, 100)
   }
+  nextCalled(event) {
+    console.log("ama kaik avu joye", event);
 
+  }
 
   /**
    * @param {String} event
    * To upload profile photo of event
    */
+
   addFile(event) {
     console.log("profile photo path", event);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
@@ -168,15 +178,40 @@ export class CreateEventComponent implements OnInit {
     console.log("form details========", this.eventForm.value)
   }
 
+
+  ngOnChanges({ formDirty }: SimpleChanges) {
+    if (formDirty.currentValue) {
+      console.log("first one");
+
+      // this.inputCtrl.markAsDirty();
+    } else {
+      console.log("second one");
+      // this.inputCtrl.markAsPristine();
+    }
+  }
+
+
   /**
    * Create new event
    */
   addEvent() {
-    this.isLoad = true
-    this.isDisable = true
-    console.log(this.eventForm.value);
-    console.log("in twelve_slide");
-    if (this.files) {
+
+    console.log("form value", this.eventForm.controls);
+    let title = this.eventForm.controls.eventTitle
+    let hashTag = this.eventForm.controls.hashTag
+    let eventType = this.eventForm.controls.eventType
+    if (title.status == 'INVALID') {
+      console.log("first title========");
+      let titleMessage = 'EventTitle is required'
+      this.alertService.getError(titleMessage)
+    } else if (hashTag.status == 'INVALID') {
+      let hasDisplay = 'Event Hastag is required'
+      this.alertService.getError(hasDisplay)
+    } else if (eventType.status == 'INVALID') {
+      let typeDisplay = 'Event Type is required'
+      this.alertService.getError(typeDisplay)
+    } else if (this.files.length) {
+      console.log("now it is final");
       this.eventService.addEvent(this.eventForm.value, this.files)
         .subscribe((data: any) => {
           console.log("event details", data);
@@ -190,6 +225,7 @@ export class CreateEventComponent implements OnInit {
           this.isLoad = false
           console.log(error);
           this.alertService.getError(error.message);
+          // })
         })
     } else {
       let message = 'Please select profile photo'
