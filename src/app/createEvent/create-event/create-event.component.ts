@@ -39,12 +39,12 @@ export class CreateEventComponent implements OnInit {
     public eventService: EventService,
     public alertService: AlertService,
     private renderer: Renderer2,
-    private elRef:ElementRef
+    private elRef: ElementRef
   ) { }
-//   ngAfterViewInit() {
-//     let loader = this.elRef.nativeElement.querySelector('#loader'); 
-//     loader.style.display = "none"; //hide loader
-//  }
+  //   ngAfterViewInit() {
+  //     let loader = this.elRef.nativeElement.querySelector('#loader'); 
+  //     loader.style.display = "none"; //hide loader
+  //  }
 
   ngOnInit() {
     //background image select active start
@@ -108,7 +108,7 @@ export class CreateEventComponent implements OnInit {
   }
 
 
-  
+
 
   /**
    * Error message of eventDetails 
@@ -180,16 +180,21 @@ export class CreateEventComponent implements OnInit {
    * Create new event
    */
   addEvent() {
+    this.isLoad = true
+    this.isDisable = true
     console.log(this.eventForm.value);
     console.log("in twelve_slide");
     this.eventService.addEvent(this.eventForm.value, this.files)
       .subscribe((data: any) => {
         console.log("event details", data);
+        // this.isDisable = true
+        this.isLoad = false
         this.alertService.getSuccess(data.message)
         this.eventForm.reset()
         this.router.navigate(['/menu']);
       }, (error: any) => {
-        // this.isLoad = false;
+        this.isDisable = false
+        this.isLoad = false
         console.log(error);
         this.alertService.getError(error.message);
       })
