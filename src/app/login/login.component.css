@@ -1,5 +1,5 @@
 .enter-screen-main {
-  background-image: url('../../assets/images/enter4.jpg');
+  background-image: url('../../assets/images/enter4.png');
   background-position: center;
   background-size: cover;
   height: auto;
@@ -157,7 +157,7 @@ button.btn.forgot-btn {
 }
 
 .forgot-modal .modal-content {
-  background-image: url('../../assets/images/enter4.jpg');
+  background-image: url('../../assets/images/enter4.png');
   background-position: left 70%;
   background-size: 160%;
   background-repeat: no-repeat;

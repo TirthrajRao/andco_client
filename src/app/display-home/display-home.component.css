@@ -27,43 +27,43 @@
 }
 
 .display-screen-single-slide.home {
-    background-image: url('../../assets/images/home.jpg');
+    background-image: url('../../assets/images/home.png');
 }
 
 .display-screen-single-slide.ds-1 {
-    background-image: url('../../assets/images/standard.jpg');
+    background-image: url('../../assets/images/standard.png');
     position: relative;
 }
 
 .display-screen-single-slide.ds-2 {
-    background-image: url('../../assets/images/display_screen_2.jpg');
+    background-image: url('../../assets/images/display_screen_2.png');
     position: relative;
 }
 
 .display-screen-single-slide.ds-3 {
-    background-image: url('../../assets/images/display_screen_3.jpg');
+    background-image: url('../../assets/images/display_screen_3.png');
     position: relative;
 }
 
 .display-screen-single-slide.ds-4 {
-    background-image: url('../../assets/images/display_screen_4.jpg');
+    background-image: url('../../assets/images/display_screen_4.png');
     position: relative;
 }
 
 .display-screen-single-slide.ds-5 {
-    background-image: url('../../assets/images/display_screen_5.jpg');
+    background-image: url('../../assets/images/display_screen_5.png');
     background-position: center;
     background-size: 100%;
     position: relative;
 }
 
 .display-screen-single-slide.ds-6 {
-    background-image: url('../../assets/images/display_screen_6.jpg');
+    background-image: url('../../assets/images/display_screen_6.png');
     background-position: top;
     position: relative;
 }
 .display-screen-single-slide.ds-7 {
-    background-image: url('../../assets/images/display_screen_7.jpg');
+    background-image: url('../../assets/images/display_screen_7.png');
     position: relative;
 }
 
