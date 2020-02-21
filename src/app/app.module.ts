@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { MatSelectModule } from '@angular/material/fesm2015/select';
+// import {} from '@angular/material'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +54,7 @@ export function provideConfig() {
     HttpClientModule,
     SocialLoginModule,
     HomeModule,
+    MatDatepickerModule
     // MatSelectModule
   ],
   providers: [
@@ -66,6 +69,6 @@ export function provideConfig() {
     },
     LoginService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
