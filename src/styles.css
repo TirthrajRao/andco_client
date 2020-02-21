@@ -39,6 +39,12 @@ button:focus {
     font-size: 18px;
     margin-top: -10px;
 }
+.modal-header ,.modal-content ,.modal-footer{
+    border: none !important;
+}
+.modal-content{
+    border-radius: 30px !important;
+}
 
 /* Show password css start */
 

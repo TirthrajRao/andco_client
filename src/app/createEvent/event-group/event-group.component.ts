@@ -25,4 +25,9 @@ export class EventGroupComponent implements OnInit {
     //group slider end
   }
 
+  button(){
+    console.log("=============");
+    
+  }
+
 }

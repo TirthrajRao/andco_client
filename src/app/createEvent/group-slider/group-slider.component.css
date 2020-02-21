@@ -33,6 +33,31 @@
 .group-name {
     background-color: #fff;
     margin: 0 5px;
-    padding: 7px;
+    padding: 7px 16px;
     border-radius: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+@media(max-width:1600px){
+    .group-header span{
+        font-size: 18px;
+    }
+}
+@media(max-width:1366px){
+    
+}
+@media(max-width:1199px){
+    
+}
+@media(max-width:991px){
+    
+}
+@media(max-width:767px){
+    
+}
+@media(max-width:575px){
+    
 }

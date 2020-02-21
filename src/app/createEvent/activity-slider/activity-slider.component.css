@@ -6,11 +6,17 @@
     border-radius: 10px;
     line-height: 50px;
     margin: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 5px 16px;
 }
 .event-name p{
     color: #ffffff;
     font-size: 28px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .add-event button {
     background: transparent;
@@ -23,4 +29,37 @@
     left: 0;
     height: 50px;
     width: 50px;
+}
+
+.tooltip-class:hover:after {
+    content: attr(tooltip-data);
+    background: rgba(157, 55, 66, 0.9);
+    border-radius: 5px;
+    bottom: 110%;
+    color: #fff;
+    padding: 10px 15px;
+    position: absolute;
+    z-index: 98;
+    font-size: 13px;
+}
+
+@media(max-width:1600px){
+    .event-name p{
+        font-size: 22px;
+    }
+}
+@media(max-width:1366px){
+    
+}
+@media(max-width:1199px){
+    
+}
+@media(max-width:991px){
+    
+}
+@media(max-width:767px){
+    
+}
+@media(max-width:575px){
+    
 }
