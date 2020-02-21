@@ -3,39 +3,65 @@
         <div class="wrapper">
             <div class="inner-box">
                 <div class="element">
-                    <input type="text" placeholder="Enter activity name">
-                    <button class="remove">
-                        <img src="../../../assets/images/remove.png" alt="remove icon">
-                    </button>
-                    <div class="select-box-div">
-                        <select class="custom-select">
-                            <option selected>DD</option>
-                            <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
-                        </select>
-                        <select class="custom-select">
-                            <option selected disabled>MM</option>
-                            <option value="" *ngFor="let month of months">{{month.Name}}</option>
-                        </select>
-                        <select class="custom-select">
-                            <option selected>YYYY</option>
-                            <option value="" *ngFor="let year of years">{{year.Name}}</option>
-                        </select>
-                        <!-- <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                            <input class="form-control" type="text" readonly />
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        </div> -->
-                        
-                        <i id="datepicker" class="fa fa-calendar" aria-hidden="true"></i>
-                    </div>
+                    <form [formGroup]="activityForm">
+                        <div formArrayName="activity">
+                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                <!-- <div class="form-group"> -->
+                                <input type="text" formControlName="activityName" placeholder="Enter activity name">
+                                <!-- </div> -->
+                                <!-- <div > -->
+                                <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
+                                    (click)="removeActivityField(i,tech.value)">
+                                    <img src="../../../assets/images/remove.png" alt="remove icon">
+                                </button>
+                                <!-- </div> -->
+                                <!-- <div class="select-box-div"> -->
+                                <!-- <select class="custom-select">
+                                        <option selected>DD</option>
+                                        <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
+                                    </select>
+                                    <select class="custom-select">
+                                        <option selected disabled>MM</option>
+                                        <option value="" *ngFor="let month of months">{{month.Name}}</option>
+                                    </select>
+                                    <select class="custom-select">
+                                        <option selected>YYYY</option>
+                                        <option value="" *ngFor="let year of years">{{year.Name}}</option>
+                                    </select> -->
+                                <div class="input-group date" data-date-format="mm-dd-yyyy">
+                                    <input id="activityStartDate{{i}}" class="form-control"
+                                        formControlName="activityStartDate" type="text" readonly />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+
+                                <!-- <i class="fa fa-calendar" aria-hidden="true"
+                                    formControlName="activityStartDate" id="activityStartDate{{i}}"></i> -->
+                                <!-- <div class="form-group">
+                                    <i class="fa fa-calendar ">
+                                        <input autocomplete="off" type="text" id="activityStartDate{{i}}"
+                                            formControlName="activityStartDate" class="form-control w-100"
+                                            placeholder="Activity Start Date">
+                                    </i>
+                                </div> -->
+                                <!-- <div class="form-group"> -->
+                                <!-- <span id="datepicker">
+                                    <input autocomplete="off" type="text" id="activityStartDate{{i}}"
+                                        formControlName="activityStartDate" placeholder="Activity End Date">
+                                </span> -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="buttons">
-                <button class="clone" (click)="addActivityField()"><i class="fa fa-plus"
-                        aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
+
+    <div class="buttons">
+        <button class="clone" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
     <div class="event-next-btn">
-        <button class="btn btn-primary">Next</button>
+        <button class="btn btn-primary" (click)="addActivity()">Next</button>
     </div>
 </section>

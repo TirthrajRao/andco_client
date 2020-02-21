@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var $;
 @Component({
@@ -10,6 +11,8 @@ declare var $;
 })
 export class EventActivityComponent implements OnInit {
   activityForm: FormGroup;
+  activityId
+  createdActivity: any;
 
   today = new Date()
   currentYear = this.today.getFullYear()
@@ -64,20 +67,43 @@ export class EventActivityComponent implements OnInit {
     Id: 11,
     Name: 'DECEMBER'
   }];
+  sub: any;
+  eventId: any;
+  _eventService: any;
+  createdEventDetails: any;
+  eventActivities: any;
 
   constructor(
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.sub = this.route.params.subscribe(params => {
+      if (params.id) {
+        this.eventId = params.id;
+        console.log(this.eventId);
+        this.viewDetailsOfEvent(this.eventId);
+      }
+    })
+  }
 
   ngOnInit() {
-    $(function () {
-      $("#datepicker").datepicker({ 
-            autoclose: true, 
-            todayHighlight: true
-      }).datepicker('update', new Date());
-    });
-    
+    // $(function () {
+    //   $("#datepicker").datepicker({
+    //     minDate: new Date(),
+    //     autoclose: true,
+    //     todayHighlight: true
+    //   }).datepicker('update', new Date());
+    // });
 
+
+
+
+    // $("#activityStartDate0").datepicker({
+    //   minDate: this.today,
+    // })
+    // $("#activityStartDate").datepicker({
+    // })
 
 
     console.log("today date=======", this.today)
@@ -108,6 +134,11 @@ export class EventActivityComponent implements OnInit {
 
   get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
 
+  selectDate(event) {
+    console.log("call thay che ke nai", event)
+  }
+
+
   /**
    * @param {JSON} createdActivity
    * Edit event activities 
@@ -117,25 +148,18 @@ export class EventActivityComponent implements OnInit {
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
     });
-    // setTimeout(() => {
-    //   $("#activityStartDate0").datepicker({
-    //     minDate: new Date(),
-    //     onClose: function () {
-    //       $("#activityEndDate0").datepicker(
-    //         "change",
-    //         { minDate: new Date($('#activityStartDate0').val()) }
-    //       );
-    //     }
-    //   });
-    //   $("#activityEndDate0").datepicker({
-    //     onClose: function () {
-    //       $("#activityStartDate0").datepicker(
-    //         "change",
-    //         { maxDate: new Date($('#activityEndDate0').val()) }
-    //       );
-    //     }
-    //   });
-    // }, 200)
+    setTimeout(() => {
+      var date = new Date();
+      var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+      console.log("this is call thay che ke nai")
+      $("#activityStartDate0").datepicker({
+        // format: "mm/dd/yyyy",
+        todayHighlight: true,
+        startDate: today,
+        autoclose: true
+      });
+    }, 200)
   }
 
   /**
@@ -145,11 +169,10 @@ export class EventActivityComponent implements OnInit {
   activityArray(activities?: any[]) {
     console.log("activities", activities);
     if (!activities) {
+      console.log("ama ave che ke nau");
       return [this.fb.group({
         activityName: new FormControl(''),
         activityStartDate: new FormControl(''),
-        // activityEndDate: new FormControl(''),
-        // eventId: new FormControl(this.eventId)
       })]
     }
     /**
@@ -161,8 +184,6 @@ export class EventActivityComponent implements OnInit {
         activityId: new FormControl(activities[i]._id),
         activityName: new FormControl(activities[i].activityName),
         activityStartDate: new FormControl(activities[i].activityStartDate.split("T")[0]),
-        // activityEndDate: new FormControl(activities[i].activityEndDate.split("T")[0]),
-        // eventId: new FormControl(activities[i].eventId)
       }))
     }
     return actArray;
@@ -203,34 +224,97 @@ export class EventActivityComponent implements OnInit {
   addActivityField(): void {
 
     const control = <FormArray>this.activityForm.controls.activity;
+    console.log("control ma su ave che", control.length)
     control.push(this.fb.group({
       activityName: new FormControl(''),
-      activityStartDate: new FormControl(''),
-      // activityEndDate: new FormControl(''),
-      // eventId: new FormControl(this.eventId)
+      activityStartDate: new FormControl('')
     }));
-    // setTimeout(() => {
-    //   console.log($('#activityEndDate' + (control.length - 2)).val());
-    //   $("#activityStartDate" + (control.length - 1)).datepicker({
-    //     minDate: new Date($('#activityEndDate' + (control.length - 2)).val()),
-    //     onClose: function () {
-    //       console.log($('#activityEndDate' + (control.length - 1)).val());
-    //       $("#activityEndDate" + (control.length - 1)).datepicker(
-    //         "change",
-    //         { minDate: new Date($('#activityStartDate' + (control.length - 1)).val()) }
-    //       );
-    //     }
-    //   });
-    //   $("#activityEndDate" + (control.length - 1)).datepicker({
-    //     // maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()),
-    //     onClose: function () {
-    //       $("#activityStartDate" + (control.length - 1)).datepicker(
-    //         "change",
-    //         { maxDate: new Date($('#activityEndDate' + (control.length - 1)).val()) }
-    //       );
-    //     }
-    //   });
-    // }, 200)
+    setTimeout(() => {
+      console.log($('#activityStartDate' + (control.length - 2)).val());
+      let secondDate = $('#activityStartDate' + (control.length - 2)).val()
+      console.log("selected second date", secondDate)
+      $("#activityStartDate" + (control.length - 1)).datepicker({
+        // minDate: secondDate
+        todayHighlight: true,
+        startDate: new Date(secondDate),
+        autoclose: true
+
+        // minDate: new Date($('#activityStartDate' + (control.length - 2)).val()),
+        //   onClose: function () {
+        //     console.log($('#activityEndDate' + (control.length - 1)).val());
+        //     $("#activityEndDate" + (control.length - 1)).datepicker(
+        //       "change",
+        //       { minDate: new Date($('#activityStartDate' + (control.length - 1)).val()) }
+        //     );
+        //   }
+      })
+    }, 200)
   }
 
+
+
+
+
+  /**
+   * Create new activities for new event 
+   */
+  addActivity() {
+    // this.isLoad = true;
+    for (let i = 0; i < this.activityForm.value.activity.length; i++) {
+      this.activityForm.value.activity[i].activityStartDate = $('#activityStartDate' + i).val();
+      // this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate' + i).val();
+    }
+    console.log("activity details", this.activityForm.value);
+    this._eventService.addActivities(this.activityForm.value)
+      .subscribe((data: any) => {
+        // this.isLoad = false;
+        console.log("activity response data", data);
+        this.createdActivity = data.data;
+        // this.groupLength = this.createdActivity.length;
+        console.log(this.createdActivity.length);
+        // _.forEach(this.createdActivity, (date) => {
+        //   this.activityStartDate = date.activityStartDate;
+        //   this.activityEndDate = date.activityEndDate;
+        //   console.log(this.activityStartDate, this.activityEndDate)
+        // })
+        // console.log(this.selectedStartDate);
+        console.log("created activity response from server", this.createdActivity);
+        // this.initGroupForm(this.createdActivity);
+      }, (err: any) => {
+        // this.isLoad = false;
+        console.log(err);
+        // this.alertService.getError(err.message);
+      })
+  }
+
+
+
+
+  /** 
+   * @param {String} eventId
+   * To get all details of particular event 
+   */
+  viewDetailsOfEvent(eventId) {
+    this._eventService.getEventDetails(eventId)
+      .subscribe((data: any) => {
+        console.log("created event details ", data);
+        this.createdEventDetails = data.data;
+        $('.selected_event_type > a').html(this.createdEventDetails.eventType);
+        // this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
+        // this.eventForm.controls.isPublic.setValue(this.createdEventDetails.isPublic);
+        // this.imgURL = this.path + this.createdEventDetails.profilePhoto
+        // this.themeURL = this.path + this.createdEventDetails.eventTheme
+        // this.selectedStartDate = this.createdEventDetails.startDate.split("T")[0];
+        // console.log(this.selectedStartDate);
+        // this.selectedEndDate = this.createdEventDetails.endDate.split("T")[0];
+        // console.log(this.selectedEndDate);
+        // this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate.split("T")[0];
+        // console.log(this.paymentDeadlineDate);
+        this.eventActivities = this.createdEventDetails.activity;
+        console.log(this.eventActivities);
+      }, (err: any) => {
+        console.log(err);
+        // this.alertService.getError(err.message);
+      })
+  }
 }
