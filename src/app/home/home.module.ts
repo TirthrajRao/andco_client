@@ -73,11 +73,8 @@ const routes: Routes = [
     EventActivityComponent,
     EventGroupComponent,
     LoaderComponent,
-<<<<<<< HEAD
-=======
     ActivitySliderComponent,
     GroupSliderComponent
->>>>>>> 84e87ecfb42245415e06452899b2bfc16b6ca33c
   ],
   imports: [
     CommonModule,
