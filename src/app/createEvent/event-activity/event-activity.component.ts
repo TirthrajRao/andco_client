@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDatepickerInputEvent, MatCalendar } from '@angular/material/datepicker';
+
 
 declare var $;
 @Component({
@@ -10,11 +12,13 @@ declare var $;
   styleUrls: ['./event-activity.component.css']
 })
 export class EventActivityComponent implements OnInit {
+  @ViewChild(MatCalendar, { static: true }) _datePicker: MatCalendar<Date>
   activityForm: FormGroup;
   activityId
   createdActivity: any;
 
   today = new Date()
+  currentDay = new Date()
   currentYear = this.today.getFullYear()
   maxYear = new Date(this.today.setFullYear(this.today.getFullYear() + 10)).getFullYear();
   month
@@ -72,6 +76,10 @@ export class EventActivityComponent implements OnInit {
   _eventService: any;
   createdEventDetails: any;
   eventActivities: any;
+  events: string[] = [];
+  displayTime: any = [];
+  finalDate: any = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -88,24 +96,6 @@ export class EventActivityComponent implements OnInit {
   }
 
   ngOnInit() {
-    // $(function () {
-    //   $("#datepicker").datepicker({
-    //     minDate: new Date(),
-    //     autoclose: true,
-    //     todayHighlight: true
-    //   }).datepicker('update', new Date());
-    // });
-
-
-
-
-    // $("#activityStartDate0").datepicker({
-    //   minDate: this.today,
-    // })
-    // $("#activityStartDate").datepicker({
-    // })
-
-
     console.log("today date=======", this.today)
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
@@ -132,10 +122,27 @@ export class EventActivityComponent implements OnInit {
 
   }
 
+  addEvent(type: string, event, i) {
+
+    console.log("event ma su ave che", this.activityForm.value)
+    this.displayTime = new Date(event.value)
+    // this.displayTime.push(event.value)
+    // console.log("final time to display", this.displayTime)
+  }
+
   get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
 
   selectDate(event) {
     console.log("call thay che ke nai", event)
+  }
+
+  getDate(event) {
+    console.log("event call==========");
+    console.log("event details==========", event)
+    $('#activityStartDate').datepicker().on('dp.change', function (e) {
+      console.log(e)
+    })
+
   }
 
 
@@ -148,18 +155,6 @@ export class EventActivityComponent implements OnInit {
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
     });
-    setTimeout(() => {
-      var date = new Date();
-      var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-      console.log("this is call thay che ke nai")
-      $("#activityStartDate0").datepicker({
-        // format: "mm/dd/yyyy",
-        todayHighlight: true,
-        startDate: today,
-        autoclose: true
-      });
-    }, 200)
   }
 
   /**
@@ -222,6 +217,7 @@ export class EventActivityComponent implements OnInit {
    * Add activity field with name,date 
    */
   addActivityField(): void {
+    console.log("Form fields", this.activityForm.value);
 
     const control = <FormArray>this.activityForm.controls.activity;
     console.log("control ma su ave che", control.length)
@@ -229,26 +225,14 @@ export class EventActivityComponent implements OnInit {
       activityName: new FormControl(''),
       activityStartDate: new FormControl('')
     }));
-    setTimeout(() => {
-      console.log($('#activityStartDate' + (control.length - 2)).val());
-      let secondDate = $('#activityStartDate' + (control.length - 2)).val()
-      console.log("selected second date", secondDate)
-      $("#activityStartDate" + (control.length - 1)).datepicker({
-        // minDate: secondDate
-        todayHighlight: true,
-        startDate: new Date(secondDate),
-        autoclose: true
+    // setTimeout(() => {
+    console.log($('#activityStartDate' + (control.length - 2)).val());
+    let secondDate = $('#activityStartDate' + (control.length - 2)).val()
+    console.log("selected second date", secondDate)
+    this.currentDay = new Date(secondDate)
+    // }, 200)
 
-        // minDate: new Date($('#activityStartDate' + (control.length - 2)).val()),
-        //   onClose: function () {
-        //     console.log($('#activityEndDate' + (control.length - 1)).val());
-        //     $("#activityEndDate" + (control.length - 1)).datepicker(
-        //       "change",
-        //       { minDate: new Date($('#activityStartDate' + (control.length - 1)).val()) }
-        //     );
-        //   }
-      })
-    }, 200)
+    //  (this.activityForm.value)
   }
 
 

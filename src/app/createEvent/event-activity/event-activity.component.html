@@ -6,50 +6,27 @@
                     <form [formGroup]="activityForm">
                         <div formArrayName="activity">
                             <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
-                                <!-- <div class="form-group"> -->
+
                                 <input type="text" formControlName="activityName" placeholder="Enter activity name">
-                                <!-- </div> -->
-                                <!-- <div > -->
+
                                 <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
                                     (click)="removeActivityField(i,tech.value)">
                                     <img src="../../../assets/images/remove.png" alt="remove icon">
                                 </button>
-                                <!-- </div> -->
-                                <!-- <div class="select-box-div"> -->
-                                <!-- <select class="custom-select">
-                                        <option selected>DD</option>
-                                        <option value="{{day.id}}" *ngFor="let day of days">{{day.name}}</option>
-                                    </select>
-                                    <select class="custom-select">
-                                        <option selected disabled>MM</option>
-                                        <option value="" *ngFor="let month of months">{{month.Name}}</option>
-                                    </select>
-                                    <select class="custom-select">
-                                        <option selected>YYYY</option>
-                                        <option value="" *ngFor="let year of years">{{year.Name}}</option>
-                                    </select> -->
-                                <div class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input id="activityStartDate{{i}}" class="form-control"
-                                        formControlName="activityStartDate" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-
-                                <!-- <i class="fa fa-calendar" aria-hidden="true"
-                                    formControlName="activityStartDate" id="activityStartDate{{i}}"></i> -->
-                                <!-- <div class="form-group">
-                                    <i class="fa fa-calendar ">
-                                        <input autocomplete="off" type="text" id="activityStartDate{{i}}"
-                                            formControlName="activityStartDate" class="form-control w-100"
-                                            placeholder="Activity Start Date">
-                                    </i>
-                                </div> -->
-                                <!-- <div class="form-group"> -->
-                                <!-- <span id="datepicker">
-                                    <input autocomplete="off" type="text" id="activityStartDate{{i}}"
-                                        formControlName="activityStartDate" placeholder="Activity End Date">
-                                </span> -->
-                                <!-- </div> -->
-                                <!-- </div> -->
+                                <!-- <span *ngFor="let time of displayTime"> -->
+                                {{displayTime  | date : 'dd'}}
+                                {{displayTime  | date : 'MM'}}
+                                {{displayTime  | date : 'yyyy'}}
+                                <!-- </span> -->
+                                <mat-form-field style="visibility:hidden;">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [min]="currentDay"
+                                        formControlName="activityStartDate" id="activityStartDate{{i}}"
+                                        (dateChange)="addEvent('input', $event , i)">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                                <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
                             </div>
                         </div>
                     </form>

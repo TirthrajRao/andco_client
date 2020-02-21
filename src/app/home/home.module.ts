@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MatNativeDateModule, MatInputModule, } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
 // import { MatSelectModule } from '@angular/material/fesm2015/select';
 
 
@@ -57,17 +62,23 @@ const routes: Routes = [
     MainMenuComponent,
     EventActivityComponent,
     EventGroupComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule
     // MatSelectModule
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    // MatDatepickerModule
   ]
 })
 export class HomeModule { }
