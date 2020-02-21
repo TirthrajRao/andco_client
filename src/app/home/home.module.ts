@@ -19,6 +19,8 @@ import { CreateEventComponent } from '../createEvent/create-event/create-event.c
 import { EventActivityComponent } from '../createEvent/event-activity/event-activity.component';
 import { EventGroupComponent } from '../createEvent/event-group/event-group.component'
 import { LoaderComponent } from '../loader/loader.component';
+import { ActivitySliderComponent } from '../createEvent/activity-slider/activity-slider.component';
+import { GroupSliderComponent } from '../createEvent/group-slider/group-slider.component'; 
 import { from } from 'rxjs';
 
 
@@ -47,6 +49,14 @@ const routes: Routes = [
       {
         path: 'eventGroup',
         component: EventGroupComponent
+      },
+      {
+        path: 'activity-slider',
+        component:ActivitySliderComponent
+      },
+      {
+        path: 'group-slider',
+        component: GroupSliderComponent
       }
     ]
   }
@@ -63,6 +73,11 @@ const routes: Routes = [
     EventActivityComponent,
     EventGroupComponent,
     LoaderComponent,
+<<<<<<< HEAD
+=======
+    ActivitySliderComponent,
+    GroupSliderComponent
+>>>>>>> 84e87ecfb42245415e06452899b2bfc16b6ca33c
   ],
   imports: [
     CommonModule,

@@ -17,7 +17,6 @@ import { LoginService } from './services/login.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { LoaderComponent } from './loader/loader.component';
 import { HomeModule } from './home/home.module';
-import { SliderComponent } from './createEvent/slider/slider.component';
 // import { HomeComponent } from './home/home.component';
 
 
@@ -45,7 +44,6 @@ export function provideConfig() {
     SignUpComponent,
     DisplayHomeComponent,
     ForgotPasswordComponent,
-    SliderComponent,
     // LoaderComponent,
   ],
   imports: [

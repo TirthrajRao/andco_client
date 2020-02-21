@@ -80,81 +80,19 @@
     box-shadow: none;
 }
 .main-box-for-slider{
-    width: 600px;
+    width: 800px;
     margin: auto;
     text-align: center;
     position: relative;
 }
 
-.event-slider, .group-slider {
-    padding-left: 50px;
-}
-.event-name{
-    background-color: #5D6C20;
-    border-radius: 10px;
-    font-size: 30px;
-    line-height: 50px;
-    margin: 0px 10px;
-}
-.event-name p{
-    color: #ffffff;
-    font-size: 20px;
-}
-.add-event button {
-    background: transparent;
-    border: none;
-    color: #fff;
-    background-color: #5D6C20;
-    border-radius: 50%;
-    font-size: 30px;
-    position: absolute;
-    left: 0;
-    height: 50px;
-    width: 50px;
-}
-.add-group button {
-    position: absolute;
-    left: 16px;
-    color: #fff;
-    font-size: 30px;
-    line-height: 1;
-    background: transparent;
-    border: none;
-    z-index: 1;
-}
-.add-group button:hover {
-    color: #fff;
-}
-.add-group button:focus{
-    box-shadow: none;
-}
-.group-header{
-    background-color: #A6B138;
-    padding: 7px;
-    height: 55px;
-    margin-top: 20px;
-}
-.group-header span{
-    color: #A6B138;
-    font-weight: bold;
-}
-.group-name .active{
-    outline: 2px solid #ffffff;
-    outline-offset: 3px;
-}
-.group-name {
-    background-color: #fff;
-    margin: 0 5px;
-    padding: 7px;
-    border-radius: 7px;
-}
 .group-box{
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
 }
 .inner-box-group{
-    background-color: #eaeaea;
+    background-color: rgba(166, 177, 56, 0.19);
     border-radius: 7px;
     padding: 10px
 }
@@ -165,10 +103,12 @@
 .inner-box-group ul li{
     list-style: none;
     color: #5D6C20;
+    font-weight: bold;
     width: 100%;
     display: inline-block;
     border-bottom: 1px solid #fff;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 .inner-box-group ul li:hover {
@@ -180,7 +120,7 @@
     font-size: 20px;
 }
 button.btn.add-btn {
-    background-color: #a6b138;
+    background-color: #A6B138;
     color: #fff;
     margin-top: 10px;
 }
@@ -207,6 +147,17 @@ img.icon-img {
 }
 .add-items input::placeholder{
     color: #a5b138;
+}
+.event-date-box h4{
+    color: #434040;
+    font-weight: 900;
+    text-align: left;
+    margin: 20px 0;
+    font-size:28px;
+}
+.event-date-box h4 span{
+    color: #686868;
+    font-weight: 600;
 }
 
 /* event created poster start */

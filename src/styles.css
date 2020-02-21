@@ -72,6 +72,14 @@ button:focus {
 
 /* Show password css end */
 
+/* autofill css start for chrome*/
+
+.join-enter-inputs input:-webkit-autofill, .join-enter-inputs input:-webkit-autofill:hover, .join-enter-inputs input:-webkit-autofill:focus, .join-enter-inputs input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px #7CBBCD inset !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+/* autofill css end for chrome*/
+
 /*common css end*/
 
 .page-content {

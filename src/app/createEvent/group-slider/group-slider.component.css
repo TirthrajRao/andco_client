@@ -1,0 +1,38 @@
+.group-slider{
+    padding-left: 40px;
+}
+.add-group button {
+    position: absolute;
+    left: 16px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    z-index: 1;
+}
+.add-group button:hover {
+    color: #fff;
+}
+.add-group button:focus{
+    box-shadow: none;
+}
+.group-header{
+    background-color: #A6B138;
+    padding: 14px;
+}
+.group-header span{
+    color: #A6B138;
+    font-weight: bold;
+    font-size: 22px;
+}
+.group-name .active{
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+.group-name {
+    background-color: #fff;
+    margin: 0 5px;
+    padding: 7px;
+    border-radius: 7px;
+}
