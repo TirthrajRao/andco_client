@@ -1,0 +1,26 @@
+.event-slider{
+    padding-left: 50px;
+}
+.event-name{
+    background-color: #5D6C20;
+    border-radius: 10px;
+    line-height: 50px;
+    margin: 0px 10px;
+}
+.event-name p{
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+}
+.add-event button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    background-color: #5D6C20;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    height: 50px;
+    width: 50px;
+}
