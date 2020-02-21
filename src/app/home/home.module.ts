@@ -21,6 +21,7 @@ import { EventGroupComponent } from '../createEvent/event-group/event-group.comp
 import { LoaderComponent } from '../loader/loader.component';
 import { ActivitySliderComponent } from '../createEvent/activity-slider/activity-slider.component';
 import { GroupSliderComponent } from '../createEvent/group-slider/group-slider.component'; 
+import { SetPriceComponent } from '../createEvent/set-price/set-price.component';
 import { from } from 'rxjs';
 
 
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path: 'group-slider',
         component: GroupSliderComponent
+      },
+      {
+        path: 'set-price',
+        component: SetPriceComponent
       }
     ]
   }
@@ -74,7 +79,8 @@ const routes: Routes = [
     EventGroupComponent,
     LoaderComponent,
     ActivitySliderComponent,
-    GroupSliderComponent
+    GroupSliderComponent,
+    SetPriceComponent
   ],
   imports: [
     CommonModule,
