@@ -13,16 +13,6 @@ export class EventGroupComponent implements OnInit {
 
   ngOnInit() {
 
-    //group slider start
-    $('.group-slider').slick({
-        infinite: false,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        arrows: false,
-        
-    });
-    //group slider end
   }
 
   button(){

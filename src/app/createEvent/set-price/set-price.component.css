@@ -240,10 +240,10 @@
         width: 100%;
     }
 }
-@media(max-width: 480px){
-    .bg-box-set-price {
-        width: 390px;
-    }
+    @media(max-width: 480px){
+        .bg-box-set-price {
+            width: 390px;
+        }
     .main-box-for-slider{
         width: 350px;
     }

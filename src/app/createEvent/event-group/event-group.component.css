@@ -19,6 +19,14 @@
     color: #686868;
     font-weight: bold;
 }
+.bg-box-set-price{
+    background-color: #f3f4f3;
+    width: 1200px;
+    height: max-content;
+    padding: 70px 0;
+    box-shadow: 0px 0px 70px #d5dbd5;
+    margin-top: 40px;
+}
 /* activity slider ( activity-slider component ) */
 
 .event-date-box h4{
@@ -249,23 +257,117 @@ h5.item-name, h5.item-price{
 @media(max-width:1600px){
     .event-date-box h4{
         font-size: 22px;
+        margin: 16px 0;
     }
     .main-box-for-slider{
-        width: 700px;
+        width: 750px;
+    }
+    .bg-box-set-price {
+        width: 1040px;
+        padding: 40px 0;
+    }
+    .sales-inner span{
+        font-size: 22px;
+    }
+    .group-header{
+        padding: 10px;
+    }
+    .group-box h6 {
+        margin: 14px 18px 10px;
+        font-size: 18px;
+    }
+    .inner-box-group{
+        max-height: 160px;
+        min-height: 160px;
+    }
+    .inner-box-group ul li h5{
+        font-size: 17px;
+    }
+    button.btn.add-btn{
+        font-size: 17px;
+    }
+    .inner-box-group ul li{
+        padding: 10px;
     }
 }
 @media(max-width:1366px){
-    
+    .bg-box-set-price {
+        width: 870px;
+        padding: 30px 0;
+        margin-top: 0;
+    }
+    .hashtag-set-price p{
+        margin: 10px 0;
+    }
 }
 @media(max-width:1199px){
-    
+
 }
 @media(max-width:991px){
-    
+    .bg-box-set-price {
+        width: 700px;
+    }
+    .main-box-for-slider{
+        width: 650px;
+    }
+    .inner-box-group ul li{
+        padding: 7px;
+    }
+    .event-name p {
+        font-size: 18px;
+    }
+    .next-back-button button{
+        font-size: 16px;
+    }
 }
 @media(max-width:767px){
-    
+    .bg-box-set-price{
+        width: 600px;
+        margin: 20px 0;
+    }
+    .main-box-for-slider{
+        width: 550px;
+    }
+    .event-date-box h4 {
+        font-size: 18px;
+        margin: 16px 0;
+    }
+    button.btn.add-btn {
+        font-size: 16px;
+    }
 }
 @media(max-width:575px){
-    
+    .bg-box-set-price{
+        width: 500px;
+    }
+    .main-box-for-slider{
+        width: 450px;
+    }
+}
+@media(max-width: 480px){
+    .bg-box-set-price{
+        width: 450px;
+    }
+    .main-box-for-slider{
+        width: 400px;
+    }
+}
+@media(max-width: 400px){
+    .bg-box-set-price{
+        width: 320px;
+    }
+    .main-box-for-slider{
+        width: 300px;
+    }
+    .group-box h6 {
+        margin: 10px 0;
+    }
+}
+@media(max-width: 320px){
+    .bg-box-set-price{
+        width: 300px;
+    }
+    .main-box-for-slider{
+        width: 280px;
+    }
 }

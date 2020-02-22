@@ -46,7 +46,10 @@
 
 @media(max-width:1600px){
     .event-name p{
-        font-size: 22px;
+        font-size: 21px;
+    }
+    .event-name{
+        line-height: 40px;
     }
 }
 @media(max-width:1366px){
@@ -59,7 +62,12 @@
     
 }
 @media(max-width:767px){
-    
+    .event-name p{
+        font-size: 18px;
+    }
+    .event-name {
+        line-height: 33px;
+    }
 }
 @media(max-width:575px){
     
