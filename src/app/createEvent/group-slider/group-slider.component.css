@@ -1,6 +1,23 @@
 .group-slider{
     padding-left: 40px;
 }
+.group-single-slide{
+    position: relative;
+}
+.group-single-slide:hover .remove-group{
+    display: block;
+}
+.remove-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0px 10px 0 0;
+    display: none;
+}
+.remove-group i{
+    color: #A6B138;
+    cursor: pointer;
+}
 .add-group button {
     position: absolute;
     left: 16px;
@@ -38,6 +55,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 

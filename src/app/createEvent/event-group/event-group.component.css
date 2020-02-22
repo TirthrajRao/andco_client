@@ -68,7 +68,7 @@
     margin-top: 20px;
 }
 /* option a start */
-/* .sales-inner span{
+.sales-inner span{
     color: #A6B138;
     text-align: center;
     font-size: 30px;
@@ -80,7 +80,7 @@
     margin: auto;
     width: 60%;
     font-size: 22px;
-} */
+} 
 .sales-inner input{
     text-align: center;
     color: #5D6C20;

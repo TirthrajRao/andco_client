@@ -10,6 +10,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 5px 16px;
+    cursor: pointer;
 }
 .event-name p{
     color: #ffffff;
