@@ -5,7 +5,7 @@
     background-color: #5D6C20;
     border-radius: 10px;
     line-height: 50px;
-    margin: 10px;
+    margin: 5px;
     padding: 5px 16px;
     cursor: pointer;
 }
@@ -40,6 +40,21 @@
     position: absolute;
     z-index: 98;
     font-size: 13px;
+}
+.event-single-slide.slick-slide{
+    position: relative;
+}
+
+.event-single-slide.slick-slide .event-name.active::after{
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0px;
+    right: 0px;
+    border: 2px solid #5d6c20;
+    display: block;
+    border-radius: 10px;
 }
 
 @media(max-width:1600px){

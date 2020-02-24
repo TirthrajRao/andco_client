@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { fadeInItems } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
@@ -21,7 +21,8 @@ export class GroupSliderComponent implements OnInit {
   selectedIndex: any;
   constructor(
     private activatedRouter: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private _change: ChangeDetectorRef
   ) {
   }
 
@@ -34,15 +35,11 @@ export class GroupSliderComponent implements OnInit {
 
   }
   ngOnChanges() {
-    console.log("selected activity second time", this.selectedActivity.groups[0]);
+    console.log("selected activity second time", this.selectedActivity);
     if (this.selectedActivity) {
-      console.log("when click on another activity")
-      this.selectedIndex = this.selectedActivity.groups[0]
-      // this.selectedActivity.groups.forEach(singleGroup => {
-      //   console.log("single group details", singleGroup);
-
-
-      // })
+      this._change.detectChanges()
+      this.selectedIndex = 0
+      console.log("when click on another activity", this.selectedIndex)
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
       // this.selectedActivity.groups

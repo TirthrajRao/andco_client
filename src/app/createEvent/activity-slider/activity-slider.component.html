@@ -3,8 +3,12 @@
 </div>
 <div class="event-slider">
     <div class="event-single-slide" *ngFor="let item of allActivities, let i = index">
-        <div class="event-name" (click)="singleActivity.emit({item : item, allActivities: allActivities})">
+        <div class="event-name" (click)="singleActivityDetails(item , allActivities , i)"
+            [class.active]="selectedIndex === i">
             <p>{{item.activity.activityName}}</p>
         </div>
     </div>
 </div>
+
+
+<!-- (click)="singleActivity.emit({item : item, allActivities: allActivities})" -->

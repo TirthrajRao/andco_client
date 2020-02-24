@@ -71,8 +71,8 @@ export class EventGroupComponent implements OnInit {
     console.log(" Allevent Data ", event.allActivities)
     this.allActivities = event.allActivities
     this.selectedActivity = event.item
+    this.selectedGroup = event.item.groups[0]
     console.log("selected activity list", this.selectedActivity)
-    // this.singleActivity.emit(event)
     this.activityDate = event.item.activity.activityStartDate
     console.log("date of selected", this.activityDate);
 

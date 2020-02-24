@@ -18,6 +18,7 @@ export class ActivitySliderComponent implements OnInit {
   eventId
   activityDetails: any = []
   allActivities: any
+  selectedIndex
   constructor(
     private route: ActivatedRoute,
     public eventService: EventService
@@ -76,6 +77,11 @@ export class ActivitySliderComponent implements OnInit {
   }
 
 
+  singleActivityDetails(activity, allActivities, index) {
+    console.log("first one", index);
+    this.singleActivity.emit({ item: activity, allActivities: allActivities, index: index })
+    this.selectedIndex = index
+  }
 
   initSlickSlider() {
 
@@ -125,4 +131,6 @@ export class ActivitySliderComponent implements OnInit {
     });
     //tooltip js end
   }
+
+
 }
