@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,16 +46,16 @@ const routes: Routes = [
         component: CreateEventComponent
       },
       {
-        path: 'eventActivity',
+        path: 'eventActivity/:id',
         component: EventActivityComponent
       },
       {
-        path: 'eventGroup',
+        path: 'eventGroup/:id',
         component: EventGroupComponent
       },
       {
         path: 'activity-slider',
-        component:ActivitySliderComponent
+        component: ActivitySliderComponent
       },
       {
         path: 'group-slider',
@@ -103,6 +104,9 @@ const routes: Routes = [
   exports: [
     LoaderComponent,
     // MatDatepickerModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class HomeModule { }

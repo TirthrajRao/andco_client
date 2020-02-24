@@ -35,4 +35,20 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/event", formdata);
   }
 
+
+
+  /**
+   * @param {Object} data
+   * Add new activity in event 
+   */
+  addActivities(data) {
+    console.log("activity data", data);
+    return this.http.post(config.baseApiUrl + "/activity", data.activity);
+  }
+
+  getEventDetails(eventId) {
+    return this.http.get(config.baseApiUrl + "/event/" + eventId)
+  }
+
+
 }

@@ -109,6 +109,9 @@ button:focus {
     outline: none !important;
     box-shadow: none !important;
 }
+ .slick-track {
+    margin-left: 0 !important;
+}
 
 .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
     background-color: #9D3742;
