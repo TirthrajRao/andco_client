@@ -34,13 +34,18 @@ export class GroupSliderComponent implements OnInit {
 
   }
   ngOnChanges() {
-    console.log("selected activity second time", this.selectedActivity);
+    console.log("selected activity second time", this.selectedActivity.groups[0]);
     if (this.selectedActivity) {
       console.log("when click on another activity")
-      // this.isDisable = true
+      this.selectedIndex = this.selectedActivity.groups[0]
+      // this.selectedActivity.groups.forEach(singleGroup => {
+      //   console.log("single group details", singleGroup);
+
+
+      // })
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
-
+      // this.selectedActivity.groups
       setTimeout(() => {
         this.initGroupSlider()
       }, 50)
