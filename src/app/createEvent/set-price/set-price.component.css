@@ -39,6 +39,11 @@
     color: #686868;
     font-weight: bold;
 }
+.option {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 .single-main-box h3{
     color: #A6B138;
     font-weight: bold;
@@ -72,11 +77,6 @@
     text-align: center;
     font-size: 30px;
 }
-.inner-radio-box{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-}
 .sales-inner p{
     color: #bdbdbd;
     font-weight: 600;
@@ -109,11 +109,12 @@
     font-family: 'Advent Pro', 'sans-sarif';
 }
 .skip {
-    position: absolute;
-    bottom: -40px;
-    left: auto;
-    right: auto;
     width: 100%;
+    margin: 10px 0;
+}
+.skip a{
+    color: #5D6C20;
+    font-size: 14px;
 }
 .thank-you h6{
     color: #A1A1A1;
@@ -134,18 +135,23 @@
 .how-did-u select:focus{
     box-shadow: none;
 }
-button.btn.set-price-custom-button {
+button.btn.set-price-custom-button{
     background-color: #A6B138;
     color: #fff;
-    font-size: 22px;
-    padding: 7px 52px;
+    font-size: 18px;
+    padding: 7px 23px;
     font-weight: 600;
     border: none;
     outline: none;
     border-radius: 10px;
     z-index: 11;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
-
+.how-did-u-input{
+    width: 100% !important;
+}
 /* responsive css start here */
 
 @media(max-width: 1600px){
@@ -200,6 +206,9 @@ button.btn.set-price-custom-button {
     .sales-inner p{
         font-size: 18px;
     }
+    button.btn.set-price-custom-button{
+        padding: 4px 19px;
+    }
 }
 @media(max-width: 991px){
     .sales-inner span ,.hashtag-set-price p{
@@ -229,6 +238,10 @@ button.btn.set-price-custom-button {
         font-size: 18px;
     }
     .how-did-u select{
+        font-size: 16px;
+    }
+    button.btn.set-price-custom-button{
+        bottom: 20px;
         font-size: 16px;
     }
 }
@@ -297,6 +310,10 @@ button.btn.set-price-custom-button {
     }
     .transfer h4 {
         font-size: 16px;
+    }
+    button.btn.set-price-custom-button {
+        padding: 4px 12px;
+        font-size: 14px;
     }
 }
 @media(max-width: 320px){

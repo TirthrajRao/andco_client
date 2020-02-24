@@ -1,10 +1,9 @@
-.inner-radio-box{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-}
-
-
 .hideInput{
     display: none;
+}
+.sales-inner input{
+    width: 100% !important;
+}
+.sales-inner p{
+    text-align: center !important;
 }

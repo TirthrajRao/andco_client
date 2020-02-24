@@ -10,6 +10,8 @@ declare var $: any
 export class SetPriceComponent implements OnInit {
 
   setPriceForm: FormGroup;
+  isEventPlannerSelected;
+  isEventVendorSelected;
 
   constructor() { }
 
@@ -40,4 +42,16 @@ export class SetPriceComponent implements OnInit {
     // set-price main slider js end
   }
 
+  
+  eventPlanner(data) {
+    console.log("-----------------")
+    this.isEventPlannerSelected = true
+    this.isEventVendorSelected = false
+    console.log("this.isEventPlannerSelected", this.isEventPlannerSelected);
+  
+  }
+  eventVendor() {
+    this.isEventVendorSelected = true
+    this.isEventPlannerSelected = false
+  }
 }

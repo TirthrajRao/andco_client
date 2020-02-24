@@ -21,6 +21,7 @@ export class DisplayHomeComponent implements OnInit {
         arrows: false,
         verticalSwiping: true,
         vertical: true,
+        dots: true,
       });
     }, 50)
   }
