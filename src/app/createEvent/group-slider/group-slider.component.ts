@@ -7,7 +7,7 @@ declare var $;
 @Component({
   selector: 'app-group-slider',
   templateUrl: './group-slider.component.html',
-  styleUrls: ['./group-slider.component.css']
+  styleUrls: ['./group-slider.component.css', './../event-group/event-group.component.css'],
 })
 export class GroupSliderComponent implements OnInit {
 
@@ -43,7 +43,7 @@ export class GroupSliderComponent implements OnInit {
 
   ngOnInit() {
     console.log("selected activity id in group page", this.selectedActivity);
-    this.isDisable= true;
+    this.isDisable = true;
     this.initGroupSlider()
     // if (this.selectedActivity) {
     //   this.sendForm(this.selectedActivity)
@@ -86,7 +86,32 @@ export class GroupSliderComponent implements OnInit {
         slidesToScroll: 1,
         adaptiveHeight: true,
         arrows: false,
-
+        responsive: [
+          {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2.5,
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ],
       });
       // group slider end
     }, 50)

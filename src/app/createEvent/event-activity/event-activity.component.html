@@ -1,40 +1,41 @@
 <section class="event-activity-main">
-    <div class="event-add-box">
-        <div class="wrapper">
-            <div class="inner-box">
-                <div class="element">
-                    <form [formGroup]="activityForm">
-                        <div formArrayName="activity">
-                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+    <div class="bg-box-set-price">
+        <div class="event-add-box">
+            <div class="wrapper">
+                <div class="inner-box">
+                    <div class="element">
+                        <form [formGroup]="activityForm">
+                            <div formArrayName="activity">
+                                <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
 
-                                <input type="text" formControlName="activityName" placeholder="Enter activity name">
+                                    <input type="text" formControlName="activityName" placeholder="Enter activity name">
 
-                                <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
-                                    (click)="removeActivityField(i,tech.value)">
-                                    <img src="../../../assets/images/remove.png" alt="remove icon">
-                                </button>
-                                <!-- <span *ngFor="let time of displayTime"> -->
-                                {{displayTime[i]  | date : 'dd'}}
-                                {{displayTime[i]  | date : 'MM'}}
-                                {{displayTime[i]  | date : 'yyyy'}}
-                                <!-- </span> -->
-                                <mat-form-field style="visibility:hidden;">
-                                    <mat-label>Choose a date</mat-label>
-                                    <input matInput [matDatepicker]="picker" [min]="currentDay"
-                                        formControlName="activityStartDate" id="activityStartDate{{i}}"
-                                        (dateChange)="addEvent('input', $event , i)">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
-                                <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
+                                    <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
+                                        (click)="removeActivityField(i,tech.value)">
+                                        <img src="../../../assets/images/remove.png" alt="remove icon">
+                                    </button>
+                                    <!-- <span *ngFor="let time of displayTime"> -->
+                                    {{displayTime[i]  | date : 'dd'}}
+                                    {{displayTime[i]  | date : 'MM'}}
+                                    {{displayTime[i]  | date : 'yyyy'}}
+                                    <!-- </span> -->
+                                    <mat-form-field style="visibility:hidden;">
+                                        <mat-label>Choose a date</mat-label>
+                                        <input matInput [matDatepicker]="picker" [min]="currentDay"
+                                            formControlName="activityStartDate" id="activityStartDate{{i}}"
+                                            (dateChange)="addEvent('input', $event , i)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                    <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="buttons">
         <button class="clone" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     </div>

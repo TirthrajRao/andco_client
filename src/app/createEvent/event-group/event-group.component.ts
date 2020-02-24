@@ -70,13 +70,11 @@ export class EventGroupComponent implements OnInit {
     // this.isFirst = false;
     // console.log("value of group", this.groupForm.value);
 
-    // this.getEventDetails(this.eventId)
-    // this.state$ = this.activatedRoute.paramMap
-    //   .pipe(map(() => window.history.state))
-    // let name = window.history.state
-    // console.log("details of object ", name)
-    // this.activities = name
-    // this.initGroupForm()
+  }
+
+  button(){
+    console.log("=============");
+    
   }
 
   // New Functionality

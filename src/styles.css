@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro|Manjari&display=swap');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 body {
     font-family: 'Manjari', sans-serif;
     padding: 0;
@@ -42,6 +41,14 @@ button:focus {
     margin-top: -10px;
 }
 
+.modal-header, .modal-content, .modal-footer {
+    border: none !important;
+}
+
+.modal-content {
+    border-radius: 30px !important;
+}
+
 /* Show password css start */
 
 .input_with_icont {
@@ -78,6 +85,7 @@ button:focus {
     box-shadow: 0 0 0 30px #7CBBCD inset !important;
     -webkit-text-fill-color: #FFFFFF !important;
 }
+
 /* autofill css end for chrome*/
 
 /*common css end*/
@@ -159,39 +167,107 @@ button:focus {
 .datepicker.dropdown-menu th {
     color: #a5b138;
 }
-.datepicker table tr td.active.active{
+
+.datepicker table tr td.active.active {
     background-color: #a5b138 !important;
 }
-.datepicker table tr td.active{
+
+.datepicker table tr td.active {
     background-image: none !important;
 }
 
 /* date picker css end here */
 
 /* sweet alert design start */
-.swal2-popup{
+
+.swal2-popup {
     padding-top: 7% !important;
 }
+
 img.swal2-image {
     position: absolute;
     top: 5%;
 }
+
 .swal2-icon-success.swal2-show .swal2-title {
     color: #70aa87;
 }
-.swal2-icon.swal2-success [class^=swal2-success-line]{
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
     background-color: #70aa87;
 }
+
 .swal2-icon-error.swal2-show .swal2-title {
     color: #dfa099;
 }
-.swal2-icon.swal2-error [class^=swal2-x-mark-line]{
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
     background-color: #dfa099 !important;
 }
-.swal2-icon.swal2-error{
+
+.swal2-icon.swal2-error {
     border-color: #dfa099 !important;
     color: #dfa099 !important;
 }
+
+/* sweet alert css end */
+
+/* radio button css start here */
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 35px;
+    display: inline-block;
+    color: #bdbdbd;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #CCCCCC;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* radio button css end here */
+
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -207,7 +283,7 @@ img.swal2-image {
         padding: 30px 0 30px 45px;
     }
     /* create  event css end */
-    /* hello text */
+    /* hello text start */
     .hello-text h2 {
         font-size: 34px;
         max-width: 400px;
@@ -215,6 +291,19 @@ img.swal2-image {
     .page-content {
         padding-top: 162px;
     }
+    /* hello text end */
+    /* radio button  start*/
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 11px;
+        height: 11px;
+        top: 7px;
+        left: 8px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 26px;
+        height: 26px;
+    }
+    /* radio button end*/
 }
 
 @media(max-width: 1199px) {
@@ -222,9 +311,32 @@ img.swal2-image {
         min-height: calc(100vh - 190px);
         padding-top: 190px;
     }
+    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+        font-size: 18px;
+        padding: 4px 28px;
+    }
+    /* radio button  start*/
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 20px;
+        height: 20px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label{
+        line-height: 30px;
+    }
+    /* radio button end*/
 }
 
-@media(max-width: 991px) {}
+@media(max-width: 991px) {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        line-height: 25px;
+    }
+}
 
 @media(max-width: 767px) {
     .hello-text h2 {
@@ -233,6 +345,13 @@ img.swal2-image {
     .invalid-feedback {
         font-size: 15px;
         margin-top: -15px;
+    }
+    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+        font-size: 16px;
+        padding: 4px 30px;
+    }
+    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+        bottom: -50px;
     }
 }
 
@@ -270,6 +389,10 @@ img.swal2-image {
     .invalid-feedback {
         font-size: 11px;
         margin-top: -7px;
+    }
+    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+        font-size: 14px;
+        padding: 4px 20px;
     }
 }
 

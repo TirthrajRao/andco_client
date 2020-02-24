@@ -102,16 +102,49 @@ export class ActivitySliderComponent implements OnInit {
   initSlickSlider() {
 
     // event main slider start
-    setTimeout(() => {
-      $('.event-slider').not('.slick-initialized').slick({
-        infinite: false,
-        slidesToShow: 2.5,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        arrows: false,
+    $('.event-slider').slick({
+      infinite: false,
+      slidesToShow: 2.5,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1600,
+          settings: {
+            slidesToShow: 3,
+          }
+        },
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 2.5,
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+      ],
 
-      });
-    }, 50)
+    });
     // event main slider end
+    //tooltip js start
+    $(".tooltip-class").hover(function () {
+      $(this).attr("tooltip-data", $(this).attr("title"));
+      $(this).removeAttr("title");
+    }, function () {
+      $(this).attr("title", $(this).attr("tooltip-data"));
+      $(this).removeAttr("tooltip-data");
+    });
+    //tooltip js end
   }
 }

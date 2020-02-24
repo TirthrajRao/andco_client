@@ -16,6 +16,14 @@
     max-height: 500px;
     width: 600px;
 }
+.bg-box-set-price{
+    background-color: #f3f4f3;
+    width: 1200px;
+    height: 750px;
+    padding: 70px 0;
+    box-shadow: 0px 0px 70px #d5dbd5;
+    margin-top: 40px;
+}
 .wrapper {
     padding-bottom: 80px;
     position: relative;
@@ -117,11 +125,35 @@ button.remove {
 
 /* responsive css start */
 
-
+@media(max-width:1600px){
+    .bg-box-set-price {
+        width: 1040px;
+        height: 620px;
+        padding: 40px 0;
+    }
+}
+@media(max-width:1366px){
+    .bg-box-set-price {
+        width: 870px;
+        height: 490px;
+        padding: 30px 0;
+    }
+    .hashtag-set-price p{
+        margin: 10px 0;
+    }
+}
 @media(max-width:1199px){
-
+    .bg-box-set-price {
+        width: 730px;
+        height: 470px;
+        padding: 20px 0;
+    }
 }
 @media(max-width:991px){
+    .bg-box-set-price {
+        width: 640px;
+        height: 440px;
+    }
     .element input {
         font-size: 22px;
     }
@@ -131,6 +163,10 @@ button.remove {
     }
 }
 @media(max-width:767px){
+    .bg-box-set-price {
+        width: 640px;
+        height: 440px;
+    }
     .wrapper {
         padding-bottom: 60px;
     }
@@ -142,5 +178,21 @@ button.remove {
     }
 }
 @media(max-width:575px){
-    
+    .bg-box-set-price {
+        width: 480px;
+        height: 420px;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+}
+@media(max-width: 480px){
+    .bg-box-set-price {
+        width: 390px;
+    }
+}
+@media(max-width: 400px){
+    .bg-box-set-price {
+        width: 340px;
+        height: 360px;
+    }
 }
