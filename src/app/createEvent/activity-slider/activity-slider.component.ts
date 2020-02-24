@@ -45,52 +45,30 @@ export class ActivitySliderComponent implements OnInit {
       console.log("details of activity", res)
       this.activityDetails = res.data.activity
       this.allActivities = []
-
       this.activityDetails.forEach(activity => {
-         console.log(" activity ", activity);
-         let newAD = {
-           activity: activity,
-           groups: [
-             {
-               name: 'Family',
-               male: [{
-                 itemName: 'Vivek',
-                 itemPrice: 123456
-               }],
-               female: [{
-                itemName: 'DC',
-                itemPrice: 123456
-              }]
-             },
-             {
-              name: 'Friends',
-              male: [{
-                itemName: 'Mohit',
-                itemPrice: 123456
-              }],
-              female: [{
-                itemName: 'Yash',
-                itemPrice: 123456
-              }]
+        console.log(" activity ", activity);
+        let newAD = {
+          activity: activity,
+          groups: [
+            {
+              groupName: 'Family',
+              male: [],
+              female: []
+            },
+            {
+              groupName: 'Friends',
+              male: [],
+              female: []
             }
-           ]
-         }
+          ]
+        }
 
-         this.allActivities.push(newAD)
+        this.allActivities.push(newAD)
       });
-
-      console.log(" allActivities 111111 ",this.allActivities)
-
-      this.initSlickSlider()
-
-      // this.activities = res.data
-      // setTimeout(() => {
-      //   if (res.data) {
-      //     this.activities.push(res.data.activity)
-      //     console.log("name of activities", this.activities)
-      //   }
-      // }, 50)
-      // this.detailsFromEventGroup = res.data.activity
+      console.log(" allActivities 111111 ", this.allActivities)
+      setTimeout(() => {
+        this.initSlickSlider()
+      }, 50)
     }, error => {
       console.log("error while details", error);
 
@@ -102,7 +80,7 @@ export class ActivitySliderComponent implements OnInit {
   initSlickSlider() {
 
     // event main slider start
-    $('.event-slider').slick({
+    $('.event-slider').not('.slick-initialized').slick({
       infinite: false,
       slidesToShow: 2.5,
       slidesToScroll: 1,

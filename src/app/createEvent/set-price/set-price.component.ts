@@ -10,8 +10,9 @@ declare var $: any
 export class SetPriceComponent implements OnInit {
 
   setPriceForm: FormGroup;
-  isEventPlannerSelected;
-  isEventVendorSelected;
+  isTransfer
+  isRegestery
+
 
   constructor() { }
 
@@ -20,9 +21,11 @@ export class SetPriceComponent implements OnInit {
     this.setPriceForm = new FormGroup({
       thanksMessage: new FormControl(''),
       afterEventMessage: new FormControl(''),
+      payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl(''),
-      paymentDeadlineTime: new FormControl('')
+      paymentDeadlineTime: new FormControl(''),
+      isTransfer: new FormControl('')
     })
 
 
@@ -42,16 +45,52 @@ export class SetPriceComponent implements OnInit {
     // set-price main slider js end
   }
 
-  
-  eventPlanner(data) {
-    console.log("-----------------")
-    this.isEventPlannerSelected = true
-    this.isEventVendorSelected = false
-    console.log("this.isEventPlannerSelected", this.isEventPlannerSelected);
-  
+
+  setPrice() {
+    // console.log("payment transfer date value", this.payMentTransfer);
+
+    console.log("value of form", this.setPriceForm.value);
+
   }
-  eventVendor() {
-    this.isEventVendorSelected = true
-    this.isEventPlannerSelected = false
+  paymentCloseDate(data) {
+    console.log("su ave che", data);
+    if (data == 'test5') {
+      this.setPriceForm.patchValue({
+        payMentTransferDate: 'true'
+      });
+      this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
+      this.isTransfer = false
+    } else {
+      this.isTransfer = true
+    }
+  }
+  giftOfEvent(data) {
+    if (data == 'test1') {
+      this.isRegestery = false
+    } else {
+      this.isRegestery = true
+    }
+  }
+  getDate(event) {
+    console.log("hello ===>", event.target.value);
+    this.setPriceForm.patchValue({
+      payMentTransferDate: event.target.value
+    });
+    this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
+  }
+
+  selectedValue(event) {
+    console.log("value of logistics", event.target.id);
+    let selected = event.target.id
+    if (selected == 'test7') {
+      this.setPriceForm.patchValue({
+        isLogistics: 'true'
+      })
+    } else {
+      this.setPriceForm.patchValue({
+        isLogistics: 'false'
+      })
+    }
+
   }
 }

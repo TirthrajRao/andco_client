@@ -7,47 +7,50 @@
             <div class="sales-inner sales-inner-box-main-box">
                 <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)">
                 </app-activity-slider>
-                <div class="event-date-box">
-                    <h4>Event Date: <span>20-02-20</span></h4>
+                <div class="event-date-box" *ngIf="isDisable">
+                    <h4>Event Date: <span>{{activityDate | date}}</span></h4>
                 </div>
                 <div class="group-box" *ngIf="isDisable">
                     <app-group-slider [selectedActivity]="selectedActivity" (singleGroup)="getGroup($event)"
                         (firstGroup)="getFamily($event)">
                     </app-group-slider>
                     <div class="row m-0">
-                        <div class="col-md-6">
+                        <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.male">
                             <h6 class="text-left">
                                 <img src="../../../assets/images/male.png" class="icon-img" alt="male icon"> Male
                             </h6>
                             <div class="inner-box-group">
                                 <ul>
-                                    <li class="w-100 d-inline-block" *ngFor="let item of selectedActivity.groups">
+                                    <li class="w-100 d-inline-block"
+                                        *ngFor="let item of selectedGroup.male; let i =index">
                                         <h5 class="float-left">{{item.itemName}}</h5>
                                         <h5 class="float-right">{{item.itemPrice}}</h5>
-                                        <div class="delete-icon" (click)="button()">
+                                        <div class="delete-icon" (click)="removeMaleItem(item , i)">
                                             <img src="../../../assets/images/bin.png" alt="delete icon">
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                             <button class="btn add-btn" data-toggle="modal" data-target="#addMaleItemModal">Add</button>
-
                         </div>
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.female">
                             <h6 class="text-left">
                                 <img src="../../../assets/images/girl.png" class="icon-img" alt="female icon"> Female
                             </h6>
                             <div class="inner-box-group">
-                                <ul *ngIf="displayObject && displayObject[selectedGroup]">
-                                    <li *ngFor="let item of displayObject[selectedGroup].femaleItems">
+                                <ul>
+                                    <li *ngFor="let item of selectedGroup.female">
                                         <h5 class="float-left">{{item.itemName}}</h5>
                                         <h5 class="float-right">{{item.itemPrice}}</h5>
+                                        <div class="delete-icon" (click)="removeFemaleItem(item , i)">
+                                            <img src="../../../assets/images/bin.png" alt="delete icon">
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
                             <button class="btn add-btn" data-toggle="modal"
                                 data-target="#addFemaleItemModal">Add</button>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="next-back-button mt-2 w-100 d-inline-block">
@@ -59,93 +62,51 @@
     </div>
 </section>
 
-<!-- add group modal content start -->
-<div class="modal" id="addGroupItemModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="add-items">
-                    <input type="text" placeholder="Enter group name">
-                </div>
-            </div>
-            <div class="modal-footer" *ngIf="isDisable">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal">Add</button>
+    <!-- male modal content start -->
 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- add group modal content end -->
-<!-- male modal content start -->
-
-<div class="modal" id="addMaleItemModal" *ngIf="isDisable">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- <form [formGroup]="groupForm">
-                    <div formArrayName="group">
-                        <div [formGroupName]="i" *ngFor="let item of groupFormData.controls; let i = index"> -->
-            <!-- <div formArrayName="male">
-                                <div [formGroupName]="k"
-                                    *ngFor="let group of item.controls.male.controls; let k =index " > -->
-            <div class="modal-body">
-                <div class="add-items">
-                    <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName">
-                    <input type="number" placeholder="Enter Item Price" [(ngModel)]="object.itemPrice">
-                </div>
-            </div>
-            <!-- </div>
-                            </div> -->
-            <div class="modal-footer">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
-                    (click)="addMaleItmes(object)">Add</button>
-            </div>
-            <!-- </div>
-                    </div>
-                </form> -->
-        </div>
-    </div>
-</div>
-
-<!-- male modal content end -->
-<!-- female modal content start -->
-
-
-<!-- <div class="modal" id="addFemaleItemModal" *ngIf="isDisable">
+    <div class="modal" id="addMaleItemModal" *ngIf="isDisable">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <form [formGroup]="groupForm">
-                    <div formArrayName="group">
-                        <div [formGroupName]="i" *ngFor="let item of groupFormData.controls; let i = index">
-                            <div formArrayName="female">
-                                <div [formGroupName]="j"
-                                    *ngFor="let group of item.controls.female.controls; let j =index ">
-                                    <div class="modal-body">
-                                        <div class="add-items">
-                                            <input type="text" placeholder="Enter item name" formControlName="itemName">
-                                            <input type="text" placeholder="Enter item price"
-                                                formControlName="itemPrice">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
-                                    (click)="addFemaleItmes(item.controls.female.value)">Add</button>
-                            </div>
-                        </div>
+                <div class="modal-body">
+                    <div class="add-items">
+                        <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName">
+                        <input type="number" placeholder="Enter Item Price" [(ngModel)]="object.itemPrice">
                     </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
+                        (click)="addMaleItmes(object)">Add</button>
+                </div>
             </div>
         </div>
-    </div> -->
+    </div>
+
+<!-- male modal content end -->
+<!-- female modal content start -->
+
+
+    <div class="modal" id="addFemaleItemModal" *ngIf="isDisable">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="add-items">
+                        <input type="text" placeholder="Enter item name" [(ngModel)]="femaleObject.itemName">
+                        <input type="number" placeholder="Enter item price" [(ngModel)]="femaleObject.itemPrice">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
+                        (click)="addFemaleItmes(femaleObject)">Add</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 <!-- female modal content end -->
