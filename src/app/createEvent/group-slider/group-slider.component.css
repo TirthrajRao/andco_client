@@ -57,8 +57,29 @@
     white-space: nowrap;
     cursor: pointer;
 }
-
-
+/* .group-single-slide.slick-slide{
+    padding: 6px;
+}
+.group-single-slide.slick-slide .group-name.active{
+    border: 2px solid red;
+    border-radius: 14px;
+    padding: 6px 0;
+} */
+.group-single-slide.slick-slide{
+    position: relative;
+    margin: 5px 4px;
+}
+.group-single-slide.slick-slide .group-name.active::after{
+    content: "";
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -1px;
+    right: -1px;
+    border: 2px solid #FAFEB0;
+    display: block;
+    border-radius: 10px;
+}
 @media(max-width:1600px){
     .group-header span{
         font-size: 18px;
