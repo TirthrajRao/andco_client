@@ -69,7 +69,8 @@ export class EventGroupComponent implements OnInit {
     this.isDisable = true
     console.log("he bhagvan ama avi jaje kaik", event);
     this.selectedActivity = event
-    this.singleActivity.emit(event)
+    console.log("selected activity list", this.selectedActivity)
+    // this.singleActivity.emit(event)
     this.activityDate = event.activity.activityStartDate
     console.log("date of selected", this.activityDate);
 

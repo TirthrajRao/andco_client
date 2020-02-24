@@ -28,25 +28,23 @@ export class GroupSliderComponent implements OnInit {
     console.log("selected activity id in group page", this.selectedActivity);
     if (this.selectedActivity) {
       this.isDisable = true;
-      this.initGroupSlider()
+      // this.initGroupSlider()
     }
   }
   ngOnChanges() {
     console.log("selected activity second time", this.selectedActivity);
-    this.isDisable = true
-    this.initGroupSlider()
+    if (this.selectedActivity) {
+      console.log("when click on another activity")
+      // this.isDisable = true
+      setTimeout(() => {
+        this.initGroupSlider()
+      }, 50)
+    }
     // if (this.selectedActivity) {
     //   this.sendForm(this.selectedActivity)
     // }
   }
 
-  getEventDetails(eventId) {
-    this.eventService.getEventDetails(eventId).subscribe((res: any) => {
-      console.log("details of event", res)
-    }, error => {
-      console.log("error while get details of event", error)
-    })
-  }
 
   sendData(item) {
     console.log(" item ", item)
@@ -92,12 +90,6 @@ export class GroupSliderComponent implements OnInit {
         ],
       })
     }, 50)
-  }
-
-
-  handleChange(event) {
-    console.log("ama su ave che e jovanu", event);
-
   }
 
 
