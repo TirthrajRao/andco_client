@@ -22,7 +22,17 @@ export class DisplayHomeComponent implements OnInit {
         verticalSwiping: true,
         vertical: true,
         dots: true,
+        pauseOnHover: false,
+        
       });
     }, 50)
+    $('.display-screen-slider').on('wheel', (function(e) {
+      e.preventDefault();
+      if (e.originalEvent.deltaY < 0) {
+        $(this).slick('slickPrev');
+      } else {
+        $(this).slick('slickNext');
+      }
+    }));
   }
 }
