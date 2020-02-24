@@ -15,39 +15,26 @@ export class GroupSliderComponent implements OnInit {
   @Output() firstGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
-  // sub: any
-  // eventId: any
-  // groupOfEvent = [
-  //   {
-  //     _id: 1,
-  //     groupName: 'family'
-  //   },
-  //   {
-  //     _id: 2,
-  //     groupName: 'friends'
-  //   }
-
-  // ]
-
+  groupName
+  $slideContainter;
+  $slider;
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService
   ) {
-    // this.sub = this.activatedRouter.params.subscribe(params => {
-    //   console.log("event id ", params.id)
-    //   this.eventId = params.id
-    //   console.log("getting event id", this.eventId)
-    //   // this.getEventDetails(this.eventId)
-    // })
   }
 
   ngOnInit() {
     console.log("selected activity id in group page", this.selectedActivity);
-    this.isDisable = true;
-    this.initGroupSlider()
+    if (this.selectedActivity) {
+      this.isDisable = true;
+      this.initGroupSlider()
+    }
   }
   ngOnChanges() {
     console.log("selected activity second time", this.selectedActivity);
+    this.isDisable = true
+    this.initGroupSlider()
     // if (this.selectedActivity) {
     //   this.sendForm(this.selectedActivity)
     // }
@@ -70,9 +57,8 @@ export class GroupSliderComponent implements OnInit {
 
   initGroupSlider() {
     setTimeout(() => {
-
-      // group slider start
-      $('.group-slider').slick({
+      this.$slideContainter = $('.group-slider')
+      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
         infinite: false,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -104,8 +90,64 @@ export class GroupSliderComponent implements OnInit {
             }
           },
         ],
-      });
-      // group slider end
+      })
+    }, 50)
+  }
+
+
+  handleChange(event) {
+    console.log("ama su ave che e jovanu", event);
+
+  }
+
+
+  addGroup(data) {
+    console.log("is it call or not=======", data);
+
+    let newGroup = {
+      groupName: data,
+      male: [],
+      female: []
+    }
+    this.selectedActivity.groups.push(newGroup)
+    this.groupName = ''
+    console.log("new group added", this.selectedActivity);
+    this.$slideContainter = $('.group-slider');
+    this.$slideContainter.slick('unslick');
+    setTimeout(() => {
+      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2.5,
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ],
+      })
     }, 50)
   }
 }

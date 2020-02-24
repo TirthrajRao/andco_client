@@ -51,26 +51,14 @@ export class ActivitySliderComponent implements OnInit {
           activity: activity,
           groups: [
             {
-              name: 'Family',
-              male: [{
-                itemName: '',
-                itemPrice: ''
-              }],
-              female: [{
-                itemName: '',
-                itemPrice: ''
-              }]
+              groupName: 'Family',
+              male: [],
+              female: []
             },
             {
-              name: 'Friends',
-              male: [{
-                itemName: '',
-                itemPrice: ''
-              }],
-              female: [{
-                itemName: '',
-                itemPrice: ''
-              }]
+              groupName: 'Friends',
+              male: [],
+              female: []
             }
           ]
         }

@@ -86,12 +86,16 @@ export class EventGroupComponent implements OnInit {
   addMaleItmes(itemDetails) {
 
     console.log("itemDetails", itemDetails)
-    this.selectedGroup.male.push(itemDetails)
+    let maleObject = {
+      itemName: itemDetails.itemName,
+      itemPrice: itemDetails.itemPrice
+    }
+
+    this.selectedGroup.male.push(maleObject)
     this.object = {
       itemName: '',
       itemPrice: Number
     }
-
     console.log("male details", this.selectedGroup.male);
 
   }
@@ -100,17 +104,28 @@ export class EventGroupComponent implements OnInit {
   removeMaleItem(data, index) {
     console.log("data to be removed", data);
     console.log("index of removed", index);
-
-
+    this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+    console.log("baki ni male items", this.selectedGroup.male);
   }
 
   addFemaleItmes(data) {
     console.log("list of female items", data);
-    this.selectedGroup.female.push(data)
+    let femaleObject = {
+      itemName: data.itemName,
+      itemPrice: data.itemPrice
+    }
+    this.selectedGroup.female.push(femaleObject)
     this.femaleObject = {
       itemName: '',
       itemPrice: Number
     }
+
+  }
+
+  removeFemaleItem(data, index) {
+    this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
+    console.log("rest of female items========", this.selectedGroup.female);
+
   }
 
 

@@ -3,48 +3,34 @@
         <button class="btn" data-toggle="modal" data-target="#addGroupItemModal">+</button>
     </div>
     <div class="group-slider">
-        <div class="group-single-slide active" *ngFor="let item of selectedActivity.groups, let i = index">
-            <div class="group-name"  (click)="sendData(item)">
-                <span>{{item.name}}</span>
+        <div class="group-single-slide" *ngFor="let item of selectedActivity.groups, let i = index; ">
+            <div class="group-name" (click)="sendData(item)">
+                <span>{{item.groupName}}</span>
             </div>
         </div>
-        <!-- <div class="group-single-slide">
-            <div class="group-name">
-                <span title="Friend">Friend Friend FriendFriendFriendFriend</span>
+    </div>
+</div>
+<!-- add group modal content end -->
+
+
+
+<!-- add group modal content start -->
+<div class="modal" id="addGroupItemModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="remove-group">
-                <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="modal-body">
+                <div class="add-items">
+                    <input type="text" placeholder="Enter group name" [(ngModel)]="groupName">
+                </div>
             </div>
-        </div>
-        <div class="group-single-slide">
-            <div class="group-name">
-                <span>Family</span>
-            </div>
-            <div class="remove-group">
-                <i class="fa fa-minus" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="group-single-slide">
-            <div class="group-name">
-                <span>Friend</span>
-            </div>
-            <div class="remove-group">
-                <i class="fa fa-minus" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="group-single-slide">
-            <div class="group-name">
-                <span>Family</span>
-            </div>
-            <div class="remove-group">
-                <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="modal-footer" *ngIf="isDisable">
+                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
+                    (click)="addGroup(groupName)">Add</button>
             </div>
         </div>
-        <div class="group-single-slide">
-            <div class="group-name">
-                <span>Friend</span>
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- add group modal content end -->
