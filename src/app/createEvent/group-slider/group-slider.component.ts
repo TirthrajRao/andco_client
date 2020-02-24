@@ -36,7 +36,10 @@ export class GroupSliderComponent implements OnInit {
     if (this.selectedActivity) {
       console.log("when click on another activity")
       // this.isDisable = true
-      setTimeout(() => {
+      this.$slideContainter = $('.group-slider');
+      this.$slideContainter.slick('unslick');
+      
+      setTimeout(() => {  
         this.initGroupSlider()
       }, 50)
     }

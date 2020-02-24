@@ -22,6 +22,7 @@ export class EventGroupComponent implements OnInit {
   // userName = JSON.parse(sessionStorage.getItem('userName'));
   // state$: Observable<object>;
   activities;
+  allActivities: any
   sub: any;
   eventId
   selectedActivity: any;
@@ -65,13 +66,14 @@ export class EventGroupComponent implements OnInit {
   // New Functionality
 
   getActivity(event) {
-
     this.isDisable = true
     console.log("he bhagvan ama avi jaje kaik", event);
-    this.selectedActivity = event
+    console.log(" Allevent Data ", event.allActivities)
+    this.allActivities = event.allActivities
+    this.selectedActivity = event.item
     console.log("selected activity list", this.selectedActivity)
     // this.singleActivity.emit(event)
-    this.activityDate = event.activity.activityStartDate
+    this.activityDate = event.item.activity.activityStartDate
     console.log("date of selected", this.activityDate);
 
   }
@@ -82,6 +84,11 @@ export class EventGroupComponent implements OnInit {
     console.log("right now activated activity", this.selectedGroup);
   }
 
+
+  addGroup() {
+    console.log("value of group form");
+    console.log(this.allActivities)
+  }
 
 
   addMaleItmes(itemDetails) {
@@ -329,10 +336,6 @@ export class EventGroupComponent implements OnInit {
 
 
 
-  // addGroup() {
-  //   console.log("value of group form", this.groupForm.value);
-
-  // }
 
 
 }
