@@ -18,6 +18,7 @@ export class GroupSliderComponent implements OnInit {
   groupName
   $slideContainter;
   $slider;
+  selectedIndex: any;
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService
@@ -30,6 +31,7 @@ export class GroupSliderComponent implements OnInit {
       this.isDisable = true;
       // this.initGroupSlider()
     }
+
   }
   ngOnChanges() {
     console.log("selected activity second time", this.selectedActivity);
@@ -38,19 +40,21 @@ export class GroupSliderComponent implements OnInit {
       // this.isDisable = true
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
-      
-      setTimeout(() => {  
+
+      setTimeout(() => {
         this.initGroupSlider()
       }, 50)
     }
     // if (this.selectedActivity) {
     //   this.sendForm(this.selectedActivity)
     // }
+
   }
 
 
-  sendData(item) {
-    console.log(" item ", item)
+  sendData(item, index) {
+    console.log(" item ", item, index)
+    this.selectedIndex = index
     this.singleGroup.emit(item)
   }
 
