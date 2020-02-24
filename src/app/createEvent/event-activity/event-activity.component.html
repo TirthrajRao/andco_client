@@ -1,37 +1,40 @@
 <section class="event-activity-main">
     <div class="bg-box-set-price">
-        <div class="event-add-box">
-            <div class="wrapper">
-                <div class="inner-box">
-                    <div class="element">
-                        <form [formGroup]="activityForm">
-                            <div formArrayName="activity">
-                                <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
-
-                                    <input type="text" formControlName="activityName" placeholder="Enter activity name">
-
-                                    <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
-                                        (click)="removeActivityField(i,tech.value)">
-                                        <img src="../../../assets/images/remove.png" alt="remove icon">
-                                    </button>
-                                    <!-- <span *ngFor="let time of displayTime"> -->
-                                    {{displayTime  | date : 'dd'}}
-                                    {{displayTime  | date : 'MM'}}
-                                    {{displayTime  | date : 'yyyy'}}
-                                    <!-- </span> -->
-                                    <mat-form-field style="visibility:hidden;">
-                                        <mat-label>Choose a date</mat-label>
-                                        <input matInput [matDatepicker]="picker" [min]="currentDay"
-                                            formControlName="activityStartDate" id="activityStartDate{{i}}"
-                                            (dateChange)="addEvent('input', $event , i)">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
+        <div class="wrapper">
+            <div class="inner-box">
+                <div class="element">
+                    <form [formGroup]="activityForm">
+                        <div formArrayName="activity">
+                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                <input type="text" formControlName="activityName" placeholder="Enter activity name">
+                                <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
+                                    (click)="removeActivityField(i,tech.value)">
+                                    <img src="../../../assets/images/remove.png" alt="remove icon">
+                                </button>
+                                <!-- <span *ngFor="let time of displayTime"> -->
+                                <div class="w-100">
+                                    <div class="date-display">
+                                        <p>{{displayTime  | date : 'dd'}}</p>
+                                    </div>
+                                    <div class="date-display">
+                                        <p>{{displayTime  | date : 'MM'}}</p>
+                                    </div>
+                                    <div class="date-display">
+                                        <p>{{displayTime  | date : 'yyyy'}}</p>
+                                    </div>
                                     <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
                                 </div>
+                                <!-- </span> -->
+                                <mat-form-field style="visibility: hidden;">
+                                    <input matInput [matDatepicker]="picker" [min]="currentDay"
+                                        formControlName="activityStartDate" id="activityStartDate{{i}}"
+                                        (dateChange)="addEvent('input', $event , i)">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

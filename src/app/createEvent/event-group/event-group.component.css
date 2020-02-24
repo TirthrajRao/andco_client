@@ -319,6 +319,9 @@ h5.item-name, h5.item-price{
     .next-back-button button{
         font-size: 16px;
     }
+    .hashtag h2 {
+        font-size: 24px;
+    }
 }
 @media(max-width:767px){
     .bg-box-set-price{
