@@ -103,6 +103,7 @@
     margin: auto;
     text-align: center;
     position: relative;
+    padding-bottom: 70px;
 }
 .transfer h4{
     font-family: 'Advent Pro', 'sans-sarif';
@@ -133,6 +134,18 @@
 .how-did-u select:focus{
     box-shadow: none;
 }
+button.btn.set-price-custom-button {
+    background-color: #A6B138;
+    color: #fff;
+    font-size: 22px;
+    padding: 7px 52px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    z-index: 11;
+}
+
 /* responsive css start here */
 
 @media(max-width: 1600px){
