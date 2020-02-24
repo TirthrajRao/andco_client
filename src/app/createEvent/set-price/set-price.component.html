@@ -4,99 +4,108 @@
             <div class="hashtag-set-price">
                 <p>#Wonder2019</p>
             </div>
-            <div class="set-price-main-slider">
-                <div class="sales-inner sales-inner-box-message">
-                    <app-bank-details></app-bank-details>
-                </div>
-                <div class="sales-inner sales-inner-box-message">
-                    <div class="single-main-box">
-                        <h3>Your welcome message </h3>
-                        <textarea placeholder="Thank you for stopping by. We appreciate it."></textarea>
+            <form [formGroup]="setPriceForm">
+                <div class="set-price-main-slider">
+                    <div class="sales-inner sales-inner-box-message">
+                        <app-bank-details></app-bank-details>
                     </div>
-                    <div class="single-main-box mt-sm-4">
-                        <h3>After Payment message</h3>
-                        <textarea placeholder="Thank you for stopping by. We appreciate it."></textarea>
-                    </div>
-                </div>
-                <div class="sales-inner sales-inner-box-option">
-                    <div class="option">
-                        <span>Would you prefer your guests not bring a present, but gift you with:</span>
-                        <div class="inner-radio-box">
-                            <div>
-                                <p><input type="radio" name="radio1" id="test1" checked> <label for="test1">Cash</label>
-                                </p>
-                                <p><input type="radio" name="radio1" id="test2"> <label for="test2">Contribute your
-                                        registry</label>
-                                </p>
-                            </div>
+                    <div class="sales-inner sales-inner-box-message">
+                        <div class="single-main-box">
+                            <h3>Your welcome message </h3>
+                            <textarea formControlName="thanksMessage"
+                                placeholder="Thank you for stopping by. We appreciate it."></textarea>
                         </div>
-                        <input type="text" value="" name="" placeholder="Your registry link">
-                    </div>
-                    <div class="skip">
-                        <a href="#">Skip</a>
-                    </div>
-                </div>
-                <div class="sales-inner sales-inner-box-option transfer">
-                    <div class="option">
-                        <span>Transfer to my account</span>
-                        <div class="inner-radio-box">
-                            <div>
-                                <p><input type="radio" name="radio3" id="test5" checked> <label
-                                        for="test5">instantly</label>
-                                </p>
-                                <p><input type="radio" name="radio3" id="test6"> <label for="test6">on later
-                                        date</label>
-                                </p>
-                            </div>
-                        </div>
-                        <input type="date" placeholder="DD-MM-YY">
-                        <h4>(this option saves you on alert charges)</h4>
-                    </div>
-                </div>
-                <div class="sales-inner sales-inner-box-option">
-                    <div class="option">
-                        <span>I would like andco to handle my delivery</span>
-                        <div class="inner-radio-box">
-                            <div>
-                                <p><input type="radio" name="radio4" id="test7" checked> <label for="test7">yes</label></p>
-                                <p><input type="radio" name="radio4" id="test8"> <label for="test4">no</label>
-                                </p>
-                            </div>
+                        <div class="single-main-box mt-sm-4">
+                            <h3>After Payment message</h3>
+                            <textarea formControlName="afterEventMessage"
+                                placeholder="Thank you for stopping by. We appreciate it."></textarea>
                         </div>
                     </div>
-                </div>
-                <div class="sales-inner sales-inner-box-option">
-                    <div class="option">
-                        <span>Close collections for my event on</span>
-                        <div class="inner-radio-box">
-                            <div>
-                                <input type="date" value="" name="" placeholder="Bank Name" class="mb-2">
-                                <input type="time" value="" name="" placeholder="Account Number">
-                                <h6 class="mt-2">West Africa Standard Time</h6>
+                    <div class="sales-inner sales-inner-box-option">
+                        <div class="option">
+                            <span>Would you prefer your guests not bring a present, but gift you with:</span>
+                            <div class="inner-radio-box">
+                                <div>
+                                    <p><input type="radio" name="radio1" id="test1" checked> <label
+                                            for="test1">Cash</label>
+                                    </p>
+                                    <p><input type="radio" name="radio1" id="test2"> <label for="test2">Contribute your
+                                            registry</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <input type="text" value="" name="" placeholder="Your registry link">
+                        </div>
+                        <div class="skip">
+                            <a href="#">Skip</a>
+                        </div>
+                    </div>
+                    <div class="sales-inner sales-inner-box-option transfer">
+                        <div class="option">
+                            <span>Transfer to my account</span>
+                            <div class="inner-radio-box">
+                                <div>
+                                    <p><input type="radio" name="radio3" id="test5" checked> <label
+                                            for="test5">instantly</label>
+                                    </p>
+                                    <p><input type="radio" name="radio3" id="test6"> <label for="test6">on later
+                                            date</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <input type="date" placeholder="DD-MM-YY">
+                            <h4>(this option saves you on alert charges)</h4>
+                        </div>
+                    </div>
+                    <div class="sales-inner sales-inner-box-option">
+                        <div class="option">
+                            <span>I would like andco to handle my delivery</span>
+                            <div class="inner-radio-box">
+                                <div>
+                                    <p><input type="radio" name="radio4" id="test7" checked> <label
+                                            for="test7">yes</label></p>
+                                    <p><input type="radio" name="radio4" id="test8"> <label for="test4">no</label>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="sales-inner sales-inner-box-option thank-you">
-                    <div class="option">
-                        <span>Thank you.<br>Your event #Wonder2019 is now live</span>
-                        <h6>yayy, tell us one more thing</h6>
+                    <div class="sales-inner sales-inner-box-option">
+                        <div class="option">
+                            <span>Close collections for my event on</span>
+                            <div class="inner-radio-box">
+                                <div>
+                                    <input type="date" value="" name="" formControlName="paymentDeadlineDate"
+                                        placeholder="Bank Name" class="mb-2">
+                                    <input type="time" value="" name="" formControlName="paymentDeadlineTime"
+                                        placeholder="Account Number">
+                                    <h6 class="mt-2">West Africa Standard Time</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sales-inner sales-inner-box-option thank-you">
+                        <div class="option">
+                            <span>Thank you.<br>Your event #Wonder2019 is now live</span>
+                            <h6>yayy, tell us one more thing</h6>
+                        </div>
+                    </div>
+                    <div class="sales-inner sales-inner-box-option">
+                        <div class="option how-did-u">
+                            <span>How did you hear about andco</span>
+                            <select class="form-control w-75 m-auto" name="" id="">
+                                <option value=""></option>
+                                <option value="">option 2</option>
+                                <option value="">option 3</option>
+                                <option value="">option 4</option>
+                                <option value="">option 5</option>
+                                <option value="">option 6</option>
+                            </select>
+                        </div>
+                        <button class="btn set-price-custom-button">Submit</button>
                     </div>
                 </div>
-                <div class="sales-inner sales-inner-box-option">
-                    <div class="option how-did-u">
-                        <span>How did you hear about andco</span>
-                        <select class="form-control w-75 m-auto" name="" id="">
-                            <option value=""></option>
-                            <option value="">option 2</option>
-                            <option value="">option 3</option>
-                            <option value="">option 4</option>
-                            <option value="">option 5</option>
-                            <option value="">option 6</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>

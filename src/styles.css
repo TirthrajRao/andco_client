@@ -159,6 +159,9 @@ button:focus {
 .set-price-main-slider button.nextarrow.slick-arrow {
     right: 0;
 }
+.set-price-main-slider button.nextarrow.slick-arrow.slick-disabled{
+    display: none !important;
+}
 
 /* set-price css end here */
 
