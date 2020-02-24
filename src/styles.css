@@ -98,7 +98,9 @@ button:focus {
     align-items: center;
     padding-top: 232px;
 }
+
 /* display screen slider start */
+
 .display-screen-slider ul.slick-dots {
     position: fixed;
     top: 0;
@@ -109,13 +111,15 @@ button:focus {
     margin: auto 0;
     border-radius: 30px;
 }
+
 .display-screen-slider ul.slick-dots li {
     list-style: none;
     line-height: normal;
     display: table;
     padding: 7px;
 }
-.display-screen-slider ul.slick-dots li button{
+
+.display-screen-slider ul.slick-dots li button {
     background-color: #fff;
     border-radius: 50%;
     font-size: 0;
@@ -128,30 +132,39 @@ button:focus {
     box-shadow: 0px 0px 10px #757575 !important;
     border: 2px solid #fff;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control00{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control00 {
     background-color: #474f34;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control01{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control01 {
     background-color: #fbccd6;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control02{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control02 {
     background-color: #7e89a3;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control03{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control03 {
     background-color: #a55468;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control04{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control04 {
     background-color: #585438;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control05{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control05 {
     background-color: #b9a565;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control06{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control06 {
     background-color: #293046;
 }
-.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control07{
+
+.display-screen-slider ul.slick-dots li.slick-active button#slick-slide-control07 {
     background-color: #6c6f50;
 }
+
 /* display screen slider end */
 
 /* create event css start here */
@@ -164,7 +177,8 @@ button:focus {
     outline: none !important;
     box-shadow: none !important;
 }
- .slick-track {
+
+.slick-track {
     margin-left: 0 !important;
 }
 
@@ -215,7 +229,8 @@ button:focus {
 .set-price-main-slider button.nextarrow.slick-arrow {
     right: 0;
 }
-.set-price-main-slider button.nextarrow.slick-arrow.slick-disabled{
+
+.set-price-main-slider button.nextarrow.slick-arrow.slick-disabled {
     display: none !important;
 }
 
@@ -385,7 +400,7 @@ img.swal2-image {
         width: 20px;
         height: 20px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label{
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         line-height: 30px;
     }
     /* radio button end*/
