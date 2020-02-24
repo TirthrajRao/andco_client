@@ -57,14 +57,6 @@
     white-space: nowrap;
     cursor: pointer;
 }
-/* .group-single-slide.slick-slide{
-    padding: 6px;
-}
-.group-single-slide.slick-slide .group-name.active{
-    border: 2px solid red;
-    border-radius: 14px;
-    padding: 6px 0;
-} */
 .group-single-slide.slick-slide{
     position: relative;
     margin: 5px 4px;

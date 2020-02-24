@@ -7,6 +7,9 @@
             <div class="group-name" (click)="sendData(item , i)" [class.active]="selectedIndex === i">
                 <span>{{item.groupName}}</span>
             </div>
+            <div class="remove-group">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+            </div>
         </div>
     </div>
 </div>
