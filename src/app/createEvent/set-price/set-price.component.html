@@ -26,15 +26,18 @@
                             <span>Would you prefer your guests not bring a present, but gift you with:</span>
                             <div class="inner-radio-box">
                                 <div>
-                                    <p><input type="radio" name="radio1" id="test1" checked> <label
-                                            for="test1">Cash</label>
+                                    <p><input type="radio" name="radio1" id="test1" (click)="giftOfEvent('test1')"
+                                            checked> <label for="test1">Cash</label>
                                     </p>
-                                    <p><input type="radio" name="radio1" id="test2"> <label for="test2">Contribute your
+                                    <p><input type="radio" name="radio1" id="test2" (click)="giftOfEvent('test2')">
+                                        <label for="test2">Contribute your
                                             registry</label>
                                     </p>
                                 </div>
                             </div>
-                            <input type="text" value="" name="" placeholder="Your registry link">
+                            <div [hidden]="!isRegestery">
+                                <input type="text" value="" name="" placeholder="Your registry link">
+                            </div>
                         </div>
                         <div class="skip">
                             <a href="#">Skip</a>
@@ -45,16 +48,21 @@
                             <span>Transfer to my account</span>
                             <div class="inner-radio-box">
                                 <div>
-                                    <p><input type="radio" name="radio3" id="test5" checked> <label
-                                            for="test5">instantly</label>
+                                    <p><input type="radio" name="radio3" id="test5" value="test5"
+                                            (click)="paymentCloseDate('test5')">
+                                        <label for="test5">instantly</label>
                                     </p>
-                                    <p><input type="radio" name="radio3" id="test6"> <label for="test6">on later
+                                    <p><input type="radio" (change)="paymentCloseDate('test6')" name="radio3"
+                                            id="test6">
+                                        <label for="test6">on later
                                             date</label>
                                     </p>
                                 </div>
                             </div>
-                            <input type="date" placeholder="DD-MM-YY">
-                            <h4>(this option saves you on alert charges)</h4>
+                            <div [hidden]="!isTransfer">
+                                <input type="date" placeholder="DD-MM-YY" (change)="getDate($event)">
+                                <h4>(this option saves you on alert charges)</h4>
+                            </div>
                         </div>
                     </div>
                     <div class="sales-inner sales-inner-box-option">
@@ -62,9 +70,10 @@
                             <span>I would like andco to handle my delivery</span>
                             <div class="inner-radio-box">
                                 <div>
-                                    <p><input type="radio" name="radio4" id="test7" checked> <label
-                                            for="test7">yes</label></p>
-                                    <p><input type="radio" name="radio4" id="test8"> <label for="test4">no</label>
+                                    <p><input type="radio" (change)="selectedValue($event)" name="radio4" id="test7">
+                                        <label for="test7">yes</label></p>
+                                    <p><input type="radio" name="radio4" id="test8" (change)="selectedValue($event)">
+                                        <label for="test8">no</label>
                                     </p>
                                 </div>
                             </div>
@@ -102,7 +111,7 @@
                                 <option value="">option 6</option>
                             </select>
                         </div>
-                        <button class="btn set-price-custom-button">Submit</button>
+                        <button class="btn set-price-custom-button" (click)="setPrice()">Submit</button>
                     </div>
                 </div>
             </form>

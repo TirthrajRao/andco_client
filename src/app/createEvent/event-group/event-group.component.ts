@@ -25,22 +25,17 @@ export class EventGroupComponent implements OnInit {
   sub: any;
   eventId
   selectedActivity: any;
-  // single
-  // selectedActivity
-  // gArray: any[];
-  // selectedActivityToAddGroup
-  // maleItems: any = []
-  // femaleItems: any = []
-  // displayMailObject = {}
-  // displayObject = {}
-  // selectedGroup;
-  // isFirst;
+  selectedGroup: any
   object = {
     itemName: '',
     itemPrice: Number
   }
+  femaleObject = {
+    itemName: '',
+    itemPrice: Number
+  }
   displayItems: any;
-
+  activityDate
 
 
 
@@ -53,28 +48,18 @@ export class EventGroupComponent implements OnInit {
   ) {
     this.sub = this.activatedRoute.params.subscribe(param => {
       this.eventId = param.id;
-      // this.getEventDetails(this.eventId)
       this.activities = this.eventId
-      // this.initGroupForm()
-      // this.eventService.getEventDetails(this.eventId).subscribe((res: any) => {
-      //   this.activities = res.data.activity
-      //   console.log("avi jaje laik", this.activities);
-
-      // })
     })
   }
   Data;
 
   ngOnInit() {
-    // this.initGroupForm()
-    // this.isFirst = false;
-    // console.log("value of group", this.groupForm.value);
 
   }
 
-  button(){
+  button() {
     console.log("=============");
-    
+
   }
 
   // New Functionality
@@ -83,35 +68,17 @@ export class EventGroupComponent implements OnInit {
 
     this.isDisable = true
     console.log("he bhagvan ama avi jaje kaik", event);
-    // let activity
     this.selectedActivity = event
     this.singleActivity.emit(event)
-    console.log(" singleActivity", this.singleActivity)
+    this.activityDate = event.activity.activityStartDate
+    console.log("date of selected", this.activityDate);
 
-    // this.selectedActivityToAddGroup = event._id
-    // this.initGroupForm()
-    // const control = <FormArray>this.groupForm.controls.group;
-    // console.log("item of first activity", control.controls, _.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }));
-    // if (_.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }) === -1)
-    //   this.AddGroupField(this.selectedActivityToAddGroup);
   }
 
   getGroup(event) {
-    console.log("ama group details ave", event.groups);
-    console.log("right now activated activity", this.selectedActivity);
-    // this.displayItems = event.groups[0]
-    // event.groups[0].forEach(singleGroup => {
-    //   console.log("log of single group", singleGroup)
-    // })
-    // this.selectedGroup = event.groupName;
-    // let obj = {
-    //   activitySelected: this.selectedActivity,
-    //   groupName: event.groupName
-    // }
-    // console.log("this.selectedGroup", this.selectedGroup);
-    // this.maleItems = []
-    // this.femaleItems = []
-    // this.initGroupForm(obj)
+    console.log("ama group details ave", event);
+    this.selectedGroup = event
+    console.log("right now activated activity", this.selectedGroup);
   }
 
 
@@ -119,32 +86,32 @@ export class EventGroupComponent implements OnInit {
   addMaleItmes(itemDetails) {
 
     console.log("itemDetails", itemDetails)
-    // this.selectedActivity.groups.male.push(itemDetails)
-    // console.log("value of form when mail item is added", this.groupForm.value)
-    // console.log("list of mail", itemDetails);
-    // console.log("this.displayMailObject", this.displayMailObject);
-    // const control = <FormArray>itemDetails
-    // control.push(this.fb.group({
-    //   itemName: new FormControl(''),
-    //   itemPrice: new FormControl('')
-    // }))
-    // let data = itemDetails.value
-    // let maleItems = [];
-    // if (this.displayMailObject[this.selectedGroup] && this.displayMailObject[this.selectedGroup]['maleItems']) {
-    //   maleItems = this.displayMailObject[this.selectedGroup]['maleItems'];
-    // } else {
-    //   console.log("this.selectedGroup", this.selectedGroup);
-    //   this.displayMailObject[this.selectedGroup] = {};
-    //   this.displayMailObject[this.selectedGroup]['maleItems'] = []
-    // }
-    // maleItems = data;
-    // console.log("this.displayMailObject", this.displayMailObject);
+    this.selectedGroup.male.push(itemDetails)
+    this.object = {
+      itemName: '',
+      itemPrice: Number
+    }
 
-    // this.displayMailObject[this.selectedGroup]['maleItems'] = maleItems
-    // console.log("value of group form", this.groupForm.value);
-    // $('#addMaleItemModal').hide('modal')
+    console.log("male details", this.selectedGroup.male);
+
   }
 
+
+  removeMaleItem(data, index) {
+    console.log("data to be removed", data);
+    console.log("index of removed", index);
+
+
+  }
+
+  addFemaleItmes(data) {
+    console.log("list of female items", data);
+    this.selectedGroup.female.push(data)
+    this.femaleObject = {
+      itemName: '',
+      itemPrice: Number
+    }
+  }
 
 
 
@@ -344,21 +311,6 @@ export class EventGroupComponent implements OnInit {
 
 
 
-  // addFemaleItmes(data) {
-  //   console.log("list of female items", data);
-  //   let femaleItems = [];
-  //   if (this.displayObject[this.selectedGroup] && this.displayObject[this.selectedGroup]['femaleItems']) {
-  //     femaleItems = this.displayObject[this.selectedGroup]['femaleItems'];
-  //   } else {
-  //     console.log("this.selectedGroup", this.selectedGroup);
-  //     this.displayObject[this.selectedGroup] = {};
-  //     this.displayObject[this.selectedGroup]['femaleItems'] = []
-  //   }
-  //   femaleItems.push(data[0])
-  //   console.log("this.displayObject", this.displayObject);
-
-  //   this.displayObject[this.selectedGroup]['femaleItems'] = femaleItems
-  // }
 
 
   // addGroup() {

@@ -4,7 +4,7 @@
     </div>
     <div class="group-slider">
         <div class="group-single-slide active" *ngFor="let item of selectedActivity.groups, let i = index">
-            <div class="group-name"  (click)="singleGroup.emit(item)">
+            <div class="group-name"  (click)="sendData(item)">
                 <span>{{item.name}}</span>
             </div>
         </div>

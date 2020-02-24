@@ -45,9 +45,6 @@ export class GroupSliderComponent implements OnInit {
     console.log("selected activity id in group page", this.selectedActivity);
     this.isDisable = true;
     this.initGroupSlider()
-    // if (this.selectedActivity) {
-    //   this.sendForm(this.selectedActivity)
-    // }
   }
   ngOnChanges() {
     console.log("selected activity second time", this.selectedActivity);
@@ -64,16 +61,11 @@ export class GroupSliderComponent implements OnInit {
     })
   }
 
-  // sendForm(selectedActivity) {
-  //   console.log("activity name", selectedActivity);
-  //   let obj = {
-  //     activityId: selectedActivity,
-  //     groupName: this.groupOfEvent[0].groupName
-  //   }
-  //   this.isDisable = true
-  //   this.initGroupSlider()
-  //   this.firstGroup.emit(obj)
-  // }
+  sendData(item) {
+    console.log(" item ", item)
+    this.singleGroup.emit(item)
+  }
+
 
 
   initGroupSlider() {
