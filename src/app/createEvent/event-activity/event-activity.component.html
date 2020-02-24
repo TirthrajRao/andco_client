@@ -14,9 +14,9 @@
                                     <img src="../../../assets/images/remove.png" alt="remove icon">
                                 </button>
                                 <!-- <span *ngFor="let time of displayTime"> -->
-                                {{displayTime  | date : 'dd'}}
-                                {{displayTime  | date : 'MM'}}
-                                {{displayTime  | date : 'yyyy'}}
+                                {{displayTime[i]  | date : 'dd'}}
+                                {{displayTime[i]  | date : 'MM'}}
+                                {{displayTime[i]  | date : 'yyyy'}}
                                 <!-- </span> -->
                                 <mat-form-field style="visibility:hidden;">
                                     <mat-label>Choose a date</mat-label>
