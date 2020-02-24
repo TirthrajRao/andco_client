@@ -1,5 +1,5 @@
-<section class="event-group-main">
-    <section class="sales-pricing-main">
+<section class="sales-pricing-main">
+    <div class="bg-box-set-price">
         <div class="hashtag">
             <h2>#WonDer2019</h2>
         </div>
@@ -17,7 +17,8 @@
                     <div class="row m-0">
                         <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.male">
                             <h6 class="text-left">
-                                <img src="../../../assets/images/male.png" class="icon-img" alt="male icon"> Male</h6>
+                                <img src="../../../assets/images/male.png" class="icon-img" alt="male icon"> Male
+                            </h6>
                             <div class="inner-box-group">
                                 <ul>
                                     <li class="w-100 d-inline-block"
@@ -51,16 +52,15 @@
                                 data-target="#addFemaleItemModal">Add</button>
                         </div>
                     </div>
-                    <div class="next-back-button mt-2 w-100 d-inline-block">
-                        <button class="btn float-left">Back</button>
-                        <button class="btn float-right" (click)="addGroup()">Next</button>
-                    </div>
+                </div>
+                <div class="next-back-button mt-2 w-100 d-inline-block">
+                    <button class="btn float-left">Back</button>
+                    <button class="btn float-right" (click)="addGroup()">Next</button>
                 </div>
             </div>
         </div>
-    </section>
-
-
+    </div>
+</section>
 
     <!-- male modal content start -->
 
@@ -84,8 +84,8 @@
         </div>
     </div>
 
-    <!-- male modal content end -->
-    <!-- female modal content start -->
+<!-- male modal content end -->
+<!-- female modal content start -->
 
 
     <div class="modal" id="addFemaleItemModal" *ngIf="isDisable">
@@ -109,5 +109,4 @@
         </div>
     </div>
 
-    <!-- female modal content end -->
-</section>
+<!-- female modal content end -->

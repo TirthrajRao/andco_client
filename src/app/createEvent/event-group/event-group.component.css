@@ -18,6 +18,8 @@
     font-family: 'Advent Pro', 'sans-sarif';
     color: #686868;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
 }
 .bg-box-set-price{
     background-color: #f3f4f3;
@@ -75,7 +77,6 @@
     display: inline-block;
     margin-top: 20px;
 }
-/* option a start */
 .sales-inner span{
     color: #A6B138;
     text-align: center;
