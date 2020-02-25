@@ -128,7 +128,7 @@ export class CreateEventComponent implements OnInit {
         arrows: true,
         adaptiveHeight: true,
         fade: true,
-        accessibility:false,
+        accessibility: false,
         prevArrow: '<button class="prevarrow">Back</button>',
         nextArrow: '<button class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
@@ -222,7 +222,8 @@ export class CreateEventComponent implements OnInit {
       console.log("now it is final");
       this.eventService.addEvent(this.eventForm.value, this.files)
         .subscribe((data: any) => {
-          console.log("event details", data);
+          console.log("event details", data.data.hashTag);
+          sessionStorage.setItem('hasTag', data.data.hashTag)
           // this.isDisable = true
           this.isLoad = false
           this.alertService.getSuccess(data.message)

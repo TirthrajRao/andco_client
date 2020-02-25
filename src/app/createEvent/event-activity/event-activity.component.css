@@ -19,6 +19,7 @@
     padding: 70px 0;
     box-shadow: 0px 0px 70px #d5dbd5;
     margin-top: 40px;
+    position: relative;
 }
 .hashtag-set-price{
     width: 100%;
@@ -146,13 +147,20 @@ button.remove {
     font-size: 20px;
     font-weight: bold;
 }
+.event-next-btn {
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    display: block;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
 .event-next-btn button{
     background-color: #A6B138;
     color: #fff;
-    float: right;
-    outline: none;
     border: none;
-    font-weight: bold;
+    outline: none;
 }
 
 /* responsive css start */

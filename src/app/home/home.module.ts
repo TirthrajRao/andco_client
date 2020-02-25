@@ -62,7 +62,7 @@ const routes: Routes = [
         component: GroupSliderComponent
       },
       {
-        path: 'set-price',
+        path: 'set-price/:id',
         component: SetPriceComponent
       },
       {

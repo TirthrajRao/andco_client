@@ -41,7 +41,8 @@
                                 <ul>
                                     <li *ngFor="let item of selectedGroup.female; let i=index">
                                         <h5 class="float-left item-name">{{item.itemName}}</h5>
-                                        <h5 class="float-right item-price">{{item.itemPrice | currency:"&#x20A6;"}}</h5>
+                                        <h5 class="float-right item-price">
+                                            {{ item.itemPrice | currency:'&#x20A6;': true }}</h5>
                                         <div class="delete-icon" (click)="removeFemaleItem(item , i)">
                                             <img src="../../../assets/images/bin.png" alt="delete icon">
                                         </div>
