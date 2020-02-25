@@ -4,6 +4,7 @@
 .sales-inner input{
     width: 100% !important;
 }
-.sales-inner p{
-    text-align: center !important;
+.inner-radio-box {
+    margin: auto;
+    display: table;
 }

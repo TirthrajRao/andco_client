@@ -44,6 +44,7 @@ export class SetPriceComponent implements OnInit {
       autoplay: false,
       arrows: true,
       fade: true,
+      swipe: false,
       prevArrow: '<button class="prevarrow">Back</button>',
       nextArrow: '<button class="nextarrow">Next</button>',
     });

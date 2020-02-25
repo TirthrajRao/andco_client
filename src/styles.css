@@ -98,6 +98,11 @@ button:focus {
     align-items: center;
     padding-top: 232px;
 }
+.sales-pricing-main .page-content {
+    min-height: calc(100vh - (232px + 40px));
+    padding-top: 182px;
+    width: 100%;
+}
 
 /* display screen slider start */
 

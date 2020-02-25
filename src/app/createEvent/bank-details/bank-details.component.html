@@ -13,15 +13,15 @@
                 <!-- </form> -->
             </div>
             <div [hidden]="!isBankSelected">
-                <input type="text" value="test3" name="test3" placeholder="Bank Name"
+                <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name"
                     class="mb-2 text-left px-3 py-2 font-weight-bold" formControlName="bankName">
             </div>
             <div [hidden]="!isBankSelected">
-                <input type="text" value="test3" name="test3" placeholder="Account Number"
+                <input type="text"  autocomplete="off" value="test3" name="test3" placeholder="Account Number"
                     class="mb-2 text-left px-3 py-2 font-weight-bold" minlength="16" maxlength="16"
                     (input)="addNumber($event)" formControlName="accountNumber"
                     [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
-                <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback text-white">
+                <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
                     <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
                     </div>
