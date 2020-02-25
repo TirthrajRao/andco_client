@@ -125,7 +125,7 @@
                                     <option value="online">Online Search </option>
                                 </select>
                                 <div [hidden]="!isEventPlannerSelected" class="how-did-u-input mt-3">
-                                    <input type="text" placeholder="Type here">
+                                    <input type="text" (input)="plannerValue($event)" placeholder="Type here">
                                 </div>
                                 <div [hidden]="!isEventVendorSelected" class="how-did-u-input mt-3">
                                     <input type="text" placeholder="Type here">

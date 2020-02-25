@@ -33,7 +33,7 @@ export class BankDetailsComponent implements OnInit {
     this.bankForm = new FormGroup({
       bankName: new FormControl(''),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
-      cardNumber: new FormControl('')
+      cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
     })
   }
 
@@ -52,6 +52,15 @@ export class BankDetailsComponent implements OnInit {
     }
   }
 
+
+  enterCard(event) {
+    console.log("when enter card number", event.target.value);
+    if (event.target.value.length == 16) {
+      console.log("ama ave ");
+      this.bankDetails.emit(this.bankForm.value)
+
+    }
+  }
 
 
   bankSelect() {
