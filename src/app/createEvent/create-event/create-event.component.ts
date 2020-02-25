@@ -128,6 +128,7 @@ export class CreateEventComponent implements OnInit {
         arrows: true,
         adaptiveHeight: true,
         fade: true,
+        accessibility:false,
         prevArrow: '<button class="prevarrow">Back</button>',
         nextArrow: '<button class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });

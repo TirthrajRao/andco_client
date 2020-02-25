@@ -48,8 +48,8 @@
 .event-single-slide.slick-slide .event-name.active::after{
     content: "";
     position: absolute;
-    top: 2px;
-    bottom: 2px;
+    top: 0px;
+    bottom: 0px;
     left: 0px;
     right: 0px;
     border: 2px solid #5d6c20;
