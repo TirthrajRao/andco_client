@@ -15,10 +15,9 @@
 .bg-box-set-price{
     background-color: #f3f4f3;
     width: 1200px;
-    height: 760px;
+    height: 600px;
     padding: 70px 0;
     box-shadow: 0px 0px 70px #d5dbd5;
-    margin-top: 40px;
 }
 .hashtag-set-price{
     width: 100%;
@@ -160,8 +159,11 @@ button.remove {
 @media(max-width:1600px){
     .bg-box-set-price {
         width: 1040px;
-        height: 620px;
-        padding: 40px 0;
+        height: 580px;
+        padding: 60px 0;
+    }
+    .inner-box {
+        max-height: 380px;
     }
 }
 @media(max-width:1366px){
@@ -172,6 +174,9 @@ button.remove {
     }
     .hashtag-set-price p{
         margin: 10px 0;
+    }
+    .inner-box {
+        max-height: 330px;
     }
 }
 @media(max-width:1199px){

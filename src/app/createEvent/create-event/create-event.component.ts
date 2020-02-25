@@ -130,9 +130,10 @@ export class CreateEventComponent implements OnInit {
         adaptiveHeight: true,
         fade: true,
         accessibility:false,
-        prevArrow: '<button class="prevarrow">Back</button>',
-        nextArrow: '<button class="nextarrow" (click)="nextCalled($event)">Next</button>',
+        prevArrow: '<button type="button" class="prevarrow">Back</button>',
+        nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
+      $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
     }, 100)
   }
   nextCalled(event) {

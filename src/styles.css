@@ -101,7 +101,7 @@ button:focus {
     align-items: center;
     padding-top: 232px;
 }
-.sales-pricing-main .page-content {
+.sales-pricing-main .page-content , .event-activity-main .page-content{
     min-height: calc(100vh - (232px + 40px));
     padding-top: 182px;
     width: 100%;
@@ -351,7 +351,11 @@ img.swal2-image {
 /* radio button css end here */
 
 /* responsive css start */
-
+@media(max-width: 1600px){
+    .sales-pricing-main .bg-box-set-price{
+        margin-top: 10px;
+    }
+}
 @media(max-width: 1366px) {
     /* create event css start */
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
