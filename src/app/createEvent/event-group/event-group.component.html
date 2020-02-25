@@ -12,8 +12,7 @@
                     <h4>Event Date: <span>{{activityDate | date}}</span></h4>
                 </div>
                 <div class="group-box" *ngIf="isDisable">
-                    <app-group-slider [selectedActivity]="selectedActivity" (singleGroup)="getGroup($event)"
-                        (firstGroup)="getFamily($event)">
+                    <app-group-slider [selectedActivity]="selectedActivity" (singleGroup)="getGroup($event)">
                     </app-group-slider>
                     <div class="row m-0">
                         <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.male">
@@ -40,7 +39,7 @@
                             </h6>
                             <div class="inner-box-group">
                                 <ul>
-                                    <li *ngFor="let item of selectedGroup.female">
+                                    <li *ngFor="let item of selectedGroup.female; let i=index">
                                         <h5 class="float-left item-name">{{item.itemName}}</h5>
                                         <h5 class="float-right item-price">{{item.itemPrice | currency:"&#x20A6;"}}</h5>
                                         <div class="delete-icon" (click)="removeFemaleItem(item , i)">

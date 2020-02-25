@@ -15,7 +15,12 @@ export class SetPriceComponent implements OnInit {
   isEventPlannerSelected;
   isEventVendorSelected
   timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+  object1 = {
+    planner: ''
+  }
+  object2 = {
+    vendor: ''
+  }
   constructor() { }
 
   ngOnInit() {
@@ -27,7 +32,8 @@ export class SetPriceComponent implements OnInit {
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl(''),
       paymentDeadlineTime: new FormControl(''),
-      bankDetails: new FormControl('')
+      bankDetails: new FormControl(''),
+      hearAbout: new FormControl('')
     })
 
     console.log("time zone ", this.timezone);
@@ -120,5 +126,13 @@ export class SetPriceComponent implements OnInit {
       this.isEventPlannerSelected = false
       this.isEventVendorSelected = false
     }
+  }
+
+  plannerValue(event) {
+    console.log("planner value", event.target.value);
+    this.setPriceForm.patchValue({
+      hearAbout: event.target.value
+    })
+    this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
 }

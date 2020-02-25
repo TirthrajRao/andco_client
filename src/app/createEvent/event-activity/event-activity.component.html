@@ -11,7 +11,7 @@
                             <div formArrayName="activity">
                                 <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
                                     <input type="text" formControlName="activityName" placeholder="Enter activity name">
-                                    <button class="remove" *ngIf="activityForm.controls.activity.controls.length>1"
+                                    <button class="remove" *ngIf="activityFormData.controls.length>1"
                                         (click)="removeActivityField(i,tech.value)">
                                         <img src="../../../assets/images/remove.png" alt="remove icon">
                                     </button>
