@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="skip">
-                                    <a href="#">Skip</a>
+                                    <a href="javascript:void(0)">Skip</a>
                                 </div>
                                 <div [hidden]="!isRegestery">
                                     <input type="text" value="" name="" placeholder="Your registry link">
@@ -89,7 +89,7 @@
                                 <div class="inner-radio-box">
                                     <div>
                                         <mat-form-field>
-                                            <mat-label>Choose a date</mat-label>
+                                            <!-- <mat-label>Choose a date</mat-label> -->
                                             <input matInput [matDatepicker]="picker"
                                                 formControlName="paymentDeadlineDate">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -117,7 +117,7 @@
                                 <span>How did you hear about andco</span>
                                 <!-- <form [formGroup]='howDidUForm'> -->
                                 <select class="form-control w-75 m-auto" name="" id="" (change)="onDropDown($event)">
-                                    <option value=""></option>
+                                    <option value="">Select</option>
                                     <option value="planner">Event Planner</option>
                                     <option value="vendor">Event Vendor</option>
                                     <option value="flyer">Flyer</option>

@@ -7,6 +7,7 @@
     background-position: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: relative;
     padding: 20px;
@@ -19,14 +20,23 @@
     box-shadow: 0px 0px 70px #d5dbd5;
     margin-top: 40px;
 }
+.hashtag-set-price{
+    width: 100%;
+}
+.hashtag-set-price h2{
+    text-align: center;
+    font-family: 'Advent Pro', 'sans-sarif';
+    color: #686868;
+    font-weight: bold;
+}
 .wrapper {
     /* padding-bottom: 80px; */
     position: relative;
 }
 .inner-box {
-    max-height: 400px;
+    max-height: 450px;
     overflow-y: auto;
-    margin-top: 100px;
+    margin-top: 10px;
     position: relative;
 }
 
@@ -49,7 +59,7 @@
 
 .element {
     width: 100%;
-    margin: 15px 0;
+    padding: 20px 30px;
 }
 
 .element input {
@@ -71,6 +81,14 @@
     box-shadow: none;
     outline: none;
 }
+.element i{
+    position: absolute;
+    left: 30%;
+    margin-top: 30px;
+    color: #A6B138;
+    font-size: 25px;
+    cursor: pointer;
+}
 
 button.remove {
     background-color: transparent;
@@ -79,11 +97,7 @@ button.remove {
     margin-left: 10px;
 }
 .buttons{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     text-align: center;
-    margin: auto;
 }
 .buttons button.clone{
     background-color: #A6B138;
@@ -116,19 +130,30 @@ button.remove {
 .date-display {
     background: #fff;
     padding: 5px;
-    border: 1px solid #A6B138;
+    border: 2px solid #DBD9AC;
     width: 8%;
     height: 50px;
-    display: inline-block;
     margin-right: 10px;
     border-radius: 10px;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
 }
 .date-display p{
-    color: #A6B138;
+    color: #a5b138;
     font-size: 20px;
+    font-weight: bold;
 }
-
+.event-next-btn button{
+    background-color: #A6B138;
+    color: #fff;
+    float: right;
+    outline: none;
+    border: none;
+    font-weight: bold;
+}
 
 /* responsive css start */
 
