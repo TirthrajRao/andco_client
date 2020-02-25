@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { AlertService } from '../../services/alert.service';
 declare var $: any
 
 @Component({
@@ -10,6 +11,7 @@ declare var $: any
 export class SetPriceComponent implements OnInit {
 
   setPriceForm: FormGroup;
+  isDisable = false
   isTransfer
   isRegestery
   isEventPlannerSelected;
@@ -21,18 +23,21 @@ export class SetPriceComponent implements OnInit {
   object2 = {
     vendor: ''
   }
-  constructor() { }
+  hashTag = sessionStorage.getItem('hasTag');
+  constructor(
+    public alertService: AlertService
+  ) { }
 
   ngOnInit() {
 
     this.setPriceForm = new FormGroup({
-      thanksMessage: new FormControl(''),
-      afterEventMessage: new FormControl(''),
+      thanksMessage: new FormControl('', [Validators.required]),
+      afterEventMessage: new FormControl('', [Validators.required]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
-      paymentDeadlineDate: new FormControl(''),
-      paymentDeadlineTime: new FormControl(''),
-      bankDetails: new FormControl(''),
+      paymentDeadlineDate: new FormControl('', [Validators.required]),
+      paymentDeadlineTime: new FormControl('', [Validators.required]),
+      bankDetails: new FormControl('', [Validators.required]),
       hearAbout: new FormControl('')
     })
 
@@ -61,9 +66,9 @@ export class SetPriceComponent implements OnInit {
 
 
   setPrice() {
-    // console.log("payment transfer date value", this.payMentTransfer);
-
-    console.log("value of form", this.setPriceForm.value);
+    console.log("value of form", this.setPriceForm);
+    let message = 'Price Set in Created Event'
+    this.alertService.getSuccess(message)
 
   }
   detailsOfBank(event) {

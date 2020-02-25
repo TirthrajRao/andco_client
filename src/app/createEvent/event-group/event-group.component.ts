@@ -42,7 +42,8 @@ export class EventGroupComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
-    public alertervice: AlertService
+    public alertervice: AlertService,
+    public router: Router
   ) {
     this.sub = this.activatedRoute.params.subscribe(param => {
       this.eventId = param.id;
@@ -104,6 +105,7 @@ export class EventGroupComponent implements OnInit {
     this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
       console.log("Group added in new event", response)
       this.alertervice.getSuccess(response.message)
+      this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
       this.alertervice.getError(error.message)
       console.log("error while add groups in event", error)

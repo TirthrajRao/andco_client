@@ -2,7 +2,7 @@
     <div class="page-content">
     <div class="bg-box-set-price">
         <div class="hashtag-set-price">
-            <h2>#Wonder2019</h2>
+            <h2>#{{hashTag}}</h2>
         </div>
         <div class="event-add-box">
             <div class="wrapper">
@@ -17,17 +17,17 @@
                                         <img src="../../../assets/images/remove.png" alt="remove icon">
                                     </button>
                                     <!-- <span *ngFor="let time of displayTime"> -->
-                                        <div class="w-100 d-inline-block">
-                                            <div class="date-display">
-                                                <p>{{displayTime[i]  | date : 'dd'}}</p>
-                                            </div>
-                                            <div class="date-display">
-                                                <p>{{displayTime[i]  | date : 'MM'}}</p>
-                                            </div>
-                                            <div class="date-display">
-                                                <p>{{displayTime[i]  | date : 'yyyy'}}</p>
-                                            </div>
+                                    <div class="w-100 d-inline-block">
+                                        <div class="date-display">
+                                            <p>{{displayTime[i]  | date : 'dd'}}</p>
                                         </div>
+                                        <div class="date-display">
+                                            <p>{{displayTime[i]  | date : 'MM'}}</p>
+                                        </div>
+                                        <div class="date-display">
+                                            <p>{{displayTime[i]  | date : 'yyyy'}}</p>
+                                        </div>
+                                    </div>
                                     <!-- </span> -->
                                     <mat-form-field style="visibility:hidden; float: left; height: 10px;">
                                         <mat-label>Choose a date</mat-label>

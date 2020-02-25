@@ -3,7 +3,7 @@
         <div class="bg-box-set-price">
             <div class="main-box-for-slider">
                 <div class="hashtag-set-price">
-                    <p>#Wonder2019</p>
+                    <p>#{{hashTag}}</p>
                 </div>
                 <form [formGroup]="setPriceForm">
                     <div class="set-price-main-slider">
@@ -135,7 +135,8 @@
                         <!-- <button class="btn set-price-custom-button" >Submit</button> -->
                     </div>
                 </form>
-                <button class="btn set-price-custom-button float-right" (click)="setPrice()">Submit</button>
+                <button class="btn set-price-custom-button float-right" (click)="setPrice()"
+                    [disabled]="isDisable">Submit</button>
             </div>
         </div>
     </div>

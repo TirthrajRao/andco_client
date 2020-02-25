@@ -4,6 +4,7 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDatepickerInputEvent, MatCalendar } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
+import { AlertService } from '../../services/alert.service';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
 
@@ -24,56 +25,6 @@ export class EventActivityComponent implements OnInit {
   currentDay = new Date()
   currentYear = this.today.getFullYear()
   maxYear = new Date(this.today.setFullYear(this.today.getFullYear() + 10)).getFullYear();
-  month
-  days = [{
-    id: '',
-    name: 'DAY'
-  }];
-
-  years = [{
-    Id: '',
-    Name: 'YEAR'
-  }];
-  months = [{
-    Id: '',
-    Name: 'MONTH'
-  }, {
-    Id: 0,
-    Name: 'JANUARY'
-  }, {
-    Id: 1,
-    Name: 'FEBRUARY'
-  }, {
-    Id: 2,
-    Name: 'MARCH'
-  }, {
-    Id: 3,
-    Name: 'APRIL'
-  }, {
-    Id: 4,
-    Name: 'MAY'
-  }, {
-    Id: 5,
-    Name: 'JUNE'
-  }, {
-    Id: 6,
-    Name: 'JULY'
-  }, {
-    Id: 7,
-    Name: 'AUGUST'
-  }, {
-    Id: 8,
-    Name: 'SEPTEMBER'
-  }, {
-    Id: 9,
-    Name: 'OCTOBER'
-  }, {
-    Id: 10,
-    Name: 'NOVEMBER'
-  }, {
-    Id: 11,
-    Name: 'DECEMBER'
-  }];
   sub: any;
   eventId: any;
   createdEventDetails: any;
@@ -81,13 +32,14 @@ export class EventActivityComponent implements OnInit {
   events: string[] = [];
   displayTime: any = [];
   finalDate: any = [];
-
+  hashTag = sessionStorage.getItem('hasTag');
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     public _eventService: EventService,
+    public alertService: AlertService,
     public dateFilter: DatePipe
   ) {
     this.sub = this.route.params.subscribe(params => {
@@ -100,7 +52,7 @@ export class EventActivityComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("today date=======", this.today)
+    console.log("today date=======", this.hashTag)
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
     });
@@ -112,15 +64,6 @@ export class EventActivityComponent implements OnInit {
     });
 
 
-    // DatePicker Format
-    let x
-    for (x = 1; x <= 31; x++) {
-      this.days.push({ id: x, name: x })
-    }
-
-    for (x = this.currentYear; x <= this.maxYear; x++) {
-      this.years.push({ Id: x, Name: x });
-    }
 
     this.getActivityFrom()
 
@@ -263,11 +206,12 @@ export class EventActivityComponent implements OnInit {
 
         this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
         console.log("activity add in database completed", data)
+        this.alertService.getSuccess(data.message)
         // this.isLoad = false;
         // console.log("activity response data", data);
         // this.createdActivity = data.data;
         // this.groupLength = this.createdActivity.length;
-        console.log(this.createdActivity.length);
+        // console.log(this.createdActivity.length);
         // _.forEach(this.createdActivity, (date) => {
         //   this.activityStartDate = date.activityStartDate;
         //   this.activityEndDate = date.activityEndDate;
