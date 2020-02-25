@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   returnUrl: string;
   isDisplay = false
   currentUrl: String
+  sub: any
+  eventId: any
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -60,19 +62,24 @@ export class HeaderComponent implements OnInit {
     });
     //tooltip js end
 
+    this.router.events
+      .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
+      .subscribe((events: RoutesRecognized[]) => {
+        console.log("event of url find", events)
+        // console.log("index of page", this.index)
+        this.currentUrl = events[1].urlAfterRedirects
+        console.log('current url', this.currentUrl);
+
+      });
+
+
+    this.sub = this.route.params.subscribe(param => {
+      this.eventId = param.id
+    })
 
     this.currentUrl = this.router.url
     console.log("login user name in heaedr", this.router.url)
-    // this.router.events
-    //   .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
-    //   .subscribe((events: RoutesRecognized[]) => {
-    //     console.log("event of url find", events)
-    //     // console.log("index of page", this.index)
-    //     this.currentUrl = events[1].urlAfterRedirects
-    //     console.log('current url', this.currentUrl);
-
-    //   });
-    // this.currentUrl = this.router.url
+    this.currentUrl = this.router.url
     console.log("whne page is load display route", this.currentUrl)
   }
 
@@ -80,6 +87,21 @@ export class HeaderComponent implements OnInit {
     let output = this._loginService.returnLogin(event);
     if (output == true) {
       this.router.navigate(['/menu']);
+    }
+  }
+
+
+  getHeaderColor() {
+    if (this.currentUrl.includes('createEvent')) {
+      return '#D2A0A1'
+    } else if (this.currentUrl.includes('eventActivity')) {
+      return '#434040'
+    } else if (this.currentUrl.includes('eventGroup')) {
+      return '#434040'
+    } else if (this.currentUrl.includes('set-price')) {
+      return '#434040'
+    } else {
+      return '#fff'
     }
   }
 
