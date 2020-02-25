@@ -55,11 +55,13 @@ export class SetPriceComponent implements OnInit {
       autoplay: false,
       arrows: true,
       fade: true,
-      prevArrow: '<button class="prevarrow">Back</button>',
-      nextArrow: '<button class="nextarrow">Next</button>',
+      swipe: false,
+      prevArrow: '<button type="button" class="prevarrow">Back</button>',
+      nextArrow: '<button type="button" class="nextarrow">Next</button>',
     });
     // }, 500)
     // set-price main slider js end
+    $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
   }
 
 

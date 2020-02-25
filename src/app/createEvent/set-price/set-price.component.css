@@ -13,11 +13,10 @@
 }
 .bg-box-set-price{
     background-color: #f3f4f3;
-    width: 1200px;
-    height: 750px;
-    padding: 70px 0;
+    width: 950px;
+    height: 600px;
+    padding: 20px 0 40px;
     box-shadow: 0px 0px 70px #d5dbd5;
-    margin-top: 40px;
 }
 .hashtag-set-price p{
     color: #686868;
@@ -192,6 +191,9 @@ button.btn.set-price-custom-button{
     }
     .single-main-box textarea{
         font-size: 18px;
+    }
+    .sales-pricing-main .page-content {
+        padding-top: 0;
     }
 }
 @media(max-width: 1199px){

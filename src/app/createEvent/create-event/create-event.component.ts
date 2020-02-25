@@ -122,16 +122,18 @@ export class CreateEventComponent implements OnInit {
       $('.create-event-slider').not('.slick-initialized').slick({
         infinite: false,
         draggable: false,
+        swipe: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
         arrows: true,
         adaptiveHeight: true,
         fade: true,
-        accessibility: false,
-        prevArrow: '<button class="prevarrow">Back</button>',
-        nextArrow: '<button class="nextarrow" (click)="nextCalled($event)">Next</button>',
+        accessibility:false,
+        prevArrow: '<button type="button" class="prevarrow">Back</button>',
+        nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
+      $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
     }, 100)
   }
   nextCalled(event) {

@@ -23,7 +23,7 @@ export class DisplayHomeComponent implements OnInit {
         vertical: true,
         dots: true,
         pauseOnHover: false,
-        
+        pauseOnFocus: false,
       });
     }, 50)
     $('.display-screen-slider').on('wheel', (function(e) {
