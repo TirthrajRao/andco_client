@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
+import { AlertService } from '../../services/alert.service';
 import { Observable } from 'rxjs';
 import { map, every } from 'rxjs/operators';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 declare var $;
 import * as _ from 'lodash';
 
@@ -17,10 +17,7 @@ export class EventGroupComponent implements OnInit {
 
 
   @Output() singleActivity: EventEmitter<any> = new EventEmitter<any>()
-    ;  // groupForm: FormGroup;
   isDisable = false
-  // userName = JSON.parse(sessionStorage.getItem('userName'));
-  // state$: Observable<object>;
   activities;
   allActivities: any
   sub: any;
@@ -37,15 +34,15 @@ export class EventGroupComponent implements OnInit {
   }
   displayItems: any;
   activityDate
-
-
-
-
+  finalArray: any = []
+  isButton = false
+  isModel = false
+  eventHashTag
 
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
-    private fb: FormBuilder
+    public alertervice: AlertService
   ) {
     this.sub = this.activatedRoute.params.subscribe(param => {
       this.eventId = param.id;
@@ -55,7 +52,7 @@ export class EventGroupComponent implements OnInit {
   Data;
 
   ngOnInit() {
-
+    // this.isButton = false
   }
 
   button() {
@@ -88,11 +85,41 @@ export class EventGroupComponent implements OnInit {
   addGroup() {
     console.log("value of group form");
     console.log(this.allActivities)
+    // this.allActivities['eventId'] = this.eventId
+    console.log("finale details", this.allActivities);
+    this.allActivities.forEach(singleActivityDetails => {
+      console.log("single activity with details", singleActivityDetails);
+      singleActivityDetails.groups.forEach((singleGroup) => {
+        let finalObject = {
+          activityId: singleActivityDetails.activity._id,
+          groupName: singleGroup.groupName,
+          male: singleGroup.male,
+          female: singleGroup.female
+        }
+        this.finalArray.push(finalObject)
+
+        console.log("is final object is ready or not=====", this.finalArray)
+      })
+    });
+    this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
+      console.log("Group added in new event", response)
+      this.alertervice.getSuccess(response.message)
+    }, error => {
+      this.alertervice.getError(error.message)
+      console.log("error while add groups in event", error)
+    })
+  }
+
+  openMaleModel() {
+    $('#addMaleItemModal').modal("show")
+  }
+  openFemaleModel() {
+    $('#addFemaleItemModal').modal("show")
   }
 
 
   addMaleItmes(itemDetails) {
-
+    $('#addMaleItemModal').modal("hide")
     console.log("itemDetails", itemDetails)
     let maleObject = {
       itemName: itemDetails.itemName,
@@ -104,6 +131,7 @@ export class EventGroupComponent implements OnInit {
       itemName: '',
       itemPrice: Number
     }
+    this.isButton = true
     console.log("male details", this.selectedGroup.male);
 
   }
@@ -127,7 +155,7 @@ export class EventGroupComponent implements OnInit {
       itemName: '',
       itemPrice: Number
     }
-
+    $('#addFemaleItemModal').modal("hide")
   }
 
   removeFemaleItem(data, index) {
@@ -136,206 +164,24 @@ export class EventGroupComponent implements OnInit {
 
   }
 
+  addMaleItems(event) {
+    console.log("event=========", event);
+    this.isModel = true
+    if (event.key === "Enter") {
+      console.log("call this")
+      this.addMaleItmes(this.object)
+    }
+  }
 
+  addFemaleItems(event) {
+    if (event.key === "Enter") {
+      console.log("call this")
+      this.addFemaleItmes(this.femaleObject)
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-  // get groupFormData() { return <FormArray>this.groupForm.get('group'); }
-
-
-  // /**
-  //   * @param {String} activity
-  //   * To create new group in event or to edit created group of event 
-  //   */
-  // // initGroupForm(activity?) {
-  // //   this.groupForm = new FormGroup({
-  // //     eventId: new FormControl(this.eventId),
-  // //     group: this.fb.array(this.groupArray(activity, null))
-  // //   })
-  // // }
-
-
-  // /**
-  // * @param {String} activity
-  // * To create new group in event or to edit created group of event 
-  // */
-  // initGroupForm(activity?) {
-  //   this.groupForm = new FormGroup({
-  //     eventId: new FormControl(activity ? activity[0].eventId : ""),
-  //     group: this.fb.array(this.groupArray(activity, null))
-  //   })
-  // }
-
-
-  // groupArray(activities?, acitvityId?) {
-  //   if (acitvityId) {
-  //     console.log("ama ave che ke nai");
-  //     return [this.fb.group({
-  //       activityId: new FormControl(acitvityId),
-  //       groupName: new FormControl(''),
-  //       male: this.fb.array([this.maleItemArray()]),
-  //       female: this.fb.array([this.femaleItemArray()])
-  //     })];
-  //   } else {
-  //     return [this.fb.group({
-  //       activityId: new FormControl(''),
-  //       groupName: new FormControl(''),
-  //       male: this.fb.array([this.maleItemArray()]),
-  //       female: this.fb.array([this.femaleItemArray()])
-  //     })];
-  //   }
-  // }
-
-  // /**
-  //  * @param {String} activities `
-  //  * @param {String} activityId
-  //  *  To create new group in event or to edit created group of event 
-  //  */
-  // // groupArray(activities?, acitvityId?) {
-  // //   console.log("new create group =======", activities);
-  // //   if (!activities.activitySelected) {
-  // //     return [this.fb.group({
-  // //       activityId: new FormControl(activities.activityId),
-  // //       groupName: new FormControl(activities.groupName),
-  // //       male: this.fb.array([this.maleItemArray()]),
-  // //       female: this.fb.array([this.femaleItemArray()])
-  // //     })]
-  // //   } else if (activities.activitySelected) {
-
-  // //     console.log("ama next group bnse", this.groupForm.value);
-  // //     return [this.fb.group({
-  // //       acitvityId: new FormControl(activities.activitySelected),
-  // //       groupName: new FormControl(activities.groupName),
-  // //       male: this.fb.array([this.maleItemArray()]),
-  // //       female: this.fb.array([this.femaleItemArray()])
-  // //     })]
-  // //   }
-  // //   console.log("item of new group", this.gArray)
-  // //   // return this.gArray
-  // // }
-
-
-
-  // /**
-  //  * @param {JSON} details
-  //  * Create items of male in new event 
-  //  */
-  // maleItemArray(details?): any {
-  //   if (details) {
-  //     let maleArray = [];
-  //     for (let i = 0; i < details.length; i++) {
-  //       if (details[i].itemGender === 'male') {
-  //         maleArray.push(this.fb.group({
-  //           itemId: new FormControl(details[i]._id),
-  //           itemName: new FormControl(details[i].itemName),
-  //           // itemType: new FormControlmaleItems(details[i].itemType),
-  //           itemPrice: new FormControl(details[i].itemPrice)
-  //         }))
-  //       }
-  //     }
-  //     return maleArray;
-  //   } else {
-  //     return this.fb.group({
-  //       itemName: new FormControl(''),
-  //       // itemType: new FormControl(''),
-  //       itemPrice: new FormControl('')
-  //     })
-  //   }
-  // }
-
-
-  // /**
-  //    * @param {JSON} details
-  //    * Create items of female in new event 
-  //    */
-  // femaleItemArray(details?): any {
-  //   if (details) {
-  //     let femaleArray = [];
-  //     for (let i = 0; i < details.length; i++) {
-  //       if (details[i].itemGender === 'female') {
-  //         femaleArray.push(this.fb.group({
-  //           itemId: new FormControl(details[i]._id),
-  //           itemName: new FormControl(details[i].itemName),
-  //           // itemType: new FormControl(details[i].itemType),
-  //           itemPrice: new FormControl(details[i].itemPrice)
-  //         }))
-  //       }
-  //     }
-  //     return femaleArray;
-  //   } else {
-  //     return this.fb.group({
-  //       itemName: new FormControl(''),
-  //       itemPrice: new FormControl('')
-  //     })
-  //   }
-  // }
-
-
-
-
-  // /**
-  //  * @param {String} activityId 
-  //  * @param {String} i
-  //  *  Add new group field with activity 
-  //  */
-  // async AddGroupField(activityId) {
-  //   this.isDisable = true
-  //   console.log("list of fomr=======", this.groupForm.controls)
-  //   console.log(this.groupForm.controls)
-  //   const control = <FormArray>this.groupForm.controls.group;
-  //   console.log("a selected control", control.controls)
-  //   await control.controls.push(this.groupArray[(null, activityId)]);
-  //   console.log("after click value of form", this.groupForm.value)
-  //   this.selectedActivity = activityId
-  // }
-
-
-  // addGroupWithActivity(activityId) {
-  //   console.log("activity id", activityId);
-  // }
-
-
-
-  // getFamily(event) {
-  //   console.log("first group to fill value", event);
-  //   let data = event
-  //   this.selectedGroup = event.groupName
-  //   console.log("group value when display default group", this.groupForm);
-  //   this.AddGroupField(event.activityId)
-  //   // this.isDisable = true
-  //   // this.initGroupForm(data)
-
-  // }
-
-
-  // maleItemAddInForm(data) {
-  //   const control = <FormArray>data.controls.male
-  //   console.log("selected control details", control);
-  //   // if (!control.value.length)
-  //   if (this.isFirst) {
-  //     control.push(this.fb.group({
-  //       itemName: new FormControl(''),
-  //       itemPrice: new FormControl('')
-  //     }))
-  //   }
-  //   $('#addMaleItemModal').show('modal')
-  //   this.isFirst = true;
-  // }
-
-
-
-
-
-
-
-
+  getHashTag(event) {
+    console.log("event hash tage", event);
+    this.eventHashTag = event
+  }
 }

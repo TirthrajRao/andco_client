@@ -7,7 +7,7 @@
             <div class="group-name" (click)="sendData(item , i)" [class.active]="selectedIndex === i">
                 <span>{{item.groupName}}</span>
             </div>
-            <div class="remove-group">
+            <div class="remove-group" (click)="removeGroup(i)" *ngIf="selectedActivity.groups.length >2">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </div>
         </div>

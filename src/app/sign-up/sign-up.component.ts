@@ -142,6 +142,10 @@ export class SignUpComponent implements OnInit {
     console.log("enter or not")
   }
 
+  detailsOfBank(event) {
+    console.log("bank details in price form", event);
+  }
+
   enterCode(codeDetails, event, index) {
     const input = document.getElementById("codeInput");
     this.isVerified = true

@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatNativeDateModule, MatInputModule, } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 // import { MatSelectModule } from '@angular/material/fesm2015/select';
 
@@ -21,7 +21,7 @@ import { EventActivityComponent } from '../createEvent/event-activity/event-acti
 import { EventGroupComponent } from '../createEvent/event-group/event-group.component'
 import { LoaderComponent } from '../loader/loader.component';
 import { ActivitySliderComponent } from '../createEvent/activity-slider/activity-slider.component';
-import { GroupSliderComponent } from '../createEvent/group-slider/group-slider.component'; 
+import { GroupSliderComponent } from '../createEvent/group-slider/group-slider.component';
 import { SetPriceComponent } from '../createEvent/set-price/set-price.component';
 import { BankDetailsComponent } from '../createEvent/bank-details/bank-details.component';
 import { from } from 'rxjs';
@@ -98,7 +98,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule
     // MatSelectModule
   ],
   exports: [

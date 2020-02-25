@@ -35,7 +35,7 @@ export class GroupSliderComponent implements OnInit {
 
   }
   ngOnChanges() {
-    console.log("selected activity second time", this.selectedActivity);
+    console.log("selected activity second time", this.selectedActivity.groups.length);
     if (this.selectedActivity) {
       this._change.detectChanges()
       this.selectedIndex = 0
@@ -47,10 +47,6 @@ export class GroupSliderComponent implements OnInit {
         this.initGroupSlider()
       }, 50)
     }
-    // if (this.selectedActivity) {
-    //   this.sendForm(this.selectedActivity)
-    // }
-
   }
 
 
@@ -60,7 +56,11 @@ export class GroupSliderComponent implements OnInit {
     this.singleGroup.emit(item)
   }
 
+  removeGroup(index) {
 
+    console.log("index of group", this.selectedActivity.groups, index)
+    this.selectedActivity.groups.splice(index, 1);
+  }
 
   initGroupSlider() {
     setTimeout(() => {

@@ -46,9 +46,19 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/activity", data.activity);
   }
 
+  /**
+   * @param eventId 
+   * Get Single Evene Details
+   */
   getEventDetails(eventId) {
     return this.http.get(config.baseApiUrl + "/event/" + eventId)
   }
 
-
+  addGroup(groupDetails, eventId) {
+    console.log("details of group array", eventId);
+    let body = {
+      eventId: eventId
+    }
+    return this.http.post(config.baseApiUrl + "/group", groupDetails, { params: body })
+  }
 }

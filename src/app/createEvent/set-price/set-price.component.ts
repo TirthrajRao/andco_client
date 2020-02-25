@@ -12,7 +12,9 @@ export class SetPriceComponent implements OnInit {
   setPriceForm: FormGroup;
   isTransfer
   isRegestery
-
+  isEventPlannerSelected;
+  isEventVendorSelected
+  timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   constructor() { }
 
@@ -25,12 +27,15 @@ export class SetPriceComponent implements OnInit {
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl(''),
       paymentDeadlineTime: new FormControl(''),
-      isTransfer: new FormControl('')
+      bankDetails: new FormControl('')
     })
 
+    console.log("time zone ", this.timezone);
 
 
     // set-price main slider js start
+    // setTimeout(() => {
+
     $('.set-price-main-slider').slick({
       infinite: false,
       draggable: false,
@@ -42,6 +47,7 @@ export class SetPriceComponent implements OnInit {
       prevArrow: '<button class="prevarrow">Back</button>',
       nextArrow: '<button class="nextarrow">Next</button>',
     });
+    // }, 500)
     // set-price main slider js end
   }
 
@@ -51,6 +57,13 @@ export class SetPriceComponent implements OnInit {
 
     console.log("value of form", this.setPriceForm.value);
 
+  }
+  detailsOfBank(event) {
+    console.log("bank details in set price", event);
+    this.setPriceForm.patchValue({
+      bankDetails: event
+    })
+    this.setPriceForm.get('bankDetails').updateValueAndValidity()
   }
   paymentCloseDate(data) {
     console.log("su ave che", data);
@@ -92,5 +105,19 @@ export class SetPriceComponent implements OnInit {
       })
     }
 
+  }
+
+  onDropDown(event) {
+    console.log("selected drop down value", event.target.value);
+    if (event.target.value == 'planner') {
+      this.isEventPlannerSelected = true
+      this.isEventVendorSelected = false
+    } else if (event.target.value == 'vendor') {
+      this.isEventVendorSelected = true
+      this.isEventPlannerSelected = false
+    } else {
+      this.isEventPlannerSelected = false
+      this.isEventVendorSelected = false
+    }
   }
 }

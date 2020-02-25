@@ -1,11 +1,12 @@
 <section class="sales-pricing-main">
     <div class="bg-box-set-price">
         <div class="hashtag">
-            <h2>#WonDer2019</h2>
+            <h2>#{{eventHashTag}}</h2>
         </div>
         <div class="main-box-for-slider">
             <div class="sales-inner sales-inner-box-main-box">
-                <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)">
+                <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)"
+                    (eventHashTag)="getHashTag($event)">
                 </app-activity-slider>
                 <div class="event-date-box" *ngIf="isDisable">
                     <h4>Event Date: <span>{{activityDate | date}}</span></h4>
@@ -31,7 +32,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <button class="btn add-btn" data-toggle="modal" data-target="#addMaleItemModal">Add</button>
+                            <button class="btn add-btn" data-toggle="modal" (click)="openMaleModel()">Add</button>
                         </div>
                         <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.female">
                             <h6 class="text-left">
@@ -48,14 +49,13 @@
                                     </li>
                                 </ul>
                             </div>
-                            <button class="btn add-btn" data-toggle="modal"
-                                data-target="#addFemaleItemModal">Add</button>
+                            <button class="btn add-btn" data-toggle="modal" (click)="openFemaleModel()">Add</button>
                         </div>
                     </div>
                 </div>
                 <div class="next-back-button mt-2 w-100 d-inline-block">
                     <button class="btn float-left">Back</button>
-                    <button class="btn float-right" (click)="addGroup()">Next</button>
+                    <button class="btn float-right" (click)="addGroup()" [disabled]="!isButton">Next</button>
                 </div>
             </div>
         </div>
@@ -72,13 +72,15 @@
             </div>
             <div class="modal-body">
                 <div class="add-items">
-                    <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName">
+                    <input type="text" placeholder="Enter Item Name" pattern="\d*" [(ngModel)]="object.itemName"
+                        required>
                     <input type="number" placeholder="Enter Item Price" min="0" oninput="validity.valid||(value='');"
-                        onkeydown="return event.keyCode !== 69" [(ngModel)]="object.itemPrice">
+                        onkeydown="return event.keyCode !== 69" (keydown)="addMaleItems($event)" id="codeInput"
+                        [(ngModel)]="object.itemPrice">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
+                <button type="submit" class="btn add-btn m-auto" [disabled]="!isModel"
                     (click)="addMaleItmes(object)">Add</button>
             </div>
         </div>
@@ -99,7 +101,8 @@
                 <div class="add-items">
                     <input type="text" placeholder="Enter item name" [(ngModel)]="femaleObject.itemName">
                     <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');"
-                        onkeydown="return event.keyCode !== 69" [(ngModel)]="femaleObject.itemPrice">
+                        onkeydown="return event.keyCode !== 69" (keydown)="addFemaleItems($event)"
+                        [(ngModel)]="femaleObject.itemPrice">
                 </div>
             </div>
             <div class="modal-footer">
