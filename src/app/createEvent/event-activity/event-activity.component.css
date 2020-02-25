@@ -7,6 +7,7 @@
     background-position: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: relative;
     padding: 20px;
@@ -125,10 +126,19 @@ button.remove {
     margin-top: 20px;
 }
 .date-display p{
-    color: #A6B138;
+    color: rgb(158, 158, 153);
     font-size: 20px;
 }
-
+.event-next-btn{
+    width: 100%;
+}
+.event-next-btn button{
+    background-color: #A6B138;
+    color: #fff;
+    float: right;
+    outline: none;
+    border: none;
+}
 
 /* responsive css start */
 
