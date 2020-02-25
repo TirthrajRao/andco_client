@@ -206,14 +206,17 @@ export class CreateEventComponent implements OnInit {
       let titleMessage = 'EventTitle is required'
       this.alertService.getError(titleMessage)
       this.isLoad = false
+      return
     } else if (hashTag.status == 'INVALID') {
       let hasDisplay = 'Event Hastag is required'
       this.alertService.getError(hasDisplay)
       this.isLoad = false
+      return
     } else if (eventType.status == 'INVALID') {
       let typeDisplay = 'Event Type is required'
       this.alertService.getError(typeDisplay)
       this.isLoad = false
+      return
     } else if (this.files.length) {
       console.log("now it is final");
       this.eventService.addEvent(this.eventForm.value, this.files)
@@ -236,6 +239,7 @@ export class CreateEventComponent implements OnInit {
       let message = 'Please select profile photo'
       this.alertService.getError(message)
       this.isLoad = false
+      return
     }
   }
 

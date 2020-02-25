@@ -77,14 +77,8 @@ export class LoginService {
     const eventToken = JSON.parse(sessionStorage.getItem('newEventId'));
     console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
-    // const json = { encrypted }
-    // console.log("encrypted password form", json)
     userCredentials['password'] = encrypted
-
-    // userCredentials.password =
     if (eventToken) {
-      // userCredentials.eventId = eventToken;
-      // console.log("userdata", userCredentials);
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
           console.log("login user detaislllllllllll======", user);
@@ -99,8 +93,12 @@ export class LoginService {
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
           console.log("login user detaislllllllllll======", user);
+          let token = user.data.accessToken
+          // this.curl.post( https://timezoneapi.io/api/ip/?token=TOKEN)
+          // this.http.get('https://timezoneapi.io/api/ip/?token=CSnkwdUAziXs').subscribe(res => {
+          //   console.log("give me time ", res);
+          // })
           if (user && user.data.accessToken) {
-            // sessionStorage.setItem('currentUser', JSON.stringify(user.data));
             sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
           }

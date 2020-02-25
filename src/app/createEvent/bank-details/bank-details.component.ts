@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 
 declare var $: any
@@ -9,6 +9,7 @@ declare var $: any
 })
 export class BankDetailsComponent implements OnInit {
 
+  @Output() bankDetails: EventEmitter<any> = new EventEmitter<any>()
   bankForm: FormGroup;
   isBankSelected
   isCardSelected
@@ -31,12 +32,25 @@ export class BankDetailsComponent implements OnInit {
 
     this.bankForm = new FormGroup({
       bankName: new FormControl(''),
-      accountNumber: new FormControl(''),
+      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
       cardNumber: new FormControl('')
     })
   }
 
 
+
+  /**
+   * Display error message
+   */
+  get f() { return this.bankForm.controls; }
+
+  addNumber(event) {
+    console.log("logs of number", event.target.value);
+    if (event.target.value.length == 16) {
+      console.log("from value", this.bankForm.value)
+      this.bankDetails.emit(this.bankForm.value)
+    }
+  }
 
 
 

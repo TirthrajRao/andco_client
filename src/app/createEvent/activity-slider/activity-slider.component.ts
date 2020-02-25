@@ -14,6 +14,7 @@ export class ActivitySliderComponent implements OnInit {
   @Input('activityDetails') detailsFromEventGroup;
   @Output() DeleteMaterial: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleActivity: EventEmitter<any> = new EventEmitter<any>();
+  @Output() eventHashTag: EventEmitter<any> = new EventEmitter<any>()
   sub: any
   eventId
   activityDetails: any = []
@@ -22,13 +23,7 @@ export class ActivitySliderComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public eventService: EventService
-  ) {
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.eventId = params.id
-    //   console.log("event details ", this.eventId)
-    //   // this.getEventDetails(this.eventId)
-    // })
-  }
+  ) { }
 
   ngOnInit() {
     console.log("created activity list", this.detailsFromEventGroup);
@@ -44,6 +39,7 @@ export class ActivitySliderComponent implements OnInit {
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((res: any) => {
       console.log("details of activity", res)
+      this.eventHashTag.emit(res.data.hashTag)
       this.activityDetails = res.data.activity
       this.allActivities = []
       this.activityDetails.forEach(activity => {

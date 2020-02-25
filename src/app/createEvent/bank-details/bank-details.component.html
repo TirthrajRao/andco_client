@@ -7,7 +7,8 @@
                 <p><input type="radio" name="radio2" id="test3" (click)="bankSelect()"> <label for="test3">Bank
                         account</label>
                 </p>
-                <p><input type="radio" name="radio2" id="test4" (click)="cardSeleced()"> <label for="test4">Bank Card</label>
+                <p><input type="radio" name="radio2" id="test4" (click)="cardSeleced()"> <label for="test4">Bank
+                        Card</label>
                 </p>
                 <!-- </form> -->
             </div>
@@ -17,7 +18,16 @@
             </div>
             <div [hidden]="!isBankSelected">
                 <input type="text" value="test3" name="test3" placeholder="Account Number"
-                    class="mb-2 text-left px-3 py-2 font-weight-bold" formControlName="accountNumber">
+                    class="mb-2 text-left px-3 py-2 font-weight-bold" minlength="16" maxlength="16"
+                    (input)="addNumber($event)" formControlName="accountNumber"
+                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+                <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback text-white">
+                    <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
+                    <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
+                    </div>
+                    <div *ngIf="f.accountNumber.errors.maxlength">Account Number must be only 16 digits
+                    </div>
+                </div>
             </div>
             <div [hidden]="!isCardSelected">
                 <input type="text" value="test4" name="test4" placeholder="Card Number"
