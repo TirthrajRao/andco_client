@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   currentUrl: String
   sub: any
   eventId: any
+  imgUrl
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -69,7 +70,7 @@ export class HeaderComponent implements OnInit {
         // console.log("index of page", this.index)
         this.currentUrl = events[1].urlAfterRedirects
         console.log('current url', this.currentUrl);
-
+        // this.setLogo(this.currentUrl)
       });
 
 
@@ -89,8 +90,6 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/menu']);
     }
   }
-
-
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {
       return '#D2A0A1'
@@ -104,5 +103,19 @@ export class HeaderComponent implements OnInit {
       return '#fff'
     }
   }
+  setLogo() {
+    // console.log("this function call is or not");
+
+    if (this.currentUrl.includes('eventActivity')) {
+      this.imgUrl = '/assets/images/firework.png'
+    } else if (this.currentUrl.includes('eventGroup')) {
+      this.imgUrl = '/assets/images/firework.png'
+    } else if (this.currentUrl.includes('set-price')) {
+      this.imgUrl = '/assets/images/firework.png'
+    } else {
+      this.imgUrl = '/assets/images/fireworks.png'
+    }
+  }
+
 
 }
