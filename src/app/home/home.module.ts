@@ -24,6 +24,7 @@ import { ActivitySliderComponent } from '../createEvent/activity-slider/activity
 import { GroupSliderComponent } from '../createEvent/group-slider/group-slider.component';
 import { SetPriceComponent } from '../createEvent/set-price/set-price.component';
 import { BankDetailsComponent } from '../createEvent/bank-details/bank-details.component';
+import { CreatedEventMessageComponent } from '../createEvent/created-event-message/created-event-message.component';
 import { from } from 'rxjs';
 
 
@@ -68,7 +69,11 @@ const routes: Routes = [
       {
         path: 'bank-details',
         component: BankDetailsComponent
-      }
+      },
+      {
+        path: 'created-event-message',
+        component: CreatedEventMessageComponent
+      },
     ]
   }
 ]
@@ -87,7 +92,8 @@ const routes: Routes = [
     ActivitySliderComponent,
     GroupSliderComponent,
     SetPriceComponent,
-    BankDetailsComponent
+    BankDetailsComponent,
+    CreatedEventMessageComponent
   ],
   imports: [
     CommonModule,

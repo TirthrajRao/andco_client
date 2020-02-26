@@ -18,6 +18,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 // import { LoaderComponent } from './loader/loader.component';
 import { HomeModule } from './home/home.module';
 
+
 // import { HomeComponent } from './home/home.component';
 
 
