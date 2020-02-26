@@ -81,7 +81,7 @@
         height: 80px;
     }
     .hello-text h2{
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 
@@ -95,13 +95,13 @@
     .andco-logo img {
         height: 50px;
     }
+    .hello-text h2 span{
+        font-size: 22px;
+    }
 }
 @media(max-width: 1199px){
     .header-content{
         padding:20px 30px;
-    }
-    .andco-logo img {
-        margin-bottom: 30px;
     }
     .andco-logo {
         margin: 10px 0px;

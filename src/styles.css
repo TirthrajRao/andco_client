@@ -103,7 +103,7 @@ button:focus {
 }
 .sales-pricing-main .page-content , .event-activity-main .page-content{
     min-height: calc(100vh - (232px + 40px));
-    padding-top: 182px;
+    padding-top: 30px;
     width: 100%;
 }
 
@@ -349,6 +349,7 @@ img.swal2-image {
 }
 
 /* radio button css end here */
+/* mat css start */
 .mat-form-field-infix {
     min-width: 100% !important;
     width: 100% !important;
@@ -374,21 +375,17 @@ img.swal2-image {
 .mat-form-field-appearance-legacy .mat-form-field-underline, span.mat-form-field-ripple {
     height: 0 !important;
 }
-/* .mat-icon-button.cdk-focused .mat-button-focus-overlay,
-.mat-icon-button.cdk-program-focused .mat-button-focus-overlay{
-    opacity: 0 !important;
-}
-.mat-button-focus-overlay {
-    background: transparent !important;
-    opacity: 0 !important;
-    transition: opacity .2s cubic-bezier(.35,0,.25,0),background-color .2s cubic-bezier(.35,0,.25,0) !important;
-} */
 .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
     height: 0 !important;
     width: 0 !important;
 }
+/* mat css end */
 /* responsive css start */
 @media(max-width: 1600px){
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        min-height: calc(100vh - (173px + 40px));
+        padding-top: 100px;
+    }
   
 }
 @media(max-width: 1366px) {
@@ -425,6 +422,11 @@ img.swal2-image {
         height: 26px;
     }
     /* radio button end*/
+    /* sales activity */
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 60px;
+    }
+    /* sales activity end */
 }
 
 @media(max-width: 1199px) {
