@@ -1,66 +1,68 @@
 <section class="sales-pricing-main">
     <div class="page-content">
-    <div class="bg-box-set-price">
-        <div class="hashtag">
-            <h2>#{{eventHashTag}}</h2>
-        </div>
-        <div class="main-box-for-slider">
-            <div class="sales-inner sales-inner-box-main-box">
-                <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)"
-                    (eventHashTag)="getHashTag($event)">
-                </app-activity-slider>
-                <div class="event-date-box" *ngIf="isDisable">
-                    <h4>Event Date: <span>{{activityDate | date}}</span></h4>
-                </div>
-                <div class="group-box" *ngIf="isDisable">
-                    <app-group-slider [selectedActivity]="selectedActivity" (singleGroup)="getGroup($event)">
-                    </app-group-slider>
-                    <div class="row m-0">
-                        <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.male">
-                            <h6 class="text-left">
-                                <img src="../../../assets/images/male.png" class="icon-img" alt="male icon"> Male
-                            </h6>
-                            <div class="inner-box-group">
-                                <ul>
-                                    <li class="w-100 d-inline-block"
-                                        *ngFor="let item of selectedGroup.male; let i =index">
-                                        <h5 class="float-left item-name">{{item.itemName}}</h5>
-                                        <h5 class="float-right item-price">{{item.itemPrice | currency:"&#x20A6;"}}</h5>
-                                        <div class="delete-icon" (click)="removeMaleItem(item , i)">
-                                            <img src="../../../assets/images/bin.png" alt="delete icon">
-                                        </div>
-                                    </li>
-                                </ul>
+        <div class="bg-box-set-price">
+            <div class="hashtag">
+                <h2>#{{eventHashTag}}</h2>
+            </div>
+            <div class="main-box-for-slider">
+                <div class="sales-inner sales-inner-box-main-box">
+                    <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)"
+                        (eventHashTag)="getHashTag($event)">
+                    </app-activity-slider>
+                    <div class="event-date-box" *ngIf="isDisable">
+                        <h4>Event Date: <span>{{activityDate | date}}</span></h4>
+                    </div>
+                    <div class="group-box" *ngIf="isDisable">
+                        <app-group-slider [selectedActivity]="selectedActivity" (singleGroup)="getGroup($event)">
+                        </app-group-slider>
+                        <div class="row m-0">
+                            <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.male">
+                                <h6 class="text-left">
+                                    <img src="../../../assets/images/male.png" class="icon-img" alt="male icon"> Male
+                                </h6>
+                                <div class="inner-box-group">
+                                    <ul>
+                                        <li class="w-100 d-inline-block"
+                                            *ngFor="let item of selectedGroup.male; let i =index">
+                                            <h5 class="float-left item-name">{{item.itemName}}</h5>
+                                            <h5 class="float-right item-price">{{item.itemPrice | currency:"&#x20A6;"}}
+                                            </h5>
+                                            <div class="delete-icon" (click)="removeMaleItem(item , i)">
+                                                <img src="../../../assets/images/bin.png" alt="delete icon">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn add-btn" data-toggle="modal" (click)="openMaleModel()">Add</button>
                             </div>
-                            <button class="btn add-btn" data-toggle="modal" (click)="openMaleModel()">Add</button>
-                        </div>
-                        <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.female">
-                            <h6 class="text-left">
-                                <img src="../../../assets/images/girl.png" class="icon-img" alt="female icon"> Female
-                            </h6>
-                            <div class="inner-box-group">
-                                <ul>
-                                    <li *ngFor="let item of selectedGroup.female; let i=index">
-                                        <h5 class="float-left item-name">{{item.itemName}}</h5>
-                                        <h5 class="float-right item-price">
-                                            {{ item.itemPrice | currency:'&#x20A6;': true }}</h5>
-                                        <div class="delete-icon" (click)="removeFemaleItem(item , i)">
-                                            <img src="../../../assets/images/bin.png" alt="delete icon">
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.female">
+                                <h6 class="text-left">
+                                    <img src="../../../assets/images/girl.png" class="icon-img" alt="female icon">
+                                    Female
+                                </h6>
+                                <div class="inner-box-group">
+                                    <ul>
+                                        <li *ngFor="let item of selectedGroup.female; let i=index">
+                                            <h5 class="float-left item-name">{{item.itemName}}</h5>
+                                            <h5 class="float-right item-price">
+                                                {{ item.itemPrice | currency:'&#x20A6;': true }}</h5>
+                                            <div class="delete-icon" (click)="removeFemaleItem(item , i)">
+                                                <img src="../../../assets/images/bin.png" alt="delete icon">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn add-btn" data-toggle="modal" (click)="openFemaleModel()">Add</button>
                             </div>
-                            <button class="btn add-btn" data-toggle="modal" (click)="openFemaleModel()">Add</button>
                         </div>
                     </div>
-                </div>
-                <div class="next-back-button mt-2 w-100 d-inline-block">
-                    <button class="btn float-left">Back</button>
-                    <button class="btn float-right" (click)="addGroup()" [disabled]="!isButton">Next</button>
+                    <div class="next-back-button mt-2 w-100 d-inline-block">
+                        <button class="btn float-left">Back</button>
+                        <button class="btn float-right" (click)="addGroup()" [disabled]="!isButton">Next</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -74,8 +76,7 @@
             </div>
             <div class="modal-body">
                 <div class="add-items">
-                    <input type="text" placeholder="Enter Item Name" pattern="\d*" [(ngModel)]="object.itemName"
-                        required>
+                    <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName" required>
                     <input type="number" placeholder="Enter Item Price" min="0" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (keydown)="addMaleItems($event)" id="codeInput"
                         [(ngModel)]="object.itemPrice">
@@ -109,7 +110,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
-                    (click)="addFemaleItmes(femaleObject)">Add</button>
+                    (click)="addFemaleItmes(femaleObject)" [disabled]="!isModel">Add</button>
             </div>
 
         </div>
