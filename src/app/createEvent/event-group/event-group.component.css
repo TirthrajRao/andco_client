@@ -300,9 +300,27 @@ h5.item-name, h5.item-price{
     .hashtag-set-price p{
         margin: 10px 0;
     }
+    .hashtag h2{
+        font-size: 20px;
+    }
+    .next-back-button button{
+        font-size: 16px;
+    }
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 90px !important;
+    }
 }
 @media(max-width:1199px){
-
+    .inner-box-group {
+        max-height: 120px;
+        min-height: 120px;
+    }
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 120px !important;
+    }
+    .sales-inner span{
+        font-size: 18px;
+    }
 }
 @media(max-width:991px){
     .bg-box-set-price {
@@ -327,7 +345,8 @@ h5.item-name, h5.item-price{
 @media(max-width:767px){
     .bg-box-set-price{
         width: 600px;
-        margin: 20px 0;
+        height: auto;
+        margin: 0;
     }
     .main-box-for-slider{
         width: 550px;
@@ -347,13 +366,16 @@ h5.item-name, h5.item-price{
     .main-box-for-slider{
         width: 450px;
     }
+    .sales-inner span{
+        font-size: 16px;
+    }
 }
 @media(max-width: 480px){
     .bg-box-set-price{
-        width: 450px;
+        width: 380px;
     }
     .main-box-for-slider{
-        width: 400px;
+        width: 320px;
     }
 }
 @media(max-width: 400px){
@@ -365,6 +387,10 @@ h5.item-name, h5.item-price{
     }
     .group-box h6 {
         margin: 10px 0;
+    }
+    .andco-logo img {
+        margin-bottom: 0px;
+        height: 40px;
     }
 }
 @media(max-width: 320px){

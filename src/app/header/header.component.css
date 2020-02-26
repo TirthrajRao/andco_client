@@ -125,14 +125,12 @@
     }
 }
 @media(max-width: 767px){
-    .andco-logo img, .navigation_menu a img  {
-        height: 50px;
+    .navigation_menu {
+        max-width: 50px;
     }
 }
 @media(max-width: 575px){
-    .navigation_menu a img {
-        height: 40px;
-    }
+
     .hello-text h2{
         font-size: 30px;
     }
@@ -143,6 +141,9 @@
     }
     .navigation_menu{
         margin-right: 10px;
+    }
+    .navigation_menu {
+        max-width: 40px;
     }
 }
 @media(max-width: 400px){
