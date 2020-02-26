@@ -176,6 +176,7 @@ export class EventGroupComponent implements OnInit {
   }
 
   addFemaleItems(event) {
+    this.isModel = true
     if (event.key === "Enter") {
       console.log("call this")
       this.addFemaleItmes(this.femaleObject)

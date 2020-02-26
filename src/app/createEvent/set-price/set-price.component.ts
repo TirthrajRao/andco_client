@@ -34,8 +34,8 @@ export class SetPriceComponent implements OnInit {
   ngOnInit() {
 
     this.setPriceForm = new FormGroup({
-      thanksMessage: new FormControl('', [Validators.required]),
-      afterEventMessage: new FormControl('', [Validators.required]),
+      thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9]+$")]),
+      afterEventMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9]+$")]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl('', [Validators.required]),
@@ -60,7 +60,7 @@ export class SetPriceComponent implements OnInit {
       fade: true,
       swipe: false,
       prevArrow: '<button type="button" class="prevarrow">Back</button>',
-      nextArrow: '<button type="button" class="nextarrow nextArrowClick">Next</button>',
+      nextArrow: '<button type="button" class="nextarrow">Next</button>',
     });
     // }, 500)
     // set-price main slider js end
@@ -73,10 +73,13 @@ export class SetPriceComponent implements OnInit {
  
   nextArrowClick(){
     console.log("nextArrowClick($event)");
-    
+
   }
   setPrice() {
     console.log("value of form", this.setPriceForm);
+    const message = 'Set price of created event'
+    this.alertService.getSuccess(message)
+    
     const invalidMessage = []
     const controls:any = this.setPriceForm.controls
     for (const name in controls) {
