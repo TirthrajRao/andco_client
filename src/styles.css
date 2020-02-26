@@ -43,7 +43,13 @@ button:focus {
     font-size: 18px;
     margin-top: -10px;
 }
-
+select::-ms-expand {
+    display: none !important;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+}
 .modal-header, .modal-content, .modal-footer {
     border: none !important;
 }
@@ -378,6 +384,15 @@ img.swal2-image {
 .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
     height: 0 !important;
     width: 0 !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix{
+    padding: 0 !important;
+}
+.timepicker__header, .clock-face__number > span.active, .clock-face__clock-hand, .mat-calendar-body-selected{
+    background-color: #A6B138 !important;
+}
+.timepicker-button{
+    color: #A6B138 !important;
 }
 /* mat css end */
 /* responsive css start */
