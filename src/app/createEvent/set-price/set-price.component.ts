@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { invalid } from '@angular/compiler/src/render3/view/util';
 declare var $: any
 
 @Component({
@@ -25,7 +27,8 @@ export class SetPriceComponent implements OnInit {
   }
   hashTag = sessionStorage.getItem('hasTag');
   constructor(
-    public alertService: AlertService
+    public alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -57,25 +60,51 @@ export class SetPriceComponent implements OnInit {
       fade: true,
       swipe: false,
       prevArrow: '<button type="button" class="prevarrow">Back</button>',
-      nextArrow: '<button type="button" class="nextarrow">Next</button>',
+      nextArrow: '<button type="button" class="nextarrow nextArrowClick">Next</button>',
     });
     // }, 500)
     // set-price main slider js end
     $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
+
+    $(".nextArrowClick").on("click", function(){
+      alert("The paragraph was clicked.");
+    });
+  } 
+ 
+  nextArrowClick(){
+    console.log("nextArrowClick($event)");
+    
   }
-
-
   setPrice() {
     console.log("value of form", this.setPriceForm);
-    let message = 'Price Set in Created Event'
-    this.alertService.getSuccess(message)
+    const invalidMessage = []
+    const controls:any = this.setPriceForm.controls
+    for (const name in controls) {
+      console.log("name of controls=========", name);
 
+      if (controls[name].invalid) {
+        console.log("invalid",controls[name]);
+        invalidMessage.push(name)
+    //     let message = 'Error in' + name
+    //     this.alertService.getError(message)
+      } else {
+        console.log("---valid",controls[name]);
+    //     // let message = 'Price Set in Created Event'
+    //     // this.alertService.getSuccess(message)
+    //     this.setPriceForm.reset()
+    //     // this.router.navigate(['/menu'])
+      }
+    }
+    console.log("invalid value", invalidMessage);
+    // return invalidMessage
   }
   detailsOfBank(event) {
     console.log("bank details in set price", event);
     this.setPriceForm.patchValue({
       bankDetails: event
     })
+    console.log("enter form value", this.setPriceForm.value);
+
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
   }
   paymentCloseDate(data) {
