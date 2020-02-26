@@ -96,6 +96,7 @@ export class SetPriceComponent implements OnInit {
       }
     }
     console.log("invalid value", invalidMessage);
+    this.router.navigate(['created-event-message'])
     // return invalidMessage
   }
   detailsOfBank(event) {
