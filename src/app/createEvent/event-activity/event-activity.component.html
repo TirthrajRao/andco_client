@@ -2,7 +2,7 @@
     <div class="page-content">
     <div class="bg-box-set-price">
         <div class="hashtag-set-price">
-            <h2>#{{hashTag}} hello</h2>
+            <h2>#{{hashTag}}</h2>
         </div>
         <div class="event-add-box">
             <div class="wrapper">
@@ -10,7 +10,7 @@
                     <div class="element">
                         <form [formGroup]="activityForm">
                             <div formArrayName="activity">
-                                <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                <div class="single-element" [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
                                     <input type="text" formControlName="activityName" placeholder="Enter activity name">
                                     <button class="remove" *ngIf="activityFormData.controls.length>1"
                                         (click)="removeActivityField(i,tech.value)">
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!-- </span> -->
-                                    <mat-form-field style="visibility:hidden; float: left; height: 10px;">
+                                    <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                                         <mat-label>Choose a date</mat-label>
                                         <input matInput [matDatepicker]="picker" [min]="currentDay"
                                             formControlName="activityStartDate" id="activityStartDate{{i}}"

@@ -66,9 +66,9 @@ export class SetPriceComponent implements OnInit {
     // set-price main slider js end
     $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
 
-    $(".nextArrowClick").on("click", function(){
-      alert("The paragraph was clicked.");
-    });
+    // $(".nextArrowClick").on("click", function(){
+    //   alert("The paragraph was clicked.");
+    // });
   } 
  
   nextArrowClick(){

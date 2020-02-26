@@ -36,7 +36,6 @@
 }
 .inner-box {
     max-height: 410px;
-    min-height: 410px;
     overflow-y: auto;
     margin: 10px 0;
     position: relative;
@@ -86,13 +85,17 @@
 }
 .element i{
     position: absolute;
-    left: 320px;
+    left: 275px;
     margin-top: 30px;
     color: #A6B138;
     font-size: 25px;
     cursor: pointer;
 }
-
+.single-element{
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 10px 0;
+}
 button.remove {
     background-color: transparent;
     border: none;
@@ -177,7 +180,6 @@ button.remove {
     }
     .inner-box {
         max-height: 350px;
-        min-height: 250px;
     }
     .element input {
         font-size: 24px;
@@ -216,7 +218,7 @@ button.remove {
         font-size: 26px;
     }
     .element i{
-        left: 290px;
+        left: 245px;
         margin-top: 27px;
         font-size: 22px;
     }
@@ -254,12 +256,14 @@ button.remove {
         padding: 20px;
     }
     .element i {
-        left: 265px;
-        margin-top: 31px;
+        margin-top: 20px;
         font-size: 18px;
     }
     .date-display{
         margin-top: 10px;
+    }
+    .inner-box{
+        max-height: 200px;
     }
 }
 @media(max-width:575px){
@@ -304,15 +308,13 @@ button.remove {
         font-size: 15px;
     }
     .element i {
-        left: 235px;
+        right: 10px;
+        left: auto;
     }
 }
 @media(max-width:320px){
     .bg-box-set-price{
         width: 350px;
         height: 360px;
-    }
-    .inner-box {
-        max-height: 200px;
     }
 }

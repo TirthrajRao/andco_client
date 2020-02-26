@@ -90,6 +90,9 @@
     height: 50px;
     font-size: 22px;
 }
+.sales-inner input.mat-input-element {
+    width: 100%;
+}
 .sales-inner input::placeholder{
     color: #5D6C20;
 }
