@@ -10,7 +10,7 @@
                     <div class="element">
                         <form [formGroup]="activityForm">
                             <div formArrayName="activity">
-                                <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                <div class="single-element" [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
                                     <input type="text" formControlName="activityName" placeholder="Enter activity name">
                                     <button class="remove" *ngIf="activityFormData.controls.length>1"
                                         (click)="removeActivityField(i,tech.value)">
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!-- </span> -->
-                                    <mat-form-field style="visibility:hidden; float: left; height: 10px;">
+                                    <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                                         <mat-label>Choose a date</mat-label>
                                         <input matInput [matDatepicker]="picker" [min]="currentDay"
                                             formControlName="activityStartDate" id="activityStartDate{{i}}"
@@ -48,9 +48,9 @@
         <div class="buttons">
             <button class="clone" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
+        <div class="event-next-btn mt-3">
+            <button class="btn" (click)="addActivity()">Next</button>
+        </div>
     </div>
 </div>
-    <div class="event-next-btn mt-3">
-        <button class="btn" (click)="addActivity()">Next</button>
-    </div>
 </section>

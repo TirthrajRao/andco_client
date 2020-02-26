@@ -16,7 +16,7 @@
     background-color: #f3f4f3;
     width: 1200px;
     height: 600px;
-    padding: 70px 0;
+    padding: 30px 30px 70px;
     box-shadow: 0px 0px 70px #d5dbd5;
     margin-top: 40px;
     position: relative;
@@ -36,9 +36,8 @@
 }
 .inner-box {
     max-height: 410px;
-    min-height: 410px;
     overflow-y: auto;
-    margin-top: 10px 0;
+    margin: 10px 0;
     position: relative;
 }
 
@@ -61,11 +60,12 @@
 
 .element {
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px 50px;
+    position: relative;
 }
 
 .element input {
-    width: 90%;
+    width: calc(100% - 50px);
     border-radius: 7px;
     height: 50px;
     border: 2px solid #DBD9AC;
@@ -85,13 +85,17 @@
 }
 .element i{
     position: absolute;
-    left: 30%;
+    left: 275px;
     margin-top: 30px;
     color: #A6B138;
     font-size: 25px;
     cursor: pointer;
 }
-
+.single-element{
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 10px 0;
+}
 button.remove {
     background-color: transparent;
     border: none;
@@ -133,7 +137,7 @@ button.remove {
     background: #fff;
     padding: 5px;
     border: 2px solid #DBD9AC;
-    width: 8%;
+    width: 80px;
     height: 50px;
     margin-right: 10px;
     border-radius: 10px;
@@ -150,18 +154,20 @@ button.remove {
 }
 .event-next-btn {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     margin: auto;
     display: block;
-    left: 0;
-    right: 0;
+    right: 20px;
     text-align: center;
 }
 .event-next-btn button{
     background-color: #A6B138;
     color: #fff;
     border: none;
-    outline: none;
+    font-size: 20px;
+    outline: none !important;
+    padding: 6px 30px;
+    font-weight: bold;
 }
 
 /* responsive css start */
@@ -169,11 +175,14 @@ button.remove {
 @media(max-width:1600px){
     .bg-box-set-price {
         width: 1040px;
-        height: 580px;
-        padding: 60px 0;
+        height: 570px;
+        padding: 30px 0;
     }
     .inner-box {
-        max-height: 380px;
+        max-height: 350px;
+    }
+    .element input {
+        font-size: 24px;
     }
 }
 @media(max-width:1366px){
@@ -186,14 +195,43 @@ button.remove {
         margin: 10px 0;
     }
     .inner-box {
-        max-height: 330px;
+        max-height:280px;
+    }
+    .element input ,
+    .date-display{
+        font-size: 22px;
+        height: 42px;
+    }
+    .date-display{
+        width: 70px;
+    }
+    button.remove img {
+        width: 20px;
+    }
+    .buttons button.clone {
+        font-size: 22px;
+    }
+    .event-next-btn button {
+        font-size: 16px;
+    }
+    .hashtag-set-price h2{
+        font-size: 26px;
+    }
+    .element i{
+        left: 245px;
+        margin-top: 27px;
+        font-size: 22px;
     }
 }
 @media(max-width:1199px){
     .bg-box-set-price {
         width: 730px;
-        height: 470px;
+        height: 410px;
         padding: 20px 0;
+    }
+    .inner-box {
+        max-height: 250px;
+        min-height: 100px;
     }
 }
 @media(max-width:991px){
@@ -201,12 +239,9 @@ button.remove {
         width: 640px;
         height: 440px;
     }
-    .element input {
-        font-size: 22px;
-    }
-    button.remove img {
-        height: 20px;
-        width: 20px;
+    .element input, .date-display{
+        font-size: 20px;
+        height: 38px;
     }
 }
 @media(max-width:767px){
@@ -214,32 +249,72 @@ button.remove {
         width: 640px;
         height: 440px;
     }
-    .wrapper {
-        padding-bottom: 60px;
+    .buttons button.clone {
+        font-size: 18px;
     }
-    .inner-box {
-        max-height: 500px;
-        overflow-y: auto;
-        margin-top: 100px;
-        position: relative;
+    .element{
+        padding: 20px;
+    }
+    .element i {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .date-display{
+        margin-top: 10px;
+    }
+    .inner-box{
+        max-height: 200px;
     }
 }
 @media(max-width:575px){
     .bg-box-set-price {
         width: 480px;
-        height: 420px;
+        height: 430px;
         margin-top: 0;
         padding: 10px 0;
+    }
+    button.remove img {
+        width: 14px;
     }
 }
 @media(max-width: 480px){
     .bg-box-set-price {
         width: 390px;
     }
+    .element input, .date-display p{
+        font-size: 18px;
+    }
+    .element i{
+        margin-top: 19px;
+        font-size: 16px;
+    }
 }
 @media(max-width: 400px){
     .bg-box-set-price {
-        width: 340px;
+        width: 350px;
+    }
+}
+@media(max-width: 360px){
+    .element input{
+        width: calc(100% - 40px);
+    }
+    .element input{
+        font-size: 16px;
+    }
+    .date-display {
+        width: 60px;
+    }
+    .date-display p{
+        font-size: 15px;
+    }
+    .element i {
+        right: 10px;
+        left: auto;
+    }
+}
+@media(max-width:320px){
+    .bg-box-set-price{
+        width: 350px;
         height: 360px;
     }
 }

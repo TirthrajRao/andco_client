@@ -1,12 +1,15 @@
-.group-slider{
-    padding-left: 40px;
+.group-slider {
+    padding-left: 35px;
 }
-.group-single-slide{
+
+.group-single-slide {
     position: relative;
 }
-.group-single-slide:hover .remove-group{
+
+.group-single-slide:hover .remove-group {
     display: block;
 }
+
 .remove-group {
     position: absolute;
     top: 0;
@@ -14,39 +17,54 @@
     padding: 0px 10px 0 0;
     display: none;
 }
-.remove-group i{
+
+.remove-group i {
     color: #A6B138;
     cursor: pointer;
 }
+
 .add-group button {
-    position: absolute;
-    left: 16px;
     color: #fff;
     font-size: 30px;
     line-height: 1;
     background: transparent;
     border: none;
     z-index: 1;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+    margin: auto;
 }
+
 .add-group button:hover {
     color: #fff;
 }
-.add-group button:focus{
+
+.add-group button:focus {
     box-shadow: none;
 }
-.group-header{
+
+.group-header {
     background-color: #A6B138;
-    padding: 14px;
+    padding: 4px;
+    position: relative;
 }
-.group-header span{
+
+.group-header span {
     color: #A6B138;
     font-weight: bold;
     font-size: 22px;
 }
-.group-name .active{
+
+.group-name .active {
     outline: 2px solid #ffffff;
     outline-offset: 3px;
 }
+
 .group-name {
     background-color: #fff;
     margin: 0 5px;
@@ -57,11 +75,13 @@
     white-space: nowrap;
     cursor: pointer;
 }
-.group-single-slide.slick-slide{
+
+.group-single-slide.slick-slide {
     position: relative;
     margin: 5px 4px;
 }
-.group-single-slide.slick-slide .group-name.active::after{
+
+.group-single-slide.slick-slide .group-name.active::after {
     content: "";
     position: absolute;
     top: -5px;
@@ -72,25 +92,23 @@
     display: block;
     border-radius: 10px;
 }
-@media(max-width:1600px){
-    .group-header span{
+
+@media(max-width:1600px) {
+    .group-header span {
         font-size: 18px;
     }
 }
-@media(max-width:1366px){
-    
-}
-@media(max-width:1199px){
-    
-}
-@media(max-width:991px){
-    
-}
-@media(max-width:767px){
+
+@media(max-width:1366px) {}
+
+@media(max-width:1199px) {}
+
+@media(max-width:991px) {}
+
+@media(max-width:767px) {
     .group-header span {
         font-size: 16px;
     }
 }
-@media(max-width:575px){
-    
-}
+
+@media(max-width:575px) {}

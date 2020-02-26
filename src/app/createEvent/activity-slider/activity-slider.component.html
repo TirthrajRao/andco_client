@@ -5,7 +5,7 @@
     <div class="event-single-slide" *ngFor="let item of allActivities, let i = index">
         <div class="event-name" (click)="singleActivityDetails(item , allActivities , i)"
             [class.active]="selectedIndex === i">
-            <p>{{item.activity.activityName}}</p>
+            <p title="{{item.activity.activityName}}">{{item.activity.activityName}}</p>
         </div>
     </div>
 </div>

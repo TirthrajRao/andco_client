@@ -69,9 +69,9 @@ export class SetPriceComponent implements OnInit {
     // $(".nextArrowClick").on("click", function(){
     //   alert("The paragraph was clicked.");
     // });
-  }
-
-  nextArrowClick() {
+  } 
+ 
+  nextArrowClick(){
     console.log("nextArrowClick($event)");
 
   }
@@ -79,24 +79,27 @@ export class SetPriceComponent implements OnInit {
     console.log("value of form", this.setPriceForm);
     const message = 'Set price of created event'
     this.alertService.getSuccess(message)
-    // const invalidMessage = []
-    // const controls: any = this.setPriceForm.controls
-    // for (const name in controls) {
-    //   console.log("name of controls=========", name);
+    
+    const invalidMessage = []
+    const controls:any = this.setPriceForm.controls
+    for (const name in controls) {
+      console.log("name of controls=========", name);
 
-    //   if (controls[name].invalid) {
-    //     console.log("invalid", controls[name]);
-    //     invalidMessage.push(name)
-    //     //     let message = 'Error in' + name
-    //     //     this.alertService.getError(message)
-    //   } else {
-    //     console.log("---valid", controls[name]);
-    //     //     // let message = 'Price Set in Created Event'
-    //     //     // this.alertService.getSuccess(message)
-    //     //     this.setPriceForm.reset()
-    //     //     // this.router.navigate(['/menu'])
-    //   }
-    // }
+      if (controls[name].invalid) {
+        console.log("invalid",controls[name]);
+        invalidMessage.push(name)
+    //     let message = 'Error in' + name
+    //     this.alertService.getError(message)
+      } else {
+        console.log("---valid",controls[name]);
+    //     // let message = 'Price Set in Created Event'
+    //     // this.alertService.getSuccess(message)
+    //     this.setPriceForm.reset()
+    //     // this.router.navigate(['/menu'])
+      }
+    }
+    console.log("invalid value", invalidMessage);
+    this.router.navigate(['created-event-message'])
     // return invalidMessage
   }
   detailsOfBank(event) {
