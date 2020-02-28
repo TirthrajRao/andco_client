@@ -29,6 +29,7 @@ import { AllSliderComponent } from '../myEvent/all-slider/all-slider.component';
 import { MyEventActivityComponent } from '../myEvent/my-event-activity/my-event-activity.component';
 import { MyEventComponent } from '../myEvent/my-event/my-event.component';
 import { MyEventRadialMenuComponent } from '../myEvent/my-event-radial-menu/my-event-radial-menu.component';
+import { MyEventLinkComponent } from '../myEvent/my-event-link/my-event-link.component';
 import { from } from 'rxjs';
 
 
@@ -94,6 +95,10 @@ const routes: Routes = [
         path: 'radial-menu',
         component: MyEventRadialMenuComponent
       },
+      {
+        path: 'my-event-link',
+        component: MyEventLinkComponent
+      },
     ]
   }
 ]
@@ -117,7 +122,8 @@ const routes: Routes = [
     AllSliderComponent,
     MyEventActivityComponent,
     MyEventComponent,
-    MyEventRadialMenuComponent
+    MyEventRadialMenuComponent,
+    MyEventLinkComponent
   ],
   imports: [
     CommonModule,

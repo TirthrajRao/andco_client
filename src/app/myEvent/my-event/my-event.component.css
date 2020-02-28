@@ -1,5 +1,6 @@
 .myEvent-main{
-    background: linear-gradient(#AF7440,#E39447);
+    /* background: linear-gradient(#AF7440,#E39447); */
+    background: linear-gradient(#C4752D,#DE8F43);
     height: 100%;
     min-height: 100vh;
 }
