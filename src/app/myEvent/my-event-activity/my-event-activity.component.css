@@ -1,0 +1,175 @@
+.myevent-groups-item{
+    max-height: 200px;
+    min-height: 200px;
+    overflow-y: auto;
+}
+.myevent-groups-item::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: #F8D0AD;
+}
+.myevent-groups-item::-webkit-scrollbar {
+    width: 3px;
+    padding-right: 3px;
+    background-color: #F8D0AD;
+}
+
+.myevent-groups-item::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #FE983A;
+}
+.myevent-activity-box{
+    color: #F8D0AD;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 60px;
+    width: 90%;
+    margin: 30px auto;
+}
+.myevent-single-item{
+    float: left;
+    width: calc(100% - 100px);
+    display: inline-block;
+}
+span.items-name{
+    float: left;
+}
+span.items-price{
+    float: right;
+    text-align: right;
+}
+span.items-price, span.items-name{
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* radio button css start here */
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 35px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #ffffff;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #F18B2D;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* radio button css end here */
+
+@media(max-width:1600px) {
+    .myevent-activity-box{
+        font-size: 30px;
+    }
+}
+
+@media(max-width:1366px) {
+    .myevent-activity-box{
+        font-size: 28px;
+    }
+    /* radio button  start*/
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 11px;
+        height: 11px;
+        top: 7px;
+        left: 8px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 26px;
+        height: 26px;
+    }
+    /* radio button end*/
+}
+
+@media(max-width:1199px) {
+    /* radio button  start*/
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 20px;
+        height: 20px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        line-height: 30px;
+    }
+    /* radio button end*/
+}
+
+@media(max-width:991px) {}
+
+@media(max-width:767px) {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+     font-size: 26px;
+    }
+    .myevent-activity-box{
+        font-size: 22px;
+        line-height: 45px;
+    }
+}
+@media(max-width:480px){
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font-size: 22px;
+    }
+    .myevent-activity-box {
+        font-size: 20px;
+        line-height: 35px;
+    }
+    .myevent-single-item{
+        width: calc(100% - 40px);
+    }
+}   
+@media(max-width: 400px){
+    .myevent-activity-box{
+        padding: 0 20px;
+        width: 100%;
+    }
+}

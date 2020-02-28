@@ -6,3 +6,45 @@
 .myevent-inner-box{
     width: 800px;
 }
+
+/* responsive css start */
+@media(max-width: 1600px){
+    .myevent-inner-box{
+        width: 750px;
+    }
+}
+@media(max-width: 1366px){
+    .myevent-inner-box{
+        width: 700px;
+    }
+}
+@media(max-width: 1199px){
+    .myevent-inner-box{
+        width:650px;
+    }
+}
+@media(max-width: 991px){
+    .myevent-inner-box{
+        width: 600px;
+    }
+}
+@media(max-width: 767px){
+    .myevent-inner-box{
+        width: 550px;
+    }
+}
+@media(max-width: 575px){
+    .myevent-inner-box{
+        width: 480px;
+    }
+}
+@media(max-width: 480px){
+    .myevent-inner-box{
+        width: 400px;
+    }
+}
+@media(max-width: 400px){
+    .myevent-inner-box{
+        width: 100%;
+    }
+}

@@ -158,6 +158,60 @@ button.btn.set-price-custom-button{
 .sales-pricing-main .page-content {
     padding-top: 135px;
 }
+/* radio button css start here */
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 35px;
+    display: inline-block;
+    color: #bdbdbd ;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #CCCCCC;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* radio button css end here */
 
 /* responsive css start here */
 
@@ -203,6 +257,18 @@ button.btn.set-price-custom-button{
     .single-main-box textarea{
         font-size: 18px;
     }
+      /* radio button  start*/
+      [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 11px;
+        height: 11px;
+        top: 7px;
+        left: 8px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 26px;
+        height: 26px;
+    }
+    /* radio button end*/
 }
 @media(max-width: 1199px){
     .bg-box-set-price {
@@ -219,6 +285,21 @@ button.btn.set-price-custom-button{
     button.btn.set-price-custom-button{
         padding: 4px 19px;
     }
+      /* radio button  start*/
+      [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 20px;
+        height: 20px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        line-height: 30px;
+    }
+    /* radio button end*/
 }
 @media(max-width: 991px){
     .sales-inner span ,.hashtag-set-price p{
