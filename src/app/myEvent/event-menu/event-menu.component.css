@@ -1,0 +1,22 @@
+.single-slide{
+    background-color: #ffffff;
+    border-radius: 50%;
+    color: #FE983A;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 0 15px;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    line-height: normal;
+}
+.single-slide.slick-slide.slick-current.slick-active.slick-center {
+    background-color: #F3B171;
+    border: 2px solid;
+    color: #fff;
+
+}

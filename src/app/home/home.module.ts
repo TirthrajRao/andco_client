@@ -28,10 +28,11 @@ import { CreatedEventMessageComponent } from '../createEvent/created-event-messa
 import { AllSliderComponent } from '../myEvent/all-slider/all-slider.component';
 import { MyEventActivityComponent } from '../myEvent/my-event-activity/my-event-activity.component';
 import { MyEventComponent } from '../myEvent/my-event/my-event.component';
-import { MyEventRadialMenuComponent } from '../myEvent/my-event-radial-menu/my-event-radial-menu.component';
 import { MyEventLinkComponent } from '../myEvent/my-event-link/my-event-link.component';
 import { InvitedGuestComponent } from '../myEvent/invited-guest/invited-guest.component';
 import { EventProfilePicComponent } from '../myEvent/event-profile-pic/event-profile-pic.component';
+import { CollectionComponent } from '../myEvent/collection/collection.component';
+import { EventMenuComponent } from '../myEvent/event-menu/event-menu.component';
 import { from } from 'rxjs';
 
 
@@ -94,10 +95,6 @@ const routes: Routes = [
         component: MyEventComponent
       },
       {
-        path: 'radial-menu',
-        component: MyEventRadialMenuComponent
-      },
-      {
         path: 'my-event-link',
         component: MyEventLinkComponent
       },
@@ -128,10 +125,11 @@ const routes: Routes = [
     AllSliderComponent,
     MyEventActivityComponent,
     MyEventComponent,
-    MyEventRadialMenuComponent,
     MyEventLinkComponent,
     InvitedGuestComponent,
-    EventProfilePicComponent
+    EventProfilePicComponent,
+    CollectionComponent,
+    EventMenuComponent,
   ],
   imports: [
     CommonModule,

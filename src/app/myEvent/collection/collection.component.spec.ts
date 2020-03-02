@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyEventRadialMenuComponent } from './my-event-radial-menu.component';
+import { CollectionComponent } from './collection.component';
 
-describe('MyEventRadialMenuComponent', () => {
-  let component: MyEventRadialMenuComponent;
-  let fixture: ComponentFixture<MyEventRadialMenuComponent>;
+describe('CollectionComponent', () => {
+  let component: CollectionComponent;
+  let fixture: ComponentFixture<CollectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyEventRadialMenuComponent ]
+      declarations: [ CollectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyEventRadialMenuComponent);
+    fixture = TestBed.createComponent(CollectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
