@@ -250,6 +250,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* set-price css end here */
 
+/* event-menu slider start */
+.event-menu-slider .slick-arrow {
+    position: absolute;
+    top: 0;
+}
+.event-menu-slider button.prevarrow.slick-arrow {
+    left: 30%;
+}
+
+.event-menu-slider button.nextarrow.slick-arrow {
+    right: 30%;
+}
+
 /* date picker css start here */
 
 .datepicker.dropdown-menu th {
@@ -270,6 +283,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .swal2-popup {
     padding-top: 7% !important;
+    background-color: #E1E1E1 !important;
 }
 
 img.swal2-image {

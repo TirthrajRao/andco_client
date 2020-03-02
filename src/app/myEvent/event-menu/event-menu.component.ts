@@ -12,7 +12,6 @@ export class EventMenuComponent implements OnInit {
 
   ngOnInit() {
     $('.event-menu-slider').not('.slick-initialized').slick({
-      infinity: true,
       slidesToShow: 5,
       slidesToScroll: 1,
       arrows: true,

@@ -33,6 +33,8 @@ import { InvitedGuestComponent } from '../myEvent/invited-guest/invited-guest.co
 import { EventProfilePicComponent } from '../myEvent/event-profile-pic/event-profile-pic.component';
 import { CollectionComponent } from '../myEvent/collection/collection.component';
 import { EventMenuComponent } from '../myEvent/event-menu/event-menu.component';
+import { TotalCollectionComponent } from '../myEvent/total-collection/total-collection.component';
+import { GuestCollectionComponent } from '../myEvent/guest-collection/guest-collection.component';
 import { from } from 'rxjs';
 
 
@@ -130,6 +132,8 @@ const routes: Routes = [
     EventProfilePicComponent,
     CollectionComponent,
     EventMenuComponent,
+    GuestCollectionComponent,
+    TotalCollectionComponent
   ],
   imports: [
     CommonModule,
