@@ -31,6 +31,7 @@ import { MyEventComponent } from '../myEvent/my-event/my-event.component';
 import { MyEventRadialMenuComponent } from '../myEvent/my-event-radial-menu/my-event-radial-menu.component';
 import { MyEventLinkComponent } from '../myEvent/my-event-link/my-event-link.component';
 import { InvitedGuestComponent } from '../myEvent/invited-guest/invited-guest.component';
+import { EventProfilePicComponent } from '../myEvent/event-profile-pic/event-profile-pic.component';
 import { from } from 'rxjs';
 
 
@@ -129,7 +130,8 @@ const routes: Routes = [
     MyEventComponent,
     MyEventRadialMenuComponent,
     MyEventLinkComponent,
-    InvitedGuestComponent
+    InvitedGuestComponent,
+    EventProfilePicComponent
   ],
   imports: [
     CommonModule,
