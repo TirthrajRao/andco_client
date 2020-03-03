@@ -93,10 +93,6 @@ export class BankDetailsComponent implements OnInit {
         this.bankDetails.emit(this.bankForm.value)
       }
     }
-    // if (event.target.value.length == 16) {
-    //   console.log("ama ave ");
-    //   this.bankDetails.emit(this.bankForm.value)
-    // }
   }
 
 
