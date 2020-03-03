@@ -87,6 +87,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/menu']);
     }
   }
+
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {
       return '#D2A0A1'

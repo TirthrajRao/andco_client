@@ -203,7 +203,6 @@ export class CreateEventComponent implements OnInit {
       if (form[element].status == 'INVALID') {
         flag = 1;
         if (element == 'eventTitle') {
-          console.log("thank you message error");
           this.errorMessaage = 'Event Title is required'
         } else if (element == 'eventType') {
           this.errorMessaage = 'Event Type is required'
