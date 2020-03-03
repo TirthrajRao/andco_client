@@ -22,7 +22,7 @@ export class AlertService {
       imageWidth: 350,
       title: message,
       showConfirmButton: false,
-      // timer: 4000,
+      timer: 4000,
       icon: 'success',
       focusConfirm: true,
     })
@@ -40,7 +40,7 @@ export class AlertService {
       imageWidth: 350,
       title: message,
       showConfirmButton: false,
-      // timer: 4000,
+      timer: 4000,
       icon: 'error',
       focusConfirm: true,
     })

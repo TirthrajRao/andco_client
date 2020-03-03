@@ -90,6 +90,8 @@
     height: 50px;
     font-size: 22px;
     padding: 0px 10px;
+    background-color: #fff;
+    margin-bottom: 20px;
 }
 .sales-inner input.mat-input-element {
     width: 100%;
@@ -212,7 +214,6 @@ button.btn.set-price-custom-button{
 }
 
 /* radio button css end here */
-
 /* responsive css start here */
 
 @media(max-width: 1600px){

@@ -32,6 +32,7 @@ export class SetPriceComponent implements OnInit {
   hashTag = sessionStorage.getItem('hasTag');
   $sliderContainer
   $slider
+  errorMessaage;
   constructor(
     public alertService: AlertService,
     private router: Router
@@ -117,18 +118,38 @@ export class SetPriceComponent implements OnInit {
   }
   setPrice() {
     console.log("value of form", this.setPriceForm);
-    const message = 'Set price of created event'
-
-    const controls: any = this.setPriceForm.controls
-    _.forOwn(controls, async (value, key) => {
-      // console.log("value in loop ", key, ':', value);
-      if (value.status == 'INVALID') {
-        // console.log("valid form value", key);
-        let message = key + 'is required'
-        console.log("display message", message);
-        await this.alertService.getError(message)
+    // let message
+    const keys = Object.keys(this.setPriceForm.controls);
+    let form = this.setPriceForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      if (form[element].status == 'INVALID') {
+        flag = 1;
+        if (element == 'thanksMessage') {
+          console.log("thank you message error");
+          this.errorMessaage = 'Thank you message is required'
+        } else if (element == 'afterEventMessage') {
+          this.errorMessaage = 'After Event message is required'
+        } else if (element == 'paymentDeadlineDate') {
+          this.errorMessaage = 'Payment Date is required'
+        } else if (element == 'paymentDeadlineTime') {
+          this.errorMessaage = 'Payment Time is required'
+        } else if (element == 'bankDetails') {
+          this.errorMessaage = 'Bank Details is required'
+        }
+        // this.errorMessaage = 'nothing'
+        this.alertService.getError(this.errorMessaage)
+        return false
       }
-    })
+      else {
+        return true
+      }
+    });
+    if (flag == 0) {
+      let message = 'New Event created'
+      this.alertService.getSuccess(message)
+      this.router.navigate(['created-event-message'])
+    }
   }
   detailsOfBank(event) {
     console.log("bank details in set price", event);

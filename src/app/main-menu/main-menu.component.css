@@ -36,6 +36,23 @@
     color: #B958D9;
     text-shadow: 0px 3px 9px #b958d9;
 }
+.tooltip-class:hover:after {
+    content: attr(tooltip-data);
+    border-radius: 5px;
+    bottom: 110%;
+    color: #fff;
+    padding: 10px 15px;
+    position: absolute;
+    z-index: 98;
+    font-size: 13px;
+}
+.tooltip-class:hover:after {
+    background: rgba(185, 88, 217, 0.57);
+}
+.tooltip-class:hover:before {
+    border-color: rgba(185, 88, 217, 0.57) transparent;
+    color: #000;
+}
 .menu-main.single .hello-text h2 span{
     color: #ececec;
     text-shadow: 0px 3px 6px #575555;

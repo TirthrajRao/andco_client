@@ -68,13 +68,6 @@
     z-index: 98;
     font-size: 13px;
 }
-.menu-main .tooltip-class:hover:after {
-    background: rgba(185, 88, 217, 0.57);
-}
-.menu-main .tooltip-class:hover:before {
-    border-color: rgba(185, 88, 217, 0.57) transparent;
-    color: #000;
-}
 /* tooltip design end */
 
 @media(max-width:1600px){

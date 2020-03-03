@@ -8,3 +8,8 @@
     margin: auto;
     display: table;
 }
+#message2, #message3{
+    color: #dc3545;
+    font-size: 18px;
+    margin-bottom: 7px;
+}

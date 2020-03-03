@@ -49,9 +49,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-
-
-
   ngOnInit() {
     //tooltip js start
     $(".tooltip-class").hover(function () {
@@ -107,15 +104,15 @@ export class HeaderComponent implements OnInit {
     // console.log("this function call is or not");
 
     if (this.currentUrl.includes('eventActivity')) {
-      this.imgUrl = '/assets/images/firework.png'
+      this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('eventGroup')) {
-      this.imgUrl = '/assets/images/firework.png'
+      this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('created-event-message')){
-      this.imgUrl = '/assets/images/firework.png'
+      this.imgUrl = '/assets/images/firework-pink.png'
     } else if (this.currentUrl.includes('set-price')) {
-      this.imgUrl = '/assets/images/firework.png'
+      this.imgUrl = '/assets/images/firework-green.png'
     } else {
-      this.imgUrl = '/assets/images/fireworks.png'
+      this.imgUrl = '/assets/images/firework-white.png'
     }
   }
 
