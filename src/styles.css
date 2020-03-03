@@ -465,6 +465,9 @@ img.swal2-image {
     .swal2-popup {
         padding-top: 15% !important;
     }
+    .sales-pricing-main .page-content, .event-activity-main .page-content{
+        padding-top: 0 !important;
+    }
 }
 
 @media(max-width: 575px) {

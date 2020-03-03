@@ -333,6 +333,9 @@ h5.item-name, h5.item-price{
     button.btn.add-btn {
         font-size: 16px;
     }
+    .sales-pricing-main .page-content, .event-activity-main .page-content{
+        padding-top: 0 !important;
+    }
 }
 @media(max-width:575px){
     .bg-box-set-price{
