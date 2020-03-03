@@ -1,3 +1,25 @@
 .nav-tabs{
     border: none;
 }
+ul.nav.nav-tabs {
+    display: flex;
+    justify-content: center;
+}
+li.nav-item a {
+    font-size: 23px;
+    color: #686868;
+}
+.nav-tabs .nav-link{
+    border-radius: 4px !important;
+    background-color: #fff;
+    padding: 10px 70px;
+    margin: 10px;
+    border: 2px solid transparent;
+}
+.nav-link.active {
+    border: 2px solid #F8D0AD !important;
+}
+a.nav-link.active {
+    color: #C97A33 !important;
+    
+}
