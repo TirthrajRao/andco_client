@@ -112,6 +112,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-top: 30px;
     width: 100%;
 }
+section.myEvent-main .page-content {
+    align-items: unset;
+    padding-top: 180px;
+}
 
 /* display screen slider start */
 
