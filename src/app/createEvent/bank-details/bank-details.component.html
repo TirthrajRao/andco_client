@@ -14,18 +14,25 @@
             </div>
             <div [hidden]="!isBankSelected">
                 <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name"
-                    class="mb-2 text-left px-3 py-2 font-weight-bold" formControlName="bankName">
+                    class="mb-2 text-left px-3 py-2 font-weight-bold" formControlName="bankName"
+                    [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }">
+                <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
+                    <div *ngIf="f.bankName.errors.required">Name is required</div>
+                    <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div>
+                    <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
+                </div>
             </div>
             <div [hidden]="!isBankSelected">
-                <input type="text"  autocomplete="off" value="test3" name="test3" placeholder="Account Number"
-                    class="mb-2 text-left px-3 py-2 font-weight-bold" minlength="16" maxlength="16"
-                    (input)="addNumber($event)" formControlName="accountNumber"
-                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+                <input type="text" autocomplete="off" value="test3" name="test3" placeholder="Account Number"
+                class="mb-2 text-left px-3 py-2 font-weight-bold" minlength="16" maxlength="16"
+                (input)="addNumber($event, bankForm.value)" id="accountNumber" formControlName="accountNumber"
+                [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+                <div id="message2" class="w-100"></div>
                 <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
                     <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
                     </div>
-                    <div *ngIf="f.accountNumber.errors.maxlength">Account Number must be only 16 digits
+                    <div *ngIf="f.accountNumber.errors.pattern">Enter only numbers
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ export class BankDetailsComponent implements OnInit {
     // })
 
     this.bankForm = new FormGroup({
-      bankName: new FormControl(''),
+      bankName: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z]+$")]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
       cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
     })
@@ -44,11 +44,29 @@ export class BankDetailsComponent implements OnInit {
    */
   get f() { return this.bankForm.controls; }
 
-  addNumber(event) {
+  addNumber(event, form) {
     console.log("logs of number", event.target.value);
-    if (event.target.value.length == 16) {
-      console.log("from value", this.bankForm.value)
-      this.bankDetails.emit(this.bankForm.value)
+    // if (event.target.value.length == 16) {
+    //   console.log("from value", this.bankForm.value)
+    //   this.bankDetails.emit(this.bankForm.value)
+    // }
+
+    var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
+    let message = document.getElementById('message2');
+    console.log(field1);
+    if (/[a-zA-Z]/g.test(field1)) {
+      message.innerHTML = "Please enter only numbers"
+    }
+    else if (!(/[0-9]{16}/.test(field1))) {
+      // this.isDisable = true;
+      console.log("Please enter valid number");
+      if (field1.length < 16) {
+        message.innerHTML = "Please enter 16 digit number";
+      }
+    } else {
+      message.innerHTML = ""
+      // this.isDisable = false;
+      console.log("Valid entry");
     }
   }
 

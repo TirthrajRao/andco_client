@@ -35,7 +35,7 @@ export class GroupSliderComponent implements OnInit {
 
   }
   ngOnChanges() {
-    console.log("selected activity second time", this.selectedActivity.groups.length);
+    console.log("selected activity second time", this.selectedActivity.groups);
     if (this.selectedActivity) {
       this._change.detectChanges()
       this.selectedIndex = 0
@@ -57,9 +57,48 @@ export class GroupSliderComponent implements OnInit {
   }
 
   removeGroup(index) {
-
-    console.log("index of group", this.selectedActivity.groups, index)
+    console.log("index of group", this.selectedIndex)
     this.selectedActivity.groups.splice(index, 1);
+    console.log("this.selectedActivity.groups========", this.selectedActivity.groups)
+    this.$slideContainter = $('.group-slider');
+    this.$slideContainter.slick('unslick');
+    setTimeout(() => {
+      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2.5,
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ],
+      })
+    }, 50)
+    this.singleGroup.emit(this.selectedActivity.groups[0])
+    this.selectedIndex = 0
   }
 
   initGroupSlider() {

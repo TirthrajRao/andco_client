@@ -50,7 +50,6 @@ export class EventGroupComponent implements OnInit {
       this.activities = this.eventId
     })
   }
-  Data;
 
   ngOnInit() {
     // this.isButton = false
@@ -113,12 +112,21 @@ export class EventGroupComponent implements OnInit {
   }
 
   openMaleModel() {
+    this.object = {
+      itemName: '',
+      itemPrice: Number
+    }
     $('#addMaleItemModal').modal("show")
+    this.isModel = false
   }
   openFemaleModel() {
+    this.femaleObject = {
+      itemName: '',
+      itemPrice: Number
+    }
     $('#addFemaleItemModal').modal("show")
+    this.isModel = false
   }
-
 
   addMaleItmes(itemDetails) {
     $('#addMaleItemModal').modal("hide")
@@ -166,20 +174,34 @@ export class EventGroupComponent implements OnInit {
 
   }
 
-  addMaleItems(event) {
-    console.log("event=========", event);
-    this.isModel = true
+  addMaleItem(event) {
+    console.log("event=========", event.target.value.length);
     if (event.key === "Enter") {
       console.log("call this")
       this.addMaleItmes(this.object)
+      this.isModel = false
     }
   }
 
-  addFemaleItems(event) {
-    this.isModel = true
+  numberValidation(event) {
+    console.log("event of enter number", this.object.itemPrice);
+    let types = typeof this.object.itemPrice
+    types = typeof this.femaleObject.itemPrice
+    if (types == 'number') {
+      console.log("in this");
+      this.isModel = true
+    } else {
+      this.isModel = false
+    }
+  }
+
+
+  addFemaleItem(event) {
+    // this.isModel = true
     if (event.key === "Enter") {
       console.log("call this")
       this.addFemaleItmes(this.femaleObject)
+      this.isModel = false
     }
   }
 
