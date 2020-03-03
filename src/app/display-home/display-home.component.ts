@@ -24,7 +24,6 @@ export class DisplayHomeComponent implements OnInit {
         dots: true,
         pauseOnHover: false,
         pauseOnFocus: false,
-        accessibility: false,
       });
 
       $('.display-screen-slider').on('wheel', (function (e) {
