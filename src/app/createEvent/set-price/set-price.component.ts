@@ -31,15 +31,18 @@ export class SetPriceComponent implements OnInit {
     vendor: ''
   }
   hashTag = sessionStorage.getItem('hasTag');
+  eventLink = sessionStorage.getItem('eventLink');
   $sliderContainer
   $slider
   errorMessaage;
+  currentDay = new Date()
   constructor(
     public alertService: AlertService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
       thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
@@ -49,7 +52,8 @@ export class SetPriceComponent implements OnInit {
       paymentDeadlineDate: new FormControl('', [Validators.required]),
       paymentDeadlineTime: new FormControl('', [Validators.required]),
       bankDetails: new FormControl('', [Validators.required]),
-      hearAbout: new FormControl('')
+      hearAbout: new FormControl(''),
+      linkOfEvent: new FormControl('')
     })
     this.initSlickSlider()
     // console.log("time zone ", this.timezone);

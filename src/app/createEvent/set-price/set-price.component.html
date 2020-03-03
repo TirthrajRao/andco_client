@@ -54,7 +54,8 @@
                                     <a (click)="skipButton()">Skip</a>
                                 </div>
                                 <div [hidden]="!isRegestery">
-                                    <input type="text" value="" name="" placeholder="Your registry link">
+                                    <input type="text" formControlName="linkOfEvent" [(ngModel)]="eventLink"
+                                        placeholder="Your registry link">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,7 @@
                                     <mat-form-field>
                                         <!-- <mat-label>Choose a date</mat-label> -->
                                         <input matInput [matDatepicker]="picker1" readonly
-                                            (dateChange)="getDate($event)">
+                                            (dateChange)="getDate($event)" [min]="currentDay">
                                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
@@ -113,7 +114,7 @@
                                             <input matInput [matDatepicker]="picker"
                                                 formControlName="paymentDeadlineDate"
                                                 [ngClass]="{ 'is-invalid': f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors }"
-                                                readonly>
+                                                readonly [min]="currentDay">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                             <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors"
