@@ -46,11 +46,6 @@ export class BankDetailsComponent implements OnInit {
 
   addNumber(event, form) {
     console.log("logs of number", event.target.value);
-    // if (event.target.value.length == 16) {
-    //   console.log("from value", this.bankForm.value)
-    //   this.bankDetails.emit(this.bankForm.value)
-    // }
-
     var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
     let message = document.getElementById('message2');
     console.log(field1);
@@ -67,17 +62,42 @@ export class BankDetailsComponent implements OnInit {
       message.innerHTML = ""
       // this.isDisable = false;
       console.log("Valid entry");
+      if (event.target.value.length == 16) {
+        console.log("ama ave ");
+        this.bankDetails.emit(this.bankForm.value)
+      }
     }
   }
 
 
   enterCard(event) {
     console.log("when enter card number", event.target.value);
-    if (event.target.value.length == 16) {
-      console.log("ama ave ");
-      this.bankDetails.emit(this.bankForm.value)
 
+    var field1 = (<HTMLInputElement>document.getElementById("cardNumber")).value;
+    let message = document.getElementById('message3');
+    console.log(field1);
+    if (/[a-zA-Z]/g.test(field1)) {
+      message.innerHTML = "Please enter only numbers"
     }
+    else if (!(/[0-9]{16}/.test(field1))) {
+      // this.isDisable = true;
+      console.log("Please enter valid number");
+      if (field1.length < 16) {
+        message.innerHTML = "Please enter 16 digit number";
+      }
+    } else {
+      message.innerHTML = ""
+      // this.isDisable = false;
+      console.log("Valid entry");
+      if (event.target.value.length == 16) {
+        console.log("ama ave ");
+        this.bankDetails.emit(this.bankForm.value)
+      }
+    }
+    // if (event.target.value.length == 16) {
+    //   console.log("ama ave ");
+    //   this.bankDetails.emit(this.bankForm.value)
+    // }
   }
 
 

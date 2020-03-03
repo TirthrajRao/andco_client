@@ -30,6 +30,7 @@ export class CreateEventComponent implements OnInit {
   isDisable = false
   submitted = false;
   isLoad = false
+  errorMessaage: string;
   // elRef: any;
 
 
@@ -94,13 +95,8 @@ export class CreateEventComponent implements OnInit {
     var eventFormLocal = this.eventForm;
     var setControl = function (event) {
       console.log("type is selected========", event)
-      // if (event) {
       eventFormLocal.controls.eventType.setValue(event)
       console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
-      // } else {
-      //   let displayMessage = 'Event Type Is Required'
-      //   this.alertService.getError(displayMessage)
-      // }
     }
 
   }
@@ -129,7 +125,7 @@ export class CreateEventComponent implements OnInit {
         arrows: true,
         adaptiveHeight: true,
         fade: true,
-        accessibility:false,
+        accessibility: false,
         prevArrow: '<button type="button" class="prevarrow">Back</button>',
         nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
@@ -198,30 +194,33 @@ export class CreateEventComponent implements OnInit {
    * Create new event
    */
   addEvent() {
-    this.isLoad = true
-    let flag = 0
-    console.log("form value", this.eventForm.controls);
-    let title = this.eventForm.controls.eventTitle
-    let hashTag = this.eventForm.controls.hashTag
-    let eventType = this.eventForm.controls.eventType
-    if (title.status == 'INVALID') {
-      console.log("first title========");
-      let titleMessage = 'EventTitle is required'
-      this.alertService.getError(titleMessage)
-      this.isLoad = false
-      return
-    } else if (hashTag.status == 'INVALID') {
-      let hasDisplay = 'Event Hastag is required'
-      this.alertService.getError(hasDisplay)
-      this.isLoad = false
-      return
-    } else if (eventType.status == 'INVALID') {
-      let typeDisplay = 'Event Type is required'
-      this.alertService.getError(typeDisplay)
-      this.isLoad = false
-      return
-    } else if (this.files.length) {
-      console.log("now it is final");
+
+
+    const keys = Object.keys(this.eventForm.controls);
+    let form = this.eventForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      if (form[element].status == 'INVALID') {
+        flag = 1;
+        if (element == 'eventTitle') {
+          console.log("thank you message error");
+          this.errorMessaage = 'Event Title is required'
+        } else if (element == 'eventType') {
+          this.errorMessaage = 'Event Type is required'
+        } else if (element == 'hashTag') {
+          this.errorMessaage = 'Hashtag is required'
+        } else if (this.files.length == 0) {
+          this.errorMessaage = 'Profile is required'
+        }
+        this.alertService.getError(this.errorMessaage)
+        return false
+      }
+      else {
+        return true
+      }
+    });
+    if (flag == 0) {
+      this.isLoad = true
       this.eventService.addEvent(this.eventForm.value, this.files)
         .subscribe((data: any) => {
           console.log("event details", data.data.hashTag);
@@ -239,27 +238,8 @@ export class CreateEventComponent implements OnInit {
           return
           // })
         })
-    } else {
-      let message = 'Please select profile photo'
-      this.alertService.getError(message)
-      this.isLoad = false
-      return
     }
   }
-
-
-  // removeSpace(event) {
-  //   console.log("hash tag details", event.target.value)
-  //   let form = event.target.value;
-  //   let message1 = document.getElementById('message1');
-  //   let reg = new RegExp("[a-zA-Z]");
-  //   if (reg.test(form)) {
-  //     console.log("message==========", message1)
-  //     message1.innerHTML = "Name can not start with digit"
-  //   } else {
-  //     message1.innerHTML = null;
-  //   }
-  // }
 
   removeSpace(value) {
     // let form = event.target.value

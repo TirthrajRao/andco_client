@@ -79,7 +79,7 @@
                     <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName" required>
                     <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)"
-                        (input)="numberValidation($event)" id="codeInput" [(ngModel)]="object.itemPrice">
+                        (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
                 </div>
             </div>
             <div class="modal-footer">
@@ -104,7 +104,7 @@
                 <div class="add-items">
                     <input type="text" placeholder="Enter item name" [(ngModel)]="femaleObject.itemName">
                     <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');"
-                        onkeydown="return event.keyCode !== 69" (input)="numberValidation($event)"
+                        onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)"
                         (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
                 </div>
             </div>
