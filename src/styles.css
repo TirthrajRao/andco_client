@@ -7,8 +7,9 @@ body {
     padding: 0;
     margin: 0;
 }
-.createEvent{
-    color:#D2A0A1 ;
+
+.createEvent {
+    color: #D2A0A1;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -43,13 +44,15 @@ button:focus {
     font-size: 18px;
     margin-top: -10px;
 }
+
 select::-ms-expand {
     display: none !important;
 }
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
+
+input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
 }
+
 .modal-header, .modal-content, .modal-footer {
     border: none !important;
 }
@@ -107,11 +110,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-items: center;
     padding-top: 232px;
 }
-.sales-pricing-main .page-content , .event-activity-main .page-content{
+
+.sales-pricing-main .page-content, .event-activity-main .page-content {
     min-height: calc(100vh - (232px + 40px));
     padding-top: 30px;
     width: 100%;
 }
+
 section.myEvent-main .page-content {
     align-items: unset;
     padding-top: 180px;
@@ -255,10 +260,12 @@ section.myEvent-main .page-content {
 /* set-price css end here */
 
 /* event-menu slider start */
+
 .event-menu-slider .slick-arrow {
     position: absolute;
     top: 0;
 }
+
 .event-menu-slider button.prevarrow.slick-arrow {
     left: 30%;
 }
@@ -318,55 +325,67 @@ img.swal2-image {
 
 /* sweet alert css end */
 
-
 /* mat css start */
+
 .mat-form-field-infix {
     min-width: 100% !important;
     width: 100% !important;
     border: none !important;
     background-color: transparent !important;
 }
-.mat-form-field{
+
+.mat-form-field {
     font-family: inherit !important;
 }
+
 .mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
     width: 2em !important;
     height: 2em !important;
     margin-left: 10px !important;
-    margin-top: -20px !important;
+    margin-bottom: 70px;
     color: #a5b138 !important;
 }
-.mat-icon-button{
+
+.mat-icon-button {
     background: none !important;
 }
-.mat-form-field{
+
+.mat-form-field {
     width: 70%;
 }
+
 .mat-form-field-appearance-legacy .mat-form-field-underline, span.mat-form-field-ripple {
     height: 0 !important;
 }
+
 .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
     height: 0 !important;
     width: 0 !important;
 }
-.mat-form-field-appearance-legacy .mat-form-field-infix{
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0 !important;
 }
-.timepicker__header, .clock-face__number > span.active, .clock-face__clock-hand, .mat-calendar-body-selected{
+
+.timepicker__header, .clock-face__number>span.active, .clock-face__clock-hand, .mat-calendar-body-selected {
     background-color: #A6B138 !important;
 }
-.timepicker-button{
+
+.timepicker-button {
     color: #A6B138 !important;
 }
+
 /* mat css end */
+
 /* responsive css start */
-@media(max-width: 1600px){
+
+@media(max-width: 1600px) {
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         min-height: calc(100vh - (173px + 40px));
         padding-top: 100px;
     }
-  
 }
+
 @media(max-width: 1366px) {
     /* create event css start */
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
@@ -389,7 +408,6 @@ img.swal2-image {
         padding-top: 162px;
     }
     /* hello text end */
-  
     /* sales activity */
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         padding-top: 60px;
@@ -406,12 +424,19 @@ img.swal2-image {
         font-size: 18px;
         padding: 4px 28px;
     }
-  
+    img.swal2-image {
+        height: 90px;
+        width: 250px !important;
+    }
 }
 
 @media(max-width: 991px) {
     [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         line-height: 25px;
+    }
+    img.swal2-image {
+        height: 70px;
+        width: 200px !important;
     }
 }
 
@@ -429,6 +454,16 @@ img.swal2-image {
     }
     .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
         bottom: -50px;
+    }
+    img.swal2-image {
+        height: 50px;
+        width: 180px !important;
+    }
+    .swal2-icon-success.swal2-show .swal2-title {
+        font-size: 20px;
+    }
+    .swal2-popup {
+        padding-top: 15% !important;
     }
 }
 
@@ -470,6 +505,10 @@ img.swal2-image {
     .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 14px;
         padding: 4px 20px;
+    }
+    img.swal2-image {
+        height: 30px;
+        width: 100px !important;
     }
 }
 
