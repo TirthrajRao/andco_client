@@ -46,11 +46,6 @@ export class BankDetailsComponent implements OnInit {
 
   addNumber(event, form) {
     console.log("logs of number", event.target.value);
-    // if (event.target.value.length == 16) {
-    //   console.log("from value", this.bankForm.value)
-    //   this.bankDetails.emit(this.bankForm.value)
-    // }
-
     var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
     let message = document.getElementById('message2');
     console.log(field1);
@@ -67,6 +62,10 @@ export class BankDetailsComponent implements OnInit {
       message.innerHTML = ""
       // this.isDisable = false;
       console.log("Valid entry");
+      if (event.target.value.length == 16) {
+        console.log("ama ave ");
+        this.bankDetails.emit(this.bankForm.value)
+      }
     }
   }
 

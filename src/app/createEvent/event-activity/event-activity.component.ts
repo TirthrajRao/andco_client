@@ -71,10 +71,9 @@ export class EventActivityComponent implements OnInit {
 
   addEvent(type: string, event, i) {
 
-    console.log("event ma su ave che", this.activityForm.value)
-    // this.displayTime = new Date(event.value)
-    this.displayTime.push(new Date(event.value))
-    // console.log("final time to display", this.displayTime)
+    console.log("event ma su ave che", this.displayTime)
+    this.displayTime[i] = (new Date(event.value))
+    console.log("final time to display", this.displayTime)
   }
 
   get activityFormData() { return <FormArray>this.activityForm.get('activity'); }

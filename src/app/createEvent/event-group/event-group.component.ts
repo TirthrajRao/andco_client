@@ -38,7 +38,7 @@ export class EventGroupComponent implements OnInit {
   isButton = false
   isModel = false
   eventHashTag
-
+  types;
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
@@ -183,11 +183,12 @@ export class EventGroupComponent implements OnInit {
     }
   }
 
-  numberValidation(event) {
+  numberValidationForMale(event) {
+
     console.log("event of enter number", this.object.itemPrice);
-    let types = typeof this.object.itemPrice
-    types = typeof this.femaleObject.itemPrice
-    if (types == 'number') {
+    this.types = typeof this.object.itemPrice
+    // this.types = typeof this.femaleObject.itemPrice
+    if (this.types == 'number') {
       console.log("in this");
       this.isModel = true
     } else {
@@ -195,6 +196,17 @@ export class EventGroupComponent implements OnInit {
     }
   }
 
+
+  numberValidationForFemale(event) {
+    this.types = typeof this.femaleObject.itemPrice
+    // this.types = typeof this.femaleObject.itemPrice
+    if (this.types == 'number') {
+      console.log("in this");
+      this.isModel = true
+    } else {
+      this.isModel = false
+    }
+  }
 
   addFemaleItem(event) {
     // this.isModel = true

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./created-event-message.component.css']
 })
 export class CreatedEventMessageComponent implements OnInit {
+  hashTag = sessionStorage.getItem('hasTag');
 
   constructor() { }
 

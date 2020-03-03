@@ -41,8 +41,8 @@ export class SetPriceComponent implements OnInit {
   ngOnInit() {
 
     this.setPriceForm = new FormGroup({
-      thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9]+$")]),
-      afterEventMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9]+$")]),
+      thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
+      afterEventMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl('', [Validators.required]),
@@ -51,25 +51,7 @@ export class SetPriceComponent implements OnInit {
       hearAbout: new FormControl('')
     })
     this.initSlickSlider()
-    console.log("time zone ", this.timezone);
-
-
-    // set-price main slider js start
-    // setTimeout(() => {
-
-
-    // }, 500)
-    // set-price main slider js end
-    // $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
-
-    // $(".nextArrowClick").on("click", function () {
-    //   // alert("The paragraph was clicked.");
-    //   // console.log("form value=======", this.setPriceForm);
-    //   var nextClick = () => {
-    //     this.nextArrowClick()
-    //   }
-
-    // });
+    // console.log("time zone ", this.timezone);
   }
 
 
@@ -92,11 +74,6 @@ export class SetPriceComponent implements OnInit {
         this.nextArrowClick(event)
       }
     })
-    // var nextClick = this.nextArrowClick
-    // this.$slider.on('click', function (event) {
-    //   nextClick(event)
-    // })
-
   }
 
 
@@ -180,9 +157,9 @@ export class SetPriceComponent implements OnInit {
     }
   }
   getDate(event) {
-    console.log("hello ===>", event.target.value);
+    console.log("hello ===>", event.value);
     this.setPriceForm.patchValue({
-      payMentTransferDate: event.target.value
+      payMentTransferDate: (new Date(event.value))
     });
     this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
   }
