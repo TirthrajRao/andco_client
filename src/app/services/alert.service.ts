@@ -18,12 +18,11 @@ export class AlertService {
   getSuccess(message) {
     console.log(message);
     Swal.fire({
-      imageUrl: '../../assets/images/andco_alert.png',
+      imageUrl: '../../assets/images/andco_logo.png',
       imageWidth: 350,
-      imageHeight: 70,
       title: message,
       showConfirmButton: false,
-      timer: 4000,
+      // timer: 4000,
       icon: 'success',
       focusConfirm: true,
     })
@@ -37,12 +36,11 @@ export class AlertService {
   getError(message) {
     console.log(message);
     Swal.fire({
-      imageUrl: '../../assets/images/andco_alert.png',
+      imageUrl: '../../assets/images/andco_logo.png',
       imageWidth: 350,
-      imageHeight: 70,
       title: message,
       showConfirmButton: false,
-      timer: 4000,
+      // timer: 4000,
       icon: 'error',
       focusConfirm: true,
     })

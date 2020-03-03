@@ -24,15 +24,26 @@ export class DisplayHomeComponent implements OnInit {
         dots: true,
         pauseOnHover: false,
         pauseOnFocus: false,
+        accessibility: false,
+      });
+
+      $('.display-screen-slider').on('wheel', (function (e) {
+        e.preventDefault();
+        if (e.originalEvent.deltaY < 0) {
+          $(this).slick('slickPrev');
+        } else {
+          $(this).slick('slickNext');
+        }
+      }));
+
+      $('.display-screen-slider').on('keydown', function (e) {
+        if (e.keyCode == 38) {
+          $(this).slick('slickPrev');
+        }
+        if (e.keyCode == 40) {
+          $(this).slick('slickNext');
+        }
       });
     }, 50)
-    $('.display-screen-slider').on('wheel', (function(e) {
-      e.preventDefault();
-      if (e.originalEvent.deltaY < 0) {
-        $(this).slick('slickPrev');
-      } else {
-        $(this).slick('slickNext');
-      }
-    }));
   }
 }

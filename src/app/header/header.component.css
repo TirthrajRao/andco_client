@@ -119,14 +119,19 @@
     }
 }
 @media(max-width: 991px){
-    .andco-logo{
+    .navigation_menu {
+        max-width: 45px;
+        margin-right: 10px;
+    }
+    .andco-logo {
         margin: 0;
-        padding-right: 50px;
+        padding-right: 55px;
+        width: calc(100% - 55px);
     }
 }
-@media(max-width: 767px){
-    .navigation_menu {
-        max-width: 50px;
+@media(max-width:767px){
+    .header-content{
+        padding:10px 15px;
     }
 }
 @media(max-width: 575px){
@@ -135,21 +140,7 @@
         font-size: 30px;
     }
 }
-@media(max-width:480px){
-    .andco-logo{
-        padding-right: 0;
-    }
-    .navigation_menu{
-        margin-right: 10px;
-    }
-    .navigation_menu {
-        max-width: 40px;
-    }
-}
 @media(max-width: 400px){
-    .header-content{
-        padding:10px;
-    }
     .andco-logo img {
         margin-bottom: 20px;
         height: 30px;
