@@ -39,7 +39,7 @@
             <div [hidden]="!isCardSelected">
                 <input type="text" value="test4" name="test4" placeholder="Card Number" minlength="16" maxlength="16"
                     class="text-left px-3 py-2 font-weight-bold" id="cardNumber"
-                    (input)="enterCard($event , bankForm.value)" formControlName="cardNumber"
+                    (input)="enterCard($event)" formControlName="cardNumber"
                     [ngClass]="{ 'is-invalid': f.cardNumber.touched && f.cardNumber.errors }">
                 <div id="message3" class="w-100"></div>
                 <div *ngIf="f.cardNumber.touched && f.cardNumber.errors" class="invalid-feedback text-white">

@@ -223,6 +223,7 @@ export class CreateEventComponent implements OnInit {
       this.eventService.addEvent(this.eventForm.value, this.files)
         .subscribe((data: any) => {
           console.log("event details", data.data.hashTag);
+          sessionStorage.setItem('eventLink', data.data.eventLink)
           sessionStorage.setItem('hasTag', data.data.hashTag)
           // this.isDisable = true
           this.isLoad = false

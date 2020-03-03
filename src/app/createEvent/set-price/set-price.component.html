@@ -1,4 +1,5 @@
 <section class="sales-pricing-main">
+    <app-loader *ngIf="isLoad" id="loader"></app-loader>
     <div class="page-content">
         <div class="bg-box-set-price">
             <div class="main-box-for-slider">
@@ -53,7 +54,8 @@
                                     <a (click)="skipButton()">Skip</a>
                                 </div>
                                 <div [hidden]="!isRegestery">
-                                    <input type="text" value="" name="" class="w-100" placeholder="Your registry link">
+                                    <input class="w-100" type="text" formControlName="linkOfEvent" [(ngModel)]="eventLink"
+                                        placeholder="Your registry link">
                                 </div>
                             </div>
                         </div>
@@ -77,7 +79,7 @@
                                     <mat-form-field>
                                         <!-- <mat-label>Choose a date</mat-label> -->
                                         <input matInput [matDatepicker]="picker1" readonly
-                                            (dateChange)="getDate($event)">
+                                            (dateChange)="getDate($event)" [min]="currentDay">
                                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
@@ -112,19 +114,21 @@
                                             <input matInput [matDatepicker]="picker"
                                                 formControlName="paymentDeadlineDate"
                                                 [ngClass]="{ 'is-invalid': f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors }"
-                                                readonly>
+                                                readonly [min]="currentDay">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                             <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors"
-                                            class="invalid-feedback text-center">
-                                            <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date is required </div>
-                                        </div>
-                                    </mat-form-field>
+                                                class="invalid-feedback text-center">
+                                                <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date
+                                                    is required </div>
+                                            </div>
+                                        </mat-form-field>
                                         <!-- <div class="12hr-example"> -->
                                         <input placeholder="12hr format (default settings)"
                                             formControlName="paymentDeadlineTime" aria-label="12hr format"
                                             [ngxTimepicker]="default" readonly
-                                            [ngClass]="{ 'is-invalid': f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors }" style="cursor: pointer;">
+                                            [ngClass]="{ 'is-invalid': f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors }"
+                                            style="cursor: pointer;">
                                         <ngx-material-timepicker #default></ngx-material-timepicker>
                                         <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors"
                                             class="invalid-feedback">
@@ -159,7 +163,7 @@
                                     <input type="text" (input)="plannerValue($event)" placeholder="Type here">
                                 </div>
                                 <div [hidden]="!isEventVendorSelected" class="how-did-u-input mt-3">
-                                    <input type="text" placeholder="Type here">
+                                    <input type="text" placeholder="Type here" (input)="vendorValue($event)">
                                 </div>
                             </div>
                         </div>

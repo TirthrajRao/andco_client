@@ -8,6 +8,7 @@ import { MatFormFieldModule, MatNativeDateModule, MatInputModule, } from '@angul
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
+
 // import { MatSelectModule } from '@angular/material/fesm2015/select';
 
 
@@ -145,7 +146,7 @@ const routes: Routes = [
     MatNativeDateModule,
     MatInputModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
     // MatSelectModule
   ],
   exports: [
