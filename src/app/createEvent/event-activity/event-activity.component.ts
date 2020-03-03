@@ -143,6 +143,9 @@ export class EventActivityComponent implements OnInit {
     if (!id.activityId) {
       const control = <FormArray>this.activityForm.controls.activity;
       control.removeAt(i);
+      this.displayTime.splice(i, 1)
+      console.log("at the end date group", this.displayTime);
+
     }
     else {
       console.log("else part ma avu joye baki");

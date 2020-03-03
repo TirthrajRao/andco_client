@@ -3,7 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@a
 import { AlertService } from '../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { every } from 'rxjs/operators';
 declare var $: any
+import * as _ from 'lodash';
+import { async } from 'q';
+
 
 @Component({
   selector: 'app-set-price',
@@ -26,6 +30,8 @@ export class SetPriceComponent implements OnInit {
     vendor: ''
   }
   hashTag = sessionStorage.getItem('hasTag');
+  $sliderContainer
+  $slider
   constructor(
     public alertService: AlertService,
     private router: Router
@@ -43,14 +49,32 @@ export class SetPriceComponent implements OnInit {
       bankDetails: new FormControl('', [Validators.required]),
       hearAbout: new FormControl('')
     })
-
+    this.initSlickSlider()
     console.log("time zone ", this.timezone);
 
 
     // set-price main slider js start
     // setTimeout(() => {
 
-    $('.set-price-main-slider').slick({
+
+    // }, 500)
+    // set-price main slider js end
+    // $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
+
+    // $(".nextArrowClick").on("click", function () {
+    //   // alert("The paragraph was clicked.");
+    //   // console.log("form value=======", this.setPriceForm);
+    //   var nextClick = () => {
+    //     this.nextArrowClick()
+    //   }
+
+    // });
+  }
+
+
+  initSlickSlider() {
+    this.$sliderContainer = $('.set-price-main-slider')
+    this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
       infinite: false,
       draggable: false,
       slidesToShow: 1,
@@ -60,47 +84,51 @@ export class SetPriceComponent implements OnInit {
       fade: true,
       swipe: false,
       prevArrow: '<button type="button" class="prevarrow">Back</button>',
-      nextArrow: '<button type="button" class="nextarrow">Next</button>',
-    });
-    // }, 500)
-    // set-price main slider js end
-    $('.prevarrow, .nextarrow, .set-price-custom-button').attr('tabindex', '-1');
+      nextArrow: '<button type="button" class="nextarrow" (click)="nextArrowClick($event)">Next</button>',
+      nextArrowClick(event) {
+        console.log("is this call or not", event);
 
-    // $(".nextArrowClick").on("click", function(){
-    //   alert("The paragraph was clicked.");
-    // });
-  } 
- 
-  nextArrowClick(){
-    console.log("nextArrowClick($event)");
+        this.nextArrowClick(event)
+      }
+    })
+    // var nextClick = this.nextArrowClick
+    // this.$slider.on('click', function (event) {
+    //   nextClick(event)
+    // })
+
+  }
+
+
+
+  /**
+   * Display error message
+   */
+  get f() { return this.setPriceForm.controls; }
+
+
+  newClick(data) {
+    console.log("this is very important", data);
+
+  }
+
+  nextArrowClick(event) {
+    console.log("nextArrowClick($event)", event);
 
   }
   setPrice() {
     console.log("value of form", this.setPriceForm);
     const message = 'Set price of created event'
-    this.alertService.getSuccess(message)
-    
-    const invalidMessage = []
-    const controls:any = this.setPriceForm.controls
-    for (const name in controls) {
-      console.log("name of controls=========", name);
 
-      if (controls[name].invalid) {
-        console.log("invalid",controls[name]);
-        invalidMessage.push(name)
-    //     let message = 'Error in' + name
-    //     this.alertService.getError(message)
-      } else {
-        console.log("---valid",controls[name]);
-    //     // let message = 'Price Set in Created Event'
-    //     // this.alertService.getSuccess(message)
-    //     this.setPriceForm.reset()
-    //     // this.router.navigate(['/menu'])
+    const controls: any = this.setPriceForm.controls
+    _.forOwn(controls, async (value, key) => {
+      // console.log("value in loop ", key, ':', value);
+      if (value.status == 'INVALID') {
+        // console.log("valid form value", key);
+        let message = key + 'is required'
+        console.log("display message", message);
+        await this.alertService.getError(message)
       }
-    }
-    console.log("invalid value", invalidMessage);
-    this.router.navigate(['created-event-message'])
-    // return invalidMessage
+    })
   }
   detailsOfBank(event) {
     console.log("bank details in set price", event);
@@ -173,5 +201,8 @@ export class SetPriceComponent implements OnInit {
       hearAbout: event.target.value
     })
     this.setPriceForm.get('hearAbout').updateValueAndValidity()
+  }
+  skipButton() {
+    this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
   }
 }
