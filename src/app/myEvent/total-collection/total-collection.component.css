@@ -1,0 +1,41 @@
+.total-slide {
+    background-color: rgba(255, 255, 255, 0.60);
+    padding-top: 10px;
+    position: absolute;
+    top: 27%;
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+    color: #9A602A;
+}
+
+.total-activity-box {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 60px;
+    padding: 30px;
+}
+
+.total-activity-box h1 {
+    font-weight: 600;
+    color: #AF7F40;
+    font-size: 36px;
+    float: left;
+}
+.total-activity-box span {
+    color: #686868;
+    font-weight: 600;
+}
+.total-activity-box .nav-tabs{
+    border: none;
+}
+.nav-tabs .nav-link{
+    background-color: #C97A33;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
