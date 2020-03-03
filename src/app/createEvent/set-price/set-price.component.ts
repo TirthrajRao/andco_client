@@ -17,6 +17,7 @@ import { async } from 'q';
 export class SetPriceComponent implements OnInit {
 
   setPriceForm: FormGroup;
+  isLoad = false
   isDisable = false
   isTransfer
   isRegestery
@@ -200,6 +201,13 @@ export class SetPriceComponent implements OnInit {
     })
     this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
+  vendorValue(event) {
+    this.setPriceForm.patchValue({
+      hearAbout: event.target.value
+    })
+    this.setPriceForm.get('hearAbout').updateValueAndValidity()
+  }
+
   skipButton() {
     this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
   }

@@ -33,7 +33,7 @@ export class EventActivityComponent implements OnInit {
   displayTime: any = [];
   finalDate: any = [];
   hashTag = sessionStorage.getItem('hasTag');
-
+  isLoad = false
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -195,7 +195,7 @@ export class EventActivityComponent implements OnInit {
    * Create new activities for new event 
    */
   addActivity() {
-    // this.isLoad = true;
+    this.isLoad = true;
     for (let i = 0; i < this.activityForm.value.activity.length; i++) {
       this.activityForm.value.activity[i].activityStartDate = moment($('#activityStartDate' + i).val()).format('YYYY-MM-DD')
       // this.activityForm.value.activity[i].activityStartDate = new Date($('#activityStartDate' + i).val()).toISOString()
@@ -206,10 +206,10 @@ export class EventActivityComponent implements OnInit {
       .subscribe((data: any) => {
         // let activityArraySend = []
 
+        this.isLoad = false;
         this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
         console.log("activity add in database completed", data)
         this.alertService.getSuccess(data.message)
-        // this.isLoad = false;
         // console.log("activity response data", data);
         // this.createdActivity = data.data;
         // this.groupLength = this.createdActivity.length;

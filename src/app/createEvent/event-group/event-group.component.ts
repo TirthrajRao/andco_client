@@ -18,6 +18,7 @@ export class EventGroupComponent implements OnInit {
 
   @Output() singleActivity: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
+  isLoad = false
   activities;
   allActivities: any
   sub: any;
@@ -83,6 +84,7 @@ export class EventGroupComponent implements OnInit {
 
 
   addGroup() {
+    this.isLoad = true
     console.log("value of group form");
     console.log(this.allActivities)
     // this.allActivities['eventId'] = this.eventId
@@ -103,6 +105,7 @@ export class EventGroupComponent implements OnInit {
     });
     this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
       console.log("Group added in new event", response)
+      this.isLoad = false
       this.alertervice.getSuccess(response.message)
       this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
