@@ -14,9 +14,12 @@ export class AllSliderComponent implements OnInit {
   @Input('groupOfActivity') groupOfActivity
   @Output() singleEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() activityGroup: EventEmitter<any> = new EventEmitter<any>();
+  @Output() groupItem: EventEmitter<any> = new EventEmitter<any>();
   $slideContainter;
   $slider;
   activityDisplay
+  isActivity
+  isGroup
   listOfContent = []
   constructor() { }
 
@@ -26,18 +29,19 @@ export class AllSliderComponent implements OnInit {
       this.initEventSlider()
     }
     // if (this.activityList) {
-      // console.log("list of activity", this.activityList)
+    // console.log("list of activity", this.activityList)
     //   this.initEventSlider()
     // }
 
   }
   ngOnChanges() {
-
+    console.log("list of group", this.groupOfActivity);
     if (this.displayList) {
       // console.log("changes of event", this.displayList);
       this.initEventSlider()
     }
     if (this.activityList) {
+      this.activityDisplay
       // console.log("list of activity", this.activityList)
       this.$slideContainter = $('.myEvent-slider');
       this.$slideContainter.slick('unslick');
@@ -46,6 +50,8 @@ export class AllSliderComponent implements OnInit {
       // }, 50)
     }
     if (this.groupOfActivity) {
+
+
       this.$slideContainter = $('.myEvent-slider');
       this.$slideContainter.slick('unslick');
       // setTimeout(() => {
@@ -96,13 +102,23 @@ export class AllSliderComponent implements OnInit {
   }
 
 
-  getSingleEvent(eventId) {
-    // console.log("click on event", eventId);
+  getSingleEvent(eventId, index) {
     this.singleEvent.emit(eventId)
+    this.isActivity = true
+    this.isGroup = false
+    console.log("click on event get index========", this.isGroup);
   }
 
-  getSingleActivity(group) {
-    // console.log("get group of single activity", group);
-    this.activityGroup.emit(group)
+  getSingleActivity(group, index) {
+    console.log("get group of single activity with index", index);
+    this.activityGroup.emit({ group: group, index: index })
+    this.isGroup = true
+
+  }
+
+
+  getGroupItem(item) {
+    console.log("item of singkle group", item);
+    this.groupItem.emit(item)
   }
 }

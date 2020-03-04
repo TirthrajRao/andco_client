@@ -37,6 +37,7 @@ export class EventActivityComponent implements OnInit {
   isLoad = false
   activityName: any = []
   displayActivity
+  isDisable = false
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -71,6 +72,7 @@ export class EventActivityComponent implements OnInit {
     this.getActivityFrom()
 
   }
+  
 
   addEvent(type: string, event, i) {
 
@@ -115,8 +117,8 @@ export class EventActivityComponent implements OnInit {
     if (!activities) {
       // console.log("ama ave che ke nau");
       return [this.fb.group({
-        activityName: new FormControl(''),
-        activityStartDate: new FormControl(''),
+        activityName: new FormControl('', [Validators.required]),
+        activityStartDate: new FormControl('', [Validators.required]),
         eventId: new FormControl(this.eventId)
       })]
     }
@@ -152,16 +154,16 @@ export class EventActivityComponent implements OnInit {
     else {
       // console.log("else part ma avu joye baki");
 
-        // console.log(id);
+      // console.log(id);
       //   // let event = this.eventId;
-        // console.log(event);
+      // console.log(event);
       //   this._eventService.removeActivity(id)
       //     .subscribe((data: any) => {
-            // console.log(data);
+      // console.log(data);
       //       this.createdActivity = data.data.activities
       //       this.getActivityFrom(this.createdActivity);
       //     }, err => {
-            // console.log(err);
+      // console.log(err);
       //     })
     }
   }
@@ -180,8 +182,8 @@ export class EventActivityComponent implements OnInit {
     const control = <FormArray>this.activityForm.controls.activity;
     // console.log("control ma su ave che", control.length)
     control.push(this.fb.group({
-      activityName: new FormControl(''),
-      activityStartDate: new FormControl(''),
+      activityName: new FormControl('', [Validators.required]),
+      activityStartDate: new FormControl('', [Validators.required]),
       eventId: new FormControl(this.eventId)
     }));
     // console.log($('#activityStartDate' + (control.length - 2)).val());
@@ -236,14 +238,14 @@ export class EventActivityComponent implements OnInit {
         // _.forEach(this.createdActivity, (date) => {
         //   this.activityStartDate = date.activityStartDate;
         //   this.activityEndDate = date.activityEndDate;
-          // console.log(this.activityStartDate, this.activityEndDate)
+        // console.log(this.activityStartDate, this.activityEndDate)
         // })
         // console.log(this.selectedStartDate);
         // console.log("created activity response from server", this.createdActivity);
         // this.initGroupForm(this.createdActivity);
       }, (err: any) => {
-        // this.isLoad = false;
-        // console.log(err);
+        this.isLoad = false;
+        console.log(err);
         // this.alertService.getError(err.message);
       })
   }
@@ -272,9 +274,9 @@ export class EventActivityComponent implements OnInit {
     // this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate.split("T")[0];
     // console.log(this.paymentDeadlineDate);
     //   this.eventActivities = this.createdEventDetails.activity;
-      // console.log(this.eventActivities);
+    // console.log(this.eventActivities);
     // }, (err: any) => {
-      // console.log(err);
+    // console.log(err);
     // this.alertService.getError(err.message);
     // })
   }

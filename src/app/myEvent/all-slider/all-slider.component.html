@@ -1,10 +1,10 @@
 <div class="myEvent-slider-box">
-    <div class="add-event">
-        <!-- <button class="btn">+</button> -->
-    </div>
+    <!-- <div class="add-event">
+        <button class="btn">+</button>
+    </div> -->
     <div class="myEvent-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of displayList">
-            <div class="myEvent-name" (click)="getSingleEvent(name._id)">
+        <div class="myEvent-single-slide" *ngFor="let name of displayList; let i =index">
+            <div class="myEvent-name" (click)="getSingleEvent(name._id , i)">
                 <p>{{name.eventTitle}}</p>
             </div>
         </div>
@@ -15,13 +15,13 @@
 
 
 
-<div class="myEvent-slider-box" *ngIf="activityList">
-    <div class="add-event">
-        <!-- <button class="btn">+</button> -->
-    </div>
+<div class="myEvent-slider-box" *ngIf="!isActivity">
+    <!-- <div class="add-event">
+        <button class="btn">+</button>
+    </div> -->
     <div class="myEvent-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of activityList">
-            <div class="myEvent-name" (click)="getSingleActivity(name.group)">
+        <div class="myEvent-single-slide" *ngFor="let name of activityList; let i=index">
+            <div class="myEvent-name" (click)="getSingleActivity(name.group , i)">
                 <p>{{name.activityName}}</p>
             </div>
             <p class="text-center text-white">{{name.activityStartDate | date :'dd-MM-yyyy'}}</p>
@@ -33,13 +33,13 @@
 
 
 
-<div class="myEvent-slider-box" *ngIf="groupOfActivity">
-    <div class="add-event">
-        <!-- <button class="btn">+</button> -->
-    </div>
+<div class="myEvent-slider-box" *ngIf="!isGroup">
+    <!-- <div class="add-event">
+        <button class="btn">+</button>
+    </div> -->
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity">
-            <div class="myEvent-name">
+            <div class="myEvent-name" (click)="getGroupItem(name.item)">
                 <p>{{name.groupName}}</p>
             </div>
         </div>

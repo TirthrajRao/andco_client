@@ -264,7 +264,8 @@ button.remove {
         margin-top: 10px;
     }
     .inner-box{
-        max-height: 200px;
+        max-height: 260px;
+        min-height: 170px;
     }
 }
 @media(max-width:575px){

@@ -8,7 +8,7 @@ import { EventService } from '../../services/event.service';
 export class MyEventComponent implements OnInit {
 
   listOfEvent;
-  activityDisplay
+  activityDisplay = false
   totalActivity = []
 
   constructor(

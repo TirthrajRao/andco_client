@@ -316,6 +316,9 @@ h5.item-name, h5.item-price{
     .hashtag h2 {
         font-size: 24px;
     }
+    .inner-box-group ul li h5{
+        line-height: 30px;
+       }
 }
 @media(max-width:767px){
     .bg-box-set-price{
@@ -333,7 +336,10 @@ h5.item-name, h5.item-price{
     button.btn.add-btn {
         font-size: 16px;
     }
-    .sales-pricing-main .page-content, .event-activity-main .page-content{
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 90px !important;
+    }
+    .event-activity-main .page-content{
         padding-top: 0 !important;
     }
 }

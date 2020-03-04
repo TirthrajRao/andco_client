@@ -52,7 +52,7 @@
                         class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             <div class="event-next-btn mt-3">
-                <button class="btn" (click)="addActivity()" [disabled]="!displayActivity">Next</button>
+                <button class="btn" (click)="addActivity()" [disabled]=" activityForm.invalid">Next</button>
             </div>
         </div>
     </div>

@@ -108,7 +108,7 @@ export class GroupSliderComponent implements OnInit {
           {
             breakpoint: 1600,
             settings: {
-              slidesToShow: 3,
+              slidesToShow: 3.5,
             }
           },
           {
@@ -120,13 +120,13 @@ export class GroupSliderComponent implements OnInit {
           {
             breakpoint: 767,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 2.5,
             }
           },
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 1,
+              slidesToShow: 1.5,
             }
           },
         ],
@@ -177,7 +177,7 @@ export class GroupSliderComponent implements OnInit {
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 1,
+              slidesToShow: 1.5,
             }
           },
         ],
