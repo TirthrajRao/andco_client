@@ -279,7 +279,7 @@ button.btn.forgot-btn {
     padding: 5px 10px;
   }
   .forgot-modal .modal-content {
-    border-radius: 10px;
+    border-radius: 10px !important;
   }
 }
 
