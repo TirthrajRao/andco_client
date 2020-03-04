@@ -61,4 +61,12 @@ export class EventService {
     }
     return this.http.post(config.baseApiUrl + "/group", groupDetails, { params: body })
   }
+
+  getLoginUserEvent() {
+    return this.http.get(config.baseApiUrl + "/event/myevent-list")
+  }
+
+  getSingleEventDetails(eventId) {
+    return this.http.get(config.baseApiUrl + "/event/" + eventId)
+  }
 }

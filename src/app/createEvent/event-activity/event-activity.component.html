@@ -14,24 +14,23 @@
                                     <div class="single-element" [formGroupName]="i"
                                         *ngFor="let tech of activityFormData.controls; let i = index">
                                         <input type="text" formControlName="activityName"
-                                            placeholder="Enter activity name">
+                                            placeholder="Enter activity name" (input)="checkActivityName($event , i)">
                                         <button class="remove" *ngIf="activityFormData.controls.length>1"
                                             (click)="removeActivityField(i,tech.value)">
                                             <img src="../../../assets/images/remove.png" alt="remove icon">
                                         </button>
-                                        <!-- <span *ngFor="let time of displayTime"> -->
+                                        <div id="{{i}}" class="w-100" style="color: red;"></div>
                                         <div class="w-100 d-inline-block">
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'dd'}}</p>
                                             </div>
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'MM'}}</p>
                                             </div>
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'yyyy'}}</p>
                                             </div>
                                         </div>
-                                        <!-- </span> -->
                                         <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                                             <mat-label>Choose a date</mat-label>
                                             <input matInput [matDatepicker]="picker" [min]="currentDay"
@@ -49,7 +48,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="clone" (click)="addActivityField()"><i class="fa fa-plus"
+                <button class="clone" (click)="addActivityField()" [disabled]="!displayActivity"><i class="fa fa-plus"
                         aria-hidden="true"></i></button>
             </div>
             <div class="event-next-btn mt-3">

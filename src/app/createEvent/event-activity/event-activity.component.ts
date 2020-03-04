@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDatepickerInputEvent, MatCalendar } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatCalendar, MatDatepicker } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { DatePipe } from '@angular/common';
@@ -16,11 +16,12 @@ declare var $;
   styleUrls: ['./event-activity.component.css']
 })
 export class EventActivityComponent implements OnInit {
-  @ViewChild(MatCalendar, { static: true }) _datePicker: MatCalendar<Date>
+  // @ViewChild(MatCalendar, { static: true } ) _datePicker: MatCalendar<Date>
+  @ViewChild('picker', { static: true }) datePicker: MatDatepicker<Date>;
+
   activityForm: FormGroup;
   activityId
   createdActivity: any;
-
   today = new Date()
   currentDay = new Date()
   currentYear = this.today.getFullYear()
@@ -34,6 +35,8 @@ export class EventActivityComponent implements OnInit {
   finalDate: any = [];
   hashTag = sessionStorage.getItem('hasTag');
   isLoad = false
+  activityName: any = []
+  displayActivity
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -144,7 +147,7 @@ export class EventActivityComponent implements OnInit {
       control.removeAt(i);
       this.displayTime.splice(i, 1)
       console.log("at the end date group", this.displayTime);
-
+      this.activityName.splice(i, 1)
     }
     else {
       console.log("else part ma avu joye baki");
@@ -169,7 +172,11 @@ export class EventActivityComponent implements OnInit {
    */
   addActivityField(): void {
     console.log("Form fields", this.activityForm.value);
-
+    let activityNameOf = this.activityFormData.value
+    console.log("array of name", activityNameOf);
+    const newArray = activityNameOf[activityNameOf.length - 1]
+    console.log("last element of array", newArray.activityName);
+    this.activityName.push(newArray.activityName)
     const control = <FormArray>this.activityForm.controls.activity;
     console.log("control ma su ave che", control.length)
     control.push(this.fb.group({
@@ -177,17 +184,29 @@ export class EventActivityComponent implements OnInit {
       activityStartDate: new FormControl(''),
       eventId: new FormControl(this.eventId)
     }));
-    // setTimeout(() => {
     console.log($('#activityStartDate' + (control.length - 2)).val());
     let secondDate = $('#activityStartDate' + (control.length - 2)).val()
     console.log("selected second date", secondDate)
     this.currentDay = new Date(secondDate)
-    // }, 200)
-
-    //  (this.activityForm.value)
   }
 
-
+  checkActivityName(event, dynamic) {
+    console.log("event of new activity", event.target.value);
+    console.log("details of activity", this.activityName);
+    // this.activityName.includes(event.target.value)
+    let arrayName = this.activityName.includes(event.target.value)
+    console.log("0000000000000000000", arrayName);
+    let message = document.getElementById(dynamic);
+    if (arrayName == true) {
+      this.displayActivity = false
+      console.log("name second time use thyu che");
+      message.innerHTML = "Activity is not unique";
+    } else if (arrayName == false) {
+      this.displayActivity = true
+      message.innerHTML = ""
+      console.log("name is unique");
+    }
+  }
 
 
 
@@ -259,4 +278,11 @@ export class EventActivityComponent implements OnInit {
     // this.alertService.getError(err.message);
     // })
   }
+
+
+  openDatePicker(i) {
+    console.log("su ave che click ma", i);
+    this.datePicker.open();
+  }
+
 }

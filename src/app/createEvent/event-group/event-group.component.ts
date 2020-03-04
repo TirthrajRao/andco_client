@@ -188,10 +188,10 @@ export class EventGroupComponent implements OnInit {
 
   numberValidationForMale(event) {
 
-    console.log("event of enter number", this.object.itemPrice);
+    console.log("event of enter number", this.object.itemName);
     this.types = typeof this.object.itemPrice
     // this.types = typeof this.femaleObject.itemPrice
-    if (this.types == 'number') {
+    if (this.types == 'number' && this.object.itemName.length > 0) {
       console.log("in this");
       this.isModel = true
     } else {
