@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   padding: 20px;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .enter-inner-box {
