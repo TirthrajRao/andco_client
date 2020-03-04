@@ -146,6 +146,7 @@ button.remove {
     align-items: center;
     justify-content: center;
     float: left;
+    cursor: pointer;
 }
 .date-display p{
     color: #a5b138;

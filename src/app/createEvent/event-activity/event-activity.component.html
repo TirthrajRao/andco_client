@@ -19,7 +19,7 @@
                                             (click)="removeActivityField(i,tech.value)">
                                             <img src="../../../assets/images/remove.png" alt="remove icon">
                                         </button>
-                                        <div id="{{i}}" class="w-100" style="color: red;"></div>
+                                        <div id="{{i}}" class="w-100" style="color: #dc3545;"></div>
                                         <div class="w-100 d-inline-block">
                                             <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'dd'}}</p>
@@ -48,11 +48,11 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="clone" (click)="addActivityField()" [disabled]="!displayActivity"><i class="fa fa-plus"
-                        aria-hidden="true"></i></button>
+                <button class="clone btn" (click)="addActivityField()" [disabled]="!displayActivity"><i
+                        class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             <div class="event-next-btn mt-3">
-                <button class="btn" (click)="addActivity()">Next</button>
+                <button class="btn" (click)="addActivity()" [disabled]="!displayActivity">Next</button>
             </div>
         </div>
     </div>

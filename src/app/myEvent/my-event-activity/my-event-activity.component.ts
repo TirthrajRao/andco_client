@@ -7,15 +7,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MyEventActivityComponent implements OnInit {
   @Input('activityList') activityList;
+  groupOfActivity
   constructor() { }
 
   ngOnInit() {
-    console.log("list of activity in activity", this.activityList);
+    // console.log("list of activity in activity", this.activityList);
 
   }
 
   ngOnChanges() {
 
-    console.log("changes of event", this.activityList);
+    // console.log("changes of event", this.activityList);
+  }
+
+  getActivityGroup(event) {
+    // console.log("total group of single activity", event);
+    this.groupOfActivity = event
   }
 }

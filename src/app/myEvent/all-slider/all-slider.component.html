@@ -10,3 +10,38 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<div class="myEvent-slider-box" *ngIf="activityList">
+    <div class="add-event">
+        <!-- <button class="btn">+</button> -->
+    </div>
+    <div class="myEvent-slider">
+        <div class="myEvent-single-slide" *ngFor="let name of activityList">
+            <div class="myEvent-name" (click)="getSingleActivity(name.group)">
+                <p>{{name.activityName}}</p>
+            </div>
+            <p class="text-center text-white">{{name.activityStartDate | date :'dd-MM-yyyy'}}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="myEvent-slider-box" *ngIf="groupOfActivity">
+    <div class="add-event">
+        <!-- <button class="btn">+</button> -->
+    </div>
+    <div class="myEvent-slider">
+        <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity">
+            <div class="myEvent-name">
+                <p>{{name.groupName}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,7 +42,7 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("link of event======", this.eventLink);
+    // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
       thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
@@ -74,7 +74,7 @@ export class SetPriceComponent implements OnInit {
       prevArrow: '<button type="button" class="prevarrow">Back</button>',
       nextArrow: '<button type="button" class="nextarrow" (click)="nextArrowClick($event)">Next</button>',
       nextArrowClick(event) {
-        console.log("is this call or not", event);
+        // console.log("is this call or not", event);
 
         this.nextArrowClick(event)
       }
@@ -90,16 +90,16 @@ export class SetPriceComponent implements OnInit {
 
 
   newClick(data) {
-    console.log("this is very important", data);
+    // console.log("this is very important", data);
 
   }
 
   nextArrowClick(event) {
-    console.log("nextArrowClick($event)", event);
+    // console.log("nextArrowClick($event)", event);
 
   }
   setPrice() {
-    console.log("value of form", this.setPriceForm);
+    // console.log("value of form", this.setPriceForm);
     // let message
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
@@ -108,7 +108,7 @@ export class SetPriceComponent implements OnInit {
       if (form[element].status == 'INVALID') {
         flag = 1;
         if (element == 'thanksMessage') {
-          console.log("thank you message error");
+          // console.log("thank you message error");
           this.errorMessaage = 'Thank you message is required'
         } else if (element == 'afterEventMessage') {
           this.errorMessaage = 'After Event message is required'
@@ -134,16 +134,16 @@ export class SetPriceComponent implements OnInit {
     }
   }
   detailsOfBank(event) {
-    console.log("bank details in set price", event);
+    // console.log("bank details in set price", event);
     this.setPriceForm.patchValue({
       bankDetails: event
     })
-    console.log("enter form value", this.setPriceForm.value);
+    // console.log("enter form value", this.setPriceForm.value);
 
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
   }
   paymentCloseDate(data) {
-    console.log("su ave che", data);
+    // console.log("su ave che", data);
     if (data == 'test5') {
       this.setPriceForm.patchValue({
         payMentTransferDate: 'true'
@@ -162,7 +162,7 @@ export class SetPriceComponent implements OnInit {
     }
   }
   getDate(event) {
-    console.log("hello ===>", event.value);
+    // console.log("hello ===>", event.value);
     this.setPriceForm.patchValue({
       payMentTransferDate: (new Date(event.value))
     });
@@ -170,7 +170,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   selectedValue(event) {
-    console.log("value of logistics", event.target.id);
+    // console.log("value of logistics", event.target.id);
     let selected = event.target.id
     if (selected == 'test7') {
       this.setPriceForm.patchValue({
@@ -185,7 +185,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   onDropDown(event) {
-    console.log("selected drop down value", event.target.value);
+    // console.log("selected drop down value", event.target.value);
     if (event.target.value == 'planner') {
       this.isEventPlannerSelected = true
       this.isEventVendorSelected = false
@@ -199,7 +199,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   plannerValue(event) {
-    console.log("planner value", event.target.value);
+    // console.log("planner value", event.target.value);
     this.setPriceForm.patchValue({
       hearAbout: event.target.value
     })

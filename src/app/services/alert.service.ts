@@ -16,7 +16,7 @@ export class AlertService {
    * Alert for all success response 
    */
   getSuccess(message) {
-    console.log(message);
+    // console.log(message);
     Swal.fire({
       imageUrl: '../../assets/images/andco_logo.png',
       imageWidth: 350,
@@ -34,7 +34,7 @@ export class AlertService {
    * Alert for all error response 
    */
   getError(message) {
-    console.log(message);
+    // console.log(message);
     Swal.fire({
       imageUrl: '../../assets/images/andco_logo.png',
       imageWidth: 350,

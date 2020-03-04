@@ -413,6 +413,10 @@ img.swal2-image {
         padding-top: 60px;
     }
     /* sales activity end */
+    img.swal2-image {
+        height: 90px;
+        width: 250px !important;
+    }
 }
 
 @media(max-width: 1199px) {
@@ -423,10 +427,6 @@ img.swal2-image {
     .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 18px;
         padding: 4px 28px;
-    }
-    img.swal2-image {
-        height: 90px;
-        width: 250px !important;
     }
 }
 

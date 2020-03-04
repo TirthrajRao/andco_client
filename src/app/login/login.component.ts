@@ -36,10 +36,10 @@ export class LoginComponent implements OnInit {
     public socialLoginService: SocialLoginService
   ) {
     this._loginService.faceBookLogin.subscribe(data => {
-      console.log("data of click", data)
+      // console.log("data of click", data)
     })
     this.socialLoginService.isLoad.subscribe(data => {
-      console.log("details of loader", data);
+      // console.log("details of loader", data);
       if (data == 'true') {
         this.isLoad = true
       } else {
@@ -103,19 +103,19 @@ export class LoginComponent implements OnInit {
   onSubmitLogin() {
     this.isLoad = true;
     this.isDisable = true;
-    console.log("login details", this.loginForm.value);
+    // console.log("login details", this.loginForm.value);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
-        console.log("data of invalid user", data);
+        // console.log("data of invalid user", data);
         let firstName = data.data.firstName
         this.userName = firstName;
-        console.log(this.userName);
-        console.log("response of login user", data);
+        // console.log(this.userName);
+        // console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
-        console.log("admin login entry", data.data.UserRole);
+        // console.log("admin login entry", data.data.UserRole);
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
-        console.log(this.isCelebrant);
+        // console.log(this.isCelebrant);
         this.isDisable = true;
         if (this.eventIdWithLogin) {
           this.isLoad = false;
@@ -127,7 +127,7 @@ export class LoginComponent implements OnInit {
           // this.router.navigate(['/home/admin-dashboard']);
         } else if (data.data.UserRole == 'user') {
           let eventList = data.data.eventId
-          console.log("detils of event list", eventList)
+          // console.log("detils of event list", eventList)
           this.isLoad = false
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -137,7 +137,7 @@ export class LoginComponent implements OnInit {
       }, (err: any) => {
         this.isLoad = false;
         let varification = err.error.data;
-        console.log("err of invalid", err)
+        // console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
         this.isDisable = false;
         // this.
@@ -159,21 +159,21 @@ export class LoginComponent implements OnInit {
 
 
   forgotPassword(email) {
-    console.log("value of email======", email)
+    // console.log("value of email======", email)
   }
 
   updatePassword() {
     this.isLoad = true
-    console.log("forgot password value", this.forgotPasswordForm)
+    // console.log("forgot password value", this.forgotPasswordForm)
     this._loginService.forgotPassword(this.forgotPasswordForm.value)
       .subscribe((data: any) => {
-        console.log("response of forgot password", data);
+        // console.log("response of forgot password", data);
         this.isLoad = false
         this.alertService.getSuccess(data.message);
         // this.router.navigate(['/login']);
         this.forgotPasswordForm.reset()
       }, err => {
-        console.log(err);
+        // console.log(err);
         this.isLoad = false
         this.alertService.getError(err.message);
       })
