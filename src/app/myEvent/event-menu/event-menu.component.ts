@@ -12,7 +12,7 @@ export class EventMenuComponent implements OnInit {
 
   ngOnInit() {
     $('.event-menu-slider').not('.slick-initialized').slick({
-      slidesToShow: 5,
+      slidesToShow: 3,
       slidesToScroll: 1,
       arrows: true,
       centerMode: true,

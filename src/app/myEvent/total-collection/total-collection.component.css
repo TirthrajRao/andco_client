@@ -38,4 +38,24 @@
     margin-right: 10px;
     font-weight: bold;
     font-size: 18px;
+    position: relative;
+}
+a.nav-link.active:after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    border: 2px solid #c97a33;
+    display: block;
+    border-radius: 10px;
+}
+.total-activity-box .tab-content span{
+    color: #686868;
+    font-size: 26px;
+}
+.total-activity-box .tab-content .col-10 span{
+    color: #C97A33;
+    font-size: 22px;
 }
