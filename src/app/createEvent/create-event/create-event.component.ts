@@ -226,10 +226,10 @@ export class CreateEventComponent implements OnInit {
           sessionStorage.setItem('eventLink', data.data.eventLink)
           sessionStorage.setItem('hasTag', data.data.hashTag)
           // this.isDisable = true
-          this.isLoad = false
           this.alertService.getSuccess(data.message)
           this.eventForm.reset()
           this.router.navigate(['/eventActivity/' + data.data._id]);
+          this.isLoad = false
         }, (error: any) => {
           this.isDisable = false
           this.isLoad = false

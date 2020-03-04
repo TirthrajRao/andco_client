@@ -10,18 +10,47 @@ declare var $;
 export class AllSliderComponent implements OnInit {
 
   @Input('eventList') displayList;
+  @Input('activityList') activityList
+  @Input('groupOfActivity') groupOfActivity
   @Output() singleEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() activityGroup: EventEmitter<any> = new EventEmitter<any>();
   $slideContainter;
   $slider;
+  activityDisplay
+  listOfContent = []
   constructor() { }
 
   ngOnInit() {
-    this.initEventSlider()
-    console.log("list of event in slider", this.displayList);
+    if (this.displayList) {
+      console.log("changes of event", this.displayList);
+      this.initEventSlider()
+    }
+    // if (this.activityList) {
+    //   // console.log("list of activity", this.activityList)
+    //   this.initEventSlider()
+    // }
+
   }
   ngOnChanges() {
-    this.initEventSlider()
-    console.log("changes of event", this.displayList);
+
+    if (this.displayList) {
+      console.log("changes of event", this.displayList);
+      this.initEventSlider()
+    }
+    if (this.activityList) {
+      console.log("list of activity", this.activityList)
+      this.$slideContainter = $('.myEvent-slider');
+      this.$slideContainter.slick('unslick');
+      // setTimeout(() => {
+      this.initEventSlider()
+      // }, 50)
+    }
+    if (this.groupOfActivity) {
+      this.$slideContainter = $('.myEvent-slider');
+      this.$slideContainter.slick('unslick');
+      // setTimeout(() => {
+      this.initEventSlider()
+    }
   }
 
 
@@ -70,5 +99,10 @@ export class AllSliderComponent implements OnInit {
   getSingleEvent(eventId) {
     console.log("click on event", eventId);
     this.singleEvent.emit(eventId)
+  }
+
+  getSingleActivity(group) {
+    console.log("get group of single activity", group);
+    this.activityGroup.emit(group)
   }
 }

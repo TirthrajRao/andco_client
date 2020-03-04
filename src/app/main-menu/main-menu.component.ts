@@ -61,10 +61,10 @@ export class MainMenuComponent implements OnInit {
       this.router.navigate(['/createEvent']);
     }
   }
-  getMenu(event) {
-    let output = this._loginService.returnLogin(event);
-    if (output == true) {
-      this.router.navigate(['/myevent']);
-    }
-  }
+  // getMenu(event) {
+  //   let output = this._loginService.returnLogin(event);
+  //   if (output == true) {
+  //     this.router.navigate(['/myevent']);
+  //   }
+  // }
 }
