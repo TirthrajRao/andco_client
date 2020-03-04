@@ -258,6 +258,7 @@ h5.item-name, h5.item-price{
     }
     .inner-box-group ul li h5{
         font-size: 17px;
+        line-height: 25px;
     }
     button.btn.add-btn{
         font-size: 17px;

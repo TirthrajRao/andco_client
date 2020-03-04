@@ -376,7 +376,10 @@ img.swal2-image {
 }
 
 /* mat css end */
-
+.event-menu-slider.slick-slider .slick-list {
+    padding: 0 130px !important;
+    width: 100% !important;
+}
 /* responsive css start */
 
 @media(max-width: 1600px) {
