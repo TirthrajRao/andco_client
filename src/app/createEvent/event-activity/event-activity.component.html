@@ -21,13 +21,13 @@
                                         </button>
                                         <div id="{{i}}" class="w-100" style="color: red;"></div>
                                         <div class="w-100 d-inline-block">
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'dd'}}</p>
                                             </div>
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'MM'}}</p>
                                             </div>
-                                            <div class="date-display">
+                                            <div class="date-display" (click)="picker.open()">
                                                 <p>{{displayTime[i]  | date : 'yyyy'}}</p>
                                             </div>
                                         </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDatepickerInputEvent, MatCalendar } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatCalendar, MatDatepicker } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { DatePipe } from '@angular/common';
@@ -16,7 +16,9 @@ declare var $;
   styleUrls: ['./event-activity.component.css']
 })
 export class EventActivityComponent implements OnInit {
-  @ViewChild(MatCalendar, { static: true }) _datePicker: MatCalendar<Date>
+  // @ViewChild(MatCalendar, { static: true } ) _datePicker: MatCalendar<Date>
+  @ViewChild('picker', { static: true }) datePicker: MatDatepicker<Date>;
+
   activityForm: FormGroup;
   activityId
   createdActivity: any;
@@ -145,7 +147,7 @@ export class EventActivityComponent implements OnInit {
       control.removeAt(i);
       this.displayTime.splice(i, 1)
       console.log("at the end date group", this.displayTime);
-
+      this.activityName.splice(i, 1)
     }
     else {
       console.log("else part ma avu joye baki");
@@ -276,4 +278,11 @@ export class EventActivityComponent implements OnInit {
     // this.alertService.getError(err.message);
     // })
   }
+
+
+  openDatePicker(i) {
+    console.log("su ave che click ma", i);
+    this.datePicker.open();
+  }
+
 }
