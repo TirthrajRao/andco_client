@@ -26,7 +26,7 @@ export class ActivitySliderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("created activity list", this.detailsFromEventGroup);
+    // console.log("created activity list", this.detailsFromEventGroup);
     if (this.detailsFromEventGroup) {
       this.getEventDetails(this.detailsFromEventGroup)
     }
@@ -38,12 +38,12 @@ export class ActivitySliderComponent implements OnInit {
 
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((res: any) => {
-      console.log("details of activity", res)
+      // console.log("details of activity", res)
       this.eventHashTag.emit(res.data.hashTag)
       this.activityDetails = res.data.activity
       this.allActivities = []
       this.activityDetails.forEach(activity => {
-        console.log(" activity ", activity);
+        // console.log(" activity ", activity);
         let newAD = {
           activity: activity,
           groups: [
@@ -62,19 +62,19 @@ export class ActivitySliderComponent implements OnInit {
 
         this.allActivities.push(newAD)
       });
-      console.log(" allActivities 111111 ", this.allActivities)
+      // console.log(" allActivities 111111 ", this.allActivities)
       setTimeout(() => {
         this.initSlickSlider()
       }, 50)
     }, error => {
-      console.log("error while details", error);
+      // console.log("error while details", error);
 
     })
   }
 
 
   singleActivityDetails(activity, allActivities, index) {
-    console.log("first one", index);
+    // console.log("first one", index);
     this.singleActivity.emit({ item: activity, allActivities: allActivities, index: index })
     this.selectedIndex = index
   }

@@ -27,7 +27,7 @@ export class GroupSliderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("selected activity id in group page", this.selectedActivity);
+    // console.log("selected activity id in group page", this.selectedActivity);
     if (this.selectedActivity) {
       this.isDisable = true;
       // this.initGroupSlider()
@@ -35,11 +35,11 @@ export class GroupSliderComponent implements OnInit {
 
   }
   ngOnChanges() {
-    console.log("selected activity second time", this.selectedActivity.groups);
+    // console.log("selected activity second time", this.selectedActivity.groups);
     if (this.selectedActivity) {
       this._change.detectChanges()
       this.selectedIndex = 0
-      console.log("when click on another activity", this.selectedIndex)
+      // console.log("when click on another activity", this.selectedIndex)
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
       // this.selectedActivity.groups
@@ -51,15 +51,15 @@ export class GroupSliderComponent implements OnInit {
 
 
   sendData(item, index) {
-    console.log(" item ", item, index)
+    // console.log(" item ", item, index)
     this.selectedIndex = index
     this.singleGroup.emit(item)
   }
 
   removeGroup(index) {
-    console.log("index of group", this.selectedIndex)
+    // console.log("index of group", this.selectedIndex)
     this.selectedActivity.groups.splice(index, 1);
-    console.log("this.selectedActivity.groups========", this.selectedActivity.groups)
+    // console.log("this.selectedActivity.groups========", this.selectedActivity.groups)
     this.$slideContainter = $('.group-slider');
     this.$slideContainter.slick('unslick');
     setTimeout(() => {
@@ -136,7 +136,7 @@ export class GroupSliderComponent implements OnInit {
 
 
   addGroup(data) {
-    console.log("is it call or not=======", data);
+    // console.log("is it call or not=======", data);
 
     let newGroup = {
       groupName: data,
@@ -145,7 +145,7 @@ export class GroupSliderComponent implements OnInit {
     }
     this.selectedActivity.groups.push(newGroup)
     this.groupName = ''
-    console.log("new group added", this.selectedActivity);
+    // console.log("new group added", this.selectedActivity);
     this.$slideContainter = $('.group-slider');
     this.$slideContainter.slick('unslick');
     setTimeout(() => {

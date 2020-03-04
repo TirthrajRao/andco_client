@@ -20,8 +20,8 @@ export class EventService {
    * Create new event
    */
   addEvent(body, files: any) {
-    console.log("event detailsssssss", body);
-    console.log("filessssss name ", files);
+    // console.log("event detailsssssss", body);
+    // console.log("filessssss name ", files);
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
     formdata.append('eventType', body.eventType);
@@ -42,7 +42,7 @@ export class EventService {
    * Add new activity in event 
    */
   addActivities(data) {
-    console.log("activity data", data);
+    // console.log("activity data", data);
     return this.http.post(config.baseApiUrl + "/activity", data.activity);
   }
 
@@ -55,7 +55,7 @@ export class EventService {
   }
 
   addGroup(groupDetails, eventId) {
-    console.log("details of group array", eventId);
+    // console.log("details of group array", eventId);
     let body = {
       eventId: eventId
     }

@@ -89,14 +89,14 @@ export class CreateEventComponent implements OnInit {
     $('.create-event-type-menu li > a').click(function () {
       this.eventTypeValue = $(this).html();
       $('.create-event-type-menu > a').html(this.eventTypeValue);
-      console.log("event select thai jaje ========", this.eventTypeValue);
+      // console.log("event select thai jaje ========", this.eventTypeValue);
       setControl(this.eventTypeValue);
     });
     var eventFormLocal = this.eventForm;
     var setControl = function (event) {
-      console.log("type is selected========", event)
+      // console.log("type is selected========", event)
       eventFormLocal.controls.eventType.setValue(event)
-      console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
+      // console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
     }
 
   }
@@ -133,7 +133,7 @@ export class CreateEventComponent implements OnInit {
     }, 100)
   }
   nextCalled(event) {
-    console.log("ama kaik avu joye", event);
+    // console.log("ama kaik avu joye", event);
 
   }
 
@@ -143,7 +143,7 @@ export class CreateEventComponent implements OnInit {
    */
 
   addFile(event) {
-    console.log("profile photo path", event);
+    // console.log("profile photo path", event);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
@@ -174,17 +174,17 @@ export class CreateEventComponent implements OnInit {
     this.themeUrl = path
     this.eventForm.controls.background.setValue(path)
     $('.bg-select-div').addClass('active')
-    console.log("form details========", this.eventForm.value)
+    // console.log("form details========", this.eventForm.value)
   }
 
 
   ngOnChanges({ formDirty }: SimpleChanges) {
     if (formDirty.currentValue) {
-      console.log("first one");
+      // console.log("first one");
 
       // this.inputCtrl.markAsDirty();
     } else {
-      console.log("second one");
+      // console.log("second one");
       // this.inputCtrl.markAsPristine();
     }
   }
@@ -222,7 +222,7 @@ export class CreateEventComponent implements OnInit {
       this.isLoad = true
       this.eventService.addEvent(this.eventForm.value, this.files)
         .subscribe((data: any) => {
-          console.log("event details", data.data.hashTag);
+          // console.log("event details", data.data.hashTag);
           sessionStorage.setItem('eventLink', data.data.eventLink)
           sessionStorage.setItem('hasTag', data.data.hashTag)
           // this.isDisable = true
@@ -233,7 +233,7 @@ export class CreateEventComponent implements OnInit {
         }, (error: any) => {
           this.isDisable = false
           this.isLoad = false
-          console.log(error);
+          // console.log(error);
           this.alertService.getError(error.message);
           return
           // })
@@ -256,7 +256,7 @@ export class CreateEventComponent implements OnInit {
     });
     let message1 = document.getElementById('message1');
     if (!value.hashTag.match(nameInput)) {
-      console.log("message==========", message1)
+      // console.log("message==========", message1)
       message1.innerHTML = "Name can not start with digit"
     } else {
       message1.innerHTML = null;

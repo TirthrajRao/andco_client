@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     public _loginService: LoginService
   ) {
     this._loginService.getObservableResponse().subscribe(res => {
-      console.log("response in header again", res);
+      // console.log("response in header again", res);
       this.currentUrl = res.id;
 
     })
@@ -39,12 +39,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes in header", changes)
+    // console.log("changes in header", changes)
     if (changes.displayName.currentValue == false) {
-      console.log("in if condition ")
+      // console.log("in if condition ")
       this.isDisplay = false
     } else {
-      console.log("in else condition ")
+      // console.log("in else condition ")
       this.isDisplay = true
     }
   }
@@ -63,10 +63,10 @@ export class HeaderComponent implements OnInit {
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
       .subscribe((events: RoutesRecognized[]) => {
-        console.log("event of url find", events)
+        // console.log("event of url find", events)
         // console.log("index of page", this.index)
         this.currentUrl = events[1].urlAfterRedirects
-        console.log('current url', this.currentUrl);
+        // console.log('current url', this.currentUrl);
         // this.setLogo(this.currentUrl)
       });
 
@@ -76,9 +76,9 @@ export class HeaderComponent implements OnInit {
     })
 
     this.currentUrl = this.router.url
-    console.log("login user name in heaedr", this.router.url)
+    // console.log("login user name in heaedr", this.router.url)
     this.currentUrl = this.router.url
-    console.log("whne page is load display route", this.currentUrl)
+    // console.log("whne page is load display route", this.currentUrl)
   }
 
   getHeader(event) {

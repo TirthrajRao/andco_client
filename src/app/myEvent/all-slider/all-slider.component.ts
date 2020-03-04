@@ -22,11 +22,11 @@ export class AllSliderComponent implements OnInit {
 
   ngOnInit() {
     if (this.displayList) {
-      console.log("changes of event", this.displayList);
+      // console.log("changes of event", this.displayList);
       this.initEventSlider()
     }
     // if (this.activityList) {
-    //   // console.log("list of activity", this.activityList)
+      // console.log("list of activity", this.activityList)
     //   this.initEventSlider()
     // }
 
@@ -34,11 +34,11 @@ export class AllSliderComponent implements OnInit {
   ngOnChanges() {
 
     if (this.displayList) {
-      console.log("changes of event", this.displayList);
+      // console.log("changes of event", this.displayList);
       this.initEventSlider()
     }
     if (this.activityList) {
-      console.log("list of activity", this.activityList)
+      // console.log("list of activity", this.activityList)
       this.$slideContainter = $('.myEvent-slider');
       this.$slideContainter.slick('unslick');
       // setTimeout(() => {
@@ -97,12 +97,12 @@ export class AllSliderComponent implements OnInit {
 
 
   getSingleEvent(eventId) {
-    console.log("click on event", eventId);
+    // console.log("click on event", eventId);
     this.singleEvent.emit(eventId)
   }
 
   getSingleActivity(group) {
-    console.log("get group of single activity", group);
+    // console.log("get group of single activity", group);
     this.activityGroup.emit(group)
   }
 }

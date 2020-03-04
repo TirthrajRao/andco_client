@@ -48,14 +48,14 @@ export class EventActivityComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
-        console.log("created event id", this.eventId);
+        // console.log("created event id", this.eventId);
         // this.viewDetailsOfEvent(this.eventId);
       }
     })
   }
 
   ngOnInit() {
-    console.log("today date=======", this.hashTag)
+    // console.log("today date=======", this.hashTag)
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
     });
@@ -74,22 +74,22 @@ export class EventActivityComponent implements OnInit {
 
   addEvent(type: string, event, i) {
 
-    console.log("event ma su ave che", this.displayTime)
+    // console.log("event ma su ave che", this.displayTime)
     this.displayTime[i] = (new Date(event.value))
-    console.log("final time to display", this.displayTime)
+    // console.log("final time to display", this.displayTime)
   }
 
   get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
 
   selectDate(event) {
-    console.log("call thay che ke nai", event)
+    // console.log("call thay che ke nai", event)
   }
 
   getDate(event) {
-    console.log("event call==========");
-    console.log("event details==========", event)
+    // console.log("event call==========");
+    // console.log("event details==========", event)
     $('#activityStartDate').datepicker().on('dp.change', function (e) {
-      console.log(e)
+      // console.log(e)
     })
 
   }
@@ -100,7 +100,7 @@ export class EventActivityComponent implements OnInit {
    * Edit event activities 
    */
   getActivityFrom(createdActivity?) {
-    console.log("update activity details", createdActivity);
+    // console.log("update activity details", createdActivity);
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
     });
@@ -111,9 +111,9 @@ export class EventActivityComponent implements OnInit {
    *  To create new activity
    */
   activityArray(activities?: any[]) {
-    console.log("activities", activities);
+    // console.log("activities", activities);
     if (!activities) {
-      console.log("ama ave che ke nau");
+      // console.log("ama ave che ke nau");
       return [this.fb.group({
         activityName: new FormControl(''),
         activityStartDate: new FormControl(''),
@@ -141,27 +141,27 @@ export class EventActivityComponent implements OnInit {
    * To remove added activity field 
    */
   removeActivityField(i: number, id): void {
-    console.log("activity id", id)
+    // console.log("activity id", id)
     if (!id.activityId) {
       const control = <FormArray>this.activityForm.controls.activity;
       control.removeAt(i);
       this.displayTime.splice(i, 1)
-      console.log("at the end date group", this.displayTime);
+      // console.log("at the end date group", this.displayTime);
       this.activityName.splice(i, 1)
     }
     else {
-      console.log("else part ma avu joye baki");
+      // console.log("else part ma avu joye baki");
 
-      //   console.log(id);
+        // console.log(id);
       //   // let event = this.eventId;
-      //   console.log(event);
+        // console.log(event);
       //   this._eventService.removeActivity(id)
       //     .subscribe((data: any) => {
-      //       console.log(data);
+            // console.log(data);
       //       this.createdActivity = data.data.activities
       //       this.getActivityFrom(this.createdActivity);
       //     }, err => {
-      //       console.log(err);
+            // console.log(err);
       //     })
     }
   }
@@ -171,40 +171,40 @@ export class EventActivityComponent implements OnInit {
    * Add activity field with name,date 
    */
   addActivityField(): void {
-    console.log("Form fields", this.activityForm.value);
+    // console.log("Form fields", this.activityForm.value);
     let activityNameOf = this.activityFormData.value
-    console.log("array of name", activityNameOf);
+    // console.log("array of name", activityNameOf);
     const newArray = activityNameOf[activityNameOf.length - 1]
-    console.log("last element of array", newArray.activityName);
+    // console.log("last element of array", newArray.activityName);
     this.activityName.push(newArray.activityName)
     const control = <FormArray>this.activityForm.controls.activity;
-    console.log("control ma su ave che", control.length)
+    // console.log("control ma su ave che", control.length)
     control.push(this.fb.group({
       activityName: new FormControl(''),
       activityStartDate: new FormControl(''),
       eventId: new FormControl(this.eventId)
     }));
-    console.log($('#activityStartDate' + (control.length - 2)).val());
+    // console.log($('#activityStartDate' + (control.length - 2)).val());
     let secondDate = $('#activityStartDate' + (control.length - 2)).val()
-    console.log("selected second date", secondDate)
+    // console.log("selected second date", secondDate)
     this.currentDay = new Date(secondDate)
   }
 
   checkActivityName(event, dynamic) {
-    console.log("event of new activity", event.target.value);
-    console.log("details of activity", this.activityName);
+    // console.log("event of new activity", event.target.value);
+    // console.log("details of activity", this.activityName);
     // this.activityName.includes(event.target.value)
     let arrayName = this.activityName.includes(event.target.value)
-    console.log("0000000000000000000", arrayName);
+    // console.log("0000000000000000000", arrayName);
     let message = document.getElementById(dynamic);
     if (arrayName == true) {
       this.displayActivity = false
-      console.log("name second time use thyu che");
-      message.innerHTML = "Activity is not unique";
+      // console.log("name second time use thyu che");
+      message.innerHTML = "Activity Name must be unique";
     } else if (arrayName == false) {
       this.displayActivity = true
       message.innerHTML = ""
-      console.log("name is unique");
+      // console.log("name is unique");
     }
   }
 
@@ -220,14 +220,14 @@ export class EventActivityComponent implements OnInit {
       // this.activityForm.value.activity[i].activityStartDate = new Date($('#activityStartDate' + i).val()).toISOString()
       // this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate' + i).val();
     }
-    console.log("activity details", this.activityForm.value);
+    // console.log("activity details", this.activityForm.value);
     this._eventService.addActivities(this.activityForm.value)
       .subscribe((data: any) => {
         // let activityArraySend = []
 
         this.isLoad = false;
         this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
-        console.log("activity add in database completed", data)
+        // console.log("activity add in database completed", data)
         this.alertService.getSuccess(data.message)
         // console.log("activity response data", data);
         // this.createdActivity = data.data;
@@ -236,10 +236,10 @@ export class EventActivityComponent implements OnInit {
         // _.forEach(this.createdActivity, (date) => {
         //   this.activityStartDate = date.activityStartDate;
         //   this.activityEndDate = date.activityEndDate;
-        //   console.log(this.activityStartDate, this.activityEndDate)
+          // console.log(this.activityStartDate, this.activityEndDate)
         // })
         // console.log(this.selectedStartDate);
-        console.log("created activity response from server", this.createdActivity);
+        // console.log("created activity response from server", this.createdActivity);
         // this.initGroupForm(this.createdActivity);
       }, (err: any) => {
         // this.isLoad = false;
@@ -272,16 +272,16 @@ export class EventActivityComponent implements OnInit {
     // this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate.split("T")[0];
     // console.log(this.paymentDeadlineDate);
     //   this.eventActivities = this.createdEventDetails.activity;
-    //   console.log(this.eventActivities);
+      // console.log(this.eventActivities);
     // }, (err: any) => {
-    //   console.log(err);
+      // console.log(err);
     // this.alertService.getError(err.message);
     // })
   }
 
 
   openDatePicker(i) {
-    console.log("su ave che click ma", i);
+    // console.log("su ave che click ma", i);
     this.datePicker.open();
   }
 

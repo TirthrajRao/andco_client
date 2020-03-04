@@ -57,7 +57,7 @@ export class EventGroupComponent implements OnInit {
   }
 
   button() {
-    console.log("=============");
+    // console.log("=============");
 
   }
 
@@ -65,32 +65,32 @@ export class EventGroupComponent implements OnInit {
 
   getActivity(event) {
     this.isDisable = true
-    console.log("he bhagvan ama avi jaje kaik", event);
-    console.log(" Allevent Data ", event.allActivities)
+    // console.log("he bhagvan ama avi jaje kaik", event);
+    // console.log(" Allevent Data ", event.allActivities)
     this.allActivities = event.allActivities
     this.selectedActivity = event.item
     this.selectedGroup = event.item.groups[0]
-    console.log("selected activity list", this.selectedActivity)
+    // console.log("selected activity list", this.selectedActivity)
     this.activityDate = event.item.activity.activityStartDate
-    console.log("date of selected", this.activityDate);
+    // console.log("date of selected", this.activityDate);
 
   }
 
   getGroup(event) {
-    console.log("ama group details ave", event);
+    // console.log("ama group details ave", event);
     this.selectedGroup = event
-    console.log("right now activated activity", this.selectedGroup);
+    // console.log("right now activated activity", this.selectedGroup);
   }
 
 
   addGroup() {
     this.isLoad = true
-    console.log("value of group form");
-    console.log(this.allActivities)
+    // console.log("value of group form");
+    // console.log(this.allActivities)
     // this.allActivities['eventId'] = this.eventId
-    console.log("finale details", this.allActivities);
+    // console.log("finale details", this.allActivities);
     this.allActivities.forEach(singleActivityDetails => {
-      console.log("single activity with details", singleActivityDetails);
+      // console.log("single activity with details", singleActivityDetails);
       singleActivityDetails.groups.forEach((singleGroup) => {
         let finalObject = {
           activityId: singleActivityDetails.activity._id,
@@ -100,17 +100,17 @@ export class EventGroupComponent implements OnInit {
         }
         this.finalArray.push(finalObject)
 
-        console.log("is final object is ready or not=====", this.finalArray)
+        // console.log("is final object is ready or not=====", this.finalArray)
       })
     });
     this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
-      console.log("Group added in new event", response)
+      // console.log("Group added in new event", response)
       this.isLoad = false
       this.alertervice.getSuccess(response.message)
       this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
       this.alertervice.getError(error.message)
-      console.log("error while add groups in event", error)
+      // console.log("error while add groups in event", error)
     })
   }
 
@@ -133,7 +133,7 @@ export class EventGroupComponent implements OnInit {
 
   addMaleItmes(itemDetails) {
     $('#addMaleItemModal').modal("hide")
-    console.log("itemDetails", itemDetails)
+    // console.log("itemDetails", itemDetails)
     let maleObject = {
       itemName: itemDetails.itemName,
       itemPrice: itemDetails.itemPrice
@@ -145,20 +145,20 @@ export class EventGroupComponent implements OnInit {
       itemPrice: Number
     }
     this.isButton = true
-    console.log("male details", this.selectedGroup.male);
+    // console.log("male details", this.selectedGroup.male);
 
   }
 
 
   removeMaleItem(data, index) {
-    console.log("data to be removed", data);
-    console.log("index of removed", index);
+    // console.log("data to be removed", data);
+    // console.log("index of removed", index);
     this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
-    console.log("baki ni male items", this.selectedGroup.male);
+    // console.log("baki ni male items", this.selectedGroup.male);
   }
 
   addFemaleItmes(data) {
-    console.log("list of female items", data);
+    // console.log("list of female items", data);
     let femaleObject = {
       itemName: data.itemName,
       itemPrice: data.itemPrice
@@ -173,14 +173,14 @@ export class EventGroupComponent implements OnInit {
 
   removeFemaleItem(data, index) {
     this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
-    console.log("rest of female items========", this.selectedGroup.female);
+    // console.log("rest of female items========", this.selectedGroup.female);
 
   }
 
   addMaleItem(event) {
-    console.log("event=========", event.target.value.length);
+    // console.log("event=========", event.target.value.length);
     if (event.key === "Enter") {
-      console.log("call this")
+      // console.log("call this")
       this.addMaleItmes(this.object)
       this.isModel = false
     }
@@ -188,11 +188,11 @@ export class EventGroupComponent implements OnInit {
 
   numberValidationForMale(event) {
 
-    console.log("event of enter number", this.object.itemName);
+    // console.log("event of enter number", this.object.itemName);
     this.types = typeof this.object.itemPrice
     // this.types = typeof this.femaleObject.itemPrice
     if (this.types == 'number' && this.object.itemName.length > 0) {
-      console.log("in this");
+      // console.log("in this");
       this.isModel = true
     } else {
       this.isModel = false
@@ -204,7 +204,7 @@ export class EventGroupComponent implements OnInit {
     this.types = typeof this.femaleObject.itemPrice
     // this.types = typeof this.femaleObject.itemPrice
     if (this.types == 'number') {
-      console.log("in this");
+      // console.log("in this");
       this.isModel = true
     } else {
       this.isModel = false
@@ -214,14 +214,14 @@ export class EventGroupComponent implements OnInit {
   addFemaleItem(event) {
     // this.isModel = true
     if (event.key === "Enter") {
-      console.log("call this")
+      // console.log("call this")
       this.addFemaleItmes(this.femaleObject)
       this.isModel = false
     }
   }
 
   getHashTag(event) {
-    console.log("event hash tage", event);
+    // console.log("event hash tage", event);
     this.eventHashTag = event
   }
 }

@@ -51,9 +51,9 @@ export class MainMenuComponent implements OnInit {
   }
 
   displaySecondMenu(index) {
-    console.log("click thay che ke nai", index)
+    // console.log("click thay che ke nai", index)
     this.index = Number(index) + +1
-    console.log("index of menu", this.index)
+    // console.log("index of menu", this.index)
   }
   getHeader(event) {
     let output = this._loginService.returnLogin(event);

@@ -26,21 +26,21 @@ export class MyEventComponent implements OnInit {
   getLoginUserEvent() {
     this.eventService.getLoginUserEvent().subscribe((res: any) => {
       this.listOfEvent = res.data
-      console.log("list of total event of login user", this.listOfEvent);
+      // console.log("list of total event of login user", this.listOfEvent);
     }, error => {
-      console.log("error while get list of event", error);
+      // console.log("error while get list of event", error);
 
     })
   }
   getSingleEvent(event) {
-    console.log("event id from another", event);
+    // console.log("event id from another", event);
     this.eventService.getSingleEventDetails(event).subscribe((response: any) => {
       let singleEvent = response.data
       this.totalActivity = singleEvent.activity
       this.activityDisplay = true
-      console.log("response of single event details", this.totalActivity);
+      // console.log("response of single event details", this.totalActivity);
     }, error => {
-      console.log("error while get single event details", error);
+      // console.log("error while get single event details", error);
 
     })
   }

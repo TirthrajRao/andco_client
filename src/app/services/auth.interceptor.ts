@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(cloned)
                 .pipe(
                     map((event: HttpResponse<any>) => {
-                        console.log("interceptorsssssssssss events mdse ???", event);
+                        // console.log("interceptorsssssssssss events mdse ???", event);
                         // Swal.fire({type: 'success',title: 'Password Change Successfully',showConfirmButton:false,timer: 2000})
                         return event;
                     }),
@@ -44,9 +44,9 @@ export class AuthInterceptor implements HttpInterceptor {
                      * 401 error 
                      */
                     catchError((error: HttpErrorResponse) => {
-                        console.log("interceptorsssssssss error by meeeeeeeeeee", error);
+                        // console.log("interceptorsssssssss error by meeeeeeeeeee", error);
                         const errorMessage = error.error.message;
-                        console.log("error in interceptor", errorMessage);
+                        // console.log("error in interceptor", errorMessage);
                         // if(error.status === 400){
                         //   Swal.fire({
                         //     type: 'error',
@@ -72,13 +72,13 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(req)
                 .pipe(
                     map((event: HttpResponse<any>) => {
-                        console.log("interceptorsssssssssss events mdse ???", event);
+                        // console.log("interceptorsssssssssss events mdse ???", event);
                         return event;
                     }),
                     catchError((error: HttpErrorResponse) => {
-                        console.log("interceptorsssssssss error in login", error);
+                        // console.log("interceptorsssssssss error in login", error);
                         let errorMessage = error.error.message;
-                        console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
+                        // console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
                         if (error.status === 401) {
                             /**
                              * Alert of every error response

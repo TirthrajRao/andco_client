@@ -37,7 +37,7 @@ export class LoginService {
    * Check verification code for new register user 
    */
   mailSendForCode(data) {
-    console.log(data);
+    // console.log(data);
     let body = {
       email: data
     }
@@ -49,7 +49,7 @@ export class LoginService {
    * Check verification code for new register user 
    */
   verificationCode(data) {
-    console.log(data);
+    // console.log(data);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), this.key).toString();
     data['verificationNewCode'] = encrypted
     return this.http.put(config.baseApiUrl + "/email-verify", data);
@@ -61,7 +61,7 @@ export class LoginService {
   * SignUp form form new user  
   */
   signUpOfEmail(details) {
-    console.log("details of new user", details)
+    // console.log("details of new user", details)
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(details.password), this.key).toString();
     details['password'] = encrypted
     return this.http.post(config.baseApiUrl + "/signup", details);
@@ -73,15 +73,15 @@ export class LoginService {
    * Login for guest and celebrant  
    */
   login(userCredentials) {
-    console.log("helloooooooo", userCredentials);
+    // console.log("helloooooooo", userCredentials);
     const eventToken = JSON.parse(sessionStorage.getItem('newEventId'));
-    console.log("login with link ", eventToken);
+    // console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
     userCredentials['password'] = encrypted
     if (eventToken) {
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
-          console.log("login user detaislllllllllll======", user);
+          // console.log("login user detaislllllllllll======", user);
           if (user && user.data.accessToken) {
             sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
@@ -92,11 +92,11 @@ export class LoginService {
     else {
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
-          console.log("login user detaislllllllllll======", user);
+          // console.log("login user detaislllllllllll======", user);
           let token = user.data.accessToken
           // this.curl.post( https://timezoneapi.io/api/ip/?token=TOKEN)
           // this.http.get('https://timezoneapi.io/api/ip/?token=CSnkwdUAziXs').subscribe(res => {
-          //   console.log("give me time ", res);
+            // console.log("give me time ", res);
           // })
           if (user && user.data.accessToken) {
             sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
@@ -117,10 +117,10 @@ export class LoginService {
     const body = {
       id_token: id_token
     }
-    console.log(body);
+    // console.log(body);
     return this.http.post<any>(config.baseApiUrl + "/login/google", body)
       .pipe(map(googleUser => {
-        console.log("google login user accesstoken", googleUser);
+        // console.log("google login user accesstoken", googleUser);
         if (googleUser && googleUser.data.accessToken) {
           sessionStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
           sessionStorage.setItem('userRole', JSON.stringify(googleUser.data.UserRole));
@@ -135,13 +135,13 @@ export class LoginService {
    * Login with Facebook 
    */
   facebookLogin(accessToken) {
-    console.log("facebook id", accessToken);
+    // console.log("facebook id", accessToken);
     const body = {
       sFaceBookSecretId: accessToken
     }
     return this.http.post<any>(config.baseApiUrl + "/login/facebook", body)
       .pipe(map(facebookUser => {
-        console.log("facebook user jwt token", facebookUser);
+        // console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {
           sessionStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
           sessionStorage.setItem('userRole', JSON.stringify(facebookUser.data.UserRole));
@@ -166,7 +166,7 @@ export class LoginService {
    * Send link of forgot password on email  
    */
   forgotPassword(data) {
-    console.log("forgot password email", data);
+    // console.log("forgot password email", data);
     return this.http.post(config.baseApiUrl + "/forgotpassword", data);
   }
 

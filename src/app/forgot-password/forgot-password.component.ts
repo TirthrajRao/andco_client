@@ -33,7 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
   ) {
     this.sub = this.route.params.subscribe(params => {
       this.hash = params.id;
-      console.log(this.hash);
+      // console.log(this.hash);
     })
   }
 
@@ -61,16 +61,16 @@ export class ForgotPasswordComponent implements OnInit {
     // let string = String(password)
     // let encrypted = global.Buffer.from(string).toString('base64');
     // this.forgotPasswordForm.controls.newPassword.setValue(encrypted);
-    console.log("current password value", this.forgotPasswordForm.value);
+    // console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
       .subscribe((data: any) => {
-        console.log("reset password done by user", data);
+        // console.log("reset password done by user", data);
         this.isLoad = false
         this.alertService.getSuccess(data.message);
         this.isDisable = false;
         this.router.navigate(['/login']);
       }, err => {
-        console.log(err);
+        // console.log(err);
         this.isLoad = false
         this.alertService.getError(err.message);
       })
@@ -84,9 +84,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   comparePassword(form) {
     this.isDisable = true
-    console.log(form.value.newPassword == form.value.confirmPassword, this.match);
+    // console.log(form.value.newPassword == form.value.confirmPassword, this.match);
     if (form.value.newPassword === form.value.confirmPassword) {
-      console.log("In true condition");
+      // console.log("In true condition");
       this.match = true;
       this.isDisable = false
     } else {
@@ -97,7 +97,7 @@ export class ForgotPasswordComponent implements OnInit {
 
 
   password1() {
-    console.log("call thay che ke nai")
+    // console.log("call thay che ke nai")
     this.show1 = !this.show1;
     this.pwd1 = !this.pwd1;
   }
