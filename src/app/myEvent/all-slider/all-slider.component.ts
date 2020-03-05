@@ -21,6 +21,7 @@ export class AllSliderComponent implements OnInit {
   isActivity
   isGroup = false
   listOfContent = []
+  selectedIndex
   constructor() { }
 
   ngOnInit() {
@@ -135,6 +136,7 @@ export class AllSliderComponent implements OnInit {
 
 
   getSingleEvent(eventId, index) {
+    this.selectedIndex = index
     this.singleEvent.emit({ eventId: eventId, value: false })
     this.groupOfActivity = null
     // this.isActivity = true
@@ -143,7 +145,8 @@ export class AllSliderComponent implements OnInit {
     console.log("click on event get index========", this.isGroup);
   }
 
-  getSingleActivity(group) {
+  getSingleActivity(group, index) {
+    this.selectedIndex = index
     this.isGroup = true
     $('.groupOfEvent').css('display', 'block')
     // console.log("get group of single activity with index", index);
@@ -152,8 +155,9 @@ export class AllSliderComponent implements OnInit {
   }
 
 
-  getGroupItem(item) {
+  getGroupItem(item , index) {
     console.log("item of singkle group", item);
+    this.selectedIndex = index
     this.groupItem.emit({ item: item, value: true })
   }
 }
