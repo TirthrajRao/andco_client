@@ -21,7 +21,7 @@
     </div> -->
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList">
-            <div class="myEvent-name" (click)="getSingleActivity(name.group )">
+            <div class="myEvent-name" (click)="getSingleActivity(name.group , i)">
                 <p>{{name.activityName}}</p>
             </div>
             <p class="text-center text-white">{{name.activityStartDate | date :'dd-MM-yyyy'}}</p>

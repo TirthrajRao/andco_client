@@ -1,8 +1,8 @@
 <section class="myEvent-main">
     <div class="page-content" style="overflow: hidden;">
         <div class="myevent-inner-box">
-            <div class="my-event-hashtag">
-                <h2>#Tomkat</h2>
+            <div class="my-event-hashtag" *ngIf="displayMenu">
+                <h2>#{{eventHashTag}}</h2>
             </div>
             <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
             <app-my-event-activity [activityList]="totalActivity"></app-my-event-activity>
@@ -12,7 +12,7 @@
             <!-- <app-event-profile-pic></app-event-profile-pic> -->
             <!-- <app-collection></app-collection> -->
             <!-- <app-loader></app-loader> -->
-            <div class="event-menu-box">
+            <div class="event-menu-box" *ngIf="displayMenu">
                 <app-event-menu></app-event-menu>
             </div>
         </div>
