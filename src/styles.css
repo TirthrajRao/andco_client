@@ -117,9 +117,10 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     width: 100%;
 }
 
-section.myEvent-main .page-content {
+.myEvent-main .page-content {
+    min-height: calc(100vh - 190px);
+    padding-top: 190px;
     align-items: unset;
-    padding-top: 180px;
 }
 
 /* display screen slider start */
@@ -376,16 +377,71 @@ img.swal2-image {
 }
 
 /* mat css end */
+
 .event-menu-slider.slick-slider .slick-list {
     padding: 0 130px !important;
     width: 100% !important;
 }
+
+/* my event start */
+
+.event-menu-slider button.slick-arrow, .total-collection-slider button.slick-arrow {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    z-index: 11;
+}
+
+.event-menu-slider button.slick-arrow {
+    top: -63vh;
+}
+
+.total-collection-slider button.slick-arrow {
+    top: 80px;
+    right: 20px;
+}
+
+.total-collection-slider button.prevarrow.slick-arrow ,
+.event-menu-slider button.prevarrow.slick-arrow {
+    right: 70px;
+    transform: rotate(180deg);
+}
+
+.total-collection-slider ul.slick-dots {
+    list-style: none;
+    font-size: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.total-collection-slider ul.slick-dots li {
+    display: inline-block;
+}
+
+.total-collection-slider ul.slick-dots li button {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: none;
+    background: #F8D0AD;
+    margin: 5px;
+}
+
+.total-collection-slider ul.slick-dots li.slick-active button {
+    background-color: white;
+}
+
+/* my event end */
+
 /* responsive css start */
 
 @media(max-width: 1600px) {
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         min-height: calc(100vh - (173px + 40px));
         padding-top: 100px;
+    }
+    .myEvent-main .page-content {
+        padding-top: 160px;
     }
 }
 
@@ -419,6 +475,9 @@ img.swal2-image {
     img.swal2-image {
         height: 90px;
         width: 250px !important;
+    }
+    .myEvent-main .page-content {
+        padding-top: 110px;
     }
 }
 
@@ -468,7 +527,7 @@ img.swal2-image {
     .swal2-popup {
         padding-top: 15% !important;
     }
-    .sales-pricing-main .page-content, .event-activity-main .page-content{
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
         padding-top: 0 !important;
     }
 }

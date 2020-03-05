@@ -7,6 +7,14 @@
 .myevent-inner-box{
     width: 800px;
 }
+.my-event-hashtag h2{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 10px 5px 0px rgba(0,0,0, 0.16);
+    font-family: 'Advent Pro', 'sans-sarif';
+}
 
 /* responsive css start */
 @media(max-width: 1600px){
