@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, } from '@angular/core';
 
 declare var $;
 
@@ -19,42 +19,33 @@ export class AllSliderComponent implements OnInit {
   $slider;
   activityDisplay
   isActivity
-  isGroup
+  isGroup = false
   listOfContent = []
   constructor() { }
 
   ngOnInit() {
     if (this.displayList) {
-      // console.log("changes of event", this.displayList);
       this.initEventSlider()
     }
-    // if (this.activityList) {
-    // console.log("list of activity", this.activityList)
-    //   this.initEventSlider()
-    // }
 
   }
-  ngOnChanges() {
-    console.log("list of group", this.groupOfActivity);
-    if (this.displayList) {
-      // console.log("changes of event", this.displayList);
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("list of group", this.activityList);
+
+    if (changes.displayList && changes.displayList.currentValue) {
+      this.isGroup = true
       this.initEventSlider()
     }
-    if (this.activityList) {
-      this.activityDisplay
-      // console.log("list of activity", this.activityList)
+    if (changes.activityList && changes.activityList.currentValue) {
+      this.isGroup = false
       this.$slideContainter = $('.myEvent-slider');
       this.$slideContainter.slick('unslick');
-      // setTimeout(() => {
       this.initEventSlider()
-      // }, 50)
     }
-    if (this.groupOfActivity) {
-
-
+    if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
+      this.isGroup = true
       this.$slideContainter = $('.myEvent-slider');
       this.$slideContainter.slick('unslick');
-      // setTimeout(() => {
       this.initEventSlider()
     }
   }
@@ -102,23 +93,67 @@ export class AllSliderComponent implements OnInit {
   }
 
 
+  initGroupSlider() {
+    setTimeout(() => {
+      this.$slideContainter = $('.groupEvent-slider')
+      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
+        infinite: false,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2.5,
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ],
+
+      })
+    }, 50)
+  }
+
+
   getSingleEvent(eventId, index) {
-    this.singleEvent.emit(eventId)
-    this.isActivity = true
+    this.singleEvent.emit({ eventId: eventId, value: false })
+    this.groupOfActivity = null
+    // this.isActivity = true
     this.isGroup = false
+    $('.groupOfEvent').css('display', 'none')
     console.log("click on event get index========", this.isGroup);
   }
 
-  getSingleActivity(group, index) {
-    console.log("get group of single activity with index", index);
-    this.activityGroup.emit({ group: group, index: index })
+  getSingleActivity(group) {
     this.isGroup = true
+    $('.groupOfEvent').css('display', 'block')
+    // console.log("get group of single activity with index", index);
+    this.activityGroup.emit({ group: group, value: false })
 
   }
 
 
   getGroupItem(item) {
     console.log("item of singkle group", item);
-    this.groupItem.emit(item)
+    this.groupItem.emit({ item: item, value: true })
   }
 }

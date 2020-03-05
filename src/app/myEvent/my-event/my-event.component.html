@@ -1,7 +1,8 @@
 <section class="myEvent-main">
     <div class="page-content" style="overflow: hidden;">
         <div class="myevent-inner-box">
-            <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
+            <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)">
+            </app-all-slider>
             <app-my-event-activity [activityList]="totalActivity"></app-my-event-activity>
             <!-- <app-event-menu></app-event-menu> -->
             <!-- <app-my-event-link></app-my-event-link>

@@ -21,6 +21,30 @@
     white-space: nowrap;
 }
 
+.groupEvent-slider-box {
+    position: relative;
+}
+
+.groupEvent-name {
+    background-color: rgba(255, 255, 255, 0.74);
+    border-radius: 10px;
+    line-height: 50px;
+    margin: 5px;
+    padding: 5px 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.groupEvent-name p {
+    color: #FE983A;
+    font-size: 28px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 .add-event {
     height: 60px;
     width: 60px;

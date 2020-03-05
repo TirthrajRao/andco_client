@@ -34,9 +34,17 @@ export class MyEventComponent implements OnInit {
   }
   getSingleEvent(event) {
     // console.log("event id from another", event);
-    this.eventService.getSingleEventDetails(event).subscribe((response: any) => {
+    this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
       let singleEvent = response.data
-      this.totalActivity = singleEvent.activity
+      let array = [
+        {
+          activity: singleEvent.activity,
+          value: event.value
+        }
+      ]
+      console.log("send data when click on event", array);
+
+      this.totalActivity = array
       this.activityDisplay = true
       // console.log("response of single event details", this.totalActivity);
     }, error => {

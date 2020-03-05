@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import * as _ from 'lodash';
 declare var $: any
 
@@ -9,9 +9,11 @@ declare var $: any
 })
 export class MyEventActivityComponent implements OnInit {
   @Input('activityList') activityList;
+  @Input('displayItem') displayItem
   groupOfActivity
+  listOfActivity = []
   totalItem = []
-  displayItem = false
+  // displayItem = false
   selectedGender
   itemNamePrint: any = [];
   constructor() { }
@@ -25,34 +27,34 @@ export class MyEventActivityComponent implements OnInit {
 
       this.selectedGender = e.target.value;
       console.log(this.selectedGender);
-      // // console.log(this.selectedActivityGroup)
-      // let item = _.filter(this.selectedActivityGroup, { groupName: this.selectedGroup });
-      // console.log(item);
-      // this.itemNamePrint = _.filter(item[0].item, { 'itemGender': this.selectedGender });
-      // console.log(this.itemNamePrint)
     })
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
 
-    // console.log("changes of event", this.activityList);
+    console.log("changes of event", this.activityList);
+    if (this.activityList && this.activityList.length) {
+      this.listOfActivity = this.activityList[0].activity
+      this.displayItem = this.activityList.value
+    }
+    console.log("data changes of page", this.listOfActivity);
+
   }
 
   getActivityGroup(event) {
     console.log("total group of single activity with index", event);
     this.groupOfActivity = event.group
-    this.displayItem = false
+    this.displayItem = event.value
   }
 
   getSingleGroupItem(event) {
     console.log("group item details in main page", event);
-    this.displayItem = true
+    this.displayItem = event.value
     this.selectedGender = 'male';
     $('input:radio[id="test"]').prop('checked', true);
-    this.itemNamePrint = _.filter(event, { 'itemGender': this.selectedGender });
+    this.itemNamePrint = _.filter(event.item, { 'itemGender': this.selectedGender });
     console.log("name of item", this.itemNamePrint);
-
-    this.totalItem = event
+    this.totalItem = event.item
   }
 
 
