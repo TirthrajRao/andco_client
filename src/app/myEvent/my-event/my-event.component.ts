@@ -10,7 +10,8 @@ export class MyEventComponent implements OnInit {
   listOfEvent;
   activityDisplay = false
   totalActivity = []
-
+  displayMenu = false
+  eventHashTag
   constructor(
     public eventService: EventService
   ) { }
@@ -35,7 +36,10 @@ export class MyEventComponent implements OnInit {
   getSingleEvent(event) {
     // console.log("event id from another", event);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
+      console.log("details of event with hastag", response);
+      this.eventHashTag = response.data.hashTag
       let singleEvent = response.data
+      this.displayMenu = true
       let array = [
         {
           activity: singleEvent.activity,
