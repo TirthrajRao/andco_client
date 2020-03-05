@@ -19,8 +19,8 @@ export class TotalCollectionComponent implements OnInit {
       arrows: true,
       fade: true,
       dots: true,
-      prevArrow: '<button type="button" class="prevarrow"><img src="../../../assets/images/event-right.png"></button>',
-      nextArrow: '<button type="button" class="nextarrow"><img src="../../../assets/images/event-right.png"></button>',
+      prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-right.png"></button>',
+      nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-right.png"></button>',
     });
   }
 

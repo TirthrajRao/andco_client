@@ -1,10 +1,7 @@
 <div class="myEvent-slider-box">
-    <!-- <div class="add-event">
-        <button class="btn">+</button>
-    </div> -->
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of displayList; let i =index">
-            <div class="myEvent-name" (click)="getSingleEvent(name._id , i)">
+            <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleEvent(name._id , i)">
                 <p>{{name.eventTitle}}</p>
             </div>
         </div>
@@ -16,12 +13,9 @@
 
 
 <div class="myEvent-slider-box" *ngIf="activityList && activityList.length">
-    <!-- <div class="add-event">
-        <button class="btn">+</button>
-    </div> -->
     <div class="myEvent-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of activityList">
-            <div class="myEvent-name" (click)="getSingleActivity(name.group , i)">
+        <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
+            <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleActivity(name.group , i)">
                 <p>{{name.activityName}}</p>
             </div>
             <p class="text-center text-white">{{name.activityStartDate | date :'dd-MM-yyyy'}}</p>
@@ -34,12 +28,9 @@
 
 
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
-    <!-- <div class="add-event">
-        <button class="btn">+</button>
-    </div> -->
     <div class="myEvent-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity">
-            <div class="myEvent-name" (click)="getGroupItem(name.item)">
+        <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity; let i =index">
+            <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getGroupItem(name.item, i)">
                 <p>{{name.groupName}}</p>
             </div>
         </div>
