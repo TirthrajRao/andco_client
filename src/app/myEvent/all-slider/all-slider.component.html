@@ -13,7 +13,7 @@
 
 
 <div class="myEvent-slider-box">
-    <div class="myEvent-slider">
+    <div class="myEvent-activity-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
             <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleActivity(name.group , i)">
                 <p>{{name.activityName}}</p>
@@ -28,7 +28,7 @@
 
 
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
-    <div class="myEvent-slider">
+    <div class="myEvent-group-slider">
         <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity; let i =index">
             <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getGroupItem(name.item, i)">
                 <p>{{name.groupName}}</p>

@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDatepickerInputEvent, MatCalendar, MatDatepicker } from '@angular/material/datepicker';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { DatePipe } from '@angular/common';

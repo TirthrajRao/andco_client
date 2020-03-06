@@ -28,10 +28,11 @@ export class AllSliderComponent implements OnInit {
     if (this.displayList) {
       this.initEventSlider()
     }
-
+    this.initActivitySlider()
+    this.initGroupSlider()
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("list of group", this.activityList);
+    console.log("list of group", changes.activityList);
 
     if (changes.displayList && changes.displayList.currentValue) {
       this.isGroup = true
@@ -39,15 +40,15 @@ export class AllSliderComponent implements OnInit {
     }
     if (changes.activityList && changes.activityList.currentValue) {
       this.isGroup = false
-      this.$slideContainter = $('.myEvent-slider');
-      this.$slideContainter.slick('unslick');
-      this.initEventSlider()
+      // this.$slideContainter = $('.myEvent-activity-slider');
+      $('.myEvent-activity-slider').slick('unslick');
+      this.initActivitySlider()
     }
     if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
       this.isGroup = true
-      this.$slideContainter = $('.myEvent-slider');
+      this.$slideContainter = $('.myEvent-group-slider');
       this.$slideContainter.slick('unslick');
-      this.initEventSlider()
+      this.initGroupSlider()
     }
   }
 
@@ -93,9 +94,50 @@ export class AllSliderComponent implements OnInit {
   }
 
 
-  initGroupSlider() {
+
+  initActivitySlider() {
     setTimeout(() => {
-      this.$slideContainter = $('.groupEvent-slider')
+      this.$slideContainter = $('.myEvent-activity-slider')
+      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
+        infinite: false,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2.5,
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ],
+
+      })
+    }, 50)
+  }
+
+  initGroupSlider(){
+    setTimeout(() => {
+      this.$slideContainter = $('.myEvent-group-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
         infinite: false,
         slidesToShow: 2.5,
@@ -137,8 +179,6 @@ export class AllSliderComponent implements OnInit {
   getSingleEvent(eventId, index) {
     this.selectedIndex = index
     this.singleEvent.emit({ eventId: eventId, value: false })
-    this.groupOfActivity = null
-    // this.isActivity = true
     this.isGroup = false
     $('.groupOfEvent').css('display', 'none')
     console.log("click on event get index========", this.isGroup);
@@ -154,7 +194,7 @@ export class AllSliderComponent implements OnInit {
   }
 
 
-  getGroupItem(item , index) {
+  getGroupItem(item, index) {
     console.log("item of singkle group", item);
     this.selectedIndex = index
     this.groupItem.emit({ item: item, value: true })

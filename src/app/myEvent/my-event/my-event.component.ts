@@ -16,6 +16,8 @@ export class MyEventComponent implements OnInit {
   displayProfile = false
   eventDetails
   eventProfile
+  currenMenuIndex = 0;
+  eventLink
   constructor(
     public eventService: EventService
   ) { }
@@ -38,49 +40,55 @@ export class MyEventComponent implements OnInit {
     })
   }
   getSingleEvent(event) {
-    // console.log("event id from another", event);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
-      console.log("details of event with hastag", response);
-      this.activityDisplay = true
       this.eventDetails = response.data
       this.eventHashTag = response.data.hashTag
       this.selectedEventId = response.data._id
-      let singleEvent = response.data
+      // this.eventLink = response.data.eventLink
       this.displayMenu = true
-      let array = [
-        {
-          activity: singleEvent.activity,
-          value: event.value
-        }
-      ]
-      console.log("send data when click on event", array);
-
-      this.totalActivity = array
-
-      // console.log("response of single event details", this.totalActivity);
+      this.getCurrentMenu(this.currenMenuIndex)
+      if (this.currenMenuIndex == 0) {
+        this.getActivity()
+      }
+      console.log("details of event with hastag", this.eventDetails);
     }, error => {
-      // console.log("error while get single event details", error);
+      console.log("error while get single event details", error);
 
     })
   }
 
-  getProfileOfEvent(event) {
-    console.log("when click on profile icon", event);
-    this.displayProfile = true
-    this.activityDisplay = false
+  getProfileOfEvent() {
     let profileArray =
     {
       profile: this.eventDetails.profilePhoto,
       eventId: this.selectedEventId
     }
-
-
     this.eventProfile = profileArray
   }
 
-  getActivity(event) {
-    this.displayProfile = false
-    this.activityDisplay = true
+  getActivity() {
+    this.totalActivity = this.eventDetails.activity
+    console.log("call thay che ke nai ", this.totalActivity);
   }
+
+  getEventLink(){
+    this.eventLink = this.eventDetails.eventLink
+  }
+
+  getCurrentMenu(event) {
+    console.log("current menu index", event);
+    this.currenMenuIndex = event
+    if (this.currenMenuIndex == 1) {
+      this.getProfileOfEvent()
+    }
+    if (this.currenMenuIndex == 0) {
+      console.log("log this ");
+      this.getActivity()
+    }
+    if(this.currenMenuIndex ==3){
+      this.getEventLink()
+    }
+  }
+  
 
 }

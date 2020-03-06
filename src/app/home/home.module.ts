@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatNativeDateModule, MatInputModule, } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ShareModule } from '@ngx-share/core'
+import { ShareButtonModule } from '@ngx-share/button';
 
 
 // import { MatSelectModule } from '@angular/material/fesm2015/select';
@@ -156,6 +158,8 @@ const routes: Routes = [
     MatInputModule,
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
+    ShareModule,
+    ShareButtonModule
     // MatSelectModule
   ],
   exports: [

@@ -11,6 +11,7 @@ export class EventMenuComponent implements OnInit {
   @Input('eventId') eventId;
   @Output() profilePhoto: EventEmitter<any> = new EventEmitter<any>();
   @Output() activity: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectedMenu: EventEmitter<any> = new EventEmitter<any>();
   $slider
   $sliderContent
   menuArray = [
@@ -22,14 +23,6 @@ export class EventMenuComponent implements OnInit {
 
   ngOnInit() {
     this.initMenuSlider()
-    // $('.event-menu-slider').not('.slick-initialized').slick({
-    //   slidesToShow: 3,
-    //   slidesToScroll: 1,
-    //   arrows: true,
-    //   centerMode: true,
-    //   prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-white-arrow.png"></button>',
-    //   nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-white-arrow.png"></button>',
-    // });
   }
 
   initMenuSlider() {
@@ -38,37 +31,32 @@ export class EventMenuComponent implements OnInit {
       this.$slider = this.$sliderContent.not('.slick-initialized').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
+        draggable: true,
         arrows: true,
         centerMode: true,
         focusOnSelect: true,
         prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-white-arrow.png"></button>',
         nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-white-arrow.png"></button>',
       })
-      this.$slider.on('click', function (event, slick, currentSlide, nextSlide) {
-        console.log("value in current slide", event);
 
-      })
     }, 50)
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("selected event id", this.eventId);
+    console.log("selected event id", changes.eventId.currentValue);
     setTimeout(() => {
+      this.selectedIndex = 0
       this.initMenuSlider()
+      if (changes.eventId.currentValue) {
+        // this.selectedMenu.emit(this.selectedIndex)
+      }
     }, 5000)
 
   }
 
   clickOnMenu(selectedMenu, index) {
     console.log("selected menu details", selectedMenu, index);
-    this.selectedIndex = index
-    if (this.selectedIndex == 1) {
-      console.log("this");
-      this.profilePhoto.emit(index)
-    }
-    if (this.selectedIndex == 0) {
-      this.activity.emit(index)
-    }
+    this.selectedMenu.emit(index)
   }
 }

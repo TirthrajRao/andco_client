@@ -395,7 +395,7 @@ img.swal2-image {
 }
 
 .event-menu-slider button.slick-arrow {
-    top: -63vh;
+    top: 0;
 }
 
 .total-collection-slider button.slick-arrow {

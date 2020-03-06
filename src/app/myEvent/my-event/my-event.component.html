@@ -8,13 +8,13 @@
                 <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
                 <!-- <div >
                 {{activityDisplay}} -->
-                <app-my-event-activity [activityList]="totalActivity" [hidden]="!activityDisplay">
+                <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 0">
                 </app-my-event-activity>
                 <!-- </div> -->
                 <!-- <app-event-menu></app-event-menu> -->
-                <!-- <app-my-event-link></app-my-event-link> -->
+                <app-my-event-link *ngIf="currenMenuIndex == 3" [eventLink]="eventLink"></app-my-event-link>
                 <!-- <app-invited-guest></app-invited-guest> -->
-                <app-event-profile-pic *ngIf="displayProfile" [profile]="eventProfile"></app-event-profile-pic>
+                <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile"></app-event-profile-pic>
                 <!-- <app-collection></app-collection> -->
                 <!-- <app-loader></app-loader> -->
             </div>
@@ -22,7 +22,7 @@
         <div class="event-menu-box-main">
             <div class="event-menu-box" *ngIf="displayMenu">
                 <app-event-menu [eventId]="selectedEventId" (activity)="getActivity($event)"
-                    (profilePhoto)="getProfileOfEvent($event)">
+                    (selectedMenu)="getCurrentMenu($event)">
                 </app-event-menu>
             </div>
         </div>
