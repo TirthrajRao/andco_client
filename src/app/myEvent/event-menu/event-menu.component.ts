@@ -40,8 +40,13 @@ export class EventMenuComponent implements OnInit {
         slidesToScroll: 1,
         arrows: true,
         centerMode: true,
+        focusOnSelect: true,
         prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-white-arrow.png"></button>',
         nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-white-arrow.png"></button>',
+      })
+      this.$slider.on('click', function (event, slick, currentSlide, nextSlide) {
+        console.log("value in current slide", event);
+
       })
     }, 50)
   }
