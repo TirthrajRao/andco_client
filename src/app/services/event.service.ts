@@ -69,4 +69,17 @@ export class EventService {
   getSingleEventDetails(eventId) {
     return this.http.get(config.baseApiUrl + "/event/" + eventId)
   }
+
+
+  changeProfilePhoto(files: any, eventId) {
+    console.log("event id of photo", files, eventId);
+    let formdata = new FormData
+    formdata.append("eventId", eventId)
+    formdata.append("profile", files);
+    // if (files.length) {
+    //   for (let i = 0; i < files.length; i++) {
+    //   }
+    // }
+    return this.http.post(config.baseApiUrl + '/event/changeProfile', formdata)
+  }
 }

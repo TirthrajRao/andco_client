@@ -44,6 +44,10 @@ export class EventMenuComponent implements OnInit {
         prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-white-arrow.png"></button>',
         nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-white-arrow.png"></button>',
       })
+      this.$slider.on('click', function (event, slick, currentSlide, nextSlide) {
+        console.log("value in current slide", event);
+
+      })
     }, 50)
   }
 

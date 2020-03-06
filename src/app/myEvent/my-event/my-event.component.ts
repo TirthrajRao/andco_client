@@ -68,7 +68,14 @@ export class MyEventComponent implements OnInit {
     console.log("when click on profile icon", event);
     this.displayProfile = true
     this.activityDisplay = false
-    this.eventProfile = this.eventDetails.profilePhoto
+    let profileArray =
+    {
+      profile: this.eventDetails.profilePhoto,
+      eventId: this.selectedEventId
+    }
+
+
+    this.eventProfile = profileArray
   }
 
   getActivity(event) {

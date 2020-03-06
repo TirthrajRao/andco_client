@@ -1,11 +1,25 @@
 <div class="main-div">
     <div class="event-profile">
         <div class="profile-photo">
+<<<<<<< HEAD
             <img *ngIf="profilePhoto" src="{{path}}{{profilePhoto}}">
             <!-- <img src="assets/images/profile_img.png" alt="profile photo"> -->
         </div>
         <div class="event-camera" (click)="changePhoto()">
             <img src="assets/images/camera.png" alt="camera icon">
+=======
+            <img *ngIf="profilePhoto" src="{{path}}{{profilePhoto.profile}}">
+            <!-- <img src="../../../assets/images/profile_img.png" alt="profile photo"> -->
+            <img [src]="imgURL" id="imageFilter" onerror="this.src='/assets/images/profile_img.png'">
+        </div>
+        <div class="event-camera">
+            <!-- <img src="../../../assets/images/camera.png" alt="camera icon"> -->
+            <label for="upload_profile">
+                <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
+            </label>
+            <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg"
+                id="upload_profile" style="display: none;">
+>>>>>>> 41f51b32f7d23e6da2645c2542b113129cbf8764
         </div>
     </div>
 </div>
