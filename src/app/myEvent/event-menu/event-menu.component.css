@@ -14,9 +14,11 @@
     padding: 10px;
     line-height: normal;
     box-shadow: 0px 6px 13px #0000007d;
+    cursor: pointer;
 }
 .single-slide.slick-slide.slick-current.slick-active.slick-center .single-inner-slide {
     background-color: #F3B171;
     border: 2px solid;
     color: #fff;
 }
+

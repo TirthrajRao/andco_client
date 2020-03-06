@@ -6,6 +6,9 @@
 }
 .myevent-inner-box{
     width: 800px;
+    overflow-x: hidden;
+    position: relative;
+    min-height: calc(100vh - 190px);
 }
 .my-event-hashtag h2{
     font-weight: bold;
@@ -15,6 +18,10 @@
     text-shadow: 10px 5px 0px rgba(0,0,0, 0.16);
     font-family: 'Advent Pro', 'sans-sarif';
 }
+/* .event-menu-box {
+    position: absolute;
+    bottom: 0;
+} */
 
 /* responsive css start */
 @media(max-width: 1600px){
