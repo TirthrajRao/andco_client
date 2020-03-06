@@ -1,32 +1,7 @@
 <div class="event-menu-slider">
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>activity</p>
-        </div>
-    </div>
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>profile photo</p>
-        </div>
-    </div>
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>collected</p>
-        </div>
-    </div>
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>link</p>
-        </div>
-    </div>
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>invited guest</p>
-        </div>
-    </div>
-    <div class="single-slide">
-        <div class="single-inner-slide">
-            <p>edit event</p>
+    <div class="single-slide" *ngFor="let item of menuArray; let i =index">
+        <div class="single-inner-slide" [class.active]="selectedIndex === i" (click)="clickOnMenu(item, i)">
+            <p>{{item}}</p>
         </div>
     </div>
 </div>

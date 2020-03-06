@@ -12,7 +12,7 @@
 
 
 
-<div class="myEvent-slider-box" *ngIf="activityList && activityList.length">
+<div class="myEvent-slider-box">
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
             <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleActivity(name.group , i)">

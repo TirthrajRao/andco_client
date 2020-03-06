@@ -54,7 +54,6 @@ export class AllSliderComponent implements OnInit {
 
   initEventSlider() {
     setTimeout(() => {
-
       this.$slideContainter = $('.myEvent-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
         infinite: false,

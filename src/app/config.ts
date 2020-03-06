@@ -10,7 +10,7 @@ envs['production'] = {
 }
 envs['development'] = {
     baseApiUrl: "http://192.168.1.144:3000/api",
-    baseMediaUrl: "http://192.168.1.144:3000/andco_server(final)/",
+    baseMediaUrl: "http://192.168.1.144/andco_server(final)/",
     // isvisited: false,
     // counter: 0,
 }

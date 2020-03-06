@@ -12,6 +12,10 @@ export class MyEventComponent implements OnInit {
   totalActivity = []
   displayMenu = false
   eventHashTag
+  selectedEventId
+  displayProfile = false
+  eventDetails
+  eventProfile
   constructor(
     public eventService: EventService
   ) { }
@@ -37,7 +41,10 @@ export class MyEventComponent implements OnInit {
     // console.log("event id from another", event);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
       console.log("details of event with hastag", response);
+      this.activityDisplay = true
+      this.eventDetails = response.data
       this.eventHashTag = response.data.hashTag
+      this.selectedEventId = response.data._id
       let singleEvent = response.data
       this.displayMenu = true
       let array = [
@@ -49,12 +56,24 @@ export class MyEventComponent implements OnInit {
       console.log("send data when click on event", array);
 
       this.totalActivity = array
-      this.activityDisplay = true
+
       // console.log("response of single event details", this.totalActivity);
     }, error => {
       // console.log("error while get single event details", error);
 
     })
+  }
+
+  getProfileOfEvent(event) {
+    console.log("when click on profile icon", event);
+    this.displayProfile = true
+    this.activityDisplay = false
+    this.eventProfile = this.eventDetails.profilePhoto
+  }
+
+  getActivity(event) {
+    this.displayProfile = false
+    this.activityDisplay = true
   }
 
 }
