@@ -120,9 +120,13 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
 .myEvent-main .page-content {
     min-height: calc(100vh - 190px);
     padding-top: 190px;
-    align-items: center;
     flex-direction: column;
     overflow-x: hidden;
+}
+
+.guest-main-background .page-content {
+    align-items: unset;
+    padding-top: 120px;
 }
 
 /* display screen slider start */
@@ -403,8 +407,7 @@ img.swal2-image {
     right: 20px;
 }
 
-.total-collection-slider button.prevarrow.slick-arrow ,
-.event-menu-slider button.prevarrow.slick-arrow {
+.total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
     right: 70px;
     transform: rotate(180deg);
 }

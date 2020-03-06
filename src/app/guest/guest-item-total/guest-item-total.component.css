@@ -1,0 +1,30 @@
+li.guest-item{
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    border-bottom: 1px solid #cbccbc;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.guest-item-name{
+    float: left;
+}
+.guest-add-items{
+    float: right;
+}
+.single-activity h2{
+    color: #AF605B;
+    position: relative;
+    padding: 10px 0; 
+}
+.single-activity h2:after{
+    content: "";
+    background-color: #ffffff60;
+    position: absolute;
+    top: 0;
+    left: -30px;
+    right: -30px;
+    bottom: 0;
+}

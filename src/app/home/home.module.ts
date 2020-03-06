@@ -38,7 +38,8 @@ import { TotalCollectionComponent } from '../myEvent/total-collection/total-coll
 import { GuestCollectionComponent } from '../myEvent/guest-collection/guest-collection.component';
 import { GuestMainComponent } from '../guest/guest-main/guest-main.component';
 import { GuestMenuComponent } from '../guest/guest-menu/guest-menu.component';
-
+import { GuestActivitySliderComponent } from '../guest/guest-activity-slider/guest-activity-slider.component';
+import { GuestItemTotalComponent } from '../guest/guest-item-total/guest-item-total.component';
 import { from } from 'rxjs';
 
 
@@ -144,6 +145,8 @@ const routes: Routes = [
     TotalCollectionComponent,
     GuestMainComponent,
     GuestMenuComponent,
+    GuestActivitySliderComponent,
+    GuestItemTotalComponent
   ],
   imports: [
     CommonModule,
