@@ -120,7 +120,9 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
 .myEvent-main .page-content {
     min-height: calc(100vh - 190px);
     padding-top: 190px;
-    align-items: unset;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
 /* display screen slider start */
@@ -379,7 +381,7 @@ img.swal2-image {
 /* mat css end */
 
 .event-menu-slider.slick-slider .slick-list {
-    padding: 0 130px !important;
+    padding: 0 20% !important;
     width: 100% !important;
 }
 

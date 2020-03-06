@@ -36,6 +36,9 @@ import { CollectionComponent } from '../myEvent/collection/collection.component'
 import { EventMenuComponent } from '../myEvent/event-menu/event-menu.component';
 import { TotalCollectionComponent } from '../myEvent/total-collection/total-collection.component';
 import { GuestCollectionComponent } from '../myEvent/guest-collection/guest-collection.component';
+import { GuestMainComponent } from '../guest/guest-main/guest-main.component';
+import { GuestMenuComponent } from '../guest/guest-menu/guest-menu.component';
+
 import { from } from 'rxjs';
 
 
@@ -105,6 +108,10 @@ const routes: Routes = [
         path: 'invited-guest',
         component: InvitedGuestComponent
       },
+      {
+        path: 'guest',
+        component: GuestMainComponent
+      },
     ]
   }
 ]
@@ -134,7 +141,9 @@ const routes: Routes = [
     CollectionComponent,
     EventMenuComponent,
     GuestCollectionComponent,
-    TotalCollectionComponent
+    TotalCollectionComponent,
+    GuestMainComponent,
+    GuestMenuComponent,
   ],
   imports: [
     CommonModule,

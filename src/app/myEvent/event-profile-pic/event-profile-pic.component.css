@@ -1,10 +1,20 @@
 .main-div {
-    background-color: #0000002e;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 30%;
+    margin-top: 20px;
     padding: 30px 0;
+    position: relative;
+}
+.main-div::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-50vw + (750px / 2));
+    bottom: 0;
+    right: calc(-50vw + (750px / 2));
+    background-color: #0000002e;
+}
+.event-profile {
+    z-index: 111;
+    position: relative;
 }
 .profile-photo {
     border-radius: 50%;
@@ -22,6 +32,7 @@
 }
 .event-camera {
     position: absolute;
-    top: 30px;
-    right: 35%;
+    top: 0px;
+    right: 13%;
+    cursor: pointer;
 }

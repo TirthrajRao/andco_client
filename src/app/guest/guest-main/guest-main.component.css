@@ -1,0 +1,10 @@
+.guest-main-background{
+    background-image: url('../../../assets/images/guest.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    font-family: 'Manjari', sans-serif !important;
+    padding: 20px;
+}

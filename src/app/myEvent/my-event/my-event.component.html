@@ -1,25 +1,29 @@
 <section class="myEvent-main">
-    <div class="page-content" style="overflow: hidden;">
+    <div class="page-content">
         <div class="myevent-inner-box">
             <div class="my-event-hashtag" *ngIf="displayMenu">
                 <h2>#{{eventHashTag}}</h2>
             </div>
-            <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
-            <!-- <div >
+            <div class="my-event-inner-box-height">
+                <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
+                <!-- <div >
                 {{activityDisplay}} -->
-            <app-my-event-activity [activityList]="totalActivity" [hidden]="!activityDisplay"></app-my-event-activity>
-            <!-- </div> -->
-            <!-- <app-event-menu></app-event-menu> -->
-            <!-- <app-my-event-link></app-my-event-link> -->
-            <!-- <app-invited-guest></app-invited-guest> -->
-            <app-event-profile-pic *ngIf="displayProfile" [profile]="eventProfile"></app-event-profile-pic>
-            <!-- <app-collection></app-collection> -->
-            <!-- <app-loader></app-loader> -->
-            <div class="event-menu-box-main">
-                <div class="event-menu-box" *ngIf="displayMenu">
-                    <app-event-menu [eventId]="selectedEventId" (activity)="getActivity($event)" (profilePhoto)="getProfileOfEvent($event)">
-                    </app-event-menu>
-                </div>
+                <app-my-event-activity [activityList]="totalActivity" [hidden]="!activityDisplay">
+                </app-my-event-activity>
+                <!-- </div> -->
+                <!-- <app-event-menu></app-event-menu> -->
+                <!-- <app-my-event-link></app-my-event-link> -->
+                <!-- <app-invited-guest></app-invited-guest> -->
+                <app-event-profile-pic *ngIf="displayProfile" [profile]="eventProfile"></app-event-profile-pic>
+                <!-- <app-collection></app-collection> -->
+                <!-- <app-loader></app-loader> -->
+            </div>
+        </div>
+        <div class="event-menu-box-main">
+            <div class="event-menu-box" *ngIf="displayMenu">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity($event)"
+                    (profilePhoto)="getProfileOfEvent($event)">
+                </app-event-menu>
             </div>
         </div>
     </div>
