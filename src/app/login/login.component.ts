@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   isLoad = false;
   userName
   isCelebrant
-  eventIdWithLogin = JSON.parse(sessionStorage.getItem('newEventId'));
+  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
   varificationEmail
   displayPassword;
   show: boolean;
@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
     // console.log("login details", this.loginForm.value);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
-        // console.log("data of invalid user", data);
+        console.log("data of invalid user", data);
         let firstName = data.data.firstName
         this.userName = firstName;
         // console.log(this.userName);
@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
           this.isLoad = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          // this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+          this.router.navigate(['/guest/', this.eventIdWithLogin])
         } else if (data.data.UserRole == 'admin') {
           this.isLoad = false
           // this.router.navigate(['/home/admin-dashboard']);

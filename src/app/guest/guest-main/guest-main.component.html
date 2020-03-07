@@ -1,18 +1,26 @@
 <section class="guest-main-background">
     <div class="page-content">
         <div class="guest-main-box">
-            <div class="guest-header text-center">
+            <div class="guest-header text-center" *ngIf="eventDetails">
                 <div class="guest-profile">
-                    <img src="../../../assets/images/t-profile.png" alt="profile photo">
+                    <!-- <img src="../../../assets/images/t-profile.png" alt="profile photo"> -->
+                    <img *ngIf="eventDetails.profilePhoto" src="{{path}}{{eventDetails.profilePhoto}}" alt="">
                 </div>
-                <h3>#AyoKunbi</h3>
-                <h3>Ayoade and Kunbi’s wedding</h3>
+                <h3>#{{eventDetails.hashTag}}</h3>
+                <h3>{{eventDetails.eventTitle}}</h3>
             </div>
+            <div class="join-event" *ngIf="isJoin == false">
+                <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
+            </div>
+
             <div class="guest-inner-box">
                 <!-- <app-guest-activity-slider></app-guest-activity-slider> -->
                 <!-- <app-guest-item-total></app-guest-item-total> -->
                 <app-gift-donation></app-gift-donation>
             </div>
+
+            <app-guest-menu *ngIf="isJoin == true"></app-guest-menu>
+
         </div>
     </div>
 </section>
