@@ -42,6 +42,11 @@ import { GuestMainComponent } from '../guest/guest-main/guest-main.component';
 import { GuestMenuComponent } from '../guest/guest-menu/guest-menu.component';
 import { GuestActivitySliderComponent } from '../guest/guest-activity-slider/guest-activity-slider.component';
 import { GuestItemTotalComponent } from '../guest/guest-item-total/guest-item-total.component';
+import { GiftDonationComponent } from '../guest/gift-donation/gift-donation.component';
+import { GuestAddressComponent } from '../guest/guest-address/guest-address.component';
+import { PaymentComponent } from '../guest/payment/payment.component';
+import { PaymentDetailsComponent } from '../guest/payment-details/payment-details.component';
+import { PaymentMessageComponent } from '../guest/payment-message/payment-message.component';
 import { from } from 'rxjs';
 
 
@@ -156,7 +161,12 @@ const routes: Routes = [
     GuestMainComponent,
     GuestMenuComponent,
     GuestActivitySliderComponent,
-    GuestItemTotalComponent
+    GuestItemTotalComponent,
+    GiftDonationComponent,
+    GuestAddressComponent,
+    PaymentComponent,
+    PaymentDetailsComponent,
+    PaymentMessageComponent
   ],
   imports: [
     CommonModule,

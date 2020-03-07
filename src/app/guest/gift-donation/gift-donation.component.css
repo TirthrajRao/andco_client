@@ -1,0 +1,35 @@
+.gift-donation-msg p{
+    font-family: 'Advent Pro', 'sans-sarif';
+    font-size: 26px;
+    color: #fff;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.gift-donation-msg h3{
+    text-align: center;
+    color: #fff;
+    margin: 40px 0 20px;
+}
+.gift-donation-msg h3 input[type="text"] {
+    border: none;
+    padding: 8px 10px 4px;
+    text-align: right;
+}
+.save button{
+    font-size: 22px;
+}
+.bottom-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-buttons button{
+    color: #2B879B;
+    font-weight: bold;
+    font-family: 'Advent Pro', 'sans-sarif';
+    font-size: 20px;
+}
+.bottom-buttons i{
+    font-size: 26px;
+}
