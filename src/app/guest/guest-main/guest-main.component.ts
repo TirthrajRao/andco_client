@@ -47,7 +47,7 @@ export class GuestMainComponent implements OnInit {
 
   joinEvent(eventId) {
     console.log("event id", eventId);
-    this.eventService.joinEvent(eventId).subscribe((response) => {
+    this.eventService.joinEvent(eventId).subscribe((response:any) => {
       console.log("response of join event", response);
       this.isJoin = true
       this.alertService.getSuccess(response.message)

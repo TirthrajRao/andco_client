@@ -12,13 +12,12 @@
             <div class="join-event" *ngIf="isJoin == false">
                 <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
             </div>
-
             <div class="guest-inner-box">
                 <!-- <app-guest-activity-slider></app-guest-activity-slider> -->
                 <!-- <app-guest-item-total></app-guest-item-total> -->
-                <app-gift-donation></app-gift-donation>
+                <!-- <app-gift-donation></app-gift-donation> -->
+                <app-guest-address></app-guest-address>
             </div>
-
             <app-guest-menu *ngIf="isJoin == true"></app-guest-menu>
 
         </div>

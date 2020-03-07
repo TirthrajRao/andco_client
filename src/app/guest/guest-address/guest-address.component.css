@@ -1,0 +1,82 @@
+.guest-address h2{
+    color: #fff;
+    margin: 10px 0;
+}
+.guest-address input,
+.guest-address textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: black;
+    font-size: 20px;
+}
+.guest-address input:focus{
+    outline: none;
+}
+.days p, .time p {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin: 10px 0;
+}
+.days p span ,
+.time p span{
+    font-size: 26px;
+    color: #fff;
+}
+.pay button{
+    background-color: #fff;
+    color: #2B879B;
+    padding: 5px 30px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.bottom-buttons button{
+    color: #2B879B;
+    font-weight: bold;
+    font-family: 'Advent Pro', 'sans-sarif';
+    font-size: 20px;
+}
+.bottom-buttons i{
+    font-size: 26px;
+}
+/* checkbox design start*/
+input[type=checkbox] + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+    font-weight: 600;
+  }
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border-radius: 0;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: transparent;
+    transition: .2s;
+    background: #ffffffb5;
+  }
+  
+  input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+  
+  input[type=checkbox]:checked + label:before {
+    background-color: #379bc2;
+    border-color: #379bc2;
+    color: #fff;
+  }
+  /* checkbox design end*/
