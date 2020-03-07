@@ -76,10 +76,18 @@ export class EventService {
     let formdata = new FormData
     formdata.append("eventId", eventId)
     formdata.append("profile", files);
-    // if (files.length) {
-    //   for (let i = 0; i < files.length; i++) {
-    //   }
-    // }
     return this.http.post(config.baseApiUrl + '/event/changeProfile', formdata)
   }
+
+  getGuestEventDetails(hashTag) {
+    return this.http.get(config.baseApiUrl + "/event/guestEvent/" + hashTag)
+  }
+
+  joinEvent(id) {
+    const eventId = {
+      eventId: id
+    }
+    return this.http.post(config.baseApiUrl + "/event/join-event", eventId)
+  }
+
 }

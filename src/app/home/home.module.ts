@@ -112,9 +112,17 @@ const routes: Routes = [
         component: InvitedGuestComponent
       },
       {
-        path: 'guest',
+        path: 'guest/:hashTag',
         component: GuestMainComponent
       },
+      // {
+      //   path: 'guestMenu',
+      //   component: GuestMenuComponent
+      // },
+      // {
+      //   path: 'guestActivity',
+      //   component: GuestActivitySliderComponent
+      // },
     ]
   }
 ]
