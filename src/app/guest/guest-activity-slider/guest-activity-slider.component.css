@@ -45,11 +45,15 @@
 .guest-activity-item-tab .nav-tabs{
     border: none;
 }
-.guest-activity-item-tab .nav-tabs .nav-link.active{
-    color: #50BCD9;
-}
 .guest-activity-item-tab a.nav-link {
     color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+.guest-activity-item-tab .nav-tabs  li.nav-item a.nav-link.active {
+    background-color: #fff;
+    color: #50BCD9;
 }
 .guest-activity-item-tab li.nav-item a.nav-link {
     font-size: 20px;

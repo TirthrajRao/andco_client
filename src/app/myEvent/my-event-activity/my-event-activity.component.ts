@@ -13,7 +13,6 @@ export class MyEventActivityComponent implements OnInit {
   groupOfActivity
   listOfActivity = []
   totalItem = []
-  // displayItem = false
   selectedGender
   itemNamePrint: any = [];
   constructor() { }

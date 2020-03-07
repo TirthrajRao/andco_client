@@ -16,7 +16,8 @@ export class GuestMainComponent implements OnInit {
   eventDetails
   isJoin
   path = config.baseMediaUrl;
-
+  activityDisplay = false
+  totalActivityList = []
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -47,7 +48,7 @@ export class GuestMainComponent implements OnInit {
 
   joinEvent(eventId) {
     console.log("event id", eventId);
-    this.eventService.joinEvent(eventId).subscribe((response) => {
+    this.eventService.joinEvent(eventId).subscribe((response: any) => {
       console.log("response of join event", response);
       this.isJoin = true
       this.alertService.getSuccess(response.message)
@@ -55,24 +56,10 @@ export class GuestMainComponent implements OnInit {
       console.log("erorr while join event", error)
     })
   }
-
-
-  // joinNow(id) {
-  //   this.isLoad = true;
-  //   console.log("after login send event id", id);
-  //   this._eventService.joinEvent(id)
-  //     .subscribe((data: any) => {
-  //       this.isLoad = false;
-  //       console.log("join event done", data);
-  //       this.isDisable = true;
-  //       this.isJoined = true;
-  //       this.alertService.getSuccess(data.message)
-  //       this.router.navigate(['/home/view-event/', id])
-  //     }, err => {
-  //       this.isLoad = false;
-  //       console.log(err);
-  //       this.alertService.getError(err.message);
-  //     })
-  // }
+  displayActivity(event) {
+    console.log("when click on activity", event);
+    this.activityDisplay = true
+    this.totalActivityList = this.eventDetails.activity
+  }
 
 }
