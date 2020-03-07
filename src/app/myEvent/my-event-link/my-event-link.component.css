@@ -88,11 +88,6 @@ textarea::placeholder{
     list-style: none;
     display: inline-block;
 }
-share-button.sb-button.sb-circles-dark button {
-    height: 70px;
-    width: 70px;
-    font-size: 0 !important;
-}
 
 /* step 2 end*/
 
