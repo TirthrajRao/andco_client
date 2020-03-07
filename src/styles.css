@@ -438,6 +438,58 @@ img.swal2-image {
 
 /* my event end */
 
+/* share button start */
+share-button.sb-button.sb-circles-dark button {
+    height: 70px;
+    width: 70px;
+    font-size: 0 !important;
+}
+share-button.sb-button.sb-circles-dark button.sb-whatsapp{
+    background-image: url(./assets/images/whatsapp.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-facebook{
+    background-image: url(./assets/images/facebook-event.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-email{
+    background-image: url(./assets/images/G.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-sms{
+    background-image: url(./assets/images/message-event.png);
+}
+/* share button end */
+/* guest screen start*/
+.guest-activity-slider button.slick-arrow {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    z-index: 1;
+}
+.guest-activity-slider button.prevarrow.slick-arrow {
+    right: 30px;
+}
+.guest-activity-slider button.prevarrow.slick-arrow.slick-disabled .arrow-left,
+.guest-activity-slider button.nextarrow.slick-arrow.slick-disabled .arrow-right {
+    border-color: gray;
+}
+.arrow-right,
+.arrow-left{
+  display: block;
+  margin: 30px auto;
+  width: 25px;
+  height: 25px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+}
+.arrow-right{
+ transform: rotate(135deg);
+}
+
+.arrow-left{
+ transform: rotate(-45deg);
+}
+/* guest screen end */
 /* responsive css start */
 
 @media(max-width: 1600px) {

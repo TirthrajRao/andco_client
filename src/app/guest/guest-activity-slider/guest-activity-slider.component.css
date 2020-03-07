@@ -167,19 +167,3 @@ button.btn.total {
 
 /* radio button css end here */
 
-.arrow-right,
-.arrow-left{
-  display: block;
-  margin: 30px auto;
-  width: 25px;
-  height: 25px;
-  border-top: 3px solid #000;
-  border-left: 3px solid #000;
-}
-.arrow-right{
- transform: rotate(135deg);
-}
-
-.arrow-left{
- transform: rotate(-45deg);
-}
