@@ -88,6 +88,11 @@ textarea::placeholder{
     list-style: none;
     display: inline-block;
 }
+share-button.sb-button.sb-circles-dark button {
+    height: 70px;
+    width: 70px;
+    font-size: 0 !important;
+}
 
 /* step 2 end*/
 
@@ -97,3 +102,17 @@ textarea::placeholder{
     width: 100%;
 }
 /* step 3 end */
+
+/* step 4 start */
+.to {
+    float: left;
+    width: 60px;
+}
+.to h3{
+    color: #fff;
+    font-weight: 600;
+}
+.all {
+    padding-left: 60px;
+}
+/* step 4 end */

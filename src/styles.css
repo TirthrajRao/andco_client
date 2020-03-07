@@ -438,6 +438,26 @@ img.swal2-image {
 
 /* my event end */
 
+/* share button start */
+share-button.sb-button.sb-circles-dark button {
+    height: 70px;
+    width: 70px;
+    font-size: 0 !important;
+}
+share-button.sb-button.sb-circles-dark button.sb-whatsapp{
+    background-image: url(./assets/images/whatsapp.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-facebook{
+    background-image: url(./assets/images/facebook-event.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-email{
+    background-image: url(./assets/images/G.png);
+}
+share-button.sb-button.sb-circles-dark button.sb-sms{
+    background-image: url(./assets/images/message-event.png);
+}
+/* share button end */
+
 /* responsive css start */
 
 @media(max-width: 1600px) {

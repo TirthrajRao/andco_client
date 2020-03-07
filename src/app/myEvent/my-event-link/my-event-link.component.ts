@@ -5,7 +5,7 @@ declare var $;
 @Component({
   selector: 'app-my-event-link',
   templateUrl: './my-event-link.component.html',
-  styleUrls: ['./my-event-link.component.css']
+  styleUrls: ['./my-event-link.component.css','./../my-event-activity/my-event-activity.component.css']
 })
 export class MyEventLinkComponent implements OnInit {
 
