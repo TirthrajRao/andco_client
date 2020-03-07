@@ -18,6 +18,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 // import { LoaderComponent } from './loader/loader.component';
 import { HomeModule } from './home/home.module';
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
+import { GuestJoinComponent } from './guest-join/guest-join.component';
 
 
 
@@ -49,6 +50,7 @@ export function provideConfig() {
     DisplayHomeComponent,
     ForgotPasswordComponent,
     WelcomeGuestComponent,
+    GuestJoinComponent,
     
     // LoaderComponent,
   ],

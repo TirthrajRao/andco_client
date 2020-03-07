@@ -195,7 +195,9 @@ button.btn.created-event-custom-button {
 }
 
 div#message1 {
-    color: red;
+    color: #dc3545;
+    margin-bottom: 5px;
+    font-size: 18px;
 }
 
 

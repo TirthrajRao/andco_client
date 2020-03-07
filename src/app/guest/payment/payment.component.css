@@ -1,14 +1,19 @@
-.total-amount{
-    position: relative;
-}
 .total-amount h2 {
     color: #444444;
     text-align: center;
     font-weight: 600;
-    position: relative;
     padding: 15px 0 10px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
-.total-amount h2:after{
+
+.total-amount {
+    position: relative;
+}
+
+.total-amount:after {
     content: "";
     background-color: #ffffff60;
     position: absolute;
@@ -17,9 +22,27 @@
     left: -30px;
     bottom: 0;
 }
-.radio-group{
+
+.radio-group {
     display: flex;
     justify-content: center;
+}
+
+.buttons-pay-back {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    left: 0;
+}
+
+.buttons-pay-back button {
+    background-color: #fff;
+    color: #2B879B;
+    font-weight: bold;
+    padding: 7px 30px;
+    font-size: 18px;
 }
 
 /* radio button css start here */
@@ -28,13 +51,14 @@
     position: absolute;
     left: -9999px;
 }
+
 [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
     line-height: 35px;
     display: inline-block;
-    color: #ffffff ;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;

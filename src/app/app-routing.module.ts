@@ -8,6 +8,7 @@ import { CreateEventComponent } from './createEvent/create-event/create-event.co
 import { HeaderComponent } from './header/header.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
+import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { HomeModule } from './home/home.module';
 import { from } from 'rxjs';
 
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'welcome-guest/:id',
     component: WelcomeGuestComponent
+  },
+  {
+    path : 'guest-join',
+    component : GuestJoinComponent
   },
 ];
 

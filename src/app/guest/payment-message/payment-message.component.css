@@ -1,0 +1,10 @@
+.payment-success{
+    width: 40%;
+    text-align: center;
+    margin: 30px auto;
+    color: #fff;
+}
+.payment-success span{
+    color: #2B879B;
+    font-family: 'Advent Pro', 'sans-sarif';
+}
