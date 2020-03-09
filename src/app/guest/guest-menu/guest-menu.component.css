@@ -6,8 +6,8 @@
 }
 
 .circular-menu .floating-btn {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background-color: #fff;
     box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, .26);
@@ -109,6 +109,10 @@
 
 .circular-menu.active .menu-item:nth-child(4) {
     transform: translate3d(-7em, 1em, 0);
+}
+
+.circular-menu.active menu.items-wrapper a.menu-item {
+    z-index: 11;
 }
 
 /**

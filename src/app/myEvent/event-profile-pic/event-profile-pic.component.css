@@ -34,5 +34,7 @@
     position: absolute;
     top: 0px;
     right: 13%;
+}
+.event-camera img{
     cursor: pointer;
 }

@@ -45,7 +45,27 @@
     background: linear-gradient(#4FBCD9,#C7F2FE);
     border-radius: 20px;
     padding: 30px;
-    height: 450px;
+    height: 58vh;
+    max-height: 58vh;
+    overflow: auto;
+}
+
+.guest-inner-box::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.guest-inner-box::-webkit-scrollbar {
+    width: 5px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+.guest-inner-box::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #BA8A41;
 }
 .join-event {
     width: 100%;

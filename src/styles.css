@@ -274,11 +274,11 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
 }
 
 .event-menu-slider button.prevarrow.slick-arrow {
-    left: 30%;
+    left: 20%;
 }
 
 .event-menu-slider button.nextarrow.slick-arrow {
-    right: 30%;
+    right: 20%;
 }
 
 /* date picker css start here */
@@ -399,7 +399,7 @@ img.swal2-image {
 }
 
 .event-menu-slider button.slick-arrow {
-    top: 0;
+    top: -64vh;
 }
 
 .total-collection-slider button.slick-arrow {
