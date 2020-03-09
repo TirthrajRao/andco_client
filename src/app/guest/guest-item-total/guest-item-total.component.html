@@ -1,6 +1,6 @@
 <button class="btn add-more">add more</button>
-<div class="single-activity">
-    <h2>Engagement</h2>
+<div class="single-activity" *ngFor="let activity of totalActivity">
+    <h2>{{activity.activityName}}</h2>
 </div>
 <ul>
     <li class="guest-item">

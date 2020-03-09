@@ -28,3 +28,9 @@ li.guest-item{
     right: -30px;
     bottom: 0;
 }
+button.btn.add-more{
+    background-color: #fff;
+    color: red;
+    padding: 10px 20px;
+    float: right;
+}
