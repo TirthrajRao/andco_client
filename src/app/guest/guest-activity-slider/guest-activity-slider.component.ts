@@ -23,7 +23,8 @@ export class GuestActivitySliderComponent implements OnInit {
   activityIndex = 0
   itemQuenty = 0
   displayTotal
-  allCartList = []
+  allCartList = [
+  ]
   constructor() { }
 
   ngOnInit() {
@@ -34,6 +35,11 @@ export class GuestActivitySliderComponent implements OnInit {
     console.log("changes", changes.listOfActivity);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
       this.displayActivity = changes.listOfActivity.currentValue
+      // let single = _.filter(this.displayActivity, function (x) {
+      //   this.allCartList['activityName'] = x.activityName
+      // })
+      // console.log("all cart item", this.allCartList);
+
       this.initActivitySlider()
       this.displayAllData()
     }
@@ -66,9 +72,6 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 0
     this.selectedGender = 'male'
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
-    // this.itemList.forEach((singleItem) => {
-    //   singleItem['itemQuentity'] = Number(0)
-    // })
     console.log("quntity with rank", this.itemList);
 
     setTimeout(() => {
@@ -88,9 +91,6 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 1
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
-    // this.itemList.forEach((singleItem) => {
-    //   singleItem['itemQuentity'] = Number(0)
-    // })
   }
 
   changeGroup(event) {
@@ -104,6 +104,8 @@ export class GuestActivitySliderComponent implements OnInit {
   maleTotal(event, item, index) {
     console.log("kaik thay che ama bs", item);
     this.itemList[index]['quantity'] = event.target.value
+    // this.displayActivity[this.activityIndex].activityName = []
+    
     let obj = {
       activityName: this.displayActivity[this.activityIndex].activityName,
       itemGender: item.itemGender,
@@ -149,8 +151,6 @@ export class GuestActivitySliderComponent implements OnInit {
 
   addTocart() {
     console.log("list of all item ", this.allCartList)
-    this.totalItemList.emit(this.allCartList)
+    this.totalItemList.emit({ allItems: this.allCartList, activities: this.displayActivity })
   }
-
-
 }

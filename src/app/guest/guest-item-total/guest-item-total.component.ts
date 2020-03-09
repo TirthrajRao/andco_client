@@ -8,20 +8,27 @@ import * as _ from 'lodash';
 })
 export class GuestItemTotalComponent implements OnInit {
   @Input('totalItemList') displayTotalItem
-  totlaItem = []
+  totlaItem: any
+  totalActivity = []
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log("******changes", changes);
     console.log("display item in its page", changes.displayTotalItem.currentValue);
-    this.totlaItem = _.filter(changes.displayTotalItem.currentValue, function (x) {
-      console.log("single item ", x)
-      return x.activityName = x.activityName
-    })
-    console.log("final items list after filter", this.totlaItem);
+    this.totalActivity = changes.displayTotalItem.currentValue.activities
+    this.totlaItem = changes.displayTotalItem.currentValue.allItems
+    this.displayList()
 
+  }
+
+  displayList() {
+    let newArray = []
+    var grouped = _.mapValues(_.groupBy(this.totlaItem, 'activityName'),
+      clist => clist.map(car => _.omit(car, 'activityName')));
+    console.log("grouped", grouped);
   }
 
 }

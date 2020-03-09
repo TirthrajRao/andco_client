@@ -4,7 +4,8 @@
         We are grateful. Gifts will not be accepted,
         but your financial gift is very much appreciated.
     </p>
-    <h3>I Give : <input type="text" placeholder=":00"> </h3>
+    <h3>I Give : <input type="number" placeholder=":00" oninput="validity.valid||(value='');"
+            onkeydown="return event.keyCode !== 69" min="0" min="1"> </h3>
     <div class="save text-center">
         <button class="btn font-weight-bold">Saved</button>
     </div>
