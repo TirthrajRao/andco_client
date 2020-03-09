@@ -12,9 +12,11 @@
             <div class="join-event" *ngIf="isJoin == false">
                 <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
             </div>
-            <div class="guest-inner-box" *ngIf="activityDisplay">
-                <!-- <app-guest-activity-slider [totalActivityList]="totalActivityList"></app-guest-activity-slider> -->
-                <app-guest-item-total></app-guest-item-total>
+            <div class="guest-inner-box" *ngIf="isDisable">
+                <app-guest-activity-slider *ngIf="activityDisplay" [totalActivityList]="totalActivityList"
+                    (totalItemList)="totalItem($event)">
+                </app-guest-activity-slider>
+                <app-guest-item-total *ngIf="itemsDisplay" [totalItemList]="totalItemList"></app-guest-item-total>
                 <!-- <app-gift-donation></app-gift-donation> -->
                 <!-- <app-guest-address></app-guest-address> -->
                 <!-- <app-payment></app-payment> -->
@@ -22,7 +24,6 @@
                 <!-- <app-payment-message></app-payment-message> -->
             </div>
             <app-guest-menu *ngIf="isJoin == true" (displayActivity)="displayActivity($event)"></app-guest-menu>
-
-        </div>
+    </div>
     </div>
 </section>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
+import { single } from 'rxjs/operators';
 declare var $;
 
 @Component({
@@ -9,6 +10,7 @@ declare var $;
 })
 export class GuestActivitySliderComponent implements OnInit {
   @Input('totalActivityList') listOfActivity
+  @Output() totalItemList: EventEmitter<any> = new EventEmitter<any>()
   displayActivity = []
   displayGroup = []
   itemList = []
@@ -19,6 +21,9 @@ export class GuestActivitySliderComponent implements OnInit {
   selectedwallet
   groupIndex = 0
   activityIndex = 0
+  itemQuenty = 0
+  displayTotal
+  allCartList = []
   constructor() { }
 
   ngOnInit() {
@@ -57,9 +62,15 @@ export class GuestActivitySliderComponent implements OnInit {
 
   displayAllData() {
     this.displayGroup = this.displayActivity[this.activityIndex].group
+    console.log("when dispplay group", this.displayGroup);
     this.selectedwallet = 0
     this.selectedGender = 'male'
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
+    // this.itemList.forEach((singleItem) => {
+    //   singleItem['itemQuentity'] = Number(0)
+    // })
+    console.log("quntity with rank", this.itemList);
+
     setTimeout(() => {
       $('input:radio[id="0"]').attr('checked', true);
     }, 20)
@@ -77,6 +88,9 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 1
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
+    // this.itemList.forEach((singleItem) => {
+    //   singleItem['itemQuentity'] = Number(0)
+    // })
   }
 
   changeGroup(event) {
@@ -86,4 +100,57 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 0
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
   }
+
+  maleTotal(event, item, index) {
+    console.log("kaik thay che ama bs", item);
+    this.itemList[index]['quantity'] = event.target.value
+    let obj = {
+      activityName: this.displayActivity[this.activityIndex].activityName,
+      itemGender: item.itemGender,
+      itemName: item.itemName,
+      itemPrice: item.itemPrice,
+      quantity: item.quantity,
+      itemId: item._id
+    }
+    var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
+    if (tempIndex > -1) {
+      this.allCartList[tempIndex].quantity = event.target.value
+    }
+    else {
+      this.allCartList.push(obj)
+    }
+
+    console.log("object of acitivity name", this.allCartList);
+  }
+
+
+  femaleTotal(event, item, index) {
+
+    console.log("kaik thay che ama bs", event.target.value, item);
+    this.itemList[index]['quantity'] = event.target.value
+    let obj = {
+      activityName: this.displayActivity[this.activityIndex].activityName,
+      itemGender: item.itemGender,
+      itemName: item.itemName,
+      itemPrice: item.itemPrice,
+      quantity: item.quantity,
+      itemId: item._id
+    }
+    var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
+    if (tempIndex > -1) {
+      this.allCartList[tempIndex].quantity = event.target.value
+    }
+    else {
+      this.allCartList.push(obj)
+    }
+
+    console.log("object of acitivity name", this.allCartList);
+  }
+
+  addTocart() {
+    console.log("list of all item ", this.allCartList)
+    this.totalItemList.emit(this.allCartList)
+  }
+
+
 }

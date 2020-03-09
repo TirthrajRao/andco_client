@@ -15,9 +15,12 @@ export class GuestMainComponent implements OnInit {
   private hashtag: any
   eventDetails
   isJoin
+  isDisable = false
   path = config.baseMediaUrl;
   activityDisplay = false
+  itemsDisplay = false
   totalActivityList = []
+  totalItemList = []
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -58,8 +61,14 @@ export class GuestMainComponent implements OnInit {
   }
   displayActivity(event) {
     console.log("when click on activity", event);
+    this.isDisable = true
     this.activityDisplay = true
     this.totalActivityList = this.eventDetails.activity
   }
-
+  totalItem(event) {
+    console.log("total item display in main", event);
+    this.activityDisplay = false
+    this.itemsDisplay = true
+    this.totalItemList = event
+  }
 }
