@@ -114,6 +114,11 @@ textarea::placeholder{
     justify-content: center;
     align-items: center;
 }
+span.middle {
+    color: #fff;
+    margin: 0 6px;
+    font-size: 25px;
+}
 /* step 3 end */
 
 /* step 4 start */
