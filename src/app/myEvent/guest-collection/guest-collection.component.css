@@ -20,24 +20,32 @@
     background-color: #fff;
     border-radius: 30px;
 }
+.guest-list-box-scroll{
+    min-height: 300px;
+    max-height: 500px;
+    overflow: auto;
+}
 ul.guest-list-inner-box{
     max-height: 250px;
     min-height: 250px;
     overflow: auto;
 }
-ul.guest-list-inner-box::-webkit-scrollbar-track {
+ul.guest-list-inner-box::-webkit-scrollbar-track,
+.guest-list-box-scroll::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
     background-color: #F5F5F5;
 }
 
-ul.guest-list-inner-box::-webkit-scrollbar {
+ul.guest-list-inner-box::-webkit-scrollbar,
+.guest-list-box-scroll::-webkit-scrollbar {
     width: 3px;
     padding-right: 3px;
     background-color: #F5F5F5;
 }
 
-ul.guest-list-inner-box::-webkit-scrollbar-thumb {
+ul.guest-list-inner-box::-webkit-scrollbar-thumb,
+.guest-list-box-scroll::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: #440909;
@@ -102,4 +110,26 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
 }
 .guest-item-price{
     text-align: right;
+}
+.collapse{
+    min-height: 200px;
+    max-height: 200px;
+    overflow: auto;
+}
+.collapse::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.collapse::-webkit-scrollbar {
+    width: 5px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+.collapse::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #BA8A41;
 }

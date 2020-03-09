@@ -79,7 +79,7 @@ textarea::placeholder{
 
 .social-icon ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 0 60px;
 }
@@ -87,6 +87,7 @@ textarea::placeholder{
 .social-icon ul li {
     list-style: none;
     display: inline-block;
+    margin: 0 10px;
 }
 
 /* step 2 end*/
@@ -95,6 +96,23 @@ textarea::placeholder{
 .send-message {
     display: inline-block;
     width: 100%;
+}
+.send-message p {
+    color: #F8D0AD;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.send-date, .send-time {
+    background: #fff;
+    color: #9B602A;
+    font-weight: bold;
+    border-radius: 6px;
+    width: 70px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* step 3 end */
 

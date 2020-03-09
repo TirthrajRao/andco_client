@@ -20,6 +20,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.myEvent-slider .myEvent-name p{
+    color: #9D632C
+}
+.myEvent-group-slider .myEvent-name p{
+    color: #C48042;
+}
 .myEvent-name{
     position: relative;
     margin: 5px;

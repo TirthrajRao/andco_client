@@ -23,6 +23,7 @@
     margin: auto;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 /* responsive css start */
