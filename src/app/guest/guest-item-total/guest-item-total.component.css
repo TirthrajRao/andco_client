@@ -2,7 +2,7 @@ li.guest-item{
     width: 100%;
     display: inline-block;
     color: #fff;
-    border-bottom: 1px solid #cbccbc;
+    border-bottom:1px solid #b8e6f2;
     font-size: 20px;
     font-weight: bold;
     padding: 5px;
@@ -14,17 +14,79 @@ li.guest-item{
 .guest-add-items{
     float: right;
 }
-.single-activity h2{
+button.single-activity{
     color: #AF605B;
+    font-weight: 600;
     position: relative;
-    padding: 10px 0; 
+    text-align: left;
+    font-size: 30px;
+    background-color: #ffffff80;
+    border-radius: 0;
+    margin-bottom: 10px;
 }
-.single-activity h2:after{
-    content: "";
-    background-color: #ffffff60;
-    position: absolute;
-    top: 0;
-    left: -30px;
-    right: -30px;
-    bottom: 0;
+button.btn.add-more {
+    background-color: #fff;
+    color: #9B514B;
+    font-weight: 600;
+    padding: 5px 30px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    float: right;
 }
+.guest-add-items h4 img{
+    height: 20px;
+    margin-left: 20px;
+}
+.group-box {
+    margin: 15px;
+}
+.group-box h4.group {
+    color: #003A47;
+    font-weight: bold;
+}
+.group-box ul{
+    padding: 10px 20px;
+}
+.main-item {
+    max-height: 200px;
+    overflow: auto;
+    padding: 10px 0;
+}
+.main-item::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 10px;
+    background-color: #ffffff80;
+}
+
+.main-item::-webkit-scrollbar {
+    width: 3px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+.main-item::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #003A47;
+}
+
+/* accordion start */
+.myaccordion button:after {
+    content    : "\f078";
+    font-family: 'FontAwesome';
+}
+.myaccordion button[aria-expanded="true"]:after {
+    content: "\f077";
+}
+.myaccordion button.collapsed:after,
+.myaccordion button:after {
+    position           : absolute;
+    right              : 30px;
+    top                : 0;
+    bottom             : 0;
+    margin             : auto;
+    color        : #fff;
+    font-size    : 20px;
+    line-height: 50px;
+}
+/* accordian end */

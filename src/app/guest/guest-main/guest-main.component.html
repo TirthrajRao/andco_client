@@ -13,11 +13,11 @@
                 <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
             </div>
             <div class="guest-inner-box" *ngIf="activityDisplay">
-                <app-guest-activity-slider [totalActivityList]="totalActivityList"></app-guest-activity-slider>
-                <!-- <app-guest-item-total></app-guest-item-total> -->
+                <!-- <app-guest-activity-slider [totalActivityList]="totalActivityList"></app-guest-activity-slider> -->
+                <app-guest-item-total></app-guest-item-total>
                 <!-- <app-gift-donation></app-gift-donation> -->
                 <!-- <app-guest-address></app-guest-address> -->
-                <app-payment></app-payment>
+                <!-- <app-payment></app-payment> -->
                 <!-- <app-payment-details></app-payment-details> -->
                 <!-- <app-payment-message></app-payment-message> -->
             </div>
