@@ -43,8 +43,9 @@
 }
 .guest-inner-box{
     background: linear-gradient(#4FBCD9,#C7F2FE);
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 30px;
+    height: 450px;
 }
 .join-event {
     width: 100%;
