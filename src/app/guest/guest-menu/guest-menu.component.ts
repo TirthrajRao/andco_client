@@ -20,7 +20,7 @@ export class GuestMenuComponent implements OnInit {
 
   allActivities() {
     console.log("click on activity");
-    this.displayActivity.emit('activities')
+    this.displayActivity.emit(0)
   }
 
 }

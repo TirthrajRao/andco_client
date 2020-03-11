@@ -3,7 +3,7 @@
         <h2>Total : 20,000.00</h2>
     </div>
     <!-- step1 start -->
-    <div class="step-1" style="display: none;">
+    <div class="step-1" *ngIf="index ==0">
         <div class="payment-inputs">
             <input type="text" placeholder="Bank name">
             <input type="text" placeholder="Account number">
@@ -11,7 +11,7 @@
     </div>
     <!-- step1 end -->
     <!-- step2 start -->
-    <div class="step-2" style="display: none;">
+    <div class="step-2" *ngIf="index ==1">
         <div class="payment-inputs">
             <input type="text" placeholder="Card number">
             <input type="text" placeholder="CVV">
@@ -20,7 +20,7 @@
     <!-- step2 end -->
     <!-- step3 start -->
     <div class="step-3">
-        <div class="ussd">
+        <div class="ussd" *ngIf="index ==2">
             <h5><span>*725*N20,000#</span></h5>
             <p>Dial code from phone number
                 linked to your bank account.</p>
@@ -28,7 +28,7 @@
     </div>
     <!-- step3 end -->
     <div class="buttons-pay-back">
-        <button class="btn">Back</button>
+        <button class="btn" (click)="displayType()">Back</button>
         <button class="btn">Pay</button>
     </div>
 </div>

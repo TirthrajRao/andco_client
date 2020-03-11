@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { config } from '../../config';
+import { throwToolbarMixedModesError } from '@angular/material';
 
 
 @Component({
@@ -16,11 +17,16 @@ export class GuestMainComponent implements OnInit {
   eventDetails
   isJoin
   isDisable = false
-  path = config.baseMediaUrl;
+  isDonation = false
   activityDisplay = false
   itemsDisplay = false
+  isAddress = false
+  index = 0
+  path = config.baseMediaUrl;
   totalActivityList = []
   totalItemList = []
+  removeItem
+  selectedAccount
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -62,13 +68,41 @@ export class GuestMainComponent implements OnInit {
   displayActivity(event) {
     console.log("when click on activity", event);
     this.isDisable = true
-    this.activityDisplay = true
+    this.index = 3
     this.totalActivityList = this.eventDetails.activity
   }
   totalItem(event) {
     console.log("total item display in main", event);
-    this.activityDisplay = false
-    this.itemsDisplay = true
+    this.index = event.index
     this.totalItemList = event
+  }
+
+  removeItemOfArray(event) {
+    console.log("event of add more", event);
+    this.index = event.index
+    this.removeItem = event.removeItems
+    console.log("event when item remove", this.removeItem);
+  }
+
+  donationAdd(event) {
+    console.log("add donation", event);
+    this.index = event
+  }
+  displayItems(event) {
+    this.index = event
+  }
+  displayAddress(event) {
+    this.index = event
+  }
+  selectPayment(event) {
+    this.index = event
+  }
+  selectedAccountType(event) {
+    this.index = event.index
+    this.selectedAccount = event.type
+  }
+
+  displayAccount(event) {
+    this.index = event
   }
 }

@@ -1,37 +1,72 @@
 <div class="guest-address">
     <h2>Deliver my aso ebi to:</h2>
-    <div class="row">
-        <div class="col-sm-6">
-            <input type="text" placeholder="Name">
+    <form [formGroup]="addressForm">
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="text" formControlName="deliverName" placeholder="Name"
+                    [ngClass]="{ 'is-invalid': f.deliverName.touched  && f.deliverName.errors }" [pattern]="guestName"
+                    ngModel="{{addressDetails ? addressDetails.deliverName : ''}}">
+                <div class="col-md-2" *ngIf="f.deliverName.touched && f.deliverName.errors" class="invalid-feedback">
+                    <div *ngIf="f.deliverName.errors.required">Name is required</div>
+                    <!-- <div *ngIf="f.name.errors.minlength">Name must be at least 2 characters</div> -->
+                    <div *ngIf="f.deliverName.errors.pattern">Please enter only alphabates</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <input type="tel" minlength="10" maxlength="10" placeholder="Phone No." [pattern]="mobNumberPattern"
+                    formControlName="phoneNo" [ngClass]="{ 'is-invalid': f.phoneNo.touched && f.phoneNo.errors }"
+                    ngModel="{{addressDetails ? addressDetails.phoneNo : ''}}">
+                <span id="message" style="color: red; font-size: 14px;"></span>
+                <div class="col-md-4" *ngIf="f.phoneNo.touched && f.phoneNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.phoneNo.errors.required">Phone no is required</div>
+                    <div *ngIf="f.phoneNo.errors.pattern">Enter only numbers</div>
+                    <div *ngIf="f.phoneNo.errors.minlength">Phone must be only 10 digits</div>
+                    <div *ngIf="f.phoneNo.errors.maxlength">Phone must be only 10 digits</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <input type="email" placeholder="Email" formControlName="email"
+                    [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
+                    ngModel="{{addressDetails ? addressDetails.email : ''}}">
+                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <textarea rows="3" placeholder="Address" formControlName="address"
+                    [ngClass]="{ 'is-invalid': f.address.touched && f.address.errors }"
+                    ngModel="{{addressDetails ? addressDetails.address : ''}}"></textarea>
+                <div *ngIf="f.address.touched && f.address.errors" class="invalid-feedback ">
+                    <div *ngIf="f.address.errors.required">Address is required</div>
+                    <!-- <div *ngIf="f.address.errors.pattern">Special character is not allowed</div> -->
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-            <input type="text" placeholder="Phone No.">
+        <div class="days">
+            <p><span class="text-white">Day :</span>
+                <input type="radio" id="weekday" value="Weekday"
+                    ngModel="{{addressDetails ? addressDetails.deliverDays : ''}}" formControlName="deliverDays">
+                <label for="weekday">Weekday</label>
+                <input type="radio" id="Weekend" value="Weekend"
+                    ngModel="{{addressDetails ? addressDetails.deliverDays : ''}}" formControlName="deliverDays">
+                <label for="Weekend">Weekend</label></p>
         </div>
-        <div class="col-12">
-            <input type="email" placeholder="Email">
+        <div class="time">
+            <p><span class="text-white">Time :</span>
+                <input type="radio" id="morning" value="morning" formControlName="timePeriod"
+                    ngModel="{{addressDetails ? addressDetails.timePeriod : ''}}">
+                <label for="morning">Morning</label>
+                <input type="radio" id="afternoon" value="afternoon" formControlName="timePeriod"
+                    ngModel="{{addressDetails ? addressDetails.timePeriod : ''}}">
+                <label for="afternoon">Afternoon</label>
+                <input type="radio" id="anytime" value="anytime" formControlName="timePeriod"
+                    ngModel="{{addressDetails ? addressDetails.timePeriod : ''}}">
+                <label for="anytime">Anytime</label></p>
         </div>
-        <div class="col-12">
-            <textarea rows="3" placeholder="Address"></textarea>
-        </div>
-    </div>
-    <div class="days">
-        <p><span class="text-white">Day :</span> 
-            <input type="checkbox" id="weekday" value="Weekday">
-            <label for="weekday">Weekday</label>
-            <input type="checkbox" id="Weekend" value="Weekend">
-            <label for="Weekend">Weekend</label></p>
-    </div>
-    <div class="time">
-        <p><span class="text-white">Time :</span> 
-            <input type="checkbox" id="morning" value="morning">
-            <label for="morning">Morning</label>
-            <input type="checkbox" id="afternoon" value="afternoon">
-            <label for="afternoon">Afternoon</label>
-            <input type="checkbox" id="anytime" value="anytime">
-            <label for="anytime">Anytime</label></p>
-    </div>
+    </form>
     <div class="pay text-center my-3">
-        <button class="btn">Pay</button>
+        <button class="btn" (click)="enterAddress()" [disabled]="addressForm.invalid">Pay</button>
     </div>
     <div class="bottom-buttons my-4">
         <button class="btn"><i class="fa fa-angle-double-left mr-2" aria-hidden="true"></i> Back</button>

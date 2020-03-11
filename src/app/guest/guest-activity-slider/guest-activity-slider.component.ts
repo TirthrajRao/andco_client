@@ -10,6 +10,7 @@ declare var $;
 })
 export class GuestActivitySliderComponent implements OnInit {
   @Input('totalActivityList') listOfActivity
+  @Input('removeItemOf') removeItem
   @Output() totalItemList: EventEmitter<any> = new EventEmitter<any>()
   displayActivity = []
   displayGroup = []
@@ -32,18 +33,23 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes", changes.listOfActivity);
+    console.log("changes", this.removeItem);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
       this.displayActivity = changes.listOfActivity.currentValue
-      // let single = _.filter(this.displayActivity, function (x) {
-      //   this.allCartList['activityName'] = x.activityName
-      // })
-      // console.log("all cart item", this.allCartList);
-
       this.initActivitySlider()
       this.displayAllData()
     }
+    if (changes.removeItem && changes.removeItem.currentValue) {
+      this.removeItems()
+    }
   }
+  removeItems() {
+    console.log("ama su ave che", this.allCartList);
+    var array3 = this.allCartList.filter(function (obj) { return this.removeItem.indexOf(obj) == -1; });
+    console.log("item id of daata", array3);
+
+  }
+
 
   initActivitySlider() {
     setTimeout(() => {
@@ -80,7 +86,8 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   nextSlide(slider) {
-    console.log("==========", slider);
+    console.log("==========", this.groupIndex);
+    this.groupIndex = 0
     this.activityIndex = slider
     this.displayAllData()
   }
@@ -105,7 +112,7 @@ export class GuestActivitySliderComponent implements OnInit {
     console.log("kaik thay che ama bs", item);
     this.itemList[index]['quantity'] = event.target.value
     // this.displayActivity[this.activityIndex].activityName = []
-    
+
     let obj = {
       activityName: this.displayActivity[this.activityIndex].activityName,
       itemGender: item.itemGender,
@@ -151,6 +158,6 @@ export class GuestActivitySliderComponent implements OnInit {
 
   addTocart() {
     console.log("list of all item ", this.allCartList)
-    this.totalItemList.emit({ allItems: this.allCartList, activities: this.displayActivity })
+    this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
   }
 }
