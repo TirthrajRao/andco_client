@@ -108,10 +108,10 @@
         <div class="send-message">
             <div class="float-left d-flex">
                 <p>Send on:</p>
-                <div class="send-date" (click)="picker.open()">
+                <div class="send-date mr-2" (click)="picker.open()">
                     <span>dd</span>
                 </div>
-                <div class="send-date" (click)="picker.open()">
+                <div class="send-date mr-2" (click)="picker.open()">
                     <span>mm</span>
                 </div>
                 <div class="send-date" (click)="picker.open()">
@@ -128,10 +128,10 @@
             <div class="float-right d-flex">
                 <p>at :</p>
                 <div class="send-time">
-                    <span>mm</span>
-                </div>
+                    <span>hh</span>
+                </div> <span class="middle">:</span>
                 <div class="send-time">
-                    <span>yyyy</span>
+                    <span>mm</span>
                 </div>
                 <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" readonly style="cursor: pointer;">
