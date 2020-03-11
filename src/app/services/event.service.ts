@@ -90,4 +90,19 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/event/join-event", eventId)
   }
 
+
+  enterAddress(data) {
+    return this.http.post(config.baseApiUrl + "/address", data)
+  }
+
+  getAddressDetails() {
+    return this.http.get(config.baseApiUrl + "/address")
+  }
+
+  addAccountDetails(data, flag) {
+    data['flag'] = flag
+    console.log("flage value", data);
+    // let newFlage = JSON.stringify(flag)
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
 }

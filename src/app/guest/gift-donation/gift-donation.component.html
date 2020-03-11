@@ -10,8 +10,10 @@
         <button class="btn font-weight-bold">Saved</button>
     </div>
     <div class="bottom-buttons my-4">
-        <button class="btn"><i class="fa fa-angle-double-left mr-2" aria-hidden="true"></i> Back</button>
-        <button class="btn">Skip</button>
-        <button class="btn">Next <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></button>
+        <button class="btn" (click)="displayItems()"><i class="fa fa-angle-double-left mr-2" aria-hidden="true"></i>
+            Back</button>
+        <button class="btn" (click)="displayAddress()">Skip</button>
+        <button class="btn" (click)="displayAddress()">Next <i class="fa fa-angle-double-right ml-2"
+                aria-hidden="true"></i></button>
     </div>
 </div>

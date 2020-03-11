@@ -102,4 +102,22 @@ button.btn.add-more {
     font-size    : 20px;
     line-height: 50px;
 }
+
 /* accordian end */
+
+
+.buttons-pay-back {
+    display: flex;
+    justify-content: space-between;
+    /* position: absolute;
+    bottom: -50px;
+    width: 100%;
+    left: 0; */
+}
+.buttons-pay-back button {
+    background-color: #fff;
+    color: #2B879B;
+    font-weight: bold;
+    padding: 7px 30px;
+    font-size: 18px;
+}
