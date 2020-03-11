@@ -10,6 +10,7 @@
     padding: 5px 16px;
     text-align: center;
     cursor: pointer;
+    position: relative;
 }
 
 .myEvent-name p {
@@ -25,10 +26,6 @@
 }
 .myEvent-group-slider .myEvent-name p{
     color: #C48042;
-}
-.myEvent-name{
-    position: relative;
-    margin: 5px;
 }
 
 .myEvent-name.active:after{
@@ -87,7 +84,8 @@
 
 @media(max-width: 1600px) {
     .myEvent-name p {
-        font-size: 26px;
+        font-size: 24px;
+        line-height: 40px;
     }
 }
 

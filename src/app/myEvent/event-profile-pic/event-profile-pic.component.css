@@ -38,3 +38,10 @@
 .event-camera img{
     cursor: pointer;
 }
+
+@media(max-width: 1600px){
+    .profile-photo{
+        height: 240px;
+        width: 240px;
+    }
+}

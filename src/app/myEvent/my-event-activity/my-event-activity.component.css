@@ -1,6 +1,6 @@
 .myevent-groups-item{
-    max-height: 200px;
-    min-height: 200px;
+    max-height: 150px;
+    min-height: 150px;
     overflow-y: auto;
 }
 .myevent-groups-item::-webkit-scrollbar-track {
@@ -105,6 +105,15 @@ span.items-price, span.items-name{
 @media(max-width:1600px) {
     .myevent-activity-box{
         font-size: 30px;
+        width: 100%;
+        margin: 10px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        font-size: 26px;
+    }
+    .myevent-groups-item{
+        max-height: 100px;
+        min-height: 70px;
     }
 }
 

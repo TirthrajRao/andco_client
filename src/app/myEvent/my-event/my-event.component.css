@@ -30,6 +30,11 @@
 @media(max-width: 1600px){
     .myevent-inner-box{
         width: 750px;
+        min-height: calc(100vh - 280px);
+    }
+    .my-event-hashtag h2{
+        font-size: 34px;
+        margin-bottom: 10px;
     }
 }
 @media(max-width: 1366px){
