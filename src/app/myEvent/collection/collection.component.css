@@ -20,6 +20,25 @@ li.nav-item a {
     border: 2px solid #F8D0AD !important;
 }
 a.nav-link.active {
-    color: #C97A33 !important;
-    
+    color: #C97A33 !important;  
 }
+
+@media(max-width:1600px){
+    .nav-tabs .nav-link{
+        padding: 5px 60px 3px;
+    }
+    .total-slide h1 {
+        font-size: 34px;
+    }
+}
+@media(max-width:1366px){
+    li.nav-item a{
+        font-size: 20px;
+    }
+}
+@media(max-width:1199px){
+    li.nav-item a{
+        font-size: 18px;
+    }
+}
+@media(max-width:991px){}

@@ -91,15 +91,22 @@
 
 @media(max-width: 1366px) {
     .myEvent-name p {
-        font-size: 22px;
+        font-size: 20px;
+        padding-top: 3px;
+        line-height: 30px;
     }
 }
 
-@media(max-width: 1199px) {}
+@media(max-width: 1199px) {
+    .myEvent-name p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
 
 @media(max-width: 991px) {
     .myEvent-name p {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
@@ -114,6 +121,9 @@
     .add-event button {
         font-size: 40px;
     }
+    .myEvent-name{
+        border-radius: 7px;
+    }
 }
 
 @media(max-width: 480px) {
@@ -121,6 +131,11 @@
         font-size: 18px;
     }
     .myEvent-slider-box{
-        padding: 0 20px;
+        padding: 0;
+    }
+}
+@media(max-width:400px){
+    .myEvent-name p {
+        font-size: 16px;
     }
 }

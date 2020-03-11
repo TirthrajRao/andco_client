@@ -45,7 +45,8 @@
     font-size: 24px;
     font-weight: 600;
 } */
-textarea{
+
+textarea {
     width: 100%;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.26);
@@ -58,7 +59,8 @@ textarea{
     font-weight: 600;
     resize: none;
 }
-textarea::placeholder{
+
+textarea::placeholder {
     color: #e0d8d8;
 }
 
@@ -94,16 +96,19 @@ textarea::placeholder{
 /* step 2 end*/
 
 /* step 3 start */
+
 .send-message {
     display: inline-block;
     width: 100%;
 }
+
 .send-message p {
     color: #F8D0AD;
     font-size: 24px;
     font-weight: bold;
     margin-right: 5px;
 }
+
 .send-date, .send-time {
     background: #fff;
     color: #9B602A;
@@ -115,28 +120,34 @@ textarea::placeholder{
     justify-content: center;
     align-items: center;
 }
+
 span.middle {
     color: #fff;
     margin: 0 6px;
     font-size: 25px;
 }
+
 /* step 3 end */
 
 /* step 4 start */
+
 .to {
     float: left;
     width: 60px;
 }
-.to h3{
+
+.to h3 {
     color: #fff;
     font-weight: 600;
 }
+
 .all {
     padding-left: 60px;
 }
+
 /* step 4 end */
 
-@media(max-width: 1600px){
+@media(max-width: 1600px) {
     .share-link {
         padding: 6px 0 4px;
     }
@@ -144,12 +155,69 @@ span.middle {
         line-height: 40px;
         font-size: 22px;
     }
-    textarea{
+    textarea {
         font-size: 22px;
         height: 150px;
     }
     .share-button button {
         border: 2px solid #F8D0AD;
         font-size: 22px;
+    }
+}
+
+@media(max-width: 1366px) {
+    .share-link h3, .tab-name p {
+        line-height: 30px;
+        font-size: 18px;
+    }
+    .send-date, .send-time {
+        width: 60px;
+        font-size: 17px;
+    }
+    .send-message p {
+        font-size: 22px;
+    }
+    .share-button button {
+        font-size: 22px;
+    }
+    textarea {
+        font-size: 20px;
+        height: 110px;
+    }
+}
+@media(max-width: 1199px){
+    .send-date, .send-time {
+        width: 50px;
+        font-size: 15px;
+    }
+    .share-button button {
+        font-size: 18px;
+    }
+    .share-link h3, .tab-name p {
+        line-height: 27px;
+        font-size: 16px;
+    }
+}
+@media(max-width: 991px){
+    textarea {
+        font-size: 18px;
+        height: 100px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .send-date, .send-time {
+        width: 40px;
+        height: 30px;
+        font-size: 13px;
+    }
+}
+@media(max-width:767px){
+    .send-message .float-left,.send-message .float-right {
+        width: 100%;
+        float: unset !important;
+        margin-top: 10px;
+    }
+    .share-button button {
+        font-size: 16px;
     }
 }

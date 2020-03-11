@@ -119,7 +119,8 @@ span.items-price, span.items-name{
 
 @media(max-width:1366px) {
     .myevent-activity-box{
-        font-size: 28px;
+        font-size: 22px;
+        margin: 0;
     }
     /* radio button  start*/
     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
@@ -132,23 +133,34 @@ span.items-price, span.items-name{
         width: 26px;
         height: 26px;
     }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        font-size: 24px;
+    }
     /* radio button end*/
 }
 
 @media(max-width:1199px) {
+    .myevent-activity-box{
+        font-size: 20px;
+    }
     /* radio button  start*/
     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
         width: 10px;
         height: 10px;
-        top: 5px;
-        left: 5px;
+        top: 8px;
+        left: 8px;
     }
     [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
         width: 20px;
         height: 20px;
+        left: 3px;
+        top: 3px;
     }
     [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         line-height: 30px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        font-size: 20px;
     }
     /* radio button end*/
 }
@@ -180,5 +192,8 @@ span.items-price, span.items-name{
     .myevent-activity-box{
         padding: 0 20px;
         width: 100%;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font-size: 17px;
     }
 }

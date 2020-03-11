@@ -92,3 +92,57 @@ span.text-orange{
     color: #C3742D;
     font-weight: bold;
 }
+@media(max-width: 1600px){
+    .total-slide h1{
+        font-size: 34px;
+    }
+    .total-activity-box{
+        margin-top: 60px;
+    }
+    .total-activity-box h1{
+        font-size: 30px;
+    }
+    .nav-tabs .nav-link{
+        margin-top: 5px;
+    }
+    .total-activity-box .tab-content span{
+        font-size: 24px;
+    }
+}
+@media(max-width: 1366px){
+    .total-slide h1{
+        font-size: 28px;
+    }
+    .total-activity-box{
+        margin-top: 50px;
+        padding: 20px 0;
+        min-height: 200px;
+    }
+    .total-activity-box h1 {
+        font-size: 26px;
+    }
+    .nav-tabs .nav-link {
+        margin-top: 0;
+        font-size: 16px;
+    }
+}
+@media(max-width: 1199px){
+    li.nav-item a{
+        font-size: 20px;
+    }
+    .total-activity-box .tab-content span {
+        font-size: 18px;
+    }
+    .total-second-slide{
+        height: 140px;
+    }
+    span.text-orange{
+        font-size: 20px;
+    }
+}
+@media(max-width: 991px){}
+@media(max-width: 767px){
+    .total-activity-box h1 {
+        font-size: 20px;
+    }
+}
