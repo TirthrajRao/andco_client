@@ -98,4 +98,11 @@ export class EventService {
   getAddressDetails() {
     return this.http.get(config.baseApiUrl + "/address")
   }
+
+  addAccountDetails(data, flag) {
+    data['flag'] = flag
+    console.log("flage value", data);
+    // let newFlage = JSON.stringify(flag)
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
 }

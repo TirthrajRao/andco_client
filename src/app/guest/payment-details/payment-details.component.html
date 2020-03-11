@@ -4,18 +4,55 @@
     </div>
     <!-- step1 start -->
     <div class="step-1" *ngIf="index ==0">
-        <div class="payment-inputs">
-            <input type="text" placeholder="Bank name">
-            <input type="text" placeholder="Account number">
-        </div>
+        <form [formGroup]="bankAccountFrom">
+            <div class="payment-inputs">
+                <input type="text" placeholder="Bank name" formControlName="bankName"
+                    [ngClass]="{ 'is-invalid': f.bankName.touched  && f.bankName.errors }" [pattern]="bankName">
+                <div class="col-md-2" *ngIf="f.bankName.touched && f.bankName.errors" class="invalid-feedback">
+                    <div *ngIf="f.bankName.errors.required">Bank Name is required</div>
+                    <!-- <div *ngIf="f.name.errors.minlength">Name must be at least 2 characters</div> -->
+                    <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
+                </div>
+                <input type="text" placeholder="Account number" formControlName="accountNumber"
+                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
+                    [pattern]="accountNumber" minlength="16" maxlength="16">
+                <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
+                    <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
+                    </div>
+                    <div *ngIf="f.accountNumber.errors.pattern">Enter Only numbers
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <!-- step1 end -->
     <!-- step2 start -->
     <div class="step-2" *ngIf="index ==1">
-        <div class="payment-inputs">
-            <input type="text" placeholder="Card number">
-            <input type="text" placeholder="CVV">
-        </div>
+        <form [formGroup]="cardNumberForm">
+            <div class="payment-inputs">
+                <input type="text" placeholder="Card number" formControlName="cardNumber"
+                    [ngClass]="{ 'is-invalid': g.cardNumber.touched && g.cardNumber.errors }" [pattern]="accountNumber"
+                    minlength="16" maxlength="16">
+                <div *ngIf="g.cardNumber.touched && g.cardNumber.errors" class="invalid-feedback">
+                    <div *ngIf="g.cardNumber.errors.required">Card Number is required</div>
+                    <div *ngIf="g.cardNumber.errors.minlength">Card Number must be only 16 digits
+                    </div>
+                    <div *ngIf="g.cardNumber.errors.pattern">Enter Only numbers
+                    </div>
+                </div>
+                <input type="text" placeholder="CVV" formControlName="cvv"
+                    [ngClass]="{ 'is-invalid': g.cvv.touched && g.cvv.errors }" [pattern]="accountNumber" minlength="3"
+                    maxlength="3">
+                <div *ngIf="g.cvv.touched && g.cvv.errors" class="invalid-feedback">
+                    <div *ngIf="g.cvv.errors.required">Cvv Number is required</div>
+                    <div *ngIf="g.cvv.errors.minlength">Cvv Number must be only 3 digits
+                    </div>
+                    <div *ngIf="g.cvv.errors.pattern">Enter Only numbers
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <!-- step2 end -->
     <!-- step3 start -->
@@ -29,6 +66,7 @@
     <!-- step3 end -->
     <div class="buttons-pay-back">
         <button class="btn" (click)="displayType()">Back</button>
-        <button class="btn">Pay</button>
+        <button class="btn" [disabled]="(bankAccountFrom.invalid) && (cardNumberForm.invalid)"
+            (click)="finalPayment()">Pay</button>
     </div>
 </div>

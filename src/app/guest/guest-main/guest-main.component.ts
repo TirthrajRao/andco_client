@@ -68,7 +68,7 @@ export class GuestMainComponent implements OnInit {
   displayActivity(event) {
     console.log("when click on activity", event);
     this.isDisable = true
-    this.index = 3
+    this.index = event
     this.totalActivityList = this.eventDetails.activity
   }
   totalItem(event) {
