@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { EventService } from '../../services/event.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
 @Component({
@@ -10,6 +12,8 @@ export class GuestItemTotalComponent implements OnInit {
   @Input('totalItemList') displayTotalItem;
   @Output() removeItem: EventEmitter<any> = new EventEmitter<any>()
   @Output() addDonation: EventEmitter<any> = new EventEmitter<any>()
+  private sub: any
+  private eventHashTag: any
   totlaItem: any
   totalActivity = []
   displayFinalItem = []
@@ -19,12 +23,20 @@ export class GuestItemTotalComponent implements OnInit {
   maleArray: any = [];
   femaleArray: any = [];
   removeArray: any = []
-  constructor() { }
+  constructor(
+    public eventService: EventService,
+    private route: Router,
+    private activated: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.sub = this.activated.params.subscribe(param => {
+      console.log("hashtag ", param);
+      this.eventHashTag = param.hashTag
+    })
     console.log("******changes", changes);
     console.log("display item in its page", changes.displayTotalItem.currentValue);
     this.totalActivity = changes.displayTotalItem.currentValue.activities
@@ -61,19 +73,49 @@ export class GuestItemTotalComponent implements OnInit {
     console.log("female array ============>", this.femaleArray);
   }
 
-  removeMaleItem(i, k, itemId) {
-    console.log("index", k, itemId);
-    this.maleArray[i].splice(k, 1);
-    this.removeArray.push(itemId)
-    console.log("male array", this.removeArray, "final array", this.maleArray, "sav final", this.values);
-  }
+  // removeMaleItem(i, k, itemId) {
+  //   console.log("index", k, itemId);
+  //   this.maleArray[i].splice(k, 1);
+  //   this.removeArray.push(itemId)
+  //   console.log("male array", this.removeArray, "final array", this.maleArray, "sav final", this.values);
+  // }
 
   addMoreItems() {
     console.log("remove item array", this.removeArray)
-    this.removeItem.emit({ removeItems: this.removeArray, index: 0 })
+    this.removeItem.emit({ index: 0 })
   }
 
   addDonationOfEvent() {
     this.addDonation.emit(2)
+  }
+
+
+  /**
+   * @param {String} id item._id pass
+   * remove any add to cart item on my cart 
+   */
+  removeMaleItems(id, i, k) {
+    console.log("id of remove item ", id);
+    this.eventService.removeCartItem(id)
+      .subscribe(data => {
+        console.log("remove item data", data);
+        // this.myCartDetails(this.eventId);
+        this.maleArray[i].splice(k, 1);
+      }, (err: any) => {
+        console.log(err);
+        // this.alertService.getError(err.message);
+      })
+  }
+
+  removeFemaleItems(id, i, j) {
+    this.eventService.removeCartItem(id)
+      .subscribe(data => {
+        console.log("remove item data", data);
+        // this.myCartDetails(this.eventId);
+        this.femaleArray[i].splice(j, 1);
+      }, (err: any) => {
+        console.log(err);
+        // this.alertService.getError(err.message);
+      })
   }
 }

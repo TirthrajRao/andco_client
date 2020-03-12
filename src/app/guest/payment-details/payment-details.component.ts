@@ -15,6 +15,7 @@ export class PaymentDetailsComponent implements OnInit {
   ussdForm: FormGroup
   bankName = "^[a-zA-Z \-\']+"
   accountNumber = "^[0-9]*$"
+  displayTotal
   index = 0
   constructor(
     public eventService: EventService
@@ -40,7 +41,8 @@ export class PaymentDetailsComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("selected type in his component", changes);
     if (changes.accountType.currentValue) {
-      this.displaySelectedAccount(changes.accountType.currentValue)
+      this.displaySelectedAccount(changes.accountType.currentValue.type)
+      this.displayTotal = changes.accountType.currentValue.total
     }
   }
 
@@ -84,7 +86,7 @@ export class PaymentDetailsComponent implements OnInit {
       finalData = this.cardNumberForm.value
       selectedValue = true
     }
-    this.eventService.addAccountDetails(finalData , selectedValue).subscribe((response) => {
+    this.eventService.addAccountDetails(finalData, selectedValue).subscribe((response) => {
       console.log("response of bank details added", response);
     }, error => {
       console.log("error while add account ", error)

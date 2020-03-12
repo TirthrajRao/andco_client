@@ -105,4 +105,30 @@ export class EventService {
     // let newFlage = JSON.stringify(flag)
     return this.http.post(config.baseApiUrl + "/account", data)
   }
+
+  addToCart(data) {
+    console.log("final data", data);
+    return this.http.post(config.baseApiUrl + "/cart", data)
+  }
+
+
+  getCartItems(hashTag) {
+    return this.http.get(config.baseApiUrl + "/event/cart-list/" + hashTag)
+  }
+
+  removeCartItem(itemId) {
+    return this.http.delete(config.baseApiUrl + "/cart?itemId=" + itemId)
+  }
+
+  addDonation(cartDetails) {
+    return this.http.post(config.baseApiUrl + "/event/add-donation", cartDetails)
+  }
+
+  getDonationAmount(hashTag) {
+    return this.http.get(config.baseApiUrl + "/event/getDonation/" + hashTag)
+  }
+
+  getTotalOfCart(hashTag) {
+    return this.http.get(config.baseApiUrl + "/event/getTotalOfCart/" + hashTag)
+  }
 }
