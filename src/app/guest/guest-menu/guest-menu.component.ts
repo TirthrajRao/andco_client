@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+declare var $;
 
 @Component({
   selector: 'app-guest-menu',
@@ -10,12 +11,18 @@ export class GuestMenuComponent implements OnInit {
 
 
   guestMenu = [
-    "activities", "total", "guest", "gift-donation"
+    "activities", "total", "gift-donation" , "exit"
   ]
 
   constructor() { }
 
   ngOnInit() {
+    $('#circularMenu a.floating-btn').click(function(){
+      $('#circularMenu').toggleClass('active');
+    });
+    $('menu a.menu-item').click(function(){
+      $('#circularMenu').removeClass('active');
+    });
   }
 
   allActivities() {

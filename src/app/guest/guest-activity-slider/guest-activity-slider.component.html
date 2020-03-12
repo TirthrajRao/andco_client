@@ -26,9 +26,13 @@
                     </div>
                     <div class="guest-add-items">
                         <h4>{{item.itemPrice  | currency:"&#x20A6;"}} <span>x</span>
-                            <input type="number" oninput="validity.valid||(value='');"
+                            <input class="arrow-number" type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="item.quentity"
                                 (change)="maleTotal($event , item , i)">
+                                <!-- <div class="design-number-arrow">
+                                    <a href="javascript:void(0)"><img class="up" src="../../../assets/images/up-arrow.png" alt="arrow"></a>
+                                    <a href="javascript:void(0)"><img class="down" src="../../../assets/images/down-arrow.png" alt="arrow"></a>
+                                </div> -->
                             <span>=</span> {{item.itemPrice * item.quentity}}
                         </h4>
                     </div>
@@ -41,9 +45,14 @@
                     </div>
                     <div class="guest-add-items">
                         <h4>{{item.itemPrice  | currency:"&#x20A6;"}} <span>x</span>
-                            <input type="number" oninput="validity.valid||(value='');"
+                            <input class="arrow-number" type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="item.quentity"
-                                (change)="femaleTotal($event , item , i)"> <span>=</span>
+                                (change)="femaleTotal($event , item , i)"> 
+                                <!-- <div class="design-number-arrow">
+                                    <a href="javascript:void(0)"><img src="../../../assets/images/up-arrow.png" alt="arrow"></a>
+                                    <a href="javascript:void(0)"><img src="../../../assets/images/down-arrow.png" alt="arrow"></a>
+                                </div> -->
+                                <span>=</span>
                             {{item.itemPrice * item.quentity}}
                         </h4>
                     </div>
@@ -52,7 +61,7 @@
         </div>
     </div>
     <div class="buttons-group">
-        <button class="btn saved">Saved</button>
+        <!-- <button class="btn saved">Saved</button> -->
         <button class="btn total" (click)="addTocart()">Total</button>
     </div>
 </div>

@@ -13,15 +13,12 @@
     box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, .26);
     color: #26ABCF;
     text-align: center;
-    line-height: normal;
     cursor: pointer;
-    outline: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 40px;
     font-weight: bold;
-    line-height: 0;
+    line-height: 100px;
+    position: relative;
+    z-index: 9999;
 }
 
 .circular-menu.active .floating-btn {
@@ -39,20 +36,6 @@
 
 .circular-menu.active .floating-btn i {
     transform: rotate(-45deg);
-}
-
-.circular-menu:after {
-    display: block;
-    content: ' ';
-    width: 3.5em;
-    height: 3.5em;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -2;
-    background-color: transparent;
-    transition: all .3s ease;
 }
 
 .circular-menu.active:after {
@@ -84,7 +67,16 @@
     background-color: #ffffff;
     transition: transform .3s ease, background .2s ease;
 }
-
+.circular-menu.active:before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 111;
+}
 .circular-menu .menu-item:hover {
     background-color: #26ABCF;
     color: #fff;
@@ -96,28 +88,24 @@
 }
 
 .circular-menu.active .menu-item:nth-child(1) {
-    transform: translate3d(1em, -7em, 0);
+    transform: translate3d(0em, -13em, 0);
 }
 
 .circular-menu.active .menu-item:nth-child(2) {
-    transform: translate3d(-3.5em, -6.3em, 0);
+    transform: translate3d(-6.5em, -11.3em, 0);
 }
 
 .circular-menu.active .menu-item:nth-child(3) {
-    transform: translate3d(-6.5em, -3.2em, 0);
+    transform: translate3d(-11.3em, -6.5em, 0);
 }
 
 .circular-menu.active .menu-item:nth-child(4) {
-    transform: translate3d(-7em, 1em, 0);
+    transform: translate3d(-13em, 0em, 0);
 }
 
 .circular-menu.active menu.items-wrapper a.menu-item {
-    z-index: 11;
+    z-index: 9999;
 }
-
-/**
- * The other theme for this menu
- */
 
 .circular-menu.circular-menu-left {
     right: auto;

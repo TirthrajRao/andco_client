@@ -662,8 +662,25 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         right: 10px;
         font-size: 20px;
     }
+    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+        right: 50px;
+    }
+    .total-collection-slider button.slick-arrow {
+        top: 65px;
+        right: 20px;
+    }
 }
-
+@media(max-width:440px){
+    .total-collection-slider button.slick-arrow img {
+        height: 26px;
+    }
+    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+        right: 30px;
+    }
+    .total-collection-slider button.slick-arrow {
+        display: none !important;
+    }
+}
 @media (max-width: 400px) {
     .navigation_menu {
         height: 40px;

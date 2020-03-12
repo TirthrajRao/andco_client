@@ -43,7 +43,7 @@
     font-size: 26px;
 }
 /* checkbox design start*/
-input[type=checkbox] + label {
+input[type=radio] + label {
     display: block;
     margin: 0.2em;
     cursor: pointer;
@@ -51,11 +51,11 @@ input[type=checkbox] + label {
     font-weight: 600;
   }
   
-  input[type=checkbox] {
+  input[type=radio] {
     display: none;
   }
   
-  input[type=checkbox] + label:before {
+  input[type=radio] + label:before {
     content: "\2714";
     border-radius: 0;
     display: inline-block;
@@ -70,11 +70,11 @@ input[type=checkbox] + label {
     background: #ffffffb5;
   }
   
-  input[type=checkbox] + label:active:before {
+  input[type=radio] + label:active:before {
     transform: scale(0);
   }
   
-  input[type=checkbox]:checked + label:before {
+  input[type=radio]:checked + label:before {
     background-color: #379bc2;
     border-color: #379bc2;
     color: #fff;

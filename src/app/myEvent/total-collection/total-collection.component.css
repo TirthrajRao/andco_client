@@ -60,7 +60,7 @@ a.nav-link.active:after {
     color: #686868;
     font-size: 26px;
 }
-.total-activity-box .tab-content .col-10 span{
+.total-activity-box .tab-content .col-sm-10 span{
     color: #C97A33;
     font-size: 22px;
 }
@@ -144,5 +144,35 @@ span.text-orange{
 @media(max-width: 767px){
     .total-activity-box h1 {
         font-size: 20px;
+    }
+}
+@media(max-width:575px){
+    .inner-div {
+        padding: 0 20px;
+    }
+    .nav-tabs .nav-link {
+        font-size: 14px;
+        margin: 10px 5px 5px;
+    }
+    .total-activity-box .tab-content .col-sm-10 span {
+        font-size: 18px;
+    }
+}
+@media(max-width: 440px){
+    .total-slide h1{
+        font-size: 24px;
+    }
+    span.open-close {
+        position: absolute;
+        top: 4px;
+        right: 10px;
+    }
+    .total-second-slide{
+        padding: 0 20px;
+    }
+    .nav-tabs .nav-link {
+        font-size: 14px;
+        margin: 6px 5px 5px;
+        padding: 5px 15px;
     }
 }

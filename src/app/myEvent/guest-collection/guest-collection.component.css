@@ -204,6 +204,8 @@ ul.guest-list-inner-box{
     }
     .guest-single-item p{
         width: 100%;
+        font-size: 16px;
+        line-height: 36px;
     }
     .guest-event-name,
     .guest-item-price{
@@ -217,5 +219,39 @@ ul.guest-list-inner-box{
     }
     .profile-name {
         font-size: 18px;
+    }
+    .info-box {
+        font-size: 16px;
+        border-top: 1px solid #440909;
+        border-bottom: 1px solid #440909;
+        padding: 0;
+    }
+    .inner-header{
+        margin-bottom: 0;
+    }
+    .info img {
+        float: left;
+        margin-right: 10px;
+        width: 20px;
+    }
+    .social-icon ul{
+        padding: 0;
+    }
+}
+@media(max-width: 440px){
+    .guest-list-box {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .info p {
+        margin: 10px 0;
+    }
+    .profile-name{
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+    }
+    .social-icon ul li a img {
+        height: 30px;
     }
 }

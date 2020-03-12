@@ -78,11 +78,6 @@
 }
 @media(max-width: 480px){
     .myevent-inner-box{
-        width: 400px;
-    }
-}
-@media(max-width: 400px){
-    .myevent-inner-box{
-        width: 100%;
+       width: 90%;
     }
 }
