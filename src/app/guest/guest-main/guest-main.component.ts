@@ -93,13 +93,14 @@ export class GuestMainComponent implements OnInit {
   }
   displayAddress(event) {
     this.index = event
+
   }
   selectPayment(event) {
     this.index = event
   }
   selectedAccountType(event) {
     this.index = event.index
-    this.selectedAccount = event.type
+    this.selectedAccount = ({ type: event.type, total: event.finalTotal })
   }
 
   displayAccount(event) {

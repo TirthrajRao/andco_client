@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { EventService } from '../../services/event.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { single } from 'rxjs/operators';
 declare var $;
@@ -12,6 +14,8 @@ export class GuestActivitySliderComponent implements OnInit {
   @Input('totalActivityList') listOfActivity
   @Input('removeItemOf') removeItem
   @Output() totalItemList: EventEmitter<any> = new EventEmitter<any>()
+  private sub: any
+  private eventHashtag: any
   displayActivity = []
   displayGroup = []
   itemList = []
@@ -26,23 +30,55 @@ export class GuestActivitySliderComponent implements OnInit {
   displayTotal
   allCartList = [
   ]
-  constructor() { }
+  cartTotalItems: any = [];
+  constructor(
+    public eventService: EventService,
+    public router: Router,
+    public activated: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.sub = this.activated.params.subscribe(params => {
+      this.eventHashtag = params.hashTag
+      console.log("hashtag is important", this.eventHashtag);
+    })
     this.initActivitySlider()
+    // this.getSelectedItems()
+    // this.displayAllData()
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // this.getSelectedItems()
     console.log("changes", this.removeItem);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
+      this.sub = this.activated.params.subscribe(params => {
+        this.eventHashtag = params.hashTag
+      })
       this.displayActivity = changes.listOfActivity.currentValue
       this.initActivitySlider()
-      this.displayAllData()
+      this.getSelectedItems()
+      // this.displayAllData()
     }
     if (changes.removeItem && changes.removeItem.currentValue) {
-      this.removeItems()
+      this.sub = this.activated.params.subscribe(params => {
+        this.eventHashtag = params.hashTag
+        console.log("hashtag is important", this.eventHashtag);
+      })
+      this.displayAllData()
     }
   }
+
+  getSelectedItems() {
+    this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
+      this.cartTotalItems = response.data.cartList
+      this.allCartList = response.data.cartList
+      this.displayAllData()
+      console.log("response of cart items", this.cartTotalItems)
+    }, error => {
+      console.log("error while get cart details", error)
+    })
+  }
+
   removeItems() {
     console.log("ama su ave che", this.allCartList);
     var array3 = this.allCartList.filter(function (obj) { return this.removeItem.indexOf(obj) == -1; });
@@ -79,6 +115,17 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedGender = 'male'
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     console.log("quntity with rank", this.itemList);
+    this.itemList.forEach((singleItem) => {
+      console.log("male single items array", singleItem);
+      this.cartTotalItems.forEach((singleCartItem) => {
+        console.log("cart items", singleCartItem);
+        if (singleItem._id == singleCartItem.itemId) {
+          console.log("call this or not");
+          singleItem['quantity'] = singleCartItem.quantity
+        }
+      })
+    })
+    console.log("final male items", this.itemList);
 
     setTimeout(() => {
       $('input:radio[id="0"]').attr('checked', true);
@@ -98,6 +145,16 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 1
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
+    this.itemList.forEach((singleItem) => {
+      console.log("male single items array", singleItem);
+      this.cartTotalItems.forEach((singleCartItem) => {
+        console.log("cart items", singleCartItem);
+        if (singleItem._id == singleCartItem.itemId) {
+          console.log("call this or not");
+          singleItem['quantity'] = singleCartItem.quantity
+        }
+      })
+    })
   }
 
   changeGroup(event) {
@@ -106,6 +163,16 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedGender = 'male'
     this.selectedwallet = 0
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
+    this.itemList.forEach((singleItem) => {
+      console.log("male single items array", singleItem);
+      this.cartTotalItems.forEach((singleCartItem) => {
+        console.log("cart items", singleCartItem);
+        if (singleItem._id == singleCartItem.itemId) {
+          console.log("call this or not");
+          singleItem['quantity'] = singleCartItem.quantity
+        }
+      })
+    })
   }
 
   maleTotal(event, item, index) {
@@ -158,6 +225,21 @@ export class GuestActivitySliderComponent implements OnInit {
 
   addTocart() {
     console.log("list of all item ", this.allCartList)
-    this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
+    let body = {
+      eventHashtag: this.eventHashtag
+    }
+    // this.allCartList[0].push(body)
+    // if (this.eventHashtag) {
+    this.allCartList[0]['eventHashtag'] = this.eventHashtag
+    // }
+    this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
+      console.log("resonse of cart details", response)
+      this.allCartList = response.data.data.cartList
+      this.totalItemList.emit({ allItems: response.data.data.cartList, index: 1 })
+    }, error => {
+      console.log("error while add cart items", error);
+    })
   }
+
+  
 }

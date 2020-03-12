@@ -5,7 +5,7 @@
         but your financial gift is very much appreciated.
     </p>
     <h3>I Give : <input type="number" placeholder=":00" oninput="validity.valid||(value='');"
-            onkeydown="return event.keyCode !== 69" min="0" min="1"> </h3>
+            onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="donation"> </h3>
     <div class="save text-center">
         <!-- <button class="btn font-weight-bold">Saved</button> -->
     </div>

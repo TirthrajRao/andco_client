@@ -22,14 +22,14 @@
                                         {{data.quantity}}
                                         <span> = </span>{{data.itemPrice * data.quantity}}
                                         <img src="../../../assets/images/x.png" alt="remove"
-                                            (click)="removeMaleItem(i ,k , data.itemId)">
+                                            (click)="removeMaleItems(data.itemId, i ,k)">
                                     </h4>
                                 </div>
                             </li>
                         </ul>
                         <h4 class="group">Female</h4>
                         <ul>
-                            <li class="guest-item" *ngFor="let data of femaleArray[i]">
+                            <li class="guest-item" *ngFor="let data of femaleArray[i]; let j = index">
                                 <div class="guest-item-name">
                                     <p>{{data.itemName}}</p>
                                 </div>
@@ -38,7 +38,8 @@
                                         {{data.quantity}}
                                         <span> =
                                         </span>{{data.itemPrice * data.quantity}}
-                                        <img src="../../../assets/images/x.png" alt="remove">
+                                        <img src="../../../assets/images/x.png" alt="remove"
+                                            (click)="removeFemaleItems(data.itemId, i ,j)">
                                     </h4>
                                 </div>
                             </li>
