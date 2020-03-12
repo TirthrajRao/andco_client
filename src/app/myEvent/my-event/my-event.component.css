@@ -40,11 +40,25 @@
 @media(max-width: 1366px){
     .myevent-inner-box{
         width: 700px;
+        min-height: calc(100vh - 250px);
+    }
+    .my-event-hashtag h2 {
+        font-size: 28px;
+        margin-bottom: 5px;
     }
 }
 @media(max-width: 1199px){
     .myevent-inner-box{
         width:650px;
+        min-height: calc(100vh - 230px);
+    }
+    .my-event-hashtag h2 {
+        font-size: 24px;
+    }
+}
+@media(max-width:1024px){
+    .myevent-inner-box{
+        min-height: calc(100vh - 270px);
     }
 }
 @media(max-width: 991px){
@@ -64,11 +78,6 @@
 }
 @media(max-width: 480px){
     .myevent-inner-box{
-        width: 400px;
-    }
-}
-@media(max-width: 400px){
-    .myevent-inner-box{
-        width: 100%;
+       width: 90%;
     }
 }

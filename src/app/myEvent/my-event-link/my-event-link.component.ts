@@ -49,9 +49,9 @@ export class MyEventLinkComponent implements OnInit {
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 481,
           settings: {
-            slidesToShow: 1,
+            slidesToShow: 1.5,
           }
         },
       ],

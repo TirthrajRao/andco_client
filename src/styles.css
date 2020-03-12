@@ -559,6 +559,21 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-main .page-content {
         padding-top: 110px;
     }
+    .total-collection-slider ul.slick-dots{
+        margin-top: -20px;
+    }
+    .total-collection-slider button.slick-arrow {
+        top: 60px;
+        right: 20px;
+    }
+    .total-collection-slider ul.slick-dots li button{
+        height: 16px;
+        width: 16px;
+    }
+    .total-collection-slider button.slick-arrow img{
+        height: 30px;
+    }
+   
 }
 
 @media(max-width: 1199px) {
@@ -570,6 +585,12 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         font-size: 18px;
         padding: 4px 28px;
     }
+    .myEvent-main .page-content {
+        padding-top: 130px;
+    }
+    .total-collection-slider ul.slick-dots {
+        margin-top: 0;
+    }
 }
 
 @media(max-width: 991px) {
@@ -579,6 +600,13 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     img.swal2-image {
         height: 70px;
         width: 200px !important;
+    }
+    share-button.sb-button.sb-circles-dark button {
+        height: 40px;
+        width: 50px;
+    }
+    .myEvent-main .page-content {
+        padding-top: 110px;
     }
 }
 
@@ -634,8 +662,25 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         right: 10px;
         font-size: 20px;
     }
+    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+        right: 50px;
+    }
+    .total-collection-slider button.slick-arrow {
+        top: 65px;
+        right: 20px;
+    }
 }
-
+@media(max-width:440px){
+    .total-collection-slider button.slick-arrow img {
+        height: 26px;
+    }
+    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+        right: 30px;
+    }
+    .total-collection-slider button.slick-arrow {
+        display: none !important;
+    }
+}
 @media (max-width: 400px) {
     .navigation_menu {
         height: 40px;
@@ -654,6 +699,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     img.swal2-image {
         height: 30px;
         width: 100px !important;
+    }
+    .myEvent-main .page-content {
+        padding-top: 90px;
     }
 }
 

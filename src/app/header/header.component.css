@@ -3,7 +3,7 @@
     display: table;
     width: 100%;
     position: absolute;
-    z-index: 11;
+    z-index: 1;
     padding:20px;
 }
 .navigation_menu {
