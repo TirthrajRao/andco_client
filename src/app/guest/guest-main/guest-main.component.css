@@ -6,7 +6,7 @@
     height: auto;
     min-height: 100vh;
     font-family: 'Manjari', sans-serif !important;
-    padding: 20px 0 80px;
+    padding: 20px 0;
     overflow: hidden;
 }
 .guest-main-background:after{
