@@ -73,4 +73,9 @@ export class GuestAddressComponent implements OnInit {
       message.innerHTML = "";
     }
   }
+
+  backToDonation() {
+    console.log("call this or not")
+    this.displayAccount.emit(2)
+  }
 }

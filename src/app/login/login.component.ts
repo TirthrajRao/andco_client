@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
           this.isLoad = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/guest/', this.eventIdWithLogin])
+          this.router.navigate(['/guest-join/', this.eventIdWithLogin])
         } else if (data.data.UserRole == 'admin') {
           this.isLoad = false
           // this.router.navigate(['/home/admin-dashboard']);

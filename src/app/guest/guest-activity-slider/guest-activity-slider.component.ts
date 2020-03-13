@@ -228,10 +228,7 @@ export class GuestActivitySliderComponent implements OnInit {
     let body = {
       eventHashtag: this.eventHashtag
     }
-    // this.allCartList[0].push(body)
-    // if (this.eventHashtag) {
     this.allCartList[0]['eventHashtag'] = this.eventHashtag
-    // }
     this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
       console.log("resonse of cart details", response)
       this.allCartList = response.data.data.cartList

@@ -32,7 +32,7 @@ export class GuestItemTotalComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.activated.params.subscribe(param => {
-      console.log("hashtag ", param);
+      // console.log("hashtag ", param);
       this.eventHashTag = param.hashTag
     })
     this.getCartItems()
@@ -40,10 +40,10 @@ export class GuestItemTotalComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     this.sub = this.activated.params.subscribe(param => {
-      console.log("hashtag ", param);
+      // console.log("hashtag ", param);
       this.eventHashTag = param.hashTag
     })
-    console.log("******changes", changes);
+    // console.log("******changes", changes);
     console.log("display item in its page", changes.displayTotalItem.currentValue);
     this.totalActivity = changes.displayTotalItem.currentValue.activities
     this.totlaItem = changes.displayTotalItem.currentValue.allItems
@@ -52,9 +52,8 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   getCartItems() {
-
     this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
-      console.log("response of cart list", response);
+      // console.log("response of cart list", response);
       this.totlaItem = response.data.cartList
       this.displayList()
     }, error => {
@@ -73,7 +72,7 @@ export class GuestItemTotalComponent implements OnInit {
     console.log("grouped", this.displayFinalItem);
     this.keys = Object.keys(this.displayFinalItem);
     this.values = Object.values(this.displayFinalItem)
-    console.log("keys ==>", this.keys, " values ==>", this.values);
+    // console.log("keys ==>", this.keys, " values ==>", this.values);
     this.values.forEach((value) => {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
@@ -106,6 +105,10 @@ export class GuestItemTotalComponent implements OnInit {
 
   addDonationOfEvent() {
     this.addDonation.emit(2)
+  }
+
+  displayItemList() {
+    this.addDonation.emit(0)
   }
 
 
