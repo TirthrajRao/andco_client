@@ -95,6 +95,8 @@ export class HeaderComponent implements OnInit {
       return '#434040'
     } else if (this.currentUrl.includes('eventGroup')) {
       return '#434040'
+    } else if (this.currentUrl.includes('myevent')) {
+      return '#F8D0AD'
     } else if (this.currentUrl.includes('set-price')) {
       return '#434040'
     } else {

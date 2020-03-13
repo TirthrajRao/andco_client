@@ -33,3 +33,5 @@
 .bottom-buttons i{
     font-size: 26px;
 }
+
+@media(max-width:1600px){}
