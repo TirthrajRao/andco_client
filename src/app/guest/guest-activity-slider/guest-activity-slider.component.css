@@ -64,6 +64,7 @@
     font-size: 20px;
     padding: 10px 30px;
 }
+
 li.guest-item {
     width: 100%;
     display: inline-block;
@@ -198,3 +199,55 @@ img.down{
 
 
 
+@media(max-width:1600px){
+    .guest-activity-slider h2{
+    font-size: 26px;
+    }
+    .guest-activity-group{
+        padding: 9px 0 5px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        font-size: 20px;
+    }
+}
+@media(max-width:1366px){
+     /* radio button  start*/
+     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 11px;
+        height: 11px;
+        top: 7px;
+        left: 8px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 26px;
+        height: 26px;
+    }
+    /* radio button end*/
+}
+@media(max-width:1199px){
+      /* radio button  start*/
+      [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 20px;
+        height: 20px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        line-height: 30px;
+    }
+    /* radio button end*/
+}
+
+@media(max-width:575px){
+    .guest-activity-item-tab li.nav-item a.nav-link {
+        font-size: 18px;
+        padding: 5px 20px;
+    }
+    .guest-activity-item-tab .tab-content {
+        padding: 20px;
+    }
+}
