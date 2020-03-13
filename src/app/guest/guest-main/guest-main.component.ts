@@ -28,6 +28,9 @@ export class GuestMainComponent implements OnInit {
   removeItem
   selectedAccount
   eventTheme
+  thankYouDetails
+
+
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -113,10 +116,16 @@ export class GuestMainComponent implements OnInit {
   }
   selectedAccountType(event) {
     this.index = event.index
-    this.selectedAccount = ({ type: event.type, total: event.finalTotal })
+    this.selectedAccount = ({ type: event.type, total: event.finalTotal, donation: event.donation })
   }
 
   displayAccount(event) {
     this.index = event
+  }
+
+
+  thankYouMessage(event) {
+    this.index = event.index
+    this.thankYouDetails = event.message
   }
 }

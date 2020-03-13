@@ -11,6 +11,7 @@ export class PaymentDetailsComponent implements OnInit {
 
   @Input('accountType') accountType
   @Output() lastIndex: EventEmitter<any> = new EventEmitter<any>()
+  @Output() thankYouDetails: EventEmitter<any> = new EventEmitter<any>()
   private sub: any
   private hashTag: any
   bankAccountFrom: FormGroup;
@@ -22,7 +23,12 @@ export class PaymentDetailsComponent implements OnInit {
   accountDetails
   cartList = []
   itemList = []
+  grandTotal = 0;
+  subTotal;
+  finalGrandTotal;
+  eventId
   index = 0
+  donation: any;
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -46,7 +52,9 @@ export class PaymentDetailsComponent implements OnInit {
     if (changes.accountType.currentValue) {
       this.displaySelectedAccount(changes.accountType.currentValue.type)
       this.displayTotal = changes.accountType.currentValue.total
+      this.donation = changes.accountType.currentValue.donation
     }
+    console.log("donation of event", this.donation)
     this.sub = this.activated.params.subscribe(param => {
       this.hashTag = param.hashTag
     })
@@ -58,6 +66,13 @@ export class PaymentDetailsComponent implements OnInit {
     this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
       console.log("response of cart list", response);
       this.cartList = response.data.cartList
+      this.eventId = response.data.eventDetail._id
+      this.cartList.forEach((item: any) => {
+        console.log("single items of cart", item)
+        this.subTotal = item.itemPrice * item.quantity
+        this.grandTotal = this.grandTotal + this.subTotal
+        this.finalGrandTotal = this.grandTotal
+      });
     }, error => {
       console.log("error while get cart details", error)
     })
@@ -101,6 +116,13 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   finalPayment() {
+
+    let myCart = {
+      orderDetails: this.cartList,
+      finalTotal: this.finalGrandTotal,
+      eventId: this.eventId,
+      donationAmount: this.donation,
+    }
     console.log("index of page", this.index);
     let finalData
     let selectedValue = false
@@ -114,8 +136,9 @@ export class PaymentDetailsComponent implements OnInit {
       finalData = this.cardNumberForm.value
       selectedValue = true
     }
-    this.eventService.addAccountDetails(finalData, selectedValue, this.cartList).subscribe((response) => {
-      console.log("response of bank details added", response);
+    this.eventService.addAccountDetails(finalData, selectedValue, myCart).subscribe((response: any) => {
+      console.log("response of payment completed", response);
+      this.thankYouDetails.emit({ message: response.data, index: 6 })
     }, error => {
       console.log("error while add account ", error)
     })
