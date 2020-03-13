@@ -15,18 +15,18 @@ li.guest-item{
     float: right;
 }
 button.single-activity{
-    color: #AF605B;
+    color: var(--total-title-font-color);
     font-weight: 600;
     position: relative;
     text-align: left;
     font-size: 30px;
-    background-color: #ffffff80;
+    background-color: var(--total-title-background-color);
     border-radius: 0;
     margin-bottom: 10px;
 }
 button.btn.add-more {
     background-color: #fff;
-    color: #9B514B;
+    color: var(--guest-total-add-more);
     font-weight: 600;
     padding: 5px 30px;
     font-size: 20px;
@@ -41,14 +41,14 @@ button.btn.add-more {
     margin: 15px;
 }
 .group-box h4.group {
-    color: #003A47;
+    color: var(--group-box-h4-group);
     font-weight: bold;
     padding-left: 20px;
     position: relative;
 }
 .group-box h4.group:after{
     content: "";
-    background-color: #003A47;
+    background-color: var(--group-box-h4-group);
     position: absolute;
     left: 0px;
     top: 5px;
@@ -98,7 +98,7 @@ button.btn.add-more {
     top                : 0;
     bottom             : 0;
     margin             : auto;
-    color        : #fff;
+    color        : var(--activity-accordian-arrow-color);
     font-size    : 20px;
     line-height: 50px;
 }
@@ -116,7 +116,7 @@ button.btn.add-more {
 }
 .buttons-pay-back button {
     background-color: #fff;
-    color: #2B879B;
+    color: var(--guest-total-add-more);
     font-weight: bold;
     padding: 7px 30px;
     font-size: 18px;

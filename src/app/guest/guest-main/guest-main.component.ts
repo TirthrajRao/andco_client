@@ -61,7 +61,7 @@ export class GuestMainComponent implements OnInit {
       console.log("details of event with link", response)
       this.eventDetails = response.data
       this.eventTheme = this.eventDetails.eventTheme
-      // this.themeService.toggleDark()
+      this.themeService.toggleInstruments()
       this.isJoin = this.eventDetails.isJoined
     }, error => {
       console.log("error while get link details", error)

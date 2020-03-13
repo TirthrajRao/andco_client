@@ -1,5 +1,5 @@
 .total-amount h2 {
-    color: #444444;
+    color: var(--total-title-font-color);
     text-align: center;
     font-weight: 600;
     padding: 15px 0 10px;
@@ -12,10 +12,13 @@
 .total-amount {
     position: relative;
 }
+h3.pay-by{
+    color: var(--pay-by-color);
+}
 
 .total-amount:after {
     content: "";
-    background-color: #ffffff60;
+    background-color: var(--total-title-background-color);
     position: absolute;
     top: 0;
     right: -30px;
@@ -39,7 +42,7 @@
 
 .buttons-pay-back button {
     background-color: #fff;
-    color: #2B879B;
+    color: var(--guest-total-add-more);
     font-weight: bold;
     padding: 7px 30px;
     font-size: 18px;
@@ -80,7 +83,7 @@
     content: '';
     width: 13px;
     height: 13px;
-    background: #26ABCF;
+    background: var(--guest-activity-group-radio-check-color);
     position: absolute;
     top: 7px;
     left: 7px;

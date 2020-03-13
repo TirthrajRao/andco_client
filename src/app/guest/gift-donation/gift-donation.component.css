@@ -25,7 +25,7 @@
     justify-content: space-between;
 }
 .bottom-buttons button{
-    color: #2B879B;
+    color: var(--next-skip-back-color);
     font-weight: bold;
     font-family: 'Advent Pro', 'sans-sarif';
     font-size: 20px;

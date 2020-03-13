@@ -16,7 +16,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #ffffff30;
+    background-color: var(--guest-main-overlay);
 }
 .guest-main-box{
     width: 800px;
@@ -33,8 +33,10 @@
     border: 3px solid #fff;
 }
 .guest-profile img{
+    max-width: 100%;
     min-width: 100%;
-    max-height: 100%;
+    min-height: 100%;
+    object-fit: cover;
     object-fit: cover;
 }
 .guest-header h3{
@@ -43,14 +45,13 @@
     font-weight: bold;
 }
 .guest-inner-box{
-    background: linear-gradient(#4FBCD9,#C7F2FE);
+    background: linear-gradient(var(--guest-inner-gradient-first-color),var(--guest-inner-gradient-second-color));
     border-radius: 20px;
     padding: 30px;
     height: 58vh;
     max-height: 58vh;
     overflow: auto;
 }
-
 .guest-inner-box::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
@@ -66,14 +67,14 @@
 .guest-inner-box::-webkit-scrollbar-thumb {
     border-radius: 7px;
     -webkit-box-shadow: inset 0 0 3px transparent;
-    background-color: #BA8A41;
+    background-color: black;
 }
 .join-event {
     width: 100%;
     text-align: center;
 }
 .join-event button{
-    background: linear-gradient(#4FBCD9,#C7F2FE);
+    background: linear-gradient(var(--guest-inner-gradient-first-color),var(--guest-inner-gradient-second-color));
     color: #fff;
     font-weight: 600;
     font-size: 20px;

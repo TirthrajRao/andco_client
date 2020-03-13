@@ -11,6 +11,7 @@
     padding: 10px 15px;
     color: black;
     font-size: 20px;
+    font-weight: bold;
 }
 .guest-address input:focus{
     outline: none;
@@ -28,13 +29,13 @@
 }
 .pay button{
     background-color: #fff;
-    color: #2B879B;
+    color: var(--guest-total-add-more);
     padding: 5px 30px;
     font-size: 20px;
     font-weight: 600;
 }
 .bottom-buttons button{
-    color: #2B879B;
+    color: var(--next-skip-back-color);
     font-weight: bold;
     font-family: 'Advent Pro', 'sans-sarif';
     font-size: 20px;
@@ -49,6 +50,7 @@ input[type=radio] + label {
     cursor: pointer;
     padding: 0.2em;
     font-weight: 600;
+    color: var(--guest-address-label-color);
   }
   
   input[type=radio] {
@@ -75,8 +77,8 @@ input[type=radio] + label {
   }
   
   input[type=radio]:checked + label:before {
-    background-color: #379bc2;
-    border-color: #379bc2;
+    background-color: var(--guest-address-radio-color);
+    border-color: var(--guest-address-radio-color);
     color: #fff;
   }
   /* checkbox design end*/
