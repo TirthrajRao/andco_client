@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 @Component({
@@ -10,15 +11,21 @@ export class PaymentDetailsComponent implements OnInit {
 
   @Input('accountType') accountType
   @Output() lastIndex: EventEmitter<any> = new EventEmitter<any>()
+  private sub: any
+  private hashTag: any
   bankAccountFrom: FormGroup;
   cardNumberForm: FormGroup;
   ussdForm: FormGroup
   bankName = "^[a-zA-Z \-\']+"
   accountNumber = "^[0-9]*$"
   displayTotal
+  accountDetails
+  cartList = []
+  itemList = []
   index = 0
   constructor(
-    public eventService: EventService
+    public eventService: EventService,
+    public activated: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -33,10 +40,6 @@ export class PaymentDetailsComponent implements OnInit {
       cvv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.min(3)])
     })
 
-    // this.ussdForm= new FormGroup({
-
-    // })
-
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log("selected type in his component", changes);
@@ -44,6 +47,31 @@ export class PaymentDetailsComponent implements OnInit {
       this.displaySelectedAccount(changes.accountType.currentValue.type)
       this.displayTotal = changes.accountType.currentValue.total
     }
+    this.sub = this.activated.params.subscribe(param => {
+      this.hashTag = param.hashTag
+    })
+    this.getItemDetails()
+    this.getAccountDetails(changes.accountType.currentValue.type)
+  }
+
+  getItemDetails() {
+    this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
+      console.log("response of cart list", response);
+      this.cartList = response.data.cartList
+    }, error => {
+      console.log("error while get cart details", error)
+    })
+  }
+
+
+  getAccountDetails(accountType) {
+    this.eventService.getAccountDetails(accountType).subscribe((response: any) => {
+      console.log("response of account details", response);
+      this.accountDetails = response.data
+    }, error => {
+      console.log("error while get acccount details", error);
+
+    })
   }
 
 
@@ -86,7 +114,7 @@ export class PaymentDetailsComponent implements OnInit {
       finalData = this.cardNumberForm.value
       selectedValue = true
     }
-    this.eventService.addAccountDetails(finalData, selectedValue).subscribe((response) => {
+    this.eventService.addAccountDetails(finalData, selectedValue, this.cartList).subscribe((response) => {
       console.log("response of bank details added", response);
     }, error => {
       console.log("error while add account ", error)

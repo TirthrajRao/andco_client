@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
+import { templateJitUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -99,12 +100,6 @@ export class EventService {
     return this.http.get(config.baseApiUrl + "/address")
   }
 
-  addAccountDetails(data, flag) {
-    data['flag'] = flag
-    console.log("flage value", data);
-    // let newFlage = JSON.stringify(flag)
-    return this.http.post(config.baseApiUrl + "/account", data)
-  }
 
   addToCart(data) {
     console.log("final data", data);
@@ -130,5 +125,20 @@ export class EventService {
 
   getTotalOfCart(hashTag) {
     return this.http.get(config.baseApiUrl + "/event/getTotalOfCart/" + hashTag)
+  }
+
+  addAccountDetails(data, flag, cartList) {
+    data['flag'] = flag
+    data['cartItems'] = cartList
+    console.log("flage value", data);
+    // let newFlage = JSON.stringify(flag)
+    return this.http.post(config.baseApiUrl + "/guestAccount", data)
+  }
+
+  getAccountDetails(accountType) {
+    let body = {
+      type: accountType
+    }
+    return this.http.get(config.baseApiUrl + "/guestAccount", { params: body })
   }
 }
