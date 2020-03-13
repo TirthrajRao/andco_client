@@ -48,7 +48,7 @@ export class GuestItemTotalComponent implements OnInit {
     this.totalActivity = changes.displayTotalItem.currentValue.activities
     this.totlaItem = changes.displayTotalItem.currentValue.allItems
     this.displayList()
-
+    this.getCartItems()
   }
 
   getCartItems() {
@@ -80,7 +80,7 @@ export class GuestItemTotalComponent implements OnInit {
         if (valueOfSingle.itemGender == 'male') {
           maleArrOfValue.push(valueOfSingle);
         }
-        else {
+        else if (valueOfSingle.itemGender == 'female') {
           femaleArrOfValue.push(valueOfSingle);
         }
       });
@@ -100,7 +100,7 @@ export class GuestItemTotalComponent implements OnInit {
 
   addMoreItems() {
     console.log("remove item array", this.removeArray)
-    this.removeItem.emit({ index: 0 })
+    this.removeItem.emit({ index: 0, removeItem: 'removeItem' })
   }
 
   addDonationOfEvent() {

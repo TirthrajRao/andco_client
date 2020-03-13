@@ -9,6 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ShareModule } from '@ngx-share/core'
 import { ShareButtonModule } from '@ngx-share/button';
+import { ClipboardModule } from 'ngx-clipboard';
+
 
 
 // import { MatSelectModule } from '@angular/material/fesm2015/select';
@@ -180,7 +182,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
     ShareModule,
-    ShareButtonModule
+    ShareButtonModule,
+    ClipboardModule
     // MatSelectModule
   ],
   exports: [

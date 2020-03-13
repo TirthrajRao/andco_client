@@ -17,6 +17,7 @@ declare var $;
 export class HeaderComponent implements OnInit {
   @Input("displayName") displayName
   userName = JSON.parse(sessionStorage.getItem('userName'));
+  hashTag = JSON.parse(sessionStorage.getItem('guestHashTag'))
   index = 0
   returnUrl: string;
   isDisplay = false
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
   sub: any
   eventId: any
   imgUrl
+  notMenu
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -63,10 +65,10 @@ export class HeaderComponent implements OnInit {
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
       .subscribe((events: RoutesRecognized[]) => {
-        // console.log("event of url find", events)
+        console.log("event of url find", events)
         // console.log("index of page", this.index)
         this.currentUrl = events[1].urlAfterRedirects
-        // console.log('current url', this.currentUrl);
+        console.log('current url', this.currentUrl);
         // this.setLogo(this.currentUrl)
       });
 
@@ -76,7 +78,7 @@ export class HeaderComponent implements OnInit {
     })
 
     this.currentUrl = this.router.url
-    // console.log("login user name in heaedr", this.router.url)
+    console.log("login user name in heaedr", this.router.url)
     this.currentUrl = this.router.url
     // console.log("whne page is load display route", this.currentUrl)
   }
@@ -110,7 +112,7 @@ export class HeaderComponent implements OnInit {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('eventGroup')) {
       this.imgUrl = '/assets/images/firework-green.png'
-    } else if (this.currentUrl.includes('created-event-message')){
+    } else if (this.currentUrl.includes('created-event-message')) {
       this.imgUrl = '/assets/images/firework-pink.png'
     } else if (this.currentUrl.includes('set-price')) {
       this.imgUrl = '/assets/images/firework-green.png'

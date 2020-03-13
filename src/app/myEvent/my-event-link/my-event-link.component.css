@@ -3,14 +3,29 @@
     background-color: rgba(255, 255, 255, 0.68);
     border-radius: 10px;
     text-align: center;
-    padding: 10px 0 8px;
     margin: 10px 0;
+    position: relative;
+}
+.share-link i{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 26px;
+    line-height: 40px;
+    cursor: pointer;
 }
 
-.share-link h3 {
+.share-link input {
     color: #545454;
+    padding: 10px 20px 8px 8px;
     line-height: 50px;
     font-weight: 600;
+    background-color: transparent;
+    width: 90%;
+    border: none;
+}
+.share-link input:focus{
+    outline: none !important;
 }
 
 .tab-name {
@@ -149,7 +164,7 @@ span.middle {
 
 @media(max-width: 1600px) {
     .share-link {
-        padding: 6px 0 4px;
+        padding: 6px 25px 4px 4px;
     }
     .share-link h3, .tab-name p {
         line-height: 40px;
