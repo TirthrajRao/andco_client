@@ -23,6 +23,7 @@ export class GuestItemTotalComponent implements OnInit {
   maleArray: any = [];
   femaleArray: any = [];
   removeArray: any = []
+  current = 0
   constructor(
     public eventService: EventService,
     private route: Router,
@@ -30,6 +31,11 @@ export class GuestItemTotalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.sub = this.activated.params.subscribe(param => {
+      console.log("hashtag ", param);
+      this.eventHashTag = param.hashTag
+    })
+    this.getCartItems()
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -44,6 +50,19 @@ export class GuestItemTotalComponent implements OnInit {
     this.displayList()
 
   }
+
+  getCartItems() {
+
+    this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
+      console.log("response of cart list", response);
+      this.totlaItem = response.data.cartList
+      this.displayList()
+    }, error => {
+      console.log("error while get cart details", error)
+    })
+  }
+
+
 
   displayList() {
     let newArray = []

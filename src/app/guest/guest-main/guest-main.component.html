@@ -42,11 +42,12 @@
 
                 <!-- Choose payment method -->
                 <app-payment-details *ngIf="index == 5" [accountType]="selectedAccount"
-                    (lastIndex)="displayAccount($event)"></app-payment-details>
+                    (lastIndex)="displayAccount($event)" (thankYouDetails)="thankYouMessage($event)">
+                </app-payment-details>
                 <!-- end -->
 
                 <!-- Thank you message after payment -->
-                <!-- <app-payment-message></app-payment-message> -->
+                <app-payment-message *ngIf="index == 6" [thankYouDetail]="thankYouDetails"></app-payment-message>
                 <!-- end -->
             </div>
             <app-guest-menu *ngIf="isJoin == true" (displayActivity)="displayActivity($event)"></app-guest-menu>

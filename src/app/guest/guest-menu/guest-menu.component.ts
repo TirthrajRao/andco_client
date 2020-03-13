@@ -11,16 +11,16 @@ export class GuestMenuComponent implements OnInit {
 
 
   guestMenu = [
-    "activities", "total", "gift-donation" , "exit"
+    "activities", "total", "gift-donation", "exit"
   ]
 
   constructor() { }
 
   ngOnInit() {
-    $('#circularMenu a.floating-btn').click(function(){
+    $('#circularMenu a.floating-btn').click(function () {
       $('#circularMenu').toggleClass('active');
     });
-    $('menu a.menu-item').click(function(){
+    $('menu a.menu-item').click(function () {
       $('#circularMenu').removeClass('active');
     });
   }
@@ -29,5 +29,14 @@ export class GuestMenuComponent implements OnInit {
     console.log("click on activity");
     this.displayActivity.emit(0)
   }
+
+
+  totalOfItems() {
+    this.displayActivity.emit(1)
+  }
+  donationOfEvent() {
+    this.displayActivity.emit(2)
+  }
+
 
 }

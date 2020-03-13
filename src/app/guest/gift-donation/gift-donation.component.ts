@@ -28,7 +28,6 @@ export class GiftDonationComponent implements OnInit {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
     })
-    // this.getCartItrems()
     this.getDonationAmount()
   }
 
@@ -37,7 +36,6 @@ export class GiftDonationComponent implements OnInit {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
     })
-    // this.getCartItrems()
     this.getDonationAmount()
   }
 
@@ -48,12 +46,7 @@ export class GiftDonationComponent implements OnInit {
 
   displayAddress() {
     console.log("donation added", this.donation)
-    // let myCart = {
-    //   orderDetails: this.allCartList,
-    //   finalTotal: this.finalGrandTotal,
-    //   eventId: this.eventId,
-    //   donationAmount: this.donation,
-    // }
+
     let addDonation = {
       eventId: this.hashTag,
       donation: this.donation,
@@ -77,23 +70,4 @@ export class GiftDonationComponent implements OnInit {
       console.log("error while get donation", error)
     })
   }
-
-
-  getCartItrems() {
-    this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
-      console.log("response of cart item", response);
-      this.allCartList = response.data.cartList
-      this.eventId = response.data.eventDetail._id
-      // this.allCartList.forEach((item: any) => {
-      //   console.log("single items of cart", item)
-      //   this.subTotal = item.itemPrice * item.quantity
-      //   this.grandTotal = this.grandTotal + this.subTotal
-      //   this.finalGrandTotal = this.grandTotal
-      // });
-    }, error => {
-      console.log("error while get cart list", error)
-    })
-  }
-
-
 }
