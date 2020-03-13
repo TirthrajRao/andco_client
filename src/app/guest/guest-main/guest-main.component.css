@@ -83,3 +83,13 @@
     padding: 10px 40px;
     margin: 20px 0;
 }
+
+@media(max-width: 1600px){
+    .guest-profile{
+        width: 130px;
+        height: 130px;
+    }
+    .guest-inner-box{
+        padding: 0 30px;
+    }
+}

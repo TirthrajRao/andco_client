@@ -524,6 +524,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         height: 50px;
         width: 60px;
     }
+    .guest-main-background .page-content {
+        padding-top: 90px;
+    }
 }
 
 @media(max-width: 1366px) {
