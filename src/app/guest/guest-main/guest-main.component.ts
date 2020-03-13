@@ -4,6 +4,7 @@ import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { config } from '../../config';
 import { ThemeService } from '../../services/theme.service';
+import { Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
@@ -29,6 +30,16 @@ export class GuestMainComponent implements OnInit {
   selectedAccount
   eventTheme
   thankYouDetails
+  themeList = ['assets/images/guest.png',
+    'assets/images/floral.png',
+    'assets/images/wood.png',
+    'assets/images/marble.png',
+    'assets/images/origami.png',
+    'assets/images/classic.png',
+    'assets/images/lines.png',
+    'assets/images/luxury.png',
+    'assets/images/instrument.png']
+
 
 
   constructor(
@@ -64,7 +75,42 @@ export class GuestMainComponent implements OnInit {
       console.log("details of event with link", response)
       this.eventDetails = response.data
       this.eventTheme = this.eventDetails.eventTheme
-      this.themeService.toggleInstruments()
+
+      // let day : number = 4;
+
+      switch (this.eventTheme) {
+        case 'assets/images/floral.png':
+          this.themeService.toggleFloral()
+          break;
+        case 'assets/images/wood.png':
+          this.themeService.toggleWood()
+          break;
+        case 'assets/images/marble.png':
+          this.themeService.toggleMarble()
+          break;
+        case 'assets/images/origami.png':
+          this.themeService.toggleOrigami()
+          break;
+        case 'assets/images/classic.png':
+          this.themeService.toggleClassic()
+          break;
+        case 'assets/images/lines.png':
+          this.themeService.toggleLines()
+          break;
+        case 'assets/images/luxury.png':
+          this.themeService.toggleLuxury()
+          break;
+        case 'assets/images/instrument.png':
+          this.themeService.toggleInstruments()
+          break;
+        default:
+          this.themeService.toggleDefault()
+          break;
+      }
+
+
+
+
       this.isJoin = this.eventDetails.isJoined
     }, error => {
       console.log("error while get link details", error)

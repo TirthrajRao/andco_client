@@ -86,8 +86,8 @@ export const marble = {
 };
 
 export const origami = {
-  'guest-main-overlay' : '#00000050',
-  'guest-inner-gradient-first-color' : '#D05884',
+  'guest-main-overlay' : '#00000070',
+  'guest-inner-gradient-first-color' : '#730517',
   'guest-inner-gradient-second-color' : '#B9C1C9',
   'guest-activity-group-background' : '#4f6571',
   'guest-activity-group-radio-check-color' : '#4f6571',
@@ -107,7 +107,7 @@ export const origami = {
 };
 
 export const classic = {
-  'guest-main-overlay' : '#00000030',
+  'guest-main-overlay' : '#00000070',
   'guest-inner-gradient-first-color' : '#231104',
   'guest-inner-gradient-second-color' : '#855F34',
   'guest-activity-group-background' : '#88764A',
