@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { config } from '../../config';
-import { throwToolbarMixedModesError } from '@angular/material';
+import { ThemeService } from '../../services/theme.service';
 
 
 @Component({
@@ -27,11 +27,13 @@ export class GuestMainComponent implements OnInit {
   totalItemList = []
   removeItem
   selectedAccount
+  eventTheme
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
-    public alertService: AlertService
+    public alertService: AlertService,
+    public themeService: ThemeService
   ) {
     this.sub = this.activatedRoute.params.subscribe(params => {
       console.log("params id for guest", params);
@@ -45,10 +47,21 @@ export class GuestMainComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+  getBackGround() {
+    // if (this.eventDetails.eventTheme) {
+    return `url(` + this.eventTheme + `)`;
+    // }
+
+  }
+
   guestEventWithOutLogin(eventhashTag) {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
       console.log("details of event with link", response)
       this.eventDetails = response.data
+      this.eventTheme = this.eventDetails.eventTheme
+      // this.themeService.toggleDark()
       this.isJoin = this.eventDetails.isJoined
     }, error => {
       console.log("error while get link details", error)
