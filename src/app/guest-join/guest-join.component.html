@@ -1,19 +1,20 @@
 <div class="thank-you">
-    <div class="guest-header text-center">
+    <div class="guest-header text-center" *ngIf="eventDetails">
         <div class="andco-logo">
             <img src="assets/images/andco_logo.png" alt="andco logo">
         </div>
         <div class="guest-profile">
-            <img src="../../../assets/images/t-profile.png" alt="profile photo">
+            <img *ngIf="eventDetails.profilePhoto" src="{{path}}{{eventDetails.profilePhoto}}" alt="">
         </div>
-        <h3>#AyoKunbi</h3>
-        <h3>Ayoade and Kunbi’s wedding</h3>
+        <h3>#{{eventDetails.hashTag}}</h3>
+        <h3>{{eventDetails.eventTitle}}</h3>
     </div>
     <div>
         <p class="thank-you-message">Thank you for stopping by.
             We appreciate itThank you for stopping by.
             We appreciate itThank you for stopping by.
             We appreciate itThank you for stopping by.</p>
-        <button class="btn buy">Buy our aso ebi</button>
+        <button class="btn buy" *ngIf="isJoin == true" (click)="displayGuest()">Buy our aso ebi</button>
+        <button class="btn buy" *ngIf="isJoin == false" (click)="joinEvent(eventDetails._id)">Join Event</button>
     </div>
 </div>

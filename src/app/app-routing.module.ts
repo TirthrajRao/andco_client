@@ -44,8 +44,8 @@ const routes: Routes = [
     component: WelcomeGuestComponent
   },
   {
-    path : 'guest-join',
-    component : GuestJoinComponent
+    path: 'guest-join/:hashTag',
+    component: GuestJoinComponent
   },
 ];
 
