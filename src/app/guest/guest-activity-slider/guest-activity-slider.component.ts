@@ -40,10 +40,10 @@ export class GuestActivitySliderComponent implements OnInit {
   ngOnInit() {
     this.sub = this.activated.params.subscribe(params => {
       this.eventHashtag = params.hashTag
-      console.log("hashtag is important", this.eventHashtag);
+      // console.log("hashtag is important", this.eventHashtag);
     })
     this.initActivitySlider()
-    // this.getSelectedItems()
+    this.getSelectedItems()
     // this.displayAllData()
   }
 
@@ -56,21 +56,23 @@ export class GuestActivitySliderComponent implements OnInit {
       })
       this.displayActivity = changes.listOfActivity.currentValue
       this.initActivitySlider()
-      this.getSelectedItems()
-      // this.displayAllData()
+      // this.getSelectedItems()
+      this.displayAllData()
     }
     if (changes.removeItem && changes.removeItem.currentValue) {
       this.sub = this.activated.params.subscribe(params => {
         this.eventHashtag = params.hashTag
-        console.log("hashtag is important", this.eventHashtag);
+        // console.log("hashtag is important", this.eventHashtag);
       })
-      this.displayAllData()
+      this.getSelectedItems()
+      // this.displayAllData()
     }
   }
 
   getSelectedItems() {
     this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
       this.cartTotalItems = response.data.cartList
+      // this.displayActivity = response.data.cartList
       this.allCartList = response.data.cartList
       this.displayAllData()
       console.log("response of cart items", this.cartTotalItems)
@@ -109,21 +111,24 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   displayAllData() {
+    // console.log("when dispplay group", this.displayGroup);
     this.displayGroup = this.displayActivity[this.activityIndex].group
-    console.log("when dispplay group", this.displayGroup);
     this.selectedwallet = 0
     this.selectedGender = 'male'
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
-    console.log("quntity with rank", this.itemList);
+    // console.log("quntity with rank", this.itemList);
     this.itemList.forEach((singleItem) => {
-      console.log("male single items array", singleItem);
-      this.cartTotalItems.forEach((singleCartItem) => {
-        console.log("cart items", singleCartItem);
-        if (singleItem._id == singleCartItem.itemId) {
-          console.log("call this or not");
-          singleItem['quantity'] = singleCartItem.quantity
-        }
-      })
+      if (this.cartTotalItems.length > 0) {
+        this.cartTotalItems.forEach((singleCartItem) => {
+          console.log("call or not", singleCartItem);
+          if (singleItem._id == singleCartItem.itemId) {
+            singleItem['quantity'] = singleCartItem.quantity
+          }
+        })
+      } else {
+        console.log("check this else part", singleItem);
+        singleItem['quantity'] = 0
+      }
     })
     console.log("final male items", this.itemList);
 
@@ -146,14 +151,17 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     this.itemList.forEach((singleItem) => {
-      console.log("male single items array", singleItem);
-      this.cartTotalItems.forEach((singleCartItem) => {
-        console.log("cart items", singleCartItem);
-        if (singleItem._id == singleCartItem.itemId) {
-          console.log("call this or not");
-          singleItem['quantity'] = singleCartItem.quantity
-        }
-      })
+      if (this.cartTotalItems.length > 0) {
+        this.cartTotalItems.forEach((singleCartItem) => {
+          console.log("call or not", singleCartItem);
+          if (singleItem._id == singleCartItem.itemId) {
+            singleItem['quantity'] = singleCartItem.quantity
+          }
+        })
+      } else {
+        console.log("check this else part", singleItem);
+        singleItem['quantity'] = 0
+      }
     })
   }
 
@@ -164,14 +172,17 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 0
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     this.itemList.forEach((singleItem) => {
-      console.log("male single items array", singleItem);
-      this.cartTotalItems.forEach((singleCartItem) => {
-        console.log("cart items", singleCartItem);
-        if (singleItem._id == singleCartItem.itemId) {
-          console.log("call this or not");
-          singleItem['quantity'] = singleCartItem.quantity
-        }
-      })
+      if (this.cartTotalItems.length > 0) {
+        this.cartTotalItems.forEach((singleCartItem) => {
+          console.log("call or not", singleCartItem);
+          if (singleItem._id == singleCartItem.itemId) {
+            singleItem['quantity'] = singleCartItem.quantity
+          }
+        })
+      } else {
+        console.log("check this else part", singleItem);
+        singleItem['quantity'] = 0
+      }
     })
   }
 
@@ -238,5 +249,5 @@ export class GuestActivitySliderComponent implements OnInit {
     })
   }
 
-  
+
 }

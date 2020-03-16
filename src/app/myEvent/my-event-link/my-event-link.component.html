@@ -1,5 +1,7 @@
 <div class="share-link">
-    <h3>{{displayEventLink}}</h3>
+    <!-- <h3>{{displayEventLink}}</h3> -->
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink">
+   <i class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
 </div>
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide">
@@ -155,16 +157,16 @@
     <textarea name="" id="" rows="4" placeholder="Together with our parents, thank 
     you for your presence, purchase,
     presents and prayers."></textarea>
-        <div class="to">
-            <h3>to :</h3>
+    <div class="to">
+        <h3>to :</h3>
+    </div>
+    <div class="all">
+        <div class="group-box">
+            <input type="radio" name="radio-group1" id="test" value="male" checked>
+            <label for="test">all invited guests</label>
+            <input type="radio" name="radio-group1" value="female" id="test6">
+            <label for="test6">only guests that bought aso ebi</label>
         </div>
-        <div class="all">
-            <div class="group-box">
-                <input type="radio" name="radio-group1" id="test" value="male" checked>
-                <label for="test">all invited guests</label>
-                <input type="radio" name="radio-group1" value="female" id="test6">
-                <label for="test6">only guests that bought aso ebi</label>
-            </div>
-        </div>
+    </div>
 </div>
 <!-- step 4 end -->

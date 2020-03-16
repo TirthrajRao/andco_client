@@ -5,7 +5,7 @@
     <div id="accordion" class="myaccordion">
         <span *ngFor="let key of keys; let i = index">
             <button class="btn single-activity w-100" data-toggle="collapse" [attr.data-target]="'#collapseOne' + i"
-                 aria-controls="collapseOne" (click)="current = i">
+                aria-controls="collapseOne" (click)="current = i">
                 {{key}}
             </button>
             <div id="collapseOne{{i}}" class="collapse" [class.collapse]='current !=i' aria-labelledby="headingOne"

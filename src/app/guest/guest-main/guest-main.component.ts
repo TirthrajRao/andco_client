@@ -142,7 +142,7 @@ export class GuestMainComponent implements OnInit {
   removeItemOfArray(event) {
     console.log("event of add more", event);
     this.index = event.index
-    this.removeItem = event.removeItems
+    this.removeItem = event.removeItem
     console.log("event when item remove", this.removeItem);
   }
 
