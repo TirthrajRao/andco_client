@@ -19,7 +19,8 @@ export const defaults = {
   'guest-address-label-color' : '#000000',
   'pay-by-color' : '#000000',
   'ussd-bg-color' : '#00000036',
-  'ussd-font-color' : '#444444'
+  'ussd-font-color' : '#444444',
+  'payment-success-msg-name' : '#2B879B'
 };
 
 export const floral = {
@@ -27,7 +28,7 @@ export const floral = {
   'guest-inner-gradient-first-color' : '#000000',
   'guest-inner-gradient-second-color' : '#0559E1',
   'guest-activity-group-background' : '#3D8BFF',
-  'guest-activity-group-radio-check-color' : '#000000',
+  'guest-activity-group-radio-check-color' : '#3d8bff',
   'guest-activity-tab-content-color' : '#4F95F8',
   'guest-total-add-more' : '#0457db',
   'circular-menu-floating-button-color' : '#000000',
@@ -40,7 +41,8 @@ export const floral = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#ffffff',
   'ussd-bg-color' : '#ffffff2e',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '#000000'
 };
 
 export const wood = {
@@ -61,7 +63,8 @@ export const wood = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#8fd0cb',
   'ussd-bg-color' : '#84b9af',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const marble = {
@@ -82,15 +85,16 @@ export const marble = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#686868',
   'ussd-bg-color' : '#7a787896',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const origami = {
   'guest-main-overlay' : '#00000070',
   'guest-inner-gradient-first-color' : '#730517',
   'guest-inner-gradient-second-color' : '#B9C1C9',
-  'guest-activity-group-background' : '#4f6571',
-  'guest-activity-group-radio-check-color' : '#4f6571',
+  'guest-activity-group-background' : '#6f9aaf',
+  'guest-activity-group-radio-check-color' : '#6f9aaf',
   'guest-activity-tab-content-color' : '#4f6571',
   'guest-total-add-more' : '#4f6571',
   'circular-menu-floating-button-color' : '#4f6571',
@@ -101,9 +105,10 @@ export const origami = {
   'next-skip-back-color' : '#a03245',
   'guest-address-radio-color': '#4f6571',
   'guest-address-label-color' : '#ffffff',
-  'pay-by-color' : '#a13854',
+  'pay-by-color' : '#ffffff',
   'ussd-bg-color' : '#7a787896',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const classic = {
@@ -124,7 +129,8 @@ export const classic = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#997e5a',
   'ussd-bg-color' : '#997e5a61',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const lines = {
@@ -145,7 +151,8 @@ export const lines = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#c6a30f',
   'ussd-bg-color' : '#c58395',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const luxury = {
@@ -166,7 +173,8 @@ export const luxury = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#b7a478',
   'ussd-bg-color' : '#886e41',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 export const instruments = {
@@ -187,7 +195,8 @@ export const instruments = {
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#988b71',
   'ussd-bg-color' : '#761b04',
-  'ussd-font-color' : '#ffffff'
+  'ussd-font-color' : '#ffffff',
+  'payment-success-msg-name' : '1111'
 };
 
 

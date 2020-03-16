@@ -82,7 +82,7 @@
     background-color: var(--circular-menu-floating-button-color);
     color: #fff;
     border: 2px solid #fff;
-    transition: ease-in 0.9s;
+    transition: ease-in 0.5s;
 }
 
 .circular-menu.active .menu-item {
