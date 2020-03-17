@@ -63,6 +63,12 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/group", groupDetails, { params: body })
   }
 
+  setPriceOfEvent(data, eventId) {
+    data['eventId'] = eventId
+    return this.http.post(config.baseApiUrl + "/event/set-price", data)
+  }
+
+
   getLoginUserEvent() {
     return this.http.get(config.baseApiUrl + "/event/myevent-list")
   }
@@ -141,4 +147,25 @@ export class EventService {
     }
     return this.http.get(config.baseApiUrl + "/guestAccount", { params: body })
   }
+
+
+  getAfterEventMessage(eventId) {
+    return this.http.get(config.baseApiUrl + "/event/afterEventMessage/" + eventId)
+  }
+
+  getGuestList(eventId) {
+    let body = {
+      eventId: eventId
+    }
+    return this.http.get(config.baseApiUrl + "/guest-list/", { params: body })
+  }
+
+
+  getEventCollection(eventId) {
+    let body = {
+      eventId: eventId
+    }
+    return this.http.get(config.baseApiUrl + "/event-collection?eventId=" + eventId)
+  }
+
 }

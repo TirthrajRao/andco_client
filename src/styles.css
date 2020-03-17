@@ -382,6 +382,34 @@ img.swal2-image {
 .timepicker-button {
     color: #A6B138 !important;
 }
+/* mat tab start */
+.mat-tab-group{
+    width: 100%;
+    font-family: 'Manjari', 'sans-sarif' !important;
+}
+.mat-tab-body-content{
+    overflow: hidden;
+}
+.mat-tab-label{
+    background-color: #C97A33;
+    color: #fff;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+}
+.mat-ink-bar{
+    height: 0 !important;
+}
+.mat-tab-header, .mat-tab-nav-bar{
+    border-bottom: none !important;
+}
+.mat-tab-label-active{
+    background-color: #C97A33 ;
+    opacity: 1 !important;
+  }
+/* mat tab end */
 
 /* mat css end */
 

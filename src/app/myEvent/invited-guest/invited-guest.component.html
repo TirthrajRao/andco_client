@@ -32,67 +32,12 @@
 </div>
 <div class="guest-list-box">
     <ul class="guest-list-inner-box">
-        <li>
+        <li *ngFor="let name of displayGuest; let i =index">
             <div class="profile-name">
-                <span>AT</span>
+                <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
             </div>
             <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
-            </div>
-        </li>
-        <li>
-            <div class="profile-name">
-                <span>AT</span>
-            </div>
-            <div class="guest-name">
-                <p>Alade Talabi</p>
-                <p>08135118092</p>
+                <p>{{name.firstName | titlecase}} {{name.lastName | titlecase}} </p>
             </div>
         </li>
     </ul>

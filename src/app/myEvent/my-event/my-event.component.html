@@ -15,10 +15,12 @@
                     </app-my-event-activity>
                     <!-- <app-event-menu></app-event-menu> -->
                     <app-my-event-link *ngIf="currenMenuIndex == 3" [eventLink]="eventLink"></app-my-event-link>
-                    <!-- <app-invited-guest></app-invited-guest> -->
+
+                    <app-invited-guest *ngIf="currenMenuIndex == 4" [guestList]="guestList"></app-invited-guest>
+
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <!-- <app-collection></app-collection> -->
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"></app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>
