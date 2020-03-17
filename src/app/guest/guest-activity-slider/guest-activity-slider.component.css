@@ -28,26 +28,24 @@
     background-color: #fff;
 }
 
-.guest-activity-item-tab .tab-pane {
+.tab-content ul {
+    max-height: 145px;
     overflow: auto;
-    min-height: 160px;
-    max-height: 160px;
-    padding-right: 20px;
+    padding-right: 15px;
 }
-
-.guest-activity-item-tab .tab-pane::-webkit-scrollbar-track {
+.tab-content ul::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
     background-color: #F5F5F5;
 }
 
-.guest-activity-item-tab .tab-pane::-webkit-scrollbar {
+.tab-content ul::-webkit-scrollbar {
     width: 3px;
     padding-right: 3px;
     background-color: #F5F5F5;
 }
 
-.guest-activity-item-tab .tab-pane::-webkit-scrollbar-thumb {
+.tab-content ul::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: var(--guest-activity-group-background);
@@ -89,7 +87,7 @@ li.guest-item:last-child {
 li.guest-item input[type="number"] {
     border: none;
     width: 90px;
-    padding-right: 35px;
+    /* padding-right: 35px; */
     text-align: right;
 }
 
@@ -122,7 +120,7 @@ li.guest-item h4, li.guest-item p, li.guest-item input[type="number"] {
 .buttons-group {
     width: 100%;
     display: inline-block;
-    margin: 10px 0;
+    margin-top: 10px;
 }
 
 button.btn.saved {
@@ -244,7 +242,7 @@ img.up, img.down {
         padding: 8px 24px;
     }
     .guest-activity-item-tab .tab-content {
-        padding: 15px 25px;
+        padding: 20px;
     }
     .group-box ul {
         padding: 0 16px;
@@ -256,6 +254,9 @@ img.up, img.down {
 @media(max-width:1199px) {
     .guest-activity-slider h2 {
         font-size: 24px;
+    }
+    .tab-content ul {
+        max-height: 105px;
     }
     /* radio button  start*/
     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
@@ -271,7 +272,18 @@ img.up, img.down {
     }
     /* radio button end*/
 }
-
+@media(max-width:991px){
+    li.guest-item h4, li.guest-item p, li.guest-item input[type="number"]{
+        font-size: 18px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        padding-left: 25px;
+        font-size: 18px;
+    }
+    button.btn.total{
+        font-size: 18px;
+    }
+}
 @media(max-width:575px) {
     .guest-activity-slider h2 {
         font-size: 22px;
@@ -286,10 +298,27 @@ img.up, img.down {
     li.guest-item h4, li.guest-item p, li.guest-item input[type="number"]{
         font-size: 18px;
     }
+    .guest-add-items, .guest-item-name  {
+        float: none;
+    }
+    .guest-add-items h4 {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    .tab-content ul {
+        max-height: 160px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font-size: 18px;
+    }
 }
 @media(max-width:400px){
     .guest-activity-group:after{
         left: -20px;
         right: -20px;
+    }
+    button.btn.total{
+        font-size: 16px;
     }
 }
