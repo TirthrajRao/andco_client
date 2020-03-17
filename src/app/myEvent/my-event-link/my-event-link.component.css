@@ -5,13 +5,14 @@
     text-align: center;
     margin: 10px 0;
     position: relative;
+    padding: 12px 45px 6px 6px;
 }
 .share-link i{
     position: absolute;
     top: 15px;
     right: 20px;
     font-size: 28px;
-    line-height: 40px;
+    line-height: 30px;
     cursor: pointer;
     color: #545454;
 }
@@ -19,8 +20,6 @@
 .share-link input {
     color: #545454;
     font-size: 24px;
-    padding: 10px 20px 8px 8px;
-    line-height: 50px;
     font-weight: 600;
     background-color: transparent;
     width: 90%;
@@ -201,6 +200,9 @@ span.middle {
         font-size: 20px;
         height: 110px;
     }
+    .share-link input {
+        font-size: 22px;
+    }
 }
 @media(max-width: 1199px){
     .send-date, .send-time {
@@ -213,6 +215,9 @@ span.middle {
     .share-link h3, .tab-name p {
         line-height: 27px;
         font-size: 16px;
+    }
+    .share-link input {
+        font-size: 20px;
     }
 }
 @media(max-width: 991px){
@@ -236,5 +241,8 @@ span.middle {
     }
     .share-button button {
         font-size: 16px;
+    }
+    .share-link input {
+        font-size: 18px;
     }
 }

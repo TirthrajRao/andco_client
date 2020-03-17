@@ -1,32 +1,32 @@
 <div class="share-link">
     <!-- <h3>{{displayEventLink}}</h3> -->
-    <input type="text" #inputTarget [(ngModel)]="displayEventLink">
-    <i class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink" title="">
+    <i title="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
 </div>
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide">
         <div class="tab-name active">
-            <p>invitation</p>
+            <p title="invitation">invitation</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p>Welcome</p>
+            <p title="Welcome">Welcome</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p>Pay</p>
+            <p title="Pay">Pay</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="reminderMessage(2)">
         <div class="tab-name">
-            <p>Remainder</p>
+            <p title="Remainder">Remainder</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="getafterEventMessage(3)">
         <div class="tab-name">
-            <p>After Event</p>
+            <p title="After Event">After Event</p>
         </div>
     </div>
 </div>

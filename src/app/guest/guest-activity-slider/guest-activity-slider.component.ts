@@ -38,6 +38,7 @@ export class GuestActivitySliderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.sub = this.activated.params.subscribe(params => {
       this.eventHashtag = params.hashTag
       // console.log("hashtag is important", this.eventHashtag);

@@ -39,7 +39,7 @@ h2 img {
         width: 750px;
         min-height: calc(100vh - 280px);
     }
-    .my-event-hashtag h2{
+    .my-event-hashtag h2 span{
         font-size: 34px;
         margin-bottom: 10px;
     }
@@ -49,9 +49,12 @@ h2 img {
         width: 700px;
         min-height: calc(100vh - 250px);
     }
-    .my-event-hashtag h2 {
+    .my-event-hashtag h2 span {
         font-size: 28px;
         margin-bottom: 5px;
+    }
+    h2 img {
+        height: 30px;
     }
 }
 @media(max-width: 1199px){
@@ -59,8 +62,11 @@ h2 img {
         width:650px;
         min-height: calc(100vh - 230px);
     }
-    .my-event-hashtag h2 {
+    .my-event-hashtag h2 span {
         font-size: 24px;
+    }
+    h2 img {
+        height: 24px;
     }
 }
 @media(max-width:1024px){
