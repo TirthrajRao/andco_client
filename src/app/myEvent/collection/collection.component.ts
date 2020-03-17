@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 
 @Component({
   selector: 'app-collection',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
+  @Input('totalCollection') totalCollection
 
   constructor() { }
 
   ngOnInit() {
   }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("changes in collectiion", changes.totalCollection.currentValue);
+    if (changes.totalCollection.currentValue) {
+      
+    }
 
+  }
 }

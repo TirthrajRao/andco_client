@@ -1,7 +1,7 @@
 <div class="share-link">
     <!-- <h3>{{displayEventLink}}</h3> -->
     <input type="text" #inputTarget [(ngModel)]="displayEventLink">
-   <i class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
+    <i class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
 </div>
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide">
@@ -19,19 +19,19 @@
             <p>Pay</p>
         </div>
     </div>
-    <div class="single-tab-slide" (click)="reminderMessage()">
+    <div class="single-tab-slide" (click)="reminderMessage(2)">
         <div class="tab-name">
             <p>Remainder</p>
         </div>
     </div>
-    <div class="single-tab-slide">
+    <div class="single-tab-slide" (click)="getafterEventMessage(3)">
         <div class="tab-name">
             <p>After Event</p>
         </div>
     </div>
 </div>
 <!-- step 1 start -->
-<div class="step-1-link" style="display: none;">
+<div class="step-1-link" *ngIf="index == 0">
     <!-- <div class="tab-message-box">
         <p>We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
             our ebi here- <br>
@@ -48,7 +48,7 @@
 </div>
 <!-- step 1 end -->
 <!-- step 2 start -->
-<div class="step-2-link">
+<div class="step-2-link" *ngIf="index == 1">
     <!-- <div class="tab-message-box">
         <p>Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's
@@ -97,7 +97,7 @@
 <!-- step 2 end -->
 <!-- step 3 start -->
 <!-- Remainder -->
-<div class="step-3-link" style="display: none;">
+<div class="step-3-link" *ngIf="index == 2">
     <!-- <div class="tab-message-box">
         <p>Together with our parents, thank
             you for your presence, purchase,
@@ -111,13 +111,13 @@
             <div class="float-left d-flex">
                 <p>Send on:</p>
                 <div class="send-date mr-2" (click)="picker.open()">
-                    <span>dd</span>
+                    <span>{{displayDate | date : 'dd'}}</span>
                 </div>
                 <div class="send-date mr-2" (click)="picker.open()">
-                    <span>mm</span>
+                    <span>{{displayDate | date : 'MM'}}</span>
                 </div>
                 <div class="send-date" (click)="picker.open()">
-                    <span>yyyy</span>
+                    <span>{{displayDate  | date : 'yyyy'}}</span>
                 </div>
                 <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                     <mat-label>Choose a date</mat-label>
@@ -129,15 +129,16 @@
             </div>
             <div class="float-right d-flex">
                 <p>at :</p>
-                <div class="send-time">
-                    <span>hh</span>
+                <div class="send-time" (click)="default.open()">
+                    <span>{{hours}}</span>
                 </div> <span class="middle">:</span>
-                <div class="send-time">
-                    <span>mm</span>
+                <div class="send-time" (click)="default.open()">
+                    <span>{{minutes}}</span>
                 </div>
-                <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
-                    aria-label="12hr format" [ngxTimepicker]="default" readonly style="cursor: pointer;">
-                <ngx-material-timepicker #default></ngx-material-timepicker>
+                <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
+                    aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
+                    > -->
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)"></ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
                         required </div>
@@ -153,10 +154,10 @@
 <!-- step 3 end -->
 
 <!-- step 4 start -->
-<div class="step-4-link" style="display: none;">
+<div class="step-4-link" *ngIf="index == 3">
     <textarea name="" id="" rows="4" placeholder="Together with our parents, thank 
     you for your presence, purchase,
-    presents and prayers."></textarea>
+    presents and prayers." [(ngModel)]="afterEventMessage" readonly></textarea>
     <div class="to">
         <h3>to :</h3>
     </div>

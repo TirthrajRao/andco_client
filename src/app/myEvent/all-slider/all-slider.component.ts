@@ -66,7 +66,7 @@ export class AllSliderComponent implements OnInit {
           {
             breakpoint: 1600,
             settings: {
-              slidesToShow: 3,
+              slidesToShow: 2.5,
             }
           },
           {

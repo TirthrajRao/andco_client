@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
+import { EventService } from '../../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { every } from 'rxjs/operators';
@@ -16,6 +17,8 @@ import { async } from 'q';
 })
 export class SetPriceComponent implements OnInit {
 
+  private sub: any
+  private eventId: any
   setPriceForm: FormGroup;
   isLoad = false
   isDisable = false
@@ -38,7 +41,9 @@ export class SetPriceComponent implements OnInit {
   currentDay = new Date()
   constructor(
     public alertService: AlertService,
-    private router: Router
+    public eventService: EventService,
+    private router: Router,
+    private activated: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -54,6 +59,9 @@ export class SetPriceComponent implements OnInit {
       bankDetails: new FormControl('', [Validators.required]),
       hearAbout: new FormControl(''),
       linkOfEvent: new FormControl('')
+    })
+    this.sub = this.activated.params.subscribe(param => {
+      this.eventId = param.id
     })
     this.initSlickSlider()
     // console.log("time zone ", this.timezone);
@@ -128,9 +136,16 @@ export class SetPriceComponent implements OnInit {
       }
     });
     if (flag == 0) {
-      let message = 'New Event created'
-      this.alertService.getSuccess(message)
-      this.router.navigate(['created-event-message'])
+      this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
+        console.log("response of set price of event", response);
+        this.alertService.getSuccess(response.message)
+        this.router.navigate(['created-event-message'])
+      }, error => {
+        console.log("error while set price of event", error)
+      })
+      // let message = 'New Event created'
+      // this.alertService.getSuccess(message)
+      // this.router.navigate(['created-event-message'])
     }
   }
   detailsOfBank(event) {
@@ -195,6 +210,10 @@ export class SetPriceComponent implements OnInit {
     } else {
       this.isEventPlannerSelected = false
       this.isEventVendorSelected = false
+      this.setPriceForm.patchValue({
+        hearAbout: event.target.value
+      })
+      this.setPriceForm.get('hearAbout').updateValueAndValidity()
     }
   }
 

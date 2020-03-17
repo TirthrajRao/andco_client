@@ -4,12 +4,13 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatNativeDateModule, MatInputModule, } from '@angular/material';
+import { MatFormFieldModule, MatNativeDateModule, MatInputModule, MatTabsModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ShareModule } from '@ngx-share/core'
 import { ShareButtonModule } from '@ngx-share/button';
 import { ClipboardModule } from 'ngx-clipboard';
+// import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -183,7 +184,8 @@ const routes: Routes = [
     NgxMaterialTimepickerModule,
     ShareModule,
     ShareButtonModule,
-    ClipboardModule
+    ClipboardModule,
+    MatTabsModule
     // MatSelectModule
   ],
   exports: [

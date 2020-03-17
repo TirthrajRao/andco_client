@@ -5,7 +5,7 @@ declare var $;
 @Component({
   selector: 'app-my-event-link',
   templateUrl: './my-event-link.component.html',
-  styleUrls: ['./my-event-link.component.css','./../my-event-activity/my-event-activity.component.css']
+  styleUrls: ['./my-event-link.component.css', './../my-event-activity/my-event-activity.component.css']
 })
 export class MyEventLinkComponent implements OnInit {
 
@@ -13,8 +13,16 @@ export class MyEventLinkComponent implements OnInit {
   currentDay = new Date()
   @Input('eventLink') eventLink
   displayEventLink
-  displayTime: Date;
-  constructor() { }
+  displayDate: Date;
+  displayTime
+  index = 0
+  eventId
+  afterEventMessage
+  hours: any;
+  minutes: any;
+  constructor(
+    public eventService: EventService
+  ) { }
 
   ngOnInit() {
 
@@ -23,12 +31,6 @@ export class MyEventLinkComponent implements OnInit {
       reminderStartDate: new FormControl(''),
       reminderStartTime: new FormControl('')
     })
-
-
-
-
-
-
     $('.my-event-tab-slider').not('.slick-initialized').slick({
       infinite: false,
       slidesToShow: 3,
@@ -62,19 +64,26 @@ export class MyEventLinkComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
 
     console.log("display link of event", changes.eventLink);
-    this.displayEventLink = changes.eventLink.currentValue
+    this.displayEventLink = changes.eventLink.currentValue.eventLink
+    this.eventId = changes.eventLink.currentValue.eventId
   }
 
 
   addEvent(type: string, event, i) {
-    this.displayTime = (new Date(event.value))
-    // for (let i = 0; i < this.activityForm.value.activity.length; i++) {
-    //   this.activityForm.value.activity[i].activityStartDate = moment($('#activityStartDate' + i).val()).format('YYYY-MM-DD')
-    // }
+    this.displayDate = (new Date(event.value))
     console.log("value of form group", this.displayTime);
-
   }
 
+  timeChanged(event) {
+    this.displayTime = event
+  }
+
+  timePickerClosed(){
+    let tempTime = this.displayTime.split(':')
+    this.hours = tempTime[0]
+    this.minutes = tempTime[1].split(' ')[0]
+    console.log("event of time pickert", this.displayTime);
+  }
 
   shareLink() {
     $('.step-1-link').css({ 'display': 'none' })
@@ -82,15 +91,24 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
-  reminderMessage() {
-    $('.step-1-link').css({ 'display': 'none' })
-    $('.step-2-link').css({ 'display': 'none' })
-    $('.step-3-link').css({ 'display': 'block' })
+  reminderMessage(data) {
+    this.index = data
   }
 
   reminderMessageSend() {
     console.log("details of reminder message", this.reminderForm.value);
 
+  }
+
+  getafterEventMessage(data) {
+    this.eventService.getAfterEventMessage(this.eventId).subscribe((response: any) => {
+      console.log("after event message display", response);
+      this.afterEventMessage = response
+      this.index = data
+    }, error => {
+      console.log("error while get after event message", error);
+
+    })
   }
 
 }

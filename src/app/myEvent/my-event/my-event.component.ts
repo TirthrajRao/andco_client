@@ -18,6 +18,8 @@ export class MyEventComponent implements OnInit {
   eventProfile
   currenMenuIndex = 0;
   eventLink
+  guestList = []
+  totalCollections
   constructor(
     public eventService: EventService
   ) { }
@@ -71,9 +73,30 @@ export class MyEventComponent implements OnInit {
     console.log("call thay che ke nai ", this.totalActivity);
   }
 
-  getEventLink(){
-    this.eventLink = this.eventDetails.eventLink
+  getEventLink() {
+    this.eventLink = ({ eventLink: this.eventDetails.eventLink, eventId: this.selectedEventId })
   }
+
+
+  getGuestListOfEvent() {
+    this.eventService.getGuestList(this.selectedEventId).subscribe((response: any) => {
+      console.log("response of guest list", response);
+      this.guestList = response.data[0].guestList
+    }, error => {
+      console.log("error while guest list", error)
+    })
+  }
+
+  getCollecctionOfEvent() {
+    this.eventService.getEventCollection(this.selectedEventId).subscribe((response: any) => {
+      console.log("response of collections", response);
+      this.totalCollections = response.data
+    }, error => {
+      console.log("erro while get collection", error);
+
+    })
+  }
+
 
   getCurrentMenu(event) {
     console.log("current menu index", event);
@@ -85,10 +108,16 @@ export class MyEventComponent implements OnInit {
       console.log("log this ");
       this.getActivity()
     }
-    if(this.currenMenuIndex ==3){
+    if (this.currenMenuIndex == 3) {
       this.getEventLink()
     }
+    if (this.currenMenuIndex == 4) {
+      this.getGuestListOfEvent()
+    }
+    if (this.currenMenuIndex == 2) {
+      this.getCollecctionOfEvent()
+    }
   }
-  
+
 
 }
