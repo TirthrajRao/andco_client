@@ -8,6 +8,9 @@ li.guest-item{
     padding: 5px;
     margin-bottom: 5px;
 }
+li.guest-item:last-child{
+    border: none;
+}
 .guest-item-name{
     float: left;
 }
@@ -61,7 +64,7 @@ button.btn.add-more {
     padding: 10px 20px;
 }
 .main-item {
-    max-height: 200px;
+    max-height: 210px;
     overflow: auto;
     padding: 10px 0;
 }
@@ -120,4 +123,19 @@ button.btn.add-more {
     font-weight: bold;
     padding: 7px 30px;
     font-size: 18px;
+}
+
+@media(max-width: 1600px){
+    button.single-activity{
+        font-size: 26px;
+    }
+    li.guest-item{
+        margin-bottom: 0;
+    }
+    .main-item{
+        padding: 0;
+    }
+    .guest-add-items h4 {
+        font-size: 22px;
+    }
 }

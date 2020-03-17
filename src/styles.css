@@ -605,7 +605,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .total-collection-slider button.slick-arrow img{
         height: 30px;
     }
-   
+    .guest-main-background .page-content {
+        padding-top: 60px;
+    }
 }
 
 @media(max-width: 1199px) {
@@ -737,7 +739,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
 }
 
-@media(max-width: 320px) {}
+@media(max-width: 400px) {}
+
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {

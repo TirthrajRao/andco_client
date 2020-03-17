@@ -25,7 +25,9 @@
     overflow: hidden;
     margin-bottom: 20px;
 }
-
+a#arrowpre img {
+    transform: rotate(180deg);
+}
 /* responsive css start */
 @media(max-width: 1600px){
     .myevent-inner-box{

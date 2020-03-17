@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="days">
-            <p><span class="text-white">Day :</span>
+            <p><span>Day :</span>
                 <input type="radio" id="weekday" value="Weekday"
                     ngModel="{{addressDetails ? addressDetails.deliverDays : ''}}" formControlName="deliverDays">
                 <label for="weekday">Weekday</label>
@@ -53,7 +53,7 @@
                 <label for="Weekend">Weekend</label></p>
         </div>
         <div class="time">
-            <p><span class="text-white">Time :</span>
+            <p><span>Time :</span>
                 <input type="radio" id="morning" value="morning" formControlName="timePeriod"
                     ngModel="{{addressDetails ? addressDetails.timePeriod : ''}}">
                 <label for="morning">Morning</label>
@@ -65,10 +65,10 @@
                 <label for="anytime">Anytime</label></p>
         </div>
     </form>
-    <div class="pay text-center my-3">
+    <div class="pay text-center">
         <button class="btn" (click)="enterAddress()" [disabled]="addressForm.invalid">Pay</button>
     </div>
-    <div class="bottom-buttons my-4">
+    <div class="bottom-buttons">
         <button class="btn" (click)="backToDonation()"><i class="fa fa-angle-double-left mr-2" aria-hidden="true"></i>
             Back</button>
     </div>

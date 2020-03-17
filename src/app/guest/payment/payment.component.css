@@ -12,8 +12,10 @@
 .total-amount {
     position: relative;
 }
-h3.pay-by{
+
+h3.pay-by {
     color: var(--pay-by-color);
+    margin: 30px 0;
 }
 
 .total-amount:after {
@@ -72,8 +74,8 @@ h3.pay-by{
     position: absolute;
     left: 0;
     top: 0;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border: 1px solid #ffffff;
     border-radius: 100%;
     background: #ffffff;
@@ -106,3 +108,67 @@ h3.pay-by{
 }
 
 /* radio button css end here */
+
+@media(max-width:1600px) {
+    .total-amount h2 {
+        font-size: 28px;
+    }
+    h3.pay-by {
+        font-size: 26px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 22px;
+    }
+}
+
+@media(max-width:1366px) {
+    .total-amount h2 {
+        font-size: 24px;
+        padding: 10px 0 5px;
+    }
+    h3.pay-by {
+        margin: 20px 0;
+    }
+}
+
+@media(max-width:991px) {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        margin-bottom: 12px;
+    }
+}
+
+@media(max-width:575px) {
+    .total-amount h2 {
+        font-size: 22px;
+    }
+    h3.pay-by {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before{
+        width: 22px;
+        height: 22px;
+    }
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 12px;
+        height: 12px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+@media(max-width:400px){
+    .total-amount:after{
+        left: -20px;
+        right: -20px;
+    }
+    .buttons-pay-back button{
+        font-size: 14px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        margin-bottom: 5px;
+    }
+}
