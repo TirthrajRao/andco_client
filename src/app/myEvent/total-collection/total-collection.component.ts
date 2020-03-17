@@ -8,8 +8,9 @@ declare var $;
 })
 export class TotalCollectionComponent implements OnInit {
   @Input('collections') totalCollection
-  
+
   displayCollection = []
+  activityCollection = []
   $slider
   $slideContainter
   selectedIndex = 0
@@ -60,6 +61,7 @@ export class TotalCollectionComponent implements OnInit {
     console.log("changes of collections in main page", changes.totalCollection.currentValue);
     if (changes.totalCollection.currentValue) {
       this.displayCollection = changes.totalCollection.currentValue
+      // this.activityCollection = changes.totalCollection.currentValue.activityName
       this.selectedIndex = 0
       this.$slideContainter = $('.total-collection-slider');
       this.$slideContainter.slick('unslick');
@@ -70,10 +72,10 @@ export class TotalCollectionComponent implements OnInit {
 
   }
 
-  openTab(j,i,group){
+  openTab(j, i, group) {
     console.log("group index", j, "activity index", i);
     this.tabId = j + "" + i
-    $('#'+this.tabId).show()
+    $('#' + this.tabId).show()
   }
 
 }
