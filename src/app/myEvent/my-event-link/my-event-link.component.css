@@ -8,15 +8,17 @@
 }
 .share-link i{
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 20px;
-    font-size: 26px;
+    font-size: 28px;
     line-height: 40px;
     cursor: pointer;
+    color: #545454;
 }
 
 .share-link input {
     color: #545454;
+    font-size: 24px;
     padding: 10px 20px 8px 8px;
     line-height: 50px;
     font-weight: 600;

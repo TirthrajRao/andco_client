@@ -13,20 +13,25 @@
     /* overflow-x: hidden; */
 }
 .my-event-hashtag h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.my-event-hashtag h2 span{
+    color: #fff;
+    font-family: 'Advent Pro', 'sans-sarif';
     font-weight: bold;
     font-size: 40px;
-    text-align: center;
-    color: #fff;
     text-shadow: 6px 5px 0px rgba(0,0,0, 0.16);
-    font-family: 'Advent Pro', 'sans-sarif';
     width: 45%;
     margin: auto;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-bottom: 20px;
 }
 a#arrowpre img {
     transform: rotate(180deg);
+}
+h2 img {
+    height: 34px;
 }
 /* responsive css start */
 @media(max-width: 1600px){

@@ -128,6 +128,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     align-items: unset;
     padding-top: 120px;
     min-height: calc(100vh - 60px);
+    position: relative;
 }
 
 /* display screen slider start */
@@ -503,7 +504,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     background-color: transparent;
     border: none;
     position: absolute;
-    top: -20px;
+    top: -30px;
     right: 0;
     z-index: 1;
 }
@@ -554,6 +555,10 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .guest-main-background .page-content {
         padding-top: 90px;
+    }
+    .arrow-right, .arrow-left{
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -703,6 +708,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         top: 65px;
         right: 20px;
     }
+    .guest-main-background .page-content {
+        padding-top: 40px;
+    }
 }
 @media(max-width:440px){
     .total-collection-slider button.slick-arrow img {
@@ -713,6 +721,13 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .total-collection-slider button.slick-arrow {
         display: none !important;
+    }
+    .arrow-right, .arrow-left {
+        width: 15px;
+        height: 15px;
+    }
+    .guest-activity-slider button.prevarrow.slick-arrow {
+        right: 10px;
     }
 }
 @media (max-width: 400px) {
