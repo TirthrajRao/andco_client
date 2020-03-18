@@ -72,6 +72,10 @@ const routes: Routes = [
         component: CreateEventComponent
       },
       {
+        path: 'edtiEvent/:eventId',
+        component: CreateEventComponent
+      },
+      {
         path: 'eventActivity/:id',
         component: EventActivityComponent
       },

@@ -162,10 +162,11 @@ export class EventService {
 
 
   getEventCollection(eventId) {
-    let body = {
-      eventId: eventId
-    }
     return this.http.get(config.baseApiUrl + "/event-collection?eventId=" + eventId)
+  }
+
+  getItemsOfGuest(eventId) {
+    return this.http.get(config.baseApiUrl + "/guest?eventId=" + eventId)
   }
 
 }

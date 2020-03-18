@@ -8,7 +8,6 @@ declare var $;
 })
 export class TotalCollectionComponent implements OnInit {
   @Input('collections') totalCollection
-
   displayCollection = []
   activityCollection = []
   displayEventTotal
@@ -56,6 +55,7 @@ export class TotalCollectionComponent implements OnInit {
         this.initCollectionSlider()
       }, 10)
     }
+
 
   }
 
