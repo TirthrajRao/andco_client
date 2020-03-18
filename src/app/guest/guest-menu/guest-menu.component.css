@@ -1,8 +1,8 @@
 
 .circular-menu {
-    position: absolute;
-    bottom: 2%;
-    right: 3%;
+    position: fixed;
+    bottom: 4%;
+    right: 4%;
 }
 
 .circular-menu .floating-btn {
@@ -160,9 +160,6 @@
     }
 }
 @media(max-width:575px){
-    .circular-menu {
-        bottom: 0;
-    }
     .circular-menu .menu-item{
         font-size: 14px;
     }
