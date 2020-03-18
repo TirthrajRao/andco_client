@@ -1,7 +1,7 @@
 <div class="event-menu-slider">
     <div class="single-slide" *ngFor="let item of menuArray; let i =index" (click)="clickOnMenu(item, i)">
         <div class="single-inner-slide" >
-            <p>{{item}}</p>
+            <p title="{{item}}">{{item}}</p>
         </div>
     </div>
 </div>

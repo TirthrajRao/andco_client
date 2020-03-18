@@ -1,14 +1,14 @@
 <div class="guest-activity-single-slide">
     <div class="guest-activity-slider">
         <div *ngFor="let activity of displayActivity">
-            <h2 class="text-white font-weight-bold mb-2">{{activity.activityName}}</h2>
+            <h2 class="tooltip-class text-white font-weight-bold mb-2" title="{{activity.activityName}}" >{{activity.activityName}}</h2>
         </div>
     </div>
     <!-- <button (click)="nextSlide()">next</button> -->
     <div class="guest-activity-group">
         <div class="radio" *ngFor="let group of displayGroup; let i = index">
             <input id="{{i}}" name="radio" type="radio" value="{{i}}" (change)="changeGroup($event)">
-            <label for="{{i}}" class="radio-label">{{group.groupName}}</label>
+            <label for="{{i}}" class="radio-label" title="{{group.groupName}}">{{group.groupName}}</label>
         </div>
     </div>
     <div class="guest-activity-item-tab">
@@ -22,7 +22,7 @@
             <ul *ngIf="selectedwallet == 0">
                 <li class="guest-item" *ngFor="let item of itemList; let i =index">
                     <div class="guest-item-name">
-                        <p>{{item.itemName}}</p>
+                        <p title="{{item.itemName}}">{{item.itemName}}</p>
                     </div>
                     <div class="guest-add-items">
                         <h4>{{item.itemPrice  | currency:"&#x20A6;"}} <span>x</span>

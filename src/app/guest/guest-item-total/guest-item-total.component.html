@@ -5,7 +5,7 @@
     <div id="accordion" class="myaccordion">
         <span *ngFor="let key of keys; let i = index">
             <button class="btn single-activity w-100" data-toggle="collapse" [attr.data-target]="'#collapseOne' + i"
-                aria-controls="collapseOne" (click)="current = i">
+                aria-controls="collapseOne" (click)="current = i" title="{{key}}">
                 {{key}}
             </button>
             <div id="collapseOne{{i}}" class="collapse" [class.collapse]='current !=i' aria-labelledby="headingOne"
@@ -16,7 +16,7 @@
                         <ul>
                             <li *ngFor="let data of maleArray[i]; let k =index" class="guest-item">
                                 <div class="guest-item-name">
-                                    <p>{{data.itemName}}</p>
+                                    <p title="{{data.itemName}}">{{data.itemName}}</p>
                                 </div>
                                 <div class="guest-add-items">
                                     <h4 class="font-weight-bold">{{data.itemPrice}}<span> x </span>

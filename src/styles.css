@@ -383,15 +383,22 @@ img.swal2-image {
 .timepicker-button {
     color: #A6B138 !important;
 }
+
 /* mat tab start */
-.mat-tab-group{
-    width: 100%;
+
+.mat-tab-label .mat-tab-label-content {
     font-family: 'Manjari', 'sans-sarif' !important;
 }
-.mat-tab-body-content{
+
+.mat-tab-group {
+    width: 100%;
+}
+
+.mat-tab-body-content {
     overflow: hidden;
 }
-.mat-tab-label{
+
+.mat-tab-label {
     background-color: #C97A33;
     color: #fff;
     border-radius: 8px;
@@ -399,17 +406,34 @@ img.swal2-image {
     font-weight: bold;
     font-size: 18px;
     position: relative;
+    font-family: 'Manjari', 'sans-sarif' !important;
 }
-.mat-ink-bar{
+
+.mat-ink-bar {
     height: 0 !important;
 }
-.mat-tab-header, .mat-tab-nav-bar{
+
+.mat-tab-header, .mat-tab-nav-bar {
     border-bottom: none !important;
 }
-.mat-tab-label-active{
-    background-color: #C97A33 ;
+
+.mat-tab-label {
+    background-color: #C97A33;
     opacity: 1 !important;
-  }
+    position: relative;
+}
+.mat-tab-label-active:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 2px solid #000;
+    display: block;
+    border-radius: 7px;
+}
+
 /* mat tab end */
 
 /* mat css end */
@@ -446,7 +470,9 @@ img.swal2-image {
     list-style: none;
     font-size: 0;
     text-align: center;
-    margin-top: 10px;
+    margin-top: -40px;
+    z-index: 1;
+    position: relative;
 }
 
 .total-collection-slider ul.slick-dots li {
@@ -463,7 +489,7 @@ img.swal2-image {
 }
 
 .total-collection-slider ul.slick-dots li.slick-active button {
-    background-color: white;
+    background-color: #c97a33;
 }
 
 /* my event end */
@@ -547,7 +573,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         padding-top: 150px;
     }
     share-button.sb-button.sb-circles-dark button.sb-whatsapp, share-button.sb-button.sb-circles-dark button.sb-facebook, share-button.sb-button.sb-circles-dark button.sb-email, share-button.sb-button.sb-circles-dark button.sb-sms {
-       background-size: 80%;
+        background-size: 80%;
     }
     share-button.sb-button.sb-circles-dark button {
         height: 50px;
@@ -556,7 +582,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .guest-main-background .page-content {
         padding-top: 90px;
     }
-    .arrow-right, .arrow-left{
+    .arrow-right, .arrow-left {
         width: 20px;
         height: 20px;
     }
@@ -596,18 +622,15 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-main .page-content {
         padding-top: 110px;
     }
-    .total-collection-slider ul.slick-dots{
-        margin-top: -20px;
-    }
     .total-collection-slider button.slick-arrow {
         top: 60px;
         right: 20px;
     }
-    .total-collection-slider ul.slick-dots li button{
+    .total-collection-slider ul.slick-dots li button {
         height: 16px;
         width: 16px;
     }
-    .total-collection-slider button.slick-arrow img{
+    .total-collection-slider button.slick-arrow img {
         height: 30px;
     }
     .guest-main-background .page-content {
@@ -712,7 +735,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         padding-top: 40px;
     }
 }
-@media(max-width:440px){
+
+@media(max-width:440px) {
     .total-collection-slider button.slick-arrow img {
         height: 26px;
     }
@@ -730,6 +754,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         right: 10px;
     }
 }
+
 @media (max-width: 400px) {
     .navigation_menu {
         height: 40px;
@@ -755,7 +780,6 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 }
 
 @media(max-width: 400px) {}
-
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {
     .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {

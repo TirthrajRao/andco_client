@@ -49,6 +49,7 @@ a.nav-link.active:after {
 }
 .collection-tab {
     padding: 30px 0;
+    font-family: 'Manjari', sans-serif !important;
 }
 .collection-tab span{
     color: #686868;
