@@ -11,6 +11,7 @@ export class TotalCollectionComponent implements OnInit {
 
   displayCollection = []
   activityCollection = []
+  displayEventTotal
   $slider
   $slideContainter
   selectedIndex = 0
@@ -36,20 +37,6 @@ export class TotalCollectionComponent implements OnInit {
         prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-right.png"></button>',
         nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-right.png"></button>',
       })
-
-      // var handleChange = (i) => {
-      //   console.log("i ma su ave che", i)
-      //   if (i < this.displayCollection.length)
-      //     this.handleChanges(this.displayCollection[i].finalGroup[0])
-
-      //   // this.$slideContainter = $('.total-collection-slider');
-      //   // this.$slideContainter.slick('unslick');
-      //   // this.initCollectionSlider()
-      // };
-      // this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-      //   console.log("nextSlide", nextSlide);
-      //   handleChange(nextSlide);
-      // });
     })
   }
 
@@ -60,8 +47,8 @@ export class TotalCollectionComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("changes of collections in main page", changes.totalCollection.currentValue);
     if (changes.totalCollection.currentValue) {
-      this.displayCollection = changes.totalCollection.currentValue
-      // this.activityCollection = changes.totalCollection.currentValue.activityName
+      this.displayCollection = changes.totalCollection.currentValue.groupWise
+      this.displayEventTotal = changes.totalCollection.currentValue.eventTotal
       this.selectedIndex = 0
       this.$slideContainter = $('.total-collection-slider');
       this.$slideContainter.slick('unslick');
