@@ -128,7 +128,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     align-items: unset;
     padding-top: 120px;
     min-height: calc(100vh - 60px);
-    position: relative;
+    /* position: relative; */
 }
 
 /* display screen slider start */
