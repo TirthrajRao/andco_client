@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
-import { templateJitUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +36,23 @@ export class EventService {
   }
 
 
+  updateEvent(eventId, body, files: any) {
+
+    let formdata = new FormData();
+    formdata.append('eventTitle', body.eventTitle);
+    formdata.append('eventType', body.eventType);
+    formdata.append('hashTag', body.hashTag);
+    formdata.append('background', body.background)
+    formdata.append('eventId', eventId)
+    if (files.length) {
+      for (let i = 0; i < files.length; i++) {
+        formdata.append("profile", files[i]);
+      }
+    }
+    return this.http.put(config.baseApiUrl + "/event", formdata);
+  }
+
+
 
   /**
    * @param {Object} data
@@ -47,12 +63,26 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/activity", data.activity);
   }
 
+
+  updateActivites(data) {
+    console.log("data of update ", data);
+    return this.http.put(config.baseApiUrl + "/activity/", data)
+  }
+
+  removeActivity(data) {
+    return this.http.post(config.baseApiUrl + "/activity-delete", data)
+  }
+
   /**
    * @param eventId 
    * Get Single Evene Details
    */
   getEventDetails(eventId) {
     return this.http.get(config.baseApiUrl + "/event/" + eventId)
+  }
+
+  getActivityDetails(eventId) {
+    return this.http.get(config.baseApiUrl + "/event/activity/" + eventId)
   }
 
   addGroup(groupDetails, eventId) {

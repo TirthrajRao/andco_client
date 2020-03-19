@@ -10,12 +10,10 @@
                         <h3>Your event type <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
                         <div class="create-event-type-menu">
                             <ul class="mb-0">
-                                <li><a>Wedding</a></li>
-                                <li><a>Birthday</a></li>
-                                <li><a>Funeral</a></li>
-                                <li><a>Reunion</a></li>
-                                <li><a>Club/Group</a></li>
-                                <li><a>Anniversary</a></li>
+                                <li *ngFor="let type of eventType; let i =index" (click)="selectEvent(i)"
+                                    [class.active]="selctedIndex == i">
+                                    <a>{{type}}</a>
+                                </li>
                             </ul>
                             <div *ngIf="f.eventType.touched && f.eventType.errors" class="invalid-feedback">
                                 <div *ngIf="f.eventType.errors.required" class="invalid-feedback">Event Type is Required
@@ -69,8 +67,8 @@
                     <div class="create-event-profile-box">
                         <h3>Your Event Profile Photo</h3>
                         <div class="profile-picture">
-                            <img * ngIf="createdEventDetails && createdEventDetails.profilePhoto"
-                                src="{{path}}{{createdEventDetails.profilePhoto}}">
+                            <!-- <img *ngIf="displayImage == true" src="{{path}}{{createdEventDetails.profilePhoto}}"
+                                id="imageFilter"> -->
                             <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
                                 onerror="this.src='/assets/images/profile_img.png'">
                         </div>
@@ -92,82 +90,18 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
-                            <!-- <img src="assets/images/background_main.png" alt="profile picture"> -->
                             <img [src]="themeUrl" id="imageFilter"
                                 onerror="this.src='/assets/images/background_main.png'">
                         </div>
                         <div class="background-photo-upload">
                             <div class="row">
-                                <div class="col-3">
-                                    <div class="bg-select-div">
+                                <div class="col-3" *ngFor="let theme of eventBackGround; let i =index">
+                                    <div class="bg-select-div" [class.active]="selectedThemeIndex == i">
                                         <div class="sample_bg">
-                                            <img src="assets/images/floral.png" alt="background 1" id="background1"
-                                                (click)="defaultBackgroundImage('assets/images/floral.png')">
+                                            <img src="{{theme.path}}" alt="background 1" id="background1"
+                                                (click)="defaultBackgroundImage(theme.path , i)">
                                         </div>
-                                        <span>floral</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/marble.png" alt="background 2"
-                                                (click)="defaultBackgroundImage('assets/images/marble.png')">
-                                        </div>
-                                        <span>marble</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/wood.png" alt="background 3"
-                                                (click)="defaultBackgroundImage('assets/images/wood.png')">
-                                        </div>
-                                        <span>wood</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/origami.png" alt="background 4"
-                                                (click)="defaultBackgroundImage('assets/images/origami.png')">
-                                        </div>
-                                        <span>origami</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/classic.png" alt="background 5"
-                                                (click)="defaultBackgroundImage('assets/images/classic.png')">
-                                        </div>
-                                        <span>classic</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/lines.png" alt="background 6"
-                                                (click)="defaultBackgroundImage('assets/images/lines.png')">
-                                        </div>
-                                        <span>lines</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/luxury.png" alt="background 7"
-                                                (click)="defaultBackgroundImage('assets/images/luxury.png')">
-                                        </div>
-                                        <span>luxury</span>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="bg-select-div">
-                                        <div class="sample_bg">
-                                            <img src="assets/images/instrument.png" alt="background 8"
-                                                (click)="defaultBackgroundImage('assets/images/instrument.png')">
-                                        </div>
-                                        <span>instrument</span>
+                                        <span>{{theme.themeName}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +125,8 @@
                     <!-- your event prising tip end -->
                 </div>
             </form>
-            <button class="btn created-event-custom-button" (click)="addEvent()">Continue</button>
+            <button class="btn created-event-custom-button"
+                (click)="createdEventDetails? updateEvent(): addEvent()">Continue</button>
         </div>
         <!-- create event slider end -->
     </div>

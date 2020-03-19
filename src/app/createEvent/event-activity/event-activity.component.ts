@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, getLocaleFirstDayOfWeek } from '@angular/common';
 import * as moment from 'moment';
 
 
@@ -21,7 +21,7 @@ export class EventActivityComponent implements OnInit {
   activityId
   createdActivity: any;
   today = new Date()
-  currentDay = new Date()
+  currentDay
   currentYear = this.today.getFullYear()
   maxYear = new Date(this.today.setFullYear(this.today.getFullYear() + 10)).getFullYear();
   sub: any;
@@ -47,8 +47,7 @@ export class EventActivityComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
-
-        // this.viewDetailsOfEvent(this.eventId);
+        this.viewDetailsOfEvent(this.eventId);
       }
     })
   }
@@ -102,6 +101,7 @@ export class EventActivityComponent implements OnInit {
    * Edit event activities 
    */
   getActivityFrom(createdActivity?) {
+    console.log("details of activity", createdActivity);
 
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
@@ -124,16 +124,22 @@ export class EventActivityComponent implements OnInit {
     /**
      * To edit created activities
      */
-    // let actArray = [];
-    // for (let i = 0; i < activities.length; i++) {
-    //   actArray.push(this.fb.group({
-    //     activityId: new FormControl(activities[i]._id),
-    //     activityName: new FormControl(activities[i].activityName),
-    //     activityStartDate: new FormControl(activities[i].activityStartDate.split("T")[0]),
-    //     eventId: new FormControl(activities[i].eventId)
-    //   }))
-    // }
-    // return actArray;
+    else {
+      let actArray = [];
+      for (let i = 0; i < activities.length; i++) {
+        console.log("index i ==", i, activities[i]);
+        actArray.push(this.fb.group({
+          activityId: new FormControl(activities[i]._id),
+          activityName: new FormControl(activities[i].activityName),
+          activityStartDate: new FormControl(activities[i].activityStartDate),
+          eventId: new FormControl(this.eventId)
+        }))
+      }
+
+      console.log("form group :::::", this.activityForm.value);
+      return actArray;
+    }
+
   }
 
 
@@ -142,6 +148,7 @@ export class EventActivityComponent implements OnInit {
    * To remove added activity field 
    */
   removeActivityField(i: number, id): void {
+    console.log("id of activity", id);
     if (!id.activityId) {
       const control = <FormArray>this.activityForm.controls.activity;
       control.removeAt(i);
@@ -153,6 +160,15 @@ export class EventActivityComponent implements OnInit {
       this.currentDay = earliest
     }
     else {
+      // console.log("call this", id);
+      this._eventService.removeActivity(id).subscribe((response: any) => {
+        console.log("activity remove completed", response);
+        this.eventActivities = response.data.activities
+        this.getActivityFrom(this.eventActivities)
+      }, error => {
+        console.log("activity error when remove", error);
+
+      })
     }
   }
 
@@ -225,6 +241,46 @@ export class EventActivityComponent implements OnInit {
    * To get all details of particular event 
    */
   viewDetailsOfEvent(eventId) {
+    this._eventService.getActivityDetails(eventId).subscribe((response: any) => {
+      console.log("response of acitivty", response);
+      if (response && !response.data.message) {
+        console.log("=============");
+        this.eventActivities = response.data
+        console.log("response of activity", this.eventActivities);
+        this.eventActivities.forEach((element, index) => {
+          console.log("elemtnt", element, index);
+          this.displayTime.push(element.activityStartDate)
+        });
+        var dates = this.eventActivities.map(function (x) { return new Date(x.activityStartDate); })
+        var earliest = new Date(Math.min.apply(null, dates));
+        console.log("ear =====>", earliest);
+        this.currentDay = earliest
+        this.displayActivity = true
+        // this.currentDay = this.eventActivities[0].activityStartDate
+        console.log("date picker validation", this.currentDay);
+        this.getActivityFrom(this.eventActivities)
+      } else {
+        console.log("log this or not");
+
+        this.currentDay = new Date()
+      }
+      // console.log("display time of activity", this.activityForm.value);
+
+    }, error => {
+      console.log("error while get activity", error);
+
+    })
+  }
+
+  updateActivity() {
+    console.log("value of activity while edit", this.activityForm.value);
+    this._eventService.updateActivites(this.activityForm.value).subscribe((response: any) => {
+      console.log("activity update completed", response);
+      // this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
+    }, error => {
+      console.log("error while update activity", error);
+
+    })
   }
 
 
