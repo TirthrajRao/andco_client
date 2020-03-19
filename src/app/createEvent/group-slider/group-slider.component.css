@@ -98,17 +98,8 @@
         font-size: 18px;
     }
 }
-
-@media(max-width:1366px) {}
-
-@media(max-width:1199px) {}
-
-@media(max-width:991px) {}
-
 @media(max-width:767px) {
     .group-header span {
         font-size: 16px;
     }
 }
-
-@media(max-width:575px) {}

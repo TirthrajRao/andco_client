@@ -3,14 +3,12 @@
         <span>Add your account details to credit</span>
         <form [formGroup]='bankForm'>
             <div class="inner-radio-box">
-                <!-- <form> -->
                 <p><input type="radio" name="radio2" id="test3" (click)="bankSelect()"> <label for="test3">Bank
                         account</label>
                 </p>
                 <p><input type="radio" name="radio2" id="test4" (click)="cardSeleced()"> <label for="test4">Bank
                         Card</label>
                 </p>
-                <!-- </form> -->
             </div>
             <div [hidden]="!isBankSelected">
                 <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name"

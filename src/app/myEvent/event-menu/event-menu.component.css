@@ -36,12 +36,15 @@
 }
 @media(max-width:1366px){
     .single-inner-slide{
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
     }
     .event-menu-slider.slick-slider {
         width: 700px;
         margin: auto;
+    }
+    .single-inner-slide{
+        font-size: 16px;
     }
 }
 @media(max-width:1199px){

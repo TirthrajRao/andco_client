@@ -58,15 +58,18 @@ h2 img {
         margin-bottom: 5px;
     }
     h2 img {
-        height: 30px;
+        height: 26px;
     }
     .my-event-hashtag h2{
         margin-bottom: 0;
     }
+    .event-menu-box-main{
+        width: 700px;
+    }
 }
 @media(max-width: 1199px){
     .event-menu-box-main{
-        width: 700px;
+        width: 650px;
     }
     .myevent-inner-box{
         width:650px;
@@ -85,22 +88,22 @@ h2 img {
     }
 }
 @media(max-width: 991px){
-    .myevent-inner-box{
+    .myevent-inner-box, .event-menu-box-main{
         width: 600px;
     }
 }
 @media(max-width: 767px){
-    .myevent-inner-box{
+    .myevent-inner-box, .event-menu-box-main{
         width: 550px;
     }
 }
 @media(max-width: 575px){
-    .myevent-inner-box{
+    .myevent-inner-box, .event-menu-box-main{
         width: 480px;
     }
 }
 @media(max-width: 480px){
-    .myevent-inner-box{
+    .myevent-inner-box, .event-menu-box-main{
        width: 90%;
     }
 }

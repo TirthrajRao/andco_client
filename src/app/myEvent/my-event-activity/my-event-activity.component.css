@@ -1,25 +1,28 @@
-.myevent-groups-item{
-    max-height: 150px;
+.myevent-groups-item {
+    max-height: 200px;
     min-height: 150px;
     overflow-y: auto;
+    padding-right: 20px;
 }
+
 .myevent-groups-item::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px transparent;
-    border-radius: 3px;
-    background-color: #F8D0AD;
+    background-color: transparent;
 }
+
 .myevent-groups-item::-webkit-scrollbar {
+    background-color: transparent;
     width: 3px;
-    padding-right: 3px;
-    background-color: #F8D0AD;
+    border-radius: 4px;
 }
 
 .myevent-groups-item::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 3px transparent;
-    background-color: #FE983A;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 3px;
+    background-color: #F8D0AD;
 }
-.myevent-activity-box{
+
+.myevent-activity-box {
     color: #F8D0AD;
     font-size: 32px;
     font-weight: bold;
@@ -27,19 +30,23 @@
     width: 90%;
     margin: 30px auto;
 }
-.myevent-single-item{
+
+.myevent-single-item {
     float: left;
-    width: calc(100% - 100px);
+    width: 100%;
     display: inline-block;
 }
-span.items-name{
+
+span.items-name {
     float: left;
 }
-span.items-price{
+
+span.items-price {
     float: right;
     text-align: right;
 }
-span.items-price, span.items-name{
+
+span.items-price, span.items-name {
     width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -47,6 +54,7 @@ span.items-price, span.items-name{
 }
 
 /* radio button css start here */
+
 [type="radio"]:checked, [type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
@@ -103,24 +111,30 @@ span.items-price, span.items-name{
 /* radio button css end here */
 
 @media(max-width:1600px) {
-    .myevent-activity-box{
+    .myevent-activity-box {
         font-size: 30px;
         width: 100%;
         margin: 10px;
     }
-    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         font-size: 26px;
     }
-    .myevent-groups-item{
-        max-height: 100px;
+    .myevent-groups-item {
+        max-height: 160px;
         min-height: 70px;
     }
 }
 
 @media(max-width:1366px) {
-    .myevent-activity-box{
+    .myevent-activity-box {
         font-size: 22px;
         margin: 0;
+    }
+    .myevent-groups-item {
+        max-height: 100px;
+    }
+    .myevent-activity-box {
+        line-height: 40px;
     }
     /* radio button  start*/
     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
@@ -133,14 +147,15 @@ span.items-price, span.items-name{
         width: 26px;
         height: 26px;
     }
-    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
-        font-size: 24px;
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 20px;
+        line-height: 22px;
     }
     /* radio button end*/
 }
 
 @media(max-width:1199px) {
-    .myevent-activity-box{
+    .myevent-activity-box {
         font-size: 20px;
     }
     /* radio button  start*/
@@ -159,41 +174,61 @@ span.items-price, span.items-name{
     [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         line-height: 30px;
     }
-    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         font-size: 20px;
     }
     /* radio button end*/
 }
 
-@media(max-width:991px) {}
+@media(max-width:1024px) {
+    .myevent-groups-item {
+        max-height: 350px;
+        min-height: 100px;
+    }
+    .myevent-single-item {
+        border-bottom: 1px solid #fffffff8;
+    }
+    .myevent-single-item:last-child {
+        border: none;
+    }
+}
+
+@media(max-width:991px) {
+    
+    span.items-price, span.items-name {
+        width: 100%;
+    }
+    span.items-price {
+        text-align: left;
+    }
+}
 
 @media(max-width:767px) {
     [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
-     font-size: 26px;
+        font-size: 26px;
     }
-    .myevent-activity-box{
+    .myevent-activity-box {
         font-size: 22px;
         line-height: 45px;
     }
 }
-@media(max-width:480px){
-    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+
+@media(max-width:480px) {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         font-size: 22px;
     }
     .myevent-activity-box {
         font-size: 20px;
         line-height: 35px;
     }
-    .myevent-single-item{
-        width: calc(100% - 40px);
-    }
-}   
-@media(max-width: 400px){
-    .myevent-activity-box{
+}
+
+@media(max-width: 400px) {
+    .myevent-activity-box {
         padding: 0 20px;
         width: 100%;
     }
-    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
         font-size: 17px;
     }
 }

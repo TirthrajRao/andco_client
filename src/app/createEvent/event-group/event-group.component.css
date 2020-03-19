@@ -30,7 +30,6 @@
     box-shadow: 0px 0px 70px #d5dbd5;
     margin-top: 10px;
 }
-/* activity slider ( activity-slider component ) */
 
 .event-date-box h4{
     color: #434040;
@@ -43,8 +42,6 @@
     color: #686868;
     font-weight: 600;
 }
-
-/* group slider ( group-slider component ) */
 
 .group-box h6{
     color: #686868;

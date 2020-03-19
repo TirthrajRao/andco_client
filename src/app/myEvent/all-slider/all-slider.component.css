@@ -91,16 +91,9 @@
 
 @media(max-width: 1366px) {
     .myEvent-name p {
-        font-size: 20px;
-        padding-top: 3px;
-        line-height: 30px;
-    }
-}
-
-@media(max-width: 1199px) {
-    .myEvent-name p {
         font-size: 18px;
-        line-height: 24px;
+        padding-top: 3px;
+        line-height: 26px;
     }
 }
 

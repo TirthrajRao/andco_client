@@ -1,6 +1,3 @@
-<!-- <div class="add-event">
-    <button class="btn">+</button>
-</div> -->
 <div class="event-slider">
     <div class="event-single-slide" *ngFor="let item of allActivities, let i = index">
         <div class="event-name" (click)="singleActivityDetails(item , allActivities , i)"
@@ -9,6 +6,4 @@
         </div>
     </div>
 </div>
-
-
 <!-- (click)="singleActivity.emit({item : item, allActivities: allActivities})" -->

@@ -30,13 +30,16 @@ export class MyEventLinkComponent implements OnInit {
       reminderMessage: new FormControl(''),
       reminderStartDate: new FormControl(''),
       reminderStartTime: new FormControl('')
-    })
+    });
+
+
     $('.my-event-tab-slider').not('.slick-initialized').slick({
       infinite: false,
       slidesToShow: 3.5,
       slidesToScroll: 1,
       adaptiveHeight: true,
       arrows: false,
+      focusOnSelect: true,
       responsive: [
         {
           breakpoint: 991,

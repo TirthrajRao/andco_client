@@ -31,7 +31,7 @@ export class EventMenuComponent implements OnInit {
       this.$slider = this.$sliderContent.not('.slick-initialized').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        draggable: true,
+        draggable: false,
         arrows: true,
         centerMode: true,
         focusOnSelect: true,

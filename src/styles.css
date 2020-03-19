@@ -103,6 +103,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
 }
 .my-custom-class .arrow::before {
     border-top-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.8);
   }
 /* tooltip design end */
 
@@ -506,7 +507,6 @@ img.swal2-image {
 .total-collection-slider ul.slick-dots li.slick-active button {
     background-color: #c97a33;
 }
-
 /* my event end */
 
 /* share button start */
@@ -661,9 +661,6 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 18px;
         padding: 4px 28px;
-    }
-    .myEvent-main .page-content {
-        padding-top: 130px;
     }
     .total-collection-slider ul.slick-dots {
         margin-top: 0;
