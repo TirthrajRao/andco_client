@@ -507,6 +507,10 @@ img.swal2-image {
 .total-collection-slider ul.slick-dots li.slick-active button {
     background-color: #c97a33;
 }
+.total-collection-slider button.slick-arrow img:hover {
+    filter: brightness(1.5);
+    transition: 0.3s all;
+}
 /* my event end */
 
 /* share button start */
@@ -661,9 +665,6 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 18px;
         padding: 4px 28px;
-    }
-    .total-collection-slider ul.slick-dots {
-        margin-top: 0;
     }
 }
 

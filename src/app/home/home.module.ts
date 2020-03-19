@@ -11,6 +11,7 @@ import { ShareModule } from '@ngx-share/core'
 import { ShareButtonModule } from '@ngx-share/button';
 import { ClipboardModule } from 'ngx-clipboard';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { NgbdAlertSelfclosing } from './alert-selfclosing';
 
 // import {MatTabsModule} from '@angular/material/tabs';
 

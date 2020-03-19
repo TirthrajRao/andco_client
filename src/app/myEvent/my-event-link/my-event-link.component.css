@@ -111,7 +111,12 @@ textarea::-webkit-scrollbar-thumb {
     color: #F8D0AD;
     margin-top: 15px;
 }
-
+.share-button button:hover {
+    background: #f8d0ac;
+    color: #985e28;
+    border: 3px solid #975e27;
+    transition: 0.5s all;
+}
 /* step 2 start*/
 
 .social-icon ul {
@@ -242,7 +247,7 @@ span.zone {
     }
     .share-link i {
         font-size: 22px;
-        top: 5;
+        top: 5px;
     }
     .share-button button{
         margin-top: 0;
