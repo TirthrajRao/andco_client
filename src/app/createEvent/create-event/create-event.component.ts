@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { config } from '../../config'
@@ -13,6 +13,7 @@ declare var $;
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent implements OnInit {
+  @Output() eventActivities: EventEmitter<any> = new EventEmitter<any>()
 
   private sub: any
   private eventId: any
@@ -32,8 +33,45 @@ export class CreateEventComponent implements OnInit {
   isDisable = false
   submitted = false;
   isLoad = false
+  displayImage
   errorMessaage: string;
-  // elRef: any;
+  selctedIndex
+  selectedThemeIndex
+  eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
+  eventBackGround = [
+    {
+      themeName: 'floral',
+      path: 'assets/images/floral.png'
+    },
+    {
+      themeName: 'marble',
+      path: 'assets/images/marble.png'
+    },
+    {
+      themeName: 'wood',
+      path: 'assets/images/wood.png'
+    },
+    {
+      themeName: 'origami',
+      path: 'assets/images/origami.png'
+    },
+    {
+      themeName: 'classic',
+      path: 'assets/images/classic.png'
+    },
+    {
+      themeName: 'lines',
+      path: 'assets/images/lines.png'
+    },
+    {
+      themeName: 'luxury',
+      path: 'assets/images/luxury.png'
+    },
+    {
+      themeName: 'instrument',
+      path: 'assets/images/instrument.png'
+    }
+  ]
 
 
 
@@ -120,17 +158,32 @@ export class CreateEventComponent implements OnInit {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response for edit event", response);
       this.createdEventDetails = response.data
-      // this.
-      // $('.displayType > a').html(this.createdEventDetails.eventType);
-
-      // $('.selected_event_type > a').html(this.createdEventDetails.eventType);
-      // this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
+      let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
+      this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+      let index = this.eventBackGround.findIndex(x => x.path === this.createdEventDetails.eventTheme);
+      this.themeUrl = this.createdEventDetails.eventTheme
+      this.imgURL = this.path + this.createdEventDetails.profilePhoto
+      this.selctedIndex = selectedEventType
+      this.displayImage = true
+      // this.eventActivities.emit(this.createdEventDetails.activity)
+      console.log("index of event", index);
+      this.selectedThemeIndex = index
+      this.eventForm.controls.profile.setValue(this.createdEventDetails.profilePhoto)
     }, error => {
       console.log("error while get event details", error);
 
     })
   }
 
+
+  selectEvent(i) {
+    console.log("index of type", i);
+    this.selctedIndex = i
+    const selectedCategory = this.eventType[i];
+    this.eventForm.controls.eventType.setValue(selectedCategory)
+    console.log("selectedCategory", selectedCategory);
+
+  }
 
 
 
@@ -173,7 +226,7 @@ export class CreateEventComponent implements OnInit {
    */
 
   addFile(event) {
-    // console.log("profile photo path", event);
+    console.log("profile photo path", event, this.imgURL);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
@@ -181,6 +234,8 @@ export class CreateEventComponent implements OnInit {
       reader.readAsDataURL(this.files[0]);
       reader.onload = (_event) => {
         this.imgURL = reader.result;
+        this.displayImage = false
+        // console.log("image url", this.imgURL);
         this.eventForm.controls.profile.setValue(this.files)
       }
     }
@@ -200,11 +255,10 @@ export class CreateEventComponent implements OnInit {
    * @param path background image path
    * Display selected image 
    */
-  defaultBackgroundImage(path) {
+  defaultBackgroundImage(path, i) {
     this.themeUrl = path
     this.eventForm.controls.background.setValue(path)
-    $('.bg-select-div').addClass('active')
-    // console.log("form details========", this.eventForm.value)
+    this.selectedThemeIndex = i
   }
 
 
@@ -224,8 +278,6 @@ export class CreateEventComponent implements OnInit {
    * Create new event
    */
   addEvent() {
-
-
     const keys = Object.keys(this.eventForm.controls);
     let form = this.eventForm.controls;
     let flag = 0;
@@ -258,6 +310,56 @@ export class CreateEventComponent implements OnInit {
           // this.isDisable = true
           this.alertService.getSuccess(data.message)
           this.eventForm.reset()
+          this.router.navigate(['/eventActivity/' + data.data._id]);
+          this.isLoad = false
+        }, (error: any) => {
+          this.isDisable = false
+          this.isLoad = false
+          // console.log(error);
+          this.alertService.getError(error.message);
+          return
+          // })
+        })
+    }
+  }
+
+
+  updateEvent() {
+    console.log("update event value", this.eventForm);
+
+    const keys = Object.keys(this.eventForm.controls);
+    let form = this.eventForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      if (form[element].status == 'INVALID') {
+        flag = 1;
+        if (element == 'eventTitle') {
+          this.errorMessaage = 'Event Title is required'
+        } else if (element == 'eventType') {
+          this.errorMessaage = 'Event Type is required'
+        } else if (element == 'hashTag') {
+          this.errorMessaage = 'Hashtag is required'
+        }
+        // } else if (this.files.length == 0) {
+        //   this.errorMessaage = 'Profile is required'
+        // }
+        this.alertService.getError(this.errorMessaage)
+        return false
+      }
+      else {
+        return true
+      }
+    });
+    if (flag == 0) {
+      this.isLoad = true
+      this.eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
+        .subscribe((data: any) => {
+          console.log("event details", data);
+          sessionStorage.setItem('eventLink', data.data.eventLink)
+          sessionStorage.setItem('hasTag', data.data.hashTag)
+          // this.isDisable = true
+          this.alertService.getSuccess(data.message)
+          // this.eventForm.reset()
           this.router.navigate(['/eventActivity/' + data.data._id]);
           this.isLoad = false
         }, (error: any) => {
