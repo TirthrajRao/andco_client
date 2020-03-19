@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-my-event',
   templateUrl: './my-event.component.html',
@@ -20,7 +22,9 @@ export class MyEventComponent implements OnInit {
   eventLink
   guestList = []
   totalCollections
+  guestWithItems = []
   constructor(
+    private route: Router,
     public eventService: EventService
   ) { }
 
@@ -98,6 +102,19 @@ export class MyEventComponent implements OnInit {
   }
 
 
+  getItemsOfGuest(event) {
+    console.log("event of guest for item", event);
+    this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
+      console.log("all list of guest with items", response);
+      this.guestWithItems = response.data
+    }, error => {
+      console.log("error while get items list of guest", error);
+
+    })
+
+  }
+
+
   getCurrentMenu(event) {
     console.log("current menu index", event);
     this.currenMenuIndex = event
@@ -116,6 +133,9 @@ export class MyEventComponent implements OnInit {
     }
     if (this.currenMenuIndex == 2) {
       this.getCollecctionOfEvent()
+    }
+    if (this.currenMenuIndex == 5) {
+      this.route.navigate(['edtiEvent/' + this.selectedEventId])
     }
   }
 

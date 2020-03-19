@@ -14,6 +14,8 @@ declare var $;
 })
 export class CreateEventComponent implements OnInit {
 
+  private sub: any
+  private eventId: any
   userName = JSON.parse(sessionStorage.getItem('userName'));
   eventForm: FormGroup;
   isPublicVal = false;
@@ -37,6 +39,7 @@ export class CreateEventComponent implements OnInit {
 
   constructor(
     public router: Router,
+    public activated: ActivatedRoute,
     public eventService: EventService,
     public alertService: AlertService,
     private renderer: Renderer2,
@@ -48,6 +51,13 @@ export class CreateEventComponent implements OnInit {
   //  }
 
   ngOnInit() {
+
+    this.sub = this.activated.params.subscribe(param => {
+      this.eventId = param.eventId
+      console.log("event id for edit", this.eventId);
+      this.getEditEventDetails(this.eventId)
+    })
+
     //background image select active start
     $('.sample_bg').click(function (e) {
       $('.bg-select-div.active').removeClass('active');
@@ -55,6 +65,8 @@ export class CreateEventComponent implements OnInit {
       $parent.addClass('active');
       e.preventDefault();
     });
+
+
     //background image select active end
 
     // create event slider start
@@ -99,6 +111,24 @@ export class CreateEventComponent implements OnInit {
       // console.log("event select thai jaje biji var ========", eventFormLocal.controls.eventType.value);
     }
 
+  }
+
+
+
+  // Get Event details
+  getEditEventDetails(eventId) {
+    this.eventService.getEventDetails(eventId).subscribe((response: any) => {
+      console.log("response for edit event", response);
+      this.createdEventDetails = response.data
+      // this.
+      // $('.displayType > a').html(this.createdEventDetails.eventType);
+
+      // $('.selected_event_type > a').html(this.createdEventDetails.eventType);
+      // this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
+    }, error => {
+      console.log("error while get event details", error);
+
+    })
   }
 
 

@@ -3,7 +3,7 @@
         <a class="nav-link active" data-toggle="tab" href="#total">Total</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#guests">Guests</a>
+        <a class="nav-link" data-toggle="tab" href="#guests" (click)="displayGuestList()">Guests</a>
     </li>
 </ul>
 <div class="tab-content">
@@ -11,6 +11,6 @@
         <app-total-collection [collections]="totalCollection"></app-total-collection>
     </div>
     <div id="guests" class="tab-pane fade">
-        <app-guest-collection></app-guest-collection>
+        <app-guest-collection [guestItems]="displayGuestItems"></app-guest-collection>
     </div>
 </div>
