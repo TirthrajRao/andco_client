@@ -90,6 +90,21 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
 }
 
 /* Show password css end */
+/* tooltip design start */
+
+.my-custom-class .tooltip-inner{
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    z-index: 999;
+    position: relative;
+}
+.my-custom-class .arrow::before {
+    border-top-color: rgba(255, 255, 255, 0.8);
+  }
+/* tooltip design end */
 
 /* autofill css start for chrome*/
 
@@ -352,7 +367,7 @@ img.swal2-image {
     height: 2em !important;
     margin-left: 10px !important;
     margin-bottom: 70px;
-    color: #a5b138 !important;
+    color: #545454 !important;
 }
 
 .mat-icon-button {
@@ -377,11 +392,11 @@ img.swal2-image {
 }
 
 .timepicker__header, .clock-face__number>span.active, .clock-face__clock-hand, .mat-calendar-body-selected {
-    background-color: #A6B138 !important;
+    background-color: #545454 !important;
 }
 
 .timepicker-button {
-    color: #A6B138 !important;
+    color: #545454 !important;
 }
 
 /* mat tab start */
@@ -429,7 +444,7 @@ img.swal2-image {
     bottom: 0;
     left: 0;
     right: 0;
-    border: 2px solid #000;
+    border: 2px solid #924500;
     display: block;
     border-radius: 7px;
 }
@@ -760,7 +775,6 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         height: 40px;
         width: 40px;
         top: 20px;
-        left: 20px;
     }
     .invalid-feedback {
         font-size: 11px;

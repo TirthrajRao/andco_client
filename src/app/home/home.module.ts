@@ -10,6 +10,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ShareModule } from '@ngx-share/core'
 import { ShareButtonModule } from '@ngx-share/button';
 import { ClipboardModule } from 'ngx-clipboard';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 // import {MatTabsModule} from '@angular/material/tabs';
 
 
@@ -185,7 +187,8 @@ const routes: Routes = [
     ShareModule,
     ShareButtonModule,
     ClipboardModule,
-    MatTabsModule
+    MatTabsModule,
+    NgbModule
     // MatSelectModule
   ],
   exports: [

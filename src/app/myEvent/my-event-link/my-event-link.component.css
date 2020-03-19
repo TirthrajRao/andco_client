@@ -7,7 +7,8 @@
     position: relative;
     padding: 12px 45px 6px 6px;
 }
-.share-link i{
+
+.share-link i {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -25,7 +26,8 @@
     width: 90%;
     border: none;
 }
-.share-link input:focus{
+
+.share-link input:focus {
     outline: none !important;
 }
 
@@ -160,7 +162,19 @@ span.middle {
 .all {
     padding-left: 60px;
 }
-
+span.pm-am {
+    margin-left: 5px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 37px;
+}
+span.zone {
+    color: #F8D0AD;
+    line-height: 37px;
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
 /* step 4 end */
 
 @media(max-width: 1600px) {
@@ -173,11 +187,14 @@ span.middle {
     }
     textarea {
         font-size: 22px;
-        height: 150px;
+        height: 160px;
     }
     .share-button button {
         border: 2px solid #F8D0AD;
         font-size: 22px;
+    }
+    .share-link i {
+        top: 7px;
     }
 }
 
@@ -198,13 +215,17 @@ span.middle {
     }
     textarea {
         font-size: 20px;
-        height: 110px;
+        height: 150px;
     }
     .share-link input {
         font-size: 22px;
     }
+    .share-link i {
+        font-size: 24px;
+    }
 }
-@media(max-width: 1199px){
+
+@media(max-width: 1199px) {
     .send-date, .send-time {
         width: 50px;
         font-size: 15px;
@@ -220,10 +241,11 @@ span.middle {
         font-size: 20px;
     }
 }
-@media(max-width: 991px){
+
+@media(max-width: 991px) {
     textarea {
         font-size: 18px;
-        height: 100px;
+        height: 120px;
         padding: 10px;
         margin: 5px 0;
     }
@@ -232,9 +254,13 @@ span.middle {
         height: 30px;
         font-size: 13px;
     }
+    .share-link i {
+        font-size: 24px;
+    }
 }
-@media(max-width:767px){
-    .send-message .float-left,.send-message .float-right {
+
+@media(max-width:767px) {
+    .send-message .float-left, .send-message .float-right {
         width: 100%;
         float: unset !important;
         margin-top: 10px;
@@ -244,5 +270,16 @@ span.middle {
     }
     .share-link input {
         font-size: 18px;
+    }
+    .share-link i {
+        top: 5px;
+        font-size: 22px;
+    }
+}
+
+@media(max-width:575px) {
+    .share-link i {
+        right: 12px;
+        font-size: 20px;
     }
 }

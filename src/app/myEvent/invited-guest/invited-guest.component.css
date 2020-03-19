@@ -50,9 +50,14 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
 }
 .guest-list-box ul li{
     list-style-type: none;
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: flex-start;
 }
 .guest-name {
-    padding-left: 90px;
+    padding-left: 20px;
     margin: 10px 0;
 }
 .guest-name p {

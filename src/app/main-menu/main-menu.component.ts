@@ -26,15 +26,6 @@ export class MainMenuComponent implements OnInit {
     } else if (this.eventOfUser == 'true') {
       this.index = Number(this.index) + +1
     }
-    //tooltip js start
-    $(".tooltip-class").hover(function () {
-      $(this).attr("tooltip-data", $(this).attr("title"));
-      $(this).removeAttr("title");
-    }, function () {
-      $(this).attr("title", $(this).attr("tooltip-data"));
-      $(this).removeAttr("tooltip-data");
-    });
-    //tooltip js end
     $('.menu-links ul li a').click(function (e) {
       $('.menu-links ul li.active').removeClass('active');
       var $parent = $(this).parent();

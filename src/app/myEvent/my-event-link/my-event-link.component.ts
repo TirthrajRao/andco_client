@@ -33,7 +33,7 @@ export class MyEventLinkComponent implements OnInit {
     })
     $('.my-event-tab-slider').not('.slick-initialized').slick({
       infinite: false,
-      slidesToShow: 3,
+      slidesToShow: 3.5,
       slidesToScroll: 1,
       adaptiveHeight: true,
       arrows: false,

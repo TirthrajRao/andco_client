@@ -62,7 +62,7 @@ export function provideConfig() {
     HttpClientModule,
     SocialLoginModule,
     HomeModule,
-    MatDatepickerModule
+    MatDatepickerModule,
     // MatSelectModule
   ],
   providers: [
