@@ -12,8 +12,8 @@
     <div class="myevent-groups-item">
         <div class="myevent-group">
             <div class="myevent-single-item" *ngFor="let item of itemNamePrint">
-                <span class="items-name" title="{{item.itemName}}">{{item.itemName}}</span>
-                <span class="items-price" title="{{item.itemPrice}}">{{item.itemPrice}}</span>
+                <span class="items-name" tooltipClass="my-custom-class" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
+                <span class="items-price" tooltipClass="my-custom-class" ngbTooltip="{{item.itemPrice}}">{{item.itemPrice}}</span>
             </div>
         </div>
     </div>

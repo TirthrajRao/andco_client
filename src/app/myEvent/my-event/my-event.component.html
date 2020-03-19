@@ -3,11 +3,9 @@
         <div class="myevent-inner-box">
             <div class="my-event-hashtag" *ngIf="displayMenu">
                 <h2>
-                    <a id="arrowpre" title="Previous"><img src="../../../assets/images/event-white-arrow.png"
-                            alt="arrow"></a>
-                    <span title="#{{eventHashTag}}"> #{{eventHashTag}} </span>
-                    <a id="arrownext" title="Next"><img src="../../../assets/images/event-white-arrow.png"
-                            alt="arrow"></a>
+                    <a id="arrowpre" tooltipClass="my-custom-class" ngbTooltip="Previous"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
+                    <span tooltipClass="my-custom-class" ngbTooltip="#{{eventHashTag}}"> #{{eventHashTag}} </span>
+                    <a id="arrownext" tooltipClass="my-custom-class" ngbTooltip="Next"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
                 </h2>
             </div>
             <div class="my-event-inner-box-height">

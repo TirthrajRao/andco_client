@@ -75,7 +75,6 @@
             "es5": {
               "browserTarget": "client:build:es5"
             }
-        
           }
         },
         "extract-i18n": {
@@ -127,6 +126,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "client"
 }

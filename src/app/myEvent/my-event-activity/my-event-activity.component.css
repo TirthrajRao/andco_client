@@ -124,10 +124,10 @@ span.items-price, span.items-name{
     }
     /* radio button  start*/
     [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
-        width: 11px;
-        height: 11px;
+        width: 12px;
+        height: 12px;
         top: 7px;
-        left: 8px;
+        left: 7px;
     }
     [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
         width: 26px;

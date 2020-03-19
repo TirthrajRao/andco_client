@@ -128,17 +128,11 @@ export class AllSliderComponent implements OnInit {
       this.$slideContainter = $('.myEvent-group-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
         infinite: false,
-        slidesToShow: 4,
+        slidesToShow: 3.5,
         slidesToScroll: 1,
         adaptiveHeight: true,
         arrows: false,
         responsive: [
-          {
-            breakpoint: 1600,
-            settings: {
-              slidesToShow: 3,
-            }
-          },
           {
             breakpoint: 991,
             settings: {

@@ -1,32 +1,32 @@
 <div class="share-link">
     <!-- <h3>{{displayEventLink}}</h3> -->
-    <input type="text" #inputTarget [(ngModel)]="displayEventLink" title="">
-    <i title="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="">
+    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
 </div>
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide">
         <div class="tab-name active">
-            <p title="invitation">invitation</p>
+            <p tooltipClass="my-custom-class" ngbTooltip="invitation">invitation</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p title="Welcome">Welcome</p>
+            <p tooltipClass="my-custom-class" ngbTooltip="Welcome">Welcome</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p title="Pay">Pay</p>
+            <p tooltipClass="my-custom-class" ngbTooltip="Pay">Pay</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="reminderMessage(2)">
         <div class="tab-name">
-            <p title="Remainder">Remainder</p>
+            <p tooltipClass="my-custom-class" ngbTooltip="Remainder">Remainder</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="getafterEventMessage(3)">
         <div class="tab-name">
-            <p title="After Event">After Event</p>
+            <p tooltipClass="my-custom-class" ngbTooltip="After Event">After Event</p>
         </div>
     </div>
 </div>
@@ -62,29 +62,17 @@
             <li>
                 <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [url]="displayEventLink">
                 </share-button>
-                <!-- <a href="#">
-                    <img src="../../../assets/images/whatsapp.png" alt="whatsapp icon">
-                </a> -->
             </li>
             <li>
                 <share-button [theme]="'circles-dark'" [button]="'facebook'" [url]="displayEventLink">
                 </share-button>
-                <!-- <a href="#">
-                    <img src="../../../assets/images/message-event.png" alt="message icon">
-                </a> -->
             </li>
             <li>
                 <share-button [theme]="'circles-dark'" [button]="'email'" [url]="displayEventLink"></share-button>
-                <!-- <a href="#">
-                    <img src="../../../assets/images/facebook-event.png" alt="facebook icon">
-                </a> -->
             </li>
             <li>
 
                 <share-button [theme]="'circles-dark'" [button]="'sms'" [url]="displayEventLink"></share-button>
-                <!-- <a href="#">
-                    <img src="../../../assets/images/call-event.png" alt="call icon">
-                </a> -->
             </li>
             <li>
                 <!-- <a href="#">
@@ -135,6 +123,8 @@
                 <div class="send-time" (click)="default.open()">
                     <span>{{minutes}}</span>
                 </div>
+                <span class="pm-am">PM</span>
+                <span class="zone">West Africa Standard Time</span>
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
@@ -164,9 +154,9 @@
     <div class="all">
         <div class="group-box">
             <input type="radio" name="radio-group1" id="test" value="male" checked>
-            <label for="test">all invited guests</label>
+            <label class="w-100" for="test">all invited guests</label>
             <input type="radio" name="radio-group1" value="female" id="test6">
-            <label for="test6">only guests that bought aso ebi</label>
+            <label class="w-100" for="test6">only guests that bought aso ebi</label>
         </div>
     </div>
 </div>
