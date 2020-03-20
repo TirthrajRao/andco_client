@@ -163,8 +163,16 @@ export class EventActivityComponent implements OnInit {
       // console.log("call this", id);
       this._eventService.removeActivity(id).subscribe((response: any) => {
         console.log("activity remove completed", response);
-        this.eventActivities = response.data.activities
-        this.getActivityFrom(this.eventActivities)
+        const control = <FormArray>this.activityForm.controls.activity;
+        control.removeAt(i);
+        this.displayTime.splice(i, 1)
+        this.activityName.splice(i, 1)
+        var dates = control.value.map(function (x) { return new Date(x.activityStartDate); })
+        var earliest = new Date(Math.min.apply(null, dates));
+        console.log("ear =====>", earliest);
+        this.currentDay = earliest
+        // this.eventActivities = response.data.activities
+        // this.getActivityFrom(this.eventActivities)
       }, error => {
         console.log("activity error when remove", error);
 
@@ -276,7 +284,7 @@ export class EventActivityComponent implements OnInit {
     console.log("value of activity while edit", this.activityForm.value);
     this._eventService.updateActivites(this.activityForm.value).subscribe((response: any) => {
       console.log("activity update completed", response);
-      // this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
+      this.router.navigate(['/eventGroup/' + this.eventId])
     }, error => {
       console.log("error while update activity", error);
 

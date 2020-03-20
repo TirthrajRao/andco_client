@@ -10,10 +10,8 @@
         <h3>{{eventDetails.eventTitle}}</h3>
     </div>
     <div>
-        <p class="thank-you-message">Thank you for stopping by.
-            We appreciate itThank you for stopping by.
-            We appreciate itThank you for stopping by.
-            We appreciate itThank you for stopping by.</p>
+        <p class="thank-you-message" *ngIf="eventDetails && eventDetails.thanksMessage">{{eventDetails.thanksMessage}}
+        </p>
         <button class="btn buy" *ngIf="isJoin == true" (click)="displayGuest()">Buy our aso ebi</button>
         <button class="btn buy" *ngIf="isJoin == false" (click)="joinEvent(eventDetails._id)">Join Event</button>
     </div>

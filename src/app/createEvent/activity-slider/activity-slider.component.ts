@@ -37,31 +37,39 @@ export class ActivitySliderComponent implements OnInit {
 
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((res: any) => {
-      // console.log("details of activity", res)
+      console.log("details of activity", res)
       this.eventHashTag.emit(res.data.hashTag)
       this.activityDetails = res.data.activity
       this.allActivities = []
       this.activityDetails.forEach(activity => {
-        // console.log(" activity ", activity);
-        let newAD = {
-          activity: activity,
-          groups: [
-            {
-              groupName: 'Family',
-              male: [],
-              female: []
-            },
-            {
-              groupName: 'Friends',
-              male: [],
-              female: []
-            }
-          ]
+        if (activity.group.length == 0) {
+          console.log(" activity without group ", activity);
+          let newAD = {
+            activity: activity,
+            groups: [
+              {
+                groupName: 'Family',
+                male: [],
+                female: []
+              },
+              {
+                groupName: 'Friends',
+                male: [],
+                female: []
+              }
+            ]
+          }
+          this.allActivities.push(newAD)
+        } else {
+          console.log(" activity with group= ", activity);
+          let updateAD = {
+            activity: activity,
+            groups: activity.group
+          }
+          this.allActivities.push(updateAD)
         }
-
-        this.allActivities.push(newAD)
       });
-      // console.log(" allActivities 111111 ", this.allActivities)
+      console.log(" allActivities 111111 ", this.allActivities)
       setTimeout(() => {
         this.initSlickSlider()
       }, 50)

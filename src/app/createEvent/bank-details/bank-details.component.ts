@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 
 declare var $: any
@@ -9,10 +9,12 @@ declare var $: any
 })
 export class BankDetailsComponent implements OnInit {
 
+  @Input('accountDetails') accountDetails
   @Output() bankDetails: EventEmitter<any> = new EventEmitter<any>()
   bankForm: FormGroup;
   isBankSelected
   isCardSelected
+  displayDetails
 
 
   constructor(
@@ -23,7 +25,7 @@ export class BankDetailsComponent implements OnInit {
 
     // $(document).ready(function () {
     //   let checked = $('input[name="radio2"]:checked').val();
-      // console.log("value of checked", checked)
+    // console.log("value of checked", checked)
     //   if (checked == 'on') {
     //     this.isBankSelected = true
     //     this.isCardSelected = false
@@ -36,6 +38,26 @@ export class BankDetailsComponent implements OnInit {
       cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
     })
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("change when edit bank details", changes);
+    if (changes.accountDetails && changes.accountDetails.currentValue) {
+      this.displayAccountDetails(changes.accountDetails.currentValue)
+    }
+  }
+
+  displayAccountDetails(details) {
+    console.log("details", details);
+    this.displayDetails = details
+    if (this.displayDetails.bankName) {
+      this.isBankSelected = true
+      $('input:radio[id="test3"]').prop('checked', true);
+    } else {
+      $('input:radio[id="test4"]').prop('checked', true);
+      this.isCardSelected = true
+    }
+  }
+
 
 
 

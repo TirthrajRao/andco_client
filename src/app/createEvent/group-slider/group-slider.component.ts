@@ -51,7 +51,7 @@ export class GroupSliderComponent implements OnInit {
 
 
   sendData(item, index) {
-    // console.log(" item ", item, index)
+    console.log(" item ", item, index)
     this.selectedIndex = index
     this.singleGroup.emit(item)
   }
