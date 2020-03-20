@@ -34,6 +34,7 @@ export class EventMenuComponent implements OnInit {
         draggable: false,
         arrows: true,
         centerMode: true,
+        touchMove:false,
         focusOnSelect: true,
         prevArrow: '#arrowpre',
         nextArrow: '#arrownext',

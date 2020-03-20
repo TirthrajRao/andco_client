@@ -41,7 +41,7 @@ export class SetPriceComponent implements OnInit {
   currentDay = new Date()
   selectedAccount
   setPriceDetails
-  public selectedValue
+  // public selectedValue
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -99,7 +99,7 @@ export class SetPriceComponent implements OnInit {
       console.log("response of set price", response);
       this.setPriceDetails = response
       this.selectedAccount = this.setPriceDetails.bankDetails
-      this.selectedValue = this.setPriceDetails.hearAbout
+      // this.selectedValue = this.setPriceDetails.hearAbout
       if (this.setPriceDetails.payMentTransferDate == 'true') {
         $('input:radio[id="test5"]').prop('checked', true);
       }

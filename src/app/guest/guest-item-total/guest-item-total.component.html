@@ -2,6 +2,7 @@
     <div class="d-inline-block w-100">
         <button class="btn add-more" (click)="addMoreItems()">add more</button>
     </div>
+    <div class="accordian-height-box">
     <div id="accordion" class="myaccordion">
         <span *ngFor="let key of keys; let i = index">
             <button class="btn single-activity w-100" data-toggle="collapse" [attr.data-target]="'#collapseOne' + i"
@@ -50,6 +51,7 @@
             </div>
         </span>
     </div>
+</div>
     <div class="buttons-pay-back">
         <button class="btn" (click)="displayItemList()">Back</button>
         <button class="btn" (click)="addDonationOfEvent()">Add Donation</button>

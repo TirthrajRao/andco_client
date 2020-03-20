@@ -185,6 +185,11 @@ ul.guest-list-inner-box{
     .social-icon ul li a img{
         height: 50px;
     }
+    .guest-list-box-scroll {
+        min-height: 80px;
+        max-height: 80px;
+        overflow: auto;
+    }
 }
 @media(max-width:1199px){
     .social-icon ul li a img{

@@ -7,7 +7,7 @@
         </div>
         <div class="event-camera">
             <!-- <img src="../../../assets/images/camera.png" alt="camera icon"> -->
-            <label for="upload_profile">
+            <label for="upload_profile" tooltipClass="my-custom-class" ngbTooltip="Change Event Profile Photo">
                 <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
             </label>
             <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg"
