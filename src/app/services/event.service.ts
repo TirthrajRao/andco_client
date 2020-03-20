@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
+import { ThemeService } from './theme.service';
 
 @Injectable({
   providedIn: 'root'
@@ -199,4 +200,19 @@ export class EventService {
     return this.http.get(config.baseApiUrl + "/guest?eventId=" + eventId)
   }
 
+
+  getPriceOfEvent(eventId) {
+    return this.http.get(config.baseApiUrl + "/event/set-price/" + eventId)
+  }
+
+  updateGroup(data) {
+    return this.http.put(config.baseApiUrl + "/group/", data)
+  }
+  removeItem(itemId, groupId) {
+    let body = {
+      itemId: itemId,
+      groupId: groupId
+    }
+    return this.http.put(config.baseApiUrl + "/group/delete-item", body)
+  }
 }

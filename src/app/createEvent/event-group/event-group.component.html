@@ -28,7 +28,8 @@
                                             <h5 class="float-left item-name">{{item.itemName}}</h5>
                                             <h5 class="float-right item-price">{{item.itemPrice | currency:"&#x20A6;"}}
                                             </h5>
-                                            <div class="delete-icon" (click)="removeMaleItem(item , i)">
+                                            <div class="delete-icon"
+                                                (click)="removeMaleItem(item , i , selectedGroup._id)">
                                                 <img src="../../../assets/images/bin.png" alt="delete icon">
                                             </div>
                                         </li>
@@ -59,7 +60,8 @@
                     </div>
                     <div class="next-back-button mt-2 w-100 d-inline-block">
                         <button class="btn float-left">Back</button>
-                        <button class="btn float-right" (click)="addGroup()" [disabled]="!isButton">Next</button>
+                        <button class="btn float-right" (click)="updateGroup? updateGroups(): addGroup()"
+                            [disabled]="!isButton">Next</button>
                     </div>
                 </div>
             </div>

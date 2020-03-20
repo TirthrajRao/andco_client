@@ -62,6 +62,7 @@ export class SetPriceComponent implements OnInit {
     })
     this.sub = this.activated.params.subscribe(param => {
       this.eventId = param.id
+      this.getSetPriceDetailsOfEvent(this.eventId)
     })
     this.initSlickSlider()
     // console.log("time zone ", this.timezone);
@@ -86,6 +87,16 @@ export class SetPriceComponent implements OnInit {
 
         this.nextArrowClick(event)
       }
+    })
+  }
+
+
+  getSetPriceDetailsOfEvent(eventId) {
+    this.eventService.getPriceOfEvent(eventId).subscribe((response) => {
+      console.log("response of set price", response);
+    }, error => {
+      console.log("error while get price ", error);
+
     })
   }
 
