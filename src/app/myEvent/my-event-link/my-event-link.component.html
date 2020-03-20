@@ -1,32 +1,36 @@
+<ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
 <div class="share-link">
     <!-- <h3>{{displayEventLink}}</h3> -->
     <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="">
-    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true"></i>
+    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget"
+        aria-hidden="true" (click)="changeSuccessMessage()"></i>
 </div>
+
+
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide">
-        <div class="tab-name active">
-            <p tooltipClass="my-custom-class" ngbTooltip="invitation">invitation</p>
+        <div class="tab-name">
+            <p>invitation</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p tooltipClass="my-custom-class" ngbTooltip="Welcome">Welcome</p>
+            <p>Welcome</p>
         </div>
     </div>
     <div class="single-tab-slide">
         <div class="tab-name">
-            <p tooltipClass="my-custom-class" ngbTooltip="Pay">Pay</p>
+            <p>Pay</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="reminderMessage(2)">
         <div class="tab-name">
-            <p tooltipClass="my-custom-class" ngbTooltip="Remainder">Remainder</p>
+            <p>Remainder</p>
         </div>
     </div>
     <div class="single-tab-slide" (click)="getafterEventMessage(3)">
         <div class="tab-name">
-            <p tooltipClass="my-custom-class" ngbTooltip="After Event">After Event</p>
+            <p>After Event</p>
         </div>
     </div>
 </div>
@@ -128,7 +132,8 @@
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)"></ngx-material-timepicker>
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)">
+                </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
                         required </div>

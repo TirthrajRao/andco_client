@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { EventService } from '../../services/event.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 declare var $;
 @Component({
   selector: 'app-my-event-link',
@@ -9,6 +11,9 @@ declare var $;
 })
 export class MyEventLinkComponent implements OnInit {
 
+  private _success = new Subject<string>();
+  staticAlertClosed = false;
+  successMessage: string;
   reminderForm: FormGroup;
   currentDay = new Date()
   @Input('eventLink') eventLink
@@ -25,6 +30,13 @@ export class MyEventLinkComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // alertForCopy start
+    this._success.subscribe((message) => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.successMessage = null);
+    // alertForCopy end
 
     this.reminderForm = new FormGroup({
       reminderMessage: new FormControl(''),
@@ -64,6 +76,11 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
+  public changeSuccessMessage() {
+    this._success.next(`Copied!!`);
+  }
+
+
   ngOnChanges(changes: SimpleChanges) {
 
     console.log("display link of event", changes.eventLink);
@@ -81,7 +98,7 @@ export class MyEventLinkComponent implements OnInit {
     this.displayTime = event
   }
 
-  timePickerClosed(){
+  timePickerClosed() {
     let tempTime = this.displayTime.split(':')
     this.hours = tempTime[0]
     this.minutes = tempTime[1].split(' ')[0]

@@ -25,7 +25,6 @@
     background-color: #F3B171;
     border: 2px solid;
     color: #fff;
-    /* pointer-events: none; */
 }
 @media(max-width:1600px){
     .single-inner-slide{
