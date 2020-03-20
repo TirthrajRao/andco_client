@@ -1,6 +1,7 @@
 <div class="total-slider">
     <div class="total-slide" *ngIf="displayEventTotal">
         <h1>{{displayEventTotal.finalTotal | currency:"&#x20A6;"}}</h1>
+        <h1 *ngIf="displayEventTotal && displayEventTotal.message">{{displayEventTotal.message}}</h1>
     </div>
     <div class="total-collection-slider">
         <div class="total-activity-box" *ngFor="let item of displayCollection; let i =index">

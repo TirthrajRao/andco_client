@@ -253,6 +253,9 @@ span.zone {
         margin-top: 0;
         font-size: 20px;
     }
+    .step-3-link textarea {
+        height: 70px;
+    }
 }
 
 @media(max-width: 1199px) {
@@ -311,5 +314,11 @@ span.zone {
     .share-link i {
         right: 12px;
         font-size: 20px;
+    }
+}
+@media(max-width:440px){
+    span.zone{
+        line-height: normal;
+        font-size: 12px;
     }
 }

@@ -641,6 +641,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-main .page-content {
         padding-top: 110px;
     }
+    .total-collection-slider ul.slick-dots{
+        margin-top: -30px;
+    }
     .total-collection-slider button.slick-arrow {
         top: 60px;
         right: 20px;
@@ -712,6 +715,10 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         padding-top: 0 !important;
+    }
+    .event-menu-slider.slick-slider .slick-list {
+        padding: 0 33.33% !important;
+        width: 100% !important;
     }
 }
 

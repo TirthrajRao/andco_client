@@ -37,6 +37,14 @@ export class EventMenuComponent implements OnInit {
         focusOnSelect: true,
         prevArrow: '#arrowpre',
         nextArrow: '#arrownext',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+            }
+          }
+        ],
       })
 
     }, 50)
