@@ -157,7 +157,8 @@
                                 <span>How did you hear about andco</span>
                                 <!-- <form [formGroup]='howDidUForm'> -->
                                 <select class="form-control w-75 m-auto" name="" id="" (change)="onDropDown($event)"
-                                    [(ngModl)]="selectedValue">
+                                    value="{{setPriceDetails.hearAbout}}"
+                                    *ngIf="setPriceDetails&& setPriceDetails.hearAbout">
                                     <option value="">Select</option>
                                     <option value="planner">Event Planner</option>
                                     <option value="vendor">Event Vendor</option>
@@ -176,8 +177,8 @@
                         <!-- <button class="btn set-price-custom-button" >Submit</button> -->
                     </div>
                 </form>
-                <button class="btn set-price-custom-button float-right" (click)="setPrice()"
-                    [disabled]="isDisable">Submit</button>
+                <button class="btn set-price-custom-button float-right"
+                    (click)="setPriceDetails? updateSetPrice():  setPrice()" [disabled]="isDisable">Submit</button>
             </div>
         </div>
     </div>

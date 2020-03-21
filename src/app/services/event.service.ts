@@ -3,10 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
 import { ThemeService } from './theme.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+
+  platForm = JSON.parse(sessionStorage.getItem('platForm'))
 
   constructor(
     private http: HttpClient
@@ -100,6 +103,12 @@ export class EventService {
   }
 
 
+  updateEetPriceOfEvent(data, eventId) {
+    data['eventId'] = eventId
+    return this.http.put(config.baseApiUrl + "/event/set-price", data)
+  }
+
+
   getLoginUserEvent() {
     return this.http.get(config.baseApiUrl + "/event/myevent-list")
   }
@@ -123,8 +132,11 @@ export class EventService {
 
   joinEvent(id) {
     const eventId = {
-      eventId: id
+      eventId: id,
+      platForm: this.platForm
     }
+    console.log("eventDetails", eventId);
+
     return this.http.post(config.baseApiUrl + "/event/join-event", eventId)
   }
 

@@ -14,6 +14,7 @@ export class GuestJoinComponent implements OnInit {
   private hashTag: any
   eventDetails: any;
   isJoin: any;
+  
   path = config.baseMediaUrl;
   constructor(
     public router: Router,
@@ -27,6 +28,8 @@ export class GuestJoinComponent implements OnInit {
       this.hashTag = param.hashTag
     })
     this.getEventDetails(this.hashTag)
+    // console.log("plat form of guest", this.platForm);
+
   }
 
 

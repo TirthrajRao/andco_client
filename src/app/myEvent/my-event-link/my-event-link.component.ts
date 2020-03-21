@@ -25,6 +25,7 @@ export class MyEventLinkComponent implements OnInit {
   afterEventMessage
   hours: any;
   minutes: any;
+  whatsupLink
   constructor(
     public eventService: EventService
   ) { }
@@ -85,7 +86,21 @@ export class MyEventLinkComponent implements OnInit {
 
     console.log("display link of event", changes.eventLink);
     this.displayEventLink = changes.eventLink.currentValue.eventLink
+    this.changeEventLink(this.displayEventLink)
     this.eventId = changes.eventLink.currentValue.eventId
+  }
+
+  changeEventLink(link) {
+    console.log("link of evnt", link);
+    let whatsup = 'WP'
+    let google = 'GM'
+    let facebookLink = 'FB'
+    let textMessage = 'TX'
+
+    this.whatsupLink = link + '/' + whatsup
+    console.log("whats up link is ready", this.whatsupLink);
+
+
   }
 
 
@@ -115,7 +130,8 @@ export class MyEventLinkComponent implements OnInit {
     this.index = data
   }
 
-  reminderMessageSend() {
+  reminderMessageSend(index) {
+    this.index = index
     console.log("details of reminder message", this.reminderForm.value);
 
   }

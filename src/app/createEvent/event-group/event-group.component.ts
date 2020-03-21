@@ -75,6 +75,7 @@ export class EventGroupComponent implements OnInit {
     // console.log("selected group==========", this.selectedGroup);
     this.activityDate = event.item.activity.activityStartDate
     if (this.selectedGroup.item) {
+      this.isButton = true
       let male = []
       let female = []
       console.log("call for already", this.selectedGroup);
