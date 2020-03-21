@@ -134,6 +134,22 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
         height: 40px;
     }
 }
-@media(max-width:991px){
-
+@media(max-width:575px){
+    .social-icon ul li a img{
+        height: 30px;
+    }
+    .guest-name p,.profile-name {
+        font-size: 20px;
+    }
+    .total-guest span {
+        font-size: 20px;
+        padding: 5px 10px 0px;
+    }
+    .guest-list-box {
+        padding: 12px;
+        border-radius: 16px;
+    }
+    .total-guest{
+        margin-top: 10px;
+    }
 }

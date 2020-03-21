@@ -35,7 +35,7 @@ export class MyEventLinkComponent implements OnInit {
     // alertForCopy start
     this._success.subscribe((message) => this.successMessage = message);
     this._success.pipe(
-      debounceTime(1000)
+      debounceTime(100000)
     ).subscribe(() => this.successMessage = null);
     // alertForCopy end
 

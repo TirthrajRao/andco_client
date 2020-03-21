@@ -49,20 +49,23 @@
 .menu-links ul li a{
     color: #ffffff;
     font-size: 46px;
-}
-.menu-links ul li.active a{
-    color: #686464;
     position: relative;
 }
-.menu-links ul li.active a:before{
-    content: "";
-    background-color: #ffffff;
-    width: 30%;
-    height: 5px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.menu-links ul li a:hover{
+    color: #686464;
+}
+.menu-links ul li a::after {
+    content: '';
     display: block;
+    width: 0;
+    height: 5px;
+    background: #ffffff;
+    transition: width .5s;
+}
+
+.menu-links ul li a:hover::after {
+    width: 80px;
+    transition: width .5s;
 }
 .menu-main.single .hello-text {
     position: absolute;

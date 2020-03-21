@@ -76,7 +76,7 @@ h2 img:hover{
         position: fixed;
         bottom: 0;
     }
-    .my-event-inner-box-height {
+    /* .my-event-inner-box-height {
         max-height: 335px;
         overflow-y: auto;
         padding-right: 10px;
@@ -95,7 +95,7 @@ h2 img:hover{
         border-radius: 5px;
         width: 3px;
         background-color: #F8D0AD;
-    }
+    } */
 }
 @media(max-width: 1199px){
     .event-menu-box-main{
@@ -120,11 +120,7 @@ h2 img:hover{
         overflow: unset;
     }
 }
-@media(max-width: 991px){
-    .myevent-inner-box, .event-menu-box-main{
-        width: 600px;
-    }
-}
+
 @media(max-width: 767px){
     .myevent-inner-box, .event-menu-box-main{
         width: 550px;
