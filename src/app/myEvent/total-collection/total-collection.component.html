@@ -30,8 +30,8 @@
                 </mat-tab-group>
             </div>
         </div>
-        <div class="total-activity-box">
-            <div class="total-second-slide">
+        <div class="total-activity-box" *ngIf="!isTotal">
+            <div class="total-second-slide" >
                 <div class="row">
                     <div class="col-5">
                         <span>all activities</span>

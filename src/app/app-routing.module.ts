@@ -40,7 +40,7 @@ const routes: Routes = [
     component: ForgotPasswordComponent
   },
   {
-    path: 'welcome-guest/:id/:type',
+    path: 'welcome-guest/:id',
     component: WelcomeGuestComponent
   },
   {

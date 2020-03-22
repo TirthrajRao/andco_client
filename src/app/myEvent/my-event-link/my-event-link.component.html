@@ -8,29 +8,9 @@
 
 
 <div class="my-event-tab-slider my-2">
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>invitation</p>
-        </div>
-    </div>
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>Welcome</p>
-        </div>
-    </div>
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>Pay</p>
-        </div>
-    </div>
-    <div class="single-tab-slide" (click)="reminderMessage(2)">
-        <div class="tab-name">
-            <p>Remainder</p>
-        </div>
-    </div>
-    <div class="single-tab-slide" (click)="getafterEventMessage(3)">
-        <div class="tab-name">
-            <p>After Event</p>
+    <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
+        <div class="tab-name" [class.active]="selectedIndex === i">
+            <p>{{name}}</p>
         </div>
     </div>
 </div>
@@ -44,9 +24,9 @@
     </div> -->
     <textarea name="" id="" rows="4" placeholder="We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
     our ebi here-
-    andco.withme/#TomKat2019"></textarea>
+    {{displayEventLink}}"></textarea>
     <div class="share-button">
-        <button class="btn" (click)="shareLink()">Share <i class="fa fa-share" aria-hidden="true"></i>
+        <button class="btn" (click)="shareLink(1)">Share <i class="fa fa-share" aria-hidden="true"></i>
         </button>
     </div>
 </div>
