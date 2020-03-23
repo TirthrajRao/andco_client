@@ -14,7 +14,8 @@
                 <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name"
                     class="text-left mb-2 px-3 py-2 font-weight-bold" formControlName="bankName"
                     [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
-                    ngModel="{{displayDetails ? displayDetails.bankName : ''}}">
+                    ngModel="{{displayDetails ? displayDetails.bankName : ''}}"
+                    (change)="changeBankName($event , bankForm.value)">
                 <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
                     <div *ngIf="f.bankName.errors.required">Name is required</div>
                     <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div>

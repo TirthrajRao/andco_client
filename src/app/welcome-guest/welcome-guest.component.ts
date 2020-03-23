@@ -10,7 +10,7 @@ export class WelcomeGuestComponent implements OnInit {
 
   private sub: any
   private hashtag: any
-
+  private platForm: any
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -20,9 +20,11 @@ export class WelcomeGuestComponent implements OnInit {
     this.sub = this.activatedRoute.params.subscribe(params => {
       console.log("params id for guest", params);
       this.hashtag = params.id
+      this.platForm = params.type
     })
     this.guestEventWithOutLogin(this.hashtag)
     sessionStorage.setItem('guestHashTag', JSON.stringify(this.hashtag))
+    sessionStorage.setItem('platForm', JSON.stringify(this.platForm))
   }
 
   ngOnInit() {

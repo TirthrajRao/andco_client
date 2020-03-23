@@ -8,29 +8,9 @@
 
 
 <div class="my-event-tab-slider my-2">
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>invitation</p>
-        </div>
-    </div>
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>Welcome</p>
-        </div>
-    </div>
-    <div class="single-tab-slide">
-        <div class="tab-name">
-            <p>Pay</p>
-        </div>
-    </div>
-    <div class="single-tab-slide" (click)="reminderMessage(2)">
-        <div class="tab-name">
-            <p>Remainder</p>
-        </div>
-    </div>
-    <div class="single-tab-slide" (click)="getafterEventMessage(3)">
-        <div class="tab-name">
-            <p>After Event</p>
+    <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
+        <div class="tab-name" [class.active]="selectedIndex === i">
+            <p>{{name}}</p>
         </div>
     </div>
 </div>
@@ -44,9 +24,9 @@
     </div> -->
     <textarea name="" id="" rows="4" placeholder="We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
     our ebi here-
-    andco.withme/#TomKat2019"></textarea>
+    {{displayEventLink}}"></textarea>
     <div class="share-button">
-        <button class="btn" (click)="shareLink()">Share <i class="fa fa-share" aria-hidden="true"></i>
+        <button class="btn" (click)="shareLink(1)">Share <i class="fa fa-share" aria-hidden="true"></i>
         </button>
     </div>
 </div>
@@ -114,7 +94,7 @@
                 <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                     <mat-label>Choose a date</mat-label>
                     <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate"
-                        id="activityStartDate{{i}}" (dateChange)="addEvent('input', $event , i)">
+                        (dateChange)="addEvent('input', $event)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -127,12 +107,12 @@
                 <div class="send-time" (click)="default.open()">
                     <span>{{minutes}}</span>
                 </div>
-                <span class="pm-am">PM</span>
-                <span class="zone">West Africa Standard Time</span>
+                <span class="pm-am">{{timeHour}}</span>
+                <span class="zone">{{timezone}}</span>
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)">
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12" (timeChanged)="timeChanged($event)">
                 </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
@@ -141,7 +121,7 @@
             </div>
         </div>
         <div class="share-button">
-            <button class="btn" (click)="reminderMessageSend()">Share <i class="fa fa-share" aria-hidden="true"></i>
+            <button class="btn" (click)="reminderMessageSend(1)">Share <i class="fa fa-share" aria-hidden="true"></i>
             </button>
         </div>
     </form>

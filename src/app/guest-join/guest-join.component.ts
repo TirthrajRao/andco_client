@@ -27,6 +27,8 @@ export class GuestJoinComponent implements OnInit {
       this.hashTag = param.hashTag
     })
     this.getEventDetails(this.hashTag)
+    // console.log("plat form of guest", this.platForm);
+
   }
 
 

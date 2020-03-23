@@ -12,8 +12,9 @@
     <div class="myevent-groups-item">
         <div class="myevent-group">
             <div class="myevent-single-item" *ngFor="let item of itemNamePrint">
-                <span class="items-name" tooltipClass="my-custom-class" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
-                <span class="items-price">{{item.itemPrice}}</span>
+                <span class="items-name" tooltipClass="my-custom-class"
+                    ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
+                <span class="items-price">{{item.itemPrice | currency:"&#x20A6;"}}</span>
             </div>
         </div>
     </div>

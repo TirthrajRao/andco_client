@@ -41,7 +41,6 @@ export class SetPriceComponent implements OnInit {
   currentDay = new Date()
   selectedAccount
   setPriceDetails
-  // public selectedValue
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -96,18 +95,20 @@ export class SetPriceComponent implements OnInit {
 
   getSetPriceDetailsOfEvent(eventId) {
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
-      console.log("response of set price", response);
-      this.setPriceDetails = response
-      this.selectedAccount = this.setPriceDetails.bankDetails
-      // this.selectedValue = this.setPriceDetails.hearAbout
-      if (this.setPriceDetails.payMentTransferDate == 'true') {
-        $('input:radio[id="test5"]').prop('checked', true);
-      }
-      if (this.setPriceDetails.isLogistics = 'true') {
-        $('input:radio[id="test7"]').prop('checked', true);
-      }
-      if (this.setPriceDetails.isLogistics = 'false') {
-        $('input:radio[id="test8"]').prop('checked', true);
+      if (response.thanksMessage) {
+
+        this.setPriceDetails = response
+        console.log("response of set price", this.setPriceDetails);
+        this.selectedAccount = this.setPriceDetails.bankDetails
+        if (this.setPriceDetails.payMentTransferDate == 'true') {
+          $('input:radio[id="test5"]').prop('checked', true);
+        }
+        if (this.setPriceDetails.isLogistics = 'true') {
+          $('input:radio[id="test7"]').prop('checked', true);
+        }
+        if (this.setPriceDetails.isLogistics = 'false') {
+          $('input:radio[id="test8"]').prop('checked', true);
+        }
       }
 
     }, error => {
@@ -170,11 +171,67 @@ export class SetPriceComponent implements OnInit {
       }, error => {
         console.log("error while set price of event", error)
       })
-      // let message = 'New Event created'
-      // this.alertService.getSuccess(message)
-      // this.router.navigate(['created-event-message'])
     }
   }
+
+  updateSetPrice() {
+    console.log("call for update", this.setPriceForm);
+    const keys = Object.keys(this.setPriceForm.controls);
+    let form = this.setPriceForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      // console.log("bank element", form[element], value)
+
+      if (form[element] == this.setPriceForm.controls.bankDetails) {
+        if (form[element].status == 'INVALID') {
+          console.log("this is perfect", element);
+          this.setPriceForm.patchValue({
+            bankDetails: this.setPriceDetails.bankDetails
+          });
+          this.setPriceForm.get('bankDetails').updateValueAndValidity();
+        }
+      } else {
+
+
+
+        if (form[element].status == 'INVALID') {
+          flag = 1;
+          if (element == 'thanksMessage') {
+            console.log("thank you message error", element);
+            // this.errorMessaage = 'Thank you message is required'
+          } else if (element == 'afterEventMessage') {
+            // this.errorMessaage = 'After Event message is required'
+          } else if (element == 'paymentDeadlineDate') {
+            // this.errorMessaage = 'Payment Date is required'
+          } else if (element == 'paymentDeadlineTime') {
+            this.errorMessaage = 'Payment Time is required'
+            return false
+          }
+          // } else if (element == 'bankDetails') {
+          //   console.log("bank error");
+          //   // flag == 0
+          //   return false
+          // }
+        }
+        else {
+          return true
+        }
+      }
+    });
+    if (flag == 0) {
+      console.log("final data to  update", this.setPriceForm.value);
+
+      this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
+        console.log("response of set price of event", response);
+        // this.alertService.getSuccess(response.message)
+        // this.router.navigate(['created-event-message'])
+      }, error => {
+        console.log("error while set price of event", error)
+      })
+    }
+
+  }
+
   detailsOfBank(event) {
     // console.log("bank details in set price", event);
     this.setPriceForm.patchValue({

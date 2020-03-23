@@ -15,6 +15,7 @@ export class TotalCollectionComponent implements OnInit {
   $slideContainter
   selectedIndex = 0
   tabId: any;
+  isTotal
   constructor() { }
 
   ngOnInit() {
@@ -49,6 +50,7 @@ export class TotalCollectionComponent implements OnInit {
       this.displayCollection = changes.totalCollection.currentValue.groupWise
       this.displayEventTotal = changes.totalCollection.currentValue.eventTotal
       this.selectedIndex = 0
+      this.isTotal = true
       this.$slideContainter = $('.total-collection-slider');
       this.$slideContainter.slick('unslick');
       setTimeout(() => {

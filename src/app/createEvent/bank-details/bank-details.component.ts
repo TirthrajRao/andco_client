@@ -49,13 +49,40 @@ export class BankDetailsComponent implements OnInit {
   displayAccountDetails(details) {
     console.log("details", details);
     this.displayDetails = details
+    console.log("bank details for send data", this.bankDetails);
+
     if (this.displayDetails.bankName) {
       this.isBankSelected = true
       $('input:radio[id="test3"]').prop('checked', true);
+      // this.bankForm.patchValue({
+      //   bankName: this.displayDetails.bankName
+      // });
+      // this.bankForm.get('bankName').updateValueAndValidity();
+
+      // this.bankForm.patchValue({
+      //   accountNumber: this.displayDetails.accountNumber
+      // });
+      // this.bankForm.get('accountNumber').updateValueAndValidity();
+      // this.bankDetails.emit(this.bankForm.value)
     } else {
       $('input:radio[id="test4"]').prop('checked', true);
+
+      // this.bankForm.patchValue({
+      //   cardNumber: this.displayDetails.cardNumber
+      // });
+      // this.bankForm.get('cardNumber').updateValueAndValidity();
+      // this.bankDetails.emit(this.bankForm.value)
       this.isCardSelected = true
     }
+  }
+
+
+
+  changeBankName($event, details) {
+    console.log("details of bank ", details);
+    this.bankDetails.emit(details)
+    console.log("=================", this.bankDetails);
+    
   }
 
 
