@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router'
 import { EventService } from '../../services/event.service';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { LOADIPHLPAPI } from 'dns';
+// import { LOADIPHLPAPI } from 'dns';
 declare var $;
 @Component({
   selector: 'app-my-event-link',
@@ -144,7 +144,7 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
-  addEvent(type: string, event, i) {
+  addEvent(type: string, event) {
     this.displayDate = (new Date(event.value))
     console.log("value of form group", this.displayTime);
   }
