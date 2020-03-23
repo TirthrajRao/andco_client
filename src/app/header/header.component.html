@@ -1,0 +1,13 @@
+<div class="header-content">
+    <div class="navigation_menu">
+        <a (click)="getHeader('/menu')"><img [src]="imgUrl" [ngStyle]="setLogo()" alt="menu logo"></a>
+    </div>
+    <div class="andco-logo">
+        <img src="assets/images/andco_logo.png" alt="andco logo">
+        <div class="hello-text" [style.color]="getHeaderColor()">
+            <h2 tooltipClass="my-custom-class" ngbTooltip="{{userName}}" *ngIf="currentUrl">
+                <span *ngIf="currentUrl != '/menu' "> Hello {{userName}}</span>
+            </h2>
+        </div>
+    </div>
+</div>

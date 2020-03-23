@@ -1,0 +1,19 @@
+<div class="gift-donation-msg">
+    <p>Thank you so much. <br>
+        Planning on getting us a present?<br>
+        We are grateful. Gifts will not be accepted,
+        but your financial gift is very much appreciated.
+    </p>
+    <h3>I Give : <input type="number" oninput="validity.valid||(value='');"
+            onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="donation"> </h3>
+    <div class="save text-center">
+        <!-- <button class="btn font-weight-bold">Saved</button> -->
+    </div>
+    <div class="bottom-buttons my-sm-4">
+        <button class="btn" (click)="displayItems()"><i class="fa fa-angle-double-left mr-2" aria-hidden="true"></i>
+            Back</button>
+        <button class="btn" (click)="displayAddress()">Skip</button>
+        <button class="btn" (click)="displayAddress()">Next <i class="fa fa-angle-double-right ml-2"
+                aria-hidden="true"></i></button>
+    </div>
+</div>

@@ -1,0 +1,385 @@
+.sales-pricing-main{
+    background-image: url('../../../assets/images/salesPrice1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+}
+.hello-text h2 span{
+    color: #434040;
+    font-weight: bold;
+}
+.hashtag h2{
+    font-family: 'Advent Pro', 'sans-sarif';
+    color: #686868;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.bg-box-set-price{
+    background-color: #f3f4f3;
+    width: 1200px;
+    height: 720px;
+    padding: 70px 0;
+    box-shadow: 0px 0px 70px #d5dbd5;
+    margin-top: 10px;
+}
+
+.event-date-box h4{
+    color: #434040;
+    font-weight: 900;
+    text-align: left;
+    margin: 20px 0;
+    font-size:28px;
+}
+.event-date-box h4 span{
+    color: #686868;
+    font-weight: 600;
+}
+
+.group-box h6{
+    color: #686868;
+    font-size: 20px;
+    margin: 20px 20px 10px;
+    font-weight: bold;
+}
+.single-main-box h3{
+    color: #A6B138;
+    font-weight: bold;
+}
+.single-main-box textarea {
+    border: 2px solid #a5b138;
+    border-radius: 10px;
+    padding: 20px 60px;
+    text-align: center;
+    font-weight: bold;
+    color: #A1A1A1;
+    font-size: 20px;
+    background-color: transparent;
+}
+.single-main-box textarea::placeholder{
+    color: silver;
+}
+.single-main-box textarea:focus{
+    outline: none;
+    box-shadow: none;
+}
+.sales-button {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+}
+.sales-inner span{
+    color: #A6B138;
+    text-align: center;
+    font-size: 30px;
+}
+.sales-inner p{
+    color: #bdbdbd;
+    font-weight: 600;
+    text-align: left;
+    margin: auto;
+    width: 60%;
+    font-size: 22px;
+} 
+.sales-inner input{
+    text-align: center;
+    color: #5D6C20;
+    width: 60%;
+    border: none;
+    height: 50px;
+    font-size: 22px;
+}
+.sales-inner input::placeholder{
+    color: #5D6C20;
+}
+.sales-inner input:focus{
+    outline: none;
+    box-shadow: none;
+}
+.main-box-for-slider{
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+.group-box{
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #a5b138;
+    padding-bottom: 20px;
+}
+.inner-box-group{
+    background-color: rgba(166, 177, 56, 0.19);
+    border-radius: 7px;
+    padding: 10px;
+    max-height: 200px;
+    min-height: 200px;
+    overflow: auto;
+}
+.inner-box-group ul{
+    padding: 0;
+    margin-bottom: 0;
+}
+.inner-box-group ul li{
+    list-style: none;
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #fff;
+    padding: 14px 10px;
+}
+.inner-box-group ul li h5{
+    color: #5D6C20;
+    font-weight: bold;
+}
+
+.inner-box-group ul li:hover {
+    background-color: #ffffff94;
+    color: #d8d8d8;
+}
+.inner-box-group ul li:hover h5{
+    color: #BBC1A1;
+}
+.delete-icon{
+    opacity: 0;
+    cursor: pointer;
+}
+.inner-box-group ul li:hover .delete-icon{
+    opacity: 1;
+}
+
+button.btn.add-btn {
+    background-color: #A6B138;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+img.icon-img {
+    width: auto;
+    height: 20px;
+}
+.add-items input{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #5D6C20;
+    border: 1px solid #a5b138;
+}
+.add-items input:focus{
+    outline: #5D6C20;
+    border-radius: 10px;
+}
+.add-items input::placeholder{
+    color: #a5b138;
+}
+h5.item-name{
+    text-align: left;
+}
+h5.item-price{
+    text-align: right;
+}
+h5.item-name, h5.item-price{
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inner-box-group::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: #F5F5F5;
+}
+
+.inner-box-group::-webkit-scrollbar {
+    width: 2px;
+    padding-right: 3px;
+    background-color: #F5F5F5;
+}
+
+.inner-box-group::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #A6B138;
+}
+.modal-content .close {
+    font-size: 45px;
+    font-weight: 900;
+    line-height: 0.7;
+    color: #a5b138;
+    opacity: unset;
+}
+.next-back-button button{
+    background-color: #a5b138;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media(max-width:1600px){
+    .event-date-box h4{
+        font-size: 22px;
+        margin: 16px 0;
+    }
+    .main-box-for-slider{
+        width: 750px;
+    }
+    .bg-box-set-price {
+        width: 1040px;
+        height: 590px;
+        padding: 20px 0;
+        margin-top: 10px;
+    }
+    .sales-inner span{
+        font-size: 22px;
+    }
+    .group-box h6 {
+        margin: 14px 18px 10px;
+        font-size: 18px;
+    }
+    .inner-box-group{
+        max-height: 160px;
+        min-height: 160px;
+    }
+    .inner-box-group ul li h5{
+        font-size: 17px;
+        line-height: 25px;
+    }
+    button.btn.add-btn{
+        font-size: 17px;
+    }
+    .inner-box-group ul li{
+        padding: 10px;
+    }
+}
+@media(max-width:1366px){
+    .bg-box-set-price {
+        width: 870px;
+        padding: 30px 0;
+        margin-top: 0;
+    }
+    .hashtag-set-price p{
+        margin: 10px 0;
+    }
+    .hashtag h2{
+        font-size: 20px;
+    }
+    .next-back-button button{
+        font-size: 16px;
+    }
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 90px !important;
+    }
+}
+@media(max-width:1199px){
+    .inner-box-group {
+        max-height: 120px;
+        min-height: 120px;
+    }
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 120px !important;
+    }
+    .sales-inner span{
+        font-size: 18px;
+    }
+}
+@media(max-width:991px){
+    .bg-box-set-price {
+        width: 700px;
+    }
+    .main-box-for-slider{
+        width: 650px;
+    }
+    .inner-box-group ul li{
+        padding: 7px;
+    }
+    .event-name p {
+        font-size: 18px;
+    }
+    .next-back-button button{
+        font-size: 16px;
+    }
+    .hashtag h2 {
+        font-size: 24px;
+    }
+    .inner-box-group ul li h5{
+        line-height: 30px;
+       }
+}
+@media(max-width:767px){
+    .bg-box-set-price{
+        width: 600px;
+        height: auto;
+        margin: 0;
+    }
+    .main-box-for-slider{
+        width: 550px;
+    }
+    .event-date-box h4 {
+        font-size: 18px;
+        margin: 16px 0;
+    }
+    button.btn.add-btn {
+        font-size: 16px;
+    }
+    .sales-pricing-main .page-content, .event-activity-main .page-content {
+        padding-top: 90px !important;
+    }
+    .event-activity-main .page-content{
+        padding-top: 0 !important;
+    }
+}
+@media(max-width:575px){
+    .bg-box-set-price{
+        width: 500px;
+    }
+    .main-box-for-slider{
+        width: 450px;
+    }
+    .sales-inner span{
+        font-size: 16px;
+    }
+}
+@media(max-width: 480px){
+    .bg-box-set-price{
+        width: 380px;
+    }
+    .main-box-for-slider{
+        width: 320px;
+    }
+}
+@media(max-width: 400px){
+    .bg-box-set-price{
+        width: 320px;
+    }
+    .main-box-for-slider{
+        width: 300px;
+    }
+    .group-box h6 {
+        margin: 10px 0;
+    }
+    .andco-logo img {
+        margin-bottom: 0px;
+        height: 40px;
+    }
+}
+@media(max-width: 320px){
+    .bg-box-set-price{
+        width: 300px;
+    }
+    .main-box-for-slider{
+        width: 280px;
+    }
+}

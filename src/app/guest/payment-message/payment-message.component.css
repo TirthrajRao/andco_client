@@ -1,0 +1,23 @@
+.payment-success{
+    width: 40%;
+    text-align: center;
+    margin: 30px auto;
+    color: #fff;
+}
+.payment-success span{
+    color: var(--payment-success-msg-name);
+    font-family: 'Advent Pro', 'sans-sarif';
+}
+@media(max-width:1366px){
+    .payment-success {
+        width: 60%;
+    }
+}
+@media(max-width:767px){
+    .payment-success {
+        width: 100%;
+    }
+    .payment-success h3 {
+        font-size: 22px;
+    }
+}

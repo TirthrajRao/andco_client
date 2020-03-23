@@ -1,0 +1,20 @@
+<div class="payment">
+    <div class="total-amount">
+        <h2>Total : {{displayTotal | currency:"&#x20A6;"}}</h2>
+    </div>
+    <h3 class="text-center font-weight-bold pay-by">Pay by</h3>
+    <div class="radio-group">
+        <div>
+            <p><input type="radio" name="radio2" id="test3" value="account" (change)="onChange($event)">
+                <label for="test3">Bank account</label></p>
+            <p><input type="radio" name="radio2" id="test4" value="card" (change)="onChange($event)">
+                <label for="test4">Bank Card</label></p>
+            <p><input type="radio" name="radio2" id="test5" value="ussd" (change)="onChange($event)">
+                <label for="test5">USSD</label></p>
+        </div>
+    </div>
+    <div class="buttons-pay-back">
+        <button class="btn" (click)="displayAddress()">Back</button>
+        <button class="btn" (click)="finalPayment()" [disabled]="!isDisable">Pay</button>
+    </div>
+</div>

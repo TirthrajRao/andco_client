@@ -1,0 +1,234 @@
+<!-- step 1 start -->
+<section class="join-enter-main" *ngIf="index == 4">
+    <app-loader *ngIf="isLoad"></app-loader>
+    <div class="andco-logo">
+        <a><img src="assets/images/andco_logo.png" alt="andco logo"></a>
+    </div>
+    <div class="join-fl-name">
+        <div class="join-enter">
+            <a routerLink="/signUp" class="float-left">join</a>
+            <a routerLink="/login" class="float-right">enter</a>
+        </div>
+        <div class="join-enter-quote">
+            <p>It’s nice to meet you</p>
+        </div>
+        <form [formGroup]="signUpForm" autocomplete="off">
+            <div class="join-enter-inputs">
+                <input type="text" placeholder="Forename" pattern="[a-zA-Z]+" id="firstName" formControlName="firstName"
+                    [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
+                <div id="message1"></div>
+                <div *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback ">
+                    <div *ngIf="f.firstName.errors.required">Name is required</div>
+                    <div *ngIf="f.firstName.errors.minlength">Name must be at least 2 characters
+                    </div>
+                    <div *ngIf="f.firstName.errors.pattern">Please enter only alphabates</div>
+                </div>
+                <input type="text" placeholder="Lastname" pattern="[a-zA-Z]+" formControlName="lastName"
+                    (input)="validateLastName($event)" id="lastName"
+                    [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
+                <div id="message2"></div>
+                <div *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Name is required</div>
+                    <div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters
+                    </div>
+                    <div *ngIf="f.lastName.errors.pattern">Please enter only alphabates</div>
+                </div>
+            </div>
+        </form>
+        <div class="join-submit mt-2 w-100 text-center">
+            <button class="btn" [disabled]="isDisable || signUpForm.invalid" (click)="personalDetails()">Hello</button>
+        </div>
+    </div>
+</section>
+<!-- step 1 end -->
+<!-- step 2 start -->
+<section class="join-enter-main" *ngIf="index == 0">
+    <div class="andco-logo">
+        <a><img src="assets/images/andco_logo.png" alt="andco logo"></a>
+    </div>
+    <div class="join-with-your-social">
+        <div class="join-enter">
+            <a routerLink="/signUp" class="float-left">join</a>
+            <a routerLink="/login" class="float-right">enter</a>
+        </div>
+        <div class="join-enter-quote">
+            <p>join with your</p>
+        </div>
+        <div class="join-social">
+            <ul>
+                <li>
+                    <a (click)="signWithGoogle()">
+                        <img src="assets/images/gmail.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="signWithFacebook()">
+                        <img src="assets/images/facebook.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="emailDetails(index)">
+                        <img src="assets/images/message.png" alt="facebook">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- step 2 end -->
+<!-- step 3 start -->
+<section class="join-enter-main" *ngIf="index == 1">
+    <app-loader *ngIf="isLoad"></app-loader>
+    <div class="andco-logo">
+        <a><img src="assets/images/andco_logo.png" alt="andco logo"></a>
+    </div>
+    <div class="join-with-your-email">
+        <div class="join-enter">
+            <a routerLink="/signUp" class="float-left">join</a>
+            <a routerLink="/login" class="float-right">enter</a>
+        </div>
+        <div class="join-enter-quote"></div>
+        <div class="join-social">
+            <ul>
+                <li>
+                    <a (click)="signWithGoogle()">
+                        <img src="assets/images/gmail.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="signWithFacebook()">
+                        <img src="assets/images/facebook.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/images/message.png" alt="facebook">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <form [formGroup]="signUpForm" autocomplete="off" (ngSubmit)="verificationCode(index)">
+            <div class="join-enter-inputs">
+                <input type="email" placeholder="Your email address" formControlName="email"
+                    [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
+                    (keyup)="enterEmail($event.target.value)">
+                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+                </div>
+            </div>
+        </form>
+        <div class="join-submit w-100 text-center">
+            <!-- {{isDisable}} -->
+            <button class="btn join-submit" [disabled]="isDisable" (click)="verificationCode(index)">Go</button>
+        </div>
+    </div>
+</section>
+<!-- step 3 end -->
+<!-- step 4 start -->
+<section class="join-enter-main" *ngIf="index == 2">
+    <app-loader *ngIf="isLoad"></app-loader>
+    <div class="andco-logo">
+        <a><img src="assets/images/andco_logo.png" alt="andco logo"></a>
+    </div>
+    <div class="join-with-your-code">
+        <div class="join-enter">
+            <a routerLink="/signUp" class="float-left">join</a>
+            <a routerLink="/login" class="float-right">enter</a>
+        </div>
+        <div class="join-enter-quote">
+        </div>
+        <div class="join-social">
+            <ul>
+                <li>
+                    <a (click)="signWithGoogle()">
+                        <img src="assets/images/gmail.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="signWithFacebook()">
+                        <img src="assets/images/facebook.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="assets/images/message.png" alt="facebook">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="join-enter-inputs">
+            <input type="text" #joinCode placeholder="Enter code sent" id="codeInput"
+                (input)="enterCode(joinCode.value , $event , index)">
+        </div>
+        <div class="join-submit w-100 text-center">
+            <button class="btn join-submit" id="btn1" (click)="backFromJoin(index)">Back</button>
+            <button class="btn join-submit ml-3" #buttonValue id="btn2" (click)="verifyCode(joinCode.value , index)"
+                [disabled]="isVerified">Almost done</button>
+        </div>
+    </div>
+</section>
+<!-- step 4 end -->
+<!-- step 5 start -->
+<section class="join-enter-main" *ngIf="index == 3">
+    <div class="andco-logo">
+        <a><img src="assets/images/andco_logo.png" alt="andco logo"></a>
+    </div>
+    <div class="join-enter-password">
+        <div class="join-enter">
+            <a routerLink="/signUp" class="float-left">join</a>
+            <a routerLink="/login" class="float-right">enter</a>
+        </div>
+        <div class="join-enter-quote">
+        </div>
+        <div class="join-social">
+            <ul>
+                <li>
+                    <a (click)="signWithGoogle()">
+                        <img src="assets/images/gmail.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="signWithFacebook()">
+                        <img src="assets/images/facebook.png" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="assets/images/message.png" alt="facebook">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <form [formGroup]="signUpForm" autocomplete="off">
+            <div class="join-enter-inputs ">
+                <div class="input_with_icont">
+                    <input type="password" placeholder="Create your password" formControlName="password" id="pwd1"
+                        [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+                        [type]="show1 ? 'text' : 'password'">
+                    <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+                        (click)="password1()"></span>
+                    <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback ">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must contain atleast 6
+                            characters</div>
+                        <div *ngIf="f.password.errors.maxlength">Password must be only 20 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="input_with_icont">
+                    <input type="password" formControlName="confirmPassword" id="pwd2" placeholder="kindly confirm"
+                        (input)="comparePassword(signUpForm , index)" [type]="show2 ? 'text' : 'password'">
+                    <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+                        (click)="password2()"></span>
+                </div>
+            </div>
+        </form>
+        <div class="join-submit w-100 text-center">
+            <button class="btn join-submit" type="submit" (click)="passwordUpdate(index)" [disabled]="match">one more
+                step</button>
+        </div>
+    </div>
+</section>
+<!-- step 4 end -->
+<!-- step 5 start -->

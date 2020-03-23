@@ -1,0 +1,174 @@
+.total-amount h2 {
+    color: var(--total-title-font-color);
+    text-align: center;
+    font-weight: 600;
+    padding: 15px 0 10px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.total-amount {
+    position: relative;
+}
+
+h3.pay-by {
+    color: var(--pay-by-color);
+    margin: 30px 0;
+}
+
+.total-amount:after {
+    content: "";
+    background-color: var(--total-title-background-color);
+    position: absolute;
+    top: 0;
+    right: -30px;
+    left: -30px;
+    bottom: 0;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-pay-back {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    left: 0;
+}
+
+.buttons-pay-back button {
+    background-color: #fff;
+    color: var(--guest-total-add-more);
+    font-weight: bold;
+    padding: 7px 30px;
+    font-size: 18px;
+}
+
+/* radio button css start here */
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 35px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #ffffff;
+    border-radius: 100%;
+    background: #ffffff;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 13px;
+    height: 13px;
+    background: var(--guest-activity-group-radio-check-color);
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* radio button css end here */
+
+@media(max-width:1600px) {
+    .total-amount h2 {
+        font-size: 28px;
+    }
+    h3.pay-by {
+        font-size: 26px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 22px;
+    }
+}
+
+@media(max-width:1366px) {
+    .total-amount h2 {
+        font-size: 24px;
+        padding: 10px 0 5px;
+    }
+    h3.pay-by {
+        margin: 20px 0;
+    }
+}
+
+@media(max-width:991px) {
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        margin-bottom: 12px;
+    }
+}
+
+@media(max-width:575px) {
+    .total-amount h2 {
+        font-size: 22px;
+    }
+    h3.pay-by {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before{
+        width: 22px;
+        height: 22px;
+    }
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 12px;
+        height: 12px;
+        top: 5px;
+        left: 5px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+@media(max-width:400px){
+    .total-amount:after{
+        left: -20px;
+        right: -20px;
+    }
+    .buttons-pay-back button{
+        font-size: 14px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        margin-bottom: 5px;
+    }
+}

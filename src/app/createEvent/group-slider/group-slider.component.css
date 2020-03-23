@@ -1,0 +1,105 @@
+.group-slider {
+    padding-left: 35px;
+}
+
+.group-single-slide {
+    position: relative;
+}
+
+.group-single-slide:hover .remove-group {
+    display: block;
+}
+
+.remove-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0px 10px 0 0;
+    display: none;
+}
+
+.remove-group i {
+    color: #A6B138;
+    cursor: pointer;
+}
+
+.add-group button {
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    z-index: 1;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+    margin: auto;
+}
+
+.add-group button:hover {
+    color: #fff;
+}
+
+.add-group button:focus {
+    box-shadow: none;
+}
+
+.group-header {
+    background-color: #A6B138;
+    padding: 4px;
+    position: relative;
+}
+
+.group-header span {
+    color: #A6B138;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.group-name .active {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.group-name {
+    background-color: #fff;
+    margin: 0 5px;
+    padding: 7px 16px;
+    border-radius: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.group-single-slide.slick-slide {
+    position: relative;
+    margin: 5px 4px;
+}
+
+.group-single-slide.slick-slide .group-name.active::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -1px;
+    right: -1px;
+    border: 2px solid #FAFEB0;
+    display: block;
+    border-radius: 10px;
+}
+
+@media(max-width:1600px) {
+    .group-header span {
+        font-size: 18px;
+    }
+}
+@media(max-width:767px) {
+    .group-header span {
+        font-size: 16px;
+    }
+}

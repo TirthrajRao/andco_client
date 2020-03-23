@@ -1,0 +1,37 @@
+<section class="myEvent-main">
+    <div class="page-content">
+        <div class="myevent-inner-box">
+            <div class="my-event-hashtag" *ngIf="displayMenu">
+                <h2>
+                    <a id="arrowpre"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
+                    <span tooltipClass="my-custom-class" ngbTooltip="#{{eventHashTag}}"> #{{eventHashTag}} </span>
+                    <a id="arrownext"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
+                </h2>
+            </div>
+            <div class="my-event-inner-box-height">
+                <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
+                <div>
+                    <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 0">
+                    </app-my-event-activity>
+                    <!-- <app-event-menu></app-event-menu> -->
+                    <app-my-event-link *ngIf="currenMenuIndex == 3" [eventLink]="eventLink"></app-my-event-link>
+
+                    <app-invited-guest *ngIf="currenMenuIndex == 4" [guestList]="guestList"></app-invited-guest>
+
+                    <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
+                    </app-event-profile-pic>
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
+                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
+                    <!-- <app-loader></app-loader> -->
+                </div>
+            </div>
+        </div>
+        <div class="event-menu-box-main">
+            <div class="event-menu-box" *ngIf="displayMenu">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity($event)"
+                    (selectedMenu)="getCurrentMenu($event)">
+                </app-event-menu>
+            </div>
+        </div>
+    </div>
+</section>

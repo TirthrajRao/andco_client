@@ -1,0 +1,175 @@
+.thank-you {
+    background-image: url('/assets/images/thank_you.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    font-family: 'Manjari', sans-serif !important;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.guest-profile {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    border: 2px solid #fff;
+}
+
+.guest-profile img {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.thank-you h3 {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.thank-you button {
+    background: linear-gradient(#72471D, #BA8A41);
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #fff;
+    padding: 10px 30px;
+}
+
+p.thank-you-message {
+    font-size: 24px;
+    width: 30%;
+    margin: 20px auto;
+    min-height: 100px;
+    max-height: 25vh;
+    overflow-y: auto;
+}
+
+p.thank-you-message::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+p.thank-you-message::-webkit-scrollbar {
+    width: 5px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+p.thank-you-message::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #BA8A41;
+}
+
+/* responsive css start */
+
+@media(max-width: 1600px) {}
+
+@media(max-width: 1366px) {
+    .andco-logo img {
+        height: 90px;
+    }
+    .guest-profile {
+        width: 150px;
+        height: 150px;
+    }
+    .thank-you h3 {
+        margin-top: 12px;
+        font-size: 24px;
+    }
+    p.thank-you-message {
+        font-size: 22px;
+    }
+    .thank-you button {
+        font-size: 22px;
+        margin: 0;
+    }
+}
+
+@media(max-width: 1199px) {
+    .andco-logo img {
+        height: 80px;
+    }
+    .guest-profile {
+        width: 130px;
+        height: 130px;
+    }
+    .thank-you h3 {
+        font-size: 22px;
+    }
+    p.thank-you-message {
+        font-size: 20px;
+        line-height: 33px;
+    }
+    .thank-you button {
+        font-size: 18px;
+        padding: 7px 20px;
+    }
+}
+
+@media(max-width:1024px) {
+    .thank-you {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 991px) {}
+
+@media(max-width: 767px) {
+    p.thank-you-message {
+        width: 50%;
+    }
+    .andco-logo img {
+        height: 70px;
+    }
+    .guest-profile {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+@media(max-width: 575px) {
+    p.thank-you-message {
+        width: 80%;
+    }
+    .thank-you h3 {
+        font-size: 18px;
+    }
+    .thank-you {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 400px) {
+    .andco-logo img {
+        height: 50px;
+    }
+    .guest-profile {
+        width: 90px;
+        height: 90px;
+    }
+    p.thank-you-message {
+        font-size: 16px;
+        line-height: 26px;
+        /* max-height: 140px; */
+    }
+    .thank-you button {
+        font-size: 16px;
+        padding: 5px 17px;
+        font-weight: normal;
+    }
+}
+
+/* responsive css end */

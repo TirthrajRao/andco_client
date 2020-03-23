@@ -1,0 +1,413 @@
+/* your event type css start */
+
+.create-event-main {
+    background-image: url('/assets/images/event_create.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    font-family: 'Manjari', sans-serif !important;
+    padding: 20px;
+}
+
+.create-event-main:before {
+    content: "";
+    background-color: #0000002e;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.create-event-type-box.slick-slide:focus {
+    outline: none !important;
+}
+.create-event-slider-box-width {
+    width: 650px;
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+button.slick-arrow {
+    background-color: #9d3742;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    padding: 6px 60px;
+    font-size: 22px;
+}
+
+.create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.create-event-type-menu {
+    border: 3px solid #fff;
+    border-radius: 13px;
+    padding: 20px;
+}
+
+.create-event-type-menu ul li {
+    list-style: none;
+}
+
+.create-event-type-menu ul li a {
+    color: #9D3742;
+    font-size: 26px;
+    font-weight: 600;
+    width: 100%;
+    margin: 12px 0;
+    cursor: pointer;
+}
+.create-event-type-menu ul li a:hover{
+    color: #D2A0A1;
+}
+.create-event-type-menu ul li.active a {
+    color: #fff !important;
+}
+
+/* your event type css end */
+
+/* your event hashtag and name css start */
+.create-event-hashtag-box input{
+    background-image: url('../../../assets/images/hashtag.png');
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+}
+.create-event-name-box input{
+    background-image: url('../../../assets/images/pencil.png');
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+}
+.create-event-hashtag-box input, .create-event-name-box input {
+    background-color: transparent;
+    border: 3px solid #fff;
+    border-radius: 7px;
+    outline: none;
+    font-family: 'Advent Pro', 'sans sarif';
+    font-size: 30px;
+    padding: 0 50px;
+    position: relative;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.create-event-hashtag-box input::placeholder,
+.create-event-name-box input::placeholder{
+    color: rgba(255, 255, 255, 0.7);
+}
+.create-event-hashtag-box input:focus,
+.create-event-name-box input:focus{
+    outline: none !important;
+    box-shadow: none;
+}
+/* your event hashtag and name css end */
+
+/* your event profile css start */
+
+.profile-picture {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.profile-picture img, .main-background-picture img, .sample_bg img {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.profile-photo-upload label {
+    cursor: pointer;
+}
+
+/* your event profile css end */
+
+/* your event background css start */
+
+.main-background-picture {
+    height: 300px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    border-radius: 32px;
+}
+
+.sample_bg {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+.bg-select-div span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+.bg-select-div{
+    cursor: pointer;
+}
+
+/* your event background css end */
+
+/* your event prising css start */
+
+.content-prising {
+    background-color: #CD9495;
+    border-radius: 20px;
+    padding: 60px 30px;
+    display: block;
+    color: #9D3742;
+    font-size: 30px;
+    text-align: left;
+    font-weight: 600;
+}
+button.btn.created-event-custom-button {
+    background-color: #9D3742;
+    color: #fff;
+    font-size: 22px;
+    padding: 7px 52px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    z-index: 11;
+}
+.bg-select-div.active .sample_bg{
+    border: 3px solid #000;
+    border-radius: 50%;
+}
+.bg-select-div.active span{
+    color: #000 !important;
+}
+
+div#message1 {
+    color: #dc3545;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+
+/* your event prising css end */
+
+/* responsive css start */
+
+@media(max-width: 1366px) {
+    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+        margin-bottom: 12px;
+        font-size: 22px;
+    }
+    .main-background-picture {
+        height: 150px;
+        width: 300px;
+        margin: 10px auto;
+    }
+    .sample_bg{
+        height: 60px;
+        width: 60px;
+    }
+    .create-event-main{
+        padding: 0;
+    }
+    .create-event-type-menu ul li a {
+        font-size: 24px;
+        margin: 6px 0;
+    }
+    .create-event-hashtag-box input, .create-event-name-box input {
+        border: 2px solid #fff;
+        font-size: 25px;
+        padding: 30px 0 30px 45px;
+    }
+    .content-prising {
+        padding: 30px;
+        font-size: 26px;
+    }
+    button.btn.created-event-custom-button {
+        padding: 5px 35px;
+        bottom: 10px;
+        font-size: 18px;
+    }
+    img.upload_img_icon {
+        width: 70px;
+    }
+    .profile-picture {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+@media(max-width: 1199px) {
+    .profile-picture{
+        width: 250px;
+        height: 250px;
+    }
+    img.upload_img_icon {
+        width: 60px;
+    }
+    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3{
+        margin-bottom: 12px;
+        font-size: 22px;
+    }
+    .content-prising {
+        padding: 40px 30px;
+        font-size: 22px;
+    }
+    .create-event-main{
+        padding: 20px;
+    }
+}
+
+@media(max-width: 991px) {
+    .profile-picture{
+        width: 220px;
+        height: 220px;
+    }
+    .create-event-hashtag-box span{
+        top: 40px;
+    }
+}
+
+@media(max-width: 767px) {
+    .create-event-slider-box-width {
+        width: 420px;
+    }
+    .navigation_menu{
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media(max-width: 575px) {
+    
+    .create-event-slider-box-width {
+        width: 380px;
+    }
+    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+        font-size: 21px;
+    }
+    .create-event-hashtag-box span {
+        font-size: 40px;
+        top: 34px;
+    }
+    .profile-picture{
+        width: 200px;
+        height: 200px;
+    }
+    img.upload_img_icon {
+        width: 50px;
+        height: 40px;
+    }
+    .create-event-type-menu ul li a {
+        font-size: 20px;
+    }
+    .create-event-type-menu{
+        border: 2px solid #fff;
+        padding: 10px;
+    }
+    .background-photo-upload span {
+        font-size: 16px;
+    }
+    .create-event-hashtag-box input, .create-event-name-box input {
+        border: 1px solid #fff;
+        font-size: 20px;
+        padding: 20px 10px 20px 45px;
+    }
+    .content-prising {
+        padding: 20px;
+        font-size: 20px;
+    }
+    .main-background-picture {
+        height: 160px;
+        width: 370px;
+    }
+    .sample_bg{
+        height: 50px;
+        width: 50px;
+    }
+    button.btn.created-event-custom-button{
+        padding: 3px 25px;
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 400px) {
+    .create-event-hashtag-box span {
+        font-size: 30px;
+        top: 36px;
+    }
+    .create-event-slider-box-width {
+        width: 290px;
+    }
+    .navigation_menu {
+        height: 40px;
+        width: 40px;
+        top: 20px;
+        left: 20px;
+    }
+    .content-prising ol {
+        padding-left: 20px;
+    }
+    .content-prising {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .profile-picture{
+        width: 160px;
+        height: 160px;
+    }
+    img.upload_img_icon {
+        height: 30px;
+        width: 40px;
+    }
+    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3{
+        font-size: 18px;
+    }
+    .main-background-picture{
+        height: 100px;
+        width: 190px;
+    }
+    .create-event-type-menu{
+        padding: 0px;
+    }
+    .background-photo-upload span {
+        font-size: 14px;
+    }
+    .sample_bg{
+        height: 40px;
+        width: 40px;
+    }
+    .create-event-type-menu ul li a {
+        font-size: 16px;
+    }
+    button.btn.created-event-custom-button{
+        bottom: 8px;
+        border-radius: 5px;
+    }
+}
+@media only screen and (device-width : 320px) and (device-height : 480px){
+    .create-event-type-menu {
+        border: 1px solid #fff;
+        padding: 0;
+    }
+    .create-event-main{
+        background-position: bottom;
+    }
+    button.btn.created-event-custom-button{
+        bottom: 28px;
+        border-radius: 5px;
+    }
+}
+/* responsive css end */

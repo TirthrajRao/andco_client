@@ -1,0 +1,133 @@
+<section class="create-event-main">
+    <app-loader *ngIf="isLoad" id="loader"></app-loader>
+    <div class="page-content">
+        <!-- create event slider start -->
+        <div class="create-event-slider-box-width">
+            <form [formGroup]="eventForm" autocomplete="off">
+                <div class="create-event-slider text-center">
+                    <!-- your event type start -->
+                    <div class="create-event-type-box">
+                        <h3>Your event type <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
+                        <div class="create-event-type-menu">
+                            <ul class="mb-0">
+                                <li *ngFor="let type of eventType; let i =index" (click)="selectEvent(i)"
+                                    [class.active]="selctedIndex == i">
+                                    <a>{{type}}</a>
+                                </li>
+                            </ul>
+                            <div *ngIf="f.eventType.touched && f.eventType.errors" class="invalid-feedback">
+                                <div *ngIf="f.eventType.errors.required" class="invalid-feedback">Event Type is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- your event type end -->
+                    <!-- your event hashtag start -->
+                    <div class="create-event-hashtag-box">
+                        <h3>Your event hashtag</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="hashTag"
+                                ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
+                                [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
+                                placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
+                                id="hashTag">
+                            <div id="message1"></div>
+                            <div *ngIf="f.hashTag.touched && f.hashTag.errors" class="invalid-feedback">
+                                <div *ngIf="f.hashTag.errors.required" id="hashTag1">Event HashTag is Required
+                                </div>
+                                <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4
+                                    Characters
+                                </div>
+                                <div *ngIf="f.hashTag.errors.pattern">Enter only alphabets
+                                    Characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- your event hashtag end -->
+                    <!-- your event name start -->
+                    <div>
+                        <div class="create-event-name-box">
+                            <h3>Your Event Title</h3>
+                            <div class="form-group">
+                                <input type="text" autocomplete="off" class="form-control"
+                                    placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle"
+                                    formControlName="eventTitle"
+                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
+                                    [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
+                                <div *ngIf="f.eventTitle.touched && f.eventTitle.errors" class="invalid-feedback">
+                                    <div *ngIf="f.eventTitle.errors.required" id="title1">Event Title is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- your event name end -->
+                    <!-- your event profile start -->
+                    <div class="create-event-profile-box">
+                        <h3>Your Event Profile Photo</h3>
+                        <div class="profile-picture">
+                            <!-- <img *ngIf="displayImage == true" src="{{path}}{{createdEventDetails.profilePhoto}}"
+                                id="imageFilter"> -->
+                            <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
+                                onerror="this.src='/assets/images/profile_img.png'">
+                        </div>
+                        <div class="text-white mt-2">
+                            <h4>Upload your profile photo</h4>
+                        </div>
+                        <div class="profile-photo-upload mt-3">
+                            <label for="upload_profile">
+                                <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
+                            </label>
+                            <input type="file" (change)="addFile($event.target.files)"
+                                accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;">
+                            <span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- your event profile end -->
+                    <!-- your event background choose start -->
+                    <div class="create-event-background-box">
+                        <h3>Your Event Page Background</h3>
+                        <div class="main-background-picture">
+                            <img [src]="themeUrl" id="imageFilter"
+                                onerror="this.src='/assets/images/background_main.png'">
+                        </div>
+                        <div class="background-photo-upload">
+                            <div class="row">
+                                <div class="col-3" *ngFor="let theme of eventBackGround; let i =index">
+                                    <div class="bg-select-div" [class.active]="selectedThemeIndex == i">
+                                        <div class="sample_bg">
+                                            <img src="{{theme.path}}" alt="background 1" id="background1"
+                                                (click)="defaultBackgroundImage(theme.path , i)">
+                                        </div>
+                                        <span>{{theme.themeName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- your event background choose end -->
+                    <!-- your event Prising tip start -->
+                    <div class="create-event-pricing-box">
+                        <h3> Aso Ebi Pricing Tip</h3>
+                        <div class="content-prising">
+                            <ol type="number" class="mb-0">
+                                <li>To each aso ebi order, a processing
+                                    fee of 1.5% + N70 will be added.</li>
+                                <li>AndCo can deliver your fabric to guests.</li>
+                                <li>A delivery cost of N700 will be added to
+                                    each cart, if you choose us to handle
+                                    logistics.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- your event prising tip end -->
+                </div>
+            </form>
+            <button class="btn created-event-custom-button"
+                (click)="createdEventDetails? updateEvent(): addEvent()">Continue</button>
+        </div>
+        <!-- create event slider end -->
+    </div>
+</section>

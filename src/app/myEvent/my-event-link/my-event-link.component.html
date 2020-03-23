@@ -1,0 +1,168 @@
+<div class="share-link">
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+    <!-- <h3>{{displayEventLink}}</h3> -->
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="">
+    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget"
+        aria-hidden="true" (click)="changeSuccessMessage()"></i>
+</div>
+
+
+<div class="my-event-tab-slider my-2">
+    <div class="single-tab-slide">
+        <div class="tab-name">
+            <p>invitation</p>
+        </div>
+    </div>
+    <div class="single-tab-slide">
+        <div class="tab-name">
+            <p>Welcome</p>
+        </div>
+    </div>
+    <div class="single-tab-slide">
+        <div class="tab-name">
+            <p>Pay</p>
+        </div>
+    </div>
+    <div class="single-tab-slide" (click)="reminderMessage(2)">
+        <div class="tab-name">
+            <p>Remainder</p>
+        </div>
+    </div>
+    <div class="single-tab-slide" (click)="getafterEventMessage(3)">
+        <div class="tab-name">
+            <p>After Event</p>
+        </div>
+    </div>
+</div>
+<!-- step 1 start -->
+<div class="step-1-link" *ngIf="index == 0">
+    <!-- <div class="tab-message-box">
+        <p>We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
+            our ebi here- <br>
+            andco.withme/#TomKat2019
+        </p>
+    </div> -->
+    <textarea name="" id="" rows="4" placeholder="We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
+    our ebi here-
+    andco.withme/#TomKat2019"></textarea>
+    <div class="share-button">
+        <button class="btn" (click)="shareLink()">Share <i class="fa fa-share" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<!-- step 1 end -->
+<!-- step 2 start -->
+<div class="step-2-link" *ngIf="index == 1">
+    <!-- <div class="tab-message-box">
+        <p>Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's
+            standard dummy text ever since the 1500s,
+        </p>
+    </div> -->
+    <textarea name="" id="" rows="4" placeholder="{{displayEventLink}}"></textarea>
+    <div class="social-icon">
+        <!-- <share-buttons theme="material-dark" show="11" image="https://loremflickr.com/320/240"></share-buttons> -->
+        <ul>
+            <li>
+                <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [url]="displayEventLink">
+                </share-button>
+            </li>
+            <li>
+                <share-button [theme]="'circles-dark'" [button]="'facebook'" [url]="displayEventLink">
+                </share-button>
+            </li>
+            <li>
+                <share-button [theme]="'circles-dark'" [button]="'email'" [url]="displayEventLink"></share-button>
+            </li>
+            <li>
+
+                <share-button [theme]="'circles-dark'" [button]="'sms'" [url]="displayEventLink"></share-button>
+            </li>
+            <li>
+                <!-- <a href="#">
+                    <img src="../../../assets/images/G.png" alt="G icon">
+                </a> -->
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- step 2 end -->
+<!-- step 3 start -->
+<!-- Remainder -->
+<div class="step-3-link" *ngIf="index == 2">
+    <!-- <div class="tab-message-box">
+        <p>Together with our parents, thank
+            you for your presence, purchase,
+            presents and prayers.
+        </p>
+    </div> -->
+    <form [formGroup]="reminderForm">
+        <textarea name="" id="" rows="4" formControlName="reminderMessage"
+            placeholder="{{displayEventLink}}"></textarea>
+        <div class="send-message">
+            <div class="float-left d-flex">
+                <p>Send on:</p>
+                <div class="send-date mr-2" (click)="picker.open()">
+                    <span>{{displayDate | date : 'dd'}}</span>
+                </div>
+                <div class="send-date mr-2" (click)="picker.open()">
+                    <span>{{displayDate | date : 'MM'}}</span>
+                </div>
+                <div class="send-date" (click)="picker.open()">
+                    <span>{{displayDate  | date : 'yyyy'}}</span>
+                </div>
+                <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate"
+                        id="activityStartDate{{i}}" (dateChange)="addEvent('input', $event , i)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="float-right d-flex">
+                <p>at :</p>
+                <div class="send-time" (click)="default.open()">
+                    <span>{{hours}}</span>
+                </div> <span class="middle">:</span>
+                <div class="send-time" (click)="default.open()">
+                    <span>{{minutes}}</span>
+                </div>
+                <span class="pm-am">PM</span>
+                <span class="zone">West Africa Standard Time</span>
+                <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
+                    aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
+                    > -->
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)">
+                </ngx-material-timepicker>
+                <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
+                    <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
+                        required </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="share-button">
+            <button class="btn" (click)="reminderMessageSend()">Share <i class="fa fa-share" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+</div>
+<!-- step 3 end -->
+
+<!-- step 4 start -->
+<div class="step-4-link" *ngIf="index == 3">
+    <textarea name="" id="" rows="4" placeholder="Together with our parents, thank 
+    you for your presence, purchase,
+    presents and prayers." [(ngModel)]="afterEventMessage" readonly></textarea>
+    <div class="to">
+        <h3>to :</h3>
+    </div>
+    <div class="all">
+        <div class="group-box">
+            <input type="radio" name="radio-group1" id="test" value="male" checked>
+            <label class="w-100" for="test">all invited guests</label>
+            <input type="radio" name="radio-group1" value="female" id="test6">
+            <label class="w-100" for="test6">only guests that bought aso ebi</label>
+        </div>
+    </div>
+</div>
+<!-- step 4 end -->

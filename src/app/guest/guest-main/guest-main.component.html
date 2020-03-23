@@ -1,0 +1,56 @@
+<section class="guest-main-background" [ngStyle]="{'background-image': 'url(' + eventTheme + ')'}">
+    <div class="page-content">
+        <div class="guest-main-box">
+            <div class="guest-header text-center" *ngIf="eventDetails">
+                <div class="guest-profile">
+                    <img *ngIf="eventDetails.profilePhoto" src="{{path}}{{eventDetails.profilePhoto}}" alt="">
+                </div>
+                <h3>#{{eventDetails.hashTag}}</h3>
+                <h3>{{eventDetails.eventTitle}}</h3>
+            </div>
+            <!-- <div class="join-event" *ngIf="isJoin == false">
+                <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
+            </div> -->
+            <div class="guest-inner-box" *ngIf="isDisable">
+
+                <!-- Display items with groups -->
+                <app-guest-activity-slider *ngIf="index == 0" [totalActivityList]="totalActivityList"
+                    (totalItemList)="totalItem($event)" [removeItemOf]="removeItem">
+                </app-guest-activity-slider>
+                <!-- End -->
+
+                <!-- Display total of selected items in cart -->
+                <app-guest-item-total *ngIf="index == 1" [totalItemList]="totalItemList"
+                    (removeItem)="removeItemOfArray($event)" (addDonation)="donationAdd($event)">
+                </app-guest-item-total>
+                <!-- end -->
+
+
+                <!-- add Donation in final payment -->
+                <app-gift-donation *ngIf="index == 2" (displayItem)="displayItems($event)"
+                    (address)="displayAddress($event)"></app-gift-donation>
+                <!-- end -->
+
+                <!-- Adress of guest user -->
+                <app-guest-address *ngIf="index == 3" (displayAccount)="selectPayment($event)"></app-guest-address>
+                <!-- end -->
+
+                <!-- finalPayMent of user -->
+                <app-payment *ngIf="index == 4" (accountType)="selectedAccountType($event)"
+                    (index)="displayAddress($event)"></app-payment>
+                <!-- end -->
+
+                <!-- Choose payment method -->
+                <app-payment-details *ngIf="index == 5" [accountType]="selectedAccount"
+                    (lastIndex)="displayAccount($event)" (thankYouDetails)="thankYouMessage($event)">
+                </app-payment-details>
+                <!-- end -->
+
+                <!-- Thank you message after payment -->
+                <app-payment-message *ngIf="index == 6" [thankYouDetail]="thankYouDetails"></app-payment-message>
+                <!-- end -->
+            </div>
+            <app-guest-menu *ngIf="isJoin == true" (displayActivity)="displayActivity($event)"></app-guest-menu>
+        </div>
+    </div>
+</section>

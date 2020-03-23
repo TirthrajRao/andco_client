@@ -1,0 +1,173 @@
+
+.circular-menu {
+    position: fixed;
+    bottom: 4%;
+    right: 4%;
+}
+
+.circular-menu .floating-btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36);
+    color: var(--circular-menu-floating-button-color);
+    text-align: center;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 100px;
+    position: relative;
+    z-index: 9999;
+    -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.circular-menu .floating-btn:hover{
+    -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+.circular-menu.active .floating-btn {
+    box-shadow: inset 0 0 3px hsla(0, 0%, 0%, .3);
+}
+
+.circular-menu .floating-btn:active {
+    box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, .4);
+}
+
+.circular-menu .floating-btn i {
+    font-size: 1.3em;
+    transition: transform .2s;
+}
+
+.circular-menu.active .floating-btn i {
+    transform: rotate(-45deg);
+}
+
+.circular-menu.active:after {
+    transform: scale3d(5.5, 5.5, 1);
+    transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
+}
+
+.circular-menu .items-wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.circular-menu .menu-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--circular-menu-floating-button-color);
+    font-size: 18px;
+    font-weight: 600;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: normal;
+    background-color: #ffffff;
+    transition: transform .3s ease, background .2s ease;
+}
+.circular-menu.active:before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 111;
+}
+.circular-menu .menu-item:hover {
+    background-color: var(--circular-menu-floating-button-color);
+    color: #fff;
+    border: 2px solid #fff;
+    transition: ease-in 0.5s;
+}
+
+.circular-menu.active .menu-item {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.circular-menu.active .menu-item:nth-child(1) {
+    transform: translate3d(0em, -13em, 0);
+}
+
+.circular-menu.active .menu-item:nth-child(2) {
+    transform: translate3d(-6.5em, -11.3em, 0);
+}
+
+.circular-menu.active .menu-item:nth-child(3) {
+    transform: translate3d(-11.3em, -6.5em, 0);
+}
+
+.circular-menu.active .menu-item:nth-child(4) {
+    transform: translate3d(-13em, 0em, 0);
+}
+
+.circular-menu.active menu.items-wrapper a.menu-item {
+    z-index: 9999;
+}
+
+.circular-menu.circular-menu-left {
+    right: auto;
+    left: 1em;
+}
+
+.circular-menu.circular-menu-left .floating-btn {
+    background-color: hsl(217, 89%, 61%);
+}
+
+.circular-menu.circular-menu-left:after {
+    background-color: hsl(217, 89%, 61%);
+}
+
+.circular-menu.circular-menu-left.active .floating-btn i {
+    transform: rotate(90deg);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(1) {
+    transform: translate3d(-1em, -7em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(2) {
+    transform: translate3d(3.5em, -6.3em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(3) {
+    transform: translate3d(6.5em, -3.2em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(4) {
+    transform: translate3d(7em, 1em, 0);
+}
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+
+@media(max-width:1600px){
+    .circular-menu .floating-btn ,.circular-menu .menu-item {
+        width: 90px;
+        height: 90px;
+    }
+}
+@media(max-width:575px){
+    .circular-menu .menu-item{
+        font-size: 14px;
+    }
+    .circular-menu .floating-btn, .circular-menu .menu-item {
+        width: 80px;
+        height: 80px;
+    }
+    .circular-menu .floating-btn{
+        line-height: 80px;
+    }
+}

@@ -1,0 +1,321 @@
+.event-activity-main {
+    background-image: url('../../../assets/images/salesPrice1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+.bg-box-set-price{
+    background-color: #f3f4f3;
+    width: 1200px;
+    height: 600px;
+    padding: 30px 30px 70px;
+    box-shadow: 0px 0px 70px #d5dbd5;
+    margin-top: 40px;
+    position: relative;
+}
+.hashtag-set-price{
+    width: 100%;
+}
+.hashtag-set-price h2{
+    text-align: center;
+    font-family: 'Advent Pro', 'sans-sarif';
+    color: #686868;
+    font-weight: bold;
+}
+.wrapper {
+    position: relative;
+}
+.inner-box {
+    max-height: 410px;
+    overflow-y: auto;
+    margin: 10px 0;
+    position: relative;
+}
+
+.inner-box::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    background-color: #F5F5F5;
+}
+
+.inner-box::-webkit-scrollbar {
+    width: 3px;
+    background-color: #F5F5F5;
+}
+
+.inner-box::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .1);
+    background-color: #A6B138;
+}
+
+.element {
+    width: 100%;
+    padding: 20px 50px;
+    position: relative;
+}
+
+.element input {
+    width: calc(100% - 50px);
+    border-radius: 7px;
+    height: 50px;
+    border: 2px solid #DBD9AC;
+    color: #A6B138;
+    padding: 6px 15px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.element input::placeholder {
+    color: rgba(166, 177, 56, 0.68);
+}
+
+.element input:focus {
+    box-shadow: none;
+    outline: none;
+}
+.element i{
+    position: absolute;
+    left: 275px;
+    margin-top: 30px;
+    color: #A6B138;
+    font-size: 25px;
+    cursor: pointer;
+}
+.single-element{
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 10px 0;
+}
+button.remove {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.buttons{
+    text-align: center;
+}
+.buttons button.clone{
+    background-color: #A6B138;
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    font-size: 30px;
+    padding: 11px 14px;
+    line-height: 0;
+    outline: none;
+}
+.remove_sec{
+    display: none;
+}
+.select-box-div{
+    width: 100%;
+}
+.select-box-div select{
+    width: 20%;
+    color: #A6B138;
+    border: 2px solid #DBD9AC;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.select-box-div i{
+    color: #A6B138;
+    font-size: 20px;
+    cursor: pointer;
+}
+.date-display {
+    background: #fff;
+    padding: 5px;
+    border: 2px solid #DBD9AC;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    cursor: pointer;
+}
+.date-display p{
+    color: #a5b138;
+    font-size: 20px;
+    font-weight: bold;
+}
+.event-next-btn {
+    position: absolute;
+    bottom: 20px;
+    margin: auto;
+    display: block;
+    right: 20px;
+    text-align: center;
+}
+.event-next-btn button{
+    background-color: #A6B138;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    outline: none !important;
+    padding: 6px 30px;
+    font-weight: bold;
+}
+
+/* responsive css start */
+
+@media(max-width:1600px){
+    .bg-box-set-price {
+        width: 1040px;
+        height: 570px;
+        padding: 30px 0;
+    }
+    .inner-box {
+        max-height: 350px;
+    }
+    .element input {
+        font-size: 24px;
+    }
+}
+@media(max-width:1366px){
+    .bg-box-set-price {
+        width: 870px;
+        height: 490px;
+        padding: 30px 0;
+    }
+    .hashtag-set-price p{
+        margin: 10px 0;
+    }
+    .inner-box {
+        max-height:280px;
+    }
+    .element input ,
+    .date-display{
+        font-size: 22px;
+        height: 42px;
+    }
+    .date-display{
+        width: 70px;
+    }
+    button.remove img {
+        width: 20px;
+    }
+    .buttons button.clone {
+        font-size: 22px;
+    }
+    .event-next-btn button {
+        font-size: 16px;
+    }
+    .hashtag-set-price h2{
+        font-size: 26px;
+    }
+    .element i{
+        left: 245px;
+        margin-top: 27px;
+        font-size: 22px;
+    }
+}
+@media(max-width:1199px){
+    .bg-box-set-price {
+        width: 730px;
+        height: 410px;
+        padding: 20px 0;
+    }
+    .inner-box {
+        max-height: 250px;
+        min-height: 100px;
+    }
+}
+@media(max-width:991px){
+    .bg-box-set-price {
+        width: 640px;
+        height: 440px;
+    }
+    .element input, .date-display{
+        font-size: 20px;
+        height: 38px;
+    }
+}
+@media(max-width:767px){
+    .bg-box-set-price {
+        width: 640px;
+        height: 440px;
+    }
+    .buttons button.clone {
+        font-size: 18px;
+    }
+    .element{
+        padding: 20px;
+    }
+    .element i {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .date-display{
+        margin-top: 10px;
+    }
+    .inner-box{
+        max-height: 260px;
+        min-height: 170px;
+    }
+}
+@media(max-width:575px){
+    .bg-box-set-price {
+        width: 480px;
+        height: 430px;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+    button.remove img {
+        width: 14px;
+    }
+}
+@media(max-width: 480px){
+    .bg-box-set-price {
+        width: 390px;
+    }
+    .element input, .date-display p{
+        font-size: 18px;
+    }
+    .element i{
+        margin-top: 19px;
+        font-size: 16px;
+    }
+}
+@media(max-width: 400px){
+    .bg-box-set-price {
+        width: 350px;
+    }
+}
+@media(max-width: 360px){
+    .element input{
+        width: calc(100% - 40px);
+    }
+    .element input{
+        font-size: 16px;
+    }
+    .date-display {
+        width: 60px;
+    }
+    .date-display p{
+        font-size: 15px;
+    }
+    .element i {
+        right: 10px;
+        left: auto;
+    }
+}
+@media(max-width:320px){
+    .bg-box-set-price{
+        width: 350px;
+        height: 360px;
+    }
+}

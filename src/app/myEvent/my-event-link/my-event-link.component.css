@@ -1,0 +1,341 @@
+.share-link {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.68);
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px 0;
+    position: relative;
+    padding: 12px 45px 6px 6px;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    font-size: 24px;
+    font-weight: bold;
+}
+.close {
+    color: #155724;
+    line-height: 55px;
+}
+
+.share-link i {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #545454;
+}
+
+.share-link input {
+    color: #545454;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: transparent;
+    width: 90%;
+    border: none;
+}
+
+.share-link input:focus {
+    outline: none !important;
+}
+
+.tab-name {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tab-name p {
+    color: #FE983A;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tab-name.active {
+    background-color: #F8D0AD;
+}
+
+/* .tab-message-box {
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+} */
+
+textarea {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border: none;
+    margin: 10px 0;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 600;
+    resize: none;
+}
+
+textarea::placeholder {
+    color: #e0d8d8;
+}
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+textarea::-webkit-scrollbar {
+    width: 2px;
+    background-color: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: transparent;
+}
+
+.tab-message-box p {
+    width: 70%;
+    margin: auto;
+}
+
+.share-button button {
+    border: 3px solid #F8D0AD;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    color: #F8D0AD;
+    margin-top: 15px;
+}
+.share-button button:hover {
+    background: #f8d0ac;
+    color: #985e28;
+    border: 3px solid #975e27;
+    transition: 0.5s all;
+}
+/* step 2 start*/
+
+.social-icon ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.social-icon ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/* step 2 end*/
+
+/* step 3 start */
+
+.send-message {
+    display: inline-block;
+    width: 100%;
+}
+
+.send-message p {
+    color: #F8D0AD;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.send-date, .send-time {
+    background: #fff;
+    color: #9B602A;
+    font-weight: bold;
+    border-radius: 6px;
+    width: 70px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span.middle {
+    color: #fff;
+    margin: 0 6px;
+    font-size: 25px;
+}
+
+/* step 3 end */
+
+/* step 4 start */
+
+.to {
+    float: left;
+    width: 60px;
+}
+
+.to h3 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.all {
+    padding-left: 60px;
+}
+span.pm-am {
+    margin-left: 5px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 37px;
+}
+span.zone {
+    color: #F8D0AD;
+    line-height: 37px;
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+/* step 4 end */
+
+@media(max-width: 1600px) {
+    .share-link {
+        padding: 6px 25px 4px 4px;
+    }
+    .share-link h3, .tab-name p {
+        line-height: 40px;
+        font-size: 22px;
+    }
+    textarea {
+        font-size: 22px;
+        height: 160px;
+    }
+    .share-button button {
+        border: 2px solid #F8D0AD;
+        font-size: 22px;
+    }
+    .share-link i {
+        top: 7px;
+    }
+}
+
+@media(max-width: 1366px) {
+    .share-link h3, .tab-name p {
+        line-height: 30px;
+        font-size: 18px;
+    }
+    .send-date, .send-time {
+        width: 60px;
+        height: 30px;
+        padding-top: 5px;
+        font-size: 17px;
+    }
+    .send-message p {
+        font-size: 22px;
+    }
+    .share-button button {
+        font-size: 20px;
+    }
+    textarea {
+        font-size: 18px;
+        height: 90px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .share-link input {
+        font-size: 18px;
+    }
+    .share-link i {
+        font-size: 22px;
+        top: 5px;
+    }
+    .share-button button{
+        margin-top: 0;
+        font-size: 20px;
+    }
+    .step-3-link textarea {
+        height: 70px;
+    }
+}
+
+@media(max-width: 1199px) {
+    .send-date, .send-time {
+        width: 50px;
+        font-size: 15px;
+    }
+    .share-button button {
+        font-size: 18px;
+    }
+    .share-link h3, .tab-name p {
+        line-height: 27px;
+        font-size: 16px;
+    }
+    .share-link input {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 991px) {
+    textarea {
+        font-size: 18px;
+        height: 120px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .send-date, .send-time {
+        width: 40px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .share-link i {
+        font-size: 24px;
+    }
+}
+
+@media(max-width:767px) {
+    .send-message .float-left, .send-message .float-right {
+        width: 100%;
+        float: unset !important;
+        margin-top: 10px;
+    }
+    .share-button button {
+        font-size: 16px;
+    }
+    .share-link input {
+        font-size: 18px;
+    }
+    .share-link i {
+        top: 5px;
+        font-size: 22px;
+    }
+}
+
+@media(max-width:575px) {
+    .share-link i {
+        right: 12px;
+        font-size: 20px;
+    }
+}
+@media(max-width:440px){
+    span.zone{
+        line-height: normal;
+        font-size: 12px;
+    }
+}

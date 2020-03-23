@@ -1,0 +1,211 @@
+
+.accordian-height-box{
+    max-height: 350px;
+    overflow: auto;
+    padding-right: 5px;
+}
+li.guest-item{
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    border-bottom:1px solid #b8e6f2;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+li.guest-item:last-child{
+    border: none;
+}
+.guest-item-name{
+    float: left;
+}
+.guest-add-items{
+    float: right;
+}
+button.single-activity{
+    color: var(--total-title-font-color);
+    font-weight: 600;
+    position: relative;
+    text-align: left;
+    font-size: 30px;
+    background-color: var(--total-title-background-color);
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+button.btn.add-more {
+    background-color: #fff;
+    color: var(--guest-total-add-more);
+    font-weight: 600;
+    padding: 5px 30px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    float: right;
+}
+.guest-add-items h4 img{
+    height: 20px;
+    margin-left: 20px;
+}
+.group-box {
+    margin: 15px;
+}
+.group-box h4.group {
+    color: var(--group-box-h4-group);
+    font-weight: bold;
+    padding-left: 20px;
+    position: relative;
+}
+.group-box h4.group:after{
+    content: "";
+    background-color: var(--group-box-h4-group);
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.group-box ul{
+    padding: 10px 20px;
+}
+.main-item {
+    max-height: 210px;
+    overflow: auto;
+    padding: 10px 0;
+}
+.main-item::-webkit-scrollbar-track,
+.accordian-height-box::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.main-item::-webkit-scrollbar,
+.accordian-height-box::-webkit-scrollbar {
+    width: 3px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+.main-item::-webkit-scrollbar-thumb,
+.accordian-height-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #ffffff;
+}
+
+/* accordion start */
+.myaccordion button:after {
+    content    : "\f078";
+    font-family: 'FontAwesome';
+}
+.myaccordion button[aria-expanded="true"]:after {
+    content: "\f077";
+}
+.myaccordion button.collapsed:after,
+.myaccordion button:after {
+    position           : absolute;
+    right              : 30px;
+    top                : 0;
+    bottom             : 0;
+    margin             : auto;
+    color        : var(--activity-accordian-arrow-color);
+    font-size    : 20px;
+    line-height: 50px;
+}
+
+/* accordian end */
+
+
+.buttons-pay-back {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: 5%;
+}
+.buttons-pay-back button {
+    background-color: #fff;
+    color: var(--guest-total-add-more);
+    font-weight: bold;
+    padding: 7px 30px;
+    font-size: 18px;
+}
+
+@media(max-width: 1600px){
+    button.single-activity{
+        font-size: 24px;
+    }
+    li.guest-item{
+        margin-bottom: 0;
+    }
+    .main-item{
+        padding: 0;
+    }
+    .guest-add-items h4 {
+        font-size: 22px;
+    }
+    .accordian-height-box{
+        max-height: 240px
+    }
+}
+@media(max-width:1199px){
+    .buttons-pay-back button{
+        font-size: 16px;
+    }
+    .guest-add-items h4{
+        font-size: 20px;
+    }
+    button.single-activity{
+        font-size: 22px;
+    }
+    .group-box h4.group{
+        font-size: 20px;
+    }
+    .main-item{
+        max-height: 180px;
+        margin-bottom: 40px;
+    }
+}
+@media(max-width: 767px){
+    .group-box ul {
+        padding: 10px 0;
+    }
+    button.btn.add-more{
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+    button.single-activity{
+        font-size: 20px;
+    }
+    .myaccordion button.collapsed:after, .myaccordion button:after {
+        font-size: 16px;
+        line-height: 44px;
+    }
+    .guest-add-items h4 img {
+        height: 14px;
+        margin-left: 12px;
+    }
+}
+@media(max-width:400px){
+    .guest-add-items, .guest-item-name  {
+        float: none;
+    }
+    .guest-add-items h4 {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    .myaccordion button.collapsed:after, .myaccordion button:after{
+        right: 10px;
+    }
+    .group-box {
+        margin: 15px;
+    }
+    .buttons-pay-back button {
+        font-size: 14px;
+        padding: 7px 20px;
+    }
+}

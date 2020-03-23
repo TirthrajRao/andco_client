@@ -1,0 +1,126 @@
+.header-content {
+    padding: 40px 30px 20px;
+    display: table;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    padding:20px;
+}
+.navigation_menu {
+    float: left;
+    max-width: 80px;
+    margin-right: 20px;
+    z-index: 1;
+    position: relative;
+}
+.navigation_menu img{
+    width: 100%;
+}
+.andco-logo {
+    padding-right: 100px;
+    float: left;
+    text-align: center;
+    width: calc( 100% - 100px);
+    position: relative;
+}
+.andco-logo img{
+    margin-bottom: 20px;
+}
+/* hello text css start */
+.hello-text {
+    color: #fff;
+    font-weight: 900;
+}
+.hello-text h2 {
+    font-family: 'Manjari', sans-serif !important;
+    line-height: normal;
+    font-size: 40px;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 900;
+    text-shadow: 0px 0px 2px #8e8e8e;
+    display: table;
+}
+.hello-text h2 span{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* hello text css end */
+
+@media(max-width:1600px){
+    .andco-logo img {
+        margin-bottom: 20px;
+    }
+    .andco-logo img {
+        height: 80px;
+    }
+    .hello-text h2{
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 1366px){
+    .andco-logo img {
+        margin-bottom: 10px;
+    }
+    .andco-logo img {
+        height: 50px;
+    }
+    .hello-text h2 span{
+        font-size: 22px;
+    }
+    .navigation_menu {
+        max-width: 60px;
+    }
+    .andco-logo {
+        padding-right: 80px;
+        width: calc(100% - 80px);
+    }
+}
+@media(max-width: 1199px){
+    .header-content{
+        padding:10px 30px 0;
+    }
+    .andco-logo {
+        margin: 10px 0px;
+    }
+    .andco-logo img {
+        height: 60px;
+    }
+}
+@media(max-width: 991px){
+    .navigation_menu {
+        max-width: 45px;
+        margin-right: 10px;
+    }
+    .andco-logo {
+        margin: 0;
+        padding-right: 55px;
+        width: calc(100% - 55px);
+    }
+}
+@media(max-width:767px){
+    .header-content{
+        padding:10px 15px;
+    }
+}
+@media(max-width: 575px){
+
+    .hello-text h2{
+        font-size: 30px;
+    }
+}
+@media(max-width: 400px){
+    .andco-logo img {
+        margin-bottom: 20px;
+        height: 30px;
+    }
+    .hello-text h2{
+        font-size: 20px;
+    }
+}

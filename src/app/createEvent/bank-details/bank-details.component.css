@@ -1,0 +1,15 @@
+.hideInput{
+    display: none;
+}
+.sales-inner input{
+    width: 100% !important;
+}
+.inner-radio-box {
+    margin: auto;
+    display: table;
+}
+#message2, #message3{
+    color: #dc3545;
+    font-size: 18px;
+    margin-bottom: 7px;
+}

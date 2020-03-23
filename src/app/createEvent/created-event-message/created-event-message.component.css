@@ -1,0 +1,30 @@
+
+.created-event-message-main{
+    background-image: url('../../../assets/images/created_event_message.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.created-event-box p {
+    color: #ACC9B1;
+    font-size: 32px;
+}
+.hashtag-1 h2{
+    color: #D2A0A1;
+    font-weight: bold;
+}
+
+@media(max-width: 575px){
+    .created-event-box p{
+        font-size: 22px;
+    }
+    .hashtag-1 h2{
+        font-size: 20px;
+    }
+}

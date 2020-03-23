@@ -1,0 +1,164 @@
+.guest-address h2 {
+  color: #fff;
+}
+
+.guest-address input, .guest-address textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.guest-address input:focus {
+  outline: none;
+}
+
+.days p, .time p {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.days p span, .time p span {
+  font-size: 26px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.pay button {
+  background-color: #fff;
+  color: var(--guest-total-add-more);
+  padding: 5px 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.pay{
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.bottom-buttons {
+  position: absolute;
+  bottom: 5%;
+  left: 4%;
+  right: 4%;
+}
+.bottom-buttons button {
+  color: var(--next-skip-back-color);
+  font-weight: bold;
+  font-family: 'Advent Pro', 'sans-sarif';
+  font-size: 20px;
+}
+
+.bottom-buttons i {
+  font-size: 26px;
+}
+
+/* checkbox design start*/
+
+input[type=radio]+label {
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+  font-weight: 600;
+  color: var(--guest-address-label-color);
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]+label:before {
+  content: "\2714";
+  border-radius: 0;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-left: 0.2em;
+  padding-bottom: 0.3em;
+  margin-right: 10px;
+  vertical-align: middle;
+  color: transparent;
+  transition: .2s;
+  background: #ffffffb5;
+}
+
+input[type=radio]+label:active:before {
+  transform: scale(0);
+}
+
+input[type=radio]:checked+label:before {
+  background-color: var(--guest-address-radio-color);
+  border-color: var(--guest-address-radio-color);
+  color: #fff;
+}
+
+/* checkbox design end*/
+
+@media(max-width: 1600px) {
+  .guest-address{
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 30px;
+  }
+  .guest-address input, .guest-address textarea {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .guest-address h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  .days p span, .time p span {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 1366px) {
+  .guest-address h2 {
+    font-size: 26px;
+  }
+  .guest-address input, .guest-address textarea {
+    font-size: 16px;
+  }
+  .days p span, .time p span {
+    font-size: 20px;
+  }
+  input[type=radio]+label {
+    font-size: 18px;
+  }
+  input[type=radio]+label:before {
+    width: 22px;
+    height: 22px;
+  }
+  .pay button {
+    padding: 5px 30px 0px;
+    font-size: 18px;
+  }
+  .days p, .time p {
+    margin: 0;
+  }
+}
+@media(max-width: 575px){
+  .days p, .time p {
+    display: unset;
+  }
+  input[type=radio] + label {
+    font-size: 17px;
+    padding-left: 20px;
+}
+.guest-address h2 {
+  font-size: 24px;
+}
+.bottom-buttons button{
+  font-size: 18px;
+}
+}

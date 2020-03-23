@@ -1,0 +1,325 @@
+/* .arrow-number::-webkit-inner-spin-button, 
+.arrow-number::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} */
+
+.guest-activity-group {
+    padding: 10px 0;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.guest-activity-group:after {
+    content: "";
+    background-color: var(--guest-activity-group-background);
+    position: absolute;
+    left: -30px;
+    right: -30px;
+    top: 0;
+    bottom: 0;
+}
+
+.guest-activity-item-tab .tab-content {
+    padding: 20px 30px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    background-color: #fff;
+}
+
+.tab-content ul {
+    max-height: 145px;
+    overflow: auto;
+    padding-right: 15px;
+}
+.tab-content ul::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: #F5F5F5;
+}
+
+.tab-content ul::-webkit-scrollbar {
+    width: 3px;
+    padding-right: 3px;
+    background-color: #F5F5F5;
+}
+
+.tab-content ul::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: var(--guest-activity-group-background);
+}
+
+.guest-activity-item-tab .nav-tabs {
+    border: none;
+}
+
+.guest-activity-item-tab a.nav-link {
+    color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+
+.guest-activity-item-tab .nav-tabs li.nav-item a.nav-link.active {
+    background-color: #fff;
+    color: #000000;
+}
+
+.guest-activity-item-tab li.nav-item a.nav-link {
+    font-size: 20px;
+    padding: 10px 30px;
+}
+
+li.guest-item {
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #CBCBCB;
+    margin-bottom: 5px;
+}
+
+li.guest-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+li.guest-item input[type="number"] {
+    border: none;
+    width: 90px;
+    /* padding-right: 35px; */
+    text-align: right;
+}
+
+li.guest-item input[type="number"]::placeholder {
+    color: var(--guest-activity-tab-content-color);
+}
+
+li.guest-item input[type="number"]:focus {
+    outline: none;
+}
+
+li.guest-item h4 {
+    position: relative;
+}
+
+li.guest-item h4, li.guest-item p, li.guest-item input[type="number"] {
+    color: var(--guest-activity-tab-content-color);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.guest-add-items {
+    float: right;
+}
+
+.guest-item-name {
+    float: left;
+}
+
+.buttons-group {
+    width: 100%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button.btn.saved {
+    float: left;
+    color: #686868;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button.btn.total {
+    float: right;
+    background-color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 37px;
+}
+
+.design-number-arrow {
+    position: absolute;
+    top: -5px;
+    right: 26%;
+    display: flex;
+    flex-direction: column;
+}
+
+.design-number-arrow a {
+    font-size: 0;
+}
+
+img.up, img.down {
+    height: 10px;
+    cursor: pointer;
+    margin: 3px;
+}
+
+/* radio button css start here */
+
+.radio {
+    float: left;
+    margin-right: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 35px;
+    padding-top: 7px;
+    cursor: pointer;
+    line-height: 35px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    background: #ffffff;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--guest-activity-group-radio-check-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin: auto;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* radio button css end here */
+
+
+@media(max-width:1600px) {
+    .guest-activity-slider h2 {
+        font-size: 26px;
+    }
+    .guest-activity-group {
+        padding: 5px 0;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        font-size: 20px;
+    }
+    .guest-activity-item-tab li.nav-item a.nav-link {
+        font-size: 18px;
+        padding: 8px 24px;
+    }
+    .guest-activity-item-tab .tab-content {
+        padding: 20px;
+    }
+    .group-box ul {
+        padding: 0 16px;
+    }
+}
+
+@media(max-width:1366px) {}
+
+@media(max-width:1199px) {
+    .guest-activity-slider h2 {
+        font-size: 24px;
+    }
+    .tab-content ul {
+        max-height: 105px;
+    }
+    /* radio button  start*/
+    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+    }
+    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+        width: 20px;
+        height: 20px;
+    }
+    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+        line-height: 30px;
+    }
+    /* radio button end*/
+}
+@media(max-width:991px){
+    li.guest-item h4, li.guest-item p, li.guest-item input[type="number"]{
+        font-size: 18px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+        padding-left: 25px;
+        font-size: 18px;
+    }
+    button.btn.total{
+        font-size: 18px;
+    }
+}
+@media(max-width:575px) {
+    .guest-activity-slider h2 {
+        font-size: 22px;
+    }
+    .guest-activity-item-tab li.nav-item a.nav-link {
+        font-size: 18px;
+        padding: 5px 20px;
+    }
+    .guest-activity-item-tab .tab-content {
+        padding: 20px;
+    }
+    li.guest-item h4, li.guest-item p, li.guest-item input[type="number"]{
+        font-size: 18px;
+    }
+    .guest-add-items, .guest-item-name  {
+        float: none;
+    }
+    .guest-add-items h4 {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    .tab-content ul {
+        max-height: 160px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font-size: 18px;
+    }
+}
+@media(max-width:400px){
+    .guest-activity-group:after{
+        left: -20px;
+        right: -20px;
+    }
+    button.btn.total{
+        font-size: 16px;
+    }
+}
