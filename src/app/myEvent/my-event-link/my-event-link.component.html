@@ -94,7 +94,7 @@
                 <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                     <mat-label>Choose a date</mat-label>
                     <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate"
-                        id="activityStartDate{{i}}" (dateChange)="addEvent('input', $event , i)">
+                        (dateChange)="addEvent('input', $event)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -107,12 +107,12 @@
                 <div class="send-time" (click)="default.open()">
                     <span>{{minutes}}</span>
                 </div>
-                <span class="pm-am">PM</span>
-                <span class="zone">West Africa Standard Time</span>
+                <span class="pm-am">{{timeHour}}</span>
+                <span class="zone">{{timezone}}</span>
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" (timeChanged)="timeChanged($event)">
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12" (timeChanged)="timeChanged($event)">
                 </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
