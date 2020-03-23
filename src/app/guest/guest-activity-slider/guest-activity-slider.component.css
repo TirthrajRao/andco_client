@@ -322,4 +322,16 @@ img.up, img.down {
     button.btn.total{
         font-size: 16px;
     }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font-size: 16px;
+    }
+    .guest-activity-item-tab li.nav-item a.nav-link {
+        font-size: 15px;
+    }
+    li.guest-item h4, li.guest-item p, li.guest-item input[type="number"]{
+        font-size: 14px;
+    }
+    .guest-activity-item-tab .tab-content {
+        padding: 10px 14px;
+    }
 }
