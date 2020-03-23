@@ -14,6 +14,7 @@ declare var $;
 export class MyEventLinkComponent implements OnInit {
 
   private _success = new Subject<string>();
+  timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   staticAlertClosed = false;
   successMessage: string;
   reminderForm: FormGroup;
@@ -30,6 +31,7 @@ export class MyEventLinkComponent implements OnInit {
   afterEventMessage
   hours: any;
   minutes: any;
+  timeHour: any
   whatsupLink;
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   constructor(
@@ -109,8 +111,9 @@ export class MyEventLinkComponent implements OnInit {
   }
 
   getEventDetails(eventId) {
-    this.eventService.getEventDetails(eventId).subscribe((response) => {
+    this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response of event in link page", response);
+      this.afterEventMessage = response.data.afterEventMessage
     }, error => {
       console.log("error while get details");
 
@@ -140,7 +143,9 @@ export class MyEventLinkComponent implements OnInit {
     if (i == 4) {
       this.index = 3
     }
-
+    if (i == 0) {
+      this.index = 0
+    }
   }
 
 
@@ -151,10 +156,15 @@ export class MyEventLinkComponent implements OnInit {
 
   timeChanged(event) {
     this.displayTime = event
+    console.log("selected time", this.displayTime);
+
   }
 
   timePickerClosed() {
     let tempTime = this.displayTime.split(':')
+    let final = tempTime[1].split(' ')[1]
+    console.log("final am or pm", final);
+    this.timeHour = final
     this.hours = tempTime[0]
     this.minutes = tempTime[1].split(' ')[0]
     console.log("event of time pickert", this.displayTime);
