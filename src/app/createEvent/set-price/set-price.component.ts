@@ -109,6 +109,11 @@ export class SetPriceComponent implements OnInit {
         if (this.setPriceDetails.isLogistics = 'false') {
           $('input:radio[id="test8"]').prop('checked', true);
         }
+        if (this.setPriceDetails.hearAbout != ('flyer' || 'others' || 'online')) {
+          console.log("this is called");
+          this.isEventPlannerSelected = true
+
+        }
       }
 
     }, error => {

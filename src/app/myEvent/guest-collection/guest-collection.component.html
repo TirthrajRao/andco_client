@@ -1,12 +1,14 @@
 <div class="social-icon">
     <ul>
         <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Search">
+            <a tooltipClass="my-custom-class" ngbTooltip="Search">
                 <img src="assets/images/search.png" alt="search icon">
+                <!-- <input type="text" id="exampleForm2" class="form-control" [(ngModel)]="searchText"
+                    (keyup)="onKey(searchText)" autocomplete="off"> -->
             </a>
         </li>
         <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Download">
+            <a tooltipClass="my-custom-class" ngbTooltip="Download" (click)="downLoad()">
                 <img src="assets/images/download.png" alt="download icon">
             </a>
         </li>

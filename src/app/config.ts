@@ -17,7 +17,7 @@ envs['development'] = {
 
 envs['testing'] = {
     baseApiUrl: "https://test.andcowith.me:9001/api",
-    // baseMediaUrl: "https://test.andcowith.me:3001/",
+    baseMediaUrl: "https://test.andcowith.me:9001/server/",
     // isvisited: false,
     // counter: 0,
 }

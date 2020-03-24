@@ -67,10 +67,11 @@
                     <label for="anytime">Anytime</label></p>
             </div>
         </form>
-        <div class="pay text-center">
-            <button class="btn" (click)="enterAddress()" [disabled]="addressForm.invalid">Pay</button>
-        </div>
         <div class="bottom-buttons">
+
+            <div class="pay text-center">
+                <button class="btn" (click)="enterAddress()" [disabled]="addressForm.invalid">Pay</button>
+            </div>
             <button class="btn" (click)="backToDonation()"><i class="fa fa-angle-double-left mr-2"
                     aria-hidden="true"></i>
                 Back</button>

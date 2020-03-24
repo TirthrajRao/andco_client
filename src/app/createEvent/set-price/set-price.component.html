@@ -18,7 +18,7 @@
                                 <textarea formControlName="thanksMessage"
                                     placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
                                     [ngClass]="{ 'is-invalid': f.thanksMessage.touched && f.thanksMessage.errors }"
-                                    ngModel="{{setPriceDetails ? setPriceDetails.thanksMessage.message: ''}}"></textarea>
+                                    ngModel="{{setPriceDetails ? setPriceDetails.thanksMessage: ''}}"></textarea>
                                 <div class="col-md-2" *ngIf=" f.thanksMessage.touched && f.thanksMessage.errors"
                                     class="invalid-feedback">
                                     <div *ngIf="f.thanksMessage.errors.required">Message is required</div>
@@ -164,8 +164,6 @@
                                     <option value="others">Friends / Families Events</option>
                                     <option value="online">Online Search </option>
                                 </select>
-
-
                                 <select class="form-control w-75 m-auto" name="" id="" (change)="onDropDown($event)"
                                     value="{{setPriceDetails.hearAbout}}"
                                     *ngIf="setPriceDetails&& setPriceDetails.hearAbout">
@@ -187,13 +185,8 @@
                         <!-- <button class="btn set-price-custom-button" >Submit</button> -->
                     </div>
                 </form>
-<<<<<<< HEAD
-                <button class="btn set-price-custom-button float-right" (click)="setPrice()"
-                    [disabled]="isDisable">Submit</button>
-=======
                 <button class="btn set-price-custom-button float-right"
                     (click)="setPriceDetails? updateSetPrice():  setPrice()" [disabled]="isDisable">Submit</button>
->>>>>>> 159b99a4c17883c48ab913a00b4203cc68c365a8
             </div>
         </div>
     </div>
