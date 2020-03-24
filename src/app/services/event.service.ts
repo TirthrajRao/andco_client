@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
 import { ThemeService } from './theme.service';
 
-
 @Injectable({
   providedIn: 'root'
 })

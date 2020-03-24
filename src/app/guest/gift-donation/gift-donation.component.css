@@ -47,6 +47,9 @@
     .gift-donation-msg h3{
         font-size: 22px;
     }
+    .gift-donation-msg {
+        margin-bottom: 40px;
+    }
 }
 @media(max-width:575px){
     .gift-donation-msg p{
@@ -58,8 +61,19 @@
     .bottom-buttons{
         bottom: 2%;
     }
+    .gift-donation-msg p,
+    .gift-donation-msg h3{
+        font-size: 18px;
+    }
+    .gift-donation-msg {
+        margin-bottom: 20px;
+    }
 }
 @media(max-width:400px){
+    .gift-donation-msg p,
+    .gift-donation-msg h3{
+        font-size: 16px;
+    }
     .gift-donation-msg h3 input{
         padding: 5px;
     }
