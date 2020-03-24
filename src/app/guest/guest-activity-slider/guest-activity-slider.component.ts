@@ -46,6 +46,27 @@ export class GuestActivitySliderComponent implements OnInit {
     this.initActivitySlider()
     this.getSelectedItems()
     // this.displayAllData()
+    window.addEventListener('beforeunload', function (e) {
+      console.log("a jyare page load thay tyare", e)
+      // Cancel the event
+      // if (localStorage.getItem('isTimerRunning') != "null") {
+      fromReload('reload');
+      e.stopPropagation();
+      // Chrome requires returnValue to be set
+      e.returnValue = '';
+
+      // }
+    });
+    var fromReload = (option) => {
+      console.log("When came from one page to another page", option)
+      this.func(option);
+    }
+  }
+
+
+  func(option) {
+    console.log("ama su ave che", option);
+    this.addTocart()
   }
 
   ngOnChanges(changes: SimpleChanges) {

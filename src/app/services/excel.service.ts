@@ -18,7 +18,7 @@ export class ExcelService {
 
 
   public exportAsExcelFile(json: any[], excelFileName: string): void {
-console.log("what is in json formate", json)
+    console.log("what is in json formate", json)
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
     // const worksheet1 :  XLSX.WorkSheet = XLSX.utils.json_to_sheet(json.items);
     console.log('worksheet', worksheet);
