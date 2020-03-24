@@ -54,7 +54,7 @@ import { PaymentComponent } from '../guest/payment/payment.component';
 import { PaymentDetailsComponent } from '../guest/payment-details/payment-details.component';
 import { PaymentMessageComponent } from '../guest/payment-message/payment-message.component';
 import { ExcelService } from '../services/excel.service';
-import { SearchListPipe } from '../services/search-list.pipe';
+// import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 
 
@@ -179,7 +179,7 @@ const routes: Routes = [
     PaymentComponent,
     PaymentDetailsComponent,
     PaymentMessageComponent,
-    SearchListPipe
+    // SearchListPipe
   ],
   imports: [
     CommonModule,

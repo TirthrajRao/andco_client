@@ -1,15 +1,19 @@
 <div class="social-icon">
     <div class="masthead">
-        <form action="" class="masthead-search">
-          <label for="masthead-search-toggle" class="masthead-search-toggle">Toggle Search</label>
-          <input type="checkbox" id="masthead-search-toggle" class="isHidden"/>
-          <div class="masthead-search-indicator"></div>
-          <div class="masthead-search-search">
-            <label for="masthead-search-search" class="isHidden">Search</label>
-            <input type="search" id="masthead-search-search" placeholder="Search"/>
-          </div>
-        </form>
-      </div>
+        <!-- <form action="" class="masthead-search"> -->
+        <div class="masthead-search">
+            <label for="masthead-search-toggle" class="masthead-search-toggle">Toggle Search</label>
+            <input type="checkbox" id="masthead-search-toggle" class="isHidden" />
+            <div class="masthead-search-indicator"></div>
+            <div class="masthead-search-search">
+                <label for="masthead-search-search" class="isHidden">Search</label>
+                <input type="text" id="masthead-search-search" [(ngModel)]="searchText" (keyup)="onKey(searchText)"
+                    placeholder="Search" />
+            </div>
+            <span id="message" style="color: red; font-size: 14px; text-align: center;"></span>
+        </div>
+        <!-- </form> -->
+    </div>
     <ul>
         <!-- <li>
             <a tooltipClass="my-custom-class" ngbTooltip="Search">

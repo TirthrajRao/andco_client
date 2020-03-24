@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
-// import { SearchListPipe } from '../../services/search-list.pipe';
 import { ExcelService } from '../../services/excel.service';
+import { SearchListPipe } from '../../search-list.pipe';
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-guest-collection',
   templateUrl: './guest-collection.component.html',
@@ -16,7 +18,7 @@ export class GuestCollectionComponent implements OnInit {
   searchText;
   constructor(
     public excelService: ExcelService,
-    // public searchPipe: SearchListPipe
+    public searchPipe: SearchListPipe
   ) { }
 
   ngOnInit() {
@@ -81,7 +83,11 @@ export class GuestCollectionComponent implements OnInit {
           phoneNo: singleItem.phoneNo,
           email: singleItem.email,
           address: singleItem.address,
-          items: item
+          itemName: single.itemId.itemName,
+          itemPrice: single.itemId.itemPrice,
+          activityName: single.itemId.activityId.activityName,
+          quantity: single.quantity
+          // items: item
         }
         // newObj.items.push(item)
         obj.push(newObj)
@@ -101,37 +107,26 @@ export class GuestCollectionComponent implements OnInit {
 
 
 
-  // onKey(searchText) {
-  //   console.log("searchText", searchText);
-  //   // if (this.searchFlag == true) {
-  //   var dataToBeFiltered = [this.displayGuestItems];
-  //   // }
-  //   // else {
-  //   // 	var dataToBeFiltered = [this.filteredDevelopers];
-  //   // }
-  //   // console.log("send data to search pipe", this.filteredTeams, this.filteredDevelopers)
-  //   var developer = this.searchPipe.transform1(dataToBeFiltered, searchText);
-  //   console.log("developer =======>", developer);
-  //   // this.developers = [];
-  //   // if (developer.length > 0) {
-  //   // 	let message = document.getElementById('message')
-  //   // 	message.innerHTML = ""
-  //   // }
-  //   // if (developer.length > 0) {
-  //   // 	if (this.selectedProjectId != 'all') {
-  //   // 		_.forEach(developer, (content) => {
-  //   // 			this.developers.push(content);
-  //   // 		});
-  //   // 	}
-  //   // 	else {
-  //   // 		_.forEach(developer, (content) => {
-  //   // 			this.developers.push(content);
-  //   // 		});
-  //   // 	}
-  //   // } else {
-  //   // 	let message = document.getElementById('message')
-  //   // 	message.innerHTML = "Sorry there is no user of this name"
-  //   // }
-  // }
+  onKey(searchText) {
+    console.log("display list of guest", this.displayGuestItems);
+
+    console.log("searchText", searchText);
+    var dataToBeFiltered = this.displayGuestItems;
+    var developer = this.searchPipe.transform1(dataToBeFiltered, searchText);
+    console.log("developer =======>", developer);
+    this.displayGuestItems = [];
+    if (developer.length > 0) {
+      let message = document.getElementById('message')
+      message.innerHTML = ""
+    }
+    if (developer.length > 0) {
+      _.forEach(developer, (content) => {
+        this.displayGuestItems.push(content);
+      });
+    } else {
+      let message = document.getElementById('message')
+      message.innerHTML = "Sorry there is no user of this name"
+    }
+  }
 
 }
