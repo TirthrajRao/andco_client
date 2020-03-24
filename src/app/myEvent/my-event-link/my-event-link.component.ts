@@ -33,6 +33,9 @@ export class MyEventLinkComponent implements OnInit {
   minutes: any;
   timeHour: any
   whatsupLink;
+  googleLink;
+  faceBookLink;
+  textMessageLink
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   constructor(
     public eventService: EventService,
@@ -128,9 +131,10 @@ export class MyEventLinkComponent implements OnInit {
     let textMessage = 'TX'
 
     this.whatsupLink = link + '/' + whatsup
-    console.log("whats up link is ready", this.whatsupLink);
-
-
+    this.googleLink = link + '/' + google
+    this.faceBookLink = link + '/' + facebookLink
+    this.textMessageLink = link + '/' + textMessage
+    console.log("whats up link is ready", this.textMessageLink);
   }
 
 

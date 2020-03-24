@@ -44,19 +44,19 @@
         <!-- <share-buttons theme="material-dark" show="11" image="https://loremflickr.com/320/240"></share-buttons> -->
         <ul>
             <li>
-                <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [url]="displayEventLink">
+                <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [url]="whatsupLink">
                 </share-button>
             </li>
             <li>
-                <share-button [theme]="'circles-dark'" [button]="'facebook'" [url]="displayEventLink">
+                <share-button [theme]="'circles-dark'" [button]="'facebook'" [url]="faceBookLink">
                 </share-button>
             </li>
             <li>
-                <share-button [theme]="'circles-dark'" [button]="'email'" [url]="displayEventLink"></share-button>
+                <share-button [theme]="'circles-dark'" [button]="'email'" [url]="googleLink"></share-button>
             </li>
             <li>
 
-                <share-button [theme]="'circles-dark'" [button]="'sms'" [url]="displayEventLink"></share-button>
+                <share-button [theme]="'circles-dark'" [button]="'sms'" [url]="textMessageLink"></share-button>
             </li>
             <li>
                 <!-- <a href="#">
@@ -112,7 +112,8 @@
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12" (timeChanged)="timeChanged($event)">
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12"
+                    (timeChanged)="timeChanged($event)">
                 </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
