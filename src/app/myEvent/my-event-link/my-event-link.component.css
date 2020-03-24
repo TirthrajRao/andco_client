@@ -15,10 +15,13 @@
     left: 0;
     right: 0;
     top: 0;
+    bottom: 0;
+    margin: auto;
     z-index: 1;
     height: 100%;
     font-size: 24px;
     font-weight: bold;
+    line-height: normal;
 }
 .close {
     color: #155724;
@@ -242,6 +245,9 @@ span.zone {
     .share-link i {
         top: 7px;
     }
+    .alert-success {
+        font-size: 22px;
+    }
 }
 
 @media(max-width: 1366px) {
@@ -264,7 +270,7 @@ span.zone {
     textarea {
         font-size: 18px;
         height: 90px;
-        padding: 10px;
+        padding: 0;
         margin: 5px 0;
     }
     input.bottom-link {
@@ -284,6 +290,9 @@ span.zone {
     .step-3-link textarea {
         height: 70px;
     }
+    .alert-success {
+        font-size: 18px;
+    }
 }
 
 @media(max-width: 1199px) {
@@ -300,6 +309,9 @@ span.zone {
     }
     .share-link input {
         font-size: 20px;
+    }
+     .alert-success {
+        font-size: 18px;
     }
 }
 
@@ -335,6 +347,9 @@ span.zone {
     .share-link i {
         top: 5px;
         font-size: 22px;
+    }
+    .alert-success {
+        font-size: 16px;
     }
 }
 

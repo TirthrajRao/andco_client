@@ -38,6 +38,7 @@
     overflow-y: auto;
     margin: 10px 0;
     position: relative;
+    margin-right: 10px;
 }
 
 .inner-box::-webkit-scrollbar-track {
@@ -188,7 +189,7 @@ button.remove {
 @media(max-width:1366px){
     .bg-box-set-price {
         width: 870px;
-        height: 490px;
+        height: 500px;
         padding: 30px 0;
     }
     .hashtag-set-price p{
