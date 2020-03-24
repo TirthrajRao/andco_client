@@ -21,7 +21,8 @@
             </a>
         </li>
         <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Total Guest"><span>400</span> Guests</a>
+            <a href="#" tooltipClass="my-custom-class"
+                ngbTooltip="Total Guest"><span>{{displayGuestItems.length}}</span> Guests</a>
         </li>
     </ul>
 </div>
@@ -33,7 +34,7 @@
                     [attr.data-target]="'#collapseOne' + i" (click)="current = i">
                     <div class="inner-header">
                         <div class="profile-name">
-                            <span>AT</span>
+                            <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
                         </div>
                         <div class="guest-name">
                             <h1>{{item.firstName}} {{item.lastName}}</h1>

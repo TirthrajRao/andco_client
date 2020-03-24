@@ -130,13 +130,13 @@ export class EventService {
   }
 
   joinEvent(id) {
-    const eventId = {
-      eventId: id,
-      platForm: this.platForm
-    }
-    console.log("eventDetails", eventId);
+    // const eventId = {
+    //   eventId: id,
+    //   platForm: this.platForm
+    // }
+    console.log("eventDetails", id);
 
-    return this.http.post(config.baseApiUrl + "/event/join-event", eventId)
+    return this.http.post(config.baseApiUrl + "/event/join-event", id)
   }
 
 

@@ -85,7 +85,7 @@ export class MyEventComponent implements OnInit {
   getGuestListOfEvent() {
     this.eventService.getGuestList(this.selectedEventId).subscribe((response: any) => {
       console.log("response of guest list", response);
-      this.guestList = response.data[0].guestList
+      this.guestList = response.data[0]
     }, error => {
       console.log("error while guest list", error)
     })
