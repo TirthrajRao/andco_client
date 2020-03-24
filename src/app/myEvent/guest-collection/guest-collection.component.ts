@@ -15,6 +15,7 @@ export class GuestCollectionComponent implements OnInit {
   formateData: any
   firstLetter = []
   secondLetter = []
+  searchArray = []
   searchText;
   constructor(
     public excelService: ExcelService,
@@ -37,6 +38,7 @@ export class GuestCollectionComponent implements OnInit {
   }
   displayGuestList(list) {
     this.displayGuestItems = list
+    this.searchArray = this.displayGuestItems
     console.log("total list", list.length);
     list.forEach(singleList => {
       this.firstLetter.push(singleList.firstName.charAt(0))
@@ -61,14 +63,6 @@ export class GuestCollectionComponent implements OnInit {
     let finalArray = []
     let obj = []
     arr.forEach((singleItem) => {
-
-      // obj['firstName'] = singleItem.firstName
-      // obj['lastName'] = singleItem.lastName
-      // obj['phoneNo'] = singleItem.phoneNo
-      // obj['email'] = singleItem.email
-      // obj['address'] = singleItem.address
-
-
       singleItem.items.forEach((single) => {
         // console.log("item list", single);
         let item = {
@@ -89,15 +83,7 @@ export class GuestCollectionComponent implements OnInit {
           quantity: single.quantity
           // items: item
         }
-        // newObj.items.push(item)
         obj.push(newObj)
-
-
-        // item['itemName'] = single.itemId.itemName
-        // item['itemPrice'] = single.itemId.itemPrice
-        // item['activityName'] = single.itemId.activityId.activityName
-        // item['quantity'] = single.quantity
-        // obj.push(item)
       })
     })
     console.log("object is ready", obj);
@@ -111,17 +97,25 @@ export class GuestCollectionComponent implements OnInit {
     console.log("display list of guest", this.displayGuestItems);
 
     console.log("searchText", searchText);
-    var dataToBeFiltered = this.displayGuestItems;
+    var dataToBeFiltered = this.searchArray;
     var developer = this.searchPipe.transform1(dataToBeFiltered, searchText);
     console.log("developer =======>", developer);
     this.displayGuestItems = [];
+    this.firstLetter = []
+    this.secondLetter = []
     if (developer.length > 0) {
       let message = document.getElementById('message')
       message.innerHTML = ""
     }
     if (developer.length > 0) {
       _.forEach(developer, (content) => {
+        console.log("content after search", content);
         this.displayGuestItems.push(content);
+
+        this.firstLetter.push(content.firstName.charAt(0))
+        console.log("singleItem", this.firstLetter);
+        // console.log("first letter of word", firstLetter);
+        this.secondLetter.push(content.lastName.charAt(0))
       });
     } else {
       let message = document.getElementById('message')
