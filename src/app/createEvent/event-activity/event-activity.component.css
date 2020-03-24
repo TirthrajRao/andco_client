@@ -38,6 +38,7 @@
     overflow-y: auto;
     margin: 10px 0;
     position: relative;
+    margin-right: 10px;
 }
 
 .inner-box::-webkit-scrollbar-track {

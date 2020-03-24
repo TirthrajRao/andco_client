@@ -156,6 +156,9 @@ ul.guest-list-inner-box{
     line-height: 50px;
 }
 /* accordian end */
+
+
+
 @media(max-width: 1600px){
     .guest-name h1{
         font-size: 32px;

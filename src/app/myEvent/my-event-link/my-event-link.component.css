@@ -270,7 +270,7 @@ span.zone {
     textarea {
         font-size: 18px;
         height: 90px;
-        padding: 10px;
+        padding: 0;
         margin: 5px 0;
     }
     input.bottom-link {
