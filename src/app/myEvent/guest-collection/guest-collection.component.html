@@ -1,12 +1,23 @@
 <div class="social-icon">
+    <div class="masthead">
+        <form action="" class="masthead-search">
+          <label for="masthead-search-toggle" class="masthead-search-toggle">Toggle Search</label>
+          <input type="checkbox" id="masthead-search-toggle" class="isHidden"/>
+          <div class="masthead-search-indicator"></div>
+          <div class="masthead-search-search">
+            <label for="masthead-search-search" class="isHidden">Search</label>
+            <input type="search" id="masthead-search-search" placeholder="Search"/>
+          </div>
+        </form>
+      </div>
     <ul>
-        <li>
+        <!-- <li>
             <a tooltipClass="my-custom-class" ngbTooltip="Search">
                 <img src="assets/images/search.png" alt="search icon">
-                <!-- <input type="text" id="exampleForm2" class="form-control" [(ngModel)]="searchText"
-                    (keyup)="onKey(searchText)" autocomplete="off"> -->
+                <input type="text" id="exampleForm2" class="form-control" [(ngModel)]="searchText"
+                    (keyup)="onKey(searchText)" autocomplete="off">
             </a>
-        </li>
+        </li> -->
         <li>
             <a tooltipClass="my-custom-class" ngbTooltip="Download" (click)="downLoad()">
                 <img src="assets/images/download.png" alt="download icon">
