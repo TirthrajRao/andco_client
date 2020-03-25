@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'searchList'
-})
+// @Pipe({
+//   name: 'searchList'
+// })
 export class SearchListPipe implements PipeTransform {
 
   transform(items: any[], searchText: string): any[] {
