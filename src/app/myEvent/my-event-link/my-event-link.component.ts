@@ -36,6 +36,7 @@ export class MyEventLinkComponent implements OnInit {
   googleLink;
   faceBookLink;
   textMessageLink
+  invitatationMessage
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   constructor(
     public eventService: EventService,
@@ -117,6 +118,7 @@ export class MyEventLinkComponent implements OnInit {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response of event in link page", response);
       this.afterEventMessage = response.data.afterEventMessage
+      this.invitatationMessage = response.data.invitationMessage
     }, error => {
       console.log("error while get details");
 
@@ -175,7 +177,18 @@ export class MyEventLinkComponent implements OnInit {
   }
 
   shareLink(no) {
-    this.index = no
+    console.log("invitation message", this.invitatationMessage);
+    let message = {
+      invitationMessage: this.invitatationMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addInviationMessage(message).subscribe((response) => {
+      console.log("invitation message added", response);
+      this.index = no
+    }, error => {
+      console.log("error while set message", error);
+
+    })
     // $('.step-1-link').css({ 'display': 'none' })
     // $('.step-2-link').css({ 'display': 'block' })
   }

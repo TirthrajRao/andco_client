@@ -18,7 +18,7 @@
 <div class="step-1-link" *ngIf="index == 0">
     <div class="textarea-box">
         <textarea name="" id="" rows="4" placeholder="We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
-        our ebi here-"></textarea>
+        our ebi here-" [(ngModel)]="invitatationMessage"></textarea>
         <input type="text" class="bottom-link" readonly placeholder="{{displayEventLink}}">
     </div>
     <div class="share-button">
@@ -30,25 +30,29 @@
 <!-- step 2 start -->
 <div class="step-2-link" *ngIf="index == 1">
     <div class="textarea-box">
-        <textarea name="" id="" rows="4" placeholder="{{displayEventLink}}"></textarea>
+        <textarea name="" id="" rows="4" placeholder="{{invitatationMessage}} {{displayEventLink}}"></textarea>
     </div>
     <div class="social-icon">
         <!-- <share-buttons theme="material-dark" show="11" image="https://loremflickr.com/320/240"></share-buttons> -->
         <ul>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'" [button]="'whatsapp'" [url]="displayEventLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
+                    [button]="'whatsapp'" [url]="displayEventLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'" [button]="'facebook'" [url]="displayEventLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'"
+                    [button]="'facebook'" [url]="displayEventLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'" [button]="'email'" [url]="displayEventLink"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
+                    [button]="'email'" [url]="displayEventLink"></share-button>
             </li>
             <li>
 
-                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'" [url]="displayEventLink"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'"
+                    [url]="displayEventLink"></share-button>
             </li>
             <li>
                 <!-- <a href="#">
