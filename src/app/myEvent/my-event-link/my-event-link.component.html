@@ -10,7 +10,7 @@
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
         <div class="tab-name" [class.active]="selectedIndex === i">
-            <p>{{name}}</p>
+            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
     </div>
 </div>
@@ -68,8 +68,8 @@
 <div class="step-3-link" *ngIf="index == 2">
     <form [formGroup]="reminderForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="4" formControlName="reminderMessage"
-                placeholder="{{displayEventLink}}"></textarea>
+            <textarea name="" id="" rows="4" formControlName="reminderMessage" placeholder="{{displayEventLink}}"
+                ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
         </div>
         <div class="send-message">
             <div class="float-left d-flex">
@@ -113,6 +113,17 @@
                 </div> -->
             </div>
         </div>
+        <div class="to">
+            <h3>to :</h3>
+        </div>
+        <div class="all">
+            <div class="group-box">
+                <input type="radio" name="radio-group2" id="allList" value="allList" (change)="selectList($event)">
+                <label class="w-100" for="allList">all invited guests</label>
+                <input type="radio" name="radio-group2" value="buyList" id="buyList" (change)="selectList($event)">
+                <label class="w-100" for="buyList">only guests that bought aso ebi</label>
+            </div>
+        </div>
         <div class="share-button">
             <button class="btn" (click)="reminderMessageSend(1)">Share <i class="fa fa-share" aria-hidden="true"></i>
             </button>
@@ -133,7 +144,7 @@
     </div>
     <div class="all">
         <div class="group-box">
-            <input type="radio" name="radio-group1" id="test" value="male" checked>
+            <input type="radio" name="radio-group1" id="test" value="male">
             <label class="w-100" for="test">all invited guests</label>
             <input type="radio" name="radio-group1" value="female" id="test6">
             <label class="w-100" for="test6">only guests that bought aso ebi</label>

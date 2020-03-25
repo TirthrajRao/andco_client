@@ -22,9 +22,14 @@ export class WelcomeGuestComponent implements OnInit {
       this.hashtag = params.id
       this.platForm = params.type
     })
+    console.log("if came form any platform", this.platForm);
+    if (this.platForm != undefined) {
+      sessionStorage.setItem('platForm', JSON.stringify(this.platForm))
+    } else {
+      sessionStorage.setItem('platForm', JSON.stringify('GN'))
+    }
     this.guestEventWithOutLogin(this.hashtag)
     sessionStorage.setItem('guestHashTag', JSON.stringify(this.hashtag))
-    sessionStorage.setItem('platForm', JSON.stringify(this.platForm))
   }
 
   ngOnInit() {
