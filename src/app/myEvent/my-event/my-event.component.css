@@ -73,9 +73,8 @@ h2 img:hover{
     }
     .event-menu-box-main{
         width: 700px;
-        position: fixed;
-        bottom: 0;
     }
+   
     /* .my-event-inner-box-height {
         max-height: 335px;
         overflow-y: auto;
@@ -100,6 +99,8 @@ h2 img:hover{
 @media(max-width: 1199px){
     .event-menu-box-main{
         width: 650px;
+        position: fixed;
+        bottom: 0;
     }
     .myevent-inner-box{
         width:650px;

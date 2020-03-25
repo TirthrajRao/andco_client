@@ -10,7 +10,7 @@
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
         <div class="tab-name" [class.active]="selectedIndex === i">
-            <p>{{name}}</p>
+            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
     </div>
 </div>
@@ -67,6 +67,7 @@
             <textarea name="" id="" rows="4" formControlName="reminderMessage"
                 placeholder="{{displayEventLink}}"></textarea>
         </div>
+        
         <div class="send-message">
             <div class="float-left d-flex">
                 <p>Send on:</p>
@@ -107,6 +108,17 @@
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
                         required </div>
                 </div> -->
+            </div>
+        </div>
+        <div class="to">
+            <h3>to :</h3>
+        </div>
+        <div class="all">
+            <div class="group-box">
+                <input type="radio" name="radio-group1" id="test" value="male" checked>
+                <label class="w-100" for="test">all invited guests</label>
+                <input type="radio" name="radio-group1" value="female" id="test6">
+                <label class="w-100" for="test6">only guests that bought aso ebi</label>
             </div>
         </div>
         <div class="share-button">
