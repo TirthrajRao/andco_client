@@ -37,6 +37,7 @@ export class MyEventLinkComponent implements OnInit {
   faceBookLink;
   textMessageLink
   invitatationMessage
+  reminderDetails
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   constructor(
     public eventService: EventService,
@@ -55,7 +56,8 @@ export class MyEventLinkComponent implements OnInit {
     this.reminderForm = new FormGroup({
       reminderMessage: new FormControl(''),
       reminderStartDate: new FormControl(''),
-      reminderStartTime: new FormControl('')
+      reminderStartTime: new FormControl(''),
+      guestList: new FormControl('')
     });
 
     this.initMenuSlider()
@@ -120,10 +122,35 @@ export class MyEventLinkComponent implements OnInit {
       this.afterEventMessage = response.data.afterEventMessage
       this.invitatationMessage = response.data.invitationMessage
       this.changeEventLink(this.displayEventLink)
+      this.reminderDetails = response.data.reminderDetails
+      if (this.reminderDetails != null) {
+        this.displayReminderItems(this.reminderDetails)
+      }
     }, error => {
       console.log("error while get details");
 
     })
+  }
+
+  displayReminderItems(details) {
+    if (details.guestList === 'allList') {
+      console.log("call this or not", details.guestList);
+      $('input:radio[id="allList"]').prop('checked', true);
+    }
+    if (details.guestList === 'buyList') {
+      console.log("or this===========", details.guestList);
+      $('input:radio[id="buyList"]').prop('checked', true);
+    }
+    this.displayDate = details.reminderStartDate
+    this.displayTime = details.reminderStartTime
+    if (this.displayTime) {
+      this.timePickerClosed()
+    }
+    // setTimeout(() => {
+
+    // },100)
+
+
   }
 
   changeEventLink(link) {
@@ -155,6 +182,8 @@ export class MyEventLinkComponent implements OnInit {
     }
     if (i == 4) {
       this.index = 3
+      if (this.reminderDetails != null)
+        this.displayReminderItems(this.reminderDetails)
     }
     if (i == 0) {
       this.index = 0
@@ -170,6 +199,11 @@ export class MyEventLinkComponent implements OnInit {
   timeChanged(event) {
     this.displayTime = event
     console.log("selected time", this.displayTime);
+
+    this.reminderForm.patchValue({
+      reminderStartTime: this.displayTime
+    })
+    this.reminderForm.get('reminderStartTime').updateValueAndValidity()
 
   }
 
@@ -196,8 +230,25 @@ export class MyEventLinkComponent implements OnInit {
       console.log("error while set message", error);
 
     })
-    // $('.step-1-link').css({ 'display': 'none' })
-    // $('.step-2-link').css({ 'display': 'block' })
+  }
+
+
+  selectList(event) {
+    console.log("value of selected list", event.target.id);
+    let selected = event.target.id
+    this.reminderForm.patchValue({
+      guestList: selected
+    })
+    this.reminderForm.get('guestList').updateValueAndValidity()
+    // if (selected == 'test7') {
+    //   this.setPriceForm.patchValue({
+    //     isLogistics: 'true'
+    //   })
+    // } else {
+    //   this.setPriceForm.patchValue({
+    //     isLogistics: 'false'
+    //   })
+    // }
   }
 
 
