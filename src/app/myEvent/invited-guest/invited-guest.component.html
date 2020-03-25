@@ -1,31 +1,11 @@
 <div class="total-guest mt-sm-4">
-    <span>320 Guests</span>
+    <span>{{displayGuest.length}} Guests</span>
 </div>
 <div class="social-icon">
     <ul>
-        <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Whatsapp">
-                <img src="../../../assets/images/whatsapp.png" alt="whatsapp icon">
-            </a>
-        </li>
-        <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Facebook">
-                <img src="../../../assets/images/facebook-event.png" alt="facebook icon">
-            </a>
-        </li>
-        <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Mobile">
-                <img src="../../../assets/images/call-event.png" alt="call icon">
-            </a>
-        </li>
-        <li>
-            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Google">
-                <img src="../../../assets/images/G.png" alt="g icon">
-            </a>
-        </li>
-        <li>
-            <a href="#" class="Menu">
-                <img src="../../../assets/images/invited-guest-menu.png" alt="Guest menu icon">
+        <li *ngFor="let icon of displayIcons;let i =index" [class.active]="selctedIndex == i">
+            <a (click)="displayListOfPlatForm(i)" tooltipClass="my-custom-class" ngbTooltip="{{icon.name}}">
+                <img src="{{icon.path}}" alt="whatsapp icon">
             </a>
         </li>
     </ul>
@@ -37,7 +17,7 @@
                 <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
             </div>
             <div class="guest-name">
-                <p>{{name.firstName | titlecase}} {{name.lastName | titlecase}} </p>
+                <p>{{name.userName.firstName | titlecase}} {{name.userName.lastName | titlecase}} </p>
             </div>
         </li>
     </ul>

@@ -5,7 +5,7 @@
     <div class="group-slider">
         <div class="group-single-slide" *ngFor="let item of selectedActivity.groups, let i = index; ">
             <div class="group-name" (click)="sendData(item , i)" [class.active]="selectedIndex === i">
-                <span tooltipClass="my-custom-class" ngbTooltip="{{item.groupName}}">{{item.groupName}}</span>
+                <span data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{item.groupName}}">{{item.groupName}}</span>
             </div>
             <div *ngIf="i != 1 && i !=0">
                 <div class="remove-group" (click)="removeGroup(i)">

@@ -18,7 +18,7 @@
                                 <textarea formControlName="thanksMessage"
                                     placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
                                     [ngClass]="{ 'is-invalid': f.thanksMessage.touched && f.thanksMessage.errors }"
-                                    ngModel="{{setPriceDetails ? setPriceDetails.thanksMessage.message: ''}}"></textarea>
+                                    ngModel="{{setPriceDetails ? setPriceDetails.thanksMessage: ''}}"></textarea>
                                 <div class="col-md-2" *ngIf=" f.thanksMessage.touched && f.thanksMessage.errors"
                                     class="invalid-feedback">
                                     <div *ngIf="f.thanksMessage.errors.required">Message is required</div>
@@ -31,7 +31,7 @@
                                     placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
                                     [ngClass]="{ 'is-invalid': f.afterEventMessage.touched && f.afterEventMessage.errors }"
                                     ngModel="{{setPriceDetails ? setPriceDetails.afterEventMessage : ''}}"></textarea>
-                                <div class="col-md-2" *ngIf=" f.afterEventMessage.touched && f.afterEventMessage.errors"
+                                <div *ngIf=" f.afterEventMessage.touched && f.afterEventMessage.errors"
                                     class="invalid-feedback">
                                     <div *ngIf="f.afterEventMessage.errors.required">Message is required</div>
                                     <div *ngIf="f.afterEventMessage.errors.pattern">Please enter only alphabates</div>
@@ -164,8 +164,6 @@
                                     <option value="others">Friends / Families Events</option>
                                     <option value="online">Online Search </option>
                                 </select>
-
-
                                 <select class="form-control w-75 m-auto" name="" id="" (change)="onDropDown($event)"
                                     value="{{setPriceDetails.hearAbout}}"
                                     *ngIf="setPriceDetails&& setPriceDetails.hearAbout">

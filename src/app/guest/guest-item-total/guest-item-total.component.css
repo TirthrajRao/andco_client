@@ -1,5 +1,6 @@
+
 .accordian-height-box{
-    max-height: 340px;
+    max-height: 350px;
     overflow: auto;
     padding-right: 5px;
 }
@@ -135,7 +136,7 @@ button.btn.add-more {
 
 @media(max-width: 1600px){
     button.single-activity{
-        font-size: 26px;
+        font-size: 24px;
     }
     li.guest-item{
         margin-bottom: 0;
@@ -146,8 +147,19 @@ button.btn.add-more {
     .guest-add-items h4 {
         font-size: 22px;
     }
+    .accordian-height-box{
+        max-height: 240px
+    }
+}
+@media(max-width:1366px){
+    .accordian-height-box{
+        max-height: 180px
+    }
 }
 @media(max-width:1199px){
+    .accordian-height-box{
+        max-height: 100%
+    }
     .buttons-pay-back button{
         font-size: 16px;
     }
@@ -162,7 +174,7 @@ button.btn.add-more {
     }
     .main-item{
         max-height: 180px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 }
 @media(max-width: 767px){
@@ -184,6 +196,12 @@ button.btn.add-more {
         height: 14px;
         margin-left: 12px;
     }
+    li.guest-item{
+        font-size: 18px;
+    }
+    .main-item{
+        max-height:100%;
+    }
 }
 @media(max-width:400px){
     .guest-add-items, .guest-item-name  {
@@ -203,5 +221,16 @@ button.btn.add-more {
     .buttons-pay-back button {
         font-size: 14px;
         padding: 7px 20px;
+    }
+    button.single-activity {
+        font-size: 17px;
+    }
+    button.btn.add-more {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    .guest-add-items h4{
+        font-size: 16px;
+        margin: 5px 0;
     }
 }

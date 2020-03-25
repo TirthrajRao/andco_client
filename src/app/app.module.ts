@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { HomeModule } from './home/home.module';
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
 import { GuestJoinComponent } from './guest-join/guest-join.component';
+import { SearchListPipe } from './search-list.pipe';
 
 
 
@@ -51,7 +52,6 @@ export function provideConfig() {
     ForgotPasswordComponent,
     WelcomeGuestComponent,
     GuestJoinComponent,
-    
     // LoaderComponent,
   ],
   imports: [
@@ -75,7 +75,8 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    LoginService
+    LoginService,
+    SearchListPipe,
   ],
   bootstrap: [AppComponent],
 })

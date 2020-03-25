@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config'
 import { ThemeService } from './theme.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -131,13 +130,13 @@ export class EventService {
   }
 
   joinEvent(id) {
-    const eventId = {
-      eventId: id,
-      platForm: this.platForm
-    }
-    console.log("eventDetails", eventId);
+    // const eventId = {
+    //   eventId: id,
+    //   platForm: this.platForm
+    // }
+    console.log("eventDetails", id);
 
-    return this.http.post(config.baseApiUrl + "/event/join-event", eventId)
+    return this.http.post(config.baseApiUrl + "/event/join-event", id)
   }
 
 
@@ -226,5 +225,9 @@ export class EventService {
       groupId: groupId
     }
     return this.http.put(config.baseApiUrl + "/group/delete-item", body)
+  }
+
+  addInviationMessage(message) {
+    return this.http.post(config.baseApiUrl + "/event/invitation", message)
   }
 }

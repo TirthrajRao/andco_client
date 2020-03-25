@@ -14,7 +14,7 @@ export class GuestJoinComponent implements OnInit {
   private hashTag: any
   eventDetails: any;
   isJoin: any;
-  
+  platForm = JSON.parse(sessionStorage.getItem('platForm'))
   path = config.baseMediaUrl;
   constructor(
     public router: Router,
@@ -47,7 +47,11 @@ export class GuestJoinComponent implements OnInit {
 
   joinEvent(eventId) {
     console.log("event id", eventId);
-    this.eventService.joinEvent(eventId).subscribe((response: any) => {
+    const data = {
+      eventId: eventId,
+      platForm: this.platForm
+    }
+    this.eventService.joinEvent(data).subscribe((response: any) => {
       console.log("response of join event", response);
       this.isJoin = true
       this.alertService.getSuccess(response.message)

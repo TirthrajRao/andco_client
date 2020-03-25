@@ -267,6 +267,7 @@ h5.item-name, h5.item-price{
 @media(max-width:1366px){
     .bg-box-set-price {
         width: 870px;
+        height: 500px;
         padding: 30px 0;
         margin-top: 0;
     }
@@ -282,11 +283,31 @@ h5.item-name, h5.item-price{
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         padding-top: 90px !important;
     }
+    .sales-inner span{
+        font-size: 20px;
+    }
+    .inner-box-group {
+        max-height: 100px;
+        min-height: 100px;
+    }
+    .add-items input{
+        font-size: 18px;
+    }
+    .group-box{
+        padding-bottom: 10px;
+    }
+    .inner-box-group ul li {
+        padding: 5px 10px;
+    }
+    .event-date-box h4 {
+        font-size: 20px;
+        margin: 12px 0;
+    }
 }
 @media(max-width:1199px){
     .inner-box-group {
-        max-height: 120px;
-        min-height: 120px;
+        max-height: 150px;
+        min-height: 150px;
     }
     .sales-pricing-main .page-content, .event-activity-main .page-content {
         padding-top: 120px !important;
@@ -339,6 +360,12 @@ h5.item-name, h5.item-price{
     }
     .event-activity-main .page-content{
         padding-top: 0 !important;
+    }
+    .hashtag h2 {
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: auto;
     }
 }
 @media(max-width:575px){

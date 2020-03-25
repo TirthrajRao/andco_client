@@ -21,6 +21,9 @@
     list-style: none;
     display: inline-block;
 }
+.social-icon ul li.active img{
+    filter: invert(1);
+}
 .guest-list-box {
     padding: 30px 40px;
     background-color: #fff;
