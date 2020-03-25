@@ -124,6 +124,9 @@ span.text-orange {
     .total-slide h1 {
         font-size: 28px;
     }
+    .collection-tab span {
+        font-size: 22px;
+    }
     .total-activity-box {
         margin-top: 50px;
         padding: 20px 0;
@@ -209,12 +212,13 @@ span.text-orange {
     .total-second-slide .row {
         width: 100%;
     }
-    .total-second-slide .row .col-5, .total-second-slide .row .col-7 {
+    .total-second-slide .row .col-5,
+    .total-second-slide .row .col-7 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
     }
-    .total-activity-box{
+    .total-activity-box {
         padding: 0;
     }
 }
