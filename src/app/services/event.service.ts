@@ -226,4 +226,8 @@ export class EventService {
     }
     return this.http.put(config.baseApiUrl + "/group/delete-item", body)
   }
+
+  addInviationMessage(message) {
+    return this.http.post(config.baseApiUrl + "/event/invitation", message)
+  }
 }
