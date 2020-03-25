@@ -105,7 +105,7 @@
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
                 <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12"
-                    (timeChanged)="timeChanged($event)">
+                    (timeChanged)="timeChanged($event)" formControlName="reminderStartTime">
                 </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is

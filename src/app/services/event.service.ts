@@ -230,4 +230,8 @@ export class EventService {
   addInviationMessage(message) {
     return this.http.post(config.baseApiUrl + "/event/invitation", message)
   }
+  setReminderMessage(value, eventId) {
+    value['eventId'] = eventId
+    return this.http.post(config.baseApiUrl + "/event/setReminder", value)
+  }
 }

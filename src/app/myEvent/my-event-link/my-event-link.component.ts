@@ -109,7 +109,7 @@ export class MyEventLinkComponent implements OnInit {
 
     console.log("display link of event", changes.eventLink);
     this.displayEventLink = changes.eventLink.currentValue.eventLink
-    this.changeEventLink(this.displayEventLink)
+
     this.eventId = changes.eventLink.currentValue.eventId
     this.getEventDetails(this.eventId)
   }
@@ -119,6 +119,7 @@ export class MyEventLinkComponent implements OnInit {
       console.log("response of event in link page", response);
       this.afterEventMessage = response.data.afterEventMessage
       this.invitatationMessage = response.data.invitationMessage
+      this.changeEventLink(this.displayEventLink)
     }, error => {
       console.log("error while get details");
 
@@ -132,11 +133,17 @@ export class MyEventLinkComponent implements OnInit {
     let facebookLink = 'FB'
     let textMessage = 'TX'
 
-    this.whatsupLink = link + '/' + whatsup
-    this.googleLink = link + '/' + google
-    this.faceBookLink = link + '/' + facebookLink
-    this.textMessageLink = link + '/' + textMessage
-    console.log("whats up link is ready", this.textMessageLink);
+    let whatsupLink = link + '/' + whatsup
+    let googleLink = link + '/' + google
+    let faceBookLink = link + '/' + facebookLink
+    let textMessageLink = link + '/' + textMessage
+
+    this.whatsupLink = this.invitatationMessage + '-' + whatsupLink
+    this.googleLink = this.invitatationMessage + '-' + googleLink
+    this.faceBookLink = this.invitatationMessage + '-' + facebookLink
+    this.textMessageLink = this.invitatationMessage + '-' + textMessageLink
+
+    console.log("whats up link is ready", this.whatsupLink);
   }
 
 
@@ -199,9 +206,14 @@ export class MyEventLinkComponent implements OnInit {
   }
 
   reminderMessageSend(index) {
-    this.index = index
     console.log("details of reminder message", this.reminderForm.value);
+    this.eventService.setReminderMessage(this.reminderForm.value, this.eventId).subscribe((response) => {
+      this.index = index
+      console.log("response of reminder message", response);
+    }, error => {
+      console.log("error while set reminer message", error);
 
+    })
   }
 
   getafterEventMessage(data) {
