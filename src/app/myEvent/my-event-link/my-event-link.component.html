@@ -118,9 +118,11 @@
         </div>
         <div class="all">
             <div class="group-box">
-                <input type="radio" name="radio-group2" id="allList" value="allList" (change)="selectList($event)">
+                <input type="radio" name="radio-group2" id="allList" value="allList"
+                    (change)="selectList($event)">
                 <label class="w-100" for="allList">all invited guests</label>
-                <input type="radio" name="radio-group2" value="buyList" id="buyList" (change)="selectList($event)">
+                <input type="radio" name="radio-group2" id="buyList" value="buyList" 
+                    (change)="selectList($event)">
                 <label class="w-100" for="buyList">only guests that bought aso ebi</label>
             </div>
         </div>

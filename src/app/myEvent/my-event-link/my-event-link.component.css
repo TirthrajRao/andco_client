@@ -7,6 +7,7 @@
     position: relative;
     padding: 12px 45px 6px 6px;
 }
+
 .alert-success {
     color: #155724;
     background-color: #d4edda;
@@ -23,9 +24,14 @@
     font-weight: bold;
     line-height: normal;
 }
+
 .close {
     color: #155724;
     line-height: 55px;
+}
+
+.alert-dismissible .close {
+    padding: 10px;
 }
 
 .share-link i {
@@ -73,12 +79,14 @@
 .tab-name.active {
     background-color: #F8D0AD;
 }
-.textarea-box{
+
+.textarea-box {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.26);
     padding: 20px;
     margin: 10px 0;
 }
+
 textarea {
     background-color: transparent;
     width: 100%;
@@ -89,13 +97,15 @@ textarea {
     font-weight: 600;
     resize: none;
 }
-textarea:focus{
+
+textarea:focus {
     outline: none !important;
 }
 
 textarea::placeholder {
     color: #e0d8d8;
 }
+
 textarea::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
@@ -112,6 +122,7 @@ textarea::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: transparent;
 }
+
 input.bottom-link {
     width: 100%;
     border: none;
@@ -123,7 +134,8 @@ input.bottom-link {
     text-align: center;
     font-weight: 600;
 }
-input.bottom-link::placeholder{
+
+input.bottom-link::placeholder {
     color: #ffffff;
     font-weight: 600;
 }
@@ -136,12 +148,15 @@ input.bottom-link::placeholder{
     color: #F8D0AD;
     margin-top: 15px;
 }
+
 .share-button button:hover {
     background: #f8d0ac;
     color: #985e28;
     border: 3px solid #975e27;
     transition: 0.5s all;
 }
+
+
 /* step 2 start*/
 
 .social-icon ul {
@@ -157,7 +172,9 @@ input.bottom-link::placeholder{
     margin: 0 10px;
 }
 
+
 /* step 2 end*/
+
 
 /* step 3 start */
 
@@ -173,7 +190,8 @@ input.bottom-link::placeholder{
     margin-right: 5px;
 }
 
-.send-date, .send-time {
+.send-date,
+.send-time {
     background: #fff;
     color: #9B602A;
     font-weight: bold;
@@ -191,7 +209,9 @@ span.middle {
     font-size: 25px;
 }
 
+
 /* step 3 end */
+
 
 /* step 4 start */
 
@@ -208,12 +228,14 @@ span.middle {
 .all {
     padding-left: 60px;
 }
+
 span.pm-am {
     margin-left: 5px;
     color: #fff;
     font-weight: 600;
     line-height: 37px;
 }
+
 span.zone {
     color: #F8D0AD;
     line-height: 37px;
@@ -221,13 +243,16 @@ span.zone {
     font-weight: 600;
     font-size: 14px;
 }
+
+
 /* step 4 end */
 
 @media(max-width: 1600px) {
     .share-link {
         padding: 6px 25px 4px 4px;
     }
-    .share-link h3, .tab-name p {
+    .share-link h3,
+    .tab-name p {
         line-height: 40px;
         font-size: 22px;
     }
@@ -235,7 +260,7 @@ span.zone {
         font-size: 22px;
         height: 110px;
     }
-    input.bottom-link{
+    input.bottom-link {
         font-size: 22px;
     }
     .share-button button {
@@ -251,11 +276,13 @@ span.zone {
 }
 
 @media(max-width: 1366px) {
-    .share-link h3, .tab-name p {
+    .share-link h3,
+    .tab-name p {
         line-height: 30px;
         font-size: 18px;
     }
-    .send-date, .send-time {
+    .send-date,
+    .send-time {
         width: 60px;
         height: 30px;
         padding-top: 5px;
@@ -283,7 +310,7 @@ span.zone {
         font-size: 22px;
         top: 5px;
     }
-    .share-button button{
+    .share-button button {
         margin-top: 0;
         font-size: 20px;
     }
@@ -296,30 +323,33 @@ span.zone {
 }
 
 @media(max-width: 1199px) {
-    .send-date, .send-time {
+    .send-date,
+    .send-time {
         width: 50px;
         font-size: 15px;
     }
     .share-button button {
         font-size: 18px;
     }
-    .share-link h3, .tab-name p {
+    .share-link h3,
+    .tab-name p {
         line-height: 27px;
         font-size: 16px;
     }
     .share-link input {
         font-size: 20px;
     }
-     .alert-success {
+    .alert-success {
         font-size: 18px;
     }
 }
 
 @media(max-width: 991px) {
-    input.bottom-link{
+    input.bottom-link {
         font-size: 18px;
     }
-    .send-date, .send-time {
+    .send-date,
+    .send-time {
         width: 40px;
         height: 30px;
         font-size: 13px;
@@ -327,13 +357,15 @@ span.zone {
     .share-link i {
         font-size: 24px;
     }
-    textarea ,input.bottom-link {
+    textarea,
+    input.bottom-link {
         font-size: 16px;
     }
 }
 
 @media(max-width:767px) {
-    .send-message .float-left, .send-message .float-right {
+    .send-message .float-left,
+    .send-message .float-right {
         width: 100%;
         float: unset !important;
         margin-top: 10px;
@@ -359,8 +391,9 @@ span.zone {
         font-size: 20px;
     }
 }
-@media(max-width:440px){
-    span.zone{
+
+@media(max-width:440px) {
+    span.zone {
         line-height: normal;
         font-size: 12px;
     }

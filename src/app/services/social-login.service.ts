@@ -18,7 +18,7 @@ export class SocialLoginService {
   isUserLoggedIn = false;
   @Output() isLoad = new EventEmitter();
 
-  eventIdWithLogin = JSON.parse(sessionStorage.getItem('newEventId'));
+  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
 
   constructor(
 
@@ -80,7 +80,7 @@ export class SocialLoginService {
           // this.isLoad = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          // this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+          this.router.navigate(['/guest-join/', this.eventIdWithLogin])
         }
         else {
           this.isLoad.emit('false')
@@ -128,7 +128,7 @@ export class SocialLoginService {
               // this.isLoad = false
               this.isUserLoggedIn = true;
               sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-              this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+              this.router.navigate(['/guest-join/', this.eventIdWithLogin])
             }
             else {
               this.isLoad.emit('false')

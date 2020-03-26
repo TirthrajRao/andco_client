@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router'
 import { EventService } from '../../services/event.service';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { LoginComponent } from 'src/app/login/login.component';
 // import { LOADIPHLPAPI } from 'dns';
 declare var $;
 @Component({
@@ -39,6 +40,8 @@ export class MyEventLinkComponent implements OnInit {
   invitatationMessage
   reminderDetails
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
+  isAll
+  isOnly
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -133,14 +136,17 @@ export class MyEventLinkComponent implements OnInit {
   }
 
   displayReminderItems(details) {
-    if (details.guestList === 'allList') {
-      console.log("call this or not", details.guestList);
-      $('input:radio[id="allList"]').prop('checked', true);
-    }
-    if (details.guestList === 'buyList') {
-      console.log("or this===========", details.guestList);
-      $('input:radio[id="buyList"]').prop('checked', true);
-    }
+    // if (details.guestList == 'allList') {
+    //   console.log("call this or not", details.guestList);
+    //   this.isChecked = true
+    //   $('input:radio[id="allList"]').prop('checked', true);
+
+    //   // document.getElementById("allList").checked;
+    // } else if (details.guestList == 'buyList') {
+    //   this.isChecked = true
+    //   console.log("or this===========", details.guestList);
+    //   $('input:radio[id="buyList"]').prop('checked', true);
+    // }
     this.displayDate = details.reminderStartDate
     this.displayTime = details.reminderStartTime
     if (this.displayTime) {
@@ -179,11 +185,24 @@ export class MyEventLinkComponent implements OnInit {
     this.selectedIndex = i
     if (i == 3) {
       this.index = 2
+      console.log("call this or not", this.reminderDetails);
+      let valueOfGuest = this.reminderDetails.guestList
+      if (valueOfGuest == 'allList') {
+        console.log("first one", valueOfGuest);
+        $('input:radio[id="allList"]').prop('checked', true);
+        // this.isAll = true
+        // this.isOnly = false
+      } else {
+        console.log("second=========== one", valueOfGuest);
+        // this.isOnly = true
+        // this.isAll = false
+      }
     }
     if (i == 4) {
       this.index = 3
-      if (this.reminderDetails != null)
-        this.displayReminderItems(this.reminderDetails)
+      // if (this.reminderDetails != null)
+
+      // this.displayReminderItems(this.reminderDetails)
     }
     if (i == 0) {
       this.index = 0
