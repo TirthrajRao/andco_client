@@ -23,6 +23,40 @@ export class TotalCollectionComponent implements OnInit {
   }
 
 
+
+
+
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("changes of collections in main page", changes.totalCollection.currentValue);
+    if (changes.totalCollection.currentValue) {
+      this.displayCollectionDetails(changes.totalCollection.currentValue)
+    }
+
+
+  }
+
+  displayCollectionDetails(details) {
+    console.log("details of collectioni", details);
+    this.displayCollection = details.groupWise
+    this.displayEventTotal = details.eventTotal
+    setTimeout(() => {
+      this.$slideContainter = $('.total-collection-slider');
+      this.$slideContainter.slick('unslick');
+      this.initCollectionSlider()
+      this.isTotal = true
+    }, 10)
+    this.selectedIndex = 0
+  }
+
+
+  openTab(j, i, group) {
+    console.log("group index", j, "activity index", i);
+    this.tabId = j + "" + i
+    $('#' + this.tabId).show()
+  }
+
   initCollectionSlider() {
     setTimeout(() => {
       this.$slideContainter = $('.total-collection-slider')
@@ -39,32 +73,4 @@ export class TotalCollectionComponent implements OnInit {
       })
     })
   }
-
-
-
-
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("changes of collections in main page", changes.totalCollection.currentValue);
-    if (changes.totalCollection.currentValue) {
-      this.displayCollection = changes.totalCollection.currentValue.groupWise
-      this.displayEventTotal = changes.totalCollection.currentValue.eventTotal
-      this.selectedIndex = 0
-      this.isTotal = true
-      this.$slideContainter = $('.total-collection-slider');
-      this.$slideContainter.slick('unslick');
-      setTimeout(() => {
-        this.initCollectionSlider()
-      }, 10)
-    }
-
-
-  }
-
-  openTab(j, i, group) {
-    console.log("group index", j, "activity index", i);
-    this.tabId = j + "" + i
-    $('#' + this.tabId).show()
-  }
-
 }

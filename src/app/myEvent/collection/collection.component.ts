@@ -10,15 +10,16 @@ export class CollectionComponent implements OnInit {
   @Input('guestItems') guestItemList
   @Output() guestWithItem: EventEmitter<any> = new EventEmitter<any>();
   displayGuestItems = []
-
+  finalCollection = []
   constructor() { }
 
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log("changes in collectiion", changes);
-    // if (changes.totalCollection && changes.totalCollection.currentValue) {
-    // }
+    if (changes.totalCollection && changes.totalCollection.currentValue) {
+      this.finalCollection = changes.totalCollection.currentValue
+    }
     if (changes.guestItemList && changes.guestItemList.currentValue) {
       this.displayGuestItems = changes.guestItemList.currentValue
     }
