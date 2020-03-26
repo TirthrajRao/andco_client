@@ -1,4 +1,5 @@
 import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-collection',
@@ -13,29 +14,58 @@ export class CollectionComponent implements OnInit {
   finalCollection = []
   navTabs = ["Total", "Guests"]
   selectedIndex = 0
-  constructor() { }
+  eventId
+  noGuestList
+  constructor(
+    public eventService: EventService
+  ) { }
 
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes in collectiion", changes);
+    console.log("changes in collectiion", changes, this.selectedIndex = 0);
     if (changes.totalCollection && changes.totalCollection.currentValue) {
+      this.selectedIndex = 0
       this.finalCollection = changes.totalCollection.currentValue
+      // this.selectedIndex = 0
     }
     if (changes.guestItemList && changes.guestItemList.currentValue) {
-      this.displayGuestItems = changes.guestItemList.currentValue
+      console.log("changes of guest list", changes.guestItemList);
+      this.eventId = changes.guestItemList.currentValue
+      this.getGuestList(this.eventId)
+      // this.displayGuestItems = changes.guestItemList.currentValue
+      // this.selectedIndex = 1
     }
-
   }
 
-  displayGuestList() {
-    console.log("check the button")
-    this.guestWithItem.emit('guestItems')
+
+  getGuestList(eventId) {
+    this.eventService.getItemsOfGuest(eventId).subscribe((response: any) => {
+      console.log("guest details in main ", response);
+      if (response && response.data.length > 0) {
+        this.displayGuestItems = response.data
+        this.selectedIndex = 1
+        this.noGuestList = ''
+      } else if (response && response.data.length == 0) {
+        this.selectedIndex = 1
+        this.noGuestList = 'noList'
+        this.displayGuestItems = []
+      }
+    }, error => {
+      console.log("error while get list of guest", error)
+    })
   }
+  // displayGuestList() {
+  //   console.log("check the button")
+  //   this.guestWithItem.emit('guestItems')
+  // }
 
 
   selectedTab(i) {
-
+    this.selectedIndex = i
+    if (i == 1) {
+      this.guestWithItem.emit('guestItems')
+    }
   }
 
 }

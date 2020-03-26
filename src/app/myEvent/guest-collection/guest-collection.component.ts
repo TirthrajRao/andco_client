@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 })
 export class GuestCollectionComponent implements OnInit {
   @Input('guestItems') guestItems
+  @Input('noList') noListOfGuest
   displayGuestItems = []
   current = 0
   formateData: any
@@ -17,6 +18,8 @@ export class GuestCollectionComponent implements OnInit {
   secondLetter = []
   searchArray = []
   searchText;
+  isDisplay = false
+  noListMessage
   constructor(
     public excelService: ExcelService,
     public searchPipe: SearchListPipe
@@ -27,17 +30,27 @@ export class GuestCollectionComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log("changes in guest display list", changes);
 
-    if (changes.guestItems.currentValue) {
-      this.current = 0
+
+
+    if (changes.guestItems && changes.guestItems.currentValue) {
+      console.log("guest details list changes", changes.guestItems);
       this.displayGuestList(changes.guestItems.currentValue)
-
     }
-    console.log("item of guest list in his page", this.displayGuestItems);
+    if (changes.noListOfGuest && changes.noListOfGuest.currentValue) {
+      console.log("call this for no list of guest", changes.noListOfGuest.currentValue);
+      this.noListFound()
+    }
+    // console.log("item of guest list in his page", this.displayGuestItems);
 
   }
   displayGuestList(list) {
+    this.noListMessage = ''
+    this.isDisplay = true
+    console.log("list of guest", list);
     this.displayGuestItems = list
+    this.current = 0
     this.searchArray = this.displayGuestItems
     console.log("total list", list.length);
     list.forEach(singleList => {
@@ -51,6 +64,12 @@ export class GuestCollectionComponent implements OnInit {
 
   }
 
+
+  noListFound() {
+    this.isDisplay = false
+    this.noListMessage = 'There are no guest in this event'
+    // this.displayGuestItems = []
+  }
 
   downLoad() {
     this.excelService.exportAsExcelFile(this.formateData, 'export-to-excel');

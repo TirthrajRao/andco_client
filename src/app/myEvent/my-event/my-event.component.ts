@@ -107,14 +107,14 @@ export class MyEventComponent implements OnInit {
 
 
   getItemsOfGuest(event) {
-    console.log("event of guest for item", event);
-    this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
-      console.log("all list of guest with items", response);
-      this.guestWithItems = response.data
-    }, error => {
-      console.log("error while get items list of guest", error);
+    // console.log("event of guest for item", event);
+    // this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
+    //   console.log("all list of guest with items", response);
+      this.guestWithItems = this.selectedEventId
+    // }, error => {
+    //   console.log("error while get items list of guest", error);
 
-    })
+    // })
 
   }
 
