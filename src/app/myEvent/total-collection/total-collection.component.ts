@@ -16,6 +16,8 @@ export class TotalCollectionComponent implements OnInit {
   selectedIndex = 0
   tabId: any;
   isTotal
+  isSlider = false
+  noValueMessage
   constructor() { }
 
   ngOnInit() {
@@ -30,24 +32,37 @@ export class TotalCollectionComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("changes of collections in main page", changes.totalCollection.currentValue);
-    if (changes.totalCollection.currentValue) {
+    let valueOfCollections = changes.totalCollection.currentValue.groupWise
+    let eventTotalValue = changes.totalCollection.currentValue.eventTotal
+    if ((valueOfCollections && valueOfCollections.length) && !eventTotalValue.message) {
+      console.log("first if");
+      this.isSlider = true
       this.displayCollectionDetails(changes.totalCollection.currentValue)
+    } else {
+      console.log("else part ");
+      this.isSlider = false
+      if (eventTotalValue && eventTotalValue.message)
+        this.noValueMessage = eventTotalValue.message
     }
 
 
   }
 
   displayCollectionDetails(details) {
+    console.log("message when no amount", this.noValueMessage);
+    this.noValueMessage = ''
     console.log("details of collectioni", details);
     this.displayCollection = details.groupWise
     this.displayEventTotal = details.eventTotal
+    this.selectedIndex = 0
+    // if (this.displayCollection && !this.displayEventTotal.message) {
     setTimeout(() => {
-      this.$slideContainter = $('.total-collection-slider');
       this.$slideContainter.slick('unslick');
+      this.$slideContainter = $('.total-collection-slider');
       this.initCollectionSlider()
       this.isTotal = true
     }, 10)
-    this.selectedIndex = 0
+    // }
   }
 
 

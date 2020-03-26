@@ -11,6 +11,8 @@ export class CollectionComponent implements OnInit {
   @Output() guestWithItem: EventEmitter<any> = new EventEmitter<any>();
   displayGuestItems = []
   finalCollection = []
+  navTabs = ["Total", "Guests"]
+  selectedIndex = 0
   constructor() { }
 
   ngOnInit() {
@@ -30,4 +32,11 @@ export class CollectionComponent implements OnInit {
     console.log("check the button")
     this.guestWithItem.emit('guestItems')
   }
+
+
+  selectedTab(i) {
+
+  }
+
 }
+

@@ -46,6 +46,7 @@ export class MyEventComponent implements OnInit {
     })
   }
   getSingleEvent(event) {
+    console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
       this.eventDetails = response.data
       this.eventHashTag = response.data.hashTag
@@ -55,6 +56,9 @@ export class MyEventComponent implements OnInit {
       this.getCurrentMenu(this.currenMenuIndex)
       if (this.currenMenuIndex == 0) {
         this.getActivity()
+      }
+      if (this.currenMenuIndex == 2) {
+        this.getCollecctionOfEvent()
       }
       console.log("details of event with hastag", this.eventDetails);
     }, error => {
