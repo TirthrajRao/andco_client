@@ -124,13 +124,16 @@ span.text-orange {
     .total-slide h1 {
         font-size: 28px;
     }
+    .collection-tab {
+        padding: 10px 0;
+    }
     .collection-tab span {
         font-size: 22px;
     }
     .total-activity-box {
         margin-top: 50px;
         padding: 20px 0;
-        max-height: 145px;
+        max-height: 225px;
         min-height: 145px;
     }
     .total-activity-box h1 {
@@ -160,7 +163,12 @@ span.text-orange {
     }
 }
 
-@media(max-width: 991px) {}
+@media(max-width: 991px) {
+    .collection-tab span,
+    .collection-tab .col-sm-10 span {
+        font-size: 20px;
+    }
+}
 
 @media(max-width: 767px) {
     .total-activity-box h1 {
@@ -182,6 +190,10 @@ span.text-orange {
     .total-activity-box {
         max-height: 100%;
         min-height: 100%;
+    }
+    .collection-tab span,
+    .collection-tab .col-sm-10 span {
+        font-size: 18px;
     }
 }
 
@@ -220,5 +232,8 @@ span.text-orange {
     }
     .total-activity-box {
         padding: 0;
+    }
+    .inner-div {
+        padding: 10px;
     }
 }

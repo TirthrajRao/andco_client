@@ -1,4 +1,4 @@
-.gift-donation-msg p{
+.gift-donation-msg p {
     font-family: 'Advent Pro', 'sans-sarif';
     font-size: 26px;
     color: #fff;
@@ -6,19 +6,23 @@
     margin: auto;
     text-align: center;
 }
-.gift-donation-msg h3{
+
+.gift-donation-msg h3 {
     text-align: center;
     color: #fff;
     margin: 40px 0 20px;
 }
+
 .gift-donation-msg h3 input {
     border: none;
     padding: 8px 20px 4px;
     text-align: right;
 }
-.save button{
+
+.save button {
     font-size: 22px;
 }
+
 .bottom-buttons {
     display: flex;
     justify-content: space-between;
@@ -27,54 +31,59 @@
     left: 4%;
     right: 4%;
 }
-.bottom-buttons button{
+
+.bottom-buttons button {
     color: var(--next-skip-back-color);
     font-weight: bold;
     font-family: 'Advent Pro', 'sans-sarif';
     font-size: 20px;
 }
-.bottom-buttons i{
+
+.bottom-buttons i {
     font-size: 26px;
 }
 
-@media(max-width:1366px){
-    .gift-donation-msg h3{
+@media(max-width:1366px) {
+    .gift-donation-msg h3 {
         margin: 20px 0;
     }
 }
-@media(max-width:1199px){
+
+@media(max-width:1199px) {
     .gift-donation-msg p,
-    .gift-donation-msg h3{
+    .gift-donation-msg h3 {
         font-size: 22px;
     }
     .gift-donation-msg {
         margin-bottom: 40px;
     }
 }
-@media(max-width:575px){
-    .gift-donation-msg p{
+
+@media(max-width:575px) {
+    .gift-donation-msg p {
         width: 100%;
     }
-    .gift-donation-msg h3{
+    .gift-donation-msg h3 {
         margin: 40px 0 0;
     }
-    .bottom-buttons{
+    .bottom-buttons {
         bottom: 2%;
     }
     .gift-donation-msg p,
-    .gift-donation-msg h3{
+    .gift-donation-msg h3 {
         font-size: 18px;
     }
     .gift-donation-msg {
         margin-bottom: 20px;
     }
 }
-@media(max-width:400px){
+
+@media(max-width:400px) {
     .gift-donation-msg p,
-    .gift-donation-msg h3{
+    .gift-donation-msg h3 {
         font-size: 16px;
     }
-    .gift-donation-msg h3 input{
+    .gift-donation-msg h3 input {
         padding: 5px;
     }
     .bottom-buttons button {
@@ -83,7 +92,13 @@
     .gift-donation-msg h3 input {
         width: 100%;
     }
-    .gift-donation-msg h3{
+    .gift-donation-msg h3 {
         margin: 30px 0;
+    }
+}
+
+@media(max-width:320px) {
+    .bottom-buttons {
+        bottom: 8%;
     }
 }

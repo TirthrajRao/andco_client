@@ -59,7 +59,9 @@ export class AuthInterceptor implements HttpInterceptor {
                             const idtoken = (sessionStorage.removeItem('currentUser'));
                             Swal.fire({
                                 // type: 'error',
-                                title: "sorry" + errorMessage,
+                                imageUrl: '../../assets/images/andco_logo.png',
+                                imageWidth: 350,
+                                title: "Sorry" + errorMessage,
                                 showConfirmButton: false,
                                 timer: 2000
                             })
@@ -84,10 +86,12 @@ export class AuthInterceptor implements HttpInterceptor {
                              * Alert of every error response
                              */
                             Swal.fire({
-                                // type: 'error',
-                                title: "sorry",
-                                text: errorMessage,
+                                imageUrl: '../../assets/images/andco_logo.png',
+                                imageWidth: 350,
+                                title: "Sorry",
                                 showConfirmButton: false,
+                                // type: 'error',
+                                text: errorMessage,
                                 timer: 2000
                             })
                             this.router.navigate(['/login']);

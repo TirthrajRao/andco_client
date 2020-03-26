@@ -12,7 +12,13 @@ body {
     color: #D2A0A1;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0
 }
 
@@ -49,17 +55,21 @@ select::-ms-expand {
     display: none !important;
 }
 
-input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
 }
 
-.modal-header, .modal-content, .modal-footer {
+.modal-header,
+.modal-content,
+.modal-footer {
     border: none !important;
 }
 
 .modal-content {
     border-radius: 30px !important;
 }
+
 
 /* Show password css start */
 
@@ -89,10 +99,13 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     z-index: 11;
 }
 
+
 /* Show password css end */
+
+
 /* tooltip design start */
 
-.my-custom-class .tooltip-inner{
+.my-custom-class .tooltip-inner {
     background: rgba(255, 255, 255, 0.8);
     font-size: 16px;
     border-radius: 5px;
@@ -101,20 +114,29 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     z-index: 9999;
     position: relative;
 }
+
 .my-custom-class .arrow::before {
     border-top-color: rgba(255, 255, 255, 0.8);
     border-bottom-color: rgba(255, 255, 255, 0.8);
-  }
+}
+
+
 /* tooltip design end */
+
 
 /* autofill css start for chrome*/
 
-.join-enter-inputs input:-webkit-autofill, .join-enter-inputs input:-webkit-autofill:hover, .join-enter-inputs input:-webkit-autofill:focus, .join-enter-inputs input:-webkit-autofill:active {
+.join-enter-inputs input:-webkit-autofill,
+.join-enter-inputs input:-webkit-autofill:hover,
+.join-enter-inputs input:-webkit-autofill:focus,
+.join-enter-inputs input:-webkit-autofill:active {
     box-shadow: 0 0 0 30px #7CBBCD inset !important;
     -webkit-text-fill-color: #FFFFFF !important;
 }
 
+
 /* autofill css end for chrome*/
+
 
 /*common css end*/
 
@@ -127,7 +149,8 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     padding-top: 232px;
 }
 
-.sales-pricing-main .page-content, .event-activity-main .page-content {
+.sales-pricing-main .page-content,
+.event-activity-main .page-content {
     min-height: calc(100vh - (232px + 40px));
     padding-top: 30px;
     width: 100%;
@@ -137,7 +160,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     min-height: calc(100vh - 190px);
     padding-top: 190px;
     flex-direction: column;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .guest-main-background .page-content {
@@ -146,6 +169,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     min-height: calc(100vh - 60px);
     /* position: relative; */
 }
+
 
 /* display screen slider start */
 
@@ -213,7 +237,9 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     background-color: #6c6f50;
 }
 
+
 /* display screen slider end */
+
 
 /* create event css start here */
 
@@ -230,7 +256,8 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     margin-left: 0 !important;
 }
 
-.create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
+.create-event-slider button.prevarrow.slick-arrow,
+.create-event-slider button.nextarrow.slick-arrow {
     background-color: #9D3742;
     color: #fff;
     font-size: 22px;
@@ -252,11 +279,14 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     right: 0;
 }
 
+
 /* create event css start here */
+
 
 /* set-price css start here */
 
-.set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+.set-price-main-slider button.prevarrow.slick-arrow,
+.set-price-main-slider button.nextarrow.slick-arrow {
     background-color: #A6B138;
     color: #fff;
     font-size: 18px;
@@ -278,11 +308,14 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     right: 0;
 }
 
-.set-price-main-slider button.nextarrow.slick-arrow.slick-disabled {
+.set-price-main-slider button.nextarrow.slick-arrow.slick-disabled,
+.set-price-main-slider button.slick-arrow.slick-disabled {
     display: none !important;
 }
 
+
 /* set-price css end here */
+
 
 /* event-menu slider start */
 
@@ -299,6 +332,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     right: 20%;
 }
 
+
 /* date picker css start here */
 
 .datepicker.dropdown-menu th {
@@ -313,7 +347,9 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calen
     background-image: none !important;
 }
 
+
 /* date picker css end here */
+
 
 /* sweet alert design start */
 
@@ -348,7 +384,9 @@ img.swal2-image {
     color: #dfa099 !important;
 }
 
+
 /* sweet alert css end */
+
 
 /* mat css start */
 
@@ -363,7 +401,8 @@ img.swal2-image {
     font-family: inherit !important;
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
     width: 2em !important;
     height: 2em !important;
     margin-left: 10px !important;
@@ -379,11 +418,13 @@ img.swal2-image {
     width: 70%;
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-underline, span.mat-form-field-ripple {
+.mat-form-field-appearance-legacy .mat-form-field-underline,
+span.mat-form-field-ripple {
     height: 0 !important;
 }
 
-.mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
+.mat-form-field-prefix .mat-icon-button,
+.mat-form-field-suffix .mat-icon-button {
     height: 0 !important;
     width: 0 !important;
 }
@@ -392,13 +433,17 @@ img.swal2-image {
     padding: 0 !important;
 }
 
-.timepicker__header, .clock-face__number>span.active, .clock-face__clock-hand, .mat-calendar-body-selected {
+.timepicker__header,
+.clock-face__number>span.active,
+.clock-face__clock-hand,
+.mat-calendar-body-selected {
     background-color: #545454 !important;
 }
 
 .timepicker-button {
     color: #545454 !important;
 }
+
 
 /* mat tab start */
 
@@ -429,7 +474,8 @@ img.swal2-image {
     height: 0 !important;
 }
 
-.mat-tab-header, .mat-tab-nav-bar {
+.mat-tab-header,
+.mat-tab-nav-bar {
     border-bottom: none !important;
 }
 
@@ -438,7 +484,8 @@ img.swal2-image {
     opacity: 1 !important;
     position: relative;
 }
-.mat-tab-label-active:after{
+
+.mat-tab-label-active:after {
     content: "";
     position: absolute;
     top: 0;
@@ -450,7 +497,9 @@ img.swal2-image {
     border-radius: 7px;
 }
 
+
 /* mat tab end */
+
 
 /* mat css end */
 
@@ -459,9 +508,11 @@ img.swal2-image {
     width: 100% !important;
 }
 
+
 /* my event start */
 
-.event-menu-slider button.slick-arrow, .total-collection-slider button.slick-arrow {
+.event-menu-slider button.slick-arrow,
+.total-collection-slider button.slick-arrow {
     background-color: transparent;
     border: none;
     position: absolute;
@@ -477,7 +528,8 @@ img.swal2-image {
     right: 20px;
 }
 
-.total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+.total-collection-slider button.prevarrow.slick-arrow,
+.event-menu-slider button.prevarrow.slick-arrow {
     right: 70px;
     transform: rotate(180deg);
 }
@@ -507,11 +559,15 @@ img.swal2-image {
 .total-collection-slider ul.slick-dots li.slick-active button {
     background-color: #c97a33;
 }
+
 .total-collection-slider button.slick-arrow img:hover {
     filter: brightness(1.5);
     transition: 0.3s all;
 }
+
+
 /* my event end */
+
 
 /* share button start */
 
@@ -521,7 +577,10 @@ share-button.sb-button.sb-circles-dark button {
     font-size: 0 !important;
 }
 
-share-button.sb-button.sb-circles-dark button.sb-whatsapp, share-button.sb-button.sb-circles-dark button.sb-facebook, share-button.sb-button.sb-circles-dark button.sb-email, share-button.sb-button.sb-circles-dark button.sb-sms {
+share-button.sb-button.sb-circles-dark button.sb-whatsapp,
+share-button.sb-button.sb-circles-dark button.sb-facebook,
+share-button.sb-button.sb-circles-dark button.sb-email,
+share-button.sb-button.sb-circles-dark button.sb-sms {
     background-repeat: no-repeat;
 }
 
@@ -541,7 +600,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     background-image: url(./assets/images/message-event.png);
 }
 
+
 /* share button end */
+
 
 /* guest screen start*/
 
@@ -558,11 +619,13 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     right: 30px;
 }
 
-.guest-activity-slider button.prevarrow.slick-arrow.slick-disabled .arrow-left, .guest-activity-slider button.nextarrow.slick-arrow.slick-disabled .arrow-right {
+.guest-activity-slider button.prevarrow.slick-arrow.slick-disabled .arrow-left,
+.guest-activity-slider button.nextarrow.slick-arrow.slick-disabled .arrow-right {
     border-color: gray;
 }
 
-.arrow-right, .arrow-left {
+.arrow-right,
+.arrow-left {
     display: block;
     margin: 30px auto;
     width: 25px;
@@ -579,19 +642,25 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     transform: rotate(-45deg);
 }
 
+
 /* guest screen end */
+
 
 /* responsive css start */
 
 @media(max-width: 1600px) {
-    .sales-pricing-main .page-content, .event-activity-main .page-content {
+    .sales-pricing-main .page-content,
+    .event-activity-main .page-content {
         min-height: calc(100vh - (173px + 40px));
         padding-top: 100px;
     }
     .myEvent-main .page-content {
         padding-top: 150px;
     }
-    share-button.sb-button.sb-circles-dark button.sb-whatsapp, share-button.sb-button.sb-circles-dark button.sb-facebook, share-button.sb-button.sb-circles-dark button.sb-email, share-button.sb-button.sb-circles-dark button.sb-sms {
+    share-button.sb-button.sb-circles-dark button.sb-whatsapp,
+    share-button.sb-button.sb-circles-dark button.sb-facebook,
+    share-button.sb-button.sb-circles-dark button.sb-email,
+    share-button.sb-button.sb-circles-dark button.sb-sms {
         background-size: 80%;
     }
     share-button.sb-button.sb-circles-dark button {
@@ -601,7 +670,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .guest-main-background .page-content {
         padding-top: 90px;
     }
-    .arrow-right, .arrow-left {
+    .arrow-right,
+    .arrow-left {
         width: 20px;
         height: 20px;
     }
@@ -609,12 +679,14 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 
 @media(max-width: 1366px) {
     /* create event css start */
-    .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
+    .create-event-slider button.prevarrow.slick-arrow,
+    .create-event-slider button.nextarrow.slick-arrow {
         font-size: 20px;
         padding: 3px 50px;
         bottom: -60px;
     }
-    .create-event-hashtag-box input, .create-event-name-box input {
+    .create-event-hashtag-box input,
+    .create-event-name-box input {
         border: 2px solid #fff;
         font-size: 25px;
         padding: 30px 0 30px 45px;
@@ -630,7 +702,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     /* hello text end */
     /* sales activity */
-    .sales-pricing-main .page-content, .event-activity-main .page-content {
+    .sales-pricing-main .page-content,
+    .event-activity-main .page-content {
         padding-top: 60px;
     }
     /* sales activity end */
@@ -641,7 +714,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-main .page-content {
         padding-top: 110px;
     }
-    .total-collection-slider ul.slick-dots{
+    .total-collection-slider ul.slick-dots {
         margin-top: -30px;
     }
     .total-collection-slider button.slick-arrow {
@@ -658,6 +731,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .guest-main-background .page-content {
         padding-top: 60px;
     }
+    .invalid-feedback {
+        font-size: 13px;
+    }
 }
 
 @media(max-width: 1199px) {
@@ -665,14 +741,16 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         min-height: calc(100vh - 190px);
         padding-top: 190px;
     }
-    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+    .set-price-main-slider button.prevarrow.slick-arrow,
+    .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 18px;
         padding: 4px 28px;
     }
 }
 
 @media(max-width: 991px) {
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         line-height: 25px;
     }
     img.swal2-image {
@@ -696,11 +774,13 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         font-size: 15px;
         margin-top: -15px;
     }
-    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+    .set-price-main-slider button.prevarrow.slick-arrow,
+    .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 16px;
         padding: 4px 30px;
     }
-    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+    .set-price-main-slider button.prevarrow.slick-arrow,
+    .set-price-main-slider button.nextarrow.slick-arrow {
         bottom: -50px;
     }
     img.swal2-image {
@@ -713,7 +793,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .swal2-popup {
         padding-top: 15% !important;
     }
-    .sales-pricing-main .page-content, .event-activity-main .page-content {
+    .sales-pricing-main .page-content,
+    .event-activity-main .page-content {
         padding-top: 0 !important;
     }
     .event-menu-slider.slick-slider .slick-list {
@@ -724,11 +805,13 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 
 @media(max-width: 575px) {
     /* create event css start */
-    .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
+    .create-event-slider button.prevarrow.slick-arrow,
+    .create-event-slider button.nextarrow.slick-arrow {
         font-size: 16px;
         padding: 3px 40px;
     }
-    .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
+    .create-event-slider button.prevarrow.slick-arrow,
+    .create-event-slider button.nextarrow.slick-arrow {
         border-radius: 5px;
     }
     /* create  event css end */
@@ -744,7 +827,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         right: 10px;
         font-size: 20px;
     }
-    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+    .total-collection-slider button.prevarrow.slick-arrow,
+    .event-menu-slider button.prevarrow.slick-arrow {
         right: 50px;
     }
     .total-collection-slider button.slick-arrow {
@@ -754,19 +838,26 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .guest-main-background .page-content {
         padding-top: 40px;
     }
+    .mat-tab-label {
+        height: 35px !important;
+        font-size: 16px !important;
+        padding: 0 15px !important;
+    }
 }
 
 @media(max-width:440px) {
     .total-collection-slider button.slick-arrow img {
         height: 26px;
     }
-    .total-collection-slider button.prevarrow.slick-arrow, .event-menu-slider button.prevarrow.slick-arrow {
+    .total-collection-slider button.prevarrow.slick-arrow,
+    .event-menu-slider button.prevarrow.slick-arrow {
         right: 30px;
     }
     .total-collection-slider button.slick-arrow {
         display: none !important;
     }
-    .arrow-right, .arrow-left {
+    .arrow-right,
+    .arrow-left {
         width: 15px;
         height: 15px;
     }
@@ -785,7 +876,8 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         font-size: 11px;
         margin-top: -7px;
     }
-    .set-price-main-slider button.prevarrow.slick-arrow, .set-price-main-slider button.nextarrow.slick-arrow {
+    .set-price-main-slider button.prevarrow.slick-arrow,
+    .set-price-main-slider button.nextarrow.slick-arrow {
         font-size: 14px;
         padding: 4px 20px;
     }
@@ -801,9 +893,11 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 @media(max-width: 400px) {}
 
 @media only screen and (device-width: 320px) and (device-height: 480px) {
-    .create-event-slider button.prevarrow.slick-arrow, .create-event-slider button.nextarrow.slick-arrow {
+    .create-event-slider button.prevarrow.slick-arrow,
+    .create-event-slider button.nextarrow.slick-arrow {
         bottom: -42px;
     }
 }
+
 
 /* responsive css end */
