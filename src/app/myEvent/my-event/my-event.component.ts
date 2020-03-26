@@ -46,6 +46,7 @@ export class MyEventComponent implements OnInit {
     })
   }
   getSingleEvent(event) {
+    console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
       this.eventDetails = response.data
       this.eventHashTag = response.data.hashTag
@@ -55,6 +56,9 @@ export class MyEventComponent implements OnInit {
       this.getCurrentMenu(this.currenMenuIndex)
       if (this.currenMenuIndex == 0) {
         this.getActivity()
+      }
+      if (this.currenMenuIndex == 2) {
+        this.getCollecctionOfEvent()
       }
       console.log("details of event with hastag", this.eventDetails);
     }, error => {
@@ -103,14 +107,14 @@ export class MyEventComponent implements OnInit {
 
 
   getItemsOfGuest(event) {
-    console.log("event of guest for item", event);
-    this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
-      console.log("all list of guest with items", response);
-      this.guestWithItems = response.data
-    }, error => {
-      console.log("error while get items list of guest", error);
+    // console.log("event of guest for item", event);
+    // this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
+    //   console.log("all list of guest with items", response);
+      this.guestWithItems = this.selectedEventId
+    // }, error => {
+    //   console.log("error while get items list of guest", error);
 
-    })
+    // })
 
   }
 
