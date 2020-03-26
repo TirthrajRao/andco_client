@@ -52,7 +52,7 @@ export class SetPriceComponent implements OnInit {
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
-      thanksMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
+      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
       afterEventMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
@@ -84,14 +84,20 @@ export class SetPriceComponent implements OnInit {
       swipe: false,
       prevArrow: '<button type="button" class="prevarrow">Back</button>',
       nextArrow: '<button type="button" class="nextarrow" (click)="nextArrowClick($event)">Next</button>',
-      nextArrowClick(event) {
-        // console.log("is this call or not", event);
 
-        this.nextArrowClick(event)
-      }
+    })
+
+    this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
+      console.log("event on before", currentSlide, nextSlide);
+      this.previousSlide(slick)
     })
   }
 
+
+  previousSlide(slide) {
+    console.log("slide na click ma su ave", slide);
+
+  }
 
   getSetPriceDetailsOfEvent(eventId) {
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {

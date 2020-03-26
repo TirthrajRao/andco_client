@@ -2,7 +2,8 @@
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of displayList; let i =index">
             <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleEvent(name._id , i)">
-                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.eventTitle}}">{{name.eventTitle}}</p>
+                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.eventTitle}}">
+                    {{name.eventTitle}}</p>
             </div>
         </div>
     </div>
@@ -16,7 +17,8 @@
     <div class="myEvent-activity-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
             <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleActivity(name.group , i)">
-                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName}}">{{name.activityName}}</p>
+                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName}}">
+                    {{name.activityName}}</p>
             </div>
             <p class="text-center text-white">{{name.activityStartDate | date :'dd-MM-yyyy'}}</p>
         </div>
@@ -30,8 +32,9 @@
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
     <div class="myEvent-group-slider">
         <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity; let i =index">
-            <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getGroupItem(name.item, i)">
-                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.groupName}}">{{name.groupName}}</p>
+            <div class="myEvent-name" [class.active]="selectedGroupIndex === i" (click)="getGroupItem(name.item, i)">
+                <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.groupName}}">
+                    {{name.groupName}}</p>
             </div>
         </div>
     </div>

@@ -64,15 +64,18 @@ export class GuestItemTotalComponent implements OnInit {
 
 
   displayList() {
+    // this.current = 0
     let newArray = []
     var grouped = _.mapValues(_.groupBy(this.totlaItem, 'activityName'),
       clist => clist.map(car => _.omit(car, 'activityName')));
     // this.displayFinalItem.push(grouped)
     this.displayFinalItem = grouped
-    console.log("grouped", this.displayFinalItem);
     this.keys = Object.keys(this.displayFinalItem);
     this.values = Object.values(this.displayFinalItem)
     // console.log("keys ==>", this.keys, " values ==>", this.values);
+    console.log("grouped", this.keys);
+    // this.current = this.keys[0]
+    // this
     this.values.forEach((value) => {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
@@ -140,4 +143,9 @@ export class GuestItemTotalComponent implements OnInit {
         // this.alertService.getError(err.message);
       })
   }
+
+  display(i) {
+    this.current = i
+  }
+
 }

@@ -11,6 +11,7 @@ export class WelcomeGuestComponent implements OnInit {
   private sub: any
   private hashtag: any
   private platForm: any
+  isLoad = false
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -37,9 +38,11 @@ export class WelcomeGuestComponent implements OnInit {
 
 
   guestEventWithOutLogin(eventhashTag) {
+    this.isLoad = true
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
       console.log("details of event with link", response)
     }, error => {
+      this.isLoad = false
       console.log("error while get link details", error)
     })
   }

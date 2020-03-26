@@ -22,6 +22,7 @@ export class AllSliderComponent implements OnInit {
   isGroup = false
   listOfContent = []
   selectedIndex
+  selectedGroupIndex
   constructor() { }
 
   ngOnInit() {
@@ -123,7 +124,7 @@ export class AllSliderComponent implements OnInit {
     }, 50)
   }
 
-  initGroupSlider(){
+  initGroupSlider() {
     setTimeout(() => {
       this.$slideContainter = $('.myEvent-group-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
@@ -163,6 +164,7 @@ export class AllSliderComponent implements OnInit {
   getSingleActivity(group, index) {
     this.selectedIndex = index
     this.isGroup = true
+    // this.selectedGroupIndex = 0
     $('.groupOfEvent').css('display', 'block')
     // console.log("get group of single activity with index", index);
     this.activityGroup.emit({ group: group, value: false })
@@ -172,7 +174,7 @@ export class AllSliderComponent implements OnInit {
 
   getGroupItem(item, index) {
     console.log("item of singkle group", item);
-    this.selectedIndex = index
+    this.selectedGroupIndex = index
     this.groupItem.emit({ item: item, value: true })
   }
 }

@@ -133,8 +133,8 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   displayAllData() {
-    // console.log("when dispplay group", this.displayGroup);
     this.displayGroup = this.displayActivity[this.activityIndex].group
+    console.log("when dispplay group", this.displayGroup);
     this.selectedwallet = 0
     this.selectedGender = 'male'
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
@@ -146,6 +146,9 @@ export class GuestActivitySliderComponent implements OnInit {
           if (singleItem._id == singleCartItem.itemId) {
             singleItem['quantity'] = singleCartItem.quantity
           }
+          //  else {
+          //   singleItem['quantity'] = 0
+          // }
         })
       } else {
         console.log("check this else part", singleItem);
@@ -172,13 +175,22 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 1
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
+    console.log("list of female array", this.itemList);
+
     this.itemList.forEach((singleItem) => {
+
       if (this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
-          console.log("call or not", singleCartItem);
+          console.log("single cart items display ", singleCartItem)
           if (singleItem._id == singleCartItem.itemId) {
+            console.log("call or not", singleCartItem);
             singleItem['quantity'] = singleCartItem.quantity
+            console.log("single item of itemlist", singleItem);
           }
+          // else {
+          //   console.log("call this else part")
+          //   singleItem['quantity'] = 0
+          // }
         })
       } else {
         console.log("check this else part", singleItem);
@@ -200,6 +212,9 @@ export class GuestActivitySliderComponent implements OnInit {
           if (singleItem._id == singleCartItem.itemId) {
             singleItem['quantity'] = singleCartItem.quantity
           }
+          //  else {
+          //   singleItem['quantity'] = 0
+          // }
         })
       } else {
         console.log("check this else part", singleItem);
