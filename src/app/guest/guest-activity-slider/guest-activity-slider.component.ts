@@ -67,7 +67,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
   func(option) {
     console.log("ama su ave che", option);
-    // this.addTocart()
+    this.addTocart()
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -206,6 +206,12 @@ export class MyEventLinkComponent implements OnInit {
     if (i == 0) {
       this.index = 0
     }
+    if (i == 1) {
+      this.index = 4
+    }
+    if (i == 2) {
+      this.index = 5
+    }
   }
 
 
