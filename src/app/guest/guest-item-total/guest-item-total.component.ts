@@ -103,7 +103,7 @@ export class GuestItemTotalComponent implements OnInit {
 
   addMoreItems() {
     console.log("remove item array", this.removeArray)
-    this.removeItem.emit({ index: 0, removeItem: 'removeItem' })
+    this.removeItem.emit({ index: 0, removeItem: this.removeArray })
   }
 
   addDonationOfEvent() {
@@ -126,6 +126,8 @@ export class GuestItemTotalComponent implements OnInit {
         console.log("remove item data", data);
         // this.myCartDetails(this.eventId);
         this.maleArray[i].splice(k, 1);
+        console.log("male final array", this.maleArray);
+
       }, (err: any) => {
         console.log(err);
         // this.alertService.getError(err.message);
@@ -133,11 +135,15 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   removeFemaleItems(id, i, j) {
+    console.log("item details", id);
+    this.removeArray.push(id)
     this.eventService.removeCartItem(id)
       .subscribe(data => {
         console.log("remove item data", data);
         // this.myCartDetails(this.eventId);
+
         this.femaleArray[i].splice(j, 1);
+        console.log("female array", this.femaleArray);
       }, (err: any) => {
         console.log(err);
         // this.alertService.getError(err.message);

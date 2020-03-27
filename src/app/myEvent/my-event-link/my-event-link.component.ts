@@ -124,7 +124,6 @@ export class MyEventLinkComponent implements OnInit {
       console.log("response of event in link page", response);
       this.afterEventMessage = response.data.afterEventMessage
       this.invitatationMessage = response.data.invitationMessage
-      this.changeEventLink(this.displayEventLink)
       this.reminderDetails = response.data.reminderDetails
       if (this.reminderDetails != null) {
         this.displayReminderItems(this.reminderDetails)
@@ -176,7 +175,7 @@ export class MyEventLinkComponent implements OnInit {
     this.faceBookLink = this.invitatationMessage + '-' + facebookLink
     this.textMessageLink = this.invitatationMessage + '-' + textMessageLink
 
-    console.log("whats up link is ready", this.whatsupLink);
+    console.log("whats up link is ready", this.textMessageLink);
   }
 
 
@@ -244,6 +243,7 @@ export class MyEventLinkComponent implements OnInit {
     }
     this.eventService.addInviationMessage(message).subscribe((response) => {
       console.log("invitation message added", response);
+      this.changeEventLink(this.displayEventLink)
       this.index = no
     }, error => {
       console.log("error while set message", error);
