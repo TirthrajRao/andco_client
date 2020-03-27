@@ -41,14 +41,14 @@ export class AllSliderComponent implements OnInit {
     }
     if (changes.activityList && changes.activityList.currentValue) {
       this.isGroup = false
-      // this.$slideContainter = $('.myEvent-activity-slider');
       $('.myEvent-activity-slider').slick('unslick');
+      this.$slideContainter = $('.myEvent-activity-slider');
       this.initActivitySlider()
     }
     if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
       this.isGroup = true
-      this.$slideContainter = $('.myEvent-group-slider');
       this.$slideContainter.slick('unslick');
+      this.$slideContainter = $('.myEvent-group-slider');
       this.initGroupSlider()
     }
   }
