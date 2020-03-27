@@ -1,14 +1,16 @@
 <div class="guest-activity-single-slide">
     <div class="guest-activity-slider">
         <div *ngFor="let activity of displayActivity">
-            <h2 class="tooltip-class text-white font-weight-bold mb-2" tooltipClass="my-custom-class" ngbTooltip="{{activity.activityName}}" >{{activity.activityName}}</h2>
+            <h2 class="tooltip-class text-white font-weight-bold mb-2" tooltipClass="my-custom-class"
+                ngbTooltip="{{activity.activityName}}">{{activity.activityName}}</h2>
         </div>
     </div>
     <!-- <button (click)="nextSlide()">next</button> -->
     <div class="guest-activity-group">
         <div class="radio" *ngFor="let group of displayGroup; let i = index">
             <input id="{{i}}" name="radio" type="radio" value="{{i}}" (change)="changeGroup($event)">
-            <label for="{{i}}" class="radio-label" tooltipClass="my-custom-class" ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
+            <label for="{{i}}" class="radio-label" tooltipClass="my-custom-class"
+                ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
         </div>
     </div>
     <div class="guest-activity-item-tab">

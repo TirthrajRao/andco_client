@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   sub: any
   eventId: any
   imgUrl
+  isDisplayMenu = true
   notMenu
   constructor(
     private route: ActivatedRoute,
@@ -74,12 +75,20 @@ export class HeaderComponent implements OnInit {
 
 
     this.sub = this.route.params.subscribe(param => {
+      console.log("param ma su ave", param);
+
       this.eventId = param.id
+      // this.hashTag = param.hashTag
     })
 
     this.currentUrl = this.router.url
-    console.log("login user name in heaedr", this.router.url)
+    console.log("login user name in heaedr", this.router.url, this.hashTag)
     this.currentUrl = this.router.url
+    if (this.router.url == '/guest/' + this.hashTag || this.router.url == '/menu') {
+      console.log("log this");
+      this.isDisplayMenu = false
+
+    }
     // console.log("whne page is load display route", this.currentUrl)
   }
 

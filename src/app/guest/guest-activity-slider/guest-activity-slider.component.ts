@@ -215,7 +215,6 @@ export class GuestActivitySliderComponent implements OnInit {
           // console.log("call or not", singleCartItem);
           if (singleItem._id == singleCartItem.itemId) {
             console.log("first of comdition");
-
             singleItem['quantity'] = singleCartItem.quantity
           } else {
             this.removeItemArray.forEach((removeItem) => {
@@ -282,10 +281,10 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   addTocart() {
-    // console.log("list of all item ", this.allCartList)
-    let body = {
-      eventHashtag: this.eventHashtag
-    }
+    console.log("list of all item ", this.eventHashtag)
+    // let body = {
+    //   eventHashtag: this.eventHashtag
+    // }
     this.allCartList[0]['eventHashtag'] = this.eventHashtag
     this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
       console.log("resonse of cart details", response)

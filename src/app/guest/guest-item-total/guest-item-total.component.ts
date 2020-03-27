@@ -47,6 +47,7 @@ export class GuestItemTotalComponent implements OnInit {
     console.log("display item in its page", changes.displayTotalItem.currentValue);
     this.totalActivity = changes.displayTotalItem.currentValue.activities
     this.totlaItem = changes.displayTotalItem.currentValue.allItems
+    this.removeArray = []
     this.displayList()
     this.getCartItems()
   }
