@@ -1,29 +1,33 @@
-
-.accordian-height-box{
+.accordian-height-box {
     max-height: 350px;
     overflow: auto;
     padding-right: 5px;
 }
-li.guest-item{
+
+li.guest-item {
     width: 100%;
     display: inline-block;
     color: #fff;
-    border-bottom:1px solid #b8e6f2;
+    border-bottom: 1px solid #b8e6f2;
     font-size: 20px;
     font-weight: bold;
     padding: 5px;
     margin-bottom: 5px;
 }
-li.guest-item:last-child{
+
+li.guest-item:last-child {
     border: none;
 }
-.guest-item-name{
+
+.guest-item-name {
     float: left;
 }
-.guest-add-items{
+
+.guest-add-items {
     float: right;
 }
-button.single-activity{
+
+button.single-activity {
     color: var(--total-title-font-color);
     font-weight: 600;
     position: relative;
@@ -33,6 +37,7 @@ button.single-activity{
     border-radius: 0;
     margin-bottom: 10px;
 }
+
 button.btn.add-more {
     background-color: #fff;
     color: var(--guest-total-add-more);
@@ -42,20 +47,24 @@ button.btn.add-more {
     margin-bottom: 10px;
     float: right;
 }
-.guest-add-items h4 img{
+
+.guest-add-items h4 img {
     height: 20px;
     margin-left: 20px;
 }
+
 .group-box {
     margin: 15px;
 }
+
 .group-box h4.group {
     color: var(--group-box-h4-group);
     font-weight: bold;
     padding-left: 20px;
     position: relative;
 }
-.group-box h4.group:after{
+
+.group-box h4.group:after {
     content: "";
     background-color: var(--group-box-h4-group);
     position: absolute;
@@ -66,14 +75,17 @@ button.btn.add-more {
     border-radius: 50%;
     margin-right: 5px;
 }
-.group-box ul{
+
+.group-box ul {
     padding: 10px 20px;
 }
+
 .main-item {
-    max-height: 210px;
-    overflow: auto;
+    /* max-height: 210px; */
+    /* overflow: auto; */
     padding: 10px 0;
 }
+
 .main-item::-webkit-scrollbar-track,
 .accordian-height-box::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
@@ -95,28 +107,32 @@ button.btn.add-more {
     background-color: #ffffff;
 }
 
+
 /* accordion start */
+
 .myaccordion button:after {
-    content    : "\f078";
+    content: "\f078";
     font-family: 'FontAwesome';
 }
+
 .myaccordion button[aria-expanded="true"]:after {
     content: "\f077";
 }
+
 .myaccordion button.collapsed:after,
 .myaccordion button:after {
-    position           : absolute;
-    right              : 30px;
-    top                : 0;
-    bottom             : 0;
-    margin             : auto;
-    color        : var(--activity-accordian-arrow-color);
-    font-size    : 20px;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: var(--activity-accordian-arrow-color);
+    font-size: 20px;
     line-height: 50px;
 }
 
-/* accordian end */
 
+/* accordian end */
 
 .buttons-pay-back {
     display: flex;
@@ -126,6 +142,7 @@ button.btn.add-more {
     right: 4%;
     bottom: 5%;
 }
+
 .buttons-pay-back button {
     background-color: #fff;
     color: var(--guest-total-add-more);
@@ -134,61 +151,65 @@ button.btn.add-more {
     font-size: 18px;
 }
 
-@media(max-width: 1600px){
-    button.single-activity{
+@media(max-width: 1600px) {
+    button.single-activity {
         font-size: 24px;
     }
-    li.guest-item{
+    li.guest-item {
         margin-bottom: 0;
     }
-    .main-item{
+    .main-item {
         padding: 0;
     }
     .guest-add-items h4 {
         font-size: 22px;
     }
-    .accordian-height-box{
+    .accordian-height-box {
         max-height: 240px
     }
 }
-@media(max-width:1366px){
-    .accordian-height-box{
+
+@media(max-width:1366px) {
+    .accordian-height-box {
         max-height: 180px
     }
 }
-@media(max-width:1199px){
-    .accordian-height-box{
+
+@media(max-width:1199px) {
+    .accordian-height-box {
         max-height: 100%
     }
-    .buttons-pay-back button{
+    .buttons-pay-back button {
         font-size: 16px;
     }
-    .guest-add-items h4{
+    .guest-add-items h4 {
         font-size: 20px;
     }
-    button.single-activity{
+    button.single-activity {
         font-size: 22px;
     }
-    .group-box h4.group{
+    .group-box h4.group {
         font-size: 20px;
     }
-    .main-item{
-        max-height: 180px;
+    .main-item {
+        /* max-height: 180px; */
         margin-bottom: 20px;
     }
 }
-@media(max-width: 767px){
+
+@media(max-width: 767px) {
     .group-box ul {
         padding: 10px 0;
     }
-    button.btn.add-more{
+    button.btn.add-more {
         font-size: 18px;
         margin-bottom: 0;
     }
-    button.single-activity{
+    button.single-activity {
         font-size: 20px;
     }
-    .myaccordion button.collapsed:after, .myaccordion button:after {
+    .myaccordion button.collapsed:after,
+    .myaccordion button:after {
         font-size: 16px;
         line-height: 44px;
     }
@@ -196,15 +217,17 @@ button.btn.add-more {
         height: 14px;
         margin-left: 12px;
     }
-    li.guest-item{
+    li.guest-item {
         font-size: 18px;
     }
-    .main-item{
-        max-height:100%;
+    .main-item {
+        /* max-height:100%; */
     }
 }
-@media(max-width:400px){
-    .guest-add-items, .guest-item-name  {
+
+@media(max-width:400px) {
+    .guest-add-items,
+    .guest-item-name {
         float: none;
     }
     .guest-add-items h4 {
@@ -212,7 +235,8 @@ button.btn.add-more {
         justify-content: space-between;
         margin: 10px 0;
     }
-    .myaccordion button.collapsed:after, .myaccordion button:after{
+    .myaccordion button.collapsed:after,
+    .myaccordion button:after {
         right: 10px;
     }
     .group-box {
@@ -229,7 +253,7 @@ button.btn.add-more {
         font-size: 14px;
         margin-bottom: 0;
     }
-    .guest-add-items h4{
+    .guest-add-items h4 {
         font-size: 16px;
         margin: 5px 0;
     }

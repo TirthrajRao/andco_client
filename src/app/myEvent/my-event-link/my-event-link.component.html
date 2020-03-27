@@ -2,8 +2,7 @@
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <!-- <h3>{{displayEventLink}}</h3> -->
     <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="">
-    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget"
-        aria-hidden="true" (click)="changeSuccessMessage()"></i>
+    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true" (click)="changeSuccessMessage()"></i>
 </div>
 
 
@@ -14,7 +13,7 @@
         </div>
     </div>
 </div>
-<!-- step 1 start -->
+<!-- step 1 start invitation-->
 <div class="step-1-link" *ngIf="index == 0">
     <div class="textarea-box">
         <textarea name="" id="" rows="4" placeholder="We look forward to having you at the marriage celebration of Kayode and Yomi. Kindly pay for
@@ -27,7 +26,21 @@
     </div>
 </div>
 <!-- step 1 end -->
-<!-- step 2 start -->
+<!-- step 2 start welcome-->
+<div class="step-2-link" *ngIf="index == 4">
+    <div class="textarea-box">
+        <p>Welcome message</p>
+    </div>
+</div>
+<!-- step 2 end -->
+<!-- step 3 start pay-->
+<div class="step-3-link" *ngIf="index == 5">
+    <div class="textarea-box">
+        <p>Pay message</p>
+    </div>
+</div>
+<!-- step 3 end -->
+<!-- step 4 start -->
 <div class="step-2-link" *ngIf="index == 1">
     <div class="textarea-box">
         <textarea name="" id="" rows="4" placeholder="{{invitatationMessage}} {{displayEventLink}}"></textarea>
@@ -36,23 +49,19 @@
         <!-- <share-buttons theme="material-dark" show="11" image="https://loremflickr.com/320/240"></share-buttons> -->
         <ul>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
-                    [button]="'whatsapp'" [url]="whatsupLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'" [button]="'whatsapp'" [url]="whatsupLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'"
-                    [button]="'facebook'" [url]="faceBookLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'" [button]="'facebook'" [url]="faceBookLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
-                    [button]="'email'" [url]="googleLink"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'" [button]="'email'" [url]="googleLink"></share-button>
             </li>
             <li>
 
-                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'"
-                    [url]="textMessageLink"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'" [url]="textMessageLink"></share-button>
             </li>
             <li>
                 <!-- <a href="#">
@@ -62,14 +71,12 @@
         </ul>
     </div>
 </div>
-<!-- step 2 end -->
-<!-- step 3 start -->
-<!-- Remainder -->
+<!-- step 4 end -->
+<!-- step 5 start -->
 <div class="step-3-link" *ngIf="index == 2">
     <form [formGroup]="reminderForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="4" formControlName="reminderMessage" placeholder="{{displayEventLink}}"
-                ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
+            <textarea name="" id="" rows="4" formControlName="reminderMessage" placeholder="{{displayEventLink}}" ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
         </div>
         <div class="send-message">
             <div class="float-left d-flex">
@@ -85,8 +92,7 @@
                 </div>
                 <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate"
-                        (dateChange)="addEvent('input', $event)">
+                    <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate" (dateChange)="addEvent('input', $event)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -104,8 +110,7 @@
                 <!-- <input placeholder="12hr format (default settings)" formControlName="reminderStartTime"
                     aria-label="12hr format" [ngxTimepicker]="default" style="cursor: pointer;visibility:hidden;"
                     > -->
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12"
-                    (timeChanged)="timeChanged($event)">
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12" (timeChanged)="timeChanged($event)">
                 </ngx-material-timepicker>
                 <!-- <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
                     <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
@@ -118,11 +123,9 @@
         </div>
         <div class="all">
             <div class="group-box">
-                <input type="radio" name="radio-group2" id="allList" value="allList"
-                    (change)="selectList($event)">
+                <input type="radio" name="radio-group2" id="allList" value="allList" (change)="selectList($event)">
                 <label class="w-100" for="allList">all invited guests</label>
-                <input type="radio" name="radio-group2" id="buyList" value="buyList" 
-                    (change)="selectList($event)">
+                <input type="radio" name="radio-group2" id="buyList" value="buyList" (change)="selectList($event)">
                 <label class="w-100" for="buyList">only guests that bought aso ebi</label>
             </div>
         </div>
@@ -132,9 +135,9 @@
         </div>
     </form>
 </div>
-<!-- step 3 end -->
+<!-- step 5 end -->
 
-<!-- step 4 start -->
+<!-- step 6 start -->
 <div class="step-4-link" *ngIf="index == 3">
     <div class="textarea-box">
         <textarea name="" id="" rows="4" placeholder="Together with our parents, thank 
@@ -153,4 +156,4 @@
         </div>
     </div>
 </div>
-<!-- step 4 end -->
+<!-- step 6 end -->
