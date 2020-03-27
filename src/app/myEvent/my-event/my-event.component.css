@@ -88,20 +88,18 @@ h2 img:hover {
         bottom: 0;
     }
     /* .my-event-inner-box-height {
-        max-height: 335px;
+        max-height: 400px;
         overflow-y: auto;
         padding-right: 10px;
     }
     .my-event-inner-box-height::-webkit-scrollbar-track {
         background-color: transparent;
     }
-    
     .my-event-inner-box-height::-webkit-scrollbar {
         background-color: transparent;
         width: 3px;
         border-radius: 4px;
     }
-    
     .my-event-inner-box-height::-webkit-scrollbar-thumb {
         border-radius: 5px;
         width: 3px;
