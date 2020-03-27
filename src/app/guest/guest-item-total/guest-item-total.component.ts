@@ -47,6 +47,7 @@ export class GuestItemTotalComponent implements OnInit {
     console.log("display item in its page", changes.displayTotalItem.currentValue);
     this.totalActivity = changes.displayTotalItem.currentValue.activities
     this.totlaItem = changes.displayTotalItem.currentValue.allItems
+    this.removeArray = []
     this.displayList()
     this.getCartItems()
   }
@@ -64,15 +65,18 @@ export class GuestItemTotalComponent implements OnInit {
 
 
   displayList() {
+    // this.current = 0
     let newArray = []
     var grouped = _.mapValues(_.groupBy(this.totlaItem, 'activityName'),
       clist => clist.map(car => _.omit(car, 'activityName')));
     // this.displayFinalItem.push(grouped)
     this.displayFinalItem = grouped
-    console.log("grouped", this.displayFinalItem);
     this.keys = Object.keys(this.displayFinalItem);
     this.values = Object.values(this.displayFinalItem)
     // console.log("keys ==>", this.keys, " values ==>", this.values);
+    console.log("grouped", this.keys);
+    // this.current = this.keys[0]
+    // this
     this.values.forEach((value) => {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
@@ -100,7 +104,7 @@ export class GuestItemTotalComponent implements OnInit {
 
   addMoreItems() {
     console.log("remove item array", this.removeArray)
-    this.removeItem.emit({ index: 0, removeItem: 'removeItem' })
+    this.removeItem.emit({ index: 0, removeItem: this.removeArray })
   }
 
   addDonationOfEvent() {
@@ -123,6 +127,8 @@ export class GuestItemTotalComponent implements OnInit {
         console.log("remove item data", data);
         // this.myCartDetails(this.eventId);
         this.maleArray[i].splice(k, 1);
+        console.log("male final array", this.maleArray);
+
       }, (err: any) => {
         console.log(err);
         // this.alertService.getError(err.message);
@@ -130,14 +136,23 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   removeFemaleItems(id, i, j) {
+    console.log("item details", id);
+    this.removeArray.push(id)
     this.eventService.removeCartItem(id)
       .subscribe(data => {
         console.log("remove item data", data);
         // this.myCartDetails(this.eventId);
+
         this.femaleArray[i].splice(j, 1);
+        console.log("female array", this.femaleArray);
       }, (err: any) => {
         console.log(err);
         // this.alertService.getError(err.message);
       })
   }
+
+  display(i) {
+    this.current = i
+  }
+
 }

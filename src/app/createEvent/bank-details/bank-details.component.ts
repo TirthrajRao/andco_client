@@ -33,7 +33,7 @@ export class BankDetailsComponent implements OnInit {
     // })
 
     this.bankForm = new FormGroup({
-      bankName: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z]+$")]),
+      bankName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9_ ]*$")]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
       cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
     })
@@ -82,7 +82,7 @@ export class BankDetailsComponent implements OnInit {
     console.log("details of bank ", details);
     this.bankDetails.emit(details)
     console.log("=================", this.bankDetails);
-    
+
   }
 
 

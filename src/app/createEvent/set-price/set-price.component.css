@@ -1,4 +1,4 @@
-.sales-pricing-main{
+.sales-pricing-main {
     background-image: url('../../../assets/images/salesPrice1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,42 +11,50 @@
     position: relative;
     padding: 20px;
 }
-.bg-box-set-price{
+
+.bg-box-set-price {
     background-color: #f3f4f3;
     width: 950px;
     height: 600px;
     padding: 20px 0 40px;
     box-shadow: 0px 0px 70px #d5dbd5;
 }
-.hashtag-set-price p{
+
+.hashtag-set-price p {
     color: #686868;
     font-family: 'Advent Pro', 'sans-sarif';
     font-size: 30px;
     margin: 20px 0;
     font-weight: bold;
 }
-.hello-text h2 span{
+
+.hello-text h2 span {
     color: #434040;
     font-weight: bold;
 }
+
 .hashtag {
     position: absolute;
     top: 22%;
 }
-.hashtag h2{
+
+.hashtag h2 {
     font-family: 'Advent Pro', 'sans-sarif';
     color: #686868;
     font-weight: bold;
 }
+
 .option {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
-.single-main-box h3{
+
+.single-main-box h3 {
     color: #A6B138;
     font-weight: bold;
 }
+
 .single-main-box textarea {
     border: 2px solid #a5b138;
     border-radius: 10px;
@@ -59,13 +67,16 @@
     resize: none;
     width: 80%;
 }
-.single-main-box textarea::placeholder{
+
+.single-main-box textarea::placeholder {
     color: silver;
 }
-.single-main-box textarea:focus{
+
+.single-main-box textarea:focus {
     outline: none;
     box-shadow: none;
 }
+
 .single-main-box textarea::-webkit-scrollbar-track {
     background-color: transparent;
 }
@@ -77,23 +88,27 @@
 .single-main-box textarea::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
+
 .sales-button {
     width: 100%;
     display: inline-block;
     margin-top: 20px;
 }
-.sales-inner span{
+
+.sales-inner span {
     color: #A6B138;
     text-align: center;
     font-size: 30px;
 }
-.sales-inner p{
+
+.sales-inner p {
     color: #bdbdbd;
     font-weight: 600;
     text-align: left;
     font-size: 22px;
 }
-.sales-inner input{
+
+.sales-inner input {
     text-align: center;
     color: #5D6C20;
     width: 70%;
@@ -104,54 +119,66 @@
     background-color: #fff;
     margin-bottom: 20px;
 }
+
 .sales-inner input.mat-input-element {
     width: 100%;
 }
-.sales-inner input::placeholder{
+
+.sales-inner input::placeholder {
     color: #5D6C20;
 }
-.sales-inner input:focus{
+
+.sales-inner input:focus {
     outline: none;
     box-shadow: none;
 }
-.main-box-for-slider{
+
+.main-box-for-slider {
     width: 600px;
     margin: auto;
     text-align: center;
     position: relative;
     padding-bottom: 70px;
 }
-.transfer h4{
+
+.transfer h4 {
     font-family: 'Advent Pro', 'sans-sarif';
 }
+
 .skip {
     width: 100%;
     margin: 10px 0;
 }
-.skip a{
+
+.skip a {
     color: #5D6C20;
     font-size: 14px;
 }
-.thank-you h6{
+
+.thank-you h6 {
     color: #A1A1A1;
     font-size: 30px;
 }
-.option h6{
+
+.option h6 {
     color: #686868;
 }
-.how-did-u select{
+
+.how-did-u select {
     border: 1px solid #a5b138;
     background-image: url('../../../assets/images/down.png');
     background-position: center right 10px;
     background-size: 6%;
     background-repeat: no-repeat;
-    -webkit-appearance: none ;
+    -webkit-appearance: none;
     font-size: 22px;
 }
-.how-did-u select:focus{
+
+.how-did-u select:focus {
     box-shadow: none;
 }
-button.btn.set-price-custom-button{
+
+button.btn.set-price-custom-button {
     background-color: #A6B138;
     color: #fff;
     font-size: 18px;
@@ -163,34 +190,51 @@ button.btn.set-price-custom-button{
     z-index: 11;
     position: absolute;
     bottom: 0;
+}
+
+button.btn.set-price-custom-button.float-right {
     right: 0;
 }
-.how-did-u-input{
+
+button.btn.set-price-custom-button.float-left {
+    left: 0;
+}
+
+.how-did-u-input {
     width: 100% !important;
 }
+
 .sales-pricing-main .page-content {
     padding-top: 135px;
 }
+
+
 /* radio button css start here */
 
-[type="radio"]:checked, [type="radio"]:not(:checked) {
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
 }
-[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
     line-height: 35px;
     display: inline-block;
-    color: #bdbdbd ;
+    color: #bdbdbd;
 }
 
-[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
+    bottom: 0;
+    margin: auto;
     width: 30px;
     height: 30px;
     border: 1px solid #ddd;
@@ -198,7 +242,8 @@ button.btn.set-price-custom-button{
     background: #CCCCCC;
 }
 
-[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
     content: '';
     width: 16px;
     height: 16px;
@@ -224,24 +269,28 @@ button.btn.set-price-custom-button{
     transform: scale(1);
 }
 
+
 /* radio button css end here */
+
+
 /* responsive css start here */
 
-@media(max-width: 1600px){
+@media(max-width: 1600px) {
     .bg-box-set-price {
         width: 1040px;
         height: 550px;
         padding: 40px 0;
     }
-    .sales-inner span{
+    .sales-inner span {
         font-size: 28px;
     }
-    .sales-inner input{
+    .sales-inner input {
         height: 46px;
         font-size: 20px;
     }
 }
-@media(max-width: 1366px){
+
+@media(max-width: 1366px) {
     .bg-box-set-price {
         width: 870px;
         height: 490px;
@@ -250,118 +299,132 @@ button.btn.set-price-custom-button{
     .sales-pricing-main .page-content {
         padding-top: 65px;
     }
-    .hashtag-set-price p{
+    .hashtag-set-price p {
         margin: 10px 0;
     }
-    .sales-inner span{
+    .sales-inner span {
         font-size: 24px;
     }
-    .sales-inner p{
+    .sales-inner p {
         font-size: 20px;
     }
-    .sales-inner input{
+    .sales-inner input {
         height: 40px;
         font-size: 17px;
     }
-    .single-main-box h3, .thank-you h6{
+    .single-main-box h3,
+    .thank-you h6 {
         font-size: 22px;
     }
-    .single-main-box textarea{
+    .single-main-box textarea {
         font-size: 18px;
     }
-      /* radio button  start*/
-      [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    /* radio button  start*/
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
         width: 11px;
         height: 11px;
         top: 7px;
         left: 8px;
     }
-    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    [type="radio"]:checked+label:before,
+    [type="radio"]:not(:checked)+label:before {
         width: 26px;
         height: 26px;
     }
     /* radio button end*/
 }
-@media(max-width: 1199px){
+
+@media(max-width: 1199px) {
     .bg-box-set-price {
         width: 730px;
         height: 470px;
         padding: 20px 0;
     }
-    .sales-inner span ,.hashtag-set-price p{
+    .sales-inner span,
+    .hashtag-set-price p {
         font-size: 22px;
     }
-    .sales-inner p{
+    .sales-inner p {
         font-size: 18px;
     }
-    button.btn.set-price-custom-button{
+    button.btn.set-price-custom-button {
         padding: 4px 19px;
     }
-      /* radio button  start*/
-      [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    /* radio button  start*/
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
         width: 10px;
         height: 10px;
         top: 5px;
         left: 5px;
     }
-    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    [type="radio"]:checked+label:before,
+    [type="radio"]:not(:checked)+label:before {
         width: 20px;
         height: 20px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         line-height: 30px;
     }
     /* radio button end*/
 }
-@media(max-width: 991px){
-    .sales-inner span ,.hashtag-set-price p{
+
+@media(max-width: 991px) {
+    .sales-inner span,
+    .hashtag-set-price p {
         font-size: 20px;
     }
     .single-main-box textarea {
         font-size: 18px;
         padding: 15px;
-    }   
-    .single-main-box h3, .thank-you h6 {
+    }
+    .single-main-box h3,
+    .thank-you h6 {
         font-size: 18px;
         margin-bottom: 8px;
     }
-    .sales-inner input{
+    .sales-inner input {
         font-size: 16px;
     }
 }
-@media(max-width: 767px){
+
+@media(max-width: 767px) {
     .bg-box-set-price {
         width: 640px;
         height: 440px;
     }
-    .main-box-for-slider{
+    .main-box-for-slider {
         width: 500px;
     }
-    .sales-inner span, .hashtag-set-price p {
+    .sales-inner span,
+    .hashtag-set-price p {
         font-size: 18px;
     }
-    .how-did-u select{
+    .how-did-u select {
         font-size: 16px;
     }
-    button.btn.set-price-custom-button{
+    button.btn.set-price-custom-button {
         bottom: 20px;
         font-size: 16px;
     }
 }
-@media(max-width: 575px){
+
+@media(max-width: 575px) {
     .bg-box-set-price {
         width: 480px;
         height: 420px;
         margin-top: 0;
         padding: 10px 0;
     }
-    .main-box-for-slider{
+    .main-box-for-slider {
         width: 400px;
     }
-    .transfer h4{
+    .transfer h4 {
         font-size: 18px;
     }
-    .single-main-box textarea{
+    .single-main-box textarea {
         border: 1px solid #A6B138;
         width: 100%;
     }
@@ -373,27 +436,29 @@ button.btn.set-price-custom-button{
         float: left;
     }
 }
-    @media(max-width: 480px){
-        .bg-box-set-price {
-            width: 390px;
-        }
-    .main-box-for-slider{
+
+@media(max-width: 480px) {
+    .bg-box-set-price {
+        width: 390px;
+    }
+    .main-box-for-slider {
         width: 350px;
     }
     .sales-inner input {
         font-size: 14px;
-    }    
+    }
     .sales-inner p {
         font-size: 16px;
     }
-    .main-box-for-slider{
+    .main-box-for-slider {
         width: 300px;
     }
-    .how-did-u select{
+    .how-did-u select {
         width: 100% !important;
     }
 }
-@media(max-width: 400px){
+
+@media(max-width: 400px) {
     .bg-box-set-price {
         width: 340px;
         height: 360px;
@@ -405,14 +470,16 @@ button.btn.set-price-custom-button{
     .how-did-u select {
         font-size: 14px;
     }
-    .sales-inner span, .hashtag-set-price p {
+    .sales-inner span,
+    .hashtag-set-price p {
         font-size: 16px;
     }
-    .single-main-box h3, .thank-you h6 {
+    .single-main-box h3,
+    .thank-you h6 {
         font-size: 16px;
         margin-bottom: 4px;
     }
-    .main-box-for-slider{
+    .main-box-for-slider {
         width: 260px;
     }
     .transfer h4 {
@@ -423,7 +490,8 @@ button.btn.set-price-custom-button{
         font-size: 14px;
     }
 }
-@media(max-width: 320px){
+
+@media(max-width: 320px) {
     .bg-box-set-price {
         width: 290px;
     }

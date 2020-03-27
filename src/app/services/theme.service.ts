@@ -168,7 +168,7 @@ export const luxury = {
   'total-title-background-color' : '#977626',
   'group-box-h4-group' : '#000000',
   'activity-accordian-arrow-color' : '#ffffff',
-  'next-skip-back-color' : '#977626',
+  'next-skip-back-color' : '#ffffff',
   'guest-address-radio-color': '#ceb669',
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#b7a478',
