@@ -195,6 +195,15 @@ button.btn.add-more {
         /* max-height: 180px; */
         margin-bottom: 20px;
     }
+    .group-box ul {
+        padding: 0px 20px;
+    }
+}
+
+@media(max-width:991px) {
+    .main-item {
+        margin-bottom: 0;
+    }
 }
 
 @media(max-width: 767px) {
