@@ -106,18 +106,21 @@ textarea::placeholder {
     color: #e0d8d8;
 }
 
-textarea::-webkit-scrollbar-track {
+textarea::-webkit-scrollbar-track,
+.step-3-link::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
     background-color: transparent;
 }
 
-textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar,
+.step-3-link::-webkit-scrollbar {
     width: 2px;
     background-color: transparent;
 }
 
-textarea::-webkit-scrollbar-thumb {
+textarea::-webkit-scrollbar-thumb,
+.step-3-link::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: transparent;
@@ -207,6 +210,11 @@ span.middle {
     color: #fff;
     margin: 0 6px;
     font-size: 25px;
+}
+
+.step-3-link {
+    max-height: 350px;
+    overflow: auto;
 }
 
 

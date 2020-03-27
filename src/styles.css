@@ -883,6 +883,7 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     img.swal2-image {
         height: 30px;
+        top: 2%;
         width: 100px !important;
     }
     .myEvent-main .page-content {
