@@ -256,6 +256,9 @@ span.zone {
 /* step 4 end */
 
 @media(max-width: 1600px) {
+    .step-3-link {
+        max-height: 230px;
+    }
     .share-link {
         padding: 6px 25px 4px 4px;
     }
@@ -274,6 +277,7 @@ span.zone {
     .share-button button {
         border: 2px solid #F8D0AD;
         font-size: 22px;
+        margin-top: 0;
     }
     .share-link i {
         top: 7px;
