@@ -41,6 +41,8 @@ export class SetPriceComponent implements OnInit {
   currentDay = new Date()
   selectedAccount
   setPriceDetails
+  hearAboutMessage
+  aboutTypeOf
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -49,6 +51,10 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
@@ -60,7 +66,8 @@ export class SetPriceComponent implements OnInit {
       paymentDeadlineTime: new FormControl('', [Validators.required]),
       bankDetails: new FormControl('', [Validators.required]),
       hearAbout: new FormControl(''),
-      linkOfEvent: new FormControl('')
+      linkOfEvent: new FormControl(''),
+      message: new FormControl('')
     })
     this.sub = this.activated.params.subscribe(param => {
       this.eventId = param.id
@@ -101,11 +108,13 @@ export class SetPriceComponent implements OnInit {
 
   getSetPriceDetailsOfEvent(eventId) {
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
-      if (response.thanksMessage) {
+      console.log("response of set price", response);
 
+      if (response.welcomeMessage) {
         this.setPriceDetails = response
         console.log("response of set price", this.setPriceDetails);
         this.selectedAccount = this.setPriceDetails.bankDetails
+        this.aboutTypeOf = this.setPriceDetails.hearAbout
         if (this.setPriceDetails.payMentTransferDate == 'true') {
           $('input:radio[id="test5"]').prop('checked', true);
         }
@@ -115,10 +124,16 @@ export class SetPriceComponent implements OnInit {
         if (this.setPriceDetails.isLogistics = 'false') {
           $('input:radio[id="test8"]').prop('checked', true);
         }
-        if (this.setPriceDetails.hearAbout != ('flyer' || 'others' || 'online')) {
+        if (this.setPriceDetails.payMentTransferDate != 'true') {
+          $('input:radio[id="test6"]').prop('checked', true);
+
+          this.isTransfer = true
+        }
+        if (this.setPriceDetails.hearAbout.aboutType == 'planner') {
           console.log("this is called");
           this.isEventPlannerSelected = true
-
+          this.hearAboutMessage = this.setPriceDetails.hearAbout.message
+          console.log("messgae of hear about", this.hearAboutMessage);
         }
       }
 
@@ -175,6 +190,8 @@ export class SetPriceComponent implements OnInit {
       }
     });
     if (flag == 0) {
+      console.log("value of set price", this.setPriceForm.value);
+
       this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
         this.alertService.getSuccess(response.message)
@@ -202,9 +219,6 @@ export class SetPriceComponent implements OnInit {
           this.setPriceForm.get('bankDetails').updateValueAndValidity();
         }
       } else {
-
-
-
         if (form[element].status == 'INVALID') {
           flag = 1;
           if (element == 'thanksMessage') {
@@ -218,11 +232,6 @@ export class SetPriceComponent implements OnInit {
             this.errorMessaage = 'Payment Time is required'
             return false
           }
-          // } else if (element == 'bankDetails') {
-          //   console.log("bank error");
-          //   // flag == 0
-          //   return false
-          // }
         }
         else {
           return true
@@ -231,11 +240,10 @@ export class SetPriceComponent implements OnInit {
     });
     if (flag == 0) {
       console.log("final data to  update", this.setPriceForm.value);
-
       this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
-        // this.alertService.getSuccess(response.message)
-        // this.router.navigate(['created-event-message'])
+        this.alertService.getSuccess(response.message)
+        this.router.navigate(['created-event-message'])
       }, error => {
         console.log("error while set price of event", error)
       })
@@ -295,7 +303,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   onDropDown(event) {
-    // console.log("selected drop down value", event.target.value);
+    console.log("selected drop down value", event.target.value);
     if (event.target.value == 'planner') {
       this.isEventPlannerSelected = true
       this.isEventVendorSelected = false
@@ -305,28 +313,51 @@ export class SetPriceComponent implements OnInit {
     } else {
       this.isEventPlannerSelected = false
       this.isEventVendorSelected = false
+      let hearAbout = {
+        aboutType: event.target.value
+      }
       this.setPriceForm.patchValue({
-        hearAbout: event.target.value
+        hearAbout: hearAbout
       })
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
+      if (this.aboutTypeOf) {
+        console.log("ca;ll this or not");
+        this.aboutTypeOf = hearAbout
+        console.log("change type", this.aboutTypeOf);
+
+      }
     }
   }
 
   plannerValue(event) {
-    // console.log("planner value", event.target.value);
+    console.log("planner value", event.target.value);
+    let hearAbout = {
+      aboutType: 'planner',
+      message: event.target.value
+    }
     this.setPriceForm.patchValue({
-      hearAbout: event.target.value
+      hearAbout: hearAbout
     })
     this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
+
   vendorValue(event) {
+    let hearAbout = {
+      aboutType: 'vendor',
+      message: event.target.value
+    }
     this.setPriceForm.patchValue({
-      hearAbout: event.target.value
+      hearAbout: hearAbout
     })
     this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
 
   skipButton() {
     this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+  }
+
+
+  backToGroup() {
+    this.router.navigate(['/eventGroup/' + this.eventId])
   }
 }

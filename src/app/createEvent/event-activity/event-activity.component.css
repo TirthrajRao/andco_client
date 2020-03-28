@@ -12,7 +12,8 @@
     position: relative;
     padding: 20px;
 }
-.bg-box-set-price{
+
+.bg-box-set-price {
     background-color: #f3f4f3;
     width: 1200px;
     height: 600px;
@@ -21,18 +22,22 @@
     margin-top: 40px;
     position: relative;
 }
-.hashtag-set-price{
+
+.hashtag-set-price {
     width: 100%;
 }
-.hashtag-set-price h2{
+
+.hashtag-set-price h2 {
     text-align: center;
     font-family: 'Advent Pro', 'sans-sarif';
     color: #686868;
     font-weight: bold;
 }
+
 .wrapper {
     position: relative;
 }
+
 .inner-box {
     max-height: 410px;
     overflow-y: auto;
@@ -83,7 +88,8 @@
     box-shadow: none;
     outline: none;
 }
-.element i{
+
+.element i {
     position: absolute;
     left: 275px;
     margin-top: 30px;
@@ -91,21 +97,25 @@
     font-size: 25px;
     cursor: pointer;
 }
-.single-element{
+
+.single-element {
     position: relative;
     border-bottom: 1px solid #dcdcdc;
     padding: 10px 0;
 }
+
 button.remove {
     background-color: transparent;
     border: none;
     font-weight: bold;
     margin-left: 10px;
 }
-.buttons{
+
+.buttons {
     text-align: center;
 }
-.buttons button.clone{
+
+.buttons button.clone {
     background-color: #A6B138;
     color: #fff;
     border-radius: 50%;
@@ -115,24 +125,29 @@ button.remove {
     line-height: 0;
     outline: none;
 }
-.remove_sec{
+
+.remove_sec {
     display: none;
 }
-.select-box-div{
+
+.select-box-div {
     width: 100%;
 }
-.select-box-div select{
+
+.select-box-div select {
     width: 20%;
     color: #A6B138;
     border: 2px solid #DBD9AC;
     margin-right: 20px;
     font-size: 20px;
 }
-.select-box-div i{
+
+.select-box-div i {
     color: #A6B138;
     font-size: 20px;
     cursor: pointer;
 }
+
 .date-display {
     background: #fff;
     padding: 5px;
@@ -148,11 +163,13 @@ button.remove {
     float: left;
     cursor: pointer;
 }
-.date-display p{
+
+.date-display p {
     color: #a5b138;
     font-size: 20px;
     font-weight: bold;
 }
+
 .event-next-btn {
     position: absolute;
     bottom: 20px;
@@ -161,7 +178,8 @@ button.remove {
     right: 20px;
     text-align: center;
 }
-.event-next-btn button{
+
+.event-next-btn button {
     background-color: #A6B138;
     color: #fff;
     border: none;
@@ -171,9 +189,10 @@ button.remove {
     font-weight: bold;
 }
 
+
 /* responsive css start */
 
-@media(max-width:1600px){
+@media(max-width:1600px) {
     .bg-box-set-price {
         width: 1040px;
         height: 570px;
@@ -186,24 +205,25 @@ button.remove {
         font-size: 24px;
     }
 }
-@media(max-width:1366px){
+
+@media(max-width:1366px) {
     .bg-box-set-price {
         width: 870px;
         height: 500px;
         padding: 30px 0;
     }
-    .hashtag-set-price p{
+    .hashtag-set-price p {
         margin: 10px 0;
     }
     .inner-box {
-        max-height:280px;
+        max-height: 280px;
     }
-    .element input ,
-    .date-display{
+    .element input,
+    .date-display {
         font-size: 22px;
         height: 42px;
     }
-    .date-display{
+    .date-display {
         width: 70px;
     }
     button.remove img {
@@ -215,16 +235,17 @@ button.remove {
     .event-next-btn button {
         font-size: 16px;
     }
-    .hashtag-set-price h2{
+    .hashtag-set-price h2 {
         font-size: 26px;
     }
-    .element i{
+    .element i {
         left: 245px;
         margin-top: 27px;
         font-size: 22px;
     }
 }
-@media(max-width:1199px){
+
+@media(max-width:1199px) {
     .bg-box-set-price {
         width: 730px;
         height: 410px;
@@ -235,17 +256,20 @@ button.remove {
         min-height: 100px;
     }
 }
-@media(max-width:991px){
+
+@media(max-width:991px) {
     .bg-box-set-price {
         width: 640px;
         height: 440px;
     }
-    .element input, .date-display{
+    .element input,
+    .date-display {
         font-size: 20px;
         height: 38px;
     }
 }
-@media(max-width:767px){
+
+@media(max-width:767px) {
     .bg-box-set-price {
         width: 640px;
         height: 440px;
@@ -253,22 +277,23 @@ button.remove {
     .buttons button.clone {
         font-size: 18px;
     }
-    .element{
+    .element {
         padding: 20px;
     }
     .element i {
         margin-top: 20px;
         font-size: 18px;
     }
-    .date-display{
+    .date-display {
         margin-top: 10px;
     }
-    .inner-box{
+    .inner-box {
         max-height: 260px;
         min-height: 170px;
     }
 }
-@media(max-width:575px){
+
+@media(max-width:575px) {
     .bg-box-set-price {
         width: 480px;
         height: 430px;
@@ -279,34 +304,38 @@ button.remove {
         width: 14px;
     }
 }
-@media(max-width: 480px){
+
+@media(max-width: 480px) {
     .bg-box-set-price {
         width: 390px;
     }
-    .element input, .date-display p{
+    .element input,
+    .date-display p {
         font-size: 18px;
     }
-    .element i{
+    .element i {
         margin-top: 19px;
         font-size: 16px;
     }
 }
-@media(max-width: 400px){
+
+@media(max-width: 400px) {
     .bg-box-set-price {
         width: 350px;
     }
 }
-@media(max-width: 360px){
-    .element input{
+
+@media(max-width: 360px) {
+    .element input {
         width: calc(100% - 40px);
     }
-    .element input{
+    .element input {
         font-size: 16px;
     }
     .date-display {
         width: 60px;
     }
-    .date-display p{
+    .date-display p {
         font-size: 15px;
     }
     .element i {
@@ -314,8 +343,9 @@ button.remove {
         left: auto;
     }
 }
-@media(max-width:320px){
-    .bg-box-set-price{
+
+@media(max-width:320px) {
+    .bg-box-set-price {
         width: 350px;
         height: 360px;
     }

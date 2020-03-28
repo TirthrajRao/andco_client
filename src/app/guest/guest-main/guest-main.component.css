@@ -147,6 +147,9 @@
         margin-top: 7px;
         font-size: 22px;
     }
+    .guest-inner-box {
+        margin-bottom: 100px;
+    }
 }
 
 @media(max-width: 480px) {
@@ -160,6 +163,7 @@
         padding: 20px 20px 60px;
         margin-top: 20px;
         min-height: 50vh;
+        margin-bottom: 50px;
     }
     .guest-main-box {
         width: 90%;
@@ -167,7 +171,7 @@
     .guest-header h3 {
         font-size: 18px;
     }
-    .guest-main-background{
+    .guest-main-background {
         padding: 20px 0 70px;
     }
 }

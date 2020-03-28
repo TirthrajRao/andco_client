@@ -68,7 +68,7 @@
     <!-- step3 end -->
     <div class="buttons-pay-back">
         <button class="btn" (click)="displayType()">Back</button>
-        <button class="btn" [disabled]="(bankAccountFrom.invalid) && (cardNumberForm.invalid)"
+        <button class="btn" [disabled]=" isDiable || (bankAccountFrom.invalid) && (cardNumberForm.invalid)"
             (click)="finalPayment()">Pay</button>
     </div>
 </div>

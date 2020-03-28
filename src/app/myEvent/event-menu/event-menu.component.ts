@@ -12,6 +12,7 @@ export class EventMenuComponent implements OnInit {
   @Output() profilePhoto: EventEmitter<any> = new EventEmitter<any>();
   @Output() activity: EventEmitter<any> = new EventEmitter<any>();
   @Output() selectedMenu: EventEmitter<any> = new EventEmitter<any>();
+  @Output() changeMenu: EventEmitter<any> = new EventEmitter<any>();
   $slider
   $sliderContent
   menuArray = [
@@ -31,11 +32,9 @@ export class EventMenuComponent implements OnInit {
       this.$slider = this.$sliderContent.not('.slick-initialized').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        draggable: false,
+        draggable: true,
         arrows: true,
         centerMode: true,
-        touchMove:false,
-        swipe: false,
         focusOnSelect: true,
         prevArrow: '#arrowpre',
         nextArrow: '#arrownext',
@@ -48,10 +47,16 @@ export class EventMenuComponent implements OnInit {
           }
         ],
       })
-
+      this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
+        console.log("event on before", currentSlide, nextSlide);
+        this.previousSlide(event, nextSlide)
+      })
     }, 50)
   }
-
+  previousSlide(event, nextSlide) {
+    console.log("details of next slide", event, nextSlide);
+    this.changeMenu.emit(nextSlide)
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("selected event id", changes.eventId.currentValue);

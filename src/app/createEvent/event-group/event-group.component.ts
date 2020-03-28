@@ -54,6 +54,7 @@ export class EventGroupComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // this.isButton = false
   }
 
@@ -385,5 +386,10 @@ export class EventGroupComponent implements OnInit {
   getHashTag(event) {
     // console.log("event hash tage", event);
     this.eventHashTag = event
+  }
+
+
+  backToActivity() {
+    this.router.navigate(['/eventActivity/' + this.eventId]);
   }
 }

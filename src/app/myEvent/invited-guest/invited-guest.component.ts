@@ -38,6 +38,7 @@ export class InvitedGuestComponent implements OnInit {
     }
   ]
   selctedIndex
+  noListMessage
   constructor() { }
 
   ngOnInit() {
@@ -50,29 +51,36 @@ export class InvitedGuestComponent implements OnInit {
     if (changes.displayGuest && changes.displayGuest.currentValue) {
       this.finalList = changes.displayGuest.currentValue
       this.displayList(changes.displayGuest.currentValue)
+    } else {
+      console.log("call this or not");
+      this.noListMessage = 'There is no guest in this event'
+      this.displayGuest = []
     }
   }
 
   displayList(list) {
     console.log("display total list", list);
-    this.displayGuest = list.totalGuest[0]
-    this.selctedIndex = 4
-    this.displayGuest.forEach(singleList => {
-      console.log("single object is ready", singleList);
-      this.firstLetter.push(singleList.userName.firstName.charAt(0))
-      console.log("singleItem", this.firstLetter);
-      // console.log("first letter of word", firstLetter);
-      this.secondLetter.push(singleList.userName.lastName.charAt(0))
-    });
+    if (list.totalGuest && list.totalGuest.length) {
+      this.noListMessage = ''
+      this.displayGuest = list.totalGuest[0]
+      this.selctedIndex = 4
+      this.displayGuest.forEach(singleList => {
+        console.log("single object is ready", singleList);
+        this.firstLetter.push(singleList.userName.firstName.charAt(0))
+        console.log("singleItem", this.firstLetter);
+        // console.log("first letter of word", firstLetter);
+        this.secondLetter.push(singleList.userName.lastName.charAt(0))
+      });
+    }
   }
 
 
   displayListOfPlatForm(i) {
-    console.log("index of icon", i);
+    console.log("index of icon", this.displayGuest);
     this.firstLetter = []
     this.secondLetter = []
     this.selctedIndex = i
-    if (i == 0) {
+    if (i == 0 && (this.finalList.whatsUpList && this.finalList.whatsUpList.length)) {
       this.displayGuest = this.finalList.whatsUpList[0]
       this.displayGuest.forEach(singleList => {
         console.log("single object is ready", singleList);

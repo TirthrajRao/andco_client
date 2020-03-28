@@ -29,6 +29,7 @@ export class PaymentDetailsComponent implements OnInit {
   eventId
   index = 0
   donation: any;
+  isDiable = false
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -116,7 +117,7 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   finalPayment() {
-
+    this.isDiable = true
     let myCart = {
       orderDetails: this.cartList,
       finalTotal: this.finalGrandTotal,
@@ -136,12 +137,14 @@ export class PaymentDetailsComponent implements OnInit {
       finalData = this.cardNumberForm.value
       selectedValue = true
     }
+    // console.log();
+
     this.eventService.addAccountDetails(finalData, selectedValue, myCart).subscribe((response: any) => {
       console.log("response of payment completed", response);
       this.thankYouDetails.emit({ message: response.data, index: 6 })
     }, error => {
       console.log("error while add account ", error)
+      this.isDiable = false
     })
-
   }
 }

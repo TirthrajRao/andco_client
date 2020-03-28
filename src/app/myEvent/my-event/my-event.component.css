@@ -122,6 +122,7 @@ h2 img:hover {
     }
     h2 img:hover {
         height: 27px;
+        filter: none;
     }
 }
 
@@ -129,6 +130,9 @@ h2 img:hover {
     .my-event-inner-box-height {
         max-height: unset;
         overflow: unset;
+    }
+    .myEvent-main {
+        height: calc(var(--vh, 2vh) * 100);
     }
 }
 
