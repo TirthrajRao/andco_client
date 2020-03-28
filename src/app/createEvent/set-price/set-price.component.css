@@ -233,8 +233,6 @@ button.btn.set-price-custom-button.float-left {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
-    margin: auto;
     width: 30px;
     height: 30px;
     border: 1px solid #ddd;
@@ -356,17 +354,19 @@ button.btn.set-price-custom-button.float-left {
     [type="radio"]:not(:checked)+label:after {
         width: 10px;
         height: 10px;
-        top: 5px;
+        top: 8px;
         left: 5px;
     }
     [type="radio"]:checked+label:before,
     [type="radio"]:not(:checked)+label:before {
         width: 20px;
         height: 20px;
+        top: 3px;
     }
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         line-height: 30px;
+        padding-left: 25px;
     }
     /* radio button end*/
 }

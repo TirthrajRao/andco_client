@@ -108,6 +108,8 @@ span.text-orange {
     }
     .total-activity-box {
         margin-top: 60px;
+        max-height: 250px;
+        min-height: 250px;
     }
     .total-activity-box h1 {
         font-size: 30px;
