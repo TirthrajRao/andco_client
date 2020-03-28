@@ -1,5 +1,5 @@
 <div class="total-guest mt-sm-4">
-    <span>{{displayGuest.length}} Guests</span>
+    <span *ngIf="displayGuest && displayGuest.length">{{displayGuest.length? displayGuest.length : 0}} Guests</span>
 </div>
 <div class="social-icon">
     <ul>
@@ -11,6 +11,7 @@
     </ul>
 </div>
 <div class="guest-list-box">
+    <h1 *ngIf="noListMessage">{{noListMessage}}</h1>
     <ul class="guest-list-inner-box">
         <li *ngFor="let name of displayGuest; let i =index">
             <div class="profile-name">

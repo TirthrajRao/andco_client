@@ -97,7 +97,7 @@ export class GuestActivitySliderComponent implements OnInit {
     this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
       this.cartTotalItems = response.data.cartList
       // this.displayActivity = response.data.cartList
-      this.allCartList = response.data.cartList
+      // this.allCartList = response.data.cartList
       console.log("response of cart items", this.allCartList)
       this.displayAllData()
     }, error => {
@@ -281,7 +281,11 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   addTocart() {
-    console.log("list of all item ", this.eventHashtag)
+    console.log("list of all item ", this.allCartList)
+    if (this.allCartList.length == 0) {
+      console.log("call this");
+      this.allCartList = this.cartTotalItems
+    }
     // let body = {
     //   eventHashtag: this.eventHashtag
     // }

@@ -46,16 +46,16 @@ export class GuestItemTotalComponent implements OnInit {
     // console.log("******changes", changes);
     console.log("display item in its page", changes.displayTotalItem.currentValue);
     this.totalActivity = changes.displayTotalItem.currentValue.activities
-    this.totlaItem = changes.displayTotalItem.currentValue.allItems
-    this.removeArray = []
-    this.displayList()
+    // this.totlaItem = changes.displayTotalItem.currentValue.allItems
+    // this.removeArray = []
+    // this.displayList()
     this.getCartItems()
   }
 
   getCartItems() {
     this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
-      // console.log("response of cart list", response);
       this.totlaItem = response.data.cartList
+      console.log("response of cart list", this.totlaItem);
       this.displayList()
     }, error => {
       console.log("error while get cart details", error)
@@ -122,6 +122,7 @@ export class GuestItemTotalComponent implements OnInit {
    */
   removeMaleItems(id, i, k) {
     console.log("id of remove item ", id);
+    this.removeArray.push(id)
     this.eventService.removeCartItem(id)
       .subscribe(data => {
         console.log("remove item data", data);

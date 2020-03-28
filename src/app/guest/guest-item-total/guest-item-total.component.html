@@ -1,57 +1,61 @@
 <div class="guest-item-main">
-<div class="d-inline-block w-100">
-    <button class="btn add-more" (click)="addMoreItems()">add more</button>
-</div>
+    <div class="d-inline-block w-100">
+        <button class="btn add-more" (click)="addMoreItems()">add more</button>
+    </div>
+    <h1 *ngIf="totlaItem && !totlaItem.length">Sorry, You have no item in your cart , please click on add More to add
+        some items</h1>
     <div class="accordian-height-box">
-    <div id="accordion" class="myaccordion">
-        <span *ngFor="let key of keys; let i = index">
-            <button class="btn single-activity w-100" data-toggle="collapse" [attr.data-target]="'#collapseOne' + i"
-                aria-controls="collapseOne" (click)="current = i" tooltipClass="my-custom-class" ngbTooltip="{{key}}">
-                {{key}}
-            </button>
-            <div id="collapseOne{{i}}" class="collapse" [class.collapse]='current !=i' aria-labelledby="headingOne"
-                data-parent="#accordion">
-                <div class="main-item">
-                    <div class="group-box">
-                        <h4 class="group">Male</h4>
-                        <ul>
-                            <li *ngFor="let data of maleArray[i]; let k =index" class="guest-item">
-                                <div class="guest-item-name">
-                                    <p tooltipClass="my-custom-class" ngbTooltip="{{data.itemName}}">{{data.itemName}}</p>
-                                </div>
-                                <div class="guest-add-items">
-                                    <h4 class="font-weight-bold">{{data.itemPrice}}<span> x </span>
-                                        {{data.quantity}}
-                                        <span> = </span>{{data.itemPrice * data.quantity}}
-                                        <img src="../../../assets/images/x.png" alt="remove"
-                                            (click)="removeMaleItems(data.itemId, i ,k)">
-                                    </h4>
-                                </div>
-                            </li>
-                        </ul>
-                        <h4 class="group">Female</h4>
-                        <ul>
-                            <li class="guest-item" *ngFor="let data of femaleArray[i]; let j = index">
-                                <div class="guest-item-name">
-                                    <p>{{data.itemName}}</p>
-                                </div>
-                                <div class="guest-add-items">
-                                    <h4 class="font-weight-bold">{{data.itemPrice}} <span> x </span>
-                                        {{data.quantity}}
-                                        <span> =
-                                        </span>{{data.itemPrice * data.quantity}}
-                                        <img src="../../../assets/images/x.png" alt="remove"
-                                            (click)="removeFemaleItems(data.itemId, i ,j)">
-                                    </h4>
-                                </div>
-                            </li>
-                        </ul>
+        <div id="accordion" class="myaccordion">
+            <span *ngFor="let key of keys; let i = index">
+                <button class="btn single-activity w-100" data-toggle="collapse" [attr.data-target]="'#collapseOne' + i"
+                    aria-controls="collapseOne" (click)="current = i" tooltipClass="my-custom-class"
+                    ngbTooltip="{{key}}">
+                    {{key}}
+                </button>
+                <div id="collapseOne{{i}}" class="collapse" [class.collapse]='current !=i' aria-labelledby="headingOne"
+                    data-parent="#accordion">
+                    <div class="main-item">
+                        <div class="group-box">
+                            <h4 class="group">Male</h4>
+                            <ul>
+                                <li *ngFor="let data of maleArray[i]; let k =index" class="guest-item">
+                                    <div class="guest-item-name">
+                                        <p tooltipClass="my-custom-class" ngbTooltip="{{data.itemName}}">
+                                            {{data.itemName}}</p>
+                                    </div>
+                                    <div class="guest-add-items">
+                                        <h4 class="font-weight-bold">{{data.itemPrice}}<span> x </span>
+                                            {{data.quantity}}
+                                            <span> = </span>{{data.itemPrice * data.quantity}}
+                                            <img src="../../../assets/images/x.png" alt="remove"
+                                                (click)="removeMaleItems(data.itemId, i ,k)">
+                                        </h4>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h4 class="group">Female</h4>
+                            <ul>
+                                <li class="guest-item" *ngFor="let data of femaleArray[i]; let j = index">
+                                    <div class="guest-item-name">
+                                        <p>{{data.itemName}}</p>
+                                    </div>
+                                    <div class="guest-add-items">
+                                        <h4 class="font-weight-bold">{{data.itemPrice}} <span> x </span>
+                                            {{data.quantity}}
+                                            <span> =
+                                            </span>{{data.itemPrice * data.quantity}}
+                                            <img src="../../../assets/images/x.png" alt="remove"
+                                                (click)="removeFemaleItems(data.itemId, i ,j)">
+                                        </h4>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </span>
+            </span>
+        </div>
     </div>
-</div>
     <div class="buttons-pay-back">
         <button class="btn" (click)="displayItemList()">Back</button>
         <button class="btn" (click)="addDonationOfEvent()">Add Donation</button>
