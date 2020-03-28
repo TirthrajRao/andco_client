@@ -13,6 +13,8 @@ declare const $: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+
   FB: any;
 
   loginForm: FormGroup;
@@ -55,6 +57,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 
     $(".toggle-password").click(function () {
       $(this).toggleClass("fa-eye fa-eye-slash");

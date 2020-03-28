@@ -20,6 +20,10 @@ export class MainMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     // console.log("username", this.eventOfUser)
     if (this.eventOfUser == 'false') {
       this.index = 0
