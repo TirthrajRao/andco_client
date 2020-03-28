@@ -9,8 +9,8 @@ envs['production'] = {
     // counter: 0,
 }
 envs['development'] = {
-    baseApiUrl: "http://192.168.43.138:3000/api",
-    baseMediaUrl: "http://192.168.43.138/andco_server/",
+    baseApiUrl: "http://localhost:3000/api",
+    baseMediaUrl: "http://localhost/andco_server/",
     // isvisited: false,
     // counter: 0,
 }
