@@ -54,6 +54,7 @@ export class EventGroupComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // this.isButton = false
   }
 

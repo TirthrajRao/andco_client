@@ -131,6 +131,9 @@ h2 img:hover {
         max-height: unset;
         overflow: unset;
     }
+    .myEvent-main {
+        height: calc(var(--vh, 2vh) * 100);
+    }
 }
 
 @media(max-width: 767px) {

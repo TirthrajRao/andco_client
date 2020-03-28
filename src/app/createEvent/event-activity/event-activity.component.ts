@@ -53,6 +53,7 @@ export class EventActivityComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // console.log("today date=======", this.hashTag)
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();

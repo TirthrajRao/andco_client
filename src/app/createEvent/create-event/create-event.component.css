@@ -20,9 +20,11 @@
     right: 0;
     bottom: 0;
 }
+
 .create-event-type-box.slick-slide:focus {
     outline: none !important;
 }
+
 .create-event-slider-box-width {
     width: 650px;
     max-width: 100%;
@@ -41,7 +43,12 @@ button.slick-arrow {
     font-size: 22px;
 }
 
-.create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+.create-event-type-box h3,
+.create-event-hashtag-box h3,
+.create-event-name-box h3,
+.create-event-profile-box h3,
+.create-event-background-box h3,
+.create-event-pricing-box h3 {
     color: #fff;
     font-weight: 600;
     margin-bottom: 20px;
@@ -65,27 +72,35 @@ button.slick-arrow {
     margin: 12px 0;
     cursor: pointer;
 }
-.create-event-type-menu ul li a:hover{
+
+.create-event-type-menu ul li a:hover {
     color: #D2A0A1;
 }
+
 .create-event-type-menu ul li.active a {
     color: #fff !important;
 }
 
+
 /* your event type css end */
 
+
 /* your event hashtag and name css start */
-.create-event-hashtag-box input{
+
+.create-event-hashtag-box input {
     background-image: url('../../../assets/images/hashtag.png');
     background-repeat: no-repeat;
     background-position: center left 10px;
 }
-.create-event-name-box input{
+
+.create-event-name-box input {
     background-image: url('../../../assets/images/pencil.png');
     background-repeat: no-repeat;
     background-position: center left 10px;
 }
-.create-event-hashtag-box input, .create-event-name-box input {
+
+.create-event-hashtag-box input,
+.create-event-name-box input {
     background-color: transparent;
     border: 3px solid #fff;
     border-radius: 7px;
@@ -97,16 +112,21 @@ button.slick-arrow {
     color: #fff;
     margin-bottom: 10px;
 }
+
 .create-event-hashtag-box input::placeholder,
-.create-event-name-box input::placeholder{
+.create-event-name-box input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
+
 .create-event-hashtag-box input:focus,
-.create-event-name-box input:focus{
+.create-event-name-box input:focus {
     outline: none !important;
     box-shadow: none;
 }
+
+
 /* your event hashtag and name css end */
+
 
 /* your event profile css start */
 
@@ -118,7 +138,9 @@ button.slick-arrow {
     margin: auto;
 }
 
-.profile-picture img, .main-background-picture img, .sample_bg img {
+.profile-picture img,
+.main-background-picture img,
+.sample_bg img {
     max-width: 100%;
     min-width: 100%;
     min-height: 100%;
@@ -129,7 +151,9 @@ button.slick-arrow {
     cursor: pointer;
 }
 
+
 /* your event profile css end */
+
 
 /* your event background css start */
 
@@ -154,11 +178,14 @@ button.slick-arrow {
     color: #fff;
     cursor: pointer;
 }
-.bg-select-div{
+
+.bg-select-div {
     cursor: pointer;
 }
 
+
 /* your event background css end */
+
 
 /* your event prising css start */
 
@@ -172,6 +199,7 @@ button.slick-arrow {
     text-align: left;
     font-weight: 600;
 }
+
 button.btn.created-event-custom-button {
     background-color: #9D3742;
     color: #fff;
@@ -186,11 +214,13 @@ button.btn.created-event-custom-button {
     bottom: 0px;
     z-index: 11;
 }
-.bg-select-div.active .sample_bg{
+
+.bg-select-div.active .sample_bg {
     border: 3px solid #000;
     border-radius: 50%;
 }
-.bg-select-div.active span{
+
+.bg-select-div.active span {
     color: #000 !important;
 }
 
@@ -203,10 +233,16 @@ div#message1 {
 
 /* your event prising css end */
 
+
 /* responsive css start */
 
 @media(max-width: 1366px) {
-    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+    .create-event-type-box h3,
+    .create-event-hashtag-box h3,
+    .create-event-name-box h3,
+    .create-event-profile-box h3,
+    .create-event-background-box h3,
+    .create-event-pricing-box h3 {
         margin-bottom: 12px;
         font-size: 22px;
     }
@@ -215,18 +251,19 @@ div#message1 {
         width: 300px;
         margin: 10px auto;
     }
-    .sample_bg{
+    .sample_bg {
         height: 60px;
         width: 60px;
     }
-    .create-event-main{
+    .create-event-main {
         padding: 0;
     }
     .create-event-type-menu ul li a {
         font-size: 24px;
         margin: 6px 0;
     }
-    .create-event-hashtag-box input, .create-event-name-box input {
+    .create-event-hashtag-box input,
+    .create-event-name-box input {
         border: 2px solid #fff;
         font-size: 25px;
         padding: 30px 0 30px 45px;
@@ -250,14 +287,19 @@ div#message1 {
 }
 
 @media(max-width: 1199px) {
-    .profile-picture{
+    .profile-picture {
         width: 250px;
         height: 250px;
     }
     img.upload_img_icon {
         width: 60px;
     }
-    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3{
+    .create-event-type-box h3,
+    .create-event-hashtag-box h3,
+    .create-event-name-box h3,
+    .create-event-profile-box h3,
+    .create-event-background-box h3,
+    .create-event-pricing-box h3 {
         margin-bottom: 12px;
         font-size: 22px;
     }
@@ -265,18 +307,23 @@ div#message1 {
         padding: 40px 30px;
         font-size: 22px;
     }
-    .create-event-main{
+    .create-event-main {
         padding: 20px;
     }
 }
 
 @media(max-width: 991px) {
-    .profile-picture{
+    .profile-picture {
         width: 220px;
         height: 220px;
     }
-    .create-event-hashtag-box span{
+    .create-event-hashtag-box span {
         top: 40px;
+    }
+    .create-event-main {
+        height: unset;
+        height: calc(var(--vh, 2vh) * 100);
+        min-height: unset;
     }
 }
 
@@ -284,25 +331,29 @@ div#message1 {
     .create-event-slider-box-width {
         width: 420px;
     }
-    .navigation_menu{
+    .navigation_menu {
         height: 60px;
         width: 60px;
     }
 }
 
 @media(max-width: 575px) {
-    
     .create-event-slider-box-width {
         width: 380px;
     }
-    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3 {
+    .create-event-type-box h3,
+    .create-event-hashtag-box h3,
+    .create-event-name-box h3,
+    .create-event-profile-box h3,
+    .create-event-background-box h3,
+    .create-event-pricing-box h3 {
         font-size: 21px;
     }
     .create-event-hashtag-box span {
         font-size: 40px;
         top: 34px;
     }
-    .profile-picture{
+    .profile-picture {
         width: 200px;
         height: 200px;
     }
@@ -313,14 +364,15 @@ div#message1 {
     .create-event-type-menu ul li a {
         font-size: 20px;
     }
-    .create-event-type-menu{
+    .create-event-type-menu {
         border: 2px solid #fff;
         padding: 10px;
     }
     .background-photo-upload span {
         font-size: 16px;
     }
-    .create-event-hashtag-box input, .create-event-name-box input {
+    .create-event-hashtag-box input,
+    .create-event-name-box input {
         border: 1px solid #fff;
         font-size: 20px;
         padding: 20px 10px 20px 45px;
@@ -333,11 +385,11 @@ div#message1 {
         height: 160px;
         width: 370px;
     }
-    .sample_bg{
+    .sample_bg {
         height: 50px;
         width: 50px;
     }
-    button.btn.created-event-custom-button{
+    button.btn.created-event-custom-button {
         padding: 3px 25px;
         font-size: 16px;
     }
@@ -364,7 +416,7 @@ div#message1 {
         padding: 10px;
         font-size: 14px;
     }
-    .profile-picture{
+    .profile-picture {
         width: 160px;
         height: 160px;
     }
@@ -372,42 +424,50 @@ div#message1 {
         height: 30px;
         width: 40px;
     }
-    .create-event-type-box h3, .create-event-hashtag-box h3, .create-event-name-box h3, .create-event-profile-box h3, .create-event-background-box h3, .create-event-pricing-box h3{
+    .create-event-type-box h3,
+    .create-event-hashtag-box h3,
+    .create-event-name-box h3,
+    .create-event-profile-box h3,
+    .create-event-background-box h3,
+    .create-event-pricing-box h3 {
         font-size: 18px;
     }
-    .main-background-picture{
+    .main-background-picture {
         height: 100px;
         width: 190px;
     }
-    .create-event-type-menu{
+    .create-event-type-menu {
         padding: 0px;
     }
     .background-photo-upload span {
         font-size: 14px;
     }
-    .sample_bg{
+    .sample_bg {
         height: 40px;
         width: 40px;
     }
     .create-event-type-menu ul li a {
         font-size: 16px;
     }
-    button.btn.created-event-custom-button{
+    button.btn.created-event-custom-button {
         bottom: 8px;
         border-radius: 5px;
     }
 }
-@media only screen and (device-width : 320px) and (device-height : 480px){
+
+@media only screen and (device-width: 320px) and (device-height: 480px) {
     .create-event-type-menu {
         border: 1px solid #fff;
         padding: 0;
     }
-    .create-event-main{
+    .create-event-main {
         background-position: bottom;
     }
-    button.btn.created-event-custom-button{
+    button.btn.created-event-custom-button {
         bottom: 28px;
         border-radius: 5px;
     }
 }
+
+
 /* responsive css end */

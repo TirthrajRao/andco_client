@@ -51,6 +51,10 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
