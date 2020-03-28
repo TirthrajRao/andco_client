@@ -110,7 +110,7 @@ export class MyEventComponent implements OnInit {
     // console.log("event of guest for item", event);
     // this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
     //   console.log("all list of guest with items", response);
-      this.guestWithItems = this.selectedEventId
+    this.guestWithItems = this.selectedEventId
     // }, error => {
     //   console.log("error while get items list of guest", error);
 
@@ -139,6 +139,34 @@ export class MyEventComponent implements OnInit {
       this.getCollecctionOfEvent()
     }
     if (this.currenMenuIndex == 5) {
+      this.route.navigate(['edtiEvent/' + this.selectedEventId])
+    }
+  }
+
+  changeMenuWithArraow(event) {
+    console.log("event when click on array of slider", event);
+    if (event == 0) {
+      this.currenMenuIndex = event
+      this.getActivity()
+    }
+    if (event == 1) {
+      this.currenMenuIndex = event
+      this.getProfileOfEvent()
+    }
+    if (event == 2) {
+      this.currenMenuIndex = event
+      this.getCollecctionOfEvent()
+    }
+    if (event == 3) {
+      this.currenMenuIndex = event
+      this.getEventLink()
+    }
+    if (event == 4) {
+      this.currenMenuIndex = event
+      this.getGuestListOfEvent()
+    }
+    if (event == 5) {
+      this.currenMenuIndex = event
       this.route.navigate(['edtiEvent/' + this.selectedEventId])
     }
   }
