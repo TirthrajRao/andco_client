@@ -100,6 +100,7 @@ export class InvitedGuestComponent implements OnInit {
     if (i == 0 && (this.finalList.whatsUpList && this.finalList.whatsUpList.length)) {
       this.displayGuest = this.finalList.whatsUpList[0]
       if (this.displayGuest && this.displayGuest.length) {
+        this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
           console.log("single object is ready", singleList);
           this.firstLetter.push(singleList.userName.firstName.charAt(0))
@@ -109,11 +110,12 @@ export class InvitedGuestComponent implements OnInit {
         });
       } else {
         console.log("for whats up");
-
+        this.noListMessage = 'There is no guest join from whats up'
       }
     } else if (i == 1 && (this.finalList.faceBookList && this.finalList.faceBookList.length)) {
       this.displayGuest = this.finalList.faceBookList[0]
       if (this.displayGuest && this.displayGuest.length) {
+        this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
           console.log("single object is ready", singleList);
           this.firstLetter.push(singleList.userName.firstName.charAt(0))
@@ -128,6 +130,7 @@ export class InvitedGuestComponent implements OnInit {
     } else if (i == 2 && (this.finalList.textMessageList && this.finalList.textMessageList.length)) {
       this.displayGuest = this.finalList.textMessageList[0]
       if (this.displayGuest && this.displayGuest.length) {
+        this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
           console.log("single object is ready", singleList);
           this.firstLetter.push(singleList.userName.firstName.charAt(0))
@@ -141,6 +144,7 @@ export class InvitedGuestComponent implements OnInit {
     } else if (i == 3 && (this.finalList.googleList && this.finalList.googleList.length)) {
       this.displayGuest = this.finalList.googleList[0]
       if (this.displayGuest && this.displayGuest.length) {
+        this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
           console.log("single object is ready", singleList);
           this.firstLetter.push(singleList.userName.firstName.charAt(0))
