@@ -39,6 +39,7 @@ export class MyEventLinkComponent implements OnInit {
   textMessageLink
   invitatationMessage
   reminderDetails
+  welcomeMessage
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   isAll
   isOnly
@@ -124,6 +125,7 @@ export class MyEventLinkComponent implements OnInit {
       console.log("response of event in link page", response);
       this.afterEventMessage = response.data.afterEventMessage
       this.invitatationMessage = response.data.invitationMessage
+      this.welcomeMessage = response.data.welcomeMessage
       this.reminderDetails = response.data.reminderDetails
       if (this.reminderDetails != null) {
         this.displayReminderItems(this.reminderDetails)

@@ -386,4 +386,9 @@ export class EventGroupComponent implements OnInit {
     // console.log("event hash tage", event);
     this.eventHashTag = event
   }
+
+
+  backToActivity() {
+    this.router.navigate(['/eventActivity/' + this.eventId]);
+  }
 }
