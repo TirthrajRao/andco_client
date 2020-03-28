@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="next-back-button mt-2 w-100 d-inline-block">
-                        <button class="btn float-left">Back</button>
+                        <button class="btn float-left" (click)="backToActivity()" >Back</button>
                         <button class="btn float-right" (click)="updateGroup? updateGroups(): addGroup()"
                             [disabled]="!isButton">Next</button>
                     </div>
