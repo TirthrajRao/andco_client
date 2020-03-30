@@ -51,7 +51,7 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
@@ -59,7 +59,7 @@ export class SetPriceComponent implements OnInit {
 
     this.setPriceForm = new FormGroup({
       welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
-      afterEventMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
+      thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl('', [Validators.required]),
@@ -161,7 +161,7 @@ export class SetPriceComponent implements OnInit {
 
   }
   setPrice() {
-    // console.log("value of form", this.setPriceForm);
+    console.log("value of form", this.setPriceForm);
     // let message
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
@@ -169,11 +169,11 @@ export class SetPriceComponent implements OnInit {
     keys.every((element, value) => {
       if (form[element].status == 'INVALID') {
         flag = 1;
-        if (element == 'thanksMessage') {
+        if (element == 'welcomeMessage') {
           // console.log("thank you message error");
+          this.errorMessaage = 'Welcome message is required'
+        } else if (element == 'thankyouMessage') {
           this.errorMessaage = 'Thank you message is required'
-        } else if (element == 'afterEventMessage') {
-          this.errorMessaage = 'After Event message is required'
         } else if (element == 'paymentDeadlineDate') {
           this.errorMessaage = 'Payment Date is required'
         } else if (element == 'paymentDeadlineTime') {
@@ -209,9 +209,9 @@ export class SetPriceComponent implements OnInit {
     let flag = 0;
     keys.every((element, value) => {
       // console.log("bank element", form[element], value)
-
       if (form[element] == this.setPriceForm.controls.bankDetails) {
         if (form[element].status == 'INVALID') {
+          console.log("call or not");
           console.log("this is perfect", element);
           this.setPriceForm.patchValue({
             bankDetails: this.setPriceDetails.bankDetails
@@ -221,10 +221,10 @@ export class SetPriceComponent implements OnInit {
       } else {
         if (form[element].status == 'INVALID') {
           flag = 1;
-          if (element == 'thanksMessage') {
+          if (element == 'welcomeMessage') {
             console.log("thank you message error", element);
             // this.errorMessaage = 'Thank you message is required'
-          } else if (element == 'afterEventMessage') {
+          } else if (element == 'thankyouMessage') {
             // this.errorMessaage = 'After Event message is required'
           } else if (element == 'paymentDeadlineDate') {
             // this.errorMessaage = 'Payment Date is required'

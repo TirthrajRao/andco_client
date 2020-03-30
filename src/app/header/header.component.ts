@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   @Input("displayName") displayName
   userName = JSON.parse(sessionStorage.getItem('userName'));
   hashTag = JSON.parse(sessionStorage.getItem('guestHashTag'))
+  totalEvent = JSON.parse(sessionStorage.getItem('eventList'))
   index = 0
   returnUrl: string;
   isDisplay = false
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
   imgUrl
   isDisplayMenu = true
   notMenu
+  displayLogo = true
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -53,6 +55,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+    
+    if (this.hashTag && this.totalEvent <= 1) {
+      // console.log("when guest has less than one event total");
+      // this.imgUrl = ''
+      this.displayLogo = false
+    }
+
+
+
     //tooltip js start
     $(".tooltip-class").hover(function () {
       $(this).attr("tooltip-data", $(this).attr("title"));
@@ -117,6 +130,9 @@ export class HeaderComponent implements OnInit {
   setLogo() {
     // console.log("this function call is or not");
 
+
+
+
     if (this.currentUrl.includes('eventActivity')) {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('eventGroup')) {
@@ -125,7 +141,8 @@ export class HeaderComponent implements OnInit {
       this.imgUrl = '/assets/images/firework-pink.png'
     } else if (this.currentUrl.includes('set-price')) {
       this.imgUrl = '/assets/images/firework-green.png'
-    } else {
+    }
+    else {
       this.imgUrl = '/assets/images/firework-white.png'
     }
   }

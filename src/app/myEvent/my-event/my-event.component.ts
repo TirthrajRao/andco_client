@@ -23,6 +23,7 @@ export class MyEventComponent implements OnInit {
   guestList = []
   totalCollections
   guestWithItems = []
+  isCelebrant
   constructor(
     private route: Router,
     public eventService: EventService
@@ -52,18 +53,23 @@ export class MyEventComponent implements OnInit {
   getSingleEvent(event) {
     console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
-      this.eventDetails = response.data
+      this.isCelebrant = response.data.isCelebrant
       this.eventHashTag = response.data.hashTag
       this.selectedEventId = response.data._id
-      // this.eventLink = response.data.eventLink
-      this.displayMenu = true
-      this.getCurrentMenu(this.currenMenuIndex)
-      if (this.currenMenuIndex == 0) {
-        this.getActivity()
+      if (this.isCelebrant == true) {
+        this.eventDetails = response.data
+        // this.eventLink = response.data.eventLink
+        this.displayMenu = true
+        this.getCurrentMenu(this.currenMenuIndex)
+        if (this.currenMenuIndex == 0) {
+          this.getActivity()
+        }
+      } else {
+        this.route.navigate(['/guest/', this.eventHashTag])
       }
-      if (this.currenMenuIndex == 2) {
-        this.getCollecctionOfEvent()
-      }
+      // if (this.currenMenuIndex == 2) {
+      //   this.getCollecctionOfEvent()
+      // }
       console.log("details of event with hastag", this.eventDetails);
     }, error => {
       console.log("error while get single event details", error);
