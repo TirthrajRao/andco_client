@@ -5,6 +5,11 @@
     min-height: 100vh;
 }
 
+
+/* .myEvent-main {
+    overflow: hidden;
+} */
+
 .myevent-inner-box {
     width: 800px;
     min-height: calc(100vh - 350px);
