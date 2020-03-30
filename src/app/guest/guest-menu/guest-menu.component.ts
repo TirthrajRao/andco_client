@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 declare var $;
 
 @Component({
@@ -14,7 +16,10 @@ export class GuestMenuComponent implements OnInit {
     "activities", "total", "gift-donation", "exit"
   ]
 
-  constructor() { }
+  constructor(
+    public loginService: LoginService,
+    public router: Router
+  ) { }
 
   ngOnInit() {
     $('#circularMenu a.floating-btn').click(function () {
@@ -36,6 +41,12 @@ export class GuestMenuComponent implements OnInit {
   }
   donationOfEvent() {
     this.displayActivity.emit(2)
+  }
+
+
+  logout() {
+    this.loginService.logout()
+    this.router.navigate(['/login']);
   }
 
 

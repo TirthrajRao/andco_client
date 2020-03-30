@@ -40,6 +40,10 @@ export class SignUpComponent implements OnInit {
     private socialLoginService: SocialLoginService
   ) { }
 
+
+
+
+
   ngOnInit() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -250,7 +254,7 @@ export class SignUpComponent implements OnInit {
     // });
     // let message1 = document.getElementById('message2');
     // if (!form.firstName.match(nameInput)) {
-      // console.log("message==========", message1)
+    // console.log("message==========", message1)
     //   message1.innerHTML = "Name can not start with digit"
     // } else {
     //   message1.innerHTML = null;
