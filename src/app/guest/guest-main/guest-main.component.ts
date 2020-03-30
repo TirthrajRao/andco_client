@@ -32,6 +32,7 @@ export class GuestMainComponent implements OnInit {
   eventTheme
   thankYouDetails
   paymentDeadlineDate
+
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -78,7 +79,7 @@ export class GuestMainComponent implements OnInit {
       console.log("current date", this.todayDate);
       if (this.todayDate > this.paymentDeadlineDate) {
         console.log("payment is closed");
-
+        sessionStorage.setItem('isClosed', JSON.stringify('true'))
       }
       this.eventTheme = this.eventDetails.eventTheme
 

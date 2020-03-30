@@ -10,7 +10,7 @@ declare var $;
 })
 export class GuestMenuComponent implements OnInit {
   @Output() displayActivity: EventEmitter<any> = new EventEmitter<any>()
-
+  isClose = JSON.parse(sessionStorage.getItem('isClosed'))
 
   guestMenu = [
     "activities", "total", "gift-donation", "exit"

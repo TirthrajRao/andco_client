@@ -14,6 +14,7 @@ export class GuestActivitySliderComponent implements OnInit {
   @Input('totalActivityList') listOfActivity
   @Input('removeItemOf') removeItem
   @Output() totalItemList: EventEmitter<any> = new EventEmitter<any>()
+  isClose = JSON.parse(sessionStorage.getItem('isClosed'))
   private sub: any
   private eventHashtag: any
   displayActivity = []
@@ -39,6 +40,9 @@ export class GuestActivitySliderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
+
 
     this.sub = this.activated.params.subscribe(params => {
       this.eventHashtag = params.hashTag
@@ -71,6 +75,8 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log("paynent is close", this.isClose);
+
     // this.getSelectedItems()
     console.log("changes", this.removeItem);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
