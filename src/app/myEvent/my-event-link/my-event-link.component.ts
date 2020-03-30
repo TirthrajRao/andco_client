@@ -43,6 +43,7 @@ export class MyEventLinkComponent implements OnInit {
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   isAll
   isOnly
+  flag: any
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -137,27 +138,11 @@ export class MyEventLinkComponent implements OnInit {
   }
 
   displayReminderItems(details) {
-    // if (details.guestList == 'allList') {
-    //   console.log("call this or not", details.guestList);
-    //   this.isChecked = true
-    //   $('input:radio[id="allList"]').prop('checked', true);
-
-    //   // document.getElementById("allList").checked;
-    // } else if (details.guestList == 'buyList') {
-    //   this.isChecked = true
-    //   console.log("or this===========", details.guestList);
-    //   $('input:radio[id="buyList"]').prop('checked', true);
-    // }
     this.displayDate = details.reminderStartDate
     this.displayTime = details.reminderStartTime
     if (this.displayTime) {
       this.timePickerClosed()
     }
-    // setTimeout(() => {
-
-    // },100)
-
-
   }
 
   changeEventLink(link) {
@@ -186,24 +171,16 @@ export class MyEventLinkComponent implements OnInit {
     this.selectedIndex = i
     if (i == 3) {
       this.index = 2
-      console.log("call this or not", this.reminderDetails);
       let valueOfGuest = this.reminderDetails.guestList
       if (valueOfGuest == 'allList') {
-        console.log("first one", valueOfGuest);
-        $('input:radio[id="allList"]').prop('checked', true);
-        // this.isAll = true
-        // this.isOnly = false
+        console.log("call this or not", valueOfGuest);
+        this.isAll = valueOfGuest
       } else {
-        console.log("second=========== one", valueOfGuest);
-        // this.isOnly = true
-        // this.isAll = false
+        this.isOnly = valueOfGuest
       }
     }
     if (i == 4) {
       this.index = 3
-      // if (this.reminderDetails != null)
-
-      // this.displayReminderItems(this.reminderDetails)
     }
     if (i == 0) {
       this.index = 0
@@ -267,15 +244,6 @@ export class MyEventLinkComponent implements OnInit {
       guestList: selected
     })
     this.reminderForm.get('guestList').updateValueAndValidity()
-    // if (selected == 'test7') {
-    //   this.setPriceForm.patchValue({
-    //     isLogistics: 'true'
-    //   })
-    // } else {
-    //   this.setPriceForm.patchValue({
-    //     isLogistics: 'false'
-    //   })
-    // }
   }
 
 
