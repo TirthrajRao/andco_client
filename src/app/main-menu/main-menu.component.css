@@ -93,6 +93,13 @@
     box-shadow: 1px 1px 30px #591d6b;
 }
 
+@media(max-width:1600px) {
+    .menu-links ul li a,
+    .hello-text h2 span {
+        font-size: 38px;
+    }
+}
+
 @media(max-width: 1366px) {
     .menu-links ul li a,
     .hello-text h2 span {
