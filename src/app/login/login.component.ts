@@ -56,14 +56,16 @@ export class LoginComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
+    console.log("first time it is call");
+
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
     $(".toggle-password").click(function () {
       $(this).toggleClass("fa-eye fa-eye-slash");
     });
-
 
     /**
      * Login form for user
@@ -111,6 +113,7 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("data of invalid user", data);
+        sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
         let firstName = data.data.firstName
         this.userName = firstName;
         // console.log(this.userName);
