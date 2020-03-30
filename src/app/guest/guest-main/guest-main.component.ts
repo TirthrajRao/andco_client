@@ -15,6 +15,7 @@ import { Breakpoints } from '@angular/cdk/layout';
 export class GuestMainComponent implements OnInit {
   private sub: any
   private hashtag: any
+  todayDate = new Date()
   eventDetails
   isJoin
   isDisable = false
@@ -30,6 +31,7 @@ export class GuestMainComponent implements OnInit {
   selectedAccount
   eventTheme
   thankYouDetails
+  paymentDeadlineDate
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -39,9 +41,6 @@ export class GuestMainComponent implements OnInit {
     'assets/images/lines.png',
     'assets/images/luxury.png',
     'assets/images/instrument.png']
-
-
-
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -74,6 +73,13 @@ export class GuestMainComponent implements OnInit {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
       console.log("details of event with link", response)
       this.eventDetails = response.data
+      this.paymentDeadlineDate = Date.parse(this.eventDetails.paymentDeadlineDate)
+      console.log("payment check date", this.paymentDeadlineDate);
+      console.log("current date", this.todayDate);
+      if (this.todayDate > this.paymentDeadlineDate) {
+        console.log("payment is closed");
+
+      }
       this.eventTheme = this.eventDetails.eventTheme
 
       // let day : number = 4;
