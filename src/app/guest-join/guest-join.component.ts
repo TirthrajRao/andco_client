@@ -57,6 +57,7 @@ export class GuestJoinComponent implements OnInit {
       this.alertService.getSuccess(response.message)
     }, error => {
       console.log("erorr while join event", error)
+      this.alertService.getError(error.message)
     })
   }
 

@@ -7,7 +7,9 @@
         <div class="total-activity-box" *ngFor="let item of displayCollection; let i =index">
             <div class="inner-div">
                 <h1>{{item._id}} ({{item.total | currency:"&#x20A6;"}})
+                    <span *ngIf="isClosed">(closed)</span>
                 </h1>
+
                 <mat-tab-group>
                     <mat-tab label="{{group.groupName}}" *ngFor="let group of item.finalGroup;">
                         <div class="collection-tab">

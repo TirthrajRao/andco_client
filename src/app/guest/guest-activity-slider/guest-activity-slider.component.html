@@ -27,11 +27,11 @@
                         <p tooltipClass="my-custom-class" ngbTooltip="{{item.itemName}}">{{item.itemName}}</p>
                     </div>
                     <div class="guest-add-items">
-                        <h4>{{item.itemPrice  | currency:"&#x20A6;"}} <span>x</span>
+                        <h4>{{item.itemPrice  | currency:"&#x20A6;"}} <span *ngIf="!isClose">x</span>
                             <input type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="item.quantity"
-                                (change)="maleTotal($event , item , i)">
-                            <span>=</span> {{item.itemPrice * item.quantity}}
+                                (change)="maleTotal($event , item , i)" *ngIf="!isClose">
+                            <span *ngIf="!isClose">= {{item.itemPrice * item.quantity}} </span>
                         </h4>
                     </div>
                 </li>
@@ -42,11 +42,11 @@
                         <p>{{item.itemName}}</p>
                     </div>
                     <div class="guest-add-items">
-                        <h4>{{item.itemPrice  | currency: " &#x20A6; "}} <span>x</span>
+                        <h4>{{item.itemPrice  | currency: " &#x20A6; "}} <span *ngIf="!isClose">x</span>
                             <input type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" min="1" [(ngModel)]="item.quantity"
-                                (change)="femaleTotal($event , item , i)"> <span>=</span>
-                            <span class="">{{item.itemPrice * item.quantity}}</span>
+                                (change)="femaleTotal($event , item , i)" *ngIf="!isClose"> <span *ngIf="!isClose">=
+                                {{item.itemPrice * item.quantity}}</span>
                         </h4>
                     </div>
                 </li>

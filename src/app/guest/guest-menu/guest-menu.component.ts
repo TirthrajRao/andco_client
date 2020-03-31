@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 declare var $;
@@ -9,9 +9,11 @@ declare var $;
   styleUrls: ['./guest-menu.component.css']
 })
 export class GuestMenuComponent implements OnInit {
+  @Input('isClosed') isClosed
   @Output() displayActivity: EventEmitter<any> = new EventEmitter<any>()
-
-
+  isClose
+  totalEventList = JSON.parse(sessionStorage.getItem('eventList'))
+  isMenu
   guestMenu = [
     "activities", "total", "gift-donation", "exit"
   ]
@@ -22,13 +24,25 @@ export class GuestMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    $('#circularMenu a.floating-btn').click(function () {
+    $('#circularMenu a.floating-btn').click(() => {
       $('#circularMenu').toggleClass('active');
     });
-    $('menu a.menu-item').click(function () {
+    $('menu a.menu-item').click(() => {
       $('#circularMenu').removeClass('active');
     });
+
+    if (this.totalEventList > 1) {
+      this.isMenu = true
+    } else {
+      this.isMenu = false
+    }
+
   }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("cahnges in menu", changes.isClosed.currentValue);
+    this.isClose = changes.isClosed.currentValue
+  }
+
 
   allActivities() {
     console.log("click on activity");
@@ -37,10 +51,15 @@ export class GuestMenuComponent implements OnInit {
 
 
   totalOfItems() {
+    console.log("click or not");
     this.displayActivity.emit(1)
   }
   donationOfEvent() {
     this.displayActivity.emit(2)
+  }
+
+  displayMyEvent() {
+    this.router.navigate(['/myevent'])
   }
 
 

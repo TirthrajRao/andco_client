@@ -649,6 +649,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 /* responsive css start */
 
 @media(max-width: 1600px) {
+    .page-content {
+        padding-top: 162px;
+    }
     .sales-pricing-main .page-content,
     .event-activity-main .page-content {
         min-height: calc(100vh - (173px + 40px));
@@ -696,9 +699,6 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .hello-text h2 {
         font-size: 34px;
         max-width: 400px;
-    }
-    .page-content {
-        padding-top: 162px;
     }
     /* hello text end */
     /* sales activity */

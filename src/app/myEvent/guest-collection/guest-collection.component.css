@@ -27,6 +27,7 @@
     min-height: 260px;
     max-height: 260px;
     overflow: auto;
+    padding-right: 10px;
 }
 
 ul.guest-list-inner-box {
@@ -347,6 +348,10 @@ ul.guest-list-inner-box {
     }
     .guest-single-item p {
         width: 180px;
+    }
+    .guest-list-box-scroll {
+        max-height: 150px;
+        min-height: 150px;
     }
 }
 
