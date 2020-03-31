@@ -24,6 +24,7 @@ export class MyEventComponent implements OnInit {
   totalCollections
   guestWithItems = []
   isCelebrant
+  isClosed: any;
   constructor(
     private route: Router,
     public eventService: EventService
@@ -108,7 +109,9 @@ export class MyEventComponent implements OnInit {
   getCollecctionOfEvent() {
     this.eventService.getEventCollection(this.selectedEventId).subscribe((response: any) => {
       console.log("response of collections", response);
+      response.data['isClosed'] = this.eventDetails.isClosed
       this.totalCollections = response.data
+      // this.isClosed = this.eventDetails.isClosed
     }, error => {
       console.log("erro while get collection", error);
 
@@ -117,15 +120,7 @@ export class MyEventComponent implements OnInit {
 
 
   getItemsOfGuest(event) {
-    // console.log("event of guest for item", event);
-    // this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
-    //   console.log("all list of guest with items", response);
     this.guestWithItems = this.selectedEventId
-    // }, error => {
-    //   console.log("error while get items list of guest", error);
-
-    // })
-
   }
 
 

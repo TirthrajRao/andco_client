@@ -18,6 +18,7 @@ export class TotalCollectionComponent implements OnInit {
   isTotal
   isSlider = false
   noValueMessage
+  isClosed
   constructor() { }
 
   ngOnInit() {
@@ -31,7 +32,9 @@ export class TotalCollectionComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes of collections in main page", changes.totalCollection.currentValue);
+    // this.isClosed = changes.isClose.currentValue
+    console.log("changes of collections in main page", changes);
+    this.isClosed = changes.totalCollection.currentValue.isClosed
     let valueOfCollections = changes.totalCollection.currentValue.groupWise
     let eventTotalValue = changes.totalCollection.currentValue.eventTotal
     if ((valueOfCollections && valueOfCollections.length) && !eventTotalValue.message) {
