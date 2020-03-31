@@ -13,7 +13,7 @@ export class GuestMenuComponent implements OnInit {
   @Output() displayActivity: EventEmitter<any> = new EventEmitter<any>()
   isClose
   totalEventList = JSON.parse(sessionStorage.getItem('eventList'))
-  isMenu
+  isMenu = false
   guestMenu = [
     "activities", "total", "gift-donation", "exit"
   ]
@@ -34,6 +34,8 @@ export class GuestMenuComponent implements OnInit {
     if (this.totalEventList > 1) {
       this.isMenu = true
     } else {
+      console.log("call this ");
+      
       this.isMenu = false
     }
 
