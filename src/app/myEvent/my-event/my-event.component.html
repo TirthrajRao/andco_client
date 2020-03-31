@@ -20,8 +20,9 @@
 
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
-                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
+                    <app-collection *ngIf="currenMenuIndex == 2"
+                        [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)"
+                        [guestItems]="guestWithItems"></app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>

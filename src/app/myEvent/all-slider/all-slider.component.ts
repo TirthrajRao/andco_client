@@ -23,6 +23,7 @@ export class AllSliderComponent implements OnInit {
   listOfContent = []
   selectedIndex
   selectedGroupIndex
+  selectedActivityIndex
   constructor() { }
 
   ngOnInit() {
@@ -154,6 +155,9 @@ export class AllSliderComponent implements OnInit {
 
 
   getSingleEvent(eventId, index) {
+    console.log("activity index", this.selectedActivityIndex, index);
+
+    // this.selectedActivity = null
     this.selectedIndex = index
     this.singleEvent.emit({ eventId: eventId, value: false })
     this.isGroup = false
@@ -162,7 +166,7 @@ export class AllSliderComponent implements OnInit {
   }
 
   getSingleActivity(group, index) {
-    this.selectedIndex = index
+    this.selectedActivityIndex = index
     this.isGroup = true
     // this.selectedGroupIndex = 0
     $('.groupOfEvent').css('display', 'block')

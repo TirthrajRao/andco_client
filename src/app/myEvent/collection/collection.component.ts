@@ -16,6 +16,7 @@ export class CollectionComponent implements OnInit {
   selectedIndex = 0
   eventId
   noGuestList
+  isClose
   constructor(
     public eventService: EventService
   ) { }
@@ -23,7 +24,9 @@ export class CollectionComponent implements OnInit {
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes in collectiion", changes, this.selectedIndex = 0);
+    console.log("changes in collectiion", changes);
+    // this.isClose = changes.isClosed.currentValue
+
     if (changes.totalCollection && changes.totalCollection.currentValue) {
       this.selectedIndex = 0
       this.finalCollection = changes.totalCollection.currentValue
