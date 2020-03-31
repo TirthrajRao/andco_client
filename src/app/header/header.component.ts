@@ -61,6 +61,7 @@ export class HeaderComponent implements OnInit {
     if (this.hashTag && this.totalEvent <= 1) {
       // console.log("when guest has less than one event total");
       // this.imgUrl = ''
+      $('#navigation-logo').addClass('.navigation-hide');
       this.displayLogo = false
     }
 
