@@ -15,7 +15,7 @@
 
                 <!-- Display items with groups -->
                 <app-guest-activity-slider *ngIf="index == 0" [totalActivityList]="totalActivityList"
-                    (totalItemList)="totalItem($event)" [removeItemOf]="removeItem">
+                    (totalItemList)="totalItem($event)" [removeItemOf]="removeItem" [isClosed]="isClosed">
                 </app-guest-activity-slider>
                 <!-- End -->
 
@@ -50,7 +50,8 @@
                 <app-payment-message *ngIf="index == 6" [thankYouDetail]="thankYouDetails"></app-payment-message>
                 <!-- end -->
             </div>
-            <app-guest-menu *ngIf="isJoin == true" (displayActivity)="displayActivity($event)"></app-guest-menu>
+            <app-guest-menu *ngIf="isJoin == true" [isClosed]="isClosed" (displayActivity)="displayActivity($event)">
+            </app-guest-menu>
         </div>
     </div>
 </section>

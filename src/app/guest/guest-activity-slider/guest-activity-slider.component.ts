@@ -13,8 +13,9 @@ declare var $;
 export class GuestActivitySliderComponent implements OnInit {
   @Input('totalActivityList') listOfActivity
   @Input('removeItemOf') removeItem
+  @Input('isClosed') isClosed
   @Output() totalItemList: EventEmitter<any> = new EventEmitter<any>()
-  isClose = JSON.parse(sessionStorage.getItem('isClosed'))
+  isClose
   private sub: any
   private eventHashtag: any
   displayActivity = []
@@ -75,8 +76,8 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("paynent is close", this.isClose);
-
+    console.log("paynent is close", this.isClosed);
+    this.isClose = changes.isClosed.currentValue
     // this.getSelectedItems()
     console.log("changes", this.removeItem);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
@@ -97,6 +98,7 @@ export class GuestActivitySliderComponent implements OnInit {
       this.getSelectedItems()
       // this.displayAllData()
     }
+
   }
 
   getSelectedItems() {

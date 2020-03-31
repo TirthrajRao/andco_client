@@ -32,7 +32,7 @@ export class GuestMainComponent implements OnInit {
   eventTheme
   thankYouDetails
   paymentDeadlineDate
-
+  isClosed
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -74,15 +74,9 @@ export class GuestMainComponent implements OnInit {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
       console.log("details of event with link", response)
       this.eventDetails = response.data
-      this.paymentDeadlineDate = Date.parse(this.eventDetails.paymentDeadlineDate)
-      console.log("payment check date", this.paymentDeadlineDate);
-      console.log("current date", this.todayDate);
-      if (this.todayDate > this.paymentDeadlineDate) {
-        console.log("payment is closed");
-        sessionStorage.setItem('isClosed', JSON.stringify('true'))
-      }
+      console.log("payment check date", this.eventDetails);
       this.eventTheme = this.eventDetails.eventTheme
-
+      this.isClosed = this.eventDetails.isClosed
       // let day : number = 4;
 
       switch (this.eventTheme) {
@@ -114,10 +108,6 @@ export class GuestMainComponent implements OnInit {
           this.themeService.toggleDefault()
           break;
       }
-
-
-
-
       this.isJoin = this.eventDetails.isJoined
     }, error => {
       console.log("error while get link details", error)
@@ -139,6 +129,7 @@ export class GuestMainComponent implements OnInit {
     this.isDisable = true
     this.index = event
     this.totalActivityList = this.eventDetails.activity
+    this.isClosed = this.eventDetails.isClosed
   }
   totalItem(event) {
     console.log("total item display in main", event);
