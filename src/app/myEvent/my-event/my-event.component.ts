@@ -45,7 +45,7 @@ export class MyEventComponent implements OnInit {
   getLoginUserEvent() {
     this.eventService.getLoginUserEvent().subscribe((res: any) => {
       this.listOfEvent = res.data
-      // console.log("list of total event of login user", this.listOfEvent);
+      console.log("list of total event of login user", this.listOfEvent);
     }, error => {
       // console.log("error while get list of event", error);
 
