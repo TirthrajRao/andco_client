@@ -372,8 +372,8 @@ ul.guest-list-inner-box {
         height: 50px;
     }
     .guest-list-box-scroll {
-        min-height: 100px;
-        max-height: 100px;
+        min-height: 130px;
+        max-height: 130px;
     }
     #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
         width: 600px;
