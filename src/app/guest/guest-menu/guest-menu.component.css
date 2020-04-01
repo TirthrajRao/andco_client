@@ -116,6 +116,9 @@
 .circular-menu.active .menu-item:nth-child(4) {
     transform: translate3d(-13em, 0em, 0);
 }
+.circular-menu.active .menu-item:nth-child(5) {
+    transform: translate3d(-13em, 0em, 0);
+}
 
 .circular-menu.active menu.items-wrapper a.menu-item {
     z-index: 9999;
