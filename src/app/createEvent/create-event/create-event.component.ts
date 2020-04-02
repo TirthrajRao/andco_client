@@ -19,6 +19,8 @@ export class CreateEventComponent implements OnInit {
   private eventId: any
   userName = JSON.parse(sessionStorage.getItem('userName'));
   eventForm: FormGroup;
+  $slider
+  $sliderContainer
   isPublicVal = false;
   isLogistics = false;
   path = config.baseMediaUrl;
@@ -203,7 +205,8 @@ export class CreateEventComponent implements OnInit {
    */
   initSlickSlider() {
     setTimeout(() => {
-      $('.create-event-slider').not('.slick-initialized').slick({
+      this.$sliderContainer = $('.create-event-slider')
+      this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
         infinite: false,
         draggable: false,
         swipe: false,
@@ -218,10 +221,29 @@ export class CreateEventComponent implements OnInit {
         nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
       $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
+
+      this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+        console.log("event on before", currentSlide, nextSlide);
+        this.nextSlide(event, slick)
+      })
     }, 100)
   }
-  nextCalled(event) {
-    // console.log("ama kaik avu joye", event);
+
+
+  nextSlide(event, slider) {
+    console.log("ama kaik avu joye", event);
+    console.log("second console details", slider);
+    const keys = Object.keys(this.eventForm.controls);
+    let form = this.eventForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      console.log("each element", element);
+      console.log("value of each element", value);
+      if (form[element] == this.eventForm.controls.hashTag) {
+        console.log("call this ");
+
+      }
+    });
 
   }
 
