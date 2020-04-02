@@ -35,7 +35,6 @@ export class GuestMenuComponent implements OnInit {
       this.isMenu = true
     } else {
       console.log("call this ");
-      
       this.isMenu = false
     }
 
