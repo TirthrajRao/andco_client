@@ -34,6 +34,7 @@ export class GuestActivitySliderComponent implements OnInit {
   ]
   cartTotalItems: any = [];
   removeItemArray: any = []
+  isTotal
   constructor(
     public eventService: EventService,
     public router: Router,
@@ -78,6 +79,11 @@ export class GuestActivitySliderComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("paynent is close", this.isClosed);
     this.isClose = changes.isClosed.currentValue
+    if (this.isClose == true) {
+      this.isTotal = false
+    } else {
+      this.isTotal = true
+    }
     // this.getSelectedItems()
     console.log("changes", this.removeItem);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
@@ -242,26 +248,29 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   maleTotal(event, item, index) {
-    // console.log("kaik thay che ama bs", item);
-    this.itemList[index]['quantity'] = event.target.value
-    // this.displayActivity[this.activityIndex].activityName = []
+    console.log("kaik thay che ama bs", event);
+    if (event.target.value != 0) {
 
-    let obj = {
-      activityName: this.displayActivity[this.activityIndex].activityName,
-      itemGender: item.itemGender,
-      itemName: item.itemName,
-      itemPrice: item.itemPrice,
-      quantity: item.quantity,
-      itemId: item._id
+      this.itemList[index]['quantity'] = event.target.value
+      // this.displayActivity[this.activityIndex].activityName = []
+
+      let obj = {
+        activityName: this.displayActivity[this.activityIndex].activityName,
+        itemGender: item.itemGender,
+        itemName: item.itemName,
+        itemPrice: item.itemPrice,
+        quantity: item.quantity,
+        itemId: item._id
+      }
+      var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
+      if (tempIndex > -1) {
+        this.allCartList[tempIndex].quantity = event.target.value
+      }
+      else {
+        this.allCartList.push(obj)
+      }
+      console.log("object of acitivity name", this.allCartList);
     }
-    var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
-    if (tempIndex > -1) {
-      this.allCartList[tempIndex].quantity = event.target.value
-    }
-    else {
-      this.allCartList.push(obj)
-    }
-    console.log("object of acitivity name", this.allCartList);
   }
 
 

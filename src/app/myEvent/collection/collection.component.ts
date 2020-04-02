@@ -32,7 +32,7 @@ export class CollectionComponent implements OnInit {
       this.finalCollection = changes.totalCollection.currentValue
       // this.selectedIndex = 0
     }
-    if (changes.guestItemList && changes.guestItemList.currentValue) {
+    if (changes.guestItemList && changes.guestItemList.currentValue.length) {
       console.log("changes of guest list", changes.guestItemList);
       this.eventId = changes.guestItemList.currentValue
       this.getGuestList(this.eventId)
