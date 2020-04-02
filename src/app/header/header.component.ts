@@ -65,18 +65,6 @@ export class HeaderComponent implements OnInit {
       $('#navigation-logo').addClass('.navigation-hide');
     }
 
-
-
-    //tooltip js start
-    $(".tooltip-class").hover(function () {
-      $(this).attr("tooltip-data", $(this).attr("title"));
-      $(this).removeAttr("title");
-    }, function () {
-      $(this).attr("title", $(this).attr("tooltip-data"));
-      $(this).removeAttr("tooltip-data");
-    });
-    //tooltip js end
-
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
       .subscribe((events: RoutesRecognized[]) => {
@@ -115,7 +103,7 @@ export class HeaderComponent implements OnInit {
 
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {
-      return '#D2A0A1'
+      return '#ed8d8f'
     } else if (this.currentUrl.includes('eventActivity')) {
       return '#434040'
     } else if (this.currentUrl.includes('eventGroup')) {

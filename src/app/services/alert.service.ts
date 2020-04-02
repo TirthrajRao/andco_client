@@ -19,7 +19,7 @@ export class AlertService {
     // console.log(message);
     Swal.fire({
       imageUrl: '../../assets/images/andco_logo.png',
-      imageWidth: 350,
+      imageWidth: 300,
       title: message,
       showConfirmButton: false,
       timer: 4000,
@@ -37,7 +37,7 @@ export class AlertService {
     // console.log(message);
     Swal.fire({
       imageUrl: '../../assets/images/andco_logo.png',
-      imageWidth: 350,
+      imageWidth: 300,
       title: message,
       showConfirmButton: false,
       timer: 4000,
