@@ -37,6 +37,7 @@ export class CreateEventComponent implements OnInit {
   errorMessaage: string;
   selctedIndex
   selectedThemeIndex
+  customEventType
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
     {
@@ -275,6 +276,11 @@ export class CreateEventComponent implements OnInit {
       // console.log("second one");
       // this.inputCtrl.markAsPristine();
     }
+  }
+
+  addEventType() {
+    console.log("event type new one", this.customEventType)
+    this.eventType.push(this.customEventType)
   }
 
 
