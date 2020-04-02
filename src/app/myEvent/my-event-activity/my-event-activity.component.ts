@@ -15,6 +15,7 @@ export class MyEventActivityComponent implements OnInit {
   totalItem = []
   selectedGender
   itemNamePrint: any = [];
+  groupIndex
   constructor() { }
 
   ngOnInit() {
@@ -41,12 +42,19 @@ export class MyEventActivityComponent implements OnInit {
 
   getActivityGroup(event) {
     console.log("total group of single activity with index", event);
-    this.groupOfActivity = event.group
+    console.log("group index if selected", this.groupIndex);
+    let data = []
+    data['group'] = event.group
+    if (this.groupIndex) {
+      data['index'] = this.groupIndex
+    }
+    this.groupOfActivity = data
     this.displayItem = event.value
   }
 
   getSingleGroupItem(event) {
     console.log("group item details in main page", event);
+    this.groupIndex = event.index
     this.displayItem = event.value
     this.selectedGender = 'male';
     $('input:radio[id="test"]').prop('checked', true);

@@ -1,7 +1,7 @@
 <div class="myEvent-slider-box">
     <div class="myEvent-slider">
         <div class="myEvent-single-slide" *ngFor="let name of displayList; let i =index">
-            <div class="myEvent-name" [class.active]="selectedIndex === i" (click)="getSingleEvent(name._id , i)">
+            <div class="myEvent-name event" [class.active]="selectedIndex === i" (click)="getSingleEvent(name._id , i)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.eventTitle |titlecase}}">
                     {{name.eventTitle |titlecase}}</p>
             </div>
@@ -16,7 +16,7 @@
 <div class="myEvent-slider-box">
     <div class="myEvent-activity-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
-            <div class="myEvent-name" [class.active]="selectedActivityIndex === i"
+            <div class="myEvent-name activity" [class.active]="selectedActivityIndex === i"
                 (click)="getSingleActivity(name.group , i)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName|titlecase}}">
                     {{name.activityName |titlecase}}</p>
@@ -32,8 +32,9 @@
 
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
     <div class="myEvent-group-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of groupOfActivity; let i =index">
-            <div class="myEvent-name" [class.active]="selectedGroupIndex === i" (click)="getGroupItem(name.item, i)">
+        <div class="myEvent-single-slide" *ngFor="let name of displayGroup; let i =index">
+            <div class="myEvent-name group" id="groupIndex" [class.active]="selectedGroupIndex === i"
+                (click)="getGroupItem(name.item, i)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.groupName |titlecase}}">
                     {{name.groupName |titlecase}}</p>
             </div>

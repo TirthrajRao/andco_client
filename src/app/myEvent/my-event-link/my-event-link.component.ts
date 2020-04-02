@@ -139,13 +139,26 @@ export class MyEventLinkComponent implements OnInit {
 
   displayReminderItems(details) {
     this.displayDate = details.reminderStartDate
+
+
+    this.reminderForm.patchValue({
+      reminderStartTime: this.displayDate
+    })
+    this.reminderForm.get('reminderStartTime').updateValueAndValidity()
     this.displayTime = details.reminderStartTime
     if (this.displayTime) {
+
+      this.reminderForm.patchValue({
+        reminderStartTime: this.displayTime
+      })
+      this.reminderForm.get('reminderStartTime').updateValueAndValidity()
       this.timePickerClosed()
     }
   }
 
   changeEventLink(link) {
+    console.log("if inviation message is null", this.invitatationMessage);
+
     console.log("link of evnt", link);
     let whatsup = 'WP'
     let google = 'GM'
@@ -157,12 +170,18 @@ export class MyEventLinkComponent implements OnInit {
     let faceBookLink = link + '/' + facebookLink
     let textMessageLink = link + '/' + textMessage
 
-    this.whatsupLink = this.invitatationMessage + '-' + whatsupLink
-    this.googleLink = this.invitatationMessage + '-' + googleLink
-    this.faceBookLink = this.invitatationMessage + '-' + facebookLink
-    this.textMessageLink = this.invitatationMessage + '-' + textMessageLink
-
-    console.log("whats up link is ready", this.textMessageLink);
+    if (this.invitatationMessage != null) {
+      this.whatsupLink = this.invitatationMessage + '-' + whatsupLink
+      this.googleLink = this.invitatationMessage + '-' + googleLink
+      this.faceBookLink = this.invitatationMessage + '-' + faceBookLink
+      this.textMessageLink = this.invitatationMessage + '-' + textMessageLink
+    } else {
+      this.whatsupLink = whatsupLink
+      this.googleLink = googleLink
+      this.faceBookLink = faceBookLink
+      this.textMessageLink = textMessageLink
+    }
+    console.log("whats up link is ready", this.faceBookLink);
   }
 
 
@@ -171,12 +190,19 @@ export class MyEventLinkComponent implements OnInit {
     this.selectedIndex = i
     if (i == 3) {
       this.index = 2
-      let valueOfGuest = this.reminderDetails.guestList
-      if (valueOfGuest == 'allList') {
-        console.log("call this or not", valueOfGuest);
-        this.isAll = valueOfGuest
-      } else {
-        this.isOnly = valueOfGuest
+      if (this.reminderDetails && this.reminderDetails.guestList) {
+        console.log("call thia ");
+        let valueOfGuest = this.reminderDetails.guestList
+        this.reminderForm.patchValue({
+          guestList: valueOfGuest
+        })
+        this.reminderForm.get('guestList').updateValueAndValidity()
+        if (valueOfGuest == 'allList') {
+          console.log("call this or not", valueOfGuest);
+          this.isAll = valueOfGuest
+        } else {
+          this.isOnly = valueOfGuest
+        }
       }
     }
     if (i == 4) {
@@ -202,7 +228,6 @@ export class MyEventLinkComponent implements OnInit {
   timeChanged(event) {
     this.displayTime = event
     console.log("selected time", this.displayTime);
-
     this.reminderForm.patchValue({
       reminderStartTime: this.displayTime
     })
@@ -259,6 +284,15 @@ export class MyEventLinkComponent implements OnInit {
     }, error => {
       console.log("error while set reminer message", error);
 
+    })
+  }
+
+  updateReminder(index) {
+    this.eventService.updateReminder(this.reminderForm.value, this.eventId).subscribe((response) => {
+      console.log("response of update reminder", response);
+      this.index = index
+    }, error => {
+      console.log("error while update respose", error)
     })
   }
 

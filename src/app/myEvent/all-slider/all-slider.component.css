@@ -29,8 +29,29 @@
 .myEvent-group-slider .myEvent-name p {
     color: #C48042;
 }
-
-.myEvent-name.active:after {
+.myEvent-name.event.active:after{
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    border: 2px solid #fed597;
+    display: block;
+    border-radius: 13px;
+}
+.myEvent-name.activity.active:after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    border: 2px solid #fed597;
+    display: block;
+    border-radius: 13px;
+}
+.myEvent-name.group.active:after{
     content: "";
     position: absolute;
     top: -4px;
