@@ -73,11 +73,8 @@ button.slick-arrow {
     cursor: pointer;
 }
 
+.create-event-type-menu ul li.active a,
 .create-event-type-menu ul li a:hover {
-    color: #D2A0A1;
-}
-
-.create-event-type-menu ul li.active a {
     color: #fff !important;
 }
 
@@ -89,12 +86,6 @@ button.slick-arrow {
 
 .create-event-hashtag-box input {
     background-image: url('../../../assets/images/hashtag.png');
-    background-repeat: no-repeat;
-    background-position: center left 10px;
-}
-
-.create-event-name-box input {
-    background-image: url('../../../assets/images/pencil.png');
     background-repeat: no-repeat;
     background-position: center left 10px;
 }
@@ -216,7 +207,7 @@ button.btn.created-event-custom-button {
 }
 
 .bg-select-div.active .sample_bg {
-    border: 3px solid #000;
+    border: 3px solid #ffffff;
     border-radius: 50%;
 }
 

@@ -28,12 +28,11 @@
             </div>
             <div class="modal-body">
                 <div class="add-items">
-                    <input type="text" placeholder="Enter group name" [(ngModel)]="groupName">
+                    <input type="text" placeholder="Enter guest group name" [(ngModel)]="groupName">
                 </div>
             </div>
             <div class="modal-footer" *ngIf="isDisable">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
-                    (click)="addGroup(groupName)">Add</button>
+                <button type="button" class="btn add-btn m-auto" data-dismiss="modal" (click)="addGroup(groupName)">Add</button>
             </div>
         </div>
     </div>
