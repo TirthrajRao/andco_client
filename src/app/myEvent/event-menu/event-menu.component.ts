@@ -70,8 +70,8 @@ export class EventMenuComponent implements OnInit {
 
   }
 
-  clickOnMenu(selectedMenu, index) {
-    console.log("selected menu details", selectedMenu, index);
-    this.selectedMenu.emit(index)
-  }
+  // clickOnMenu(selectedMenu, index) {
+  //   console.log("selected menu details", selectedMenu, index);
+  //   this.selectedMenu.emit(index)
+  // }
 }

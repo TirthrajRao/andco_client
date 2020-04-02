@@ -234,4 +234,10 @@ export class EventService {
     value['eventId'] = eventId
     return this.http.post(config.baseApiUrl + "/event/setReminder", value)
   }
+
+
+  updateReminder(data, eventId) {
+    data['eventId'] = eventId
+    return this.http.put(config.baseApiUrl + "/event/setReminder", data)
+  }
 }

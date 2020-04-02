@@ -34,20 +34,29 @@ export class TotalCollectionComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     // this.isClosed = changes.isClose.currentValue
     console.log("changes of collections in main page", changes);
-    this.isClosed = changes.totalCollection.currentValue.isClosed
-    let valueOfCollections = changes.totalCollection.currentValue.groupWise
-    let eventTotalValue = changes.totalCollection.currentValue.eventTotal
-    if ((valueOfCollections && valueOfCollections.length) && !eventTotalValue.message) {
-      console.log("first if");
-      this.isSlider = true
-      this.displayCollectionDetails(changes.totalCollection.currentValue)
-    } else {
-      console.log("else part ");
-      this.isSlider = false
-      if (eventTotalValue && eventTotalValue.message)
-        this.noValueMessage = eventTotalValue.message
-    }
+    let pelaniValue = changes.totalCollection.previousValue
+    console.log("it is not use full", pelaniValue);
+    if (changes.totalCollection && changes.totalCollection.currentValue) {
+      this.isClosed = changes.totalCollection.currentValue.isClosed
+      let valueOfCollections = changes.totalCollection.currentValue.groupWise
+      let eventTotalValue = changes.totalCollection.currentValue.eventTotal
+      if ((valueOfCollections && valueOfCollections.length) && !eventTotalValue.message) {
 
+        // this.$slideContainter = $('.total-collection-slider');
+        // this.$slideContainter.slick('unslick');
+        // this.displayCollection = []
+        // this.displayEventTotal = []
+        console.log("first if");
+        this.isSlider = true
+        this.displayCollectionDetails(changes.totalCollection.currentValue)
+      } else if (eventTotalValue && eventTotalValue.message) {
+        console.log("else part ");
+        this.isSlider = false
+        if (eventTotalValue && eventTotalValue.message)
+          this.noValueMessage = eventTotalValue.message
+      }
+
+    }
 
   }
 
@@ -55,13 +64,14 @@ export class TotalCollectionComponent implements OnInit {
     console.log("message when no amount", this.noValueMessage);
     this.noValueMessage = ''
     console.log("details of collectioni", details);
-    this.displayCollection = details.groupWise
-    this.displayEventTotal = details.eventTotal
+
     this.selectedIndex = 0
     // if (this.displayCollection && !this.displayEventTotal.message) {
     setTimeout(() => {
       this.$slideContainter.slick('unslick');
       this.$slideContainter = $('.total-collection-slider');
+      this.displayCollection = details.groupWise
+      this.displayEventTotal = details.eventTotal
       this.initCollectionSlider()
       this.isTotal = true
     }, 10)

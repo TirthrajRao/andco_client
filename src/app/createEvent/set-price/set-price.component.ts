@@ -8,6 +8,8 @@ import { every } from 'rxjs/operators';
 declare var $: any
 import * as _ from 'lodash';
 import { async } from 'q';
+import * as moment from 'moment';
+
 
 
 @Component({
@@ -281,8 +283,9 @@ export class SetPriceComponent implements OnInit {
   }
   getDate(event) {
     // console.log("hello ===>", event.value);
+    // moment($(event.value).val()).format('YYYY-MM-DD')
     this.setPriceForm.patchValue({
-      payMentTransferDate: (new Date(event.value))
+      payMentTransferDate: moment(event.value).format('YYYY-MM-DD')
     });
     this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
   }

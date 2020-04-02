@@ -1,5 +1,5 @@
 .enter-screen-main {
-    background-image: url('../../assets/images/enter4.png');
+    background-image: url('../../assets/images/join_enter.png');
     background-position: center;
     background-size: cover;
     height: auto;
@@ -13,7 +13,7 @@
 .enter-inner-box {
     width: 700px;
     height: 600px;
-    background-color: #7CBBCD;
+    background-color: #def9e2;
     border-radius: 30px;
     padding: 80px;
 }
@@ -37,13 +37,13 @@
 }
 
 .join-enter a.float-left {
-    color: #5C5314;
+    color: #000000;
     background-color: #ffffff;
 }
 
 .join-enter a.float-right {
     color: #ffffff;
-    background-color: #A20020;
+    background-color: #528D69;
 }
 
 .join-enter-quote {
@@ -60,22 +60,23 @@
     text-align: center;
 }
 
-.join-enter-inputs input::placeholder {
-    color: #f7f7f7 !important;
+.join-enter-inputs input::placeholder,
+.forgot-modal input::placeholder {
+    color: #ACC9B1 !important;
     font-size: 26px !important;
     font-weight: 400;
 }
 
 .join-enter-inputs input {
-    font-family: 'Manjari', 'sans-sarif';
+    font-family: 'Advent Pro', 'sans-sarif';
     background-color: transparent;
     border: none;
     outline: none;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #528D69;
     width: 80%;
     height: 40px;
     font-size: 24px;
-    color: #f7f7ff;
+    color: #528D69;
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -85,8 +86,8 @@
 }
 
 .join-submit button {
-    background-color: rgba(255, 255, 255, 0.55);
-    color: #5C5314;
+    background-color: #012615;
+    color: #ffffff;
     font-size: 20px;
     font-weight: 600;
     padding: 7px 30px;
@@ -111,28 +112,28 @@
     width: 70px;
 }
 
-.join-social ul li:last-child {
-    filter: brightness(4);
-}
-
 button.btn.forgot-btn {
     outline: none;
     box-shadow: none;
+    color: #528D69;
+    font-weight: bold;
 }
 
 .forgot-modal h4.modal-title {
-    color: #bc041a;
+    color: #000000;
     font-weight: bold;
 }
 
 .forgot-modal input {
     width: 100%;
-    padding: 10px 20px;
-    font-size: 20px;
-    border-radius: 7px;
-    border: 1px solid #7CBBCD;
-    color: #475993;
-    font-weight: bold;
+    font-family: 'Advent Pro', 'sans-sarif';
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #528D69;
+    font-size: 24px;
+    color: #528D69;
+    font-weight: 600;
 }
 
 .forgot-modal input:focus {
@@ -140,8 +141,8 @@ button.btn.forgot-btn {
 }
 
 .forgot-modal button.btn.forgot-submit-btn {
-    background-color: #A20020;
-    color: #fff;
+    background-color: #012615;
+    color: #ffffff;
 }
 
 .forgot-modal button.close {
@@ -161,11 +162,7 @@ button.btn.forgot-btn {
 }
 
 .forgot-modal .modal-content {
-    background-image: url('../../assets/images/enter4.png');
-    background-position: left 70%;
-    background-size: 160%;
-    background-repeat: no-repeat;
-    border-radius: 20px;
+    background-color: #def9e2;
     border: none;
 }
 

@@ -45,7 +45,7 @@ export class MyEventComponent implements OnInit {
   getLoginUserEvent() {
     this.eventService.getLoginUserEvent().subscribe((res: any) => {
       this.listOfEvent = res.data
-      // console.log("list of total event of login user", this.listOfEvent);
+      console.log("list of total event of login user", this.listOfEvent);
     }, error => {
       // console.log("error while get list of event", error);
 
@@ -61,7 +61,7 @@ export class MyEventComponent implements OnInit {
         this.eventDetails = response.data
         // this.eventLink = response.data.eventLink
         this.displayMenu = true
-        this.getCurrentMenu(this.currenMenuIndex)
+        this.changeMenuWithArraow(this.currenMenuIndex)
         if (this.currenMenuIndex == 0) {
           this.getActivity()
         }
@@ -124,56 +124,63 @@ export class MyEventComponent implements OnInit {
   }
 
 
-  getCurrentMenu(event) {
-    console.log("current menu index", event);
-    this.currenMenuIndex = event
-    if (this.currenMenuIndex == 1) {
-      this.getProfileOfEvent()
-    }
-    if (this.currenMenuIndex == 0) {
-      console.log("log this ");
-      this.getActivity()
-    }
-    if (this.currenMenuIndex == 3) {
-      this.getEventLink()
-    }
-    if (this.currenMenuIndex == 4) {
-      this.getGuestListOfEvent()
-    }
-    if (this.currenMenuIndex == 2) {
-      this.getCollecctionOfEvent()
-    }
-    if (this.currenMenuIndex == 5) {
-      this.route.navigate(['edtiEvent/' + this.selectedEventId])
-    }
-  }
+  // getCurrentMenu(event) {
+  //   console.log("current menu index", event);
+  //   this.currenMenuIndex = event
+  //   if (this.currenMenuIndex == 1) {
+  //     this.getProfileOfEvent()
+  //   }
+  //   if (this.currenMenuIndex == 0) {
+  //     console.log("log this ");
+  //     this.getActivity()
+  //   }
+  //   if (this.currenMenuIndex == 3) {
+  //     this.getEventLink()
+  //   }
+  //   if (this.currenMenuIndex == 4) {
+  //     this.getGuestListOfEvent()
+  //   }
+  //   if (this.currenMenuIndex == 2) {
+  //     console.log("what in this");
+  //     this.getCollecctionOfEvent()
+  //   }
+  //   if (this.currenMenuIndex == 5) {
+  //     this.route.navigate(['edtiEvent/' + this.selectedEventId])
+  //   }
+  // }
 
   changeMenuWithArraow(event) {
     console.log("event when click on array of slider", event);
-    if (event == 0) {
-      this.currenMenuIndex = event
-      this.getActivity()
-    }
-    if (event == 1) {
-      this.currenMenuIndex = event
-      this.getProfileOfEvent()
-    }
-    if (event == 2) {
-      this.currenMenuIndex = event
-      this.getCollecctionOfEvent()
-    }
-    if (event == 3) {
-      this.currenMenuIndex = event
-      this.getEventLink()
-    }
-    if (event == 4) {
-      this.currenMenuIndex = event
-      this.getGuestListOfEvent()
-    }
-    if (event == 5) {
-      this.currenMenuIndex = event
-      this.route.navigate(['edtiEvent/' + this.selectedEventId])
-    }
+    // this.getCurrentMenu(event)
+    // if (event.point == 'click') {
+      console.log("call menu");
+
+      // this.currenMenuIndex = null
+      if (event == 0) {
+        this.currenMenuIndex = event
+        this.getActivity()
+      }
+      if (event == 1) {
+        this.currenMenuIndex = event
+        this.getProfileOfEvent()
+      }
+      if (event == 2) {
+        this.currenMenuIndex = event
+        this.getCollecctionOfEvent()
+      }
+      if (event == 3) {
+        this.currenMenuIndex = event
+        this.getEventLink()
+      }
+      if (event == 4) {
+        this.currenMenuIndex = event
+        this.getGuestListOfEvent()
+      }
+      if (event == 5) {
+        this.currenMenuIndex = event
+        this.route.navigate(['edtiEvent/' + this.selectedEventId])
+      }
+    // }
   }
 
 

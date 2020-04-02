@@ -35,7 +35,8 @@
     </ul>
 </div>
 <div class="guest-list-box">
-    <p class="text-center" id="message" *ngIf="noListMessage">{{noListMessage}}</p>
+    <p class="text-center" id="message"></p>
+    <p class="text-center" *ngIf="noListMessage">{{noListMessage}}</p>
     <div class="guest-list-box-scroll">
         <div class="accordion" id="accordionExample">
             <span *ngFor="let item of displayGuestItems; let i =index">

@@ -2,8 +2,8 @@
     <div class="d-inline-block w-100">
         <button class="btn add-more" (click)="addMoreItems()">add more</button>
     </div>
-    <h1 *ngIf="totlaItem && !totlaItem.length">Sorry, You have no item in your cart , please click on add More to add
-        some items</h1>
+    <p class="text-white" *ngIf="totlaItem && !totlaItem.length">Sorry, You have no item in your cart , please click on
+        add More to add some items</p>
     <div class="accordian-height-box">
         <div id="accordion" class="myaccordion">
             <span *ngFor="let key of keys; let i = index">

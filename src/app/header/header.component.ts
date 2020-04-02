@@ -57,25 +57,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
 
-    
+
     if (this.hashTag && this.totalEvent <= 1) {
       // console.log("when guest has less than one event total");
       // this.imgUrl = ''
-      $('#navigation-logo').addClass('.navigation-hide');
       this.displayLogo = false
+      $('#navigation-logo').addClass('.navigation-hide');
     }
-
-
-
-    //tooltip js start
-    $(".tooltip-class").hover(function () {
-      $(this).attr("tooltip-data", $(this).attr("title"));
-      $(this).removeAttr("title");
-    }, function () {
-      $(this).attr("title", $(this).attr("tooltip-data"));
-      $(this).removeAttr("tooltip-data");
-    });
-    //tooltip js end
 
     this.router.events
       .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
@@ -115,7 +103,7 @@ export class HeaderComponent implements OnInit {
 
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {
-      return '#D2A0A1'
+      return '#ed8d8f'
     } else if (this.currentUrl.includes('eventActivity')) {
       return '#434040'
     } else if (this.currentUrl.includes('eventGroup')) {
