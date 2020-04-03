@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CreatedEventMessageComponent implements OnInit {
   private sub
-  private update
+  update
   hashTag = sessionStorage.getItem('hasTag');
 
   constructor(
