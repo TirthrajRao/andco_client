@@ -55,12 +55,14 @@ export class EventActivityComponent implements OnInit {
   ngOnInit() {
 
     // console.log("today date=======", this.hashTag)
+
     $('.wrapper').on('click', '.remove', function () {
       $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
     });
     $('.wrapper').on('click', '.clone', function () {
-      $('.clone').closest('.wrapper').find('.element').first().clone().appendTo('.inner-box');
+      $('.clone').closest('.wrapper').find('.element').first().clone().prepend('.inner-box');
     });
+
     $('#datepicker').datepicker({
       uiLibrary: 'bootstrap4'
     });

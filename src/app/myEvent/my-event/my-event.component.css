@@ -29,7 +29,7 @@
     font-family: 'Advent Pro', 'sans-sarif';
     font-weight: bold;
     font-size: 40px;
-    text-shadow: 6px 5px 0px rgba(0, 0, 0, 0.16);
+    /* text-shadow: 6px 5px 0px rgba(0, 0, 0, 0.16); */
     width: 200px;
     margin: auto;
     text-overflow: ellipsis;

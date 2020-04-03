@@ -6,8 +6,7 @@
             <div class="masthead-search-indicator"></div>
             <div class="masthead-search-search">
                 <label for="masthead-search-search" class="isHidden">Search</label>
-                <input type="text" id="masthead-search-search" [(ngModel)]="searchText" (keyup)="onKey(searchText)"
-                    placeholder="Search" />
+                <input type="text" id="masthead-search-search" [(ngModel)]="searchText" (keyup)="onKey(searchText)" placeholder="Search" />
             </div>
         </div>
     </div>
@@ -29,8 +28,7 @@
             </a>
         </li>
         <li>
-            <a href="#" tooltipClass="my-custom-class"
-                ngbTooltip="Total Guest"><span>{{displayGuestItems.length}}</span> Guests</a>
+            <a href="#" tooltipClass="my-custom-class" ngbTooltip="Total Guest"><span>{{displayGuestItems.length}}</span> Guests</a>
         </li>
     </ul>
 </div>
@@ -45,51 +43,50 @@
                     <div class="inner-header">
                         <div class="profile-name">
                             <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
-                        </div>
-                        <div class="guest-name">
-                            <h1>{{item.firstName}} {{item.lastName}}</h1>
-                        </div>
-                    </div>
-                </button>
-                <div id="collapseOne{{i}}" [class.collapse]='current !=i' class="collapse show"
-                    aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="info-box">
-                        <div class="row m-0">
-                            <div class="col-sm-4">
-                                <div class="info">
-                                    <img src="assets/images/location-guest.png" alt="location icon">
-                                    <p>{{item.address}}</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="info">
-                                    <img src="../../../assets/images/call-guest.png" alt="call icon">
-                                    <p>{{item.phoneNo}}</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="info">
-                                    <img src="../../../assets/images/message-guest.png" alt="message icon">
-                                    <p>{{item.email}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="mt-3">
-                        <li class="guest-single-item" *ngFor="let final of item.items">
-                            <div class="guest-item-name">
-                                <p> {{final.quantity}} {{final.itemId.itemName}}</p>
-                            </div>
-                            <div class="guest-event-name">
-                                <p>{{final.itemId.activityId.activityName}}</p>
-                            </div>
-                            <div class="guest-item-price">
-                                <p>N {{final.itemId.itemPrice * final.quantity}}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </span>
+        </div>
+        <div class="guest-name">
+            <h1>{{item.firstName}} {{item.lastName}}</h1>
         </div>
     </div>
+    </button>
+    <div id="collapseOne{{i}}" [class.collapse]='current !=i' class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="info-box">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="info">
+                        <img src="assets/images/location-guest.png" alt="location icon">
+                        <p>{{item.address}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="info">
+                        <img src="../../../assets/images/call-guest.png" alt="call icon">
+                        <p>{{item.phoneNo}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="info">
+                        <img src="../../../assets/images/message-guest.png" alt="message icon">
+                        <p>{{item.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="mt-3">
+            <li class="guest-single-item" *ngFor="let final of item.items">
+                <div class="guest-item-name">
+                    <p> {{final.quantity}} {{final.itemId.itemName}}</p>
+                </div>
+                <div class="guest-event-name">
+                    <p>{{final.itemId.activityId.activityName}}</p>
+                </div>
+                <div class="guest-item-price">
+                    <p>{{final.itemId.itemPrice * final.quantity | currency:"&#x20A6;&nbsp;"}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </span>
+</div>
+</div>
 </div>

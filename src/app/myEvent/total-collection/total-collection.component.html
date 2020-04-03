@@ -1,12 +1,12 @@
 <div class="total-slider">
     <div class="total-slide">
-        <h1 *ngIf="!noValueMessage && displayEventTotal">{{displayEventTotal.finalTotal | currency:"&#x20A6;"}}</h1>
+        <h1 *ngIf="!noValueMessage && displayEventTotal">{{displayEventTotal.finalTotal | currency:"&#x20A6;&nbsp;"}}</h1>
         <h1 *ngIf="noValueMessage">{{noValueMessage}}</h1>
     </div>
     <div class="total-collection-slider" *ngIf="isSlider">
         <div class="total-activity-box" *ngFor="let item of displayCollection; let i =index">
             <div class="inner-div">
-                <h1>{{item._id|titlecase}} ({{item.total | currency:"&#x20A6;"}})
+                <h1>{{item._id|titlecase}} ({{item.total | currency:"&#x20A6;&nbsp;"}})
                     <span *ngIf="isClosed">(closed)</span>
                 </h1>
                 <mat-tab-group>
@@ -17,13 +17,13 @@
                                     <span>male</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <span>{{group.maleTotal | currency:"&#x20A6;"}}</span>
+                                    <span>{{group.maleTotal | currency:"&#x20A6;&nbsp;"}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <span>female</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <span>{{group.femaleTotal | currency:"&#x20A6;"}}</span>
+                                    <span>{{group.femaleTotal | currency:"&#x20A6;&nbsp;"}}</span>
                                 </div>
                             </div>
                         </div>
@@ -38,15 +38,13 @@
                         <span>all activities</span>
                     </div>
                     <div class="col-7">
-                        <span class="text-orange"
-                            *ngIf="displayEventTotal">{{displayEventTotal.eventTotal | currency:"&#x20A6;"}}</span>
+                        <span class="text-orange" *ngIf="displayEventTotal">{{displayEventTotal.eventTotal | currency:"&#x20A6;&nbsp;"}}</span>
                     </div>
                     <div class="col-5">
                         <span>gifts</span>
                     </div>
                     <div class="col-7">
-                        <span class="text-orange"
-                            *ngIf="displayEventTotal">{{displayEventTotal.donationTotal | currency:"&#x20A6;"}}</span>
+                        <span class="text-orange" *ngIf="displayEventTotal">{{displayEventTotal.donationTotal | currency:"&#x20A6;&nbsp;"}}</span>
                     </div>
                 </div>
             </div>
