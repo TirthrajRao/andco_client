@@ -19,6 +19,8 @@ export class CreateEventComponent implements OnInit {
   private eventId: any
   userName = JSON.parse(sessionStorage.getItem('userName'));
   eventForm: FormGroup;
+  $slider
+  $sliderContainer
   isPublicVal = false;
   isLogistics = false;
   path = config.baseMediaUrl;
@@ -203,7 +205,8 @@ export class CreateEventComponent implements OnInit {
    */
   initSlickSlider() {
     setTimeout(() => {
-      $('.create-event-slider').not('.slick-initialized').slick({
+      this.$sliderContainer = $('.create-event-slider')
+      this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
         infinite: false,
         draggable: false,
         swipe: false,
@@ -217,12 +220,35 @@ export class CreateEventComponent implements OnInit {
         prevArrow: '<button type="button" class="prevarrow">Back</button>',
         nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
-      $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
+      // $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
+
+      this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+        console.log("event on before", currentSlide, nextSlide);
+        this.nextSlide(currentSlide)
+      })
     }, 100)
   }
-  nextCalled(event) {
-    // console.log("ama kaik avu joye", event);
 
+
+  nextSlide(event) {
+    console.log("ama kaik avu joye", event);
+    const keys = Object.keys(this.eventForm.controls);
+    let form = this.eventForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      console.log("bank element", form[element], element)
+      if (form[element] == this.eventForm.controls.hashTag) {
+        // if (form[element].status == 'INVALID') {
+        console.log("call or not");
+        console.log("this is perfect",this.eventForm.controls.hashTag.value);
+        // this.setPriceForm.patchValue({
+        //   bankDetails: this.setPriceDetails.bankDetails
+        // });
+        // this.setPriceForm.get('bankDetails').updateValueAndValidity();
+      } else {
+        return true
+      }
+    })
   }
 
   /**

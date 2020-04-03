@@ -25,6 +25,7 @@ export class MyEventComponent implements OnInit {
   guestWithItems = []
   isCelebrant
   isClosed: any;
+  isflow = false
   constructor(
     private route: Router,
     public eventService: EventService
@@ -153,33 +154,33 @@ export class MyEventComponent implements OnInit {
     console.log("event when click on array of slider", event);
     // this.getCurrentMenu(event)
     // if (event.point == 'click') {
-      console.log("call menu");
+    console.log("call menu");
 
-      // this.currenMenuIndex = null
-      if (event == 0) {
-        this.currenMenuIndex = event
-        this.getActivity()
-      }
-      if (event == 1) {
-        this.currenMenuIndex = event
-        this.getProfileOfEvent()
-      }
-      if (event == 2) {
-        this.currenMenuIndex = event
-        this.getCollecctionOfEvent()
-      }
-      if (event == 3) {
-        this.currenMenuIndex = event
-        this.getEventLink()
-      }
-      if (event == 4) {
-        this.currenMenuIndex = event
-        this.getGuestListOfEvent()
-      }
-      if (event == 5) {
-        this.currenMenuIndex = event
-        this.route.navigate(['edtiEvent/' + this.selectedEventId])
-      }
+    // this.currenMenuIndex = null
+    if (event == 0) {
+      this.currenMenuIndex = event
+      this.getActivity()
+    }
+    if (event == 1) {
+      this.currenMenuIndex = event
+      this.getProfileOfEvent()
+    }
+    if (event == 2) {
+      this.currenMenuIndex = event
+      this.getCollecctionOfEvent()
+    }
+    if (event == 3) {
+      this.currenMenuIndex = event
+      this.getEventLink()
+    }
+    if (event == 4) {
+      this.currenMenuIndex = event
+      this.getGuestListOfEvent()
+    }
+    if (event == 5) {
+      this.currenMenuIndex = event
+      this.route.navigate(['edtiEvent/' + this.selectedEventId])
+    }
     // }
   }
 
