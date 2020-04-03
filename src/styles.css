@@ -83,7 +83,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 60px;
     margin: auto;
     z-index: 11;
-    color: white;
+    color: #5D8B60;
     font-size: 24px;
     cursor: pointer;
 }

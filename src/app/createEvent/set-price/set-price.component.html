@@ -170,7 +170,7 @@
                         <div class="sales-inner sales-inner-box-option">
                             <div class="option how-did-u">
                                 <span>How did you hear about andco</span>
-                                <select class="form-control w-75 m-auto" *ngIf="!setPriceDetails" name="" id=""
+                                <select class="form-control w-75 m-auto" *ngIf="!aboutTypeOf" name="" id=""
                                     (change)="onDropDown($event)">
                                     <option value="">Select</option>
                                     <option value="planner">Event Planner</option>
@@ -181,7 +181,7 @@
                                 </select>
 
                                 <select class="form-control w-75 m-auto" *ngIf="aboutTypeOf" formControlName="hearAbout"
-                                    [(ngModel)]="aboutTypeOf.aboutType" (change)="onDropDown($event)">
+                                    [(ngModel)]="aboutTypeOf.aboutType" (change)="updateDropDown($event)">
                                     <option value="">Select</option>
                                     <option value="planner">Event Planner</option>
                                     <option value="vendor">Event Vendor</option>
@@ -193,12 +193,18 @@
                                     <input type="text" (input)="plannerValue($event)" *ngIf="!hearAboutMessage"
                                         placeholder="Type here">
                                 </div>
-                                <div [hidden]="!isEventPlannerSelected" class="how-did-u-input mt-3">
-                                    <input type="text" (input)="plannerValue($event)" [(ngModel)]="hearAboutMessage"
-                                        placeholder="Type here" *ngIf="hearAboutMessage" formControlName="message">
+                                <div [hidden]="!isEventPlannerUpdate" class="how-did-u-input mt-3">
+                                    <input type="text" (input)="updatePlannerValue($event)"
+                                        [(ngModel)]="hearAboutMessage" placeholder="Type here"
+                                        *ngIf="hearAboutMessage || aboutTypeOf" formControlName="message">
                                 </div>
                                 <div [hidden]="!isEventVendorSelected" class="how-did-u-input mt-3">
                                     <input type="text" placeholder="Type here" (input)="vendorValue($event)">
+                                </div>
+                                <div [hidden]="!isEventVendorUpdate" class="how-did-u-input mt-3">
+                                    <input type="text" placeholder="Type here" (input)="updateVendorValue($event)"
+                                        *ngIf="vendorMessage || aboutTypeOf" formControlName="vendorMessage"
+                                        [(ngModel)]="vendorMessage">
                                 </div>
                             </div>
                         </div>

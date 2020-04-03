@@ -54,23 +54,23 @@ export class AllSliderComponent implements OnInit {
       this.initActivitySlider()
     }
     if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
-      if (changes.groupOfActivity.currentValue.index) {
-        console.log("call when index is selected");
-        this.displayGroup = changes.groupOfActivity.currentValue.group
-        this.selectedGroupIndex = changes.groupOfActivity.currentValue.index
-        this.displayGroup[this.selectedGroupIndex].removeClass('active')
-        this.isGroup = true
-        this.$slideContainter.slick('unslick');
-        this.$slideContainter = $('.myEvent-group-slider');
-        this.initGroupSlider()
-      } else {
-        console.log("when no one is selected");
-        this.displayGroup = changes.groupOfActivity.currentValue.group
-        this.isGroup = true
-        this.$slideContainter.slick('unslick');
-        this.$slideContainter = $('.myEvent-group-slider');
-        this.initGroupSlider()
-      }
+      // if (changes.groupOfActivity.currentValue.index) {
+      //   console.log("call when index is selected");
+      //   this.displayGroup = changes.groupOfActivity.currentValue.group
+      //   // this.selectedGroupIndex = changes.groupOfActivity.currentValue.index
+      //   // this.displayGroup[this.selectedGroupIndex].removeClass('active')
+      //   this.isGroup = true
+      //   this.$slideContainter.slick('unslick');
+      //   this.$slideContainter = $('.myEvent-group-slider');
+      //   this.initGroupSlider()
+      // } else {
+      console.log("when no one is selected");
+      this.displayGroup = changes.groupOfActivity.currentValue.group
+      this.isGroup = true
+      this.$slideContainter.slick('unslick');
+      this.$slideContainter = $('.myEvent-group-slider');
+      this.initGroupSlider()
+      // }
     }
   }
 

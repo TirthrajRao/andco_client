@@ -261,7 +261,15 @@ img.down {
     }
 }
 
-@media(max-width:1366px) {}
+@media(max-width:1366px) {
+    .tab-content ul {
+        max-height: 90px;
+        padding-right: 10px;
+    }
+    .group-box h4.group-box {
+        font-size: 20px;
+    }
+}
 
 @media(max-width:1199px) {
     .guest-activity-slider h2 {

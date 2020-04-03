@@ -4,6 +4,7 @@
         <div class="hashtag-1">
             <h2>#{{hashTag}}</h2>
         </div>
-        <p>has been created</p>
+        <p *ngIf="!update">has been created</p>
+        <p *ngIf="update">has been updated</p>
     </div>
 </section>

@@ -3,9 +3,9 @@
         <div class="myevent-inner-box">
             <div class="my-event-hashtag" *ngIf="displayMenu">
                 <h2>
-                    <a id="arrowpre"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
+                    <a id="arrowpre"><img src="assets/images/event-white-arrow.png" alt="arrow"></a>
                     <span tooltipClass="my-custom-class" ngbTooltip="#{{eventHashTag}}"> #{{eventHashTag}} </span>
-                    <a id="arrownext"><img src="../../../assets/images/event-white-arrow.png" alt="arrow"></a>
+                    <a id="arrownext"><img src="assets/images/event-white-arrow.png" alt="arrow"></a>
                 </h2>
             </div>
             <div class="my-event-inner-box-height">
@@ -21,8 +21,7 @@
 
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
-                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>

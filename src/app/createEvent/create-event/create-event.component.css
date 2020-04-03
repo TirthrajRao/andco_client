@@ -58,6 +58,27 @@ button.slick-arrow {
     border: 3px solid #fff;
     border-radius: 13px;
     padding: 20px;
+    max-height: 490px;
+    overflow: auto;
+    padding-right: 10px;
+}
+
+.create-event-type-menu::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.create-event-type-menu::-webkit-scrollbar {
+    width: 4px;
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+.create-event-type-menu::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #ffffff;
 }
 
 .create-event-type-menu ul li {
@@ -224,10 +245,31 @@ div#message1 {
 
 /* your event prising css end */
 
+button.btn.other-add {
+    background-color: #506f7d;
+    color: #fff;
+    margin: auto;
+}
+
+input.event-modal-input {
+    width: 100%;
+    border: none;
+    border: 2px solid #506f7d;
+    outline: none !important;
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
 
 /* responsive css start */
 
 @media(max-width: 1366px) {
+    .create-event-type-menu {
+        max-height: 385px;
+    }
     .create-event-type-box h3,
     .create-event-hashtag-box h3,
     .create-event-name-box h3,
@@ -278,6 +320,9 @@ div#message1 {
 }
 
 @media(max-width: 1199px) {
+    .create-event-type-menu {
+        max-height: 385px;
+    }
     .profile-picture {
         width: 250px;
         height: 250px;

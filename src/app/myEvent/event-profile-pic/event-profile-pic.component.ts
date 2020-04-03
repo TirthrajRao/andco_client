@@ -13,7 +13,7 @@ export class EventProfilePicComponent implements OnInit {
   files: Array<File> = [];
   public imagePath;
   imgURL: any;
-
+  eventId
   constructor(
     public eventService: EventService
   ) { }
@@ -23,10 +23,10 @@ export class EventProfilePicComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
-
+    this.eventId = this.profilePhoto.eventId
   }
   addFile(event) {
-    // console.log("profile photo path", event);
+    console.log("profile photo path", this.eventId);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
@@ -35,7 +35,7 @@ export class EventProfilePicComponent implements OnInit {
       reader.onload = (_event) => {
         this.imgURL = reader.result;
         console.log("selected photo", this.files[0]);
-        this.eventService.changeProfilePhoto(this.files[0], this.profilePhoto.eventId).subscribe(((response: any) => {
+        this.eventService.changeProfilePhoto(this.files[0], this.eventId).subscribe(((response: any) => {
           console.log("pforile photo is changed", response);
           this.profilePhoto = response.update.profilePhoto
         }), error => {
