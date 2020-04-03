@@ -13,6 +13,7 @@ export class AllSliderComponent implements OnInit {
   @Input('eventList') displayList;
   @Input('activityList') activityList
   @Input('groupOfActivity') groupOfActivity
+  @Input('groupIndex') groupIndex
   @Output() singleEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() activityGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() groupItem: EventEmitter<any> = new EventEmitter<any>();
@@ -41,7 +42,7 @@ export class AllSliderComponent implements OnInit {
     this.initGroupSlider()
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("list of group", changes.groupOfActivity);
+    console.log("list of group", changes.groupIndex);
 
     if (changes.displayList && changes.displayList.currentValue) {
       this.isGroup = true
@@ -54,16 +55,7 @@ export class AllSliderComponent implements OnInit {
       this.initActivitySlider()
     }
     if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
-      // if (changes.groupOfActivity.currentValue.index) {
-      //   console.log("call when index is selected");
-      //   this.displayGroup = changes.groupOfActivity.currentValue.group
-      //   // this.selectedGroupIndex = changes.groupOfActivity.currentValue.index
-      //   // this.displayGroup[this.selectedGroupIndex].removeClass('active')
-      //   this.isGroup = true
-      //   this.$slideContainter.slick('unslick');
-      //   this.$slideContainter = $('.myEvent-group-slider');
-      //   this.initGroupSlider()
-      // } else {
+      console.log("group index right now", changes.groupOfActivity);
       console.log("when no one is selected");
       this.displayGroup = changes.groupOfActivity.currentValue.group
       this.isGroup = true
@@ -71,6 +63,15 @@ export class AllSliderComponent implements OnInit {
       this.$slideContainter = $('.myEvent-group-slider');
       this.initGroupSlider()
       // }
+    }
+    if (changes.groupIndex) {
+      // if (changes.groupIndex.currentValue) {
+      $('#' + changes.groupIndex.currentValue).addClass('active')
+      // }
+      //  else if (changes.groupIndex && changes.groupIndex.previousValue != undefined) {
+      $('#' + changes.groupIndex.previousValue).removeClass('active')
+      // }
+
     }
   }
 
@@ -188,16 +189,8 @@ export class AllSliderComponent implements OnInit {
   getSingleActivity(group, index) {
 
     console.log("index of group", group);
-    // this.groupId = document.getElementById("groupIndex");
-    console.log("rid", this.selectedGroupIndex);
-    if (this.selectedGroupIndex) {
-      group[this.selectedGroupIndex].removeClass('active');
-    }
-
-    // this.groupId.removeClass('active')
     this.selectedActivityIndex = index
     this.isGroup = true
-    // this.selectedGroupIndex = 0
     $('.groupOfEvent').css('display', 'block')
     // console.log("get group of single activity with index", index);
     this.activityGroup.emit({ group: group, value: false })
@@ -206,10 +199,7 @@ export class AllSliderComponent implements OnInit {
 
 
   getGroupItem(item, index) {
-
-    // $(".myEvent-name.group").addClass('active');
-    this.selectedGroupIndex = index
-    console.log("item of singkle group", this.selectedGroupIndex);
-    this.groupItem.emit({ item: item, value: true, index: this.selectedGroupIndex })
+    console.log("index ==========", index);
+    this.groupItem.emit({ item: item, value: true, index: index })
   }
 }

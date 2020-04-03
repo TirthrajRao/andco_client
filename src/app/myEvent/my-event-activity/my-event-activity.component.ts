@@ -43,17 +43,20 @@ export class MyEventActivityComponent implements OnInit {
   getActivityGroup(event) {
     console.log("total group of single activity with index", event);
     console.log("group index if selected", this.groupIndex);
+    this.groupIndex = null
     let data = []
     data['group'] = event.group
-    if (this.groupIndex) {
-      data['index'] = this.groupIndex
-    }
+    // if (this.groupIndex) {
+    //   data['index'] = this.groupIndex
+    // }
     this.groupOfActivity = data
     this.displayItem = event.value
   }
 
   getSingleGroupItem(event) {
     console.log("group item details in main page", event);
+    console.log("atyare index su che group ni", this.groupIndex);
+
     this.groupIndex = event.index
     this.displayItem = event.value
     this.selectedGender = 'male';
