@@ -109,6 +109,10 @@ const routes: Routes = [
         component: CreatedEventMessageComponent
       },
       {
+        path: 'set-message/:id',
+        component: CreatedEventMessageComponent
+      },
+      {
         path: 'all-slider',
         component: AllSliderComponent
       },
