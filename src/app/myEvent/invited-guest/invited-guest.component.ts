@@ -15,7 +15,27 @@ export class InvitedGuestComponent implements OnInit {
   secondLetter = []
   finalList: any = []
   displayIcons = [
+    {
+      name: 'Whatsapp',
+      path: 'assets/images/whatsapp.png'
+    },
+    {
+      name: 'Facebook',
+      path: 'assets/images/facebook-event.png'
+    },
+    {
 
+      name: 'Mobile',
+      path: 'assets/images/call-event.png'
+    },
+    {
+      name: 'Google',
+      path: 'assets/images/G.png'
+    },
+    {
+      name: 'totalList',
+      path: 'assets/images/invited-guest-menu.png'
+    }
   ]
   selctedIndex
   noListMessage
@@ -31,42 +51,13 @@ export class InvitedGuestComponent implements OnInit {
     if (changes.displayGuest && changes.displayGuest.currentValue) {
       this.finalList = changes.displayGuest.currentValue
       this.displayList(changes.displayGuest.currentValue)
-      this.displayIcons = [
-        {
-          name: 'Whatsapp',
-          path: 'assets/images/whatsapp.png'
-        },
-        {
-          name: 'Facebook',
-          path: 'assets/images/facebook-event.png'
-        },
-        {
-
-          name: 'Mobile',
-          path: 'assets/images/call-event.png'
-        },
-        {
-          name: 'Google',
-          path: 'assets/images/G.png'
-        },
-        {
-          name: 'totalList',
-          path: 'assets/images/invited-guest-menu.png'
-        }
-      ]
       this.selctedIndex = 4
     } else {
       console.log("call this or not", this.selctedIndex);
       this.noListMessage = 'There is no guest in this event'
       this.displayGuest = []
       this.finalList = []
-      this.selctedIndex = 0
-      this.displayIcons = [
-        {
-          name: 'totalList',
-          path: 'assets/images/invited-guest-menu.png'
-        }
-      ]
+      this.selctedIndex = 4
     }
   }
 
@@ -171,9 +162,19 @@ export class InvitedGuestComponent implements OnInit {
       // }
     } else {
       console.log("call this or not");
-      this.noListMessage = 'There is no guest in this event'
-      this.displayGuest = []
-      this.finalList = []
+      if (i == 0) {
+        this.noListMessage = 'There is no guest join from whats up'
+      } else if (i == 1) {
+        this.noListMessage = 'There is no guest join from facebook'
+      } else if (i == 2) {
+        this.noListMessage = 'There is no guest join from contacts'
+      } else if (i == 3) {
+        this.noListMessage = 'There is no guest join from gmail'
+      } else {
+        this.noListMessage = 'There is no guest in this event'
+        this.displayGuest = []
+        this.finalList = []
+      }
     }
   }
 

@@ -220,31 +220,35 @@ export class CreateEventComponent implements OnInit {
         prevArrow: '<button type="button" class="prevarrow">Back</button>',
         nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
       });
-      $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
+      // $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
 
       this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
         console.log("event on before", currentSlide, nextSlide);
-        this.nextSlide(event, slick)
+        this.nextSlide(currentSlide)
       })
     }, 100)
   }
 
 
-  nextSlide(event, slider) {
+  nextSlide(event) {
     console.log("ama kaik avu joye", event);
-    console.log("second console details", slider);
     const keys = Object.keys(this.eventForm.controls);
     let form = this.eventForm.controls;
     let flag = 0;
     keys.every((element, value) => {
-      console.log("each element", element);
-      console.log("value of each element", value);
+      console.log("bank element", form[element], element)
       if (form[element] == this.eventForm.controls.hashTag) {
-        console.log("call this ");
-
+        // if (form[element].status == 'INVALID') {
+        console.log("call or not");
+        console.log("this is perfect",this.eventForm.controls.hashTag.value);
+        // this.setPriceForm.patchValue({
+        //   bankDetails: this.setPriceDetails.bankDetails
+        // });
+        // this.setPriceForm.get('bankDetails').updateValueAndValidity();
+      } else {
+        return true
       }
-    });
-
+    })
   }
 
   /**
