@@ -16,8 +16,7 @@
 <div class="myEvent-slider-box">
     <div class="myEvent-activity-slider">
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
-            <div class="myEvent-name activity" [class.active]="selectedActivityIndex === i"
-                (click)="getSingleActivity(name.group , i)">
+            <div class="myEvent-name activity" id={{i}} (click)="getSingleActivity(name.group , i , name._id)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName|titlecase}}">
                     {{name.activityName |titlecase}}</p>
             </div>
@@ -33,19 +32,10 @@
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
     <div class="myEvent-group-slider">
         <div class="myEvent-single-slide" *ngFor="let name of displayGroup; let i =index">
-            <div class="myEvent-name group" id="{{i}}"
-                
-                (click)="getGroupItem(name.item, i)">
+            <div class="myEvent-name group" id="{{name.activityId}}-{{i}}" (click)="getGroupItem(name.item, i , name)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.groupName |titlecase}}">
                     {{name.groupName |titlecase}}</p>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <div [ngClass]="{
-    'is-active': condition,
-    'is-inactive': !condition,
-    'is-focused': condition && anotherCondition,
-  }">
-</div> -->

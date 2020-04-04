@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Renderer2, Output, EventEmitter, SimpleChanges, ViewChild, } from '@angular/core';
+import * as _ from 'lodash';
 
 declare var $;
 
@@ -42,7 +43,7 @@ export class AllSliderComponent implements OnInit {
     this.initGroupSlider()
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("list of group", changes.groupIndex);
+    // console.log("list of group", changes.groupIndex);
 
     if (changes.displayList && changes.displayList.currentValue) {
       this.isGroup = true
@@ -55,23 +56,30 @@ export class AllSliderComponent implements OnInit {
       this.initActivitySlider()
     }
     if (changes.groupOfActivity && changes.groupOfActivity.currentValue) {
-      console.log("group index right now", changes.groupOfActivity);
-      console.log("when no one is selected");
+      console.log("call activty ot not");
+
+      // console.log("group index right now", changes.groupOfActivity.currentValue.selectedActivity);
+      if (changes.groupOfActivity.currentValue) {
+        $('#' + changes.groupOfActivity.currentValue.selectedActivity).addClass('active')
+      }
+      if (changes.groupOfActivity.previousValue) {
+        $('#' + changes.groupOfActivity.previousValue.selectedActivity).removeClass('active')
+      }
+
       this.displayGroup = changes.groupOfActivity.currentValue.group
       this.isGroup = true
       this.$slideContainter.slick('unslick');
       this.$slideContainter = $('.myEvent-group-slider');
       this.initGroupSlider()
-      // }
     }
     if (changes.groupIndex) {
-      // if (changes.groupIndex.currentValue) {
-      $('#' + changes.groupIndex.currentValue).addClass('active')
-      // }
-      //  else if (changes.groupIndex && changes.groupIndex.previousValue != undefined) {
-      $('#' + changes.groupIndex.previousValue).removeClass('active')
-      // }
-
+      console.log("call group of not", changes.groupIndex);
+      if (changes.groupIndex.currentValue) {
+        $('#' + changes.groupIndex.currentValue.activity + '-' + changes.groupIndex.currentValue.groupIndex).addClass('active1')
+      }
+      if (changes.groupIndex.previousValue) {
+        $('#' + changes.groupIndex.previousValue.activity + '-' + changes.groupIndex.previousValue.groupIndex).removeClass('active1')
+      }
     }
   }
 
@@ -171,14 +179,20 @@ export class AllSliderComponent implements OnInit {
         ],
 
       })
+
+      this.$slider.on('click', (event, slick, currentSlide, nextSlide) => {
+        console.log("event on before", currentSlide, nextSlide);
+        this.activeGroup(event, currentSlide)
+      })
     }, 50)
   }
 
-
+  activeGroup(data, currentSlide) {
+    // console.log("active group slider", data, currentSlide);
+    this.$slider.eq(currentSlide).addClass('active1');
+  }
   getSingleEvent(eventId, index) {
     console.log("activity index", this.selectedActivityIndex, index);
-
-    // this.selectedActivity = null
     this.selectedIndex = index
     this.singleEvent.emit({ eventId: eventId, value: false })
     this.isGroup = false
@@ -186,20 +200,19 @@ export class AllSliderComponent implements OnInit {
     console.log("click on event get index========", this.isGroup);
   }
 
-  getSingleActivity(group, index) {
-
-    console.log("index of group", group);
-    this.selectedActivityIndex = index
+  getSingleActivity(group, index, activityId) {
+    // console.log("index of group", group);
     this.isGroup = true
     $('.groupOfEvent').css('display', 'block')
-    // console.log("get group of single activity with index", index);
-    this.activityGroup.emit({ group: group, value: false })
+    this.activityGroup.emit({ group: group, value: false, index: index, activityId: activityId })
 
   }
 
 
-  getGroupItem(item, index) {
-    console.log("index ==========", index);
-    this.groupItem.emit({ item: item, value: true, index: index })
+  getGroupItem(item, index, group) {
+    console.log("index ==========", index, group);
+    this.groupItem.emit({ item: item, value: true, index: index, })
   }
 }
+
+

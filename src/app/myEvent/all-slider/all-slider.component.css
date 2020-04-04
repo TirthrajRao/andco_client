@@ -51,7 +51,7 @@
     display: block;
     border-radius: 13px;
 }
-.myEvent-name.group.active:after{
+.myEvent-name.group.active1:after{
     content: "";
     position: absolute;
     top: -4px;
