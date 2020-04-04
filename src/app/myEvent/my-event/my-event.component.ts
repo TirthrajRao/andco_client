@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
+import { LoginService } from '../../services/login.service'
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-my-event',
@@ -28,7 +29,8 @@ export class MyEventComponent implements OnInit {
   isflow = false
   constructor(
     private route: Router,
-    public eventService: EventService
+    public eventService: EventService,
+    public loginSerivce: LoginService
   ) { }
 
   ngOnInit() {
@@ -67,7 +69,13 @@ export class MyEventComponent implements OnInit {
           this.getActivity()
         }
       } else {
-        this.route.navigate(['/guest/', this.eventHashTag])
+
+        let data = '/guest/' + this.eventHashTag
+        let output = this.loginSerivce.returnLogin(data);
+        if (output == true) {
+          // this.router.navigate(['/myevent']);
+          this.route.navigate(['/guest/', this.eventHashTag])
+        }
       }
       // if (this.currenMenuIndex == 2) {
       //   this.getCollecctionOfEvent()
