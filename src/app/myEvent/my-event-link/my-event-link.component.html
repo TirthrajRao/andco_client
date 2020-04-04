@@ -1,7 +1,8 @@
 <div class="share-link">
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <!-- <h3>{{displayEventLink}}</h3> -->
-    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="">
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip=""
+        readonly>
     <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget"
         aria-hidden="true" (click)="changeSuccessMessage()"></i>
 </div>

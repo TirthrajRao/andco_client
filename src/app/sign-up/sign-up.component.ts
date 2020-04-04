@@ -5,6 +5,7 @@ import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 import { SocialLoginService } from '../services/social-login.service';
 import { from } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
 
 declare var $: any;
 @Component({
@@ -14,6 +15,7 @@ declare var $: any;
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('buttonValue', { static: true }) searchElement: ElementRef;
+  key = "andCo@testing";
 
   @Output() loginWithFacebook = new EventEmitter();
   isLoad = false
@@ -31,6 +33,9 @@ export class SignUpComponent implements OnInit {
   pwd1: boolean;
   pwd2: boolean;
   callVerifyCode = false
+  userName
+  isUserLoggedIn = false;
+  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
   // userDetails = {  firstName: '', lastName: '' }
   constructor(
     private route: ActivatedRoute,
@@ -75,9 +80,51 @@ export class SignUpComponent implements OnInit {
     // console.log("details of user name=========", this.signUpForm.value)
     this.signUpForm.removeControl('confirmPassword')
     this._loginService.signUpOfEmail(this.signUpForm.value).subscribe((res: any) => {
-      // console.log("user created completed", res)
-      this.isLoad = false
-      this.router.navigate(['/login']);
+      console.log("user created completed", res)
+      let password = res.data.password;
+      let emailId = res.data.email
+      console.log("ready for email", emailId);
+
+      var bytes = CryptoJS.AES.decrypt(password, this.key);
+      console.log("this is important", bytes);
+
+      var originalText = bytes.toString(CryptoJS.enc.Utf8);
+      // var withOutString = bytes(CryptoJS.enc.Utf8)
+      console.log("this is use full or not", originalText);
+
+      let data = {}
+      data['email'] = emailId
+      data['password'] = JSON.parse(originalText)
+      this._loginService.login(data).subscribe((response: any) => {
+        // this.isLoad = false
+        console.log("response of new sign up after login", response)
+        let firstName = response.data.firstName
+        this.userName = firstName;
+        sessionStorage.setItem('eventList', JSON.stringify(response.data.totalEvent))
+        sessionStorage.setItem('userRole', JSON.stringify(response.data.UserRole));
+        sessionStorage.setItem('userName', JSON.stringify(this.userName));
+        if (this.eventIdWithLogin) {
+          this.isLoad = false;
+          this.isUserLoggedIn = true;
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/guest-join/', this.eventIdWithLogin])
+        } else if (response.data.UserRole == 'admin') {
+          this.isLoad = false
+          // this.router.navigate(['/home/admin-dashboard']);
+        } else if (response.data.UserRole == 'user') {
+          let eventList = response.data.eventId
+          // console.log("detils of event list", eventList)
+          this.isLoad = false
+          this.isUserLoggedIn = true;
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('userEvent', JSON.stringify(eventList))
+          this.router.navigate(['/menu']);
+        }
+      }, error => {
+        console.log("error while new login after sign up", error);
+
+      })
+      // this.router.navigate(['/login']);
     }, error => {
       this.isLoad = false
       // console.log("error while create new user", error)

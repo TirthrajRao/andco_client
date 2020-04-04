@@ -27,6 +27,7 @@ export class MyEventComponent implements OnInit {
   isCelebrant
   isClosed: any;
   isflow = false
+  isLoad = false
   constructor(
     private route: Router,
     public eventService: EventService,
@@ -46,17 +47,22 @@ export class MyEventComponent implements OnInit {
    * Get event list of login user
    */
   getLoginUserEvent() {
+    this.isLoad = true
     this.eventService.getLoginUserEvent().subscribe((res: any) => {
       this.listOfEvent = res.data
+      this.isLoad = false
       console.log("list of total event of login user", this.listOfEvent);
     }, error => {
+      this.isLoad = false
       // console.log("error while get list of event", error);
 
     })
   }
   getSingleEvent(event) {
+    this.isLoad = true
     console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
+      this.isLoad = false
       this.isCelebrant = response.data.isCelebrant
       this.eventHashTag = response.data.hashTag
       this.selectedEventId = response.data._id

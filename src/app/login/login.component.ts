@@ -116,10 +116,6 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
         let firstName = data.data.firstName
         this.userName = firstName;
-        // console.log(this.userName);
-        // console.log("response of login user", data);
-        // this.userRole = data.data.UserRole;
-        // console.log("admin login entry", data.data.UserRole);
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
         // console.log(this.isCelebrant);
