@@ -113,6 +113,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-weight: bold;
     z-index: 9999;
     position: relative;
+    text-transform: capitalize;
 }
 
 .my-custom-class .arrow::before {

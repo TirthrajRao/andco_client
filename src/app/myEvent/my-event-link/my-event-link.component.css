@@ -354,6 +354,9 @@ span.zone {
     .alert-success {
         font-size: 18px;
     }
+    .step-3-link {
+        max-height: 100%;
+    }
 }
 
 @media(max-width: 991px) {
