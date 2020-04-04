@@ -27,7 +27,9 @@ export class SetPriceComponent implements OnInit {
   isTransfer
   isRegestery
   isEventPlannerSelected;
+  isEventPlannerUpdate
   isEventVendorSelected
+  isEventVendorUpdate
   timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   object1 = {
     planner: ''
@@ -44,6 +46,7 @@ export class SetPriceComponent implements OnInit {
   selectedAccount
   setPriceDetails
   hearAboutMessage
+  vendorMessage
   aboutTypeOf
   constructor(
     public alertService: AlertService,
@@ -69,7 +72,9 @@ export class SetPriceComponent implements OnInit {
       bankDetails: new FormControl('', [Validators.required]),
       hearAbout: new FormControl(''),
       linkOfEvent: new FormControl(''),
-      message: new FormControl('')
+      message: new FormControl(''),
+      vendorMessage: new FormControl(''),
+      regestery: new FormControl('')
     })
     this.sub = this.activated.params.subscribe(param => {
       this.eventId = param.id
@@ -97,14 +102,14 @@ export class SetPriceComponent implements OnInit {
     })
 
     this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
-      console.log("event on before", currentSlide, nextSlide);
+      // console.log("event on before", currentSlide, nextSlide);
       this.previousSlide(slick)
     })
   }
 
 
   previousSlide(slide) {
-    console.log("slide na click ma su ave", slide);
+    // console.log("slide na click ma su ave", slide);
 
   }
 
@@ -117,6 +122,7 @@ export class SetPriceComponent implements OnInit {
         console.log("response of set price", this.setPriceDetails);
         this.selectedAccount = this.setPriceDetails.bankDetails
         this.aboutTypeOf = this.setPriceDetails.hearAbout
+        // console.log("if about type is selected or not", this.aboutTypeOf);
         if (this.setPriceDetails.payMentTransferDate == 'true') {
           $('input:radio[id="test5"]').prop('checked', true);
         }
@@ -128,13 +134,21 @@ export class SetPriceComponent implements OnInit {
         }
         if (this.setPriceDetails.payMentTransferDate != 'true') {
           $('input:radio[id="test6"]').prop('checked', true);
-
           this.isTransfer = true
         }
-        if (this.setPriceDetails.hearAbout.aboutType == 'planner') {
+        if (this.setPriceDetails.regestery == 'true') {
+          $('input:radio[id="test1"]').prop('checked', true);
+        }
+        if (this.setPriceDetails.hearAbout && this.setPriceDetails.hearAbout.aboutType == 'planner') {
           console.log("this is called");
-          this.isEventPlannerSelected = true
+          this.isEventPlannerUpdate = true
           this.hearAboutMessage = this.setPriceDetails.hearAbout.message
+          console.log("messgae of hear about", this.hearAboutMessage);
+        }
+        if (this.setPriceDetails.hearAbout && this.setPriceDetails.hearAbout.aboutType == 'vendor') {
+          console.log("this is called");
+          this.isEventVendorUpdate = true
+          this.vendorMessage = this.setPriceDetails.hearAbout.message
           console.log("messgae of hear about", this.hearAboutMessage);
         }
       }
@@ -205,7 +219,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   updateSetPrice() {
-    console.log("call for update", this.setPriceForm);
+    console.log("call for update", this.setPriceForm.value);
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
     let flag = 0;
@@ -241,11 +255,44 @@ export class SetPriceComponent implements OnInit {
       }
     });
     if (flag == 0) {
+      if (this.aboutTypeOf != undefined) {
+        if (this.setPriceForm.controls.hearAbout.value == 'planner') {
+          console.log("call this for planner");
+          let hearAbout = {
+            aboutType: this.aboutTypeOf.aboutType,
+            message: this.hearAboutMessage
+          }
+          this.setPriceForm.controls.hearAbout.setValue(hearAbout)
+          this.setPriceForm.patchValue({
+            hearAbout: hearAbout
+          })
+          this.setPriceForm.get('hearAbout').updateValueAndValidity()
+        } else if (this.setPriceForm.controls.hearAbout.value == 'vendor') {
+          console.log("call this for planner");
+          let hearAbout = {
+            aboutType: this.aboutTypeOf.aboutType,
+            message: this.vendorMessage
+          }
+          // this.setPriceForm.controls.hearAbout.setValue(hearAbout)
+          this.setPriceForm.patchValue({
+            hearAbout: hearAbout
+          })
+          this.setPriceForm.get('hearAbout').updateValueAndValidity()
+        } else {
+          let hearAbout = {
+            aboutType: this.aboutTypeOf.aboutType
+          }
+          this.setPriceForm.patchValue({
+            hearAbout: hearAbout
+          })
+          this.setPriceForm.get('hearAbout').updateValueAndValidity()
+        }
+      }
       console.log("final data to  update", this.setPriceForm.value);
       this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
         this.alertService.getSuccess(response.message)
-        this.router.navigate(['created-event-message'])
+        this.router.navigate(['set-message/' + 'update'])
       }, error => {
         console.log("error while set price of event", error)
       })
@@ -277,6 +324,10 @@ export class SetPriceComponent implements OnInit {
   giftOfEvent(data) {
     if (data == 'test1') {
       this.isRegestery = false
+      this.setPriceForm.patchValue({
+        regestery: 'true'
+      })
+      this.setPriceForm.get('regestery').updateValueAndValidity()
     } else {
       this.isRegestery = true
     }
@@ -323,11 +374,35 @@ export class SetPriceComponent implements OnInit {
         hearAbout: hearAbout
       })
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
+    }
+  }
+
+
+  updateDropDown(event) {
+    console.log("selected drop down value", event.target.value);
+    if (event.target.value == 'planner') {
+      this.isEventPlannerUpdate = true
+      this.isEventVendorUpdate = false
+      console.log("hear about message", this.hearAboutMessage)
+    } else if (event.target.value == 'vendor') {
+      this.isEventVendorUpdate = true
+      this.isEventPlannerUpdate = false
+    } else {
+      let updateHear = {
+        aboutType: event.target.value
+      }
+      console.log("this else part is call or not");
+      this.isEventPlannerUpdate = false
+      this.isEventVendorUpdate = false
+      this.setPriceForm.patchValue({
+        hearAbout: updateHear
+      })
+      this.setPriceForm.get('hearAbout').updateValueAndValidity()
+      console.log("value of set price of hear about after update", this.setPriceForm.value);
       if (this.aboutTypeOf) {
         console.log("ca;ll this or not");
-        this.aboutTypeOf = hearAbout
+        this.aboutTypeOf = updateHear
         console.log("change type", this.aboutTypeOf);
-
       }
     }
   }
@@ -343,6 +418,19 @@ export class SetPriceComponent implements OnInit {
     })
     this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
+
+  updatePlannerValue(event) {
+    console.log("call or not", this.hearAboutMessage);
+
+    this.aboutTypeOf = this.aboutTypeOf
+  }
+
+
+  updateVendorValue(event) {
+    console.log("call or not", this.hearAboutMessage);
+    this.aboutTypeOf = this.aboutTypeOf
+  }
+
 
   vendorValue(event) {
     let hearAbout = {
