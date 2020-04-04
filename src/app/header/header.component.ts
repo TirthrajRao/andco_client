@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
     this._loginService.getObservableResponse().subscribe(res => {
       // console.log("response in header again", res);
       this.currentUrl = res.id;
-
     })
 
   }
