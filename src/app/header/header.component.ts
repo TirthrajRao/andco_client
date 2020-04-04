@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
       // console.log("when guest has less than one event total");
       // this.imgUrl = ''
       this.displayLogo = false
-      $('#navigation-logo').addClass('.navigation-hide');
+      $('#navigation-logo').addClass('navigation-hide');
     }
 
     this.router.events
