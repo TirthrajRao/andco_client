@@ -6,7 +6,7 @@
         <img src="assets/images/andco_logo.png" alt="andco logo">
         <div class="hello-text" [style.color]="getHeaderColor()">
             <h2 tooltipClass="my-custom-class" ngbTooltip="{{userName}}" *ngIf="currentUrl">
-                <span *ngIf="isDisplayMenu"> Hello {{userName}}</span>
+                <span *ngIf="currentUrl != '/menu'"> Hello {{userName}}</span>
             </h2>
         </div>
     </div>

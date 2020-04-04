@@ -36,7 +36,7 @@ export const floral = {
   'total-title-background-color' : '#3D8BFF',
   'group-box-h4-group' : '#9ec5ff',
   'activity-accordian-arrow-color' : '#000000',
-  'next-skip-back-color' : '#ffffff',
+  'next-skip-back-color' : '#000000',
   'guest-address-radio-color': '#000000',
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#ffffff',
