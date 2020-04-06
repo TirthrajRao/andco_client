@@ -337,6 +337,11 @@ ul.guest-list-inner-box {
     opacity: 0;
 }
 
+.empty-message i {
+    font-size: 30px;
+    color: #686868;
+}
+
 @media(max-width: 1600px) {
     .guest-name h1 {
         font-size: 32px;

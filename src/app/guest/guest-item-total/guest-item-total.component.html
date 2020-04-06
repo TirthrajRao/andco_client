@@ -2,7 +2,10 @@
     <div class="d-inline-block w-100">
         <button class="btn add-more" (click)="addMoreItems()">add more</button>
     </div>
-    <p class="text-white text-center" *ngIf="totlaItem && !totlaItem.length">Sorry, You have no item in your cart , please click on add More to add some items</p>
+    <div class="empty-message" *ngIf="totlaItem && !totlaItem.length">
+        <i class="fa fa-frown-o" aria-hidden="true"></i>
+        <p>Sorry, You have no item in your cart , please click on add More to add some items</p>
+    </div>
     <div class="accordian-height-box">
         <div id="accordion" class="myaccordion">
             <span *ngFor="let key of keys; let i = index">
