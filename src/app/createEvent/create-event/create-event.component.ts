@@ -206,12 +206,28 @@ export class CreateEventComponent implements OnInit {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response for edit event", response);
       this.createdEventDetails = response.data
-      let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
-      this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+      if (this.createdEventDetails.eventType) {
+        console.log("what is value", this.createdEventDetails.eventType);
+        let customType = this.createdEventDetails.eventType
+        const resSomeSearch1 = this.eventType.some(item =>
+          // console.log("what is the value", item)
+          item === customType
+        );
+        console.log("it is important for event tyep", resSomeSearch1);
+        if (resSomeSearch1 == false) {
+          this.eventType.push(customType)
+          let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
+          this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+          this.selctedIndex = selectedEventType
+        } else {
+          let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
+          this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+          this.selctedIndex = selectedEventType
+        }
+      }
       let index = this.eventBackGround.findIndex(x => x.path === this.createdEventDetails.eventTheme);
       this.themeUrl = this.createdEventDetails.eventTheme
       this.imgURL = this.path + this.createdEventDetails.profilePhoto
-      this.selctedIndex = selectedEventType
       this.displayImage = true
       // this.eventActivities.emit(this.createdEventDetails.activity)
       console.log("index of event", index);
@@ -345,9 +361,15 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+  enterCustomType() {
+    $('#otherEventType').modal("show")
+  }
+
   addEventType() {
     console.log("event type new one", this.customEventType)
     this.eventType.push(this.customEventType)
+    this.customEventType = ''
+    $('#otherEventType').modal("hide")
   }
 
 

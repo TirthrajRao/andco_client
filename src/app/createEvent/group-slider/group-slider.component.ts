@@ -16,6 +16,7 @@ export class GroupSliderComponent implements OnInit {
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
   groupName
+  editGroupName
   $slideContainter;
   $slider;
   selectedIndex: any;
@@ -145,43 +146,55 @@ export class GroupSliderComponent implements OnInit {
     }
     this.selectedActivity.groups.push(newGroup)
     this.groupName = ''
-    // console.log("new group added", this.selectedActivity);
     this.$slideContainter = $('.group-slider');
     this.$slideContainter.slick('unslick');
     setTimeout(() => {
-      this.$slider = this.$slideContainter.not('.slick-initialized').slick({
-        infinite: false,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        arrows: false,
-        responsive: [
-          {
-            breakpoint: 1600,
-            settings: {
-              slidesToShow: 3,
-            }
-          },
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 2.5,
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1.5,
-            }
-          },
-        ],
-      })
+      this.initGroupSlider()
     }, 50)
+  }
+
+
+  openEditModel(group) {
+    console.log("details of group", group);
+    $('#editDeleteModal').modal("show")
+    this.editGroupName = group
+  }
+
+  editGroupNameOf() {
+    console.log("total list of activity", this.selectedActivity);
+    $('#editDeleteModal').modal("hide")
+  }
+  deleteGroup() {
+    // console.log("selected group ", this.editGroupName);
+
+    if (this.editGroupName._id) {
+      console.log("call this", this.editGroupName);
+      this.eventService.removeGroup(this.editGroupName).subscribe((response) => {
+        console.log("group remove completed", response);
+        let index = this.selectedActivity.groups.findIndex(x => x.groupName === this.editGroupName.groupName);
+        console.log("index of element which is remove", index);
+        this.selectedActivity.groups.splice(index, 1);
+        this.$slideContainter = $('.group-slider');
+        this.$slideContainter.slick('unslick');
+        setTimeout(() => {
+          this.initGroupSlider()
+        }, 50)
+        this.singleGroup.emit(this.selectedActivity.groups[0])
+        this.selectedIndex = 0
+      }, error => {
+        console.log("error while remove group", error);
+      })
+    } else {
+      let index = this.selectedActivity.groups.findIndex(x => x.groupName === this.editGroupName.groupName);
+      console.log("index of element which is remove", index);
+      this.selectedActivity.groups.splice(index, 1);
+      this.$slideContainter = $('.group-slider');
+      this.$slideContainter.slick('unslick');
+      setTimeout(() => {
+        this.initGroupSlider()
+      }, 50)
+      this.singleGroup.emit(this.selectedActivity.groups[0])
+      this.selectedIndex = 0
+    }
   }
 }

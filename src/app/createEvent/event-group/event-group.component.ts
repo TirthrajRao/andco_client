@@ -155,7 +155,7 @@ export class EventGroupComponent implements OnInit {
     })
   }
   updateGroups() {
-    console.log("for update group");
+    // console.log("for update group");
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -163,7 +163,7 @@ export class EventGroupComponent implements OnInit {
         if (singleGroup._id) {
           // console.log("single group detilas", singleGroup);
           let finalData = this.editGroupDetails(activityId, singleGroup)
-          console.log("response of group ", finalData);
+          // console.log("response of group ", finalData);
           this.finalArray.push(finalData)
         } else {
           let finalObject = {

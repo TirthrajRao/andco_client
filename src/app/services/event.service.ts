@@ -219,6 +219,11 @@ export class EventService {
   updateGroup(data) {
     return this.http.put(config.baseApiUrl + "/group/", data)
   }
+
+  removeGroup(data) {
+    return this.http.put(config.baseApiUrl + "/group-delete", data)
+  }
+
   removeItem(itemId, groupId) {
     let body = {
       itemId: itemId,
