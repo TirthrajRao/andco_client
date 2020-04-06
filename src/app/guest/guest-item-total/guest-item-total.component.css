@@ -151,6 +151,15 @@ button.btn.add-more {
     font-size: 18px;
 }
 
+.empty-message {
+    text-align: center;
+    color: #fff;
+}
+
+.empty-message i {
+    font-size: 30px;
+}
+
 @media(max-width: 1600px) {
     button.single-activity {
         font-size: 24px;

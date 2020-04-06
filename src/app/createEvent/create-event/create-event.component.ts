@@ -56,7 +56,7 @@ export class CreateEventComponent implements OnInit {
     },
     {
       themeName: 'origami',
-      path: 'assets/images/enter4.png'
+      path: 'assets/images/origami.png'
     },
     {
       themeName: 'classic',

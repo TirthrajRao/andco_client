@@ -11,7 +11,10 @@
     </ul>
 </div>
 <div class="guest-list-box">
-    <p class="text-center" *ngIf="noListMessage">{{noListMessage}}</p>
+    <div class="text-center empty-message" *ngIf="noListMessage">
+        <i class="fa fa-frown-o" aria-hidden="true"></i>
+        <p>{{noListMessage}}</p>
+    </div>
     <ul class="guest-list-inner-box">
         <li *ngFor="let name of displayGuest; let i =index">
             <div class="profile-name">
