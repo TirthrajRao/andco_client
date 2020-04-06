@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
+import { LoginService } from '../../services/login.service'
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-my-event',
@@ -26,9 +27,11 @@ export class MyEventComponent implements OnInit {
   isCelebrant
   isClosed: any;
   isflow = false
+  isLoad = false
   constructor(
     private route: Router,
-    public eventService: EventService
+    public eventService: EventService,
+    public loginSerivce: LoginService
   ) { }
 
   ngOnInit() {
@@ -44,17 +47,22 @@ export class MyEventComponent implements OnInit {
    * Get event list of login user
    */
   getLoginUserEvent() {
+    this.isLoad = true
     this.eventService.getLoginUserEvent().subscribe((res: any) => {
       this.listOfEvent = res.data
+      this.isLoad = false
       console.log("list of total event of login user", this.listOfEvent);
     }, error => {
+      this.isLoad = false
       // console.log("error while get list of event", error);
 
     })
   }
   getSingleEvent(event) {
+    this.isLoad = true
     console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
+      this.isLoad = false
       this.isCelebrant = response.data.isCelebrant
       this.eventHashTag = response.data.hashTag
       this.selectedEventId = response.data._id
@@ -67,7 +75,13 @@ export class MyEventComponent implements OnInit {
           this.getActivity()
         }
       } else {
-        this.route.navigate(['/guest/', this.eventHashTag])
+
+        let data = '/guest/' + this.eventHashTag
+        let output = this.loginSerivce.returnLogin(data);
+        if (output == true) {
+          // this.router.navigate(['/myevent']);
+          this.route.navigate(['/guest/', this.eventHashTag])
+        }
       }
       // if (this.currenMenuIndex == 2) {
       //   this.getCollecctionOfEvent()

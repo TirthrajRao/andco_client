@@ -36,45 +36,15 @@ export class HeaderComponent implements OnInit {
     public _loginService: LoginService
   ) {
     this._loginService.getObservableResponse().subscribe(res => {
-      // console.log("response in header again", res);
+      console.log("response in header again", res);
       this.currentUrl = res.id;
-
+      if (this.currentUrl == '/menu' || this.currentUrl == '/guest/' + this.hashTag) {
+        this.isDisplayMenu = false
+      } else {
+        this.isDisplayMenu = true
+      }
     })
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // console.log("changes in header", changes)
-    if (changes.displayName.currentValue == false) {
-      // console.log("in if condition ")
-      this.isDisplay = false
-    } else {
-      // console.log("in else condition ")
-      this.isDisplay = true
-    }
-  }
-
-  ngOnInit() {
-
-
-
-    if (this.hashTag && this.totalEvent <= 1) {
-      // console.log("when guest has less than one event total");
-      // this.imgUrl = ''
-      this.displayLogo = false
-      $('#navigation-logo').addClass('navigation-hide');
-    }
-
-    this.router.events
-      .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
-      .subscribe((events: RoutesRecognized[]) => {
-        console.log("event of url find", events)
-        // console.log("index of page", this.index)
-        this.currentUrl = events[1].urlAfterRedirects
-        console.log('current url', this.currentUrl);
-        // this.setLogo(this.currentUrl)
-      });
-
+    // this._loginService
 
     this.sub = this.route.params.subscribe(param => {
       console.log("param ma su ave", param);
@@ -82,25 +52,54 @@ export class HeaderComponent implements OnInit {
       this.eventId = param.id
       // this.hashTag = param.hashTag
     })
+  }
 
-    this.currentUrl = this.router.url
-    console.log("login user name in heaedr", this.router.url, this.hashTag)
-    this.currentUrl = this.router.url
-    if (this.router.url == '/guest/' + this.hashTag || this.router.url == '/menu') {
-      console.log("log this");
-      this.isDisplayMenu = false
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes in header", changes.displayName, this._change)
+  }
 
+  ngOnInit() {
+
+
+
+    if (this.hashTag && this.totalEvent <= 1) {
+      this.displayLogo = false
+      $('#navigation-logo').addClass('navigation-hide');
+    }
+
+    // this.router.events
+    //   .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
+    //   .subscribe((events: RoutesRecognized[]) => {
+    //     console.log("event of url find", events)
+    //     this.currentUrl = events[1].urlAfterRedirects
+    //     console.log('current url', this.currentUrl);
+    //     if (this.currentUrl == '/menu') {
+    //       this.isDisplayMenu = false
+    //     } else {
+    //       this.isDisplayMenu = true
+    //     }
+    //   });
+    console.log("login user name in heaedr", this.router.url)
+    if (this.router.url) {
+      this.currentUrl = this.router.url
+      if (this.router.url == '/guest/' + this.hashTag || this.router.url == '/menu') {
+        console.log("log this");
+        this.isDisplayMenu = false
+      } else {
+        this.isDisplayMenu = true
+      }
     }
     // console.log("whne page is load display route", this.currentUrl)
   }
 
   getHeader(event) {
     let output = this._loginService.returnLogin(event);
+    console.log("out put", output);
     if (output == true) {
       this.router.navigate(['/menu']);
     }
   }
-
+  // 434040
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {
       return '#ed8d8f'

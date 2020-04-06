@@ -5,7 +5,7 @@
             <a class="menu-item" (click)="allActivities()">activities</a>
             <a class="menu-item" (click)="totalOfItems()" [hidden]="isClose">total</a>
             <a class="menu-item" (click)="donationOfEvent()" [hidden]="isClose">gift-donation</a>
-            <a class="menu-item" (click)="displayMyEvent()" [hidden]="!isMenu">myEvent</a>
+            <a class="menu-item" (click)="displayMyEvent('/myevent')" [hidden]="!isMenu">myEvent</a>
             <a class="menu-item" (click)="logout()" [hidden]="isMenu">exit</a>
         </menu>
     </div>

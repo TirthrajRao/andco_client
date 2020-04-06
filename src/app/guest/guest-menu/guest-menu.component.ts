@@ -59,8 +59,12 @@ export class GuestMenuComponent implements OnInit {
     this.displayActivity.emit(2)
   }
 
-  displayMyEvent() {
-    this.router.navigate(['/myevent'])
+  displayMyEvent(event) {
+    // this.router.navigate(['/myevent'])
+    let output = this.loginService.returnLogin(event);
+    if (output == true) {
+      this.router.navigate(['/myevent']);
+    }
   }
 
 
