@@ -171,11 +171,13 @@ export class CreateEventComponent implements OnInit {
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
+    this.files = event
   }
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     console.log(event, base64ToFile(event.base64));
+    this.files = this.croppedImage
   }
 
   imageLoaded() {
