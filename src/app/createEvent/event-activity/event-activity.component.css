@@ -64,6 +64,7 @@
 }
 
 .element {
+    height: 100%;
     width: 100%;
     padding: 20px 50px;
     position: relative;
@@ -99,6 +100,8 @@
 }
 
 .single-element {
+    /* height: 150px; */
+    /* overflow: auto; */
     position: relative;
     border-bottom: 1px solid #dcdcdc;
     padding: 10px 0;
@@ -216,7 +219,12 @@ button.remove {
         margin: 10px 0;
     }
     .inner-box {
-        max-height: 280px;
+        /* max-height: 280px; */
+        height: 150px;
+    }
+    .single-element{
+        height: 50px;
+        overflow: auto;
     }
     .element input,
     .date-display {

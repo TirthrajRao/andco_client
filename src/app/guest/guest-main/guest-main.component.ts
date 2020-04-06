@@ -37,7 +37,7 @@ export class GuestMainComponent implements OnInit {
     'assets/images/floral.png',
     'assets/images/wood.png',
     'assets/images/marble.png',
-    'assets/images/enter4.png',
+    'assets/images/origami.png',
     'assets/images/classic.png',
     'assets/images/lines.png',
     'assets/images/luxury.png',
@@ -89,7 +89,7 @@ export class GuestMainComponent implements OnInit {
         case 'assets/images/marble.png':
           this.themeService.toggleMarble()
           break;
-        case 'assets/images/enter4.png':
+        case 'assets/images/origami.png':
           this.themeService.toggleOrigami()
           break;
         case 'assets/images/classic.png':

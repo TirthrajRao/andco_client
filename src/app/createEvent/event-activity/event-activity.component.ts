@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -16,7 +16,8 @@ declare var $;
 })
 export class EventActivityComponent implements OnInit {
   @ViewChild('picker', { static: true }) datePicker: MatDatepicker<Date>;
-
+  @ViewChild('activities', { static: false }) activities: ElementRef;
+  @ViewChild('anotherOne', { static: true }) anotherOne: ElementRef
   activityForm: FormGroup;
   activityId
   createdActivity: any;
@@ -42,7 +43,8 @@ export class EventActivityComponent implements OnInit {
     private router: Router,
     public _eventService: EventService,
     public alertService: AlertService,
-    public dateFilter: DatePipe
+    public dateFilter: DatePipe,
+    private cdr: ChangeDetectorRef
   ) {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
@@ -51,9 +53,8 @@ export class EventActivityComponent implements OnInit {
       }
     })
   }
-
   ngOnInit() {
-
+    // this.scrollToBottom()
     // console.log("today date=======", this.hashTag)
 
     $('.wrapper').on('click', '.remove', function () {
@@ -71,6 +72,34 @@ export class EventActivityComponent implements OnInit {
 
     this.getActivityFrom()
 
+  }
+
+
+
+  ngAfterViewInit() {
+    // this.message = 'all done loading :)'
+    // this.cdr.detectChanges();
+    this.scrollToBottom();
+    // let anyChnages = this.activities.changes.subscribe(this.scrollToBottom);
+    // console.log("cahnges if ", anyChnages);
+
+  }
+  scrollToBottom = () => {
+    try {
+
+      // const el: HTMLDivElement = this.activities.nativeElement;
+      // console.log("what is in el ======", el.scrollHeight, el.offsetHeight);
+
+      // el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
+
+      this.activities.nativeElement.scrollTop = this.activities.nativeElement.scrollHeight;
+
+      // console.log("this.content.nativeElement.scrollHeight", this.content.nativeElement.scrollHeight);
+
+    } catch (err) {
+      console.log("if aby aroor", err);
+
+    }
   }
 
 
@@ -195,17 +224,31 @@ export class EventActivityComponent implements OnInit {
 
     this.activityName.push(newArray.activityName)
     const control = <FormArray>this.activityForm.controls.activity;
-
     control.push(this.fb.group({
       activityName: new FormControl('', Validators.required),
       activityStartDate: new FormControl('', Validators.required),
       eventId: new FormControl(this.eventId)
     }));
+    console.log("length of form", this.activityFormData.controls);
+
+
     console.log("form group total item", this.activityForm);
     if (control.length <= 2) {
       let secondDate = $('#activityStartDate' + (control.length - 2)).val()
       this.currentDay = new Date(secondDate)
     }
+
+    $(document).ready(() => {
+      var elem = $('#scrollHere-' + (this.activityFormData.controls.length - 1));
+      console.log("what is elem =======", elem);
+
+      console.log("elem.offset().top", elem.offset().top);
+      if (elem) {
+        $('.inner-box').scrollTop(elem.offset().top);
+
+        $('.inner-box').scrollLeft(elem.offset().left);
+      }
+    })
   }
 
   checkActivityName(event, dynamic) {
