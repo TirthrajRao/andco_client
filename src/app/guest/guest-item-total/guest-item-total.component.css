@@ -151,13 +151,14 @@ button.btn.add-more {
     font-size: 18px;
 }
 
-.empty-message {
+.empty-cart p {
     text-align: center;
-    color: #fff;
+    color: #ffffff;
 }
 
-.empty-message i {
-    font-size: 30px;
+.empty-cart img {
+    height: 100px;
+    width: 100px;
 }
 
 @media(max-width: 1600px) {
