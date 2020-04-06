@@ -30,8 +30,8 @@
         </div>
         <div class="event-menu-box-main">
             <div class="event-menu-box" *ngIf="displayMenu">
-                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity($event)"
-                    (selectedMenu)="getCurrentMenu($event)" (changeMenu)="changeMenuWithArraow($event)">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()"
+                    (changeMenu)="changeMenuWithArraow($event)">
                 </app-event-menu>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform } from 'ngx-image-cropper';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
@@ -14,6 +15,15 @@ declare var $;
 })
 export class CreateEventComponent implements OnInit {
   @Output() eventActivities: EventEmitter<any> = new EventEmitter<any>()
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  canvasRotation = 0;
+  rotation = 0;
+  scale = 1;
+  showCropper = false;
+  containWithinAspectRatio = false;
+  transform: ImageTransform = {};
 
   private sub: any
   private eventId: any
@@ -159,6 +169,35 @@ export class CreateEventComponent implements OnInit {
   }
 
 
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    console.log(event, base64ToFile(event.base64));
+  }
+
+  imageLoaded() {
+    this.showCropper = true;
+    console.log('Image loaded');
+  }
+
+  cropperReady(sourceImageDimensions: Dimensions) {
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+
+  loadImageFailed() {
+    console.log('Load failed');
+  }
+
+  updateRotation() {
+    this.transform = {
+      ...this.transform,
+      rotate: this.rotation
+    };
+  }
+
 
   // Get Event details
   getEditEventDetails(eventId) {
@@ -240,7 +279,7 @@ export class CreateEventComponent implements OnInit {
       if (form[element] == this.eventForm.controls.hashTag) {
         // if (form[element].status == 'INVALID') {
         console.log("call or not");
-        console.log("this is perfect",this.eventForm.controls.hashTag.value);
+        console.log("this is perfect", this.eventForm.controls.hashTag.value);
         // this.setPriceForm.patchValue({
         //   bankDetails: this.setPriceDetails.bankDetails
         // });
