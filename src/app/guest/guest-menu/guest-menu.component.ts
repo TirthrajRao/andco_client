@@ -60,7 +60,6 @@ export class GuestMenuComponent implements OnInit {
   }
 
   displayMyEvent(event) {
-    // this.router.navigate(['/myevent'])
     let output = this.loginService.returnLogin(event);
     if (output == true) {
       this.router.navigate(['/myevent']);
