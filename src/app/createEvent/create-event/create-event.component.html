@@ -68,12 +68,14 @@
                             <h4>Upload your profile photo</h4>
                         </div>
                         <div class="profile-photo-upload mt-3">
+                            <button class="btn" data-toggle="modal" data-target="#imageUpload">
                             <label for="upload_profile">
                                 <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                             </label>
                             <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;">
                             <span>
                             </span>
+                        </button>
                         </div>
                     </div>
                     <!-- your event profile end -->
@@ -118,7 +120,7 @@
     </div>
 </section>
 
-<!-- The Modal -->
+<!-- Event type modal start -->
 <div class="modal" id="otherEventType">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -133,3 +135,25 @@
         </div>
     </div>
 </div>
+<!-- Event type modal start -->
+
+<!-- image upload modal start -->
+<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Image Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                text
+            </div>
+            <div class="modal-footer">
+                <button class="btn save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- image upload modal end -->

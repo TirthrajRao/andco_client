@@ -268,7 +268,7 @@ input:focus {
 
 @media(max-width: 1366px) {
     .create-event-type-menu {
-        max-height: 385px;
+        max-height: 382px;
     }
     .create-event-type-box h3,
     .create-event-hashtag-box h3,
@@ -320,9 +320,6 @@ input:focus {
 }
 
 @media(max-width: 1199px) {
-    .create-event-type-menu {
-        max-height: 385px;
-    }
     .profile-picture {
         width: 250px;
         height: 250px;
