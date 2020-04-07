@@ -51,6 +51,14 @@ h2 img:hover {
     transition: 0.5s all;
 }
 
+.no-event i {
+    font-size: 30px;
+}
+
+.no-event span {
+    font-size: 20px;
+}
+
 
 /* responsive css start */
 
