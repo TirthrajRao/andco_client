@@ -15,7 +15,7 @@
                                     <a>{{type}}</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="modal" data-target="#otherEventType">Other</a>
+                                    <a data-toggle="modal" (click)="enterCustomType()">Other</a>
                                 </li>
                             </ul>
                             <div *ngIf="f.eventType.touched && f.eventType.errors" class="invalid-feedback">
@@ -68,16 +68,11 @@
                     <div class="create-event-profile-box">
                         <h3>Your Event Profile Photo</h3>
                         <div class="profile-picture">
-                            <img [src]="croppedImage" id="imageFilter"
+                            <!-- <img *ngIf="displayImage == true" src="{{path}}{{createdEventDetails.profilePhoto}}"
+                                id="imageFilter"> -->
+                            <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
                                 onerror="this.src='/assets/images/profile_img.png'">
                         </div>
-                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                            [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3"
-                            [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
-                            [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
-                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-                            (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
-                        </image-cropper>
                         <div class="text-white mt-2">
                             <h4>Upload your profile photo</h4>
                         </div>
@@ -86,7 +81,7 @@
                             <label for="upload_profile">
                                 <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                             </label>
-                            <input type="file" (change)="fileChangeEvent($event)"
+                            <input type="file" (change)="addFile($event.target.files)"
                                 accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;">
                             <span>
                             </span>
