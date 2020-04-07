@@ -10,7 +10,10 @@
                 </h2>
             </div>
             <div class="my-event-inner-box-height">
-                <h1 *ngIf="listOfEvent && listOfEvent.length == 0">Sorry you have no event</h1>
+                <div class="text-center text-white no-event" *ngIf="listOfEvent && listOfEvent.length == 0">
+                    <i class="fa fa-frown-o" aria-hidden="true"></i>
+                    <span>Sorry you have no event</span>
+                </div>
                 <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
                 <div>
                     <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 0">
@@ -22,8 +25,7 @@
 
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
-                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>
