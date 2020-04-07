@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray, FormControlName } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
 import { EventService } from '../../services/event.service';
 import { Subject } from 'rxjs';
@@ -19,6 +19,7 @@ export class MyEventLinkComponent implements OnInit {
   staticAlertClosed = false;
   successMessage: string;
   reminderForm: FormGroup;
+  afterEventForm: FormGroup;
   currentDay = new Date()
   @Input('eventLink') eventLink
   $slider
@@ -43,6 +44,8 @@ export class MyEventLinkComponent implements OnInit {
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   isAll
   isOnly
+  afterAll
+  afterBuy
   flag: any
   constructor(
     public eventService: EventService,
@@ -64,6 +67,13 @@ export class MyEventLinkComponent implements OnInit {
       reminderStartTime: new FormControl(''),
       guestList: new FormControl('')
     });
+
+    this.afterEventForm = new FormGroup({
+      afterEventMessage: new FormControl(''),
+      listOfGuest: new FormControl('')
+    })
+
+
 
     this.initMenuSlider()
     this.selectedIndex = 0
@@ -207,6 +217,20 @@ export class MyEventLinkComponent implements OnInit {
     }
     if (i == 4) {
       this.index = 3
+      if (this.afterEventMessage && this.afterEventMessage.listOfGuest) {
+        console.log("call thia ");
+        let valueOfGuest = this.afterEventMessage.listOfGuest
+        this.afterEventForm.patchValue({
+          listOfGuest: valueOfGuest
+        })
+        this.afterEventForm.get('listOfGuest').updateValueAndValidity()
+        if (valueOfGuest == 'totalList') {
+          console.log("call this or not", valueOfGuest);
+          this.afterAll = valueOfGuest
+        } else {
+          this.afterBuy = valueOfGuest
+        }
+      }
     }
     if (i == 0) {
       this.index = 0
@@ -272,6 +296,15 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
+
+  afterEventList(event) {
+    let selected = event.target.id
+    this.afterEventForm.patchValue({
+      listOfGuest: selected
+    })
+    this.afterEventForm.get('listOfGuest').updateValueAndValidity()
+  }
+
   reminderMessage(data) {
     this.index = data
   }
@@ -293,6 +326,17 @@ export class MyEventLinkComponent implements OnInit {
       this.index = index
     }, error => {
       console.log("error while update respose", error)
+    })
+  }
+
+
+  afterEventMessageSend(index) {
+    this.eventService.setAfterEventMessage(this.afterEventForm.value, this.eventId).subscribe((response) => {
+      console.log("response of after event", response);
+      this.index = index
+    }, error => {
+      console.log("error while set after message", error);
+
     })
   }
 

@@ -93,11 +93,22 @@
     border-radius: 10px;
 }
 
+button.btn.edit {
+    background-color: #A6B138;
+    color: #fff;
+}
+
+button.btn.delete {
+    background-color: #5D6C20;
+    color: #fff;
+}
+
 @media(max-width:1600px) {
     .group-header span {
         font-size: 18px;
     }
 }
+
 @media(max-width:767px) {
     .group-header span {
         font-size: 16px;

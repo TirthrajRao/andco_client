@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
+import { LoginService } from '../../services/login.service';
 import { DatePipe, getLocaleFirstDayOfWeek } from '@angular/common';
 import * as moment from 'moment';
 
@@ -43,6 +44,7 @@ export class EventActivityComponent implements OnInit {
     private router: Router,
     public _eventService: EventService,
     public alertService: AlertService,
+    public loginService: LoginService,
     public dateFilter: DatePipe,
     private cdr: ChangeDetectorRef
   ) {
@@ -273,14 +275,17 @@ export class EventActivityComponent implements OnInit {
    */
   addActivity() {
     this.isLoad = true;
-    // for (let i = 0; i < this.activityForm.value.activity.length; i++) {
-    //   this.activityForm.value.activity[i].activityStartDate = moment($('#activityStartDate' + i).val()).format('YYYY-MM-DD')
-    // }
-
     this._eventService.addActivities(this.activityForm.value)
       .subscribe((data: any) => {
         this.isLoad = false;
-        this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
+
+        let routerData = '/eventGroup/' + this.eventId
+        let output = this.loginService.returnLogin(routerData);
+        if (output == true) {
+          // this.router.navigate(['/myevent']);
+          this.router.navigate(['/eventGroup/' + this.eventId])
+        }
+        // this.router.navigate(['/eventGroup/' + this.eventId], { state: [data.data] })
         this.alertService.getSuccess(data.message)
       }, (err: any) => {
         this.isLoad = false;
@@ -330,7 +335,14 @@ export class EventActivityComponent implements OnInit {
     console.log("value of activity while edit", this.activityForm.value);
     this._eventService.updateActivites(this.activityForm.value).subscribe((response: any) => {
       console.log("activity update completed", response);
-      this.router.navigate(['/eventGroup/' + this.eventId])
+
+      let routerData = '/eventGroup/' + this.eventId
+      let output = this.loginService.returnLogin(routerData);
+      if (output == true) {
+        // this.router.navigate(['/myevent']);
+        this.router.navigate(['/eventGroup/' + this.eventId])
+      }
+      // this.router.navigate(['/eventGroup/' + this.eventId])
     }, error => {
       console.log("error while update activity", error);
 

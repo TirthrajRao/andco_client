@@ -2,8 +2,8 @@
     <div class="d-inline-block w-100">
         <button class="btn add-more" (click)="addMoreItems()">add more</button>
     </div>
-    <div class="empty-message" *ngIf="totlaItem && !totlaItem.length">
-        <i class="fa fa-frown-o" aria-hidden="true"></i>
+    <div class="empty-cart text-center" *ngIf="totlaItem && !totlaItem.length">
+        <img src="../../../assets/images/sample-color.gif" alt="cart gif">
         <p>Sorry, You have no item in your cart , please click on add More to add some items</p>
     </div>
     <div class="accordian-height-box">

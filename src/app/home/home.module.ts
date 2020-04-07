@@ -11,6 +11,8 @@ import { ShareModule } from '@ngx-share/core'
 import { ShareButtonModule } from '@ngx-share/button';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 // import { NgbdAlertSelfclosing } from './alert-selfclosing';
 
 // import {MatTabsModule} from '@angular/material/tabs';
@@ -200,7 +202,8 @@ const routes: Routes = [
     ShareButtonModule,
     ClipboardModule,
     MatTabsModule,
-    NgbModule
+    NgbModule,
+    ImageCropperModule
     // MatSelectModule
   ],
   exports: [

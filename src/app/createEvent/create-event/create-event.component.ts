@@ -1,9 +1,11 @@
 import { Component, OnInit, Renderer2, ElementRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform } from 'ngx-image-cropper';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
+import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
 declare var $;
 
@@ -14,6 +16,15 @@ declare var $;
 })
 export class CreateEventComponent implements OnInit {
   @Output() eventActivities: EventEmitter<any> = new EventEmitter<any>()
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  canvasRotation = 0;
+  rotation = 0;
+  scale = 1;
+  showCropper = false;
+  containWithinAspectRatio = false;
+  transform: ImageTransform = {};
 
   private sub: any
   private eventId: any
@@ -83,6 +94,7 @@ export class CreateEventComponent implements OnInit {
     public activated: ActivatedRoute,
     public eventService: EventService,
     public alertService: AlertService,
+    public loginService: LoginService,
     private renderer: Renderer2,
     private elRef: ElementRef
   ) { }
@@ -159,18 +171,65 @@ export class CreateEventComponent implements OnInit {
   }
 
 
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    this.files = event
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    console.log(event, base64ToFile(event.base64));
+    this.files = this.croppedImage
+  }
+
+  imageLoaded() {
+    this.showCropper = true;
+    console.log('Image loaded');
+  }
+
+  cropperReady(sourceImageDimensions: Dimensions) {
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+
+  loadImageFailed() {
+    console.log('Load failed');
+  }
+
+  updateRotation() {
+    this.transform = {
+      ...this.transform,
+      rotate: this.rotation
+    };
+  }
+
 
   // Get Event details
   getEditEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response for edit event", response);
       this.createdEventDetails = response.data
-      let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
-      this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+      if (this.createdEventDetails.eventType) {
+        console.log("what is value", this.createdEventDetails.eventType);
+        let customType = this.createdEventDetails.eventType
+        const resSomeSearch1 = this.eventType.some(item =>
+          // console.log("what is the value", item)
+          item === customType
+        );
+        console.log("it is important for event tyep", resSomeSearch1);
+        if (resSomeSearch1 == false) {
+          this.eventType.push(customType)
+          let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
+          this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+          this.selctedIndex = selectedEventType
+        } else {
+          let selectedEventType = this.eventType.indexOf(this.createdEventDetails.eventType)
+          this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType)
+          this.selctedIndex = selectedEventType
+        }
+      }
       let index = this.eventBackGround.findIndex(x => x.path === this.createdEventDetails.eventTheme);
       this.themeUrl = this.createdEventDetails.eventTheme
       this.imgURL = this.path + this.createdEventDetails.profilePhoto
-      this.selctedIndex = selectedEventType
       this.displayImage = true
       // this.eventActivities.emit(this.createdEventDetails.activity)
       console.log("index of event", index);
@@ -240,7 +299,7 @@ export class CreateEventComponent implements OnInit {
       if (form[element] == this.eventForm.controls.hashTag) {
         // if (form[element].status == 'INVALID') {
         console.log("call or not");
-        console.log("this is perfect",this.eventForm.controls.hashTag.value);
+        console.log("this is perfect", this.eventForm.controls.hashTag.value);
         // this.setPriceForm.patchValue({
         //   bankDetails: this.setPriceDetails.bankDetails
         // });
@@ -304,9 +363,15 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+  enterCustomType() {
+    $('#otherEventType').modal("show")
+  }
+
   addEventType() {
     console.log("event type new one", this.customEventType)
     this.eventType.push(this.customEventType)
+    this.customEventType = ''
+    $('#otherEventType').modal("hide")
   }
 
 
@@ -346,7 +411,14 @@ export class CreateEventComponent implements OnInit {
           // this.isDisable = true
           this.alertService.getSuccess(data.message)
           this.eventForm.reset()
-          this.router.navigate(['/eventActivity/' + data.data._id]);
+
+          let routerData = '/eventActivity/' + data.data._id
+          let output = this.loginService.returnLogin(routerData);
+          if (output == true) {
+            // this.router.navigate(['/myevent']);
+            this.router.navigate(['/eventActivity/' + data.data._id])
+          }
+          // this.router.navigate(['/eventActivity/' + data.data._id]);
           this.isLoad = false
         }, (error: any) => {
           this.isDisable = false
@@ -396,7 +468,14 @@ export class CreateEventComponent implements OnInit {
           // this.isDisable = true
           this.alertService.getSuccess(data.message)
           // this.eventForm.reset()
-          this.router.navigate(['/eventActivity/' + data.data._id]);
+
+          let routerData = '/eventActivity/' + data.data._id
+          let output = this.loginService.returnLogin(routerData);
+          if (output == true) {
+            // this.router.navigate(['/myevent']);
+            this.router.navigate(['/eventActivity/' + data.data._id])
+          }
+          // this.router.navigate(['/eventActivity/' + data.data._id]);
           this.isLoad = false
         }, (error: any) => {
           this.isDisable = false

@@ -219,6 +219,11 @@ export class EventService {
   updateGroup(data) {
     return this.http.put(config.baseApiUrl + "/group/", data)
   }
+
+  removeGroup(data) {
+    return this.http.put(config.baseApiUrl + "/group-delete", data)
+  }
+
   removeItem(itemId, groupId) {
     let body = {
       itemId: itemId,
@@ -239,5 +244,10 @@ export class EventService {
   updateReminder(data, eventId) {
     data['eventId'] = eventId
     return this.http.put(config.baseApiUrl + "/event/setReminder", data)
+  }
+
+  setAfterEventMessage(data, eventId) {
+    data['eventId'] = eventId
+    return this.http.post(config.baseApiUrl + "/event/setAfterEventMessage", data)
   }
 }
