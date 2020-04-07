@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@ang
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
+import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
 declare var $;
 
@@ -93,6 +94,7 @@ export class CreateEventComponent implements OnInit {
     public activated: ActivatedRoute,
     public eventService: EventService,
     public alertService: AlertService,
+    public loginService: LoginService,
     private renderer: Renderer2,
     private elRef: ElementRef
   ) { }
@@ -409,7 +411,14 @@ export class CreateEventComponent implements OnInit {
           // this.isDisable = true
           this.alertService.getSuccess(data.message)
           this.eventForm.reset()
-          this.router.navigate(['/eventActivity/' + data.data._id]);
+
+          let routerData = '/eventActivity/' + data.data._id
+          let output = this.loginService.returnLogin(routerData);
+          if (output == true) {
+            // this.router.navigate(['/myevent']);
+            this.router.navigate(['/eventActivity/' + data.data._id])
+          }
+          // this.router.navigate(['/eventActivity/' + data.data._id]);
           this.isLoad = false
         }, (error: any) => {
           this.isDisable = false
@@ -459,7 +468,14 @@ export class CreateEventComponent implements OnInit {
           // this.isDisable = true
           this.alertService.getSuccess(data.message)
           // this.eventForm.reset()
-          this.router.navigate(['/eventActivity/' + data.data._id]);
+
+          let routerData = '/eventActivity/' + data.data._id
+          let output = this.loginService.returnLogin(routerData);
+          if (output == true) {
+            // this.router.navigate(['/myevent']);
+            this.router.navigate(['/eventActivity/' + data.data._id])
+          }
+          // this.router.navigate(['/eventActivity/' + data.data._id]);
           this.isLoad = false
         }, (error: any) => {
           this.isDisable = false

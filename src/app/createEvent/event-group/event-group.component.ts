@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
+import { LoginService } from '../../services/login.service';
 import { Observable } from 'rxjs';
 import { map, every } from 'rxjs/operators';
 declare var $;
@@ -45,6 +46,7 @@ export class EventGroupComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
     public alertervice: AlertService,
+    public loginService: LoginService,
     public router: Router
   ) {
     this.sub = this.activatedRoute.params.subscribe(param => {
@@ -126,10 +128,6 @@ export class EventGroupComponent implements OnInit {
 
   addGroup() {
     this.isLoad = true
-    // console.log("value of group form");
-    // console.log(this.allActivities)
-    // this.allActivities['eventId'] = this.eventId
-    // console.log("finale details", this.allActivities);
     this.allActivities.forEach(singleActivityDetails => {
       // console.log("single activity with details", singleActivityDetails);
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -140,15 +138,22 @@ export class EventGroupComponent implements OnInit {
           female: singleGroup.female
         }
         this.finalArray.push(finalObject)
-
-        // console.log("is final object is ready or not=====", this.finalArray)
       })
     });
     this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
       // console.log("Group added in new event", response)
       this.isLoad = false
       this.alertervice.getSuccess(response.message)
-      this.router.navigate(['/set-price/' + this.eventId])
+
+      let routerData = '/set-price/' + this.eventId
+      let output = this.loginService.returnLogin(routerData);
+      if (output == true) {
+        // this.router.navigate(['/myevent']);
+        this.router.navigate(['/set-price/' + this.eventId])
+      }
+
+
+      // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
       this.alertervice.getError(error.message)
       // console.log("error while add groups in event", error)
@@ -181,7 +186,14 @@ export class EventGroupComponent implements OnInit {
     this.eventService.updateGroup(this.finalArray).subscribe((response: any) => {
       console.log("group update completed", response);
       this.alertervice.getSuccess(response.message)
-      this.router.navigate(['/set-price/' + this.eventId])
+
+      let routerData = '/set-price/' + this.eventId
+      let output = this.loginService.returnLogin(routerData);
+      if (output == true) {
+        // this.router.navigate(['/myevent']);
+        this.router.navigate(['/set-price/' + this.eventId])
+      }
+      // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
       console.log("error while update group", error);
     })
