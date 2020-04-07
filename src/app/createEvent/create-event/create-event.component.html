@@ -77,15 +77,15 @@
                             <h4>Upload your profile photo</h4>
                         </div>
                         <div class="profile-photo-upload mt-3">
-                            <button class="btn" data-toggle="modal" data-target="#imageUpload">
-                            <label for="upload_profile">
+                            <!-- <button class="btn" data-toggle="modal" data-target="#imageUpload" (click)="openImageModal()"> -->
+                            <label for="upload_profile"> 
                                 <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                             </label>
                             <input type="file" (change)="addFile($event.target.files)"
                                 accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;">
                             <span>
                             </span>
-                        </button>
+                        <!-- </button> -->
                         </div>
                     </div>
                     <!-- your event profile end -->
