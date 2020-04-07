@@ -509,6 +509,9 @@ export class CreateEventComponent implements OnInit {
       message1.innerHTML = null;
     }
   }
+  openImageModal(){
+    $('#imageUpload').modal("show")
 
+  }
 }
 
