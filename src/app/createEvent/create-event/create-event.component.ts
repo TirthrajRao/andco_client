@@ -7,6 +7,8 @@ import { EventService } from '../../services/event.service';
 import { AlertService } from '../../services/alert.service';
 import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
+import { DomSanitizer } from '@angular/platform-browser';
+
 declare var $;
 
 @Component({
@@ -24,6 +26,7 @@ export class CreateEventComponent implements OnInit {
   scale = 1;
   showCropper = false;
   containWithinAspectRatio = false;
+  cropImage: any
   transform: ImageTransform = {};
 
   private sub: any
@@ -51,6 +54,7 @@ export class CreateEventComponent implements OnInit {
   selctedIndex
   selectedThemeIndex
   customEventType
+  blob: any
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
     {
@@ -86,6 +90,7 @@ export class CreateEventComponent implements OnInit {
       path: 'assets/images/instrument.png'
     }
   ]
+  cropPath: any;
 
 
 
@@ -96,7 +101,8 @@ export class CreateEventComponent implements OnInit {
     public alertService: AlertService,
     public loginService: LoginService,
     private renderer: Renderer2,
-    private elRef: ElementRef
+    private elRef: ElementRef,
+    private _sanitizer: DomSanitizer
   ) { }
   //   ngAfterViewInit() {
   //     let loader = this.elRef.nativeElement.querySelector('#loader'); 
@@ -111,8 +117,10 @@ export class CreateEventComponent implements OnInit {
 
     this.sub = this.activated.params.subscribe(param => {
       this.eventId = param.eventId
-      console.log("event id for edit", this.eventId);
-      this.getEditEventDetails(this.eventId)
+      if (this.eventId) {
+        console.log("event id for edit", this.eventId);
+        this.getEditEventDetails(this.eventId)
+      }
     })
 
     //background image select active start
@@ -172,14 +180,64 @@ export class CreateEventComponent implements OnInit {
 
 
   fileChangeEvent(event: any): void {
+    console.log("when image is without crop", event);
     this.imageChangedEvent = event;
-    this.files = event
+    // this.files = event.target.files
+    // this.eventForm.controls.profile.setValue(this.files)
   }
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    console.log(event, base64ToFile(event.base64));
-    this.files = this.croppedImage
+    let ImageURL = this.croppedImage
+    var block = ImageURL.split(";");
+    var contentType = block[0].split(":")[1];
+    var byteString = atob(this.croppedImage.split(',')[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    this.blob = new Blob([ia], { type: contentType });
+    // blob['name'] = data.name
+    console.log("blob====>", this.blob);
+    this.eventForm.controls.profile.setValue(this.blob)
+
+    // this.files = blob
+
+    // In this case "image/gif"
+    // get the real base64 content of the file
+
+
+    // var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
+
+    // Convert it to a blob to upload
+    // var blob = this.b64toBlob(realData, contentType);
+    // console.log("this is final chance to convert", blob);
+
+  }
+
+  b64toBlob(b64Data, contentType, sliceSize?) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      var byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      var byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, { type: contentType });
+    return blob;
   }
 
   imageLoaded() {
@@ -212,7 +270,6 @@ export class CreateEventComponent implements OnInit {
         console.log("what is value", this.createdEventDetails.eventType);
         let customType = this.createdEventDetails.eventType
         const resSomeSearch1 = this.eventType.some(item =>
-          // console.log("what is the value", item)
           item === customType
         );
         console.log("it is important for event tyep", resSomeSearch1);
@@ -229,7 +286,9 @@ export class CreateEventComponent implements OnInit {
       }
       let index = this.eventBackGround.findIndex(x => x.path === this.createdEventDetails.eventTheme);
       this.themeUrl = this.createdEventDetails.eventTheme
+      this.croppedImage = this.path + this.createdEventDetails.profilePhoto
       this.imgURL = this.path + this.createdEventDetails.profilePhoto
+      // this.imageChangedEvent = this.path + this.createdEventDetails.profilePhoto
       this.displayImage = true
       // this.eventActivities.emit(this.createdEventDetails.activity)
       console.log("index of event", index);
@@ -379,6 +438,7 @@ export class CreateEventComponent implements OnInit {
    * Create new event
    */
   addEvent() {
+    console.log("final value of form", this.eventForm)
     const keys = Object.keys(this.eventForm.controls);
     let form = this.eventForm.controls;
     let flag = 0;
@@ -391,7 +451,7 @@ export class CreateEventComponent implements OnInit {
           this.errorMessaage = 'Event Type is required'
         } else if (element == 'hashTag') {
           this.errorMessaage = 'Hashtag is required'
-        } else if (this.files.length == 0) {
+        } else if (!this.blob) {
           this.errorMessaage = 'Profile is required'
         }
         this.alertService.getError(this.errorMessaage)
@@ -403,7 +463,7 @@ export class CreateEventComponent implements OnInit {
     });
     if (flag == 0) {
       this.isLoad = true
-      this.eventService.addEvent(this.eventForm.value, this.files)
+      this.eventService.addEvent(this.eventForm.value, this.blob)
         .subscribe((data: any) => {
           // console.log("event details", data.data.hashTag);
           sessionStorage.setItem('eventLink', data.data.eventLink)
@@ -460,7 +520,7 @@ export class CreateEventComponent implements OnInit {
     });
     if (flag == 0) {
       this.isLoad = true
-      this.eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
+      this.eventService.updateEvent(this.eventId, this.eventForm.value, this.blob)
         .subscribe((data: any) => {
           console.log("event details", data);
           sessionStorage.setItem('eventLink', data.data.eventLink)
@@ -509,9 +569,12 @@ export class CreateEventComponent implements OnInit {
       message1.innerHTML = null;
     }
   }
-  openImageModal(){
+  openImageModal() {
     $('#imageUpload').modal("show")
 
+  }
+  saveImage() {
+    $('#imageUpload').modal("hide")
   }
 }
 

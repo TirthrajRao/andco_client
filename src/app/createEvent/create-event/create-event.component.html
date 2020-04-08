@@ -70,20 +70,20 @@
                         <div class="profile-picture">
                             <!-- <img *ngIf="displayImage == true" src="{{path}}{{createdEventDetails.profilePhoto}}"
                                 id="imageFilter"> -->
-                            <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
+                            <img [src]="croppedImage" height="200" class="float-right" id="imageFilter"
                                 onerror="this.src='/assets/images/profile_img.png'">
                         </div>
                         <div class="text-white mt-2">
                             <h4>Upload your profile photo</h4>
                         </div>
                         <div class="profile-photo-upload mt-3">
-                            <!-- <button class="btn" data-toggle="modal" (click)="openImageModal()"> -->
-                            <label for="upload_profile">
-                                <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
-                            </label>
-                            <input type="file" (change)="addFile($event.target.files)"
-                                accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;">
-                            <!-- </button> -->
+                            <button class="btn" data-toggle="modal" (click)="openImageModal()">
+                                <label for="upload_profile">
+                                    <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
+                                </label>
+                                <!-- <input type="file" (change)="addFile($event.target.files)"
+                                    accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;"> -->
+                            </button>
                         </div>
                     </div>
                     <!-- your event profile end -->
@@ -162,14 +162,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg"
+                <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg"
                     id="upload_profile">
-
-                <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
-                    onerror="this.src='/assets/images/profile_img.png'">
+                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                    [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [onlyScaleDown]="true"
+                    [roundCropper]="true" [canvasRotation]="canvasRotation" [transform]="transform"
+                    [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png"
+                    (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                    (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
             </div>
             <div class="modal-footer">
-                <button class="btn save">Save</button>
+                <button class="btn save" (click)="saveImage()">Save</button>
             </div>
         </div>
     </div>

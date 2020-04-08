@@ -22,24 +22,29 @@ export class EventService {
    * @param {Object} themeFiles
    * Create new event
    */
-  addEvent(body, files: any) {
-    // console.log("event detailsssssss", body);
+  addEvent(body, blob: any) {
+    console.log("event detailsssssss", blob);
     // console.log("filessssss name ", files);
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
     formdata.append('eventType', body.eventType);
     formdata.append('hashTag', body.hashTag);
     formdata.append('background', body.background)
-    if (files.length) {
-      for (let i = 0; i < files.length; i++) {
-        formdata.append("profile", files[i]);
-      }
+    // if (files.length) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     formdata.append("profile", files[i]);
+    //   }
+    // }
+    if (blob) {
+      console.log("call this or not");
+
+      formdata.append("profile", blob)
     }
     return this.http.post(config.baseApiUrl + "/event", formdata);
   }
 
 
-  updateEvent(eventId, body, files: any) {
+  updateEvent(eventId, body, blob: any) {
 
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
@@ -47,10 +52,16 @@ export class EventService {
     formdata.append('hashTag', body.hashTag);
     formdata.append('background', body.background)
     formdata.append('eventId', eventId)
-    if (files.length) {
-      for (let i = 0; i < files.length; i++) {
-        formdata.append("profile", files[i]);
-      }
+    // if (files.length) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     formdata.append("profile", files[i]);
+    //   }
+    // }
+
+    if (blob) {
+      console.log("call this or not");
+
+      formdata.append("profile", blob)
     }
     return this.http.put(config.baseApiUrl + "/event", formdata);
   }
