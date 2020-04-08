@@ -44,7 +44,7 @@ export class EventService {
   }
 
 
-  updateEvent(eventId, body, files: any) {
+  updateEvent(eventId, body, blob: any) {
 
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
@@ -52,10 +52,16 @@ export class EventService {
     formdata.append('hashTag', body.hashTag);
     formdata.append('background', body.background)
     formdata.append('eventId', eventId)
-    if (files.length) {
-      for (let i = 0; i < files.length; i++) {
-        formdata.append("profile", files[i]);
-      }
+    // if (files.length) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     formdata.append("profile", files[i]);
+    //   }
+    // }
+
+    if (blob) {
+      console.log("call this or not");
+
+      formdata.append("profile", blob)
     }
     return this.http.put(config.baseApiUrl + "/event", formdata);
   }

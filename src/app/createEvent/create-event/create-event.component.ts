@@ -270,7 +270,6 @@ export class CreateEventComponent implements OnInit {
         console.log("what is value", this.createdEventDetails.eventType);
         let customType = this.createdEventDetails.eventType
         const resSomeSearch1 = this.eventType.some(item =>
-          // console.log("what is the value", item)
           item === customType
         );
         console.log("it is important for event tyep", resSomeSearch1);
@@ -287,7 +286,9 @@ export class CreateEventComponent implements OnInit {
       }
       let index = this.eventBackGround.findIndex(x => x.path === this.createdEventDetails.eventTheme);
       this.themeUrl = this.createdEventDetails.eventTheme
+      this.croppedImage = this.path + this.createdEventDetails.profilePhoto
       this.imgURL = this.path + this.createdEventDetails.profilePhoto
+      // this.imageChangedEvent = this.path + this.createdEventDetails.profilePhoto
       this.displayImage = true
       // this.eventActivities.emit(this.createdEventDetails.activity)
       console.log("index of event", index);
@@ -519,7 +520,7 @@ export class CreateEventComponent implements OnInit {
     });
     if (flag == 0) {
       this.isLoad = true
-      this.eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
+      this.eventService.updateEvent(this.eventId, this.eventForm.value, this.blob)
         .subscribe((data: any) => {
           console.log("event details", data);
           sessionStorage.setItem('eventLink', data.data.eventLink)
