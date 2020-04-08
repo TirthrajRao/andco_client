@@ -1,15 +1,43 @@
-.hideInput{
+.hideInput {
     display: none;
 }
-.sales-inner input{
+
+.sales-inner input {
     width: 100% !important;
 }
+
 .inner-radio-box {
     margin: auto;
     display: table;
 }
-#message2, #message3{
+
+#message2,
+#message3 {
     color: #dc3545;
     font-size: 18px;
     margin-bottom: 7px;
+}
+
+.plus img {
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.bank-slider {
+    padding-left: 50px;
+}
+
+.single-slide {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    padding: 20px;
+}
+
+.arrow-class a#prevarrow .arrow-left,
+.arrow-class a#nextarrow .arrow-right {
+    border-top: 3px solid #a6b138;
+    border-left: 3px solid #a6b138;
 }

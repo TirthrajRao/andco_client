@@ -23,6 +23,17 @@ export class BankDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    // bank slider start here
+    $('.bank-slider').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow',
+      nextArrow: '#nextarrow',
+    });
+    // bank slider end here
+
     // $(document).ready(function () {
     //   let checked = $('input[name="radio2"]:checked').val();
     // console.log("value of checked", checked)
