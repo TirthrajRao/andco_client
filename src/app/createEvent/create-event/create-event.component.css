@@ -57,25 +57,27 @@ button.slick-arrow {
 .create-event-type-menu {
     border: 3px solid #fff;
     border-radius: 13px;
-    padding: 20px;
+    padding: 10px;
+}
+
+.create-event-type-menu ul {
     max-height: 490px;
     overflow: auto;
     padding-right: 10px;
 }
 
-.create-event-type-menu::-webkit-scrollbar-track {
+.create-event-type-menu ul::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
     background-color: transparent;
 }
 
-.create-event-type-menu::-webkit-scrollbar {
+.create-event-type-menu ul::-webkit-scrollbar {
     width: 4px;
-    margin-right: 10px;
     background-color: transparent;
 }
 
-.create-event-type-menu::-webkit-scrollbar-thumb {
+.create-event-type-menu ul::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: #ffffff;
@@ -267,8 +269,8 @@ input:focus {
 /* responsive css start */
 
 @media(max-width: 1366px) {
-    .create-event-type-menu {
-        max-height: 382px;
+    .create-event-type-menu ul {
+        max-height: 330px;
     }
     .create-event-type-box h3,
     .create-event-hashtag-box h3,
