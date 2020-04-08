@@ -165,6 +165,45 @@ button.slick-arrow {
     cursor: pointer;
 }
 
+.font-h4 h4 {
+    font-size: 20px;
+}
+
+.image-cropper-box {
+    height: 300px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    border: 1px solid lightgray;
+    margin-bottom: 5px;
+}
+
+.choose_image {
+    text-align: center;
+}
+
+.choose_image label {
+    background-color: #9d3742;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.choose_image input {
+    display: none;
+}
+
+.save button {
+    background-color: #506f7d;
+    color: #fff;
+}
+
+h5.modal-title {
+    font-weight: bold;
+    color: #506f7d;
+}
+
 
 /* your event profile css end */
 
@@ -427,6 +466,9 @@ input:focus {
     button.btn.created-event-custom-button {
         padding: 3px 25px;
         font-size: 16px;
+    }
+    .image-cropper-box {
+        height: 240px;
     }
 }
 
