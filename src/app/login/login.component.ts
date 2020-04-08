@@ -145,9 +145,9 @@ export class LoginComponent implements OnInit {
         this.isDisable = false;
         // this.
         // this.loginForm.reset();
-        this.varificationEmail = varification.useremail
-        sessionStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
-        this.router.navigate(['/verification']);
+        // this.varificationEmail = varification.useremail
+        // sessionStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
+        // this.router.navigate(['/verification']);
       })
   }
 
