@@ -46,6 +46,7 @@ export class CollectionComponent implements OnInit {
     this.eventService.getItemsOfGuest(eventId).subscribe((response: any) => {
       console.log("guest details in main ", response);
       if (response && response.data.length > 0) {
+        // response.data['eventId'] = this.eventId
         this.displayGuestItems = response.data
         this.selectedIndex = 1
         this.noGuestList = ''
