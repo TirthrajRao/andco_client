@@ -4,6 +4,7 @@ import { ExcelService } from '../../services/excel.service';
 import { SearchListPipe } from '../../search-list.pipe';
 import { saveAs } from "file-saver";
 import * as _ from 'lodash';
+declare var $: any
 
 @Component({
   selector: 'app-guest-collection',
@@ -123,6 +124,12 @@ export class GuestCollectionComponent implements OnInit {
     console.log("file name", fileName)
     saveAs(blob, fileName);
     this.isLoad = false;
+  }
+
+
+  shareGuestList() {
+    $('#shareIconButton').modal("show")
+
   }
 
   // async geneRatePdf(value) {

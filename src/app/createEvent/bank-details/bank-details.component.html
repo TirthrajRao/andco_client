@@ -11,10 +11,7 @@
                 </p>
             </div>
             <div [hidden]="!isBankSelected">
-                <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name"
-                    class="text-left mb-2 px-3 py-2 font-weight-bold" formControlName="bankName"
-                    [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
-                    ngModel="{{displayDetails ? displayDetails.bankName : ''}}"
+                <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name" class="text-left mb-2 px-3 py-2 font-weight-bold" formControlName="bankName" [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" ngModel="{{displayDetails ? displayDetails.bankName : ''}}"
                     (change)="changeBankName($event , bankForm.value)">
                 <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
                     <div *ngIf="f.bankName.errors.required">Name is required</div>
@@ -23,11 +20,8 @@
                 </div>
             </div>
             <div [hidden]="!isBankSelected">
-                <input type="text" autocomplete="off" value="test3" name="test3" placeholder="Account Number"
-                    class="mb-2 px-3 py-2 font-weight-bold text-left" minlength="16" maxlength="16"
-                    (input)="addNumber($event, bankForm.value)" id="accountNumber" formControlName="accountNumber"
-                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
-                    ngModel="{{displayDetails ? displayDetails.accountNumber : ''}}">
+                <input type="text" autocomplete="off" value="test3" name="test3" placeholder="Account Number" class="mb-2 px-3 py-2 font-weight-bold text-left" minlength="16" maxlength="16" (input)="addNumber($event, bankForm.value)" id="accountNumber" formControlName="accountNumber"
+                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }" ngModel="{{displayDetails ? displayDetails.accountNumber : ''}}">
                 <div id="message2" class="w-100"></div>
                 <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
@@ -38,10 +32,7 @@
                 </div>
             </div>
             <div [hidden]="!isCardSelected">
-                <input type="text" value="test4" name="test4" placeholder="Card Number" minlength="16" maxlength="16"
-                    class="text-left px-3 py-2 font-weight-bold" id="cardNumber" (input)="enterCard($event)"
-                    formControlName="cardNumber"
-                    [ngClass]="{ 'is-invalid': f.cardNumber.touched && f.cardNumber.errors }"
+                <input type="text" value="test4" name="test4" placeholder="Card Number" minlength="16" maxlength="16" class="text-left px-3 py-2 font-weight-bold" id="cardNumber" (input)="enterCard($event)" formControlName="cardNumber" [ngClass]="{ 'is-invalid': f.cardNumber.touched && f.cardNumber.errors }"
                     ngModel="{{displayDetails ? displayDetails.cardNumber : ''}}">
                 <div id="message3" class="w-100"></div>
                 <div *ngIf="f.cardNumber.touched && f.cardNumber.errors" class="invalid-feedback text-white">
@@ -54,4 +45,39 @@
             </div>
         </form>
     </div>
+    <!-- <div class="add-bank-account">
+        <div class="bank-list">
+            <div class="plus float-left">
+                <img src="../../../assets/images/remove.png" alt="plus icon">
+            </div>
+            <div class="slider-box">
+                <div class="arrow-class">
+                    <a id="prevarrow">
+                        <div class="arrow-left"></div>
+                    </a>
+                    <a id="nextarrow">
+                        <div class="arrow-right"></div>
+                    </a>
+                </div>
+
+                <div class="bank-slider">
+                    <div class="single-slide">
+                        <p>SBI</p>
+                        <p>12345678910101020</p>
+                    </div>
+                    <div class="single-slide">
+                        <p>SBI</p>
+                        <p>12345678910101020</p>
+                    </div>
+                    <div class="single-slide">
+                        <p>SBI</p>
+                        <p>12345678910101020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-list">
+
+        </div>
+    </div> -->
 </div>

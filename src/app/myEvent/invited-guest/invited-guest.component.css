@@ -36,7 +36,7 @@
 
 ul.guest-list-inner-box {
     max-height: 170px;
-    min-height: 150px;
+    /* min-height: 150px; */
     overflow: auto;
 }
 
@@ -95,9 +95,13 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
     font-weight: bold;
 }
 
-.empty-message i {
-    font-size: 30px;
-    color: #686868;
+.empty-message img {
+    height: 200px;
+}
+
+.empty-message p {
+    font-weight: bold;
+    color: #cf8037;
 }
 
 @media(max-width:1600px) {
@@ -119,6 +123,9 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
         width: 60px;
         height: 60px;
     }
+    .empty-message img {
+        height: 130px;
+    }
 }
 
 @media(max-width:1366px) {
@@ -137,7 +144,7 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
     }
     ul.guest-list-inner-box {
         max-height: 110px;
-        min-height: 110px;
+        /* min-height: 110px; */
     }
     .profile-name {
         font-size: 22px;
