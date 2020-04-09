@@ -16,7 +16,7 @@
 
     <ul *ngIf="isDisplay">
         <li>
-            <a tooltipClass="my-custom-class" ngbTooltip="Download" (click)="geneRatePdf()">
+            <a tooltipClass="my-custom-class" ngbTooltip="Download" (click)="geneRatePdf('save')">
                 <img src="assets/images/download.png" alt="download icon">
             </a>
         </li>
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li>
-            <a tooltipClass="my-custom-class" ngbTooltip="Share" (click)="shareGuestList()">
+            <a tooltipClass="my-custom-class" ngbTooltip="Share" (click)="geneRatePdf('share')">
                 <img src="assets/images/share.png" alt="share icon">
             </a>
         </li>
@@ -112,7 +112,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                icons here
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
+                    [button]="'whatsapp'" [image]="file">
+                </share-button>
+
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
+                    [button]="'email'" [image]="image"></share-button>
             </div>
         </div>
     </div>
