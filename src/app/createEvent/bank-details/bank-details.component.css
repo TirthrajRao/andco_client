@@ -18,11 +18,17 @@
     margin-bottom: 7px;
 }
 
+.add-bank-account {
+    position: relative;
+}
+
 .plus img {
     transform: rotate(45deg);
     width: 20px;
     height: 20px;
     margin: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .bank-slider {
@@ -36,8 +42,22 @@
     padding: 20px;
 }
 
+.single-slide p {
+    color: gray;
+}
+
+.single-slide label {
+    color: #6b6a6a;
+}
+
 .arrow-class a#prevarrow .arrow-left,
 .arrow-class a#nextarrow .arrow-right {
     border-top: 3px solid #a6b138;
     border-left: 3px solid #a6b138;
+}
+
+.arrow-class {
+    position: absolute;
+    right: 20px;
+    top: -70px;
 }
