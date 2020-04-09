@@ -27,6 +27,9 @@ export class GuestCollectionComponent implements OnInit {
   noListMessage
   newEventId
   eventHashTag
+  blob: any
+  isDownload
+  image
   constructor(
     public excelService: ExcelService,
     public searchPipe: SearchListPipe,
@@ -102,15 +105,21 @@ export class GuestCollectionComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.formateData, 'export-to-excel');
   }
 
-  geneRatePdf() {
+  geneRatePdf(value) {
+    console.log("value of save", value);
     this.isLoad = true
-    console.log("response of total list", this.displayGuestItems);
 
+    console.log("response of total list", this.displayGuestItems);
     this.eventService.geneRatePdf(this.displayGuestItems, this.newEventId).subscribe((response: any) => {
       console.log("response of pdf generator", response);
       this.eventHashTag = response.data.hashTag
       // this.isLoad = false
-      this.saveToFileSystem(response.data.data)
+      if (value == 'save') {
+        this.saveToFileSystem(response.data.data)
+      }
+      if (value == 'share') {
+        this.shareFile(response.data.data)
+      }
     }, error => {
       console.log("error while generate pdf", error)
     })
@@ -118,14 +127,30 @@ export class GuestCollectionComponent implements OnInit {
 
   private saveToFileSystem(response) {
     var byteArray = new Uint8Array(response.data);
-    var blob = new Blob([byteArray], { type: 'application/pdf' });
-    console.log("what is final out put of blob", blob)
+    this.blob = new Blob([byteArray], { type: 'application/pdf' });
+    console.log("what is final out put of blob", this.blob)
     let fileName = this.eventHashTag + '-' + 'GuestList'
     console.log("file name", fileName)
-    saveAs(blob, fileName);
+    saveAs(this.blob, fileName);
     this.isLoad = false;
   }
 
+
+
+  private shareFile(response) {
+    var byteArray = new Uint8Array(response.data);
+    this.blob = new Blob([byteArray], { type: 'application/pdf' });
+    // console.log("what is final out put of blob", this.blob)
+    let fileName = this.eventHashTag + '-' + 'GuestList'
+    // console.log("file name", fileName)
+    this.image = new File([this.blob], fileName, { type: 'contentType', lastModified: Date.now() });
+    // console.log("what is the output of file", file);
+
+    // saveAs(this.blob, fileName);
+    this.isLoad = false;
+    $('#shareIconButton').modal("show")
+
+  }
 
   shareGuestList() {
     $('#shareIconButton').modal("show")
