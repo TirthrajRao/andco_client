@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, HostListener } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { ExcelService } from '../../services/excel.service';
 import { SearchListPipe } from '../../search-list.pipe';
@@ -15,6 +15,18 @@ export class GuestCollectionComponent implements OnInit {
   @Input('guestItems') guestItems
   @Input('noList') noListOfGuest
   @Input('eventId') eventId
+
+
+  @HostListener('window:beforeprint', ['$event'])
+  onBeforePrint(event) {
+    // this.isPrint = true;
+    console.log("log before pppprint");
+  }
+  @HostListener('window:afterprint', ['$event'])
+  onAfterPrint(event) {
+    // this.isPrint = false
+    console.log("log after pppprint");
+  }
   // @Input() image: string;
   displayGuestItems = []
   current = 0
@@ -38,6 +50,11 @@ export class GuestCollectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+
+  onPrint(){
+    window.print()
   }
 
 

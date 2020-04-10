@@ -127,10 +127,12 @@ export class SetPriceComponent implements OnInit {
           $('input:radio[id="test5"]').prop('checked', true);
         }
         if (this.setPriceDetails.isLogistics = 'true') {
-          $('input:radio[id="test7"]').prop('checked', true);
+          console.log("call true==========");
+          $('input:radio[id="isdelivery"]').prop('checked', true);
         }
         if (this.setPriceDetails.isLogistics = 'false') {
-          $('input:radio[id="test8"]').prop('checked', true);
+          console.log("call false =======");
+          $('input:radio[id="noDelivery"]').prop('checked', true);
         }
         if (this.setPriceDetails.payMentTransferDate != 'true') {
           $('input:radio[id="test6"]').prop('checked', true);
@@ -344,14 +346,16 @@ export class SetPriceComponent implements OnInit {
   selectedValue(event) {
     // console.log("value of logistics", event.target.id);
     let selected = event.target.id
-    if (selected == 'test7') {
+    if (selected == 'isdelivery') {
       this.setPriceForm.patchValue({
         isLogistics: 'true'
       })
+      this.setPriceForm.get('isLogistics').updateValueAndValidity();
     } else {
       this.setPriceForm.patchValue({
         isLogistics: 'false'
       })
+      this.setPriceForm.get('isLogistics').updateValueAndValidity();
     }
 
   }
