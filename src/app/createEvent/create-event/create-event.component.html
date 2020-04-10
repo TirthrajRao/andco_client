@@ -82,6 +82,9 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
+                            <a class="menuDefault" data-toggle="modal" data-target="#setDefault">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </a>
                             <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/background_main.png'">
                         </div>
                         <div class="background-photo-upload">
@@ -170,3 +173,15 @@
     </div>
 </div>
 <!-- image upload modal end -->
+
+<!-- set default modal start -->
+<div class="modal fade" id="setDefault" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body m-auto">
+                <button class="btn setDefault">Set default background</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- set default modal start -->

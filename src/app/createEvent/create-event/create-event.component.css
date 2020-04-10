@@ -236,6 +236,7 @@ h5.modal-title {
     overflow: hidden;
     border: 2px solid #fff;
     border-radius: 32px;
+    position: relative;
 }
 
 .sample_bg {
@@ -255,6 +256,22 @@ h5.modal-title {
 
 .bg-select-div {
     cursor: pointer;
+}
+
+button.setDefault {
+    background-color: #9d3742;
+    color: #fff;
+    border: none;
+    outline: none;
+    margin: auto;
+}
+
+a.menuDefault {
+    position: absolute;
+    color: white;
+    left: auto;
+    right: 20px;
+    top: 10px;
 }
 
 
