@@ -2,7 +2,7 @@
     background-image: url('../../assets/images/join_enter.png');
     background-position: center;
     background-size: cover;
-    height: auto;
+    height: 100vh;
     min-height: 100vh;
     background-repeat: no-repeat;
     padding: 20px;

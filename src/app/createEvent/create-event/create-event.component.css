@@ -132,6 +132,16 @@ button.slick-arrow {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.create-event-hashtag-box input:-ms-input-placeholder,
+.create-event-name-box input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.create-event-hashtag-box input::-ms-input-placeholder,
+.create-event-name-box input::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .create-event-hashtag-box input:focus,
 .create-event-name-box input:focus {
     outline: none !important;
@@ -193,6 +203,7 @@ button.slick-arrow {
     color: #ffffff;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .choose_image input {
@@ -345,7 +356,7 @@ input:focus {
     .create-event-name-box input {
         border: 2px solid #fff;
         font-size: 25px;
-        padding: 30px 0 30px 45px;
+        padding-left: 45px;
     }
     .content-prising {
         padding: 30px;
