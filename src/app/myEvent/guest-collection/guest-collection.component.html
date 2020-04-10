@@ -112,12 +112,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
-                    [button]="'whatsapp'" [image]="file">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [autoSetMeta]="true"
+                    [button]="'whatsapp'" [url]="image">
                 </share-button>
 
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
-                    [button]="'email'" [image]="image"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [button]="'email'" [autoSetMeta]="true"
+                    [url]="image">
+                </share-button>
             </div>
         </div>
     </div>

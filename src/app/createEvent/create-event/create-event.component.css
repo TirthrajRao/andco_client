@@ -273,6 +273,24 @@ button.btn.created-event-custom-button {
     z-index: 11;
 }
 
+button.btn.created-event-custom-button1 {
+    background-color: #9D3742;
+    color: #fff;
+    font-size: 22px;
+    padding: 7px 52px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    /* right: 0; */
+    left: 0;
+    bottom: 0px;
+    z-index: 11;
+}
+
+
+
 .bg-select-div.active .sample_bg {
     border: 3px solid #ffffff;
     border-radius: 50%;

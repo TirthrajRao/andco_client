@@ -16,7 +16,8 @@
                             <div class="single-main-box">
                                 <h3>Your welcome message </h3>
                                 <textarea formControlName="welcomeMessage"
-                                    placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
+                                    placeholder="Thank you for stopping by. We appreciate it."
+                                    pattern="[A-Za-z0-9 _ . ,]+"
                                     [ngClass]="{ 'is-invalid': f.welcomeMessage.touched && f.welcomeMessage.errors }"
                                     ngModel="{{setPriceDetails ? setPriceDetails.welcomeMessage: ''}}"></textarea>
                                 <div class="col-md-2" *ngIf=" f.welcomeMessage.touched && f.welcomeMessage.errors"
@@ -28,7 +29,8 @@
                             <div class="single-main-box mt-sm-4">
                                 <h3>Thank you message</h3>
                                 <textarea formControlName="thankyouMessage"
-                                    placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
+                                    placeholder="Thank you for stopping by. We appreciate it."
+                                    pattern="[A-Za-z0-9 _ . ,]+"
                                     [ngClass]="{ 'is-invalid': f.thankyouMessage.touched && f.thankyouMessage.errors }"
                                     ngModel="{{setPriceDetails ? setPriceDetails.thankyouMessage : ''}}"></textarea>
                                 <div *ngIf=" f.thankyouMessage.touched && f.thankyouMessage.errors"

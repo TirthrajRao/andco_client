@@ -15,6 +15,7 @@ export class GuestCollectionComponent implements OnInit {
   @Input('guestItems') guestItems
   @Input('noList') noListOfGuest
   @Input('eventId') eventId
+  // @Input() image: string;
   displayGuestItems = []
   current = 0
   formateData: any
@@ -113,6 +114,7 @@ export class GuestCollectionComponent implements OnInit {
     this.eventService.geneRatePdf(this.displayGuestItems, this.newEventId).subscribe((response: any) => {
       console.log("response of pdf generator", response);
       this.eventHashTag = response.data.hashTag
+      // this.image = "https://test.andcowith.me/join_enter.d3935dc0e5ccd82def8d.png"
       // this.isLoad = false
       if (value == 'save') {
         this.saveToFileSystem(response.data.data)
