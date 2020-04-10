@@ -300,8 +300,6 @@ button.btn.created-event-custom-button1 {
     z-index: 11;
 }
 
-
-
 .bg-select-div.active .sample_bg {
     border: 3px solid #ffffff;
     border-radius: 50%;
@@ -380,7 +378,8 @@ input:focus {
         padding: 30px;
         font-size: 26px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         padding: 5px 35px;
         bottom: 10px;
         font-size: 18px;
@@ -497,7 +496,8 @@ input:focus {
         height: 50px;
         width: 50px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         padding: 3px 25px;
         font-size: 16px;
     }
@@ -560,7 +560,8 @@ input:focus {
     .create-event-type-menu ul li a {
         font-size: 16px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         bottom: 8px;
         border-radius: 5px;
     }
@@ -574,7 +575,8 @@ input:focus {
     .create-event-main {
         background-position: bottom;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         bottom: 28px;
         border-radius: 5px;
     }
