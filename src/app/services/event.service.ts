@@ -42,7 +42,15 @@ export class EventService {
     }
     return this.http.post(config.baseApiUrl + "/event", formdata);
   }
+  checkHashTag(data, eventId) {
+    console.log("eventid", eventId);
 
+    let body = {
+      data: data,
+      eventId: eventId
+    }
+    return this.http.post(config.baseApiUrl + "/checkHashTag", body)
+  }
 
   updateEvent(eventId, body, blob: any) {
 

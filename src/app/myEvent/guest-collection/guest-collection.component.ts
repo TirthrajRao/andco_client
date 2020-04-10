@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, HostListener } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { ExcelService } from '../../services/excel.service';
 import { SearchListPipe } from '../../search-list.pipe';
@@ -15,6 +15,19 @@ export class GuestCollectionComponent implements OnInit {
   @Input('guestItems') guestItems
   @Input('noList') noListOfGuest
   @Input('eventId') eventId
+
+
+  @HostListener('window:beforeprint', ['$event'])
+  onBeforePrint(event) {
+    // this.isPrint = true;
+    console.log("log before pppprint");
+  }
+  @HostListener('window:afterprint', ['$event'])
+  onAfterPrint(event) {
+    // this.isPrint = false
+    console.log("log after pppprint");
+  }
+  // @Input() image: string;
   displayGuestItems = []
   current = 0
   formateData: any
@@ -37,6 +50,11 @@ export class GuestCollectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+
+  onPrint(){
+    window.print()
   }
 
 
@@ -113,6 +131,7 @@ export class GuestCollectionComponent implements OnInit {
     this.eventService.geneRatePdf(this.displayGuestItems, this.newEventId).subscribe((response: any) => {
       console.log("response of pdf generator", response);
       this.eventHashTag = response.data.hashTag
+      // this.image = "https://test.andcowith.me/join_enter.d3935dc0e5ccd82def8d.png"
       // this.isLoad = false
       if (value == 'save') {
         this.saveToFileSystem(response.data.data)

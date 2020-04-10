@@ -16,7 +16,8 @@
                             <div class="single-main-box">
                                 <h3>Your welcome message </h3>
                                 <textarea formControlName="welcomeMessage"
-                                    placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
+                                    placeholder="Thank you for stopping by. We appreciate it."
+                                    pattern="[A-Za-z0-9 _ . ,]+"
                                     [ngClass]="{ 'is-invalid': f.welcomeMessage.touched && f.welcomeMessage.errors }"
                                     ngModel="{{setPriceDetails ? setPriceDetails.welcomeMessage: ''}}"></textarea>
                                 <div class="col-md-2" *ngIf=" f.welcomeMessage.touched && f.welcomeMessage.errors"
@@ -28,7 +29,8 @@
                             <div class="single-main-box mt-sm-4">
                                 <h3>Thank you message</h3>
                                 <textarea formControlName="thankyouMessage"
-                                    placeholder="Thank you for stopping by. We appreciate it." pattern="[A-Za-z0-9 _]+"
+                                    placeholder="Thank you for stopping by. We appreciate it."
+                                    pattern="[A-Za-z0-9 _ . ,]+"
                                     [ngClass]="{ 'is-invalid': f.thankyouMessage.touched && f.thankyouMessage.errors }"
                                     ngModel="{{setPriceDetails ? setPriceDetails.thankyouMessage : ''}}"></textarea>
                                 <div *ngIf=" f.thankyouMessage.touched && f.thankyouMessage.errors"
@@ -112,11 +114,11 @@
                                 <div class="inner-radio-box">
                                     <div>
                                         <p><input type="radio" (change)="selectedValue($event)" name="radio4"
-                                                id="test7">
-                                            <label for="test7">yes</label></p>
-                                        <p><input type="radio" name="radio4" id="test8"
+                                                id="isdelivery">
+                                            <label for="isdelivery">yes</label></p>
+                                        <p><input type="radio" name="radio4" id="noDelivery"
                                                 (change)="selectedValue($event)">
-                                            <label for="test8">no</label>
+                                            <label for="noDelivery">no</label>
                                         </p>
                                     </div>
                                 </div>
@@ -218,3 +220,25 @@
         </div>
     </div>
 </section>
+<!-- Modal -->
+<div class="modal fade add-bank-modal" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Bank Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder="Bank name">
+                <input type="text" placeholder="Account number">
+                <input type="text" placeholder="Card number">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -267,6 +267,41 @@ button.btn.set-price-custom-button.float-left {
     transform: scale(1);
 }
 
+.add-bank-modal h5 {
+    font-weight: bold;
+    color: #a5b138;
+}
+
+.add-bank-modal input {
+    color: #5D6C20;
+    width: 100%;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0px 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-bank-modal input::placeholder {
+    color: #a5b138;
+    font-weight: bold;
+}
+
+.add-bank-modal .modal-footer button {
+    background-color: #A6B138;
+    color: #fff;
+    font-size: 18px;
+    padding: 7px 23px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin: auto;
+}
+
 
 /* radio button css end here */
 
