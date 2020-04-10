@@ -1,0 +1,133 @@
+p {
+    margin-bottom: 0;
+}
+
+.add-bank-account {
+    position: relative;
+}
+
+.arrow-right,
+.arrow-left {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.plus img {
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.bank-slider,
+.card-slider {
+    padding-left: 50px;
+}
+
+.single-slide {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    padding: 20px;
+}
+
+.single-slide p {
+    color: #c1bfbf;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.single-slide label {
+    color: #6b6a6a;
+    font-weight: 600;
+}
+
+.arrow-class a#prevarrow .arrow-left,
+.arrow-class a#nextarrow .arrow-right,
+.arrow-class a#prevarrow1 .arrow-left,
+.arrow-class a#nextarrow1 .arrow-right {
+    border-top: 3px solid #686868;
+    border-left: 3px solid #686868;
+}
+
+.arrow-class a#prevarrow .arrow-left:hover,
+.arrow-class a#nextarrow .arrow-right:hover,
+.arrow-class a#prevarrow1 .arrow-left:hover,
+.arrow-class a#nextarrow1 .arrow-right:hover {
+    border-top: 3px solid #a6b138;
+    border-left: 3px solid #a6b138;
+}
+
+.arrow-class {
+    position: absolute;
+    right: 20px;
+    top: -30px;
+}
+
+h3.title {
+    color: #a6b138;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-bank-modal h5 {
+    font-weight: bold;
+    color: #686686;
+}
+
+.add-bank-modal input {
+    color: #5D6C20;
+    width: 100%;
+    outline: none;
+    border: 1px solid #5D6C20;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0px 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-bank-modal input::placeholder {
+    color: #a5b138;
+    font-weight: bold;
+}
+
+.add-bank-modal .modal-footer button {
+    background-color: #A6B138;
+    color: #fff;
+    font-size: 18px;
+    padding: 7px 23px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin: auto;
+}
+
+@media(max-width: 991px) {
+    h3.title {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 575px) {
+    h3.title {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    .plus img {
+        width: 15px;
+        height: 15px;
+        margin: 5px;
+    }
+    .bank-slider,
+    .card {
+        padding-left: 40px;
+    }
+    .single-slide {
+        padding: 15px;
+    }
+}

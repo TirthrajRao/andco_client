@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
 import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { SearchListPipe } from './search-list.pipe';
+import { AddBankAccountComponent } from './add-bank-account/add-bank-account.component';
 
 
 
@@ -52,6 +53,7 @@ export function provideConfig() {
     ForgotPasswordComponent,
     WelcomeGuestComponent,
     GuestJoinComponent,
+    AddBankAccountComponent,
     // LoaderComponent,
   ],
   imports: [

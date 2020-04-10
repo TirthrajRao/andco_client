@@ -145,7 +145,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     min-height: calc(100vh - 226px);
     -ms-flex-align: center;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     padding-top: 232px;
 }

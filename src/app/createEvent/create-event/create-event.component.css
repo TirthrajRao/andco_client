@@ -1,3 +1,8 @@
+.page-content {
+    justify-content: unset !important;
+}
+
+
 /* your event type css start */
 
 .create-event-main {
