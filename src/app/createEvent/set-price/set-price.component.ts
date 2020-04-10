@@ -63,8 +63,8 @@ export class SetPriceComponent implements OnInit {
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
-      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
-      thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _]+$")]),
+      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
+      thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
       payMentTransferDate: new FormControl(''),
       isLogistics: new FormControl(''),
       paymentDeadlineDate: new FormControl('', [Validators.required]),

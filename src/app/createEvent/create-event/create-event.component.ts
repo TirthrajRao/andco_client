@@ -54,6 +54,10 @@ export class CreateEventComponent implements OnInit {
   selctedIndex
   selectedThemeIndex
   customEventType
+  customType
+  hashTagIndex
+  prevIndex = 0
+  saveEvent = false
   blob: any
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
@@ -201,44 +205,31 @@ export class CreateEventComponent implements OnInit {
     // blob['name'] = data.name
     console.log("blob====>", this.blob);
     this.eventForm.controls.profile.setValue(this.blob)
-
-    // this.files = blob
-
-    // In this case "image/gif"
-    // get the real base64 content of the file
-
-
-    // var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
-
-    // Convert it to a blob to upload
-    // var blob = this.b64toBlob(realData, contentType);
-    // console.log("this is final chance to convert", blob);
-
   }
 
-  b64toBlob(b64Data, contentType, sliceSize?) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
+  // b64toBlob(b64Data, contentType, sliceSize?) {
+  //   contentType = contentType || '';
+  //   sliceSize = sliceSize || 512;
 
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
+  //   var byteCharacters = atob(b64Data);
+  //   var byteArrays = [];
 
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      var slice = byteCharacters.slice(offset, offset + sliceSize);
+  //   for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+  //     var slice = byteCharacters.slice(offset, offset + sliceSize);
 
-      var byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
+  //     var byteNumbers = new Array(slice.length);
+  //     for (var i = 0; i < slice.length; i++) {
+  //       byteNumbers[i] = slice.charCodeAt(i);
+  //     }
 
-      var byteArray = new Uint8Array(byteNumbers);
+  //     var byteArray = new Uint8Array(byteNumbers);
 
-      byteArrays.push(byteArray);
-    }
+  //     byteArrays.push(byteArray);
+  //   }
 
-    var blob = new Blob(byteArrays, { type: contentType });
-    return blob;
-  }
+  //   var blob = new Blob(byteArrays, { type: contentType });
+  //   return blob;
+  // }
 
   imageLoaded() {
     this.showCropper = true;
@@ -331,18 +322,24 @@ export class CreateEventComponent implements OnInit {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
-        arrows: true,
+        arrows: false,
         adaptiveHeight: true,
         fade: true,
         accessibility: false,
-        prevArrow: '<button type="button" class="prevarrow">Back</button>',
-        nextArrow: '<button type="button" class="nextarrow" (click)="nextCalled($event)">Next</button>',
+        prevArrow: '#previouesOne',
+        nextArrow: '#nextOne',
       });
       // $('.prevarrow, .nextarrow, .created-event-custom-button').attr('tabindex', '-1');
-
+      // this.isDisable = true
       this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+        // this.nextSlide(currentSlide)
         console.log("event on before", currentSlide, nextSlide);
-        this.nextSlide(currentSlide)
+        // this.hashTagIndex = currentSlide
+        if (currentSlide == 4 && nextSlide == 5) {
+          this.saveEvent = true
+        } else {
+          this.saveEvent = false
+        }
       })
     }, 100)
   }
@@ -356,13 +353,8 @@ export class CreateEventComponent implements OnInit {
     keys.every((element, value) => {
       console.log("bank element", form[element], element)
       if (form[element] == this.eventForm.controls.hashTag) {
-        // if (form[element].status == 'INVALID') {
         console.log("call or not");
         console.log("this is perfect", this.eventForm.controls.hashTag.value);
-        // this.setPriceForm.patchValue({
-        //   bankDetails: this.setPriceDetails.bankDetails
-        // });
-        // this.setPriceForm.get('bankDetails').updateValueAndValidity();
       } else {
         return true
       }
@@ -422,7 +414,53 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+
+  skipButton() {
+    // console.log("call or not", this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide'))));
+    // this.isDisable = true
+    this.prevIndex = 1
+    const keys = Object.keys(this.eventForm.controls);
+    let form = this.eventForm.controls;
+    let flag = 0;
+    keys.every((element, value) => {
+      // console.log("bank element", form[element], element)
+      if (form[element] == this.eventForm.controls.hashTag) {
+        // this.isDisable = true
+        if (form[element].status == 'VALID') {
+          console.log("this is important", this.eventForm.controls.hashTag.value);
+          let checkHashTagValue = this.eventForm.controls.hashTag.value
+          this.eventService.checkHashTag(checkHashTagValue, this.eventId).subscribe((response: any) => {
+            console.log("response of hashtag or not", response);
+            if (response.data == true) {
+              console.log("data is true of false");
+              this.isDisable = false
+              this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+            } else {
+              let message = document.getElementById('message1');
+              message.innerHTML = "Hashtag Already Exists";
+              this.isDisable = true
+            }
+          }, error => {
+            console.log("if it is avalible", error);
+
+          })
+        } else {
+          console.log("what is ");
+          this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+        }
+      }
+      else {
+        return true
+      }
+    })
+  }
+  skipButtons() {
+    this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+  }
+
+
   enterCustomType() {
+    this.customType = 0
     $('#otherEventType').modal("show")
   }
 
@@ -430,6 +468,7 @@ export class CreateEventComponent implements OnInit {
     console.log("event type new one", this.customEventType)
     this.eventType.push(this.customEventType)
     this.customEventType = ''
+    this.customType = 1
     $('#otherEventType').modal("hide")
   }
 
