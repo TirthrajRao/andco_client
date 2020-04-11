@@ -29,7 +29,7 @@ export class GuestCollectionComponent implements OnInit {
   }
   // @Input() image: string;
   displayGuestItems = []
-  current = 0
+  current
   formateData: any
   firstLetter = []
   secondLetter = []
@@ -53,7 +53,7 @@ export class GuestCollectionComponent implements OnInit {
   }
 
 
-  onPrint(){
+  onPrint() {
     window.print()
   }
 
@@ -176,64 +176,13 @@ export class GuestCollectionComponent implements OnInit {
 
   }
 
-  // async geneRatePdf(value) {
-  //   pdfMake.fonts = {
-  //     Roboto: {
-  //       normal: 'Roboto-Regular.ttf',
-  //       bold: 'Roboto-Medium.ttf',
-  //       italics: 'Roboto-Italic.ttf',
-  //       bolditalics: 'Roboto-MediumItalic.ttf'
-  //     }
-  //   };
-  //   const documentDefinition = await this.setFormateOfList()
-  //   console.log("what is in const", documentDefinition);
 
-  //   if (value == 'save') {
-  //     pdfMake.createPdf(documentDefinition/*, null, pdfFonts*/).download('First Guest List');
-  //   } else if (value == 'preview') {
-  //     pdfMake.createPdf(documentDefinition).open();
-  //   }
-
-  // }
-
-
-  async setFormateOfList() {
-    var dd: any = {
-      info: {
-        title: "First testing",
-        author: "vivek bharda",
-        subject: 'Event Guest List',
-      },
-      content: [
-        {
-          columns: [
-            [
-              {
-                text: name
-              },
-            ]
-          ]
-        }
-      ],
-    }
-    dd = await this.getDetailsOfGuest(dd)
-    return dd
+  accordianCheck(i) {
+    console.log("index of accordian", i);
+    this.current = i
   }
 
-  getDetailsOfGuest(dd) {
-    console.log("what is in dd", dd);
-    let array1 = []
-    this.displayGuestItems.forEach((singleItem) => {
-      console.log("single item list", singleItem);
-      let obj1 = {
-        name: singleItem.firstName
-      }
-      array1.push(obj1)
-    })
-    dd.content[0].columns[0].push(array1)
-    console.log("------------", dd);
-    return dd
-  }
+
 
 
 

@@ -66,7 +66,7 @@ export class MainMenuComponent implements OnInit {
   getBankAccount(event) {
     let output = this._loginService.returnLogin(event);
     if (output == true) {
-      this.router.navigate(['/bank-details']);
+      this.router.navigate(['/add-bank-account']);
     }
   }
 }

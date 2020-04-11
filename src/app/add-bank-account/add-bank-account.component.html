@@ -19,25 +19,11 @@
                         </div>
                         <h5 class="font-weight-bold pl-5">Bank accounts</h5>
                         <div class="bank-slider">
-                            <div class="single-slide">
-                                <input id="first-radio" type="radio">
+                            <div class="single-slide" *ngFor="let name of bankList">
+                                <!-- <input id="first-radio" type="radio"> -->
                                 <label class="w-100 mb-0" for="first-radio">
-                                <p><label>Bank Name : </label> SBI</p>
-                                <p><label>Account Number : </label> 12345678910101020</p>
-                                </label>
-                            </div>
-                            <div class="single-slide">
-                                <input id="first-radio1" type="radio">
-                                <label class="w-100 mb-0" for="first-radio1">
-                                <p><label>Bank Name : </label> SBI</p>
-                                <p><label>Account Number : </label> 12345678910101020</p>
-                                </label>
-                            </div>
-                            <div class="single-slide">
-                                <input id="first-radio2" type="radio">
-                                <label class="w-100 mb-0" for="first-radio2">
-                                <p><label>Bank Name : </label> SBI</p>
-                                <p><label>Account Number : </label> 12345678910101020</p>
+                                    <p><label>Bank Name : </label> {{name.bankName}}</p>
+                                <p><label>Account Number : </label> {{name.accountNumber}}</p>
                                 </label>
                             </div>
                         </div>
@@ -47,7 +33,7 @@
             <div class="add-bank-account m-4 mt-5">
                 <div class="bank-list">
                     <div class="plus float-left">
-                        <a data-toggle="modal" data-target="#exampleModalCenter"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+                        <a data-toggle="modal" data-target="#exampleModalCard"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
                     </div>
                     <div class="slider-box">
                         <div class="arrow-class">
@@ -60,22 +46,11 @@
                         </div>
                         <h5 class="font-weight-bold pl-5">Cards</h5>
                         <div class="card-slider">
-                            <div class="single-slide">
-                                <input id="first-radio" type="radio">
+                            <div class="single-slide" *ngFor="let card of cardList">
+                                <!-- <input id="first-radio" type="radio"> -->
                                 <label class="w-100 mb-0" for="first-radio">
-                                <p><label>Card Number : </label> 12345678910101020</p>
-                                </label>
-                            </div>
-                            <div class="single-slide">
-                                <input id="first-radio1" type="radio">
-                                <label class="w-100 mb-0" for="first-radio1">
-                                <p><label>Card Number : </label> 12345678910101020</p>
-                                </label>
-                            </div>
-                            <div class="single-slide">
-                                <input id="first-radio2" type="radio">
-                                <label class="w-100 mb-0" for="first-radio2">
-                                <p><label>Card Number : </label> 12345678910101020</p>
+                                    <p><label>Card Number : </label> {{card.cardNumber}}</p>
+                                <p><label>CVV : </label> {{card.cvv}}</p>
                                 </label>
                             </div>
                         </div>
@@ -95,13 +70,64 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <input type="text" placeholder="Bank name">
-                <input type="text" placeholder="Account number">
-                <input type="text" placeholder="Card number">
-            </div>
+            <form [formGroup]='bankForm'>
+                <div class="modal-body">
+                    <input type="text" placeholder="Bank name" formControlName="bankName" [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" [pattern]="bankName">
+                    <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
+                        <div *ngIf="f.bankName.errors.required">Bank name is required</div>
+                        <!-- <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div> -->
+                        <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
+                    </div>
+                    <input type="text" placeholder="Account number" minlength="16" maxlength="16" (input)="addNumber($event, bankForm.value)" id="accountNumber" [pattern]="cardNumber" formControlName="accountNumber" [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+                    <!-- <div id="message2" class="w-100"></div> -->
+                    <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
+                        <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
+                        </div>
+                        <div *ngIf="f.accountNumber.errors.pattern">Enter only numbers
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn">Add</button>
+                <button type="button" class="btn" (click)="addBankDetails()" [disabled]="isDisable || bankForm.invalid">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade add-bank-modal" id="exampleModalCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Card Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form [formGroup]='cardNumberForm'>
+                <div class="modal-body">
+                    <input type="text" placeholder="Card number" formControlName="cardNumber" [ngClass]="{ 'is-invalid': g.cardNumber.touched && g.cardNumber.errors }" [pattern]="cardNumber" minlength="16" maxlength="16">
+                    <div *ngIf="g.cardNumber.touched && g.cardNumber.errors" class="invalid-feedback">
+                        <div *ngIf="g.cardNumber.errors.required">Card Number is required</div>
+                        <div *ngIf="g.cardNumber.errors.minlength">Card Number must be only 16 digits
+                        </div>
+                        <div *ngIf="g.cardNumber.errors.pattern">Enter Only numbers
+                        </div>
+                    </div>
+                    <input type="text" placeholder="CVV" formControlName="cvv" [ngClass]="{ 'is-invalid': g.cvv.touched && g.cvv.errors }" [pattern]="cardNumber" minlength="3" maxlength="3">
+                    <div *ngIf="g.cvv.touched && g.cvv.errors" class="invalid-feedback">
+                        <div *ngIf="g.cvv.errors.required">Cvv Number is required</div>
+                        <div *ngIf="g.cvv.errors.minlength">Cvv Number must be only 3 digits
+                        </div>
+                        <div *ngIf="g.cvv.errors.pattern">Enter Only numbers
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn" [disabled]=" isDiable || cardNumberForm.invalid" (click)="addCardDetails()">Add</button>
             </div>
         </div>
     </div>

@@ -52,10 +52,6 @@ const routes: Routes = [
     path: 'guest-join/:hashTag',
     component: GuestJoinComponent
   },
-  {
-    path: 'add-bank-account',
-    component: AddBankAccountComponent
-  },
 ];
 
 @NgModule({
