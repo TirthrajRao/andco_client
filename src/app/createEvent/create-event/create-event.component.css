@@ -1,3 +1,8 @@
+.page-content {
+    justify-content: unset !important;
+}
+
+
 /* your event type css start */
 
 .create-event-main {
@@ -231,6 +236,7 @@ h5.modal-title {
     overflow: hidden;
     border: 2px solid #fff;
     border-radius: 32px;
+    position: relative;
 }
 
 .sample_bg {
@@ -250,6 +256,22 @@ h5.modal-title {
 
 .bg-select-div {
     cursor: pointer;
+}
+
+button.setDefault {
+    background-color: #9d3742;
+    color: #fff;
+    border: none;
+    outline: none;
+    margin: auto;
+}
+
+a.menuDefault {
+    position: absolute;
+    color: white;
+    left: auto;
+    right: 20px;
+    top: 10px;
 }
 
 
@@ -299,8 +321,6 @@ button.btn.created-event-custom-button1 {
     bottom: 0px;
     z-index: 11;
 }
-
-
 
 .bg-select-div.active .sample_bg {
     border: 3px solid #ffffff;
@@ -380,7 +400,8 @@ input:focus {
         padding: 30px;
         font-size: 26px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         padding: 5px 35px;
         bottom: 10px;
         font-size: 18px;
@@ -497,7 +518,8 @@ input:focus {
         height: 50px;
         width: 50px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         padding: 3px 25px;
         font-size: 16px;
     }
@@ -560,7 +582,8 @@ input:focus {
     .create-event-type-menu ul li a {
         font-size: 16px;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         bottom: 8px;
         border-radius: 5px;
     }
@@ -574,7 +597,8 @@ input:focus {
     .create-event-main {
         background-position: bottom;
     }
-    button.btn.created-event-custom-button {
+    button.btn.created-event-custom-button,
+    button.btn.created-event-custom-button1 {
         bottom: 28px;
         border-radius: 5px;
     }
