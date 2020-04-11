@@ -45,13 +45,59 @@
     cursor: pointer;
 }
 
+.profile-photo-upload button {
+    font-size: 0;
+    line-height: 0;
+}
+
+.font-h4 h4 {
+    font-size: 20px;
+}
+
+.image-cropper-box {
+    height: 300px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    border: 1px solid lightgray;
+    margin-bottom: 5px;
+}
+
+.choose_image {
+    text-align: center;
+}
+
+.choose_image label {
+    background-color: #C4752D;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.choose_image input {
+    display: none;
+}
+
+.save button {
+    background-color: #C4752D;
+    color: #fff;
+}
+
+h5.modal-title {
+    font-weight: bold;
+    color: #C4752D;
+}
+
 @media(max-width: 1600px) {
     .profile-photo {
         height: 240px;
         width: 240px;
     }
 }
-@media(max-width:1366px){
+
+@media(max-width:1366px) {
     .main-div {
         margin-top: 10px;
         padding: 15px 0;
@@ -68,6 +114,7 @@
         height: 50px;
     }
 }
+
 @media(max-width:1199px) {
     .profile-photo {
         height: 200px;
@@ -80,7 +127,8 @@
         right: 22%;
     }
 }
-@media(max-width: 575px){
+
+@media(max-width: 575px) {
     .event-camera img {
         height: 30px;
     }
@@ -89,7 +137,8 @@
         width: 160px;
     }
 }
-@media(max-width:400px){
+
+@media(max-width:400px) {
     .event-camera img {
         height: 24px;
     }
