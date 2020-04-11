@@ -161,7 +161,9 @@
                         [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
                 </div>
-                <div class="choose_image">
+            </div>
+            <div class="modal-footer">
+                <div class="choose_image w-100">
                     <label for="upload_profile">Choose Image</label>
                     <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg" id="upload_profile">
                 </div>
@@ -178,7 +180,7 @@
 <div class="modal fade" id="setDefault" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-body m-auto">
+            <div class="modal-body m-auto text-center">
                 <button class="btn setDefault">Set default background</button>
             </div>
         </div>

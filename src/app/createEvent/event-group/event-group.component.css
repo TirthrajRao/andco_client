@@ -260,6 +260,10 @@ h5.item-price {
     font-weight: bold;
 }
 
+.modal-footer {
+    display: unset !important;
+}
+
 @media(max-width:1600px) {
     .event-date-box h4 {
         font-size: 22px;
