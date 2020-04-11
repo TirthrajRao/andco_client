@@ -1,6 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { AddBankModalComponent } from '../../add-bank-modal/add-bank-modal.component';
+import { AddCardmodalComponent } from '../../add-cardmodal/add-cardmodal.component';
+import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
+
 
 declare var $: any
 @Component({
@@ -20,11 +25,11 @@ export class BankDetailsComponent implements OnInit {
   $slider
   bankList = []
   cardList = []
-
+  selectedBank
   constructor(
     private _change: ChangeDetectorRef,
-    public loginService: LoginService
-
+    public loginService: LoginService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -35,20 +40,6 @@ export class BankDetailsComponent implements OnInit {
     this.initBankSlider()
     this.initCardSlider()
 
-    // $(document).ready(function () {
-    //   let checked = $('input[name="radio2"]:checked').val();
-    // console.log("value of checked", checked)
-    //   if (checked == 'on') {
-    //     this.isBankSelected = true
-    //     this.isCardSelected = false
-    //   }
-    // })
-
-    this.bankForm = new FormGroup({
-      bankName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9_ ]*$")]),
-      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
-      cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
-    })
   }
 
 
@@ -83,6 +74,20 @@ export class BankDetailsComponent implements OnInit {
       console.log("details of bank", response);
       this.bankList = response.data.bankDetail
       this.cardList = response.data.cardDetails
+      if (this.bankList) {
+        this.$sliderContainer = $('.bank-slider');
+        this.$sliderContainer.slick('unslick');
+        setTimeout(() => {
+          this.initBankSlider()
+        }, 50)
+      }
+      if (this.cardList) {
+        this.$sliderContainer = $('.card-slider');
+        this.$sliderContainer.slick('unslick');
+        setTimeout(() => {
+          this.initCardSlider()
+        }, 50)
+      }
     }, error => {
       console.log("error while get details", error);
 
@@ -134,66 +139,17 @@ export class BankDetailsComponent implements OnInit {
     this.bankDetails.emit(details)
     console.log("=================", this.bankDetails);
 
+
+    
   }
 
 
+  selectBank() {
+    this.selectedBank = $('input[name="radio-group"]:checked').val();
+    console.log("what is the value", this.selectedBank);
 
-
-  /**
-   * Display error message
-   */
-  get f() { return this.bankForm.controls; }
-
-  addNumber(event, form) {
-    // console.log("logs of number", event.target.value);
-    var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
-    let message = document.getElementById('message2');
-    // console.log(field1);
-    if (/[a-zA-Z]/g.test(field1)) {
-      message.innerHTML = "Please enter only numbers"
-    }
-    else if (!(/[0-9]{16}/.test(field1))) {
-      // this.isDisable = true;
-      // console.log("Please enter valid number");
-      if (field1.length < 16) {
-        message.innerHTML = "Please enter 16 digit number";
-      }
-    } else {
-      message.innerHTML = ""
-      // this.isDisable = false;
-      // console.log("Valid entry");
-      if (event.target.value.length == 16) {
-        // console.log("ama ave ");
-        this.bankDetails.emit(this.bankForm.value)
-      }
-    }
   }
 
-
-  enterCard(event) {
-    // console.log("when enter card number", event.target.value);
-    var field1 = (<HTMLInputElement>document.getElementById("cardNumber")).value;
-    let message = document.getElementById('message3');
-    // console.log(field1);
-    if (/[a-zA-Z]/g.test(field1)) {
-      message.innerHTML = "Please enter only numbers"
-    }
-    else if (!(/[0-9]{16}/.test(field1))) {
-      // this.isDisable = true;
-      // console.log("Please enter valid number");
-      if (field1.length < 16) {
-        message.innerHTML = "Please enter 16 digit number";
-      }
-    } else {
-      message.innerHTML = ""
-      // this.isDisable = false;
-      // console.log("Valid entry");
-      if (event.target.value.length == 16) {
-        // console.log("ama ave ");
-        this.bankDetails.emit(this.bankForm.value)
-      }
-    }
-  }
 
 
   bankSelect() {
@@ -210,12 +166,29 @@ export class BankDetailsComponent implements OnInit {
 
   }
   addBankAccount() {
-    console.log("call this");
-    this.loginService.nextBankDetails('bank')
-    // console.log("what is in data", data);
-
+    let data
+    var addBank = this.openDialog(AddBankModalComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
+      if (response != undefined)
+        this.getBankDetails()
+    })
   }
 
+
+  addCardDetail() {
+    let data
+    var addBank = this.openDialog(AddCardmodalComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
+      if (response != undefined)
+        this.getBankDetails()
+    })
+  }
+
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data });
+    return dialogRef.afterClosed();
+  }
   cardSeleced() {
     this.isCardSelected = true
     this.isBankSelected = false

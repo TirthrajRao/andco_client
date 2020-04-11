@@ -402,6 +402,12 @@ export class CreateEventComponent implements OnInit {
     this.selectedThemeIndex = i
   }
 
+  setDefaultBackGround(path) {
+    this.themeUrl = path
+    $('#setDefault').modal("hide")
+    this.eventForm.controls.background.setValue(path)
+    this.selectedThemeIndex = null
+  }
 
   ngOnChanges({ formDirty }: SimpleChanges) {
     if (formDirty.currentValue) {
