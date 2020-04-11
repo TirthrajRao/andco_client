@@ -25,9 +25,12 @@
             </a>
         </li>
         <li>
-            <a tooltipClass="my-custom-class" ngbTooltip="Share" (click)="geneRatePdf('share')">
+            <a tooltipClass="my-custom-class" ngbTooltip="Share" data-toggle="modal" data-target="#shareIconButton">
                 <img src="assets/images/share.png" alt="share icon">
             </a>
+            <!-- <a tooltipClass="my-custom-class" ngbTooltip="Share" (click)="geneRatePdf('share')">
+                <img src="assets/images/share.png" alt="share icon">
+            </a> -->
         </li>
         <li>
             <a href="#" tooltipClass="my-custom-class" ngbTooltip="Total Guest"><span>{{displayGuestItems.length}}</span> Guests</a>
@@ -44,7 +47,7 @@
         <div class="accordion" id="accordionExample">
             <span *ngFor="let item of displayGuestItems; let i =index">
                 <button class="btn w-100" data-toggle="collapse" aria-controls="collapseOne"
-                    [attr.data-target]="'#collapseOne' + i" (click)="current = i">
+                    [attr.data-target]="'#collapseOne' + i" (click)="current == i">
                     <div class="inner-header">
                         <div class="profile-name">
                             <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
@@ -54,7 +57,7 @@
         </div>
     </div>
     </button>
-    <div id="collapseOne{{i}}" [class.collapse]='current !=i' class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne{{i}}" [class.collapse]='current != i' class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="info-box">
             <div class="row m-0">
                 <div class="col-sm-4">
@@ -107,13 +110,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [autoSetMeta]="true"
-                    [button]="'whatsapp'" [url]="image">
+            <div class="modal-body text-center share-icon-background">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'" [autoSetMeta]="true" [button]="'whatsapp'" [url]="image">
+                    <img src="../../../assets/images/whatsapp.png" alt="whatsapp icon">
                 </share-button>
 
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [button]="'email'" [autoSetMeta]="true"
-                    [url]="image">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'" [button]="'email'" [autoSetMeta]="true" [url]="image">
+                    <img src="../../../assets/images/gmail.png" alt="gmail icon">
                 </share-button>
             </div>
         </div>

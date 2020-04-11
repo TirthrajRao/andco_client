@@ -20,6 +20,9 @@ import { HomeModule } from './home/home.module';
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
 import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { SearchListPipe } from './search-list.pipe';
+import { AddBankModalComponent } from './add-bank-modal/add-bank-modal.component';
+import { AddCardmodalComponent } from './add-cardmodal/add-cardmodal.component';
+// import { AddBankAccountComponent } from './add-bank-account/add-bank-account.component';
 
 
 
@@ -52,6 +55,9 @@ export function provideConfig() {
     ForgotPasswordComponent,
     WelcomeGuestComponent,
     GuestJoinComponent,
+    AddBankModalComponent,
+    AddCardmodalComponent,
+    // AddBankAccountComponent,
     // LoaderComponent,
   ],
   imports: [
@@ -64,6 +70,10 @@ export function provideConfig() {
     HomeModule,
     MatDatepickerModule,
     // MatSelectModule
+  ],
+  entryComponents: [
+    AddBankModalComponent,
+    AddCardmodalComponent
   ],
   providers: [
     {

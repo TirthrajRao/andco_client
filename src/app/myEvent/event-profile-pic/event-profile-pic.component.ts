@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
+import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform } from 'ngx-image-cropper';
+declare var $;
+
 @Component({
   selector: 'app-event-profile-pic',
   templateUrl: './event-profile-pic.component.html',
@@ -8,18 +11,79 @@ import { EventService } from '../../services/event.service';
 })
 export class EventProfilePicComponent implements OnInit {
 
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  canvasRotation = 0;
+  rotation = 0;
+  scale = 1;
+  showCropper = false;
+  containWithinAspectRatio = false;
+  cropImage: any
+  transform: ImageTransform = {};
+  blob: any
   @Input('profile') profilePhoto
   path = config.baseMediaUrl;
   files: Array<File> = [];
   public imagePath;
   imgURL: any;
   eventId
+  isLoad = false
   constructor(
     public eventService: EventService
   ) { }
 
   ngOnInit() {
   }
+
+
+
+  fileChangeEvent(event: any): void {
+    console.log("when image is without crop", event);
+    this.imageChangedEvent = event;
+    // this.files = event.target.files
+    // this.eventForm.controls.profile.setValue(this.files)
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    let ImageURL = this.croppedImage
+    var block = ImageURL.split(";");
+    var contentType = block[0].split(":")[1];
+    var byteString = atob(this.croppedImage.split(',')[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    this.blob = new Blob([ia], { type: contentType });
+    // blob['name'] = data.name
+    console.log("blob====>", this.blob);
+    // this.eventForm.controls.profile.setValue(this.blob)
+  }
+
+
+
+  imageLoaded() {
+    this.showCropper = true;
+    console.log('Image loaded');
+  }
+
+  cropperReady(sourceImageDimensions: Dimensions) {
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+
+  loadImageFailed() {
+    console.log('Load failed');
+  }
+
+  updateRotation() {
+    this.transform = {
+      ...this.transform,
+      rotate: this.rotation
+    };
+  }
+
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
@@ -44,15 +108,23 @@ export class EventProfilePicComponent implements OnInit {
         })
       }
     }
+  }
 
-    // else {
-    //   Swal.fire({
-    //     title: 'Error',
-    //     text: "You can upload only image",
-    //     // type: 'warning',
-    //   })
+  saveImage() {
+    this.isLoad = true
+    this.eventService.changeProfilePhoto(this.blob, this.eventId).subscribe((response: any) => {
+      console.log("response of image change");
+      $('#imageUpload').modal("hide")
+      this.profilePhoto = response.update.profilePhoto
+      this.isLoad = false
+    }, error => {
+      console.log("error while update photo", error);
+      this.isLoad = false
+    })
+  }
 
-    // }
+  openImageModal() {
+    $('#imageUpload').modal("show")
   }
 
 }

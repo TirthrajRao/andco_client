@@ -10,8 +10,12 @@ import * as CryptoJS from 'crypto-js';
 })
 export class LoginService {
   key = "andCo@testing";
+  bankDetails = "abc";
   isUserLoggedIn: false;
   private subject = new Subject<any>();
+  private openBank = new Subject<any>();
+  private openBankNew = new BehaviorSubject<any>(this.bankDetails)
+  sharedBankDetails = this.openBankNew.asObservable();
   @Output() faceBookLogin = new EventEmitter();
 
   constructor(
@@ -28,7 +32,10 @@ export class LoginService {
   }
 
 
-
+  nextBankDetails(data) {
+    console.log("in login service=========", data);
+    this.openBankNew.next(data)
+  }
 
 
   /**
@@ -188,11 +195,37 @@ export class LoginService {
 
   returnLogin(val) {
     console.log("value0", val);
-
     this.subject.next({ id: val });
     return true;
   }
   getObservableResponse() {
     return this.subject.asObservable();
   }
+
+
+  openBankModel(data) {
+    console.log("in service");
+    this.openBank.next({ data: data })
+    return true
+  }
+
+  getBankAccount() {
+    return this.openBank.asObservable()
+  }
+
+  addBankAccount(data) {
+    data['flag'] = false
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
+  addCardAccount(data) {
+    data['flag'] = true
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
+
+
+  getBankDetails() {
+    return this.http.get(config.baseApiUrl + "/accountList")
+  }
+
+
 }
