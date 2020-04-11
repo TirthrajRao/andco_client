@@ -55,6 +55,7 @@ import { GuestAddressComponent } from '../guest/guest-address/guest-address.comp
 import { PaymentComponent } from '../guest/payment/payment.component';
 import { PaymentDetailsComponent } from '../guest/payment-details/payment-details.component';
 import { PaymentMessageComponent } from '../guest/payment-message/payment-message.component';
+import { AddBankAccountComponent } from '../add-bank-account/add-bank-account.component';
 import { ExcelService } from '../services/excel.service';
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
@@ -138,6 +139,10 @@ const routes: Routes = [
         path: 'guest/:hashTag',
         component: GuestMainComponent
       },
+      {
+        path: 'add-bank-account',
+        component: AddBankAccountComponent
+      },
       // {
       //   path: 'guestMenu',
       //   component: GuestMenuComponent
@@ -185,6 +190,7 @@ const routes: Routes = [
     PaymentComponent,
     PaymentDetailsComponent,
     PaymentMessageComponent,
+    AddBankAccountComponent
     // SearchListPipe
   ],
   imports: [

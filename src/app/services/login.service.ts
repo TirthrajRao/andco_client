@@ -195,4 +195,19 @@ export class LoginService {
   getObservableResponse() {
     return this.subject.asObservable();
   }
+
+  addBankAccount(data) {
+    data['flag'] = false
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
+  addCardAccount(data) {
+    data['flag'] = true
+    return this.http.post(config.baseApiUrl + "/account", data)
+  }
+
+
+  getBankDetails() {
+    return this.http.get(config.baseApiUrl + "/accountList")
+  }
+
 }
