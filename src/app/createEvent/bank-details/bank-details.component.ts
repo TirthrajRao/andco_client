@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 declare var $: any
 @Component({
@@ -15,34 +16,24 @@ export class BankDetailsComponent implements OnInit {
   isBankSelected
   isCardSelected
   displayDetails
-
+  $sliderContainer
+  $slider
+  bankList = []
+  cardList = []
 
   constructor(
-    private _change: ChangeDetectorRef
+    private _change: ChangeDetectorRef,
+    public loginService: LoginService
+
   ) { }
 
   ngOnInit() {
 
-    // bank slider start here
-    $('.bank-slider').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      prevArrow: '#prevarrow',
-      nextArrow: '#nextarrow',
-    });
-    // bank slider end here
-     // card slider start here
-     $('.card-slider').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      prevArrow: '#prevarrow1',
-      nextArrow: '#nextarrow1',
-    });
-    // card slider end here
+
+
+    this.getBankDetails()
+    this.initBankSlider()
+    this.initCardSlider()
 
     // $(document).ready(function () {
     //   let checked = $('input[name="radio2"]:checked').val();
@@ -59,6 +50,45 @@ export class BankDetailsComponent implements OnInit {
       cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)])
     })
   }
+
+
+
+  initBankSlider() {
+    this.$sliderContainer = $('.bank-slider')
+    this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow',
+      nextArrow: '#nextarrow',
+    })
+  }
+
+
+  initCardSlider() {
+    this.$sliderContainer = $('.card-slider')
+    this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow1',
+      nextArrow: '#nextarrow1',
+    })
+  }
+
+  getBankDetails() {
+    this.loginService.getBankDetails().subscribe((response: any) => {
+      console.log("details of bank", response);
+      this.bankList = response.data.bankDetail
+      this.cardList = response.data.cardDetails
+    }, error => {
+      console.log("error while get details", error);
+
+    })
+  }
+
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("change when edit bank details", changes);
@@ -169,12 +199,30 @@ export class BankDetailsComponent implements OnInit {
   bankSelect() {
     this.isBankSelected = true
     this.isCardSelected = false
+    this.$sliderContainer = $('.bank-slider');
+    this.$sliderContainer.slick('unslick');
+    setTimeout(() => {
+      this.initBankSlider()
+    }, 50)
+    // this.initBankSlider()
     // console.log("this.isBankSelected", this.isBankSelected);
     // this._change.detectChanges()
 
   }
+  addBankAccount() {
+    console.log("call this");
+    this.loginService.nextBankDetails('bank')
+    // console.log("what is in data", data);
+
+  }
+
   cardSeleced() {
     this.isCardSelected = true
     this.isBankSelected = false
+    this.$sliderContainer = $('.card-slider');
+    this.$sliderContainer.slick('unslick');
+    setTimeout(() => {
+      this.initCardSlider()
+    }, 50)
   }
 }

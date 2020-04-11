@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
 import { EventService } from '../../services/event.service';
+import { LoginService } from '../../services/login.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { every } from 'rxjs/operators';
@@ -52,11 +54,17 @@ export class SetPriceComponent implements OnInit {
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
+    public loginService: LoginService,
     private router: Router,
     private activated: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+
+    this.loginService.sharedBankDetails.subscribe(response => {
+      console.log("when click on plus ", response);
+    })
 
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);

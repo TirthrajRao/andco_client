@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { AddBankModalComponent } from '../add-bank-modal/add-bank-modal.component';
+import { AddCardmodalComponent } from '../add-cardmodal/add-cardmodal.component';
+import { Observable } from 'rxjs/internal/Observable';
+// import { MatDialog } from '@angular/material';
+import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+
+
 declare var $;
 
 @Component({
@@ -21,21 +28,24 @@ export class AddBankAccountComponent implements OnInit {
   $sliderContainer
   $slider
   constructor(
-    public loginService: LoginService
-  ) { }
+    public loginService: LoginService,
+    public dialog: MatDialog
+
+
+  ) {
+  }
 
   ngOnInit() {
+
+    this.loginService.sharedBankDetails.subscribe(response => {
+      console.log("when click on plus ", response);
+    })
+
+
     this.getBankDetails()
     this.initBankSlider()
     this.initCardSlider()
-    this.bankForm = new FormGroup({
-      bankName: new FormControl('', [Validators.required]),
-      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
-    })
-    this.cardNumberForm = new FormGroup({
-      cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
-      cvv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.min(3)])
-    })
+
   }
 
 
@@ -104,53 +114,27 @@ export class AddBankAccountComponent implements OnInit {
   }
 
 
-  addNumber(event, form) {
-    // console.log("logs of number", event.target.value);
-    var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
-    let message = document.getElementById('message2');
-    // console.log(field1);
-    if (/[a-zA-Z]/g.test(field1)) {
-      message.innerHTML = "Please enter only numbers"
-    }
-    else if (!(/[0-9]{16}/.test(field1))) {
-      // this.isDisable = true;
-      // console.log("Please enter valid number");
-      if (field1.length < 16) {
-        message.innerHTML = "Please enter 16 digit number";
-      }
-    } else {
-      message.innerHTML = ""
-      // this.isDisable = false;
-      // console.log("Valid entry");
-    }
-  }
-  addBankDetails() {
-    $('#exampleModalCenter').modal("hide")
-    this.isLoad = true
-    console.log("bank accoutn form ", this.bankForm.value);
-    this.loginService.addBankAccount(this.bankForm.value).subscribe((response: any) => {
-      console.log("account added", response);
+
+  addBankAccount() {
+    console.log("click to check ");
+    let data
+    var addBank = this.openDialog(AddBankModalComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
       this.getBankDetails()
-      this.isLoad = false
-      this.bankForm.reset()
-    }, error => {
-      console.log("error while add account", error);
-      this.isLoad = false
     })
   }
-
-  addCardDetails() {
-    $('#exampleModalCard').modal("hide")
-    this.isLoad = true
-    this.loginService.addCardAccount(this.cardNumberForm.value).subscribe((response) => {
-      console.log("response of card added", response);
-      this.getBankDetails()
-      this.isLoad = false
-      this.cardNumberForm.reset()
-    }, error => {
-      console.log("error while add card", error);
-    })
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data });
+    return dialogRef.afterClosed();
   }
 
+  openCardModal() {
+    let data
+    var addBank = this.openDialog(AddCardmodalComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
+      this.getBankDetails()
+    })
+  }
 
 }

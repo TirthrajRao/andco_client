@@ -47,10 +47,10 @@
     </div>
 </div>
 <!-- bank slider start -->
-<div class="add-bank-account">
+<div class="add-bank-account" [hidden]="!isBankSelected">
     <div class="bank-list">
         <div class="plus float-left">
-            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon" (click)="addBankAccount()"></a>
         </div>
         <div class="slider-box">
             <div class="arrow-class">
@@ -62,25 +62,11 @@
                 </a>
             </div>
             <div class="bank-slider text-left">
-                <div class="single-slide">
-                    <input id="first-radio3" type="radio">
-                    <label class="w-100 mb-0" for="first-radio3">
-                    <p><label>Bank Name : </label> SBI</p>
-                    <p><label>Account Number : </label> 12345678910101020</p>
-                    </label>
-                </div>
-                <div class="single-slide">
-                    <input id="first-radio4" type="radio">
-                    <label class="w-100 mb-0" for="first-radio4">
-                    <p><label>Bank Name : </label> SBI</p>
-                    <p><label>Account Number : </label> 12345678910101020</p>
-                    </label>
-                </div>
-                <div class="single-slide">
-                    <input id="first-radio5" type="radio">
-                    <label class="w-100 mb-0" for="first-radio5">
-                    <p><label>Bank Name : </label> SBI</p>
-                    <p><label>Account Number : </label> 12345678910101020</p>
+                <div class="single-slide" *ngFor="let name of bankList">
+                    <input type="radio" name="radio-group" id="{{name._id}}" [value]="name._id">
+                    <label class="w-100 mb-0" for="{{name._id}}">
+                        <p><label>Bank Name : </label> {{name.bankName}}</p>
+                        <p><label>Account Number : </label> {{name.accountNumber}}</p>
                     </label>
                 </div>
             </div>
@@ -89,7 +75,7 @@
 </div>
 <!-- bank slider end -->
 <!-- card slider start -->
-<div class="add-bank-account" style="display: none;">
+<div class="add-bank-account" [hidden]="!isCardSelected">
     <div class="bank-list">
         <div class="plus float-left">
             <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
@@ -104,22 +90,11 @@
                 </a>
             </div>
             <div class="card-slider">
-                <div class="single-slide text-left">
-                    <input id="first-radio" type="radio">
-                    <label class="w-100 mb-0" for="first-radio">
-                    <p><label>Card Number : </label> 12345678910101020</p>
-                    </label>
-                </div>
-                <div class="single-slide">
-                    <input id="first-radio1" type="radio">
-                    <label class="w-100 mb-0" for="first-radio1">
-                    <p><label>Card Number : </label> 12345678910101020</p>
-                    </label>
-                </div>
-                <div class="single-slide">
-                    <input id="first-radio2" type="radio">
-                    <label class="w-100 mb-0" for="first-radio2">
-                    <p><label>Card Number : </label> 12345678910101020</p>
+                <div class="single-slide text-left" *ngFor="let card of cardList">
+                    <input name="radio-groupCard" id="{{card._id}}" [value]="card._id" type="radio">
+                    <label class="w-100 mb-0" for="{{card._id}}">
+                        <p><label>Card Number : </label> {{card.cardNumber}}</p>
+                        <p><label>CVV : </label> {{card.cvv}}</p>
                     </label>
                 </div>
             </div>
