@@ -5,7 +5,7 @@ declare var $: any
 @Component({
   selector: 'app-bank-details',
   templateUrl: './bank-details.component.html',
-  styleUrls: ['./bank-details.component.css', './../set-price/set-price.component.css']
+  styleUrls: ['./bank-details.component.css', './../set-price/set-price.component.css', './../../add-bank-account/add-bank-account.component.css']
 })
 export class BankDetailsComponent implements OnInit {
 
@@ -23,7 +23,26 @@ export class BankDetailsComponent implements OnInit {
 
   ngOnInit() {
 
- 
+    // bank slider start here
+    $('.bank-slider').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow',
+      nextArrow: '#nextarrow',
+    });
+    // bank slider end here
+     // card slider start here
+     $('.card-slider').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow1',
+      nextArrow: '#nextarrow1',
+    });
+    // card slider end here
 
     // $(document).ready(function () {
     //   let checked = $('input[name="radio2"]:checked').val();

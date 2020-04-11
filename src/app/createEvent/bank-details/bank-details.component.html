@@ -10,7 +10,7 @@
                         Card</label>
                 </p>
             </div>
-            <div [hidden]="!isBankSelected">
+            <!-- <div [hidden]="!isBankSelected">
                 <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name" class="text-left mb-2 px-3 py-2 font-weight-bold" formControlName="bankName" [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" ngModel="{{displayDetails ? displayDetails.bankName : ''}}"
                     (change)="changeBankName($event , bankForm.value)">
                 <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
@@ -42,7 +42,88 @@
                     <div *ngIf="f.cardNumber.errors.maxlength">Card Number must be only 16 digits
                     </div>
                 </div>
-            </div>
+            </div> -->
         </form>
     </div>
 </div>
+<!-- bank slider start -->
+<div class="add-bank-account">
+    <div class="bank-list">
+        <div class="plus float-left">
+            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+        </div>
+        <div class="slider-box">
+            <div class="arrow-class">
+                <a id="prevarrow">
+                    <div class="arrow-left"></div>
+                </a>
+                <a id="nextarrow">
+                    <div class="arrow-right"></div>
+                </a>
+            </div>
+            <div class="bank-slider text-left">
+                <div class="single-slide">
+                    <input id="first-radio3" type="radio">
+                    <label class="w-100 mb-0" for="first-radio3">
+                    <p><label>Bank Name : </label> SBI</p>
+                    <p><label>Account Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+                <div class="single-slide">
+                    <input id="first-radio4" type="radio">
+                    <label class="w-100 mb-0" for="first-radio4">
+                    <p><label>Bank Name : </label> SBI</p>
+                    <p><label>Account Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+                <div class="single-slide">
+                    <input id="first-radio5" type="radio">
+                    <label class="w-100 mb-0" for="first-radio5">
+                    <p><label>Bank Name : </label> SBI</p>
+                    <p><label>Account Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bank slider end -->
+<!-- card slider start -->
+<div class="add-bank-account" style="display: none;">
+    <div class="bank-list">
+        <div class="plus float-left">
+            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+        </div>
+        <div class="slider-box">
+            <div class="arrow-class">
+                <a id="prevarrow1">
+                    <div class="arrow-left"></div>
+                </a>
+                <a id="nextarrow1">
+                    <div class="arrow-right"></div>
+                </a>
+            </div>
+            <div class="card-slider">
+                <div class="single-slide text-left">
+                    <input id="first-radio" type="radio">
+                    <label class="w-100 mb-0" for="first-radio">
+                    <p><label>Card Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+                <div class="single-slide">
+                    <input id="first-radio1" type="radio">
+                    <label class="w-100 mb-0" for="first-radio1">
+                    <p><label>Card Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+                <div class="single-slide">
+                    <input id="first-radio2" type="radio">
+                    <label class="w-100 mb-0" for="first-radio2">
+                    <p><label>Card Number : </label> 12345678910101020</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- card slider end -->
