@@ -366,6 +366,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 img.swal2-image {
     position: absolute;
     top: 5%;
+    left: 0;
+    right: 0;
 }
 
 .swal2-icon-success.swal2-show .swal2-title {
@@ -649,6 +651,10 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 
 
 /* guest screen end */
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
 
 
 /* responsive css start */

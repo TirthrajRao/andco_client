@@ -180,7 +180,9 @@
                         (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
                 </div>
-                <div class="choose_image">
+            </div>
+            <div class="modal-footer">
+                <div class="choose_image w-100">
                     <label for="upload_profile">Choose Image</label>
                     <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg"
                         id="upload_profile">
