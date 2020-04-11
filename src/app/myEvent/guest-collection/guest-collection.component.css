@@ -326,6 +326,12 @@ ul.guest-list-inner-box {
     opacity: 0;
 }
 
+.modal-body.share-icon-background {
+    background-color: #cf8037;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
 @media(max-width: 1600px) {
     .guest-name h1 {
         font-size: 32px;
