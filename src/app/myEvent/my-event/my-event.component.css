@@ -98,6 +98,10 @@ h2 img:hover {
         width: 700px;
         position: fixed;
         bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
     }
     /* .my-event-inner-box-height {
         max-height: 400px;
