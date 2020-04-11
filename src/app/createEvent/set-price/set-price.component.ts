@@ -26,6 +26,7 @@ export class SetPriceComponent implements OnInit {
   isDisable = false
   isTransfer
   isRegestery
+  isPayment
   isEventPlannerSelected;
   isEventPlannerUpdate
   isEventVendorSelected
@@ -114,29 +115,32 @@ export class SetPriceComponent implements OnInit {
   }
 
   getSetPriceDetailsOfEvent(eventId) {
-    this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
-      console.log("response of set price", response);
 
+    this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
+      // console.log("response of set price", response);
+      // this.setPriceDetails = ''
       if (response.welcomeMessage) {
         this.setPriceDetails = response
-        console.log("response of set price", this.setPriceDetails);
+        // console.log("response of set price", this.setPriceDetails);
+        let selectedLogistics = this.setPriceDetails.isLogistics
+        console.log("details of price=========", selectedLogistics);
         this.selectedAccount = this.setPriceDetails.bankDetails
         this.aboutTypeOf = this.setPriceDetails.hearAbout
         // console.log("if about type is selected or not", this.aboutTypeOf);
         if (this.setPriceDetails.payMentTransferDate == 'true') {
           $('input:radio[id="test5"]').prop('checked', true);
         }
-        if (this.setPriceDetails.isLogistics = 'true') {
+        if (selectedLogistics == "isdelivery") {
           console.log("call true==========");
           $('input:radio[id="isdelivery"]').prop('checked', true);
-        }
-        if (this.setPriceDetails.isLogistics = 'false') {
+        } else if (selectedLogistics == "noDelivery") {
           console.log("call false =======");
           $('input:radio[id="noDelivery"]').prop('checked', true);
         }
         if (this.setPriceDetails.payMentTransferDate != 'true') {
           $('input:radio[id="test6"]').prop('checked', true);
-          this.isTransfer = true
+          // this.isTransfer = true
+          this.isPayment = true
         }
         if (this.setPriceDetails.regestery == 'true') {
           $('input:radio[id="test1"]').prop('checked', true);
@@ -209,7 +213,6 @@ export class SetPriceComponent implements OnInit {
     });
     if (flag == 0) {
       console.log("value of set price", this.setPriceForm.value);
-
       this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
         this.alertService.getSuccess(response.message)
@@ -319,8 +322,15 @@ export class SetPriceComponent implements OnInit {
       });
       this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
       this.isTransfer = false
+      this.isPayment = false
     } else {
-      this.isTransfer = true
+      if (this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') {
+        this.isTransfer = false
+        this.isPayment = true
+      } else {
+        this.isTransfer = true
+        this.isPayment = false
+      }
     }
   }
   giftOfEvent(data) {
@@ -348,12 +358,12 @@ export class SetPriceComponent implements OnInit {
     let selected = event.target.id
     if (selected == 'isdelivery') {
       this.setPriceForm.patchValue({
-        isLogistics: 'true'
+        isLogistics: 'isdelivery'
       })
       this.setPriceForm.get('isLogistics').updateValueAndValidity();
     } else {
       this.setPriceForm.patchValue({
-        isLogistics: 'false'
+        isLogistics: 'noDelivery'
       })
       this.setPriceForm.get('isLogistics').updateValueAndValidity();
     }

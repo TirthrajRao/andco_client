@@ -111,7 +111,7 @@ export class GuestActivitySliderComponent implements OnInit {
     this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
       this.cartTotalItems = response.data.cartList
       // this.displayActivity = response.data.cartList
-      // this.allCartList = response.data.cartList
+      this.allCartList = response.data.cartList
       console.log("response of cart items", this.allCartList)
       this.displayAllData()
     }, error => {
@@ -270,29 +270,41 @@ export class GuestActivitySliderComponent implements OnInit {
         this.allCartList.push(obj)
       }
       console.log("object of acitivity name", this.allCartList);
+    } else {
+      let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
+      this.allCartList.splice(index1, 1);
     }
+    console.log("final list of cart", this.allCartList);
+
   }
 
 
   femaleTotal(event, item, index) {
 
     // console.log("kaik thay che ama bs", event.target.value, item);
-    this.itemList[index]['quantity'] = event.target.value
-    let obj = {
-      activityName: this.displayActivity[this.activityIndex].activityName,
-      itemGender: item.itemGender,
-      itemName: item.itemName,
-      itemPrice: item.itemPrice,
-      quantity: item.quantity,
-      itemId: item._id
+    if (event.target.value != 0) {
+
+      this.itemList[index]['quantity'] = event.target.value
+      let obj = {
+        activityName: this.displayActivity[this.activityIndex].activityName,
+        itemGender: item.itemGender,
+        itemName: item.itemName,
+        itemPrice: item.itemPrice,
+        quantity: item.quantity,
+        itemId: item._id
+      }
+      var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
+      if (tempIndex > -1) {
+        this.allCartList[tempIndex].quantity = event.target.value
+      }
+      else {
+        this.allCartList.push(obj)
+      }
+    } else {
+      let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
+      this.allCartList.splice(index1, 1);
     }
-    var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
-    if (tempIndex > -1) {
-      this.allCartList[tempIndex].quantity = event.target.value
-    }
-    else {
-      this.allCartList.push(obj)
-    }
+    console.log("final list of cart", this.allCartList);
 
     // console.log("object of acitivity name", this.allCartList);
   }

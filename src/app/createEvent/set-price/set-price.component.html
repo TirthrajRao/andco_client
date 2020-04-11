@@ -92,7 +92,7 @@
                                     <h4>(this option saves you on alert charges)</h4>
                                 </div>
                                 <!-- <span *ngIf="setPriceDetails && setPriceDetails.payMentTransferDate"> -->
-                                <div *ngIf="isTransfer == 'true'">
+                                <div *ngIf="isPayment == true">
                                     <mat-form-field>
                                         <!-- <mat-label>Choose a date</mat-label> -->
                                         <input matInput [matDatepicker]="picker1" readonly
@@ -104,8 +104,6 @@
                                     </mat-form-field>
                                 </div>
                                 <!-- </span> -->
-
-
                             </div>
                         </div>
                         <div class="sales-inner sales-inner-box-option">
