@@ -1,12 +1,13 @@
+<app-loader *ngIf="isLoad"></app-loader>
 <div class="main-div">
     <div class="event-profile">
         <div class="profile-photo">
             <img *ngIf="profilePhoto" src="{{path}}{{profilePhoto.profile}}">
             <!-- <img src="../../../assets/images/profile_img.png" alt="profile photo"> -->
-            <img [src]="imgURL" id="imageFilter" onerror="this.src='/assets/images/profile_img.png'">
+            <img [src]="croppedImage" id="imageFilter" onerror="this.src='/assets/images/profile_img.png'">
         </div>
         <div class="event-camera">
-            <button class="btn p-0" data-toggle="modal" data-target="#imageUpload">
+            <button class="btn p-0" data-toggle="modal" (click)="openImageModal()">
                 <label data-container="body" tooltipClass="my-custom-class" ngbTooltip="Change Event Profile Photo">
                     <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                 </label>
@@ -16,7 +17,8 @@
 </div>
 
 <!-- image upload modal start -->
-<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,11 +29,18 @@
             </div>
             <div class="modal-body border-top">
                 <div class="image-cropper-box">
-                    image-cropper-box
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                        [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
+                        [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
+                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
+                        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
+                    </image-cropper>
                 </div>
                 <div class="choose_image">
                     <label for="upload_profile">Choose Image</label>
-                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg" id="upload_profile">
+                    <input type="file" (change)="fileChangeEvent($event)"
+                        accept="image/png, image/png, image/jpg , image/jpeg" id="upload_profile">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="saveImage()">Save</button>

@@ -111,8 +111,8 @@ export class SetPriceComponent implements OnInit {
     })
 
     this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
-      // console.log("event on before", currentSlide, nextSlide);
-      this.previousSlide(slick)
+      console.log("event on before", currentSlide, nextSlide);
+      // this.previousSlide(currentSlide)
     })
   }
 

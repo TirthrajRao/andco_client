@@ -1,56 +1,23 @@
 <div class="sales-inner sales-inner-box-main-box">
     <div class="option">
         <span>Add your account details to credit</span>
-        <form [formGroup]='bankForm'>
-            <div class="inner-radio-box">
-                <p><input type="radio" name="radio2" id="test3" (click)="bankSelect()"> <label for="test3">Bank
-                        account</label>
-                </p>
-                <p><input type="radio" name="radio2" id="test4" (click)="cardSeleced()"> <label for="test4">Bank
-                        Card</label>
-                </p>
-            </div>
-            <!-- <div [hidden]="!isBankSelected">
-                <input type="text" value="test3" autocomplete="off" name="test3" placeholder="Bank Name" class="text-left mb-2 px-3 py-2 font-weight-bold" formControlName="bankName" [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" ngModel="{{displayDetails ? displayDetails.bankName : ''}}"
-                    (change)="changeBankName($event , bankForm.value)">
-                <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
-                    <div *ngIf="f.bankName.errors.required">Name is required</div>
-                    <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div>
-                    <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
-                </div>
-            </div>
-            <div [hidden]="!isBankSelected">
-                <input type="text" autocomplete="off" value="test3" name="test3" placeholder="Account Number" class="mb-2 px-3 py-2 font-weight-bold text-left" minlength="16" maxlength="16" (input)="addNumber($event, bankForm.value)" id="accountNumber" formControlName="accountNumber"
-                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }" ngModel="{{displayDetails ? displayDetails.accountNumber : ''}}">
-                <div id="message2" class="w-100"></div>
-                <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
-                    <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
-                    <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
-                    </div>
-                    <div *ngIf="f.accountNumber.errors.pattern">Enter only numbers
-                    </div>
-                </div>
-            </div>
-            <div [hidden]="!isCardSelected">
-                <input type="text" value="test4" name="test4" placeholder="Card Number" minlength="16" maxlength="16" class="text-left px-3 py-2 font-weight-bold" id="cardNumber" (input)="enterCard($event)" formControlName="cardNumber" [ngClass]="{ 'is-invalid': f.cardNumber.touched && f.cardNumber.errors }"
-                    ngModel="{{displayDetails ? displayDetails.cardNumber : ''}}">
-                <div id="message3" class="w-100"></div>
-                <div *ngIf="f.cardNumber.touched && f.cardNumber.errors" class="invalid-feedback text-white">
-                    <div *ngIf="f.cardNumber.errors.required">Card Number is required</div>
-                    <div *ngIf="f.cardNumber.errors.minlength">Card Number must be only 16 digits
-                    </div>
-                    <div *ngIf="f.cardNumber.errors.maxlength">Card Number must be only 16 digits
-                    </div>
-                </div>
-            </div> -->
-        </form>
+        <!-- <form [formGroup]='bankForm'> -->
+        <div class="inner-radio-box">
+            <p><input type="radio" name="radio2" id="test3" (click)="bankSelect()"> <label for="test3">Bank
+                    account</label>
+            </p>
+            <p><input type="radio" name="radio2" id="test4" (click)="cardSeleced()"> <label for="test4">Bank
+                    Card</label>
+            </p>
+        </div>
     </div>
 </div>
 <!-- bank slider start -->
 <div class="add-bank-account" [hidden]="!isBankSelected">
     <div class="bank-list">
         <div class="plus float-left">
-            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon" (click)="addBankAccount()"></a>
+            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"
+                    (click)="addBankAccount()"></a>
         </div>
         <div class="slider-box">
             <div class="arrow-class">
@@ -72,13 +39,17 @@
             </div>
         </div>
     </div>
+    <button (click)="selectBank()">
+        hello
+    </button>
 </div>
 <!-- bank slider end -->
 <!-- card slider start -->
 <div class="add-bank-account" [hidden]="!isCardSelected">
     <div class="bank-list">
         <div class="plus float-left">
-            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+            <a href="javascript:void(0)"><img src="../../../assets/images/remove.png" alt="plus icon"
+                    (click)="addCardDetail()"></a>
         </div>
         <div class="slider-box">
             <div class="arrow-class">
