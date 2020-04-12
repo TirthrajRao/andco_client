@@ -29,8 +29,10 @@
                 </a>
             </div>
             <div class="bank-slider text-left">
+                <p *ngIf="bankList && bankList.length==0">There is no account</p>
                 <div class="single-slide" *ngFor="let name of bankList">
-                    <input type="radio" name="radio-group" id="{{name._id}}" [value]="name._id">
+                    <input type="radio" name="radio-group" id="{{name._id}}" (change)="selectBank($event)"
+                        [value]="name._id">
                     <label class="w-100 mb-0" for="{{name._id}}">
                         <p><label>Bank Name : </label> {{name.bankName}}</p>
                         <p><label>Account Number : </label> {{name.accountNumber}}</p>
@@ -39,9 +41,6 @@
             </div>
         </div>
     </div>
-    <button (click)="selectBank()">
-        hello
-    </button>
 </div>
 <!-- bank slider end -->
 <!-- card slider start -->
@@ -61,8 +60,10 @@
                 </a>
             </div>
             <div class="card-slider">
+                <p *ngIf="cardList && cardList.length==0">There is no account</p>
                 <div class="single-slide text-left" *ngFor="let card of cardList">
-                    <input name="radio-groupCard" id="{{card._id}}" [value]="card._id" type="radio">
+                    <input name="radio-groupCard" id="{{card._id}}" [value]="card._id" type="radio"
+                        (change)="selectCard($event)">
                     <label class="w-100 mb-0" for="{{card._id}}">
                         <p><label>Card Number : </label> {{card.cardNumber}}</p>
                         <p><label>CVV : </label> {{card.cvv}}</p>

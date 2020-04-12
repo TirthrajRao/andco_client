@@ -46,11 +46,12 @@ export class SetPriceComponent implements OnInit {
   $slider
   errorMessaage;
   currentDay = new Date()
-  selectedAccount
   setPriceDetails
   hearAboutMessage
   vendorMessage
   aboutTypeOf
+  selectedAccount
+  selectedCardAccount
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -129,10 +130,15 @@ export class SetPriceComponent implements OnInit {
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
         this.setPriceDetails = response
-        // console.log("response of set price", this.setPriceDetails);
+        console.log("response of set price", this.setPriceDetails);
+        if (this.setPriceDetails.bankAccount) {
+          console.log("call for bank account");
+          this.selectedAccount = this.setPriceDetails.bankAccount
+        }
+        if (this.setPriceDetails.cardAccount) {
+          this.selectedCardAccount = this.setPriceDetails.cardAccount
+        }
         let selectedLogistics = this.setPriceDetails.isLogistics
-        console.log("details of price=========", selectedLogistics);
-        this.selectedAccount = this.setPriceDetails.bankDetails
         this.aboutTypeOf = this.setPriceDetails.hearAbout
         // console.log("if about type is selected or not", this.aboutTypeOf);
         if (this.setPriceDetails.payMentTransferDate == 'true') {
@@ -173,8 +179,32 @@ export class SetPriceComponent implements OnInit {
     })
   }
 
+  selectbankAccount(event) {
+    console.log("when bank account selected", event);
+    let obj = {
+      _id: event,
+      flag: 'bank'
+    }
 
+    this.setPriceForm.patchValue({
+      bankDetails: obj
+    })
+    this.setPriceForm.get('bankDetails').updateValueAndValidity()
 
+  }
+
+  selecCard(event) {
+
+    let obj = {
+      _id: event,
+      flag: 'card'
+    }
+
+    this.setPriceForm.patchValue({
+      bankDetails: obj
+    })
+    this.setPriceForm.get('bankDetails').updateValueAndValidity()
+  }
   /**
    * Display error message
    */
@@ -220,7 +250,7 @@ export class SetPriceComponent implements OnInit {
       }
     });
     if (flag == 0) {
-      console.log("value of set price", this.setPriceForm.value);
+      console.log("value of set price", this.setPriceForm);
       this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
         this.alertService.getSuccess(response.message)
