@@ -7,16 +7,13 @@
     </div>
     <form [formGroup]='bankForm'>
         <div class="modal-body">
-            <input type="text" placeholder="Bank name" formControlName="bankName"
-                [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" [pattern]="bankName">
+            <input type="text" placeholder="Bank name" formControlName="bankName" [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }" [pattern]="bankName">
             <div *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
                 <div *ngIf="f.bankName.errors.required">Bank name is required</div>
 
                 <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
             </div>
-            <input type="text" placeholder="Account number" minlength="16" maxlength="16" id="accountNumber"
-                [pattern]="cardNumber" formControlName="accountNumber"
-                [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+            <input type="text" placeholder="Account number" minlength="16" maxlength="16" id="accountNumber" [pattern]="cardNumber" formControlName="accountNumber" [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
             <div *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
                 <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
                 <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
@@ -26,8 +23,7 @@
             </div>
         </div>
     </form>
-    <div class="modal-footer">
-        <button type="button" class="btn" (click)="addBankDetails()"
-            [disabled]="isDisable || bankForm.invalid">Add</button>
+    <div class="modal-footer w-100 d-inline-block text-center">
+        <button type="button" class="btn" (click)="addBankDetails()" [disabled]="isDisable || bankForm.invalid">Add</button>
     </div>
 </div>

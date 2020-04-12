@@ -15,8 +15,11 @@ declare var $: any
 })
 export class BankDetailsComponent implements OnInit {
 
-  @Input('accountDetails') accountDetails
+  @Input('bankAccount') bankAccount
+  @Input('cardAccount') cardAccount
   @Output() bankDetails: EventEmitter<any> = new EventEmitter<any>()
+  @Output() selectedBankAccount: EventEmitter<any> = new EventEmitter<any>()
+  @Output() selectedCardAccount: EventEmitter<any> = new EventEmitter<any>()
   bankForm: FormGroup;
   isBankSelected
   isCardSelected
@@ -25,7 +28,7 @@ export class BankDetailsComponent implements OnInit {
   $slider
   bankList = []
   cardList = []
-  selectedBank
+  bankSelected
   constructor(
     private _change: ChangeDetectorRef,
     public loginService: LoginService,
@@ -56,6 +59,17 @@ export class BankDetailsComponent implements OnInit {
     })
   }
 
+  initBankSlider1() {
+    this.$sliderContainer = $('.bank-slider1')
+    this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow',
+      nextArrow: '#nextarrow',
+    })
+  }
 
   initCardSlider() {
     this.$sliderContainer = $('.card-slider')
@@ -96,10 +110,33 @@ export class BankDetailsComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("change when edit bank details", changes);
-    if (changes.accountDetails && changes.accountDetails.currentValue) {
-      this.displayAccountDetails(changes.accountDetails.currentValue)
+    console.log("change when edit bank details", changes.bankAccount);
+    if (changes.bankAccount && changes.bankAccount.currentValue) {
+      this.displayBankAccount(changes.bankAccount.currentValue)
     }
+    if (changes.cardAccount && changes.cardAccount.currentValue) {
+      this.disPlayCard(changes.cardAccount.currentValue)
+    }
+  }
+
+
+  disPlayCard(card) {
+    this.isCardSelected = true
+    $('input:radio[id="test4"]').prop('checked', true);
+
+  }
+
+
+  displayBankAccount(account) {
+    this.bankSelected = account._id
+    console.log("account display", this.bankSelected);
+    this.isBankSelected = true
+    $('input:radio[id="test3"]').prop('checked', true);
+    this.$sliderContainer = $('.bank-slider1');
+    this.$sliderContainer.slick('unslick');
+    setTimeout(() => {
+      this.initBankSlider1()
+    }, 10)
   }
 
   displayAccountDetails(details) {
@@ -140,17 +177,22 @@ export class BankDetailsComponent implements OnInit {
     console.log("=================", this.bankDetails);
 
 
-    
-  }
-
-
-  selectBank() {
-    this.selectedBank = $('input[name="radio-group"]:checked').val();
-    console.log("what is the value", this.selectedBank);
 
   }
 
 
+  selectBank(event) {
+    console.log("event when add account", event.target.value);
+    this.selectedBankAccount.emit(event.target.value)
+    console.log("what is the value", this.selectedBankAccount);
+
+  }
+  selectCard(event) {
+    this.selectedCardAccount.emit(event.target.value)
+  }
+  // selectCard($event){
+
+  // }
 
   bankSelect() {
     this.isBankSelected = true
