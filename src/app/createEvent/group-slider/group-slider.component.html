@@ -1,6 +1,6 @@
 <div class="group-header" *ngIf="isDisable">
     <div class="add-group">
-        <button class="btn" data-toggle="modal" data-target="#addGroupItemModal">+</button>
+        <button class="btn" data-toggle="modal" (click)="addNewGroup()">+</button>
     </div>
     <div class="group-slider">
         <div class="group-single-slide" *ngFor="let item of selectedActivity.groups, let i = index; ">
@@ -34,12 +34,13 @@
             </div>
             <div class="modal-body">
                 <div class="add-items">
-                    <input type="text" placeholder="Enter guest group name" [(ngModel)]="groupName">
+                    <input type="text" (input)="addNewGroupIn($event)" placeholder="Enter guest group name"
+                        [(ngModel)]="groupName">
                 </div>
             </div>
-            <div class="modal-footer" *ngIf="isDisable">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal"
-                    (click)="addGroup(groupName)">Add</button>
+            <div class="modal-footer">
+                <button type="button" class="btn add-btn m-auto" data-dismiss="modal" (click)="addGroup(groupName)"
+                    [disabled]="!isButton">Add</button>
             </div>
         </div>
     </div>
@@ -52,18 +53,19 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header py-2">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" (click)="closeModel()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body pb-0">
                 <div class="add-items" *ngIf="editGroupName">
-                    <input class="mb-0" type="text" [(ngModel)]="editGroupName.groupName">
+                    <input class="mb-0" type="text" (input)="editGroup($event)" [(ngModel)]="editGroupName.groupName">
                 </div>
+                <div id="message" style="color: red;"></div>
             </div>
             <div class="modal-footer m-auto">
                 <button type="button" class="btn delete" data-dismiss="modal" (click)="deleteGroup()">Delete</button>
-                <button type="button" class="btn edit" (click)="editGroupNameOf()">Edit</button>
+                <button type="button" class="btn edit" [disabled]="!isButton" (click)="editGroupNameOf()">Edit</button>
             </div>
         </div>
     </div>

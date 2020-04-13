@@ -15,11 +15,14 @@ export class GroupSliderComponent implements OnInit {
   @Output() firstGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
+  isButton
   groupName
   editGroupName
   $slideContainter;
   $slider;
   selectedIndex: any;
+  changeName
+  notChangeGroupName
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService,
@@ -136,6 +139,20 @@ export class GroupSliderComponent implements OnInit {
   }
 
 
+  addNewGroup() {
+    $('#addGroupItemModal').modal("show")
+  }
+
+  addNewGroupIn(event) {
+    let newName = event.target.value
+    if (newName != "") {
+      this.isButton = true
+    } else {
+      this.isButton = false
+    }
+
+  }
+
   addGroup(data) {
     // console.log("is it call or not=======", data);
 
@@ -158,6 +175,40 @@ export class GroupSliderComponent implements OnInit {
     console.log("details of group", group);
     $('#editDeleteModal').modal("show")
     this.editGroupName = group
+    this.notChangeGroupName = this.editGroupName.groupName
+    this.isButton = true
+  }
+
+  closeModel() {
+    console.log("name of group shold not be none", this.changeName);
+    let message = document.getElementById('message');
+    if (this.editGroupName.groupName == "") {
+      console.log("when model close");
+      message.innerHTML = "Group name is not be empty";
+    } else {
+      message.innerHTML = ""
+      if (this.changeName != undefined) {
+        console.log("it is working good");
+        this.editGroupName.groupName = this.notChangeGroupName
+        $('#editDeleteModal').modal("hide")
+      }
+    }
+
+  }
+
+
+  editGroup(event) {
+    // console.log("evnt value", event);
+    this.changeName = event.target.value
+    let message = document.getElementById('message');
+    if (this.changeName == "") {
+      this.isButton = false
+      message.innerHTML = "Group name is not be empty";
+    } else {
+      message.innerHTML = ""
+      this.isButton = true
+    }
+
   }
 
   editGroupNameOf() {

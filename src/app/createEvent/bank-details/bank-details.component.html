@@ -1,4 +1,5 @@
 <div class="sales-inner sales-inner-box-main-box">
+    <app-loader *ngIf="isLoad" id="loader"></app-loader>
     <div class="option">
         <span>Add your account details to credit</span>
         <!-- <form [formGroup]='bankForm'> -->
@@ -28,12 +29,23 @@
                     <div class="arrow-right"></div>
                 </a>
             </div>
-            <div class="bank-slider text-left">
+            <div class="bank-slider text-left" *ngIf="!bankAccount">
                 <p *ngIf="bankList && bankList.length==0">There is no account</p>
                 <div class="single-slide" *ngFor="let name of bankList">
-                    <input type="radio" name="radio-group" id="{{name._id}}" (change)="selectBank($event)"
-                        [value]="name._id">
-                    <label class="w-100 mb-0" for="{{name._id}}">
+                    <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
+                        (change)="selectBank($event)" [value]="name._id">
+                    <label class="w-100 mb-0" for="radio-group-{{name._id}}">
+                        <p><label>Bank Name : </label> {{name.bankName}}</p>
+                        <p><label>Account Number : </label> {{name.accountNumber}}</p>
+                    </label>
+                </div>
+            </div>
+            <div class="bank-sliderAfter text-left" *ngIf="bankAccount">
+                <p *ngIf="bankList && bankList.length==0">There is no account</p>
+                <div class="single-slide" *ngFor="let name of bankList">
+                    <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
+                        (change)="updateBank($event)" [value]="name._id">
+                    <label class="w-100 mb-0" for="radio-group-{{name._id}}">
                         <p><label>Bank Name : </label> {{name.bankName}}</p>
                         <p><label>Account Number : </label> {{name.accountNumber}}</p>
                     </label>
@@ -59,12 +71,24 @@
                     <div class="arrow-right"></div>
                 </a>
             </div>
-            <div class="card-slider">
+            <div class="card-slider" *ngIf="!cardAccount">
                 <p *ngIf="cardList && cardList.length==0">There is no account</p>
-                <div class="single-slide text-left" *ngFor="let card of cardList">
-                    <input name="radio-groupCard" id="{{card._id}}" [value]="card._id" type="radio"
-                        (change)="selectCard($event)">
-                    <label class="w-100 mb-0" for="{{card._id}}">
+                <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
+                    <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
+                        type="radio" (change)="selectCard($event)">
+                    <label class="w-100 mb-0" for="radio-groupCard-{{card._id}}">
+                        <p><label>Card Number : </label> {{card.cardNumber}}</p>
+                        <p><label>CVV : </label> {{card.cvv}}</p>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-sliderAfter" *ngIf="cardAccount">
+                <!-- <p *ngIf="cardList && cardList.length==0">There is no account</p> -->
+                <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
+                    <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
+                        type="radio" (change)="updateCard($event)">
+                    <label class="w-100 mb-0" for="radio-groupCard-{{card._id}}">
                         <p><label>Card Number : </label> {{card.cardNumber}}</p>
                         <p><label>CVV : </label> {{card.cvv}}</p>
                     </label>
