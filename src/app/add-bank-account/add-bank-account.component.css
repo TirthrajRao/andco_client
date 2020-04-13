@@ -107,6 +107,24 @@ h3.title {
     margin: auto;
 }
 
+.empty-message {
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.empty-message p {
+    color: #686686;
+    font-weight: bold;
+}
+
+.empty-message img {
+    height: 80px;
+    filter: hue-rotate(45deg);
+    margin: auto;
+}
+
 @media(max-width: 991px) {
     h3.title {
         font-size: 20px;
