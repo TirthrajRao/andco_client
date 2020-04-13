@@ -46,21 +46,25 @@ span.items-price {
     text-align: right;
 }
 
-span.items-price, span.items-name {
+span.items-price,
+span.items-name {
     width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
+
 /* radio button css start here */
 
-[type="radio"]:checked, [type="radio"]:not(:checked) {
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
 }
 
-[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
@@ -70,7 +74,8 @@ span.items-price, span.items-name {
     font-size: 30px;
 }
 
-[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
     content: '';
     position: absolute;
     left: 0;
@@ -82,14 +87,15 @@ span.items-price, span.items-name {
     background: #ffffff;
 }
 
-[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
     content: '';
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #F18B2D;
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 6px;
+    left: 6px;
     border-radius: 100%;
     transition: all 0.2s ease;
     transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
@@ -108,6 +114,7 @@ span.items-price, span.items-name {
     transform: scale(1);
 }
 
+
 /* radio button css end here */
 
 @media(max-width:1600px) {
@@ -116,7 +123,8 @@ span.items-price, span.items-name {
         width: 100%;
         margin: 10px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 26px;
     }
     .myevent-groups-item {
@@ -137,17 +145,20 @@ span.items-price, span.items-name {
         line-height: 40px;
     }
     /* radio button  start*/
-    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
         width: 12px;
         height: 12px;
         top: 7px;
         left: 7px;
     }
-    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    [type="radio"]:checked+label:before,
+    [type="radio"]:not(:checked)+label:before {
         width: 26px;
         height: 26px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 20px;
         line-height: 22px;
     }
@@ -159,22 +170,26 @@ span.items-price, span.items-name {
         font-size: 20px;
     }
     /* radio button  start*/
-    [type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
         width: 10px;
         height: 10px;
         top: 8px;
         left: 8px;
     }
-    [type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    [type="radio"]:checked+label:before,
+    [type="radio"]:not(:checked)+label:before {
         width: 20px;
         height: 20px;
         left: 3px;
         top: 3px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         line-height: 30px;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 20px;
     }
     /* radio button end*/
@@ -194,8 +209,8 @@ span.items-price, span.items-name {
 }
 
 @media(max-width:991px) {
-    
-    span.items-price, span.items-name {
+    span.items-price,
+    span.items-name {
         width: 100%;
     }
     span.items-price {
@@ -204,7 +219,8 @@ span.items-price, span.items-name {
 }
 
 @media(max-width:767px) {
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 26px;
     }
     .myevent-activity-box {
@@ -214,7 +230,8 @@ span.items-price, span.items-name {
 }
 
 @media(max-width:480px) {
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 22px;
     }
     .myevent-activity-box {
@@ -228,7 +245,8 @@ span.items-price, span.items-name {
         padding: 0 20px;
         width: 100%;
     }
-    [type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
         font-size: 17px;
     }
 }

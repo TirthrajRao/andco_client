@@ -175,3 +175,148 @@ h2 img:hover {
         width: 90%;
     }
 }
+
+
+
+
+
+
+/* PrintDesign start */
+
+
+
+p,
+h3 {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.page-box {
+    border: 1px dotted gray;
+    padding: 10px 20px;
+    margin: 15px;
+}
+
+.profile-content {
+    text-align: center;
+}
+
+.profile-content h4 {
+    color: #440909;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.profile-photo {
+    height: 90px;
+    width: 90px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #111214;
+    margin: auto;
+}
+
+.profile-photo img {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.info-box {
+    font-size: 15px;
+    font-weight: 600;
+    border-top: 2px solid #440909;
+    border-bottom: 2px solid #440909;
+    padding: 12px 0 6px;
+}
+
+.guest-name {
+    margin: 10px 0;
+}
+
+.guest-name h3 {
+    font-weight: 600;
+    margin-left: 15px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.profile-name {
+    float: left;
+    background-color: #440909;
+    border-radius: 50%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.inner-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.info-box {
+    font-size: 12px;
+    font-weight: 600;
+    border-top: 2px solid #440909;
+    border-bottom: 2px solid #440909;
+    padding: 12px 0 6px;
+    text-transform: capitalize;
+}
+
+.info i {
+    float: left;
+    margin-right: 5px;
+    color: #440909;
+    font-size: 20px;
+}
+
+.info p {
+    word-break: break-all;
+}
+
+.guest-single-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.guest-single-item p {
+    color: #000;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 46px;
+    text-transform: capitalize;
+}
+
+.guest-event-name {
+    text-align: center;
+}
+
+.guest-item-price {
+    text-align: right;
+}
+
+.total-spent {
+    background-color: #FFF4F4;
+    color: #440909;
+    padding: 12px 20px 0px;
+    margin-bottom: 15px;
+}
+
+.total-spent h5 {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/* PrintDesign End */

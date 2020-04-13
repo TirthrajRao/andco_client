@@ -1,4 +1,4 @@
-<section class="myEvent-main">
+<section class="myEvent-main" *ngIf="!isPrint">
     <app-loader *ngIf="isLoad"></app-loader>
     <div class="page-content">
         <div class="myevent-inner-box">
@@ -27,7 +27,9 @@
                     </app-event-profile-pic>
                     <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
                         (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"
-                        (loaderValue)="collectionLoader($event)"></app-collection>
+                        (loaderValue)="collectionLoader($event)" (totalCollectionList)="finalCollectionPrint($event)"
+                        (printClick)="clickOnPrint($event)">
+                    </app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>
@@ -41,3 +43,99 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+<div class="page-box" *ngIf="isPrint">
+    <div class="profile-content">
+        <div class="profile-photo">
+            <img src="{{path}}{{printPhoto}}" alt="profile photo">
+        </div>
+        <h4 class="mt-3">
+            {{printTitle}}
+        </h4>
+        <h4>
+            {{printHashTag}}
+        </h4>
+    </div>
+    <div class="inner-class" *ngFor="let name of collectionWithGuest">
+        <!-- {{#each data}} -->
+        <div class="inner-header">
+            <div class="profile-name">
+                <span>
+                    {{name.firstLetter}}{{name.lastLetter}}
+                </span>
+            </div>
+            <div class="guest-name">
+                <h3>
+                    {{name.firstName}} {{name.lastName}}
+                </h3>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="info">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p>{{name.address}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="info">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <p>{{name.phoneNo}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="info">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <p>{{name.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="mt-3 pl-0">
+            <!-- {{#items}} -->
+            <li class="guest-single-item" *ngFor="let item of name.items">
+                <div class="guest-item-name">
+                    <p>
+                        {{item.quantity}}
+                        <!-- {{#with itemId}} -->
+                        {{item.itemId.itemName}}
+                        <!-- {{/with}} -->
+                    </p>
+                </div>
+                <div class="guest-event-name">
+                    <p>
+                        <!-- {{#with itemId}} -->
+                        <!-- {{#with activityId}} -->
+                        {{item.itemId.activityId.activityName}}
+                        <!-- {{/with}} -->
+                        <!-- {{/with}} -->
+                    </p>
+                </div>
+                <div class="guest-item-price">
+                    <p>
+                        ₦
+                        <!-- {{#with itemId}} -->
+                        {{item.itemId.itemPrice}}
+                        <!-- {{/with}} -->
+                    </p>
+                </div>
+            </li>
+            <!-- {{/items}} -->
+        </ul>
+        <div class="total-spent w-100 d-inline-block">
+            <div class="date float-left">
+                <h5>Date of purchase : <span>20/2/2020</span></h5>
+            </div>
+            <div class="total float-right">
+                <h5>Total: <span> ₦ {{name.total}}</span></h5>
+            </div>
+        </div>
+        <!-- {{/each}} -->
+    </div>
+</div>

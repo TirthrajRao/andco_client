@@ -17,6 +17,7 @@ export class LoginService {
   private openBankNew = new BehaviorSubject<any>(this.bankDetails)
   sharedBankDetails = this.openBankNew.asObservable();
   @Output() faceBookLogin = new EventEmitter();
+  @Output() printData = new EventEmitter();
 
   constructor(
     private http: HttpClient
@@ -80,7 +81,7 @@ export class LoginService {
    * Login for guest and celebrant  
    */
   login(userCredentials) {
-    console.log("helloooooooo", userCredentials);
+    // console.log("helloooooooo", userCredentials);w
     const eventToken = JSON.parse(sessionStorage.getItem('guestHashTag'));
     // console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
@@ -226,6 +227,8 @@ export class LoginService {
   getBankDetails() {
     return this.http.get(config.baseApiUrl + "/accountList")
   }
-
+  updateMenu() {
+    this.printData.emit('click')
+  }
 
 }
