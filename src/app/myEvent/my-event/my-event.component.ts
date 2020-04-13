@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { LoginService } from '../../services/login.service'
+import { config } from '../../config'
+
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-my-event',
@@ -28,11 +30,33 @@ export class MyEventComponent implements OnInit {
   isClosed: any;
   isflow = false
   isLoad = false
+  isPrint: boolean;
+  collectionWithGuest = []
+  printPhoto
+  printTitle
+  printHashTag
+  path = config.baseMediaUrl;
+
   constructor(
     private route: Router,
     public eventService: EventService,
     public loginSerivce: LoginService
   ) { }
+
+  @HostListener('window:beforeprint', ['$event'])
+  onBeforePrint(event) {
+    this.isPrint = true;
+    console.log("log print in my event page");
+  }
+  @HostListener('window:afterprint', ['$event'])
+  onAfterPrint(event) {
+    this.isPrint = false
+    console.log("log print when closed page");
+  }
+
+
+
+
 
   ngOnInit() {
 
@@ -68,6 +92,11 @@ export class MyEventComponent implements OnInit {
       this.selectedEventId = response.data._id
       if (this.isCelebrant == true) {
         this.eventDetails = response.data
+        console.log("event details", this.eventDetails);
+
+        this.printHashTag = this.eventDetails.hashTag
+        this.printTitle = this.eventDetails.eventTitle
+        this.printPhoto = this.eventDetails.profilePhoto
         // this.eventLink = response.data.eventLink
         this.displayMenu = true
         this.changeMenuWithArraow(this.currenMenuIndex)
@@ -121,11 +150,24 @@ export class MyEventComponent implements OnInit {
     })
   }
 
+  // getTotalListOfGuestWithCollection() {
+  //   this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
+  //     this.collectionWithGuest = response.data
+  //     console.log("list of total collection with guests", this.collectionWithGuest);
+  //   }, error => {
+  //     console.log("error while get collections", error);
+
+  //   })
+
+  // }
+
+
   getCollecctionOfEvent() {
     this.isLoad = true
     this.eventService.getEventCollection(this.selectedEventId).subscribe((response: any) => {
       console.log("response of collections", response);
       response.data['isClosed'] = this.eventDetails.isClosed
+
       this.totalCollections = response.data
       // this.isClosed = this.eventDetails.isClosed
       this.isLoad = false
@@ -142,6 +184,21 @@ export class MyEventComponent implements OnInit {
 
   getItemsOfGuest(event) {
     this.guestWithItems = this.selectedEventId
+    // this.getTotalListOfGuestWithCollection()
+  }
+
+  finalCollectionPrint(event) {
+    console.log("ready for print in main page", event);
+    this.collectionWithGuest = event
+  }
+
+  clickOnPrint(event) {
+    console.log("event of click", event)
+    if (event)
+      this.isPrint = true
+    setTimeout(() => {
+      window.print()
+    }, 10)
   }
 
 

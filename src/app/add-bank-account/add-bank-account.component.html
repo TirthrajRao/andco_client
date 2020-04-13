@@ -6,7 +6,8 @@
             <div class="add-bank-account1 m-4">
                 <div class="bank-list">
                     <div class="plus float-left">
-                        <a data-toggle="modal" (click)="addBankAccount()"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+                        <a data-toggle="modal" (click)="addBankAccount()"><img src="../../../assets/images/remove.png"
+                                alt="plus icon"></a>
                     </div>
                     <div class="slider-box">
                         <div class="arrow-class">
@@ -19,11 +20,12 @@
                         </div>
                         <h5 class="font-weight-bold pl-5 mb-2">Bank accounts</h5>
                         <div class="bank-slider">
+                            <p *ngIf="bankList && bankList.length==0">There is no account</p>
                             <div class="single-slide" *ngFor="let name of bankList">
                                 <!-- <input id="first-radio" type="radio"> -->
                                 <label class="w-100 mb-0" for="first-radio">
                                     <p><label>Bank Name : </label> {{name.bankName}}</p>
-                                <p><label>Account Number : </label> {{name.accountNumber}}</p>
+                                    <p><label>Account Number : </label> {{name.accountNumber}}</p>
                                 </label>
                             </div>
                         </div>
@@ -33,7 +35,8 @@
             <div class="add-bank-account1 m-4 mt-5">
                 <div class="bank-list">
                     <div class="plus float-left">
-                        <a data-toggle="modal" (click)="openCardModal()"><img src="../../../assets/images/remove.png" alt="plus icon"></a>
+                        <a data-toggle="modal" (click)="openCardModal()"><img src="../../../assets/images/remove.png"
+                                alt="plus icon"></a>
                     </div>
                     <div class="slider-box">
                         <div class="arrow-class">
@@ -46,11 +49,12 @@
                         </div>
                         <h5 class="font-weight-bold pl-5 mb-2">Cards</h5>
                         <div class="card-slider">
+                            <p *ngIf="cardList && cardList.length==0">There is no account</p>
                             <div class="single-slide" *ngFor="let card of cardList">
                                 <!-- <input id="first-radio" type="radio"> -->
                                 <label class="w-100 mb-0" for="first-radio">
                                     <p><label>Card Number : </label> {{card.cardNumber}}</p>
-                                <p><label>CVV : </label> {{card.cvv}}</p>
+                                    <p><label>CVV : </label> {{card.cvv}}</p>
                                 </label>
                             </div>
                         </div>
