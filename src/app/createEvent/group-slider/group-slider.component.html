@@ -5,8 +5,7 @@
     <div class="group-slider">
         <div class="group-single-slide" *ngFor="let item of selectedActivity.groups, let i = index; ">
             <div class="group-name" (click)="sendData(item , i)" [class.active]="selectedIndex === i">
-                <span data-container="body" tooltipClass="my-custom-class"
-                    ngbTooltip="{{item.groupName}}">{{item.groupName}}</span>
+                <span data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{item.groupName}}">{{item.groupName}}</span>
             </div>
             <!-- <div *ngIf="i != 1 && i !=0">
                 <div class="remove-group" (click)="removeGroup(i)">
@@ -14,7 +13,7 @@
                 </div>
             </div> -->
             <div class="remove-group">
-                <button class="btn" data-toggle="modal" (click)="openEditModel(item)">
+                <button class="btn" data-container="body" tooltipClass="my-custom-class" ngbTooltip="Edit and Delete group" data-toggle="modal" (click)="openEditModel(item)">
                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                 </button>
             </div>
@@ -34,13 +33,11 @@
             </div>
             <div class="modal-body">
                 <div class="add-items">
-                    <input type="text" (input)="addNewGroupIn($event)" placeholder="Enter guest group name"
-                        [(ngModel)]="groupName">
+                    <input type="text" (input)="addNewGroupIn($event)" placeholder="Enter guest group name" [(ngModel)]="groupName">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn add-btn m-auto" data-dismiss="modal" (click)="addGroup(groupName)"
-                    [disabled]="!isButton">Add</button>
+                <button type="button" class="btn add-btn m-auto" data-dismiss="modal" (click)="addGroup(groupName)" [disabled]="!isButton">Add</button>
             </div>
         </div>
     </div>
@@ -48,8 +45,7 @@
 <!-- add group modal content end -->
 
 <!-- delete and edit modal start -->
-<div class="modal fade" id="editDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="editDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header py-2">

@@ -51,6 +51,7 @@ button.btn.add-more {
 .guest-add-items h4 img {
     height: 20px;
     margin-left: 20px;
+    filter: var(--filter-in-img);
 }
 
 .group-box {
