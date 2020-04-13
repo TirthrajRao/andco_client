@@ -16,6 +16,7 @@ declare var $;
 })
 export class HeaderComponent implements OnInit {
   @Input("displayName") displayName
+  @Input('headerEvent') clickOnPrint
   userName = JSON.parse(sessionStorage.getItem('userName'));
   hashTag = JSON.parse(sessionStorage.getItem('guestHashTag'))
   totalEvent = JSON.parse(sessionStorage.getItem('eventList'))
@@ -58,6 +59,13 @@ export class HeaderComponent implements OnInit {
         this.isDisplayMenu = true
       }
     })
+    this._loginService.printData.subscribe(res => {
+      console.log("what is in main header", res);
+      if (res) {
+        this.isPrint = true
+      }
+
+    })
     // this._loginService
 
     this.sub = this.route.params.subscribe(param => {
@@ -71,7 +79,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes in header", changes.displayName, this._change)
+    console.log("changes in header", changes)
   }
 
   ngOnInit() {

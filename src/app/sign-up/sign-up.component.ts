@@ -53,6 +53,9 @@ export class SignUpComponent implements OnInit {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+    $(".toggle-password").click(function () {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+    });
     /**
      * SignUp form for new user
      */
