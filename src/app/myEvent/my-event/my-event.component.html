@@ -25,14 +25,17 @@
 
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"></app-collection>
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
+                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"
+                        (loaderValue)="collectionLoader($event)"></app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
             </div>
         </div>
         <div class="event-menu-box-main">
             <div class="event-menu-box" *ngIf="displayMenu">
-                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()" (changeMenu)="changeMenuWithArraow($event)">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()"
+                    (changeMenu)="changeMenuWithArraow($event)">
                 </app-event-menu>
             </div>
         </div>

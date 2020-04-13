@@ -134,7 +134,9 @@ export class MyEventLinkComponent implements OnInit {
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response of event in link page", response);
-      this.afterEventMessage = response.data.afterEventMessage
+      if (response.data.afterEventMessage.afterEventMessage) {
+        this.afterEventMessage = response.data.afterEventMessage
+      }
       this.invitatationMessage = response.data.invitationMessage
       this.welcomeMessage = response.data.welcomeMessage
       this.reminderDetails = response.data.reminderDetails

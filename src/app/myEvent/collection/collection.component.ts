@@ -10,6 +10,7 @@ export class CollectionComponent implements OnInit {
   @Input('totalCollection') totalCollection
   @Input('guestItems') guestItemList
   @Output() guestWithItem: EventEmitter<any> = new EventEmitter<any>();
+  @Output() loaderValue: EventEmitter<any> = new EventEmitter<any>();
   displayGuestItems = []
   finalCollection = []
   navTabs = ["Total", "Guests"]
@@ -30,6 +31,7 @@ export class CollectionComponent implements OnInit {
     if (changes.totalCollection && changes.totalCollection.currentValue) {
       this.selectedIndex = 0
       this.finalCollection = changes.totalCollection.currentValue
+      this.loaderValue.emit('false')
       // this.selectedIndex = 0
     }
     if (changes.guestItemList && changes.guestItemList.currentValue.length) {

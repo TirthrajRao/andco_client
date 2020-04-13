@@ -18,7 +18,7 @@ export class SocialLoginService {
   isUserLoggedIn = false;
   @Output() isLoad = new EventEmitter();
 
-  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
+  eventIdWithLogin
 
   constructor(
 
@@ -60,29 +60,34 @@ export class SocialLoginService {
     this.isLoad.emit('true');
     // this.isDisable = true;
     // console.log("In func")
+    this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
       // console.log("response of google login ", res);
       const googleIdToken = res.idToken;
       googleIdToken
       // console.log("google id of login user", googleIdToken);
       this.loginService.googleLogin(googleIdToken).subscribe(data => {
+        console.log("hash tag for guest", this.eventIdWithLogin)
         let firstName = data.data.firstName
         // let lastName = data.data.lastName
         this.userName = firstName;
         // console.log(this.userName);
-        // console.log("response of login user", data);
+        console.log("response of login user using google", data);
         this.userRole = data.data.UserRole;
         // console.log("admin login entry", data.data.UserRole);
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
         // console.log("response positive of google", data);
         if (this.eventIdWithLogin) {
+          console.log("is this call for guest");
+          this.isLoad.emit('false')
           // this.isLoad = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/guest-join/', this.eventIdWithLogin])
         }
         else {
+          console.log("call this for normal");
           this.isLoad.emit('false')
           this.isUserLoggedIn = true;
           this.router.navigate(['/menu']);
@@ -90,11 +95,14 @@ export class SocialLoginService {
           return true
         }
       }, err => {
+        this.isLoad.emit('false')
+
         // this.isLoad = false;
         // console.log("error display", err);
         // this.alertService.getError(err.error.message);
       })
     }).catch((err) => {
+      this.isLoad.emit('false')
       this.alertService.getError(err.error.message)
       // console.log(err);
     });
@@ -110,6 +118,7 @@ export class SocialLoginService {
     // this.isLoad = true;
     // this.isDisable = true;
     // console.log("submit login to facebook");
+    this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     FB.login((response) => {
       // console.log('submitLogin', response);
       let facebookId = response.authResponse.accessToken;
@@ -126,6 +135,7 @@ export class SocialLoginService {
 
             if (this.eventIdWithLogin) {
               // this.isLoad = false
+              this.isLoad.emit('false')
               this.isUserLoggedIn = true;
               sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
               this.router.navigate(['/guest-join/', this.eventIdWithLogin])
@@ -140,6 +150,7 @@ export class SocialLoginService {
             }
           }, err => {
             // this.isLoad = false;
+            this.isLoad.emit('false')
             // console.log("error display", err);
             this.alertService.getError(err.error.message);
           })
