@@ -11,7 +11,8 @@
         <app-total-collection [collections]="finalCollection"></app-total-collection>
     </div>
     <div id="guests" class="tab-pane active" role="tabpanel" *ngIf="selectedIndex === 1">
-        <app-guest-collection [guestItems]="displayGuestItems" [eventId]="eventId" [noList]="noGuestList">
+        <app-guest-collection [guestItems]="displayGuestItems" [eventId]="eventId" [noList]="noGuestList"
+            (listForPrint)="listOfGuest($event)" (printClick)="clickOnPrint($event)">
         </app-guest-collection>
     </div>
 </div>

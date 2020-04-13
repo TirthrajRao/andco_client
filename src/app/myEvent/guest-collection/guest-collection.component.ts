@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, SimpleChanges, HostListener } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, HostListener, Output, EventEmitter } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { ExcelService } from '../../services/excel.service';
 import { SearchListPipe } from '../../search-list.pipe';
 import { saveAs } from "file-saver";
 import * as _ from 'lodash';
+// import { EventEmitter } from 'protractor';
 declare var $: any
 
 @Component({
@@ -15,16 +16,19 @@ export class GuestCollectionComponent implements OnInit {
   @Input('guestItems') guestItems
   @Input('noList') noListOfGuest
   @Input('eventId') eventId
+  @Output() listForPrint: EventEmitter<any> = new EventEmitter<any>();
+  @Output() printClick: EventEmitter<any> = new EventEmitter<any>();
+  isPrint: boolean = false;
 
 
   @HostListener('window:beforeprint', ['$event'])
   onBeforePrint(event) {
-    // this.isPrint = true;
+    this.isPrint = true;
     console.log("log before pppprint");
   }
   @HostListener('window:afterprint', ['$event'])
   onAfterPrint(event) {
-    // this.isPrint = false
+    this.isPrint = false
     console.log("log after pppprint");
   }
   // @Input() image: string;
@@ -54,7 +58,8 @@ export class GuestCollectionComponent implements OnInit {
 
 
   onPrint() {
-    window.print()
+    this.isPrint = true
+    this.printClick.emit(this.isPrint)
   }
 
 
@@ -106,7 +111,7 @@ export class GuestCollectionComponent implements OnInit {
       // console.log("first letter of word", firstLetter);
     });
     console.log("what is in final output after adding", this.displayGuestItems);
-
+    this.listForPrint.emit(this.displayGuestItems)
     this.formateData = this.organise(this.displayGuestItems)
     // console.log("formate data details", this.formateData);
 

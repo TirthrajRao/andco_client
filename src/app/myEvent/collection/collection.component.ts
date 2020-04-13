@@ -11,6 +11,8 @@ export class CollectionComponent implements OnInit {
   @Input('guestItems') guestItemList
   @Output() guestWithItem: EventEmitter<any> = new EventEmitter<any>();
   @Output() loaderValue: EventEmitter<any> = new EventEmitter<any>();
+  @Output() totalCollectionList: EventEmitter<any> = new EventEmitter<any>();
+  @Output() printClick: EventEmitter<any> = new EventEmitter<any>()
   displayGuestItems = []
   finalCollection = []
   navTabs = ["Total", "Guests"]
@@ -72,6 +74,15 @@ export class CollectionComponent implements OnInit {
     if (i == 1) {
       this.guestWithItem.emit('guestItems')
     }
+  }
+
+  listOfGuest(event) {
+    console.log("list ready for guest in sub main page", event);
+    this.totalCollectionList.emit(event)
+  }
+
+  clickOnPrint(event) {
+    this.printClick.emit(event)
   }
 
 }

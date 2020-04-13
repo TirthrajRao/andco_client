@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, SimpleChanges, } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, SimpleChanges, HostListener, } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, RouterEvent, RoutesRecognized } from '@angular/router';
 // import { filter } from 'rxjs/operators';
 import { filter, pairwise } from 'rxjs/operators';
@@ -29,6 +29,20 @@ export class HeaderComponent implements OnInit {
   isDisplayMenu = true
   notMenu
   displayLogo = true
+  isPrint: boolean = false;
+
+
+  @HostListener('window:beforeprint', ['$event'])
+  onBeforePrint(event) {
+    this.isPrint = true;
+    console.log("log before pppprint");
+  }
+  @HostListener('window:afterprint', ['$event'])
+  onAfterPrint(event) {
+    this.isPrint = false
+    console.log("log after pppprint");
+  }
+
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -53,6 +67,8 @@ export class HeaderComponent implements OnInit {
       // this.hashTag = param.hashTag
     })
   }
+
+
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("changes in header", changes.displayName, this._change)
@@ -111,7 +127,10 @@ export class HeaderComponent implements OnInit {
       return '#F8D0AD'
     } else if (this.currentUrl.includes('set-price')) {
       return '#434040'
-    } else {
+    } else if (this.currentUrl.includes('add-bank-account')) {
+      return '#434040'
+    }
+    else {
       return '#fff'
     }
   }
