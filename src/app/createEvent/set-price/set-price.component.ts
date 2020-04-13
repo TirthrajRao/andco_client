@@ -52,6 +52,7 @@ export class SetPriceComponent implements OnInit {
   aboutTypeOf
   selectedAccount
   selectedCardAccount
+  totalAccount
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -62,7 +63,7 @@ export class SetPriceComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.getBankDetails()
     this.loginService.sharedBankDetails.subscribe(response => {
       console.log("when click on plus ", response);
     })
@@ -92,6 +93,18 @@ export class SetPriceComponent implements OnInit {
     })
     this.initSlickSlider()
     // console.log("time zone ", this.timezone);
+  }
+
+  getBankDetails() {
+    this.loginService.getBankDetails().subscribe((response: any) => {
+      console.log("details of bank", response);
+      this.totalAccount = response.data
+      // this.bankTotal = response.data.bankDetail
+      // this.cardTotal = response.data.cardDetails
+    }, error => {
+      console.log("error while get details", error);
+
+    })
   }
 
 
@@ -131,11 +144,11 @@ export class SetPriceComponent implements OnInit {
       if (response.welcomeMessage) {
         this.setPriceDetails = response
         console.log("response of set price", this.setPriceDetails);
-        if (this.setPriceDetails.bankAccount) {
+        if (this.setPriceDetails.bankAccount != null) {
           console.log("call for bank account");
           this.selectedAccount = this.setPriceDetails.bankAccount
         }
-        if (this.setPriceDetails.cardAccount) {
+        if (this.setPriceDetails.cardAccount != null) {
           this.selectedCardAccount = this.setPriceDetails.cardAccount
         }
         let selectedLogistics = this.setPriceDetails.isLogistics
@@ -193,7 +206,7 @@ export class SetPriceComponent implements OnInit {
 
   }
 
-  selecCard(event) {
+  selectCard(event) {
 
     let obj = {
       _id: event,
@@ -272,10 +285,26 @@ export class SetPriceComponent implements OnInit {
         if (form[element].status == 'INVALID') {
           console.log("call or not");
           console.log("this is perfect", element);
-          this.setPriceForm.patchValue({
-            bankDetails: this.setPriceDetails.bankDetails
-          });
-          this.setPriceForm.get('bankDetails').updateValueAndValidity();
+          if (this.setPriceDetails.bankAccount) {
+            let obj = {
+              _id: this.setPriceDetails.bankAccount._id,
+              flag: 'bank'
+            }
+            this.setPriceForm.patchValue({
+              bankDetails: obj
+            })
+            this.setPriceForm.get('bankDetails').updateValueAndValidity()
+          } else {
+            let obj = {
+              _id: this.setPriceDetails.cardAccount._id,
+              flag: 'card'
+            }
+
+            this.setPriceForm.patchValue({
+              bankDetails: obj
+            })
+            this.setPriceForm.get('bankDetails').updateValueAndValidity()
+          }
         }
       } else {
         if (form[element].status == 'INVALID') {

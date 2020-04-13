@@ -109,9 +109,10 @@ export class GuestActivitySliderComponent implements OnInit {
 
   getSelectedItems() {
     this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
-      this.cartTotalItems = response.data.cartList
-      // this.displayActivity = response.data.cartList
-      this.allCartList = response.data.cartList
+      if (response.data.cartList) {
+        this.cartTotalItems = response.data.cartList
+        this.allCartList = response.data.cartList
+      }
       console.log("response of cart items", this.allCartList)
       this.displayAllData()
     }, error => {
@@ -167,7 +168,7 @@ export class GuestActivitySliderComponent implements OnInit {
           // }
         })
       } else {
-        // console.log("check this else part", singleItem);
+        console.log("check this else part", singleItem);
         singleItem['quantity'] = 0
       }
     })

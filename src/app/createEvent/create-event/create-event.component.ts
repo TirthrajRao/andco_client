@@ -508,6 +508,12 @@ export class CreateEventComponent implements OnInit {
     });
     if (flag == 0) {
       this.isLoad = true
+      if (this.eventForm.controls.background.value == "") {
+        console.log("when np bg selected");
+        let path = 'assets/images/event_create.png'
+        this.eventForm.controls.background.setValue(path)
+      }
+
       this.eventService.addEvent(this.eventForm.value, this.blob)
         .subscribe((data: any) => {
           // console.log("event details", data.data.hashTag);

@@ -11,7 +11,7 @@
                         <div class="sales-inner sales-inner-box-message">
                             <app-bank-details (selectedBankAccount)="selectbankAccount($event)"
                                 [bankAccount]="selectedAccount" [cardAccount]="selectedCardAccount"
-                                (selectedCardAccount)="selecCard($event)">
+                                (selectedCardAccount)="selectCard($event)" [allAmount]="totalAccount">
                             </app-bank-details>
                         </div>
                         <div class="sales-inner sales-inner-box-message">

@@ -17,6 +17,7 @@ export class BankDetailsComponent implements OnInit {
 
   @Input('bankAccount') bankAccount
   @Input('cardAccount') cardAccount
+  @Input('allAmount') totalAmount
   @Output() bankDetails: EventEmitter<any> = new EventEmitter<any>()
   @Output() selectedBankAccount: EventEmitter<any> = new EventEmitter<any>()
   @Output() selectedCardAccount: EventEmitter<any> = new EventEmitter<any>()
@@ -29,6 +30,9 @@ export class BankDetailsComponent implements OnInit {
   bankList = []
   cardList = []
   bankSelected
+  coronaCard
+  coronaBank
+  isLoad = false
   constructor(
     private _change: ChangeDetectorRef,
     public loginService: LoginService,
@@ -36,10 +40,7 @@ export class BankDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-
-
-    this.getBankDetails()
+    // this.getBankDetails()
     this.initBankSlider()
     this.initCardSlider()
 
@@ -59,8 +60,8 @@ export class BankDetailsComponent implements OnInit {
     })
   }
 
-  initBankSlider1() {
-    this.$sliderContainer = $('.bank-slider1')
+  initBankSliderAfter() {
+    this.$sliderContainer = $('.bank-sliderAfter')
     this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
       infinite: true,
       slidesToShow: 1,
@@ -83,34 +84,41 @@ export class BankDetailsComponent implements OnInit {
     })
   }
 
-  getBankDetails() {
-    this.loginService.getBankDetails().subscribe((response: any) => {
-      console.log("details of bank", response);
-      this.bankList = response.data.bankDetail
-      this.cardList = response.data.cardDetails
-      if (this.bankList) {
+
+  initCardSliderAfter() {
+    this.$sliderContainer = $('.card-sliderAfter')
+    this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '#prevarrow1',
+      nextArrow: '#nextarrow1',
+    })
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("change when edit bank details", changes);
+    if (changes.totalAmount && changes.totalAmount.currentValue) {
+      this.bankList = changes.totalAmount.currentValue.bankDetail
+      this.cardList = changes.totalAmount.currentValue.cardDetails
+      if (this.bankList && (changes.bankAccount && !changes.bankAccount.currentValue)) {
         this.$sliderContainer = $('.bank-slider');
         this.$sliderContainer.slick('unslick');
         setTimeout(() => {
           this.initBankSlider()
         }, 50)
       }
-      if (this.cardList) {
+      if (this.cardList && (changes.cardAccount && !changes.cardAccount.currentValue)) {
         this.$sliderContainer = $('.card-slider');
         this.$sliderContainer.slick('unslick');
         setTimeout(() => {
           this.initCardSlider()
         }, 50)
       }
-    }, error => {
-      console.log("error while get details", error);
+    }
 
-    })
-  }
-
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("change when edit bank details", changes.bankAccount);
     if (changes.bankAccount && changes.bankAccount.currentValue) {
       this.displayBankAccount(changes.bankAccount.currentValue)
     }
@@ -120,23 +128,87 @@ export class BankDetailsComponent implements OnInit {
   }
 
 
-  disPlayCard(card) {
-    this.isCardSelected = true
-    $('input:radio[id="test4"]').prop('checked', true);
 
+
+  getBankDetails() {
+    this.isLoad = true
+    this.loginService.getBankDetails().subscribe((response: any) => {
+      console.log("details of bank", response);
+      this.bankList = response.data.bankDetail
+      this.cardList = response.data.cardDetails
+      if (this.bankList) {
+        if (this.coronaBank) {
+          // console.log("what is call");
+          setTimeout(() => {
+            $('#radio-group-' + this.coronaBank).prop('checked', true)
+          }, 10)
+          setTimeout(() => {
+            this.initBankSliderAfter()
+          }, 5)
+        } else {
+          console.log("or else part");
+          this.$sliderContainer.slick('unslick');
+          this.$sliderContainer = $('.bank-slider');
+          setTimeout(() => {
+            this.initBankSlider()
+          }, 5)
+        }
+      }
+      if (this.cardList) {
+        if (this.coronaCard) {
+          // console.log("what is call");
+          setTimeout(() => {
+            $('#radio-groupCard-' + this.coronaCard).prop('checked', true)
+          }, 10)
+          setTimeout(() => {
+            this.initCardSliderAfter()
+          }, 5)
+        } else {
+          this.$sliderContainer.slick('unslick');
+          this.$sliderContainer = $('.card-slider');
+          setTimeout(() => {
+            this.initCardSlider()
+          }, 5)
+        }
+      }
+      this.isLoad = false
+    }, error => {
+      console.log("error while get details", error);
+
+    })
+  }
+
+
+
+  disPlayCard(card) {
+    console.log("value of card total", this.cardList);
+    this.coronaCard = card._id
+    if (this.cardList && this.cardList.length) {
+      this.isCardSelected = true
+      $('input:radio[id="test4"]').prop('checked', true);
+      setTimeout(() => {
+        $('#radio-groupCard-' + this.coronaCard).prop('checked', true)
+      }, 10)
+      setTimeout(() => {
+        this.initCardSliderAfter()
+      }, 5)
+    }
   }
 
 
   displayBankAccount(account) {
-    this.bankSelected = account._id
-    console.log("account display", this.bankSelected);
-    this.isBankSelected = true
-    $('input:radio[id="test3"]').prop('checked', true);
-    this.$sliderContainer = $('.bank-slider1');
-    this.$sliderContainer.slick('unslick');
-    setTimeout(() => {
-      this.initBankSlider1()
-    }, 10)
+    this.coronaBank = account._id
+    if (this.bankList && this.bankList.length) {
+      this.isBankSelected = true
+      $('input:radio[id="test3"]').prop('checked', true);
+      setTimeout(() => {
+        $('#radio-group-' + this.coronaBank).prop('checked', true)
+      }, 10)
+      setTimeout(() => {
+        this.initBankSliderAfter()
+      }, 5)
+    }
+
   }
 
   displayAccountDetails(details) {
@@ -175,37 +247,48 @@ export class BankDetailsComponent implements OnInit {
     console.log("details of bank ", details);
     this.bankDetails.emit(details)
     console.log("=================", this.bankDetails);
-
-
-
   }
 
 
   selectBank(event) {
-    console.log("event when add account", event.target.value);
+    // console.log("event when add account", event.target.value);
     this.selectedBankAccount.emit(event.target.value)
-    console.log("what is the value", this.selectedBankAccount);
+    // console.log("what is the value", this.selectedBankAccount);
 
   }
   selectCard(event) {
     this.selectedCardAccount.emit(event.target.value)
   }
-  // selectCard($event){
 
-  // }
+  updateCard(event) {
+    $('#radio-groupCard-' + this.coronaCard).prop('checked', false)
+    this.selectedCardAccount.emit(event.target.value)
+  }
+
+  updateBank(event) {
+    $('#radio-group-' + this.coronaBank).prop('checked', false)
+    this.selectedBankAccount.emit(event.target.value)
+  }
 
   bankSelect() {
     this.isBankSelected = true
     this.isCardSelected = false
-    this.$sliderContainer = $('.bank-slider');
-    this.$sliderContainer.slick('unslick');
-    setTimeout(() => {
-      this.initBankSlider()
-    }, 50)
-    // this.initBankSlider()
-    // console.log("this.isBankSelected", this.isBankSelected);
-    // this._change.detectChanges()
-
+    if (this.coronaBank) {
+      console.log("what is call");
+      setTimeout(() => {
+        $('#radio-group-' + this.coronaBank).prop('checked', true)
+      }, 10)
+      setTimeout(() => {
+        this.initBankSliderAfter()
+      }, 5)
+    } else {
+      console.log("or else part");
+      this.$sliderContainer.slick('unslick');
+      this.$sliderContainer = $('.bank-slider');
+      setTimeout(() => {
+        this.initBankSlider()
+      }, 5)
+    }
   }
   addBankAccount() {
     let data
@@ -231,13 +314,25 @@ export class BankDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(someComponent, { data });
     return dialogRef.afterClosed();
   }
+
+
   cardSeleced() {
     this.isCardSelected = true
     this.isBankSelected = false
-    this.$sliderContainer = $('.card-slider');
-    this.$sliderContainer.slick('unslick');
-    setTimeout(() => {
-      this.initCardSlider()
-    }, 50)
+    if (this.coronaCard) {
+      // console.log("what is call");
+      setTimeout(() => {
+        $('#radio-groupCard-' + this.coronaCard).prop('checked', true)
+      }, 10)
+      setTimeout(() => {
+        this.initCardSliderAfter()
+      }, 5)
+    } else {
+      this.$sliderContainer.slick('unslick');
+      this.$sliderContainer = $('.card-slider');
+      setTimeout(() => {
+        this.initCardSlider()
+      }, 5)
+    }
   }
 }
