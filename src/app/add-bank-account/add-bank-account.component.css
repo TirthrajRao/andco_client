@@ -2,7 +2,7 @@ p {
     margin-bottom: 0;
 }
 
-.add-bank-account {
+.add-bank-account1 {
     position: relative;
 }
 
@@ -16,14 +16,14 @@ p {
     transform: rotate(45deg);
     width: 20px;
     height: 20px;
-    margin: 10px;
+    margin: 0 10px;
     position: relative;
     z-index: 1;
 }
 
 .bank-slider,
 .card-slider {
-    padding-left: 50px;
+    padding-left: 48px;
 }
 
 .single-slide {

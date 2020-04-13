@@ -7,9 +7,7 @@
     </div>
     <form [formGroup]='cardNumberForm'>
         <div class="modal-body">
-            <input type="text" placeholder="Card number" formControlName="cardNumber"
-                [ngClass]="{ 'is-invalid': g.cardNumber.touched && g.cardNumber.errors }" [pattern]="cardNumber"
-                minlength="16" maxlength="16">
+            <input type="text" placeholder="Card number" formControlName="cardNumber" [ngClass]="{ 'is-invalid': g.cardNumber.touched && g.cardNumber.errors }" [pattern]="cardNumber" minlength="16" maxlength="16">
             <div *ngIf="g.cardNumber.touched && g.cardNumber.errors" class="invalid-feedback">
                 <div *ngIf="g.cardNumber.errors.required">Card Number is required</div>
                 <div *ngIf="g.cardNumber.errors.minlength">Card Number must be only 16 digits
@@ -17,9 +15,7 @@
                 <div *ngIf="g.cardNumber.errors.pattern">Enter Only numbers
                 </div>
             </div>
-            <input type="text" placeholder="CVV" formControlName="cvv"
-                [ngClass]="{ 'is-invalid': g.cvv.touched && g.cvv.errors }" [pattern]="cardNumber" minlength="3"
-                maxlength="3">
+            <input type="text" placeholder="CVV" formControlName="cvv" [ngClass]="{ 'is-invalid': g.cvv.touched && g.cvv.errors }" [pattern]="cardNumber" minlength="3" maxlength="3">
             <div *ngIf="g.cvv.touched && g.cvv.errors" class="invalid-feedback">
                 <div *ngIf="g.cvv.errors.required">Cvv Number is required</div>
                 <div *ngIf="g.cvv.errors.minlength">Cvv Number must be only 3 digits
@@ -30,7 +26,6 @@
         </div>
     </form>
     <div class="modal-footer">
-        <button type="button" class="btn" [disabled]=" isDiable || cardNumberForm.invalid"
-            (click)="addCardDetails()">Add</button>
+        <button type="button" class="btn" [disabled]=" isDiable || cardNumberForm.invalid" (click)="addCardDetails()">Add</button>
     </div>
 </div>
