@@ -122,17 +122,23 @@ export class MyEventComponent implements OnInit {
   }
 
   getCollecctionOfEvent() {
+    this.isLoad = true
     this.eventService.getEventCollection(this.selectedEventId).subscribe((response: any) => {
       console.log("response of collections", response);
       response.data['isClosed'] = this.eventDetails.isClosed
       this.totalCollections = response.data
       // this.isClosed = this.eventDetails.isClosed
+      this.isLoad = false
     }, error => {
       console.log("erro while get collection", error);
 
     })
   }
-
+  collectionLoader(event) {
+    console.log("when data is reachedd to collection", event);
+    if (event == false)
+      this.isLoad = false
+  }
 
   getItemsOfGuest(event) {
     this.guestWithItems = this.selectedEventId
