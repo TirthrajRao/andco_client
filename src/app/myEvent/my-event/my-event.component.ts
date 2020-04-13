@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { LoginService } from '../../services/login.service'
@@ -11,6 +11,7 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./my-event.component.css']
 })
 export class MyEventComponent implements OnInit {
+  @Output() headerEvent: EventEmitter<any> = new EventEmitter<any>();
 
   listOfEvent;
   activityDisplay = false
@@ -194,6 +195,8 @@ export class MyEventComponent implements OnInit {
 
   clickOnPrint(event) {
     console.log("event of click", event)
+    // this.headerEvent.emit(event)
+    this.loginSerivce.updateMenu()
     if (event)
       this.isPrint = true
     setTimeout(() => {

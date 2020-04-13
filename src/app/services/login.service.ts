@@ -17,6 +17,7 @@ export class LoginService {
   private openBankNew = new BehaviorSubject<any>(this.bankDetails)
   sharedBankDetails = this.openBankNew.asObservable();
   @Output() faceBookLogin = new EventEmitter();
+  @Output() printData = new EventEmitter();
 
   constructor(
     private http: HttpClient
@@ -226,6 +227,8 @@ export class LoginService {
   getBankDetails() {
     return this.http.get(config.baseApiUrl + "/accountList")
   }
-
+  updateMenu() {
+    this.printData.emit('click')
+  }
 
 }

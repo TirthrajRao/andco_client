@@ -39,6 +39,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
 
+    $(".toggle-password").click(function () {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+    });
+
     /**
      * Form of forgot password
      */
