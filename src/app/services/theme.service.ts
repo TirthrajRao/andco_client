@@ -20,7 +20,8 @@ export const defaults = {
   'pay-by-color' : '#000000',
   'ussd-bg-color' : '#00000036',
   'ussd-font-color' : '#444444',
-  'payment-success-msg-name' : '#2B879B'
+  'payment-success-msg-name' : '#2B879B',
+  'filter-in-img' : 'none'
 };
 
 export const floral = {
@@ -42,7 +43,8 @@ export const floral = {
   'pay-by-color' : '#ffffff',
   'ussd-bg-color' : '#ffffff2e',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '#000000'
+  'payment-success-msg-name' : '#000000',
+  'filter-in-img' : 'brightness(11)'
 };
 
 export const wood = {
@@ -64,7 +66,8 @@ export const wood = {
   'pay-by-color' : '#8fd0cb',
   'ussd-bg-color' : '#84b9af',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'brightness(11)'
 };
 
 export const marble = {
@@ -86,7 +89,8 @@ export const marble = {
   'pay-by-color' : '#686868',
   'ussd-bg-color' : '#7a787896',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'none'
 };
 
 export const origami = {
@@ -108,7 +112,8 @@ export const origami = {
   'pay-by-color' : '#ffffff',
   'ussd-bg-color' : '#7a787896',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'brightness(11)'
 };
 
 export const classic = {
@@ -130,7 +135,8 @@ export const classic = {
   'pay-by-color' : '#997e5a',
   'ussd-bg-color' : '#997e5a61',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'none'
 };
 
 export const lines = {
@@ -152,7 +158,8 @@ export const lines = {
   'pay-by-color' : '#c6a30f',
   'ussd-bg-color' : '#c58395',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'brightness(11)'
 };
 
 export const luxury = {
@@ -174,7 +181,8 @@ export const luxury = {
   'pay-by-color' : '#b7a478',
   'ussd-bg-color' : '#886e41',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'brightness(11)'
 };
 
 export const instruments = {
@@ -196,7 +204,8 @@ export const instruments = {
   'pay-by-color' : '#988b71',
   'ussd-bg-color' : '#761b04',
   'ussd-font-color' : '#ffffff',
-  'payment-success-msg-name' : '1111'
+  'payment-success-msg-name' : '1111',
+  'filter-in-img' : 'brightness(11)'
 };
 
 
