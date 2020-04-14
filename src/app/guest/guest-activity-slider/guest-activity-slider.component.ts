@@ -35,6 +35,7 @@ export class GuestActivitySliderComponent implements OnInit {
   cartTotalItems: any = [];
   removeItemArray: any = []
   isTotal
+  isLoad = false
   constructor(
     public eventService: EventService,
     public router: Router,
@@ -108,6 +109,7 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   getSelectedItems() {
+    this.isLoad = true
     this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
       if (response.data.cartList) {
         this.cartTotalItems = response.data.cartList
@@ -115,6 +117,7 @@ export class GuestActivitySliderComponent implements OnInit {
       }
       console.log("response of cart items", this.allCartList)
       this.displayAllData()
+      this.isLoad = false
     }, error => {
       console.log("error while get cart details", error)
     })
@@ -311,6 +314,7 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   addTocart() {
+    this.isLoad = true
     console.log("list of all item ", this.allCartList)
     if (this.allCartList.length == 0) {
       console.log("call this");
@@ -324,6 +328,7 @@ export class GuestActivitySliderComponent implements OnInit {
       console.log("resonse of cart details", response)
       this.allCartList = response.data.data.cartList
       this.totalItemList.emit({ allItems: response.data.data.cartList, index: 1 })
+      this.isLoad = false
     }, error => {
       console.log("error while add cart items", error);
     })

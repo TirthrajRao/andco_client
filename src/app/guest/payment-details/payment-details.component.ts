@@ -30,6 +30,7 @@ export class PaymentDetailsComponent implements OnInit {
   index = 0
   donation: any;
   isDiable = false
+  isLoad = false
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -64,6 +65,7 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   getItemDetails() {
+    this.isLoad = true
     this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
       console.log("response of cart list", response);
       this.cartList = response.data.cartList
@@ -83,7 +85,8 @@ export class PaymentDetailsComponent implements OnInit {
   getAccountDetails(accountType) {
     this.eventService.getAccountDetails(accountType).subscribe((response: any) => {
       console.log("response of account details", response);
-      this.accountDetails = response.data
+      this.accountDetails = response.data[0]
+      this.isLoad = false
     }, error => {
       console.log("error while get acccount details", error);
 
@@ -117,12 +120,20 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   finalPayment() {
+    console.log("let donation details", this.donation)
+    let finalDonation
+    if (this.donation == undefined) {
+      finalDonation = 0
+    } else {
+      finalDonation = this.donation
+    }
     this.isDiable = true
+    // this.isLoad = true
     let myCart = {
       orderDetails: this.cartList,
       finalTotal: this.finalGrandTotal,
       eventId: this.eventId,
-      donationAmount: this.donation,
+      donationAmount: finalDonation,
     }
     console.log("index of page", this.index);
     let finalData
@@ -137,11 +148,12 @@ export class PaymentDetailsComponent implements OnInit {
       finalData = this.cardNumberForm.value
       selectedValue = true
     }
-    // console.log();
+    console.log("what is final ", myCart);
 
     this.eventService.addAccountDetails(finalData, selectedValue, myCart).subscribe((response: any) => {
       console.log("response of payment completed", response);
       this.thankYouDetails.emit({ message: response.data, index: 6 })
+      this.isLoad = false
     }, error => {
       console.log("error while add account ", error)
       this.isDiable = false

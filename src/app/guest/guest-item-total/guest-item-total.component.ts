@@ -24,6 +24,7 @@ export class GuestItemTotalComponent implements OnInit {
   femaleArray: any = [];
   removeArray: any = []
   current = 0
+  isLoad = false
   constructor(
     public eventService: EventService,
     private route: Router,
@@ -53,10 +54,12 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   getCartItems() {
+    this.isLoad = true
     this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
       this.totlaItem = response.data.cartList
       console.log("response of cart list", this.totlaItem);
       this.displayList()
+      this.isLoad = false
     }, error => {
       console.log("error while get cart details", error)
     })
@@ -108,11 +111,12 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   addDonationOfEvent() {
-    this.addDonation.emit(2)
+    let total = this.totlaItem.length
+    this.addDonation.emit({ index: 2, total: total })
   }
 
   displayItemList() {
-    this.addDonation.emit(0)
+    this.addDonation.emit({ index: 0 })
   }
 
 

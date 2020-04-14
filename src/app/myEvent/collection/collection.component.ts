@@ -30,8 +30,8 @@ export class CollectionComponent implements OnInit {
     console.log("changes in collectiion", changes);
     // this.isClose = changes.isClosed.currentValue
 
+    this.selectedIndex = 0
     if (changes.totalCollection && changes.totalCollection.currentValue) {
-      this.selectedIndex = 0
       this.finalCollection = changes.totalCollection.currentValue
       this.loaderValue.emit('false')
       // this.selectedIndex = 0

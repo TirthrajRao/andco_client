@@ -33,6 +33,7 @@ export class GuestMainComponent implements OnInit {
   thankYouDetails
   paymentDeadlineDate
   isClosed
+  cartLength
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -146,7 +147,8 @@ export class GuestMainComponent implements OnInit {
 
   donationAdd(event) {
     console.log("add donation", event);
-    this.index = event
+    this.cartLength = event.total
+    this.index = event.index
   }
   displayItems(event) {
     this.index = event
