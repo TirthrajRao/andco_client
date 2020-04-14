@@ -20,6 +20,7 @@ export class CollectionComponent implements OnInit {
   eventId
   noGuestList
   isClose
+  isLoad = false
   constructor(
     public eventService: EventService
   ) { }
@@ -47,6 +48,7 @@ export class CollectionComponent implements OnInit {
 
 
   getGuestList(eventId) {
+    this.isLoad = true
     this.eventService.getItemsOfGuest(eventId).subscribe((response: any) => {
       console.log("guest details in main ", response);
       if (response && response.data.length > 0) {
@@ -59,8 +61,12 @@ export class CollectionComponent implements OnInit {
         this.noGuestList = 'noList'
         this.displayGuestItems = []
       }
+      setTimeout(() => {
+        this.isLoad = false
+      }, 1000)
     }, error => {
       console.log("error while get list of guest", error)
+      this.isLoad = false
     })
   }
   // displayGuestList() {
@@ -78,7 +84,8 @@ export class CollectionComponent implements OnInit {
 
   listOfGuest(event) {
     console.log("list ready for guest in sub main page", event);
-    this.totalCollectionList.emit(event)
+    // this.isLoad = false
+    this.totalCollectionList.emit(event.data)
   }
 
   clickOnPrint(event) {

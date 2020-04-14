@@ -103,6 +103,8 @@ export class BankDetailsComponent implements OnInit {
     if (changes.totalAmount && changes.totalAmount.currentValue) {
       this.bankList = changes.totalAmount.currentValue.bankDetail
       this.cardList = changes.totalAmount.currentValue.cardDetails
+      console.log("list of bank", this.bankList);
+      
       if (this.bankList && (changes.bankAccount && !changes.bankAccount.currentValue)) {
         this.$sliderContainer = $('.bank-slider');
         this.$sliderContainer.slick('unslick');
