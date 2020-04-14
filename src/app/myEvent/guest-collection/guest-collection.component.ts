@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, HostListener, Output, EventEmi
 import { EventService } from '../../services/event.service';
 import { ExcelService } from '../../services/excel.service';
 import { SearchListPipe } from '../../search-list.pipe';
+import { config } from '../../config';
 import { saveAs } from "file-saver";
 import * as _ from 'lodash';
 // import { EventEmitter } from 'protractor';
@@ -48,6 +49,9 @@ export class GuestCollectionComponent implements OnInit {
   blob: any
   isDownload
   image
+  pdfPath = config.pdfUrl
+  finalUrl
+  sendUrl
   constructor(
     public excelService: ExcelService,
     public searchPipe: SearchListPipe,
@@ -122,7 +126,7 @@ export class GuestCollectionComponent implements OnInit {
 
   noListFound() {
     this.isDisplay = false
-    this.noListMessage = 'There are no guest in this event'
+    this.noListMessage = 'There is no guest purchased any items'
     // this.displayGuestItems = []
   }
 
@@ -135,7 +139,7 @@ export class GuestCollectionComponent implements OnInit {
     this.isLoad = true
 
     console.log("response of total list", this.displayGuestItems);
-    this.eventService.geneRatePdf(this.displayGuestItems, this.newEventId).subscribe((response: any) => {
+    this.eventService.geneRatePdf(this.displayGuestItems, this.newEventId, value).subscribe((response: any) => {
       console.log("response of pdf generator", response);
       this.eventHashTag = response.data.hashTag
       // this.image = "https://test.andcowith.me/join_enter.d3935dc0e5ccd82def8d.png"
@@ -166,10 +170,16 @@ export class GuestCollectionComponent implements OnInit {
   private shareFile(response) {
     var byteArray = new Uint8Array(response.data);
     this.blob = new Blob([byteArray], { type: 'application/pdf' });
+
+
+    this.finalUrl = this.pdfPath + this.eventHashTag + '.pdf'
+    console.log("what is final url to share", this.finalUrl);
+    // this.sendUrl = 'whatsapp://send?text=' + encodeURIComponent('https://test.andcowith.me/assets/images/andco_logo.png')
+
     // console.log("what is final out put of blob", this.blob)
-    let fileName = this.eventHashTag + '-' + 'GuestList'
+    // let fileName = this.eventHashTag + '-' + 'GuestList'
     // console.log("file name", fileName)
-    this.image = new File([this.blob], fileName, { type: 'contentType', lastModified: Date.now() });
+    // this.image = new File([this.blob], fileName, { type: 'contentType', lastModified: Date.now() });
     // console.log("what is the output of file", file);
 
     // saveAs(this.blob, fileName);

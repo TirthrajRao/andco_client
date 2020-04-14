@@ -14,6 +14,7 @@ export class AddBankModalComponent implements OnInit {
   isDisable = false
   cardNumber = "^[0-9]*$"
   bankName = "^[a-zA-Z \-\']+"
+  isLoad = false
   constructor(
     public loginService: LoginService,
     public dialogRef: MatDialogRef<AddBankModalComponent>,
@@ -41,11 +42,13 @@ export class AddBankModalComponent implements OnInit {
       console.log("account added", response);
       this.dialogRef.close(response);
       // this.getBankDetails()
-      // this.isLoad = false
+      setTimeout(() => {
+        // this.isLoad = false
+      },200)
       this.bankForm.reset()
     }, error => {
       console.log("error while add account", error);
-      // this.isLoad = false
+      this.isLoad = false
     })
   }
 

@@ -88,6 +88,7 @@ export class AddBankAccountComponent implements OnInit {
 
 
   getBankDetails() {
+    this.isLoad = true
     this.loginService.getBankDetails().subscribe((response: any) => {
       console.log("details of bank", response);
       this.bankList = response.data.bankDetail
@@ -106,10 +107,11 @@ export class AddBankAccountComponent implements OnInit {
           this.initCardSlider()
         }, 50)
       }
-
+      this.isLoad = false
     }, error => {
       console.log("error while get details", error);
 
+      this.isLoad = false
     })
   }
 
