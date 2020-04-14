@@ -120,7 +120,7 @@ export class GuestCollectionComponent implements OnInit {
 
   noListFound() {
     this.isDisplay = false
-    this.noListMessage = 'There are no guest in this event'
+    this.noListMessage = 'There is no guest purchased any items'
     // this.displayGuestItems = []
   }
 

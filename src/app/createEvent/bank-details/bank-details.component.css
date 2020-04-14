@@ -21,3 +21,7 @@
 .arrow-class {
     top: -55px !important;
 }
+
+.slider-box {
+    position: relative;
+}

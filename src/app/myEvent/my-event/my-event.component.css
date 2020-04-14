@@ -51,12 +51,20 @@ h2 img:hover {
     transition: 0.5s all;
 }
 
-.no-event i {
-    font-size: 30px;
+.empty-message {
+    background: #ffd6ad;
+    border-radius: 20px;
+    padding-bottom: 10px;
 }
 
-.no-event span {
+.empty-message img {
+    height: 200px;
+}
+
+.empty-message p {
     font-size: 20px;
+    color: #C4752D;
+    font-weight: 600;
 }
 
 
@@ -167,6 +175,12 @@ h2 img:hover {
     .event-menu-box-main {
         position: unset;
     }
+    .empty-message img {
+        height: 130px;
+    }
+    .empty-message p {
+        font-size: 15px;
+    }
 }
 
 @media(max-width: 480px) {
@@ -177,13 +191,7 @@ h2 img:hover {
 }
 
 
-
-
-
-
 /* PrintDesign start */
-
-
 
 p,
 h3 {
@@ -318,5 +326,6 @@ h3 {
     font-size: 14px;
     text-transform: capitalize;
 }
+
 
 /* PrintDesign End */

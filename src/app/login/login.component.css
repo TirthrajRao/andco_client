@@ -8,6 +8,7 @@
     padding: 20px;
     flex-direction: column;
     overflow: hidden;
+    background-color: #1c451b;
 }
 
 .enter-inner-box {
@@ -272,7 +273,7 @@ button.btn.forgot-btn {
         margin: 30px auto;
     }
     .join-enter-inputs input {
-        height: 30px;
+        height: 40px;
         font-size: 22px;
         width: 100%;
     }
@@ -308,7 +309,6 @@ button.btn.forgot-btn {
         padding: 20px;
     }
     .join-enter-inputs input {
-        height: 30px;
         font-size: 18px;
     }
     .join-enter-inputs input::placeholder {
@@ -329,7 +329,7 @@ button.btn.forgot-btn {
 @media(max-width: 320px) {
     .enter-inner-box {
         width: 290px;
-        height: 300px;
+        height: 320px;
     }
     .join-social ul {
         margin: 20px auto;
