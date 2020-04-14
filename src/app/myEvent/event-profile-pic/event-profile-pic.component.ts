@@ -111,10 +111,10 @@ export class EventProfilePicComponent implements OnInit {
   }
 
   saveImage() {
+    $('#imageUpload').modal("hide")
     this.isLoad = true
     this.eventService.changeProfilePhoto(this.blob, this.eventId).subscribe((response: any) => {
       console.log("response of image change");
-      $('#imageUpload').modal("hide")
       this.profilePhoto = response.update.profilePhoto
       this.isLoad = false
     }, error => {

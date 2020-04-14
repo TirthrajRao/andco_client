@@ -1,3 +1,5 @@
+<app-loader *ngIf="isLoad" id="loader"></app-loader>
+
 <div class="guest-activity-single-slide">
     <div class="guest-activity-slider">
         <div *ngFor="let activity of displayActivity">
@@ -31,7 +33,8 @@
                             <input type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity"
                                 (change)="maleTotal($event , item , i)" *ngIf="!isClose">
-                            <span *ngIf="!isClose">= {{item.itemPrice * item.quantity}} </span>
+                            <span *ngIf="!isClose && item.quantity">= {{item.itemPrice * item.quantity}} </span>
+                            <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
                         </h4>
                     </div>
                 </li>
@@ -45,8 +48,9 @@
                         <h4>{{item.itemPrice  | currency: " &#x20A6; "}} <span *ngIf="!isClose">x</span>
                             <input type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity"
-                                (change)="femaleTotal($event , item , i)" *ngIf="!isClose"> <span *ngIf="!isClose">=
-                                {{item.itemPrice * item.quantity}}</span>
+                                (change)="femaleTotal($event , item , i)" *ngIf="!isClose">
+                            <span *ngIf="!isClose && item.quantity">={{item.itemPrice * item.quantity}}</span>
+                            <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
                         </h4>
                     </div>
                 </li>

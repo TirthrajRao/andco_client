@@ -15,6 +15,8 @@ export class PaymentComponent implements OnInit {
   isDisable
   displayTotal
   donation
+  finalTotalDisplay
+  isLoad = false
   constructor(
     public activated: ActivatedRoute,
     public eventService: EventService
@@ -30,10 +32,17 @@ export class PaymentComponent implements OnInit {
 
 
   getTotalOfItems() {
+    this.isLoad = true
     this.eventService.getTotalOfCart(this.hashTag).subscribe((response: any) => {
       this.displayTotal = response.data.total
       this.donation = response.data.donation
-      console.log("total of all items", this.donation);
+      if (this.displayTotal) {
+        this.finalTotalDisplay = this.displayTotal + this.donation
+      } else {
+        this.finalTotalDisplay = this.donation
+      }
+      console.log("total of all items", response);
+      this.isLoad = false
     }, error => {
       console.log("error while get total", error)
     })
@@ -42,7 +51,7 @@ export class PaymentComponent implements OnInit {
   finalPayment() {
     let type = $('input[name="radio2"]:checked').val();
     console.log("selected bank type", type);
-    this.accountType.emit({ type: type, index: 5, finalTotal: this.displayTotal, donation: this.donation })
+    this.accountType.emit({ type: type, index: 5, finalTotal: this.finalTotalDisplay, donation: this.donation })
   }
 
   onChange(event) {

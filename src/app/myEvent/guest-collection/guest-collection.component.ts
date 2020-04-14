@@ -18,6 +18,7 @@ export class GuestCollectionComponent implements OnInit {
   @Input('eventId') eventId
   @Output() listForPrint: EventEmitter<any> = new EventEmitter<any>();
   @Output() printClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() displayData: EventEmitter<any> = new EventEmitter<any>();
   isPrint: boolean = false;
 
 
@@ -111,7 +112,8 @@ export class GuestCollectionComponent implements OnInit {
       // console.log("first letter of word", firstLetter);
     });
     console.log("what is in final output after adding", this.displayGuestItems);
-    this.listForPrint.emit(this.displayGuestItems)
+
+    this.listForPrint.emit({ data: this.displayGuestItems, flag: false })
     this.formateData = this.organise(this.displayGuestItems)
     // console.log("formate data details", this.formateData);
 

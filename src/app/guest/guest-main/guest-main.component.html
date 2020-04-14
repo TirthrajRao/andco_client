@@ -28,7 +28,7 @@
 
                 <!-- add Donation in final payment -->
                 <app-gift-donation *ngIf="index == 2" (displayItem)="displayItems($event)"
-                    (address)="displayAddress($event)"></app-gift-donation>
+                    (address)="displayAddress($event)" [cartLength]="cartLength"></app-gift-donation>
                 <!-- end -->
 
                 <!-- Adress of guest user -->
