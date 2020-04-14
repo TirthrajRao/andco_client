@@ -105,11 +105,9 @@ export class MyEventComponent implements OnInit {
           this.getActivity()
         }
       } else {
-
         let data = '/guest/' + this.eventHashTag
         let output = this.loginSerivce.returnLogin(data);
         if (output == true) {
-          // this.router.navigate(['/myevent']);
           this.route.navigate(['/guest/', this.eventHashTag])
         }
       }
@@ -264,7 +262,16 @@ export class MyEventComponent implements OnInit {
     }
     if (event == 5) {
       this.currenMenuIndex = event
-      this.route.navigate(['edtiEvent/' + this.selectedEventId])
+
+      let data = '/editEvent/' + this.selectedEventId
+      let output = this.loginSerivce.returnLogin(data);
+      if (output == true) {
+        // this.router.navigate(['/myevent']);
+        this.route.navigate(['/editEvent/', this.selectedEventId])
+      }
+
+
+      // this.route.navigate(['edtiEvent/' + this.selectedEventId])
     }
     // }
   }

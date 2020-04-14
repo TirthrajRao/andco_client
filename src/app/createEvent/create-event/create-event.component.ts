@@ -108,10 +108,6 @@ export class CreateEventComponent implements OnInit {
     private elRef: ElementRef,
     private _sanitizer: DomSanitizer
   ) { }
-  //   ngAfterViewInit() {
-  //     let loader = this.elRef.nativeElement.querySelector('#loader'); 
-  //     loader.style.display = "none"; //hide loader
-  //  }
 
   ngOnInit() {
 
@@ -206,30 +202,6 @@ export class CreateEventComponent implements OnInit {
     console.log("blob====>", this.blob);
     this.eventForm.controls.profile.setValue(this.blob)
   }
-
-  // b64toBlob(b64Data, contentType, sliceSize?) {
-  //   contentType = contentType || '';
-  //   sliceSize = sliceSize || 512;
-
-  //   var byteCharacters = atob(b64Data);
-  //   var byteArrays = [];
-
-  //   for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-  //     var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-  //     var byteNumbers = new Array(slice.length);
-  //     for (var i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     var byteArray = new Uint8Array(byteNumbers);
-
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   var blob = new Blob(byteArrays, { type: contentType });
-  //   return blob;
-  // }
 
   imageLoaded() {
     this.showCropper = true;
@@ -625,6 +597,10 @@ export class CreateEventComponent implements OnInit {
 
   }
   saveImage() {
+    $('#imageUpload').modal("hide")
+  }
+
+  closeImageModel() {
     $('#imageUpload').modal("hide")
   }
 }

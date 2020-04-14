@@ -18,6 +18,7 @@ export class EventGroupComponent implements OnInit {
 
 
   @Output() singleActivity: EventEmitter<any> = new EventEmitter<any>()
+  @Output() maleNewObject: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
   isLoad = false
   activities;
@@ -42,6 +43,7 @@ export class EventGroupComponent implements OnInit {
   eventHashTag
   types;
   updateGroup
+  groupIndex
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
@@ -74,6 +76,7 @@ export class EventGroupComponent implements OnInit {
     this.allActivities = event.allActivities
     this.selectedActivity = event.item
     this.selectedGroup = event.item.groups[0]
+    this.groupIndex = 0
     // console.log("selected activity list", this.selectedActivity)
     // console.log("selected group==========", this.selectedGroup);
     this.activityDate = event.item.activity.activityStartDate
@@ -104,7 +107,9 @@ export class EventGroupComponent implements OnInit {
 
   getGroup(event) {
     console.log("ama group details ave in main page", event);
-    this.selectedGroup = event
+    this.groupIndex = event.groupIndex
+    console.log("which one is active", this.groupIndex);
+    this.selectedGroup = event.item
     if (this.selectedGroup.item) {
       let male = []
       let female = []
@@ -298,20 +303,28 @@ export class EventGroupComponent implements OnInit {
   }
 
   addMaleItmes(itemDetails) {
-    $('#addMaleItemModal').modal("hide")
     // console.log("itemDetails", itemDetails)
     let maleObject = {
       itemName: itemDetails.itemName,
       itemPrice: itemDetails.itemPrice
     }
-
+    console.log("male is ready", maleObject);
+    $('#addMaleItemModal').modal("hide")
+    // console.log("group name", this.selectedGroup);
     this.selectedGroup.male.push(maleObject)
+
+    // if (maleObject) {
+    //   this.maleNewObject.emit(this.selectedGroup)
+    // }
+    console.log("which data is display", this.selectedActivity);
     this.object = {
       itemName: '',
       itemPrice: Number
     }
     this.isButton = true
-    // console.log("male details", this.selectedGroup.male);
+    console.log("male details", this.selectedGroup.male);
+    console.log("final array in push", this.finalArray);
+    // this.selectedActivity.groups[this.groupIndex].male.push(maleObject)
 
   }
 

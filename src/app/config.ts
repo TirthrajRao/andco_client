@@ -11,12 +11,14 @@ envs['production'] = {
 envs['development'] = {
     baseApiUrl: "http://localhost:3000/api",
     baseMediaUrl: "http://localhost/andco_server/",
+    pdfUrl: "http://localhost/andco_server/uploads/pdf/"
     // isvisited: false,
     // counter: 0,
 }
 
 envs['testing'] = {
     baseApiUrl: "https://test.andcowith.me:9001/api",
+    pdfUrl: "https://test.andcowith.me:9001/uploads/pdf/"
     // baseMediaUrl: "https://test.andcowith.me:9001/",
     // isvisited: false,
     // counter: 0,
