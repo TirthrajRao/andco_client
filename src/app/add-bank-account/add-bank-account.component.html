@@ -22,7 +22,7 @@
                         <div class="bank-slider">
                             <div class="empty-message" *ngIf="bankList == null">
                                 <img src="../../assets/images/no-user.gif" alt="">
-                                <p class="text-center">There is no account</p>
+                                <p class="text-center">No bank account details added</p>
                             </div>
                             <div class="single-slide" *ngFor="let name of bankList">
                                 <!-- <input id="first-radio" type="radio"> -->
@@ -54,7 +54,7 @@
                         <div class="card-slider">
                             <div class="empty-message" *ngIf="cardList == null">
                                 <img src="../../assets/images/no-user.gif" alt="">
-                                <p class="text-center">There is no account</p>
+                                <p class="text-center">No card details added</p>
                             </div>
                             <div class="single-slide" *ngFor="let card of cardList">
                                 <!-- <input id="first-radio" type="radio"> -->

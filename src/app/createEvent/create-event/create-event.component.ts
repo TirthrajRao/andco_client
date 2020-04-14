@@ -482,7 +482,7 @@ export class CreateEventComponent implements OnInit {
       this.isLoad = true
       if (this.eventForm.controls.background.value == "") {
         console.log("when np bg selected");
-        let path = 'assets/images/event_create.png'
+        let path = 'assets/images/guest.png'
         this.eventForm.controls.background.setValue(path)
       }
 

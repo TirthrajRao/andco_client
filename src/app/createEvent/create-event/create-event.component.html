@@ -28,11 +28,8 @@
                     <!-- your event hashtag start -->
                     <div class="create-event-hashtag-box">
                         <h3>Your event hashtag</h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" formControlName="hashTag"
-                                ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
-                                [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
-                                placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
+                        <div class="hashtag-form form-group">
+                            <input type="text" class="form-control" formControlName="hashTag" ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}" [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }" placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">
                             <div id="message1"></div>
                             <div *ngIf="f.hashTag.touched && f.hashTag.errors" class="invalid-feedback">
@@ -102,8 +99,7 @@
                                 <div class="col-3" *ngFor="let theme of eventBackGround; let i =index">
                                     <div class="bg-select-div" [class.active]="selectedThemeIndex == i">
                                         <div class="sample_bg">
-                                            <img src="{{theme.path}}" alt="background 1" id="background1"
-                                                (click)="defaultBackgroundImage(theme.path , i)">
+                                            <img src="{{theme.path}}" alt="Theme" id="background1" (click)="defaultBackgroundImage(theme.path , i)">
                                         </div>
                                         <span>{{theme.themeName}}</span>
                                     </div>
@@ -203,8 +199,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body m-auto">
-                <button class="btn setDefault" (click)="setDefaultBackGround('/assets/images/event_create.png')">Set
-                    default background</button>
+                <button class="btn setDefault" (click)="setDefaultBackGround('/assets/images/guest.png')">Set default background</button>
             </div>
         </div>
     </div>

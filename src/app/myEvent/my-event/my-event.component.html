@@ -10,9 +10,9 @@
                 </h2>
             </div>
             <div class="my-event-inner-box-height">
-                <div class="text-center text-white no-event" *ngIf="listOfEvent && listOfEvent.length == 0">
-                    <i class="fa fa-frown-o" aria-hidden="true"></i>
-                    <span>Sorry you have no event</span>
+                <div class="text-center text-white empty-message" *ngIf="listOfEvent && listOfEvent.length == 0">
+                    <img src="../../../assets/images/no-user.gif" alt="no event">
+                    <p>Sorry you have no event</p>
                 </div>
                 <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
                 <div>
@@ -25,10 +25,7 @@
 
                     <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections"
-                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"
-                        (loaderValue)="collectionLoader($event)" (totalCollectionList)="finalCollectionPrint($event)"
-                        (printClick)="clickOnPrint($event)">
+                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems" (loaderValue)="collectionLoader($event)" (totalCollectionList)="finalCollectionPrint($event)" (printClick)="clickOnPrint($event)">
                     </app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
@@ -36,8 +33,7 @@
         </div>
         <div class="event-menu-box-main">
             <div class="event-menu-box" *ngIf="displayMenu">
-                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()"
-                    (changeMenu)="changeMenuWithArraow($event)">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()" (changeMenu)="changeMenuWithArraow($event)">
                 </app-event-menu>
             </div>
         </div>

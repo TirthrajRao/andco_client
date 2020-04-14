@@ -350,16 +350,27 @@ button.btn.set-price-custom-button.float-left {
         padding: 4px 19px;
     }
     /* radio button  start*/
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
+        width: 10px;
+        height: 10px;
+        top: 8px;
+        left: 8px;
+    }
     [type="radio"]:checked+label:before,
     [type="radio"]:not(:checked)+label:before {
         width: 20px;
         height: 20px;
+        left: 3px;
         top: 3px;
     }
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         line-height: 30px;
-        padding-left: 25px;
+    }
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
+        font-size: 20px;
     }
     /* radio button end*/
 }
@@ -380,6 +391,10 @@ button.btn.set-price-custom-button.float-left {
     }
     .sales-inner input {
         font-size: 16px;
+    }
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
+        font-size: 18px;
     }
 }
 
@@ -427,6 +442,10 @@ button.btn.set-price-custom-button.float-left {
     .inner-radio-box .mat-form-field {
         width: calc(100% - 40px);
         float: left;
+    }
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
+        font-size: 16px;
     }
 }
 

@@ -32,7 +32,7 @@
             <div class="bank-slider text-left" *ngIf="!bankAccount">
                 <div class="empty-message text-center" *ngIf="bankList == null">
                     <img src="../../assets/images/no-user.gif" alt="">
-                    <p class="text-center">There is no account</p>
+                    <p class="text-center">No bank account details added</p>
                 </div>
                 <div class="single-slide" *ngFor="let name of bankList">
                     <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="bank-sliderAfter text-left" *ngIf="bankAccount">
-                <p class="text-left" *ngIf="bankList == null">There is no account</p>
+                <p class="text-left" *ngIf="bankList == null">No bank account details added</p>
                 <div class="single-slide" *ngFor="let name of bankList">
                     <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
                         (change)="updateBank($event)" [value]="name._id">
@@ -77,7 +77,7 @@
             <div class="card-slider" *ngIf="!cardAccount">
                 <div class="empty-message text-center" *ngIf="cardList== null">
                     <img src="../../assets/images/no-user.gif" alt="">
-                    <p class="text-center">There is no account</p>
+                    <p class="text-center">No card details added</p>
                 </div>
                 <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
                     <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
@@ -90,7 +90,7 @@
             </div>
 
             <div class="card-sliderAfter" *ngIf="cardAccount">
-                <p *ngIf="cardList==null">There is no account</p>
+                <p *ngIf="cardList==null">No card details added</p>
                 <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
                     <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
                         type="radio" (change)="updateCard($event)">
