@@ -15,6 +15,7 @@ export class GuestAddressComponent implements OnInit {
   addressPattern = /[*\\/|":?><]/gi
   guestName = "^[a-zA-Z \-\']+"
   flag = 0
+  isLoad = false
   constructor(
     public eventService: EventService
   ) { }
@@ -34,9 +35,11 @@ export class GuestAddressComponent implements OnInit {
   }
 
   getAddressDetails() {
+    this.isLoad = true
     this.eventService.getAddressDetails().subscribe((response: any) => {
       console.log("response of address if", response);
       this.addressDetails = response.response.sendData
+      this.isLoad = false
     }, error => {
       console.log("error while get address", error)
     })
@@ -49,6 +52,7 @@ export class GuestAddressComponent implements OnInit {
   get f() { return this.addressForm.controls; }
 
   enterAddress() {
+    this.isLoad = true
     console.log("form value of cart", this.addressForm.value);
     this.eventService.enterAddress(this.addressForm.value).subscribe((response) => {
       console.log("response of enter address", response);
