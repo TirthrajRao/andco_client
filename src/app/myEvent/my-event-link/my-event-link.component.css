@@ -159,6 +159,18 @@ input.bottom-link::placeholder {
     transition: 0.5s all;
 }
 
+input.pay-input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none !important;
+}
+
+input.pay-input::placeholder {
+    color: #ffffff;
+}
+
 
 /* step 2 start*/
 
