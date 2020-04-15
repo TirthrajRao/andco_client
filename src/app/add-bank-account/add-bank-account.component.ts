@@ -90,9 +90,9 @@ export class AddBankAccountComponent implements OnInit {
   getBankDetails() {
     this.isLoad = true
     this.loginService.getBankDetails().subscribe((response: any) => {
-      console.log("details of bank", response);
       this.bankList = response.data.bankDetail
       this.cardList = response.data.cardDetails
+      console.log("details of bank", this.bankList);
       if (this.bankList) {
         this.$sliderContainer = $('.bank-slider');
         this.$sliderContainer.slick('unslick');
