@@ -41,12 +41,15 @@ export class MyEventLinkComponent implements OnInit {
   invitatationMessage
   reminderDetails
   welcomeMessage
+  payMessage
   eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
   isAll
   isOnly
   afterAll
   afterBuy
   flag: any
+  eventDetails
+  time = this.currentDay.getHours() + ":" + this.currentDay.getMinutes();
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -134,10 +137,27 @@ export class MyEventLinkComponent implements OnInit {
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response of event in link page", response);
-      if (response.data.afterEventMessage.afterEventMessage) {
+      this.eventDetails = response.data
+      let checkMessage = response.data.afterEventMessage
+      if (checkMessage && checkMessage.afterEventMessage) {
         this.afterEventMessage = response.data.afterEventMessage
+        if (this.afterEventMessage && this.afterEventMessage.listOfGuest) {
+          console.log("call thia ");
+          let valueOfGuest = this.afterEventMessage.listOfGuest
+          this.afterEventForm.patchValue({
+            listOfGuest: valueOfGuest
+          })
+          this.afterEventForm.get('listOfGuest').updateValueAndValidity()
+          if (valueOfGuest == 'totalList') {
+            console.log("call this or not", valueOfGuest);
+            this.afterAll = valueOfGuest
+          } else {
+            this.afterBuy = valueOfGuest
+          }
+        }
       }
       this.invitatationMessage = response.data.invitationMessage
+      this.payMessage = response.data.payMessage
       this.welcomeMessage = response.data.welcomeMessage
       this.reminderDetails = response.data.reminderDetails
       if (this.reminderDetails != null) {
@@ -145,26 +165,36 @@ export class MyEventLinkComponent implements OnInit {
       }
     }, error => {
       console.log("error while get details");
-
     })
   }
 
   displayReminderItems(details) {
     this.displayDate = details.reminderStartDate
-
-
     this.reminderForm.patchValue({
       reminderStartTime: this.displayDate
     })
     this.reminderForm.get('reminderStartTime').updateValueAndValidity()
     this.displayTime = details.reminderStartTime
     if (this.displayTime) {
-
       this.reminderForm.patchValue({
         reminderStartTime: this.displayTime
       })
       this.reminderForm.get('reminderStartTime').updateValueAndValidity()
       this.timePickerClosed()
+    }
+    if (this.reminderDetails && this.reminderDetails.guestList) {
+      console.log("call thia ");
+      let valueOfGuest = this.reminderDetails.guestList
+      this.reminderForm.patchValue({
+        guestList: valueOfGuest
+      })
+      this.reminderForm.get('guestList').updateValueAndValidity()
+      if (valueOfGuest == 'allList') {
+        console.log("call this or not", valueOfGuest);
+        this.isAll = valueOfGuest
+      } else {
+        this.isOnly = valueOfGuest
+      }
     }
   }
 
@@ -202,42 +232,18 @@ export class MyEventLinkComponent implements OnInit {
     this.selectedIndex = i
     if (i == 3) {
       this.index = 2
-      if (this.reminderDetails && this.reminderDetails.guestList) {
-        console.log("call thia ");
-        let valueOfGuest = this.reminderDetails.guestList
-        this.reminderForm.patchValue({
-          guestList: valueOfGuest
-        })
-        this.reminderForm.get('guestList').updateValueAndValidity()
-        if (valueOfGuest == 'allList') {
-          console.log("call this or not", valueOfGuest);
-          this.isAll = valueOfGuest
-        } else {
-          this.isOnly = valueOfGuest
-        }
-      }
+      this.getEventDetails(this.eventId)
     }
     if (i == 4) {
+      this.getEventDetails(this.eventId)
       this.index = 3
-      if (this.afterEventMessage && this.afterEventMessage.listOfGuest) {
-        console.log("call thia ");
-        let valueOfGuest = this.afterEventMessage.listOfGuest
-        this.afterEventForm.patchValue({
-          listOfGuest: valueOfGuest
-        })
-        this.afterEventForm.get('listOfGuest').updateValueAndValidity()
-        if (valueOfGuest == 'totalList') {
-          console.log("call this or not", valueOfGuest);
-          this.afterAll = valueOfGuest
-        } else {
-          this.afterBuy = valueOfGuest
-        }
-      }
     }
     if (i == 0) {
       this.index = 0
+      this.getEventDetails(this.eventId)
     }
     if (i == 1) {
+      this.getEventDetails(this.eventId)
       this.index = 4
     }
     if (i == 2) {
@@ -249,6 +255,7 @@ export class MyEventLinkComponent implements OnInit {
   addEvent(type: string, event) {
     this.displayDate = (new Date(event.value))
     console.log("value of form group", this.displayTime);
+    this.reminderMessageSend()
   }
 
   timeChanged(event) {
@@ -258,7 +265,7 @@ export class MyEventLinkComponent implements OnInit {
       reminderStartTime: this.displayTime
     })
     this.reminderForm.get('reminderStartTime').updateValueAndValidity()
-
+    this.reminderMessageSend()
   }
 
   timePickerClosed() {
@@ -269,6 +276,36 @@ export class MyEventLinkComponent implements OnInit {
     this.hours = tempTime[0]
     this.minutes = tempTime[1].split(' ')[0]
     console.log("event of time pickert", this.displayTime);
+  }
+
+  addInvitationMesage() {
+    let inviteMessage = this.invitatationMessage
+    console.log("focuus out event", inviteMessage);
+    let message = {
+      invitationMessage: this.invitatationMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addInviationMessage(message).subscribe((response) => {
+      console.log("invitation message added", response);
+      this.changeEventLink(this.displayEventLink)
+    }, error => {
+      console.log("error while set message", error);
+
+    })
+  }
+
+
+  enterPayMessage() {
+    let message = {
+      payMessage: this.payMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addPayMessage(message).subscribe((response) => {
+      console.log("pay message added", message);
+    }, error => {
+      console.log("error while add pay message", error);
+
+    })
   }
 
   shareLink(no) {
@@ -295,8 +332,44 @@ export class MyEventLinkComponent implements OnInit {
       guestList: selected
     })
     this.reminderForm.get('guestList').updateValueAndValidity()
+    console.log("value of reminder form", this.reminderForm.value);
+    this.eventService.setReminderMessage(this.reminderForm.value, this.eventId).subscribe((response) => {
+      console.log("reminder message set", response);
+    }, error => {
+      console.log("error while set reminder", error);
+
+    })
+
   }
 
+
+  reminderMessageAdd() {
+    let messageData = this.reminderForm.get('reminderMessage').value
+    console.log("what is the data", messageData);
+
+    this.reminderForm.patchValue({
+      reminderMessage: messageData
+    })
+    this.reminderForm.get('reminderMessage').updateValueAndValidity()
+    this.reminderMessageSend()
+  }
+
+
+  reminderdate() {
+    let messageDate = this.reminderForm.get('reminderStartDate').value
+    console.log("date for check", messageDate);
+  }
+
+  checkAfterMessage() {
+    let data = this.afterEventForm.get('afterEventMessage').value
+
+    this.afterEventForm.patchValue({
+      afterEventMessage: data
+    })
+    this.afterEventForm.get('afterEventMessage').updateValueAndValidity()
+    console.log("after event message form", this.afterEventForm.value);
+    this.afterEventMessageSend()
+  }
 
 
   afterEventList(event) {
@@ -305,16 +378,19 @@ export class MyEventLinkComponent implements OnInit {
       listOfGuest: selected
     })
     this.afterEventForm.get('listOfGuest').updateValueAndValidity()
+    this.afterEventMessageSend()
   }
 
   reminderMessage(data) {
     this.index = data
   }
 
-  reminderMessageSend(index) {
+  reminderMessageSend(index?) {
     console.log("details of reminder message", this.reminderForm.value);
     this.eventService.setReminderMessage(this.reminderForm.value, this.eventId).subscribe((response) => {
-      this.index = index
+      if (index) {
+        this.index = index
+      }
       console.log("response of reminder message", response);
     }, error => {
       console.log("error while set reminer message", error);
@@ -332,10 +408,12 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
-  afterEventMessageSend(index) {
+  afterEventMessageSend(index?) {
     this.eventService.setAfterEventMessage(this.afterEventForm.value, this.eventId).subscribe((response) => {
       console.log("response of after event", response);
-      this.index = index
+      if (index) {
+        this.index = index
+      }
     }, error => {
       console.log("error while set after message", error);
 

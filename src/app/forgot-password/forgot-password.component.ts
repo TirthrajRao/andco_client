@@ -57,8 +57,8 @@ export class ForgotPasswordComponent implements OnInit {
   * Generate new password when user forgot password 
   */
   resetPassword(hash?) {
-    this.isLoad = true
     this.isDisable = true;
+    this.isLoad = true
     // let password = this.forgotPasswordForm.controls.newPassword.value
     // this.newPassword = password
     // console.log("enter password details=========", password)
@@ -69,9 +69,9 @@ export class ForgotPasswordComponent implements OnInit {
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
       .subscribe((data: any) => {
         // console.log("reset password done by user", data);
-        this.isLoad = false
         this.alertService.getSuccess(data.message);
         this.isDisable = false;
+        this.isLoad = false
         this.router.navigate(['/login']);
       }, err => {
         // console.log(err);

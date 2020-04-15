@@ -46,6 +46,7 @@ export class SetPriceComponent implements OnInit {
   $slider
   errorMessaage;
   currentDay = new Date()
+  time = this.currentDay.getHours() + ":" + this.currentDay.getMinutes()
   setPriceDetails
   hearAboutMessage
   vendorMessage
@@ -53,6 +54,8 @@ export class SetPriceComponent implements OnInit {
   selectedAccount
   selectedCardAccount
   totalAccount
+  newTime
+  default
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -62,6 +65,7 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("what is current time", this.time);
 
     this.getBankDetails()
     this.loginService.sharedBankDetails.subscribe(response => {
@@ -276,6 +280,7 @@ export class SetPriceComponent implements OnInit {
 
   updateSetPrice() {
     console.log("call for update", this.setPriceForm.value);
+    this.isLoad = true
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
     let flag = 0;
@@ -309,17 +314,19 @@ export class SetPriceComponent implements OnInit {
       } else {
         if (form[element].status == 'INVALID') {
           flag = 1;
+          this.isLoad = false
           if (element == 'welcomeMessage') {
             console.log("thank you message error", element);
-            // this.errorMessaage = 'Thank you message is required'
+            this.errorMessaage = 'Thank you message is required'
           } else if (element == 'thankyouMessage') {
-            // this.errorMessaage = 'After Event message is required'
+            this.errorMessaage = 'After Event message is required'
           } else if (element == 'paymentDeadlineDate') {
-            // this.errorMessaage = 'Payment Date is required'
+            this.errorMessaage = 'Payment Date is required'
           } else if (element == 'paymentDeadlineTime') {
             this.errorMessaage = 'Payment Time is required'
-            return false
           }
+          this.alertService.getError(this.errorMessaage)
+          return false
         }
         else {
           return true
@@ -363,10 +370,12 @@ export class SetPriceComponent implements OnInit {
       console.log("final data to  update", this.setPriceForm.value);
       this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
+        this.isLoad = false
         this.alertService.getSuccess(response.message)
         this.router.navigate(['set-message/' + 'update'])
       }, error => {
         console.log("error while set price of event", error)
+        this.isLoad = false
       })
     }
 
@@ -532,4 +541,14 @@ export class SetPriceComponent implements OnInit {
   backToGroup() {
     this.router.navigate(['/eventGroup/' + this.eventId])
   }
+
+
+  opened(event) {
+    console.log("event open caught here !!!!", event);
+    let tempTime = new Date()
+    console.log("time ", tempTime)
+    this.time = tempTime.getHours() + ":" + tempTime.getMinutes() + " pm";
+    console.log("after ", this.time)
+  }
+
 }

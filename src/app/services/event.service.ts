@@ -270,13 +270,19 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/event/setAfterEventMessage", data)
   }
 
-  geneRatePdf(data, eventId) {
+  geneRatePdf(data, eventId, value) {
     console.log("event id", eventId);
     let body = {
       data: data,
-      eventId: eventId
+      eventId: eventId,
+      flage: value
     }
     // data['eventId'] = eventId
     return this.http.post(config.baseApiUrl + "/generatePdf", body)
   }
+
+  addPayMessage(data) {
+    return this.http.post(config.baseApiUrl + "/event/addPayMessage", data)
+  }
+
 }

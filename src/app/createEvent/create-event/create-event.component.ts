@@ -18,7 +18,7 @@ declare var $;
 })
 export class CreateEventComponent implements OnInit {
   @Output() eventActivities: EventEmitter<any> = new EventEmitter<any>()
-
+  isDisableNext = false
   imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
@@ -108,10 +108,6 @@ export class CreateEventComponent implements OnInit {
     private elRef: ElementRef,
     private _sanitizer: DomSanitizer
   ) { }
-  //   ngAfterViewInit() {
-  //     let loader = this.elRef.nativeElement.querySelector('#loader'); 
-  //     loader.style.display = "none"; //hide loader
-  //  }
 
   ngOnInit() {
 
@@ -184,8 +180,12 @@ export class CreateEventComponent implements OnInit {
 
 
   fileChangeEvent(event: any): void {
-    console.log("when image is without crop", event);
-    this.imageChangedEvent = event;
+    console.log("when image is without crop", event.target.files);
+    if (event.target.files.length == 1) {
+      this.imageChangedEvent = event;
+    } else {
+      this.imageChangedEvent = this.imageChangedEvent
+    }
     // this.files = event.target.files
     // this.eventForm.controls.profile.setValue(this.files)
   }
@@ -206,30 +206,6 @@ export class CreateEventComponent implements OnInit {
     console.log("blob====>", this.blob);
     this.eventForm.controls.profile.setValue(this.blob)
   }
-
-  // b64toBlob(b64Data, contentType, sliceSize?) {
-  //   contentType = contentType || '';
-  //   sliceSize = sliceSize || 512;
-
-  //   var byteCharacters = atob(b64Data);
-  //   var byteArrays = [];
-
-  //   for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-  //     var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-  //     var byteNumbers = new Array(slice.length);
-  //     for (var i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     var byteArray = new Uint8Array(byteNumbers);
-
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   var blob = new Blob(byteArrays, { type: contentType });
-  //   return blob;
-  // }
 
   imageLoaded() {
     this.showCropper = true;
@@ -335,8 +311,13 @@ export class CreateEventComponent implements OnInit {
         // this.nextSlide(currentSlide)
         console.log("event on before", currentSlide, nextSlide);
         // this.hashTagIndex = currentSlide
+        if (currentSlide == 1 && nextSlide == 0) {
+          console.log("slider issue");
+          this.prevIndex = 0
+        }
         if (currentSlide == 4 && nextSlide == 5) {
           this.saveEvent = true
+          // this.prevIndex = 0
         } else {
           this.saveEvent = false
         }
@@ -424,6 +405,7 @@ export class CreateEventComponent implements OnInit {
   skipButton() {
     // console.log("call or not", this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide'))));
     // this.isDisable = true
+    this.isDisableNext = true
     this.prevIndex = 1
     const keys = Object.keys(this.eventForm.controls);
     let form = this.eventForm.controls;
@@ -440,19 +422,26 @@ export class CreateEventComponent implements OnInit {
             if (response.data == true) {
               console.log("data is true of false");
               this.isDisable = false
+              this.isDisableNext = false
+
               this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
             } else {
               let message = document.getElementById('message1');
               message.innerHTML = "Hashtag Already Exists";
               this.isDisable = true
+              this.isDisableNext = false
+              
             }
           }, error => {
             console.log("if it is avalible", error);
+            this.isDisableNext = false
 
           })
         } else {
           console.log("what is ");
           this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+          this.isDisableNext = false
+
         }
       }
       else {
@@ -462,6 +451,7 @@ export class CreateEventComponent implements OnInit {
   }
   skipButtons() {
     this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+    // this.isDisableNext = false
   }
 
 
@@ -625,6 +615,10 @@ export class CreateEventComponent implements OnInit {
 
   }
   saveImage() {
+    $('#imageUpload').modal("hide")
+  }
+
+  closeImageModel() {
     $('#imageUpload').modal("hide")
   }
 }

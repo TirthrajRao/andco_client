@@ -80,7 +80,7 @@ const routes: Routes = [
         component: CreateEventComponent
       },
       {
-        path: 'edtiEvent/:eventId',
+        path: 'editEvent/:eventId',
         component: CreateEventComponent
       },
       {

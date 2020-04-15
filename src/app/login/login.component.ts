@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
       $(this).toggleClass("fa-eye fa-eye-slash");
     });
 
+
     /**
      * Login form for user
      */
@@ -84,12 +85,22 @@ export class LoginComponent implements OnInit {
     });
 
 
+    $('#forgotPassModal').on('hidden.bs.modal', () => {
+      // do something…
+      this.forgotPasswordForm.reset()
+      // this.callNewOne()
+    })
     /**
      * AppId of facebook to login with facebook 
      */
 
 
 
+
+  }
+
+  callNewOne() {
+    console.log("call or not");
 
   }
 
@@ -107,8 +118,8 @@ export class LoginComponent implements OnInit {
    * for login with created email and password
    */
   onSubmitLogin() {
-    this.isLoad = true;
     this.isDisable = true;
+    this.isLoad = true;
     // console.log("login details", this.loginForm.value);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
@@ -138,11 +149,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/menu']);
         }
       }, (err: any) => {
-        this.isLoad = false;
         let varification = err.error.data;
         // console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
+        this.isLoad = false;
         this.isDisable = false;
+
         // this.
         // this.loginForm.reset();
         // this.varificationEmail = varification.useremail
@@ -163,6 +175,11 @@ export class LoginComponent implements OnInit {
 
   forgotPassword(email) {
     // console.log("value of email======", email)
+  }
+
+  closeModal() {
+    $("#forgotPassModal").modal("hide")
+    this.forgotPasswordForm.reset()
   }
 
   updatePassword() {

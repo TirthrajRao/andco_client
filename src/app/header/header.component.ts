@@ -33,6 +33,16 @@ export class HeaderComponent implements OnInit {
   isPrint: boolean = false;
 
 
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+    console.log('Back button pressed', event.target.location.hash);
+    let newRoute = event.target.location.hash.split("#")
+    console.log("what is in new route", newRoute)
+    this.currentUrl = newRoute[1]
+    console.log("current url", this.router.url);
+
+  }
+
   @HostListener('window:beforeprint', ['$event'])
   onBeforePrint(event) {
     this.isPrint = true;
@@ -52,6 +62,13 @@ export class HeaderComponent implements OnInit {
   ) {
     this._loginService.getObservableResponse().subscribe(res => {
       console.log("response in header again", res);
+      console.log("what is hashtag", this.hashTag);
+      let newHashTag = res.id.split("/")
+      console.log("what is in new", newHashTag);
+      if (this.hashTag == null) {
+        this.hashTag = newHashTag[2]
+      }
+
       this.currentUrl = res.id;
       if (this.currentUrl == '/menu' || this.currentUrl == '/guest/' + this.hashTag) {
         this.isDisplayMenu = false
@@ -83,10 +100,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log("hashtag and total event", this.hashTag, this.totalEvent);
     if (this.hashTag && this.totalEvent <= 1) {
-      this.displayLogo = false
+      console.log("this is call in header");
       $('#navigation-logo').addClass('navigation-hide');
+      this.displayLogo = false
     }
 
     // this.router.events
@@ -135,6 +153,8 @@ export class HeaderComponent implements OnInit {
       return '#434040'
     } else if (this.currentUrl.includes('add-bank-account')) {
       return '#434040'
+    } else if (this.currentUrl.includes('editEvent')) {
+      return '#ed8d8f'
     }
     else {
       return '#fff'
@@ -155,6 +175,8 @@ export class HeaderComponent implements OnInit {
     } else if (this.currentUrl.includes('set-price')) {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('add-bank-account')) {
+      this.imgUrl = '/assets/images/firework-green.png'
+    } else if (this.currentUrl.includes('set-message')) {
       this.imgUrl = '/assets/images/firework-green.png'
     }
     else {

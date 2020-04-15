@@ -26,8 +26,8 @@
             </a>
         </li>
         <li>
-            <a tooltipClass="my-custom-class" ngbTooltip="Share" data-toggle="modal" data-target="#shareIconButton">
-                <img src="assets/images/share.png" alt="share icon">
+            <a tooltipClass="my-custom-class" ngbTooltip="Share" data-toggle="modal" (click)="geneRatePdf('share')">
+                <img src=" assets/images/share.png" alt="share icon">
             </a>
             <!-- <a tooltipClass="my-custom-class" ngbTooltip="Share" (click)="geneRatePdf('share')">
                 <img src="assets/images/share.png" alt="share icon">
@@ -116,12 +116,12 @@
             </div>
             <div class="modal-body text-center share-icon-background">
                 <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
-                    [autoSetMeta]="true" [button]="'whatsapp'" [url]="image">
+                    [autoSetMeta]="true" [button]="'whatsapp'" [url]="finalUrl">
                     <img src="../../../assets/images/whatsapp.png" alt="whatsapp icon">
                 </share-button>
 
                 <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
-                    [button]="'email'" [autoSetMeta]="true" [url]="image">
+                    [button]="'email'" [autoSetMeta]="true" [url]="finalUrl">
                     <img src="../../../assets/images/gmail.png" alt="gmail icon">
                 </share-button>
             </div>

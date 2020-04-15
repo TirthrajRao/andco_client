@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { fadeInItems } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
@@ -12,6 +12,7 @@ declare var $;
 export class GroupSliderComponent implements OnInit {
 
   @Input('selectedActivity') selectedActivity;
+  @Input('newMaleObject') newOneMaleObject;
   @Output() firstGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
@@ -34,13 +35,14 @@ export class GroupSliderComponent implements OnInit {
     // console.log("selected activity id in group page", this.selectedActivity);
     if (this.selectedActivity) {
       this.isDisable = true;
-      // this.initGroupSlider()
+      //   // this.initGroupSlider()
     }
 
   }
-  ngOnChanges() {
-    // console.log("selected activity second time", this.selectedActivity.groups);
-    if (this.selectedActivity) {
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("when new male object added", changes);
+    if (changes.selectedActivity && changes.selectedActivity.currentValue) {
+      // this.isDisable = true
       this._change.detectChanges()
       this.selectedIndex = 0
       // console.log("when click on another activity", this.selectedIndex)
@@ -57,7 +59,7 @@ export class GroupSliderComponent implements OnInit {
   sendData(item, index) {
     console.log(" item ", item, index)
     this.selectedIndex = index
-    this.singleGroup.emit(item)
+    this.singleGroup.emit({ item: item, groupIndex: index })
   }
 
   removeGroup(index) {
@@ -171,9 +173,10 @@ export class GroupSliderComponent implements OnInit {
   }
 
 
-  openEditModel(group) {
+  openEditModel(group, index) {
     console.log("details of group", group);
     $('#editDeleteModal').modal("show")
+    this.selectedIndex = index
     this.editGroupName = group
     this.notChangeGroupName = this.editGroupName.groupName
     this.isButton = true
@@ -212,7 +215,8 @@ export class GroupSliderComponent implements OnInit {
   }
 
   editGroupNameOf() {
-    console.log("total list of activity", this.selectedActivity);
+    console.log("total list of activity", this.editGroupName);
+    this.singleGroup.emit(this.editGroupName)
     $('#editDeleteModal').modal("hide")
   }
   deleteGroup() {
