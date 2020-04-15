@@ -133,6 +133,7 @@ export class SocialLoginService {
             this.userName = firstName;
             sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             sessionStorage.setItem('userName', JSON.stringify(this.userName));
+            sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
 
             if (this.eventIdWithLogin) {
               // this.isLoad = false
