@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="bank-sliderAfter text-left" *ngIf="bankAccount">
-                <p class="text-left" *ngIf="bankList == null">No bank account details added</p>
+                <p class="text-left" *ngIf="bankList && !bankList.length">No bank account details added</p>
                 <div class="single-slide" *ngFor="let name of bankList">
                     <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
                         (change)="updateBank($event)" [value]="name._id">
@@ -90,7 +90,7 @@
             </div>
 
             <div class="card-sliderAfter" *ngIf="cardAccount">
-                <p *ngIf="cardList==null">No card details added</p>
+                <p *ngIf="cardList && !cardList.length">No card details added</p>
                 <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
                     <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
                         type="radio" (change)="updateCard($event)">

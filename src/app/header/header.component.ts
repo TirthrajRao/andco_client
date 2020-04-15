@@ -100,9 +100,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("hashtag and total event", this.hashTag, this.totalEvent);
     if (this.hashTag && this.totalEvent <= 1) {
-      this.displayLogo = false
+      console.log("this is call in header");
       $('#navigation-logo').addClass('navigation-hide');
+      this.displayLogo = false
     }
 
     // this.router.events

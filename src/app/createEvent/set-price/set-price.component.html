@@ -145,13 +145,16 @@
                                             </div>
                                         </mat-form-field>
                                         <!-- <div class="12hr-example"> -->
+                                        <!-- <span (click)="openModel(default)"> -->
                                         <input placeholder="12hr format (default settings)"
                                             formControlName="paymentDeadlineTime" aria-label="12hr format"
                                             [ngxTimepicker]="default" readonly
                                             [ngClass]="{ 'is-invalid': f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors }"
                                             ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}"
                                             style="cursor: pointer;" [min]="time">
-                                        <ngx-material-timepicker #default></ngx-material-timepicker>
+                                        <!-- </span> -->
+                                        <ngx-material-timepicker #default (opened)="opened($event)">
+                                        </ngx-material-timepicker>
                                         <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors"
                                             class="invalid-feedback">
                                             <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is

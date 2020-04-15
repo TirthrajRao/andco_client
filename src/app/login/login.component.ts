@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
       $(this).toggleClass("fa-eye fa-eye-slash");
     });
 
+
     /**
      * Login form for user
      */
@@ -84,12 +85,22 @@ export class LoginComponent implements OnInit {
     });
 
 
+    $('#forgotPassModal').on('hidden.bs.modal', () => {
+      // do something…
+      this.forgotPasswordForm.reset()
+      // this.callNewOne()
+    })
     /**
      * AppId of facebook to login with facebook 
      */
 
 
 
+
+  }
+
+  callNewOne() {
+    console.log("call or not");
 
   }
 
@@ -164,6 +175,11 @@ export class LoginComponent implements OnInit {
 
   forgotPassword(email) {
     // console.log("value of email======", email)
+  }
+
+  closeModal() {
+    $("#forgotPassModal").modal("hide")
+    this.forgotPasswordForm.reset()
   }
 
   updatePassword() {

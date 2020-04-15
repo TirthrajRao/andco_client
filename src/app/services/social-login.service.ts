@@ -68,6 +68,7 @@ export class SocialLoginService {
       // console.log("google id of login user", googleIdToken);
       this.loginService.googleLogin(googleIdToken).subscribe(data => {
         console.log("hash tag for guest", this.eventIdWithLogin)
+        sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
         let firstName = data.data.firstName
         // let lastName = data.data.lastName
         this.userName = firstName;
