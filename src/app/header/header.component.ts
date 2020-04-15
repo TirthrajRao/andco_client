@@ -84,8 +84,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     if (this.hashTag && this.totalEvent <= 1) {
       this.displayLogo = false
       $('#navigation-logo').addClass('navigation-hide');
