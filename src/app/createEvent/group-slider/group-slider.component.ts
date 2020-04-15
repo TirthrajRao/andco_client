@@ -57,7 +57,7 @@ export class GroupSliderComponent implements OnInit {
     }
     if (changes.newActivityArray && changes.newActivityArray.currentValue) {
       this.displayActivity = changes.newActivityArray.currentValue
-      // console.log("");
+      console.log("check this");
       
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
