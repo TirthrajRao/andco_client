@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@
 import { EventService } from '../../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
+declare var $: any
 
 @Component({
   selector: 'app-guest-item-total',
@@ -23,7 +24,8 @@ export class GuestItemTotalComponent implements OnInit {
   maleArray: any = [];
   femaleArray: any = [];
   removeArray: any = []
-  current = 0
+  current: any
+  counter = 0
   isLoad = false
   constructor(
     public eventService: EventService,
@@ -75,6 +77,8 @@ export class GuestItemTotalComponent implements OnInit {
     // this.displayFinalItem.push(grouped)
     this.displayFinalItem = grouped
     this.keys = Object.keys(this.displayFinalItem);
+    // this.current = 0
+    $("#vivek0").trigger("click")
     this.values = Object.values(this.displayFinalItem)
     // console.log("keys ==>", this.keys, " values ==>", this.values);
     console.log("grouped", this.keys);
@@ -159,5 +163,16 @@ export class GuestItemTotalComponent implements OnInit {
   display(i) {
     this.current = i
   }
+  openClose(index) {
+    if (this.counter == 0 && this.current == 0 && index == 0) {
+      this.current = 0;
+      $("#accordion").accordion("activate", false);
 
+      this.counter++
+      this.current = 0
+    }
+    else {
+      this.current = index
+    }
+  }
 }
