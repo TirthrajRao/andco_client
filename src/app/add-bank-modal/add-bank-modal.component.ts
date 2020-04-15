@@ -36,7 +36,11 @@ export class AddBankModalComponent implements OnInit {
 
   addBankDetails() {
     // $('#exampleModalCenter').modal("hide")
+      
+    this.isDisable = true
+
     // this.isLoad = true
+
     console.log("bank accoutn form ", this.bankForm.value);
     this.loginService.addBankAccount(this.bankForm.value).subscribe((response: any) => {
       console.log("account added", response);

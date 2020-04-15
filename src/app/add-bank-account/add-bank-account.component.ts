@@ -23,8 +23,8 @@ export class AddBankAccountComponent implements OnInit {
   isLoad = false
   cardNumber = "^[0-9]*$"
   bankName = "^[a-zA-Z \-\']+"
-  bankList = []
-  cardList = []
+  bankList:any
+  cardList:any
   $sliderContainer
   $slider
   constructor(

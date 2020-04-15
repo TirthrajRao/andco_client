@@ -46,7 +46,7 @@ export class SetPriceComponent implements OnInit {
   $slider
   errorMessaage;
   currentDay = new Date()
-  time = this.currentDay.getHours() + ":" + this.currentDay.getMinutes();
+  time = this.currentDay.getHours() + ":" + this.currentDay.getMinutes()
   setPriceDetails
   hearAboutMessage
   vendorMessage
@@ -54,6 +54,8 @@ export class SetPriceComponent implements OnInit {
   selectedAccount
   selectedCardAccount
   totalAccount
+  newTime
+  default
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -539,4 +541,14 @@ export class SetPriceComponent implements OnInit {
   backToGroup() {
     this.router.navigate(['/eventGroup/' + this.eventId])
   }
+
+
+  opened(event) {
+    console.log("event open caught here !!!!", event);
+    let tempTime = new Date()
+    console.log("time ", tempTime)
+    this.time = tempTime.getHours() + ":" + tempTime.getMinutes() + " pm";
+    console.log("after ", this.time)
+  }
+
 }

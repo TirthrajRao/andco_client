@@ -180,8 +180,12 @@ export class CreateEventComponent implements OnInit {
 
 
   fileChangeEvent(event: any): void {
-    console.log("when image is without crop", event);
-    this.imageChangedEvent = event;
+    console.log("when image is without crop", event.target.files);
+    if (event.target.files.length == 1) {
+      this.imageChangedEvent = event;
+    } else {
+      this.imageChangedEvent = this.imageChangedEvent
+    }
     // this.files = event.target.files
     // this.eventForm.controls.profile.setValue(this.files)
   }
@@ -307,8 +311,13 @@ export class CreateEventComponent implements OnInit {
         // this.nextSlide(currentSlide)
         console.log("event on before", currentSlide, nextSlide);
         // this.hashTagIndex = currentSlide
+        if (currentSlide == 1 && nextSlide == 0) {
+          console.log("slider issue");
+          this.prevIndex = 0
+        }
         if (currentSlide == 4 && nextSlide == 5) {
           this.saveEvent = true
+          // this.prevIndex = 0
         } else {
           this.saveEvent = false
         }
