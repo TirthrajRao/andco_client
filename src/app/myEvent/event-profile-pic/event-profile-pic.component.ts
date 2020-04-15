@@ -88,6 +88,10 @@ export class EventProfilePicComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
     this.eventId = this.profilePhoto.eventId
+
+    var reader = new FileReader();
+    reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
+    // reader.readAsDataURL(this.profilePhoto.profile);
   }
   addFile(event) {
     console.log("profile photo path", this.eventId);
@@ -108,6 +112,14 @@ export class EventProfilePicComponent implements OnInit {
         })
       }
     }
+  }
+
+  _handleReaderLoaded(e) {
+
+    let reader = e.target;
+    this.croppedImage = reader.result.substr(reader.result.indexOf(',') + 1);
+    // console.log("what is the value of it", base64result);
+
   }
 
   saveImage() {
