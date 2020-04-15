@@ -280,4 +280,9 @@ export class EventService {
     // data['eventId'] = eventId
     return this.http.post(config.baseApiUrl + "/generatePdf", body)
   }
+
+  addPayMessage(data) {
+    return this.http.post(config.baseApiUrl + "/event/addPayMessage", data)
+  }
+
 }
