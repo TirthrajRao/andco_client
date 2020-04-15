@@ -14,7 +14,7 @@
                         <h4>Event Date: <span>{{activityDate | date}}</span></h4>
                     </div>
                     <div class="group-box" *ngIf="isDisable">
-                        <app-group-slider [selectedActivity]="selectedActivity" [newMaleObject]="maleNewObject"
+                        <app-group-slider [selectedActivity]="selectedActivity" [updateActivity]="updateActivities"
                             (singleGroup)="getGroup($event)">
                         </app-group-slider>
                         <div class="row m-0">

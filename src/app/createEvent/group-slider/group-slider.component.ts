@@ -12,7 +12,7 @@ declare var $;
 export class GroupSliderComponent implements OnInit {
 
   @Input('selectedActivity') selectedActivity;
-  @Input('newMaleObject') newOneMaleObject;
+  @Input('updateActivity') newActivityArray
   @Output() firstGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
@@ -24,6 +24,7 @@ export class GroupSliderComponent implements OnInit {
   selectedIndex: any;
   changeName
   notChangeGroupName
+  displayActivity
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService,
@@ -34,6 +35,7 @@ export class GroupSliderComponent implements OnInit {
   ngOnInit() {
     // console.log("selected activity id in group page", this.selectedActivity);
     if (this.selectedActivity) {
+      this.displayActivity = this.selectedActivity
       this.isDisable = true;
       //   // this.initGroupSlider()
     }
@@ -53,10 +55,23 @@ export class GroupSliderComponent implements OnInit {
         this.initGroupSlider()
       }, 50)
     }
+    if (changes.newActivityArray && changes.newActivityArray.currentValue) {
+      this.displayActivity = changes.newActivityArray.currentValue
+      // console.log("");
+      
+      this.$slideContainter = $('.group-slider');
+      this.$slideContainter.slick('unslick');
+      // this.selectedActivity.groups
+      setTimeout(() => {
+        this.initGroupSlider()
+      }, 50)
+    }
   }
 
 
   sendData(item, index) {
+    console.log("what is in main array", this.selectedActivity);
+
     console.log(" item ", item, index)
     this.selectedIndex = index
     this.singleGroup.emit({ item: item, groupIndex: index })
