@@ -29,22 +29,18 @@
         </div>
         <form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
             <div class="join-enter-inputs">
-                <input type="email" autocomplete="off" placeholder="Your email address"
-                    [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }" formControlName="email">
+                <input type="email" autocomplete="off" placeholder="Your email address" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }" formControlName="email">
                 <div class="col-md-2" *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
                     <div *ngIf="f.email.errors.required">Email is required</div>
                     <div *ngIf="f.email.errors.email">Please enter valid Email</div>
                 </div>
                 <div class="input_with_icont">
-                    <input type="password" autocomplete="off" formControlName="password" placeholder="Your password"
-                        [type]="show ? 'text' : 'password'">
-                    <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
-                        (click)="password()"></span>
+                    <input type="password" autocomplete="off" formControlName="password" placeholder="Your password" [type]="show ? 'text' : 'password'">
+                    <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" (click)="password()"></span>
                 </div>
             </div>
             <div class="join-submit w-100 text-center">
-                <button class="btn join-submit" type="submit" (click)="onSubmitLogin()"
-                    [disabled]="isDisable || loginForm.invalid">Enter</button>
+                <button class="btn join-submit" type="submit" (click)="onSubmitLogin()" [disabled]="isDisable || loginForm.invalid">Enter</button>
             </div>
             <div class="text-center mt-2">
                 <button class="btn forgot-btn" data-toggle="modal" data-target="#forgotPassModal">Forgot
@@ -65,21 +61,18 @@
             </div>
             <form [formGroup]="forgotPasswordForm">
                 <div class="modal-body">
-                    <input type="email" formControlName="email" placeholder="Enter you email" required="required"
-                        [ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }">
-                    <div class="col-md-2" *ngIf="g.email.touched && g.email.errors" class="invalid-feedback ">
+                    <input type="email" formControlName="email" placeholder="Enter you email" required="required" [ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }" class="mb-3">
+                    <div *ngIf="g.email.touched && g.email.errors" class="invalid-feedback ">
                         <div *ngIf="g.email.errors.required">Email is required</div>
                         <div *ngIf="g.email.errors.email">Please enter valid Email</div>
                     </div>
                 </div>
-
                 <!-- <div class="error_msg" *ngIf="submitted && error1Msg">
 					<span class="fas fa-exclamation-circle err_icon">
 						<span class="error">{{error1Msg}}</span> </span>
 				</div> -->
                 <div class="modal-footer">
-                    <button type="button" class="btn forgot-submit-btn" data-dismiss="modal"
-                        [disabled]="isDisable || forgotPasswordForm.invalid" (click)="updatePassword()">Send</button>
+                    <button type="button" class="btn forgot-submit-btn" data-dismiss="modal" [disabled]="isDisable || forgotPasswordForm.invalid" (click)="updatePassword()">Send</button>
                 </div>
             </form>
         </div>

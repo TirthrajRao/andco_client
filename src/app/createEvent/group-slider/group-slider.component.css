@@ -52,6 +52,7 @@
     background-color: #A6B138;
     padding: 4px;
     position: relative;
+    min-height: 60px;
 }
 
 .group-header span {
