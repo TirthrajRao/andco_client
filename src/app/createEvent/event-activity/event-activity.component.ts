@@ -332,9 +332,12 @@ export class EventActivityComponent implements OnInit {
   }
 
   updateActivity() {
+    this.isDisable = true
     console.log("value of activity while edit", this.activityForm.value);
     this._eventService.updateActivites(this.activityForm.value).subscribe((response: any) => {
       console.log("activity update completed", response);
+
+      this.isDisable = false
 
       let routerData = '/eventGroup/' + this.eventId
       let output = this.loginService.returnLogin(routerData);
@@ -345,6 +348,7 @@ export class EventActivityComponent implements OnInit {
       // this.router.navigate(['/eventGroup/' + this.eventId])
     }, error => {
       console.log("error while update activity", error);
+      this.isDisable = false
 
     })
   }

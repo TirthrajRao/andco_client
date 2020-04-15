@@ -54,7 +54,7 @@
             </div>
             <div class="event-next-btn mt-3">
                 <button class="btn" (click)="eventActivities ? updateActivity(): addActivity()"
-                    [disabled]="activityForm.invalid">Next</button>
+                    [disabled]="activityForm.invalid || isDisable">Next</button>
             </div>
         </div>
     </div>
