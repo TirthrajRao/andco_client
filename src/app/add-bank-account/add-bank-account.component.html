@@ -20,7 +20,7 @@
                         </div>
                         <h5 class="font-weight-bold pl-5 mb-2">Bank accounts</h5>
                         <div class="bank-slider">
-                            <div class="empty-message" *ngIf="bankList == null">
+                            <div class="empty-message" *ngIf="bankList && !bankList.length">
                                 <img src="../../assets/images/no-user.gif" alt="">
                                 <p class="text-center">No bank account details added</p>
                             </div>
@@ -52,7 +52,7 @@
                         </div>
                         <h5 class="font-weight-bold pl-5 mb-2">Cards</h5>
                         <div class="card-slider">
-                            <div class="empty-message" *ngIf="cardList == null">
+                            <div class="empty-message" *ngIf="cardList && !cardList.length">
                                 <img src="../../assets/images/no-user.gif" alt="">
                                 <p class="text-center">No card details added</p>
                             </div>

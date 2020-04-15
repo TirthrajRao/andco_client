@@ -27,8 +27,8 @@ export class BankDetailsComponent implements OnInit {
   displayDetails
   $sliderContainer
   $slider
-  bankList = []
-  cardList = []
+  bankList:any
+  cardList:any
   bankSelected
   coronaCard
   coronaBank
