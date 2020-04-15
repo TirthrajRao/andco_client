@@ -35,6 +35,8 @@ export class AddCardmodalComponent implements OnInit {
   addCardDetails() {
     // $('#exampleModalCard').modal("hide")
     // this.isLoad = true
+    this.isDisable = true
+    
     this.loginService.addCardAccount(this.cardNumberForm.value).subscribe((response) => {
       console.log("response of card added", response);
       this.dialogRef.close(response);
