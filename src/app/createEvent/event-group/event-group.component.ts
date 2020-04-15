@@ -113,14 +113,14 @@ export class EventGroupComponent implements OnInit {
     console.log("when group change ======", this.allActivities);
 
     this.groupIndex = event.groupIndex
-    console.log("which one is active", this.groupIndex);
+    // console.log("which one is active", this.groupIndex);
     this.selectedGroup = event.item
+    let male = []
+    let female = []
     if (this.selectedGroup.item) {
-      let male = []
-      let female = []
-      console.log("call for already", this.selectedGroup);
+      // console.log("call for already", this.selectedGroup);
       this.selectedGroup.item.forEach((singleItem) => {
-        console.log("single item of group", singleItem);
+        // console.log("single item of group", singleItem);
         if (singleItem.itemGender == 'male') {
           singleItem.itemId = singleItem._id
           male.push(singleItem)
@@ -129,9 +129,19 @@ export class EventGroupComponent implements OnInit {
           female.push(singleItem)
         }
       })
-      this.selectedGroup['male'] = male
-      this.selectedGroup['female'] = female
     }
+    if (this.selectedGroup.male) {
+      console.log("call or not");
+      this.selectedGroup.male.forEach((maleOne) => {
+        if (!maleOne.itemId) {
+          male.push(maleOne)
+        }
+      })
+      // this.selectedGroup['male'] = male
+    }
+
+    this.selectedGroup['male'] = male
+    this.selectedGroup['female'] = female
     // console.log("right now activated activity", this.selectedGroup);
   }
 
@@ -152,32 +162,32 @@ export class EventGroupComponent implements OnInit {
       })
     });
     this.eventService.addGroup(this.finalArray, this.eventId)
-    .subscribe((response: any) => {
-      // console.log("Group added in new event", response)
-      this.isLoad = false
-      this.isDisable = false
-      this.alertervice.getSuccess(response.message)
+      .subscribe((response: any) => {
+        // console.log("Group added in new event", response)
+        this.isLoad = false
+        this.isDisable = false
+        this.alertervice.getSuccess(response.message)
 
-      let routerData = '/set-price/' + this.eventId
-      let output = this.loginService.returnLogin(routerData);
-      if (output == true) {
-        // this.router.navigate(['/myevent']);
-        this.router.navigate(['/set-price/' + this.eventId])
-      }
+        let routerData = '/set-price/' + this.eventId
+        let output = this.loginService.returnLogin(routerData);
+        if (output == true) {
+          // this.router.navigate(['/myevent']);
+          this.router.navigate(['/set-price/' + this.eventId])
+        }
 
 
-      // this.router.navigate(['/set-price/' + this.eventId])
-    }, error => {
-      this.isDisable = false
-      this.isLoad = false
-      this.alertervice.getError(error.message)
-      // console.log("error while add groups in event", error)
-    })
+        // this.router.navigate(['/set-price/' + this.eventId])
+      }, error => {
+        this.isDisable = false
+        this.isLoad = false
+        this.alertervice.getError(error.message)
+        // console.log("error while add groups in event", error)
+      })
   }
   updateGroups() {
     // console.log("for update group");
-          this.isDisable = true
-      this.isLoad = true
+    this.isDisable = true
+    this.isLoad = true
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -213,7 +223,7 @@ export class EventGroupComponent implements OnInit {
       }
       // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
-            this.isDisable = false
+      this.isDisable = false
       this.isLoad = false
       console.log("error while update group", error);
     })

@@ -24,7 +24,7 @@ export class GroupSliderComponent implements OnInit {
   selectedIndex: any;
   changeName
   notChangeGroupName
-  displayActivity
+  displayActivity: any
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService,
@@ -55,10 +55,12 @@ export class GroupSliderComponent implements OnInit {
         this.initGroupSlider()
       }, 50)
     }
+    console.log("what is the value of display activity", this.displayActivity);
+
     if (changes.newActivityArray && changes.newActivityArray.currentValue) {
+      this.displayActivity = []
       this.displayActivity = changes.newActivityArray.currentValue
-      console.log("check this");
-      
+      console.log("check this", this.displayActivity);
       this.$slideContainter = $('.group-slider');
       this.$slideContainter.slick('unslick');
       // this.selectedActivity.groups
@@ -70,7 +72,7 @@ export class GroupSliderComponent implements OnInit {
 
 
   sendData(item, index) {
-    console.log("what is in main array", this.selectedActivity);
+    console.log("what is in main array", this.displayActivity);
 
     console.log(" item ", item, index)
     this.selectedIndex = index
