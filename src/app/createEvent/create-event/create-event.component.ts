@@ -180,8 +180,12 @@ export class CreateEventComponent implements OnInit {
 
 
   fileChangeEvent(event: any): void {
-    console.log("when image is without crop", event);
-    this.imageChangedEvent = event;
+    console.log("when image is without crop", event.target.files);
+    if (event.target.files.length == 1) {
+      this.imageChangedEvent = event;
+    } else {
+      this.imageChangedEvent = this.imageChangedEvent
+    }
     // this.files = event.target.files
     // this.eventForm.controls.profile.setValue(this.files)
   }
