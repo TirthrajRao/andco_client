@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="bank-slider text-left" *ngIf="!bankAccount">
-                <div class="empty-message text-center" *ngIf="bankList == null">
+                <div class="empty-message text-center" *ngIf="bankList && !bankList.length">
                     <img src="../../assets/images/no-user.gif" alt="">
                     <p class="text-center">No bank account details added</p>
                 </div>
@@ -75,7 +75,7 @@
                 </a>
             </div>
             <div class="card-slider" *ngIf="!cardAccount">
-                <div class="empty-message text-center" *ngIf="cardList== null">
+                <div class="empty-message text-center" *ngIf="cardList && !cardList.length">
                     <img src="../../assets/images/no-user.gif" alt="">
                     <p class="text-center">No card details added</p>
                 </div>
