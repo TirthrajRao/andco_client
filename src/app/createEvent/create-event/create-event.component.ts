@@ -18,7 +18,7 @@ declare var $;
 })
 export class CreateEventComponent implements OnInit {
   @Output() eventActivities: EventEmitter<any> = new EventEmitter<any>()
-
+  isDisableNext = false
   imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
@@ -400,6 +400,7 @@ export class CreateEventComponent implements OnInit {
   skipButton() {
     // console.log("call or not", this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide'))));
     // this.isDisable = true
+    this.isDisableNext = true
     this.prevIndex = 1
     const keys = Object.keys(this.eventForm.controls);
     let form = this.eventForm.controls;
@@ -416,19 +417,26 @@ export class CreateEventComponent implements OnInit {
             if (response.data == true) {
               console.log("data is true of false");
               this.isDisable = false
+              this.isDisableNext = false
+
               this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
             } else {
               let message = document.getElementById('message1');
               message.innerHTML = "Hashtag Already Exists";
               this.isDisable = true
+              this.isDisableNext = false
+              
             }
           }, error => {
             console.log("if it is avalible", error);
+            this.isDisableNext = false
 
           })
         } else {
           console.log("what is ");
           this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+          this.isDisableNext = false
+
         }
       }
       else {
@@ -438,6 +446,7 @@ export class CreateEventComponent implements OnInit {
   }
   skipButtons() {
     this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+    // this.isDisableNext = false
   }
 
 

@@ -126,7 +126,7 @@
             </form>
             <button class="btn created-event-custom-button" (click)="createdEventDetails? updateEvent(): addEvent()"
                 *ngIf="saveEvent">Continue</button>
-            <button class="btn created-event-custom-button" id="nextOne" (click)="skipButton()" *ngIf="!saveEvent">
+            <button class="btn created-event-custom-button" id="nextOne" [disabled]="isDisableNext" (click)="skipButton()" *ngIf="!saveEvent">
                 Next
             </button>
             <button class="btn created-event-custom-button1" id="previouesOne" [disabled]="isDisable"
