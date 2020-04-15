@@ -132,6 +132,7 @@ export class EventGroupComponent implements OnInit {
 
 
   addGroup() {
+    this.isDisable = true
     this.isLoad = true
     this.allActivities.forEach(singleActivityDetails => {
       // console.log("single activity with details", singleActivityDetails);
@@ -145,9 +146,11 @@ export class EventGroupComponent implements OnInit {
         this.finalArray.push(finalObject)
       })
     });
-    this.eventService.addGroup(this.finalArray, this.eventId).subscribe((response: any) => {
+    this.eventService.addGroup(this.finalArray, this.eventId)
+    .subscribe((response: any) => {
       // console.log("Group added in new event", response)
       this.isLoad = false
+      this.isDisable = false
       this.alertervice.getSuccess(response.message)
 
       let routerData = '/set-price/' + this.eventId
@@ -160,12 +163,16 @@ export class EventGroupComponent implements OnInit {
 
       // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
+      this.isDisable = false
+      this.isLoad = false
       this.alertervice.getError(error.message)
       // console.log("error while add groups in event", error)
     })
   }
   updateGroups() {
     // console.log("for update group");
+          this.isDisable = true
+      this.isLoad = true
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -191,7 +198,8 @@ export class EventGroupComponent implements OnInit {
     this.eventService.updateGroup(this.finalArray).subscribe((response: any) => {
       console.log("group update completed", response);
       this.alertervice.getSuccess(response.message)
-
+      this.isDisable = false
+      this.isLoad = false
       let routerData = '/set-price/' + this.eventId
       let output = this.loginService.returnLogin(routerData);
       if (output == true) {
@@ -200,6 +208,8 @@ export class EventGroupComponent implements OnInit {
       }
       // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
+            this.isDisable = false
+      this.isLoad = false
       console.log("error while update group", error);
     })
   }
