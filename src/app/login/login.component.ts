@@ -118,8 +118,8 @@ export class LoginComponent implements OnInit {
    * for login with created email and password
    */
   onSubmitLogin() {
-    this.isLoad = true;
     this.isDisable = true;
+    this.isLoad = true;
     // console.log("login details", this.loginForm.value);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
@@ -149,11 +149,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/menu']);
         }
       }, (err: any) => {
-        this.isLoad = false;
         let varification = err.error.data;
         // console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
+        this.isLoad = false;
         this.isDisable = false;
+
         // this.
         // this.loginForm.reset();
         // this.varificationEmail = varification.useremail

@@ -147,16 +147,19 @@ export class SignUpComponent implements OnInit {
    * Send mail to new user for varification code
    */
   verificationCode(index) {
+    this.isDisable = true
     this.isLoad = true
     // console.log("index of sectioni", index)
     // console.log("emails details", this.signUpForm.controls.email.value)
     let email = this.signUpForm.controls.email.value
     this._loginService.mailSendForCode(email).subscribe((res: any) => {
+      this.isDisable = false
       this.isLoad = false
       this.alertService.getSuccess(res.message)
       // console.log("code send to uesr", res)
       this.index = Number(index) + + 1
     }, error => {
+      this.isDisable = false
       this.isLoad = false
       if (error.status == 409) {
         this.alertService.getError(error.error.message)
