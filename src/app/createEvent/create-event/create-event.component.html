@@ -29,7 +29,10 @@
                     <div class="create-event-hashtag-box">
                         <h3>Your event hashtag</h3>
                         <div class="hashtag-form form-group">
-                            <input type="text" class="form-control" formControlName="hashTag" ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}" [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }" placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
+                            <input type="text" class="form-control" formControlName="hashTag"
+                                ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
+                                [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
+                                placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">
                             <div id="message1"></div>
                             <div *ngIf="f.hashTag.touched && f.hashTag.errors" class="invalid-feedback">
@@ -99,7 +102,8 @@
                                 <div class="col-3" *ngFor="let theme of eventBackGround; let i =index">
                                     <div class="bg-select-div" [class.active]="selectedThemeIndex == i">
                                         <div class="sample_bg">
-                                            <img src="{{theme.path}}" alt="Theme" id="background1" (click)="defaultBackgroundImage(theme.path , i)">
+                                            <img src="{{theme.path}}" alt="Theme" id="background1"
+                                                (click)="defaultBackgroundImage(theme.path , i)">
                                         </div>
                                         <span>{{theme.themeName}}</span>
                                     </div>
@@ -126,7 +130,8 @@
             </form>
             <button class="btn created-event-custom-button" (click)="createdEventDetails? updateEvent(): addEvent()"
                 *ngIf="saveEvent">Continue</button>
-            <button class="btn created-event-custom-button" id="nextOne" [disabled]="isDisableNext" (click)="skipButton()" *ngIf="!saveEvent">
+            <button class="btn created-event-custom-button" id="nextOne" [disabled]="isDisableNext"
+                (click)="skipButton()" *ngIf="!saveEvent">
                 Next
             </button>
             <button class="btn created-event-custom-button1" id="previouesOne" [disabled]="isDisable"
@@ -173,8 +178,9 @@
                         [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
                         [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
                         [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
-                        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-                        (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
+                        format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl"
+                        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
                 </div>
             </div>
@@ -199,7 +205,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body m-auto">
-                <button class="btn setDefault" (click)="setDefaultBackGround('/assets/images/guest.png')">Set default background</button>
+                <button class="btn setDefault" (click)="setDefaultBackGround('/assets/images/guest.png')">Set default
+                    background</button>
             </div>
         </div>
     </div>

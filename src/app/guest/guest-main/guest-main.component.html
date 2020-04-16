@@ -7,12 +7,12 @@
                 </div>
                 <h3>#{{eventDetails.hashTag}}</h3>
                 <h3>{{eventDetails.eventTitle}}</h3>
+                <span *ngIf="closedEvent == true" class="eventClose">This event has been closed</span>
             </div>
             <!-- <div class="join-event" *ngIf="isJoin == false">
                 <button class="btn" (click)="joinEvent(eventDetails._id)">join event</button>
             </div> -->
             <div class="guest-inner-box" *ngIf="isDisable">
-
                 <!-- Display items with groups -->
                 <app-guest-activity-slider *ngIf="index == 0" [totalActivityList]="totalActivityList"
                     (totalItemList)="totalItem($event)" [removeItemOf]="removeItem" [isClosed]="isClosed">

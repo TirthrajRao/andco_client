@@ -149,7 +149,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/menu']);
         }
       }, (err: any) => {
-        let varification = err.error.data;
+        // let varification = err.error.data;
         // console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
         this.isLoad = false;

@@ -59,6 +59,7 @@ export class CreateEventComponent implements OnInit {
   prevIndex = 0
   saveEvent = false
   blob: any
+  currentImgUrl: any;
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
     {
@@ -430,7 +431,7 @@ export class CreateEventComponent implements OnInit {
               message.innerHTML = "Hashtag Already Exists";
               this.isDisable = true
               this.isDisableNext = false
-              
+
             }
           }, error => {
             console.log("if it is avalible", error);
@@ -613,6 +614,9 @@ export class CreateEventComponent implements OnInit {
   openImageModal() {
     $('#imageUpload').modal("show")
 
+    if (this.imgURL) {
+      this.currentImgUrl = this.imgURL
+    }
   }
   saveImage() {
     $('#imageUpload').modal("hide")

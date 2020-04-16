@@ -46,10 +46,15 @@
         <p>{{noListMessage}}</p>
     </div>
     <div class="guest-list-box-scroll">
-        <div class="accordion" id="accordionExample">
-            <span *ngFor="let item of displayGuestItems; let i =index">
-                <button class="btn w-100" data-toggle="collapse" aria-controls="collapseOne"
-                    [attr.data-target]="'#collapseOne' + i" (click)="current == i">
+        <div class="accordion" id="accordionExample" *ngFor="let item of displayGuestItems; let i =index">
+            <span>
+                <!-- <button class="btn w-100" data-toggle="collapse" id="vivek{{i}}" aria-controls="collapseOne"
+                    [attr.data-target]="'#collapseOne' + i" (click)="current =i"> -->
+
+                <button class="btn single-activity w-100" id="bhudev{{i}}" data-toggle="collapse"
+                    [attr.data-target]="'#collapseOne' + i" aria-controls="collapseOne" (click)="current = i">
+                    <!-- {{key}} -->
+                    <!-- </button> -->
                     <div class="inner-header">
                         <div class="profile-name">
                             <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>

@@ -5,6 +5,8 @@ import { SearchListPipe } from '../../search-list.pipe';
 import { config } from '../../config';
 import { saveAs } from "file-saver";
 import * as _ from 'lodash';
+import * as moment from 'moment';
+
 // import { EventEmitter } from 'protractor';
 declare var $: any
 
@@ -35,7 +37,7 @@ export class GuestCollectionComponent implements OnInit {
   }
   // @Input() image: string;
   displayGuestItems = []
-  current
+  current: any
   formateData: any
   firstLetter = []
   secondLetter = []
@@ -91,14 +93,23 @@ export class GuestCollectionComponent implements OnInit {
     this.noListMessage = ''
     this.isDisplay = true
     this.displayGuestItems = list
+    setTimeout(() => {
+
+      $("#bhudev0").trigger("click")
+    }, 100)
     // this.eventId = list.eventId
     // console.log("list of guest", this.eventId);
 
 
-    this.current = 0
+    // this.current = 0
+
     this.searchArray = this.displayGuestItems
     // console.log("total list", list.length);
     this.displayGuestItems.forEach(singleList => {
+      console.log("single item list", singleList);
+      let newDate = moment(singleList.finalDate).format('DD-MM-YYYY')
+      console.log("convert into new formate", newDate);
+
       let grandTotal = 0
       let finalTotalOfEvent
       singleList.items.forEach((singleItem) => {
@@ -112,6 +123,7 @@ export class GuestCollectionComponent implements OnInit {
       this.secondLetter.push(singleList.lastName.charAt(0))
       singleList['firstLetter'] = singleList.firstName.charAt(0)
       singleList['lastLetter'] = singleList.lastName.charAt(0)
+      singleList['finalDate'] = newDate
       // console.log("singleItem", this.firstLetter);
       // console.log("first letter of word", firstLetter);
     });
