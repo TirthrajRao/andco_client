@@ -168,6 +168,8 @@ export class EventGroupComponent implements OnInit {
         this.finalArray.push(finalObject)
       })
     });
+
+    console.log("final array to send items of group", this.finalArray);
     this.eventService.addGroup(this.finalArray, this.eventId)
       .subscribe((response: any) => {
         // console.log("Group added in new event", response)
@@ -181,8 +183,6 @@ export class EventGroupComponent implements OnInit {
           // this.router.navigate(['/myevent']);
           this.router.navigate(['/set-price/' + this.eventId])
         }
-
-
         // this.router.navigate(['/set-price/' + this.eventId])
       }, error => {
         this.isDisable = false
@@ -194,7 +194,7 @@ export class EventGroupComponent implements OnInit {
   updateGroups() {
     // console.log("for update group");
     this.isDisable = true
-    this.isLoad = true
+    // this.isLoad = true
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -369,13 +369,20 @@ export class EventGroupComponent implements OnInit {
   removeMaleItem(data, index, groupId) {
     console.log("data to be removed", data);
     console.log("index of removed", groupId);
-    this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+
+    // if (data.itemId) {
+    // }
+    if (!data.itemId) {
+      this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+    }
+    console.log("group when remove from male", this.selectedActivity);
     if (data.itemId) {
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.indexOf(data), 1)
       this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
         console.log("item remove from data base", response);
       }, error => {
         console.log("error while remove items", error);
-
       })
     }
     // console.log("baki ni male items", this.selectedGroup.male);

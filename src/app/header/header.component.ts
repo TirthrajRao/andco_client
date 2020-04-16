@@ -105,7 +105,7 @@ export class HeaderComponent implements OnInit {
       console.log("this is call in header");
       setTimeout(() => {
         $('#navigation-logo').addClass('navigation-hide');
-      }, 10)
+      }, 100)
       this.displayLogo = false
     }
 
