@@ -68,6 +68,7 @@ export class PaymentDetailsComponent implements OnInit {
     this.isLoad = true
     this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
       console.log("response of cart list", response);
+      this.isLoad = false
       this.cartList = response.data.cartList
       this.eventId = response.data.eventDetail._id
       this.cartList.forEach((item: any) => {
@@ -77,6 +78,7 @@ export class PaymentDetailsComponent implements OnInit {
         this.finalGrandTotal = this.grandTotal
       });
     }, error => {
+      this.isLoad = false
       console.log("error while get cart details", error)
     })
   }
@@ -85,9 +87,10 @@ export class PaymentDetailsComponent implements OnInit {
   getAccountDetails(accountType) {
     this.eventService.getAccountDetails(accountType).subscribe((response: any) => {
       console.log("response of account details", response);
+      // this.isLoad = false
       this.accountDetails = response.data[0]
-      this.isLoad = false
     }, error => {
+      this.isLoad = false
       console.log("error while get acccount details", error);
 
     })
@@ -128,7 +131,7 @@ export class PaymentDetailsComponent implements OnInit {
       finalDonation = this.donation
     }
     this.isDiable = true
-    // this.isLoad = true
+    this.isLoad = true
     let myCart = {
       orderDetails: this.cartList,
       finalTotal: this.finalGrandTotal,
@@ -155,6 +158,7 @@ export class PaymentDetailsComponent implements OnInit {
       this.thankYouDetails.emit({ message: response.data, index: 6 })
       this.isLoad = false
     }, error => {
+      this.isLoad = false
       console.log("error while add account ", error)
       this.isDiable = false
     })
