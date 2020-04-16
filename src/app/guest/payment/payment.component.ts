@@ -44,6 +44,7 @@ export class PaymentComponent implements OnInit {
       console.log("total of all items", response);
       this.isLoad = false
     }, error => {
+      this.isLoad = false
       console.log("error while get total", error)
     })
   }

@@ -56,6 +56,7 @@ export class SetPriceComponent implements OnInit {
   totalAccount
   newTime
   default
+  isBack = false
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -146,6 +147,7 @@ export class SetPriceComponent implements OnInit {
       // console.log("response of set price", response);
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
+        this.isBack = false
         this.setPriceDetails = response
         console.log("response of set price", this.setPriceDetails);
         if (this.setPriceDetails.bankAccount != null) {
@@ -188,8 +190,11 @@ export class SetPriceComponent implements OnInit {
           this.vendorMessage = this.setPriceDetails.hearAbout.message
           console.log("messgae of hear about", this.hearAboutMessage);
         }
-      }
+      } else {
+        console.log("checck this else ********");
 
+        this.isBack = true
+      }
     }, error => {
       console.log("error while get price ", error);
 

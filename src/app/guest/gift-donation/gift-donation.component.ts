@@ -61,6 +61,8 @@ export class GiftDonationComponent implements OnInit {
       this.address.emit(3)
       // this.isLoad = false
     }, error => {
+
+      this.isLoad = false
       console.log("error while enter final payment", error)
     })
   }
@@ -74,6 +76,8 @@ export class GiftDonationComponent implements OnInit {
       }
       this.isLoad = false
     }, error => {
+
+      this.isLoad = false
       console.log("error while get donation", error)
     })
   }
