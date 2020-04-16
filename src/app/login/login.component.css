@@ -283,8 +283,7 @@ button.btn.forgot-btn {
     .join-submit button {
         padding: 2px 30px;
     }
-    .forgot-modal .modal-body,
-    .forgot-modal .modal-header {
+    .forgot-modal .modal-body {
         padding: 5px 10px;
     }
     .forgot-modal .modal-content {
