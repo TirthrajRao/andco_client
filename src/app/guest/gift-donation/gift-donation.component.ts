@@ -60,9 +60,9 @@ export class GiftDonationComponent implements OnInit {
     this.eventService.addDonation(addDonation).subscribe((response) => {
       console.log("final cart with total", response);
       this.address.emit(3)
-      this.isLoad = false
+      // this.isLoad = false
     }, error => {
-      this.isLoad = false
+      // this.isLoad = false
       console.log("error while enter final payment", error)
     })
   }
