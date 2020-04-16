@@ -1,5 +1,5 @@
 let envs = [];
-let env = "development";
+let env = "testing";
 // const baseUrl = ''
 // const baseMediaUrl = ''
 envs['production'] = {
@@ -18,8 +18,8 @@ envs['development'] = {
 
 envs['testing'] = {
     baseApiUrl: "https://test.andcowith.me:9001/api",
-    pdfUrl: "https://test.andcowith.me:9001/uploads/pdf/"
-    // baseMediaUrl: "https://test.andcowith.me:9001/",
+    pdfUrl: "https://test.andcowith.me:9001/uploads/pdf/",
+    baseMediaUrl: "https://test.andcowith.me:9001/",
     // isvisited: false,
     // counter: 0,
 }
