@@ -474,7 +474,7 @@ button.btn.set-price-custom-button.float-left {
 @media(max-width: 400px) {
     .bg-box-set-price {
         width: 340px;
-        height: 360px;
+        height: auto;
     }
     .single-main-box textarea {
         font-size: 14px;

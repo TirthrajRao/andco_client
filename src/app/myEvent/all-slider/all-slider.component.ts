@@ -88,7 +88,7 @@ export class AllSliderComponent implements OnInit {
     setTimeout(() => {
       this.$slideContainter = $('.myEvent-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
-        infinite: true,
+        infinite: false,
         slidesToShow: 2.5,
         slidesToScroll: 1,
         adaptiveHeight: true,
