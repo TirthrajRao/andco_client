@@ -34,6 +34,7 @@ export class GuestMainComponent implements OnInit {
   paymentDeadlineDate
   isClosed
   cartLength
+  closedEvent
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -77,6 +78,7 @@ export class GuestMainComponent implements OnInit {
       this.eventDetails = response.data
       console.log("payment check date", this.eventDetails);
       this.eventTheme = this.eventDetails.eventTheme
+      this.closedEvent = this.eventDetails.isClosed
       this.isClosed = this.eventDetails.isClosed
       // let day : number = 4;
 

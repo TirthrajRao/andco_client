@@ -94,6 +94,11 @@
     margin: 20px 0;
 }
 
+span.eventClose{
+    color: white;
+    font-size: 30px;
+}
+
 @media(max-width: 1600px) {
     .guest-profile {
         width: 110px;
@@ -117,6 +122,10 @@
         width: 100px;
         height: 100px;
     }
+
+span.eventClose{
+    font-size: 22px;
+}
 }
 
 @media(max-width:1199px) {
@@ -150,6 +159,10 @@
     .guest-inner-box {
         margin-bottom: 100px;
     }
+
+span.eventClose{
+    font-size: 16px;
+}
 }
 
 @media(max-width: 480px) {

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
-import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform } from 'ngx-image-cropper';
+import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform, ImageCropperComponent } from 'ngx-image-cropper';
 import { Observable, Observer } from 'rxjs';
 // import {} from 'ca';
 
@@ -14,6 +14,9 @@ declare var $;
   styleUrls: ['./event-profile-pic.component.css']
 })
 export class EventProfilePicComponent implements OnInit {
+
+  @ViewChild("imageCropper", { static: true }) imageCropper: ImageCropperComponent;
+
 
   base64TrimmedURL: any;
   base64DefaultURL: any;
@@ -35,6 +38,9 @@ export class EventProfilePicComponent implements OnInit {
   imgURL: any;
   eventId
   isLoad = false
+  currentImgUrl: any;
+  dataUri: any;
+  displayPhoto
   constructor(
     public eventService: EventService
   ) { }
@@ -43,7 +49,7 @@ export class EventProfilePicComponent implements OnInit {
 
     console.log(" ************ Yash Shukla ********* ")
     console.log(" Image Url is this :::::", this.profilePhoto.profile)
-
+    // this.getBase64ImageFromURL(dataUri)
 
   }
 
@@ -98,8 +104,8 @@ export class EventProfilePicComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
+    this.displayPhoto = this.profilePhoto.profile
     this.eventId = this.profilePhoto.eventId
-
     // var reader = new FileReader();
     // reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
     // this.getBase64ImageFromURL(this.profilePhoto.profile)
@@ -138,8 +144,9 @@ export class EventProfilePicComponent implements OnInit {
     $('#imageUpload').modal("hide")
     this.isLoad = true
     this.eventService.changeProfilePhoto(this.blob, this.eventId).subscribe((response: any) => {
-      console.log("response of image change");
-      this.profilePhoto = response.update.profilePhoto
+      console.log("response of image change", response);
+      this.displayPhoto = response.update.profile
+      console.log("value of photo", this.profilePhoto);
       this.isLoad = false
     }, error => {
       console.log("error while update photo", error);
@@ -149,6 +156,8 @@ export class EventProfilePicComponent implements OnInit {
 
 
   getBase64ImageFromURL(url: string) {
+    console.log("value of url =========", url);
+
     return Observable.create((observer: Observer<string>) => {
       // create an image object
       let img = new Image();
@@ -171,8 +180,12 @@ export class EventProfilePicComponent implements OnInit {
   }
 
   getBase64Image(img: HTMLImageElement) {
+    console.log("what is in this imgage========", img);
+
     // We create a HTML canvas object that will create a 2d image
     var canvas = document.createElement("canvas");
+    console.log("log this canvas or not", canvas);
+
     canvas.width = img.width;
     canvas.height = img.height;
     var ctx = canvas.getContext("2d");
@@ -180,11 +193,15 @@ export class EventProfilePicComponent implements OnInit {
     ctx.drawImage(img, 0, 0);
     // Convert the drawn image to Data URL
     var dataURL = canvas.toDataURL("image/png");
+    console.log("this is console or not", dataURL);
+
     this.base64DefaultURL = dataURL;
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
   dataURItoBlob(dataURI): Observable<Blob> {
+    console.log("call or not");
+
     return Observable.create((observer: Observer<Blob>) => {
       const byteString = window.atob(dataURI);
       const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -198,6 +215,20 @@ export class EventProfilePicComponent implements OnInit {
     });
   }
 
+
+
+  opoenNewModel() {
+    // this.dataUri = this.path + this.profilePhoto.profile
+    $('#imageUpload').modal("show")
+    console.log("what is the value of photo", this.profilePhoto.profile)
+    if (this.profilePhoto && this.profilePhoto.profile) {
+      this.currentImgUrl = this.path + this.profilePhoto.profile
+    } else {
+      this.currentImgUrl = this.path + this.profilePhoto
+    }
+
+
+  }
 
   openImageModal() {
 
@@ -217,12 +248,13 @@ export class EventProfilePicComponent implements OnInit {
 
         console.log(" Image ", img)
         var canvas = document.createElement("canvas");
+        console.log("what is canvas ", canvas);
         canvas.width = img.width;
         canvas.height = img.height;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
+        console.log("what is in ctx=======", ctx);
         var dataURL = canvas.toDataURL("image/png");
-
         console.log(" Data url ", dataURL)
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
       }

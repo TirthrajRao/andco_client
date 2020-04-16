@@ -14,7 +14,7 @@
                 <button class="btn single-activity w-100" id="vivek{{i}}" data-toggle="collapse"
                     [attr.data-target]="'#collapseOne' + i" aria-controls="collapseOne" (click)="current = i"
                     tooltipClass="my-custom-class" ngbTooltip="{{key}}">
-                    {{key}} {{current}}
+                    {{key}}
                 </button>
                 <div id="collapseOne{{i}}" class="collapse" [class.collapse]='current !=i' aria-labelledby="headingOne"
                     data-parent="#accordion">
