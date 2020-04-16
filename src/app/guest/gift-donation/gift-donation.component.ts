@@ -36,6 +36,7 @@ export class GiftDonationComponent implements OnInit {
   ngOnChanges(changes: SimpleChange) {
     console.log("cahnges of cart items", changes);
 
+    // if(changes.cartItems)
     this.sub = this.activated.params.subscribe(param => {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
@@ -50,7 +51,7 @@ export class GiftDonationComponent implements OnInit {
 
   displayAddress() {
     console.log("donation added", this.donation)
-    this.isLoad = true
+    // this.isLoad = true
     let addDonation = {
       eventId: this.hashTag,
       donation: this.donation,
@@ -61,8 +62,7 @@ export class GiftDonationComponent implements OnInit {
       this.address.emit(3)
       // this.isLoad = false
     }, error => {
-
-      this.isLoad = false
+      // this.isLoad = false
       console.log("error while enter final payment", error)
     })
   }
