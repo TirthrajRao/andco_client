@@ -16,7 +16,7 @@ declare var $;
 export class EventProfilePicComponent implements OnInit {
 
   base64TrimmedURL: any;
-  base64DefaultURL: any; 
+  base64DefaultURL: any;
   generatedImage: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -37,12 +37,12 @@ export class EventProfilePicComponent implements OnInit {
   isLoad = false
   constructor(
     public eventService: EventService
-    ) { }
+  ) { }
 
   ngOnInit() {
 
     console.log(" ************ Yash Shukla ********* ")
-    console.log(" Image Url is this :::::" , this.profilePhoto.profile)
+    console.log(" Image Url is this :::::", this.profilePhoto.profile)
 
 
   }
@@ -100,8 +100,9 @@ export class EventProfilePicComponent implements OnInit {
     console.log("when click on profile tab", this.profilePhoto);
     this.eventId = this.profilePhoto.eventId
 
-    var reader = new FileReader();
-    reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
+    // var reader = new FileReader();
+    // reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
+    // this.getBase64ImageFromURL(this.profilePhoto.profile)
     // reader.readAsDataURL(this.profilePhoto.profile);
   }
   addFile(event) {
@@ -195,16 +196,16 @@ export class EventProfilePicComponent implements OnInit {
       observer.next(blob);
       observer.complete();
     });
-  } 
+  }
 
 
   openImageModal() {
 
-    console.log(" Yash Check this ", )
 
-    if(this.profilePhoto.profile){
+    if (this.profilePhoto.profile) {
       // First need to convert it into blob
-      
+      console.log(" Yash Check this ", this.profilePhoto.profile)
+
       $('#imageUpload').modal("show")
 
 
@@ -214,7 +215,7 @@ export class EventProfilePicComponent implements OnInit {
       // convert base64 to raw binary data held in a string
       function getBase64Image(img) {
 
-        console.log(" Image ", img)  
+        console.log(" Image ", img)
         var canvas = document.createElement("canvas");
         canvas.width = img.width;
         canvas.height = img.height;
@@ -228,38 +229,39 @@ export class EventProfilePicComponent implements OnInit {
 
       var base64 = getBase64Image(document.getElementById("profileImage"));
 
-      console.log(" Converted IMage== in base64", base64 )
+      console.log(" Converted IMage== in base64", base64)
+      // this.croppedImage = base64
       // console.log(" Url ", url)
 
       // this.getBase64ImageFromURL(url)
       // .subscribe((data:string) => {
-        //   this.base64TrimmedURL = data;
-        // });
+      //   this.base64TrimmedURL = data;
+      // });
 
-        // const date = new Date().valueOf();
-        // let text = '';
-        // const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        // for (let i = 0; i < 5; i++) {
-          //   text += possibleText.charAt(Math.floor(Math.random() *    possibleText.length) );
-          // }
-          // // Replace extension according to your media type like this 
-          // const imageName = date + '.' + text + '.jpeg';
-          // console.log(imageName);
-          // // call method that creates a blob from dataUri
-          // let imageBlob;
-          // this.dataURItoBlob(this.base64TrimmedURL).subscribe(data => {
-            //   imageBlob = data;
-            // });
-            // const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
-
-
-          }
-          else{
-            $('#imageUpload').modal("show")
-          }
-
-        }
+      // const date = new Date().valueOf();
+      // let text = '';
+      // const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      // for (let i = 0; i < 5; i++) {
+      //   text += possibleText.charAt(Math.floor(Math.random() *    possibleText.length) );
+      // }
+      // // Replace extension according to your media type like this 
+      // const imageName = date + '.' + text + '.jpeg';
+      // console.log(imageName);
+      // // call method that creates a blob from dataUri
+      // let imageBlob;
+      // this.dataURItoBlob(this.base64TrimmedURL).subscribe(data => {
+      //   imageBlob = data;
+      // });
+      // const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
 
 
+    }
+    else {
+      $('#imageUpload').modal("show")
+    }
 
-      }
+  }
+
+
+
+}
