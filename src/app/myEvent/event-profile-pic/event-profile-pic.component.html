@@ -2,7 +2,7 @@
 <div class="main-div">
     <div class="event-profile">
         <div class="profile-photo">
-            <img *ngIf="profilePhoto" src="{{path}}{{profilePhoto.profile}}">
+            <img *ngIf="profilePhoto" id="yash" src="{{path}}{{profilePhoto.profile}}">
             <!-- <img src="../../../assets/images/profile_img.png" alt="profile photo"> -->
             <img [src]="croppedImage" id="imageFilter" onerror="this.src='/assets/images/profile_img.png'">
         </div>
