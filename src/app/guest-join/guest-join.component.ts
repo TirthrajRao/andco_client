@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { LoginService } from '../services/login.service'
 import { AlertService } from '../services/alert.service';
 import { config } from '../config';
 @Component({
@@ -20,7 +21,8 @@ export class GuestJoinComponent implements OnInit {
     public router: Router,
     public activated: ActivatedRoute,
     public eventService: EventService,
-    public alertService: AlertService
+    public alertService: AlertService,
+    public loginSerivce: LoginService
   ) { }
 
   ngOnInit() {
@@ -62,7 +64,14 @@ export class GuestJoinComponent implements OnInit {
   }
 
   displayGuest() {
-    this.router.navigate(['/guest/', this.hashTag])
+    // this.router.navigate(['/guest/', this.hashTag])
+
+    let data = '/guest/' + this.hashTag
+    let output = this.loginSerivce.returnLogin(data);
+    if (output == true) {
+      this.router.navigate(['/guest/', this.hashTag])
+    }
+
   }
 
 }

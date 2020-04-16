@@ -44,6 +44,8 @@ export class EventGroupComponent implements OnInit {
   types;
   updateGroup
   groupIndex
+  activityIndex
+  updateActivities
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
@@ -71,23 +73,27 @@ export class EventGroupComponent implements OnInit {
 
   getActivity(event) {
     this.isDisable = true
-    console.log("he bhagvan ama avi jaje kaik", event);
+    console.log("he bhagvan ama avi jaje kaik", event.allActivities);
     // console.log(" Allevent Data ", event.allActivities)
     this.allActivities = event.allActivities
     this.selectedActivity = event.item
     this.selectedGroup = event.item.groups[0]
     this.groupIndex = 0
+    this.activityIndex = event.index
     // console.log("selected activity list", this.selectedActivity)
     // console.log("selected group==========", this.selectedGroup);
     this.activityDate = event.item.activity.activityStartDate
+    let female = []
+    let male = []
+    console.log("group name", this.selectedGroup)
+    this.updateGroup = this.selectedGroup._id
     if (this.selectedGroup.item) {
       this.isButton = true
-      let male = []
-      let female = []
-      console.log("call for already", this.selectedGroup);
+      // console.log("call for already", this.selectedGroup);
       this.selectedGroup.item.forEach((singleItem) => {
-        console.log("single item of group", singleItem);
-        this.updateGroup = singleItem._id
+        // console.log("single item of group", singleItem);
+        console.log("this is for update group", this.updateGroup);
+
         if (singleItem.itemGender == 'male') {
           singleItem.itemId = singleItem._id
           male.push(singleItem)
@@ -96,26 +102,42 @@ export class EventGroupComponent implements OnInit {
           female.push(singleItem)
         }
       })
-      this.selectedGroup['male'] = male
-      this.selectedGroup['female'] = female
-    } else {
-      console.log("call for not done", this.selectedGroup);
+    }
+    if (this.selectedGroup.male) {
+      console.log("call or not");
+      this.selectedGroup.male.forEach((maleOne) => {
+        if (!maleOne.itemId) {
+          male.push(maleOne)
+        }
+      })
+      // this.selectedGroup['male'] = male
+    }
+    if (this.selectedGroup.female) {
+      this.selectedGroup.female.forEach((femaleOne) => {
+        if (!femaleOne.itemId) {
+          female.push(femaleOne)
+        }
+      })
     }
     // console.log("date of selected", this.activityDate);
 
+    this.selectedGroup['male'] = male
+    this.selectedGroup['female'] = female
   }
 
   getGroup(event) {
     console.log("ama group details ave in main page", event);
+    console.log("when group change ======", this.allActivities);
+
     this.groupIndex = event.groupIndex
-    console.log("which one is active", this.groupIndex);
+    // console.log("which one is active", this.groupIndex);
     this.selectedGroup = event.item
+    let male = []
+    let female = []
     if (this.selectedGroup.item) {
-      let male = []
-      let female = []
-      console.log("call for already", this.selectedGroup);
+      // console.log("call for already", this.selectedGroup);
       this.selectedGroup.item.forEach((singleItem) => {
-        console.log("single item of group", singleItem);
+        // console.log("single item of group", singleItem);
         if (singleItem.itemGender == 'male') {
           singleItem.itemId = singleItem._id
           male.push(singleItem)
@@ -124,9 +146,26 @@ export class EventGroupComponent implements OnInit {
           female.push(singleItem)
         }
       })
-      this.selectedGroup['male'] = male
-      this.selectedGroup['female'] = female
     }
+    if (this.selectedGroup.male) {
+      console.log("call or not");
+      this.selectedGroup.male.forEach((maleOne) => {
+        if (!maleOne.itemId) {
+          male.push(maleOne)
+        }
+      })
+      // this.selectedGroup['male'] = male
+    }
+    if (this.selectedGroup.female) {
+      this.selectedGroup.female.forEach((femaleOne) => {
+        if (!femaleOne.itemId) {
+          female.push(femaleOne)
+        }
+      })
+    }
+
+    this.selectedGroup['male'] = male
+    this.selectedGroup['female'] = female
     // console.log("right now activated activity", this.selectedGroup);
   }
 
@@ -146,33 +185,33 @@ export class EventGroupComponent implements OnInit {
         this.finalArray.push(finalObject)
       })
     });
+
+    console.log("final array to send items of group to send ", this.finalArray);
     this.eventService.addGroup(this.finalArray, this.eventId)
-    .subscribe((response: any) => {
-      // console.log("Group added in new event", response)
-      this.isLoad = false
-      this.isDisable = false
-      this.alertervice.getSuccess(response.message)
+      .subscribe((response: any) => {
+        // console.log("Group added in new event", response)
+        this.isLoad = false
+        this.isDisable = false
+        this.alertervice.getSuccess(response.message)
 
-      let routerData = '/set-price/' + this.eventId
-      let output = this.loginService.returnLogin(routerData);
-      if (output == true) {
-        // this.router.navigate(['/myevent']);
-        this.router.navigate(['/set-price/' + this.eventId])
-      }
-
-
-      // this.router.navigate(['/set-price/' + this.eventId])
-    }, error => {
-      this.isDisable = false
-      this.isLoad = false
-      this.alertervice.getError(error.message)
-      // console.log("error while add groups in event", error)
-    })
+        let routerData = '/set-price/' + this.eventId
+        let output = this.loginService.returnLogin(routerData);
+        if (output == true) {
+          // this.router.navigate(['/myevent']);
+          this.router.navigate(['/set-price/' + this.eventId])
+        }
+        // this.router.navigate(['/set-price/' + this.eventId])
+      }, error => {
+        this.isDisable = false
+        this.isLoad = false
+        this.alertervice.getError(error.message)
+        // console.log("error while add groups in event", error)
+      })
   }
   updateGroups() {
     // console.log("for update group");
-          this.isDisable = true
-      this.isLoad = true
+    this.isDisable = true
+    // this.isLoad = true
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -208,7 +247,7 @@ export class EventGroupComponent implements OnInit {
       }
       // this.router.navigate(['/set-price/' + this.eventId])
     }, error => {
-            this.isDisable = false
+      this.isDisable = false
       this.isLoad = false
       console.log("error while update group", error);
     })
@@ -217,14 +256,14 @@ export class EventGroupComponent implements OnInit {
 
 
   editGroupDetails(activityId, singleGroup) {
-    // console.log("single group details", singleGroup);
+    console.log("single group details", singleGroup);
     let finalObject = {},
       female = [],
       male = []
     if (singleGroup.male) {
-      // console.log("call this or not");
+      console.log("call this or not", singleGroup.male);
       singleGroup.item.forEach((femaleItem) => {
-        console.log("female items ", femaleItem);
+        // console.log("female items ", femaleItem);
         if (femaleItem.itemGender == 'female') {
           femaleItem['itemId'] = femaleItem._id
           female.push(femaleItem)
@@ -238,14 +277,42 @@ export class EventGroupComponent implements OnInit {
           }
         }
       })
-      // console.log("female array ", finalObject);
+      singleGroup.male.forEach((newMale) => {
+        if (!newMale.itemId) {
+          console.log("this is first time while update for male", newMale);
+          male.push(newMale)
+          finalObject = {
+            activityId: activityId,
+            groupId: singleGroup._id,
+            groupName: singleGroup.groupName,
+            male: singleGroup.male,
+            female: singleGroup.female,
+            eventId: this.eventId
+          }
+        }
+      })
       return finalObject
+      // console.log("female array ", finalObject);
     } else if (singleGroup.female) {
+      console.log("female items call this");
       singleGroup.item.forEach((maleItem) => {
-        // console.log("female items ", maleItem);
         if (maleItem.itemGender == 'male') {
           maleItem['itemId'] = maleItem._id
           male.push(maleItem)
+          finalObject = {
+            activityId: activityId,
+            groupId: singleGroup._id,
+            groupName: singleGroup.groupName,
+            male: singleGroup.male,
+            female: singleGroup.female,
+            eventId: this.eventId
+          }
+        }
+      })
+      singleGroup.female.forEach((newFemale) => {
+        if (!newFemale.itemId) {
+          console.log("this is first time while update for male", newFemale);
+          male.push(newFemale)
           finalObject = {
             activityId: activityId,
             groupId: singleGroup._id,
@@ -313,28 +380,33 @@ export class EventGroupComponent implements OnInit {
   }
 
   addMaleItmes(itemDetails) {
-    // console.log("itemDetails", itemDetails)
     let maleObject = {
       itemName: itemDetails.itemName,
       itemPrice: itemDetails.itemPrice
     }
-    console.log("male is ready", maleObject);
     $('#addMaleItemModal').modal("hide")
-    // console.log("group name", this.selectedGroup);
-    this.selectedGroup.male.push(maleObject)
-
-    // if (maleObject) {
-    //   this.maleNewObject.emit(this.selectedGroup)
-    // }
-    console.log("which data is display", this.selectedActivity);
-    this.object = {
-      itemName: '',
-      itemPrice: Number
+    if (this.selectedGroup._id) {
+      // this.selectedActivity.groups[this.groupIndex].male.push(maleObject)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.push(maleObject)
+      // this.updateActivities = this.selectedActivity
+      console.log("final array of page", this.selectedActivity);
+      this.object = {
+        itemName: '',
+        itemPrice: Number
+      }
+      this.isButton = true
+      console.log("which data is display", this.selectedActivity);
     }
-    this.isButton = true
-    console.log("male details", this.selectedGroup.male);
-    console.log("final array in push", this.finalArray);
-    // this.selectedActivity.groups[this.groupIndex].male.push(maleObject)
+    else {
+      // console.log("group name", this.selectedGroup);
+      this.selectedGroup.male.push(maleObject)
+      this.object = {
+        itemName: '',
+        itemPrice: Number
+      }
+      this.isButton = true
+    }
+
 
   }
 
@@ -342,13 +414,20 @@ export class EventGroupComponent implements OnInit {
   removeMaleItem(data, index, groupId) {
     console.log("data to be removed", data);
     console.log("index of removed", groupId);
-    this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+
+    // if (data.itemId) {
+    // }
+    if (!data.itemId) {
+      this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+    }
+    console.log("group when remove from male", this.selectedActivity);
     if (data.itemId) {
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.indexOf(data), 1)
       this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
         console.log("item remove from data base", response);
       }, error => {
         console.log("error while remove items", error);
-
       })
     }
     // console.log("baki ni male items", this.selectedGroup.male);
@@ -356,22 +435,67 @@ export class EventGroupComponent implements OnInit {
 
   addFemaleItmes(data) {
     // console.log("list of female items", data);
+
     let femaleObject = {
       itemName: data.itemName,
       itemPrice: data.itemPrice
     }
-    this.selectedGroup.female.push(femaleObject)
-    this.femaleObject = {
-      itemName: '',
-      itemPrice: Number
-    }
     $('#addFemaleItemModal').modal("hide")
-    this.isButton = true
+    if (this.selectedGroup._id) {
+      // this.selectedActivity.groups[this.groupIndex].male.push(maleObject)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.push(femaleObject)
+      // this.updateActivities = this.selectedActivity
+      console.log("final array of page", this.selectedActivity);
+      this.femaleObject = {
+        itemName: '',
+        itemPrice: Number
+      }
+      this.isButton = true
+      console.log("which data is display", this.selectedActivity);
+    }
+    else {
+      // console.log("group name", this.selectedGroup);
+      this.selectedGroup.female.push(femaleObject)
+      this.femaleObject = {
+        itemName: '',
+        itemPrice: Number
+      }
+      this.isButton = true
+    }
+
+
+
+
+
+    // this.selectedGroup.female.push(femaleObject)
+    // this.femaleObject = {
+    //   itemName: '',
+    //   itemPrice: Number
+    // }
+    // this.isButton = true
   }
 
-  removeFemaleItem(data, index) {
-    this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
+  removeFemaleItem(data, index, groupId) {
+
+
+    // this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
     // console.log("rest of female items========", this.selectedGroup.female);
+
+
+
+    if (!data.itemId) {
+      this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
+    }
+    console.log("group when remove from male", this.selectedActivity);
+    if (data.itemId) {
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.indexOf(data), 1)
+      this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
+        console.log("item remove from data base", response);
+      }, error => {
+        console.log("error while remove items", error);
+      })
+    }
 
   }
 

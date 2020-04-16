@@ -103,7 +103,9 @@ export class HeaderComponent implements OnInit {
     console.log("hashtag and total event", this.hashTag, this.totalEvent);
     if (this.hashTag && this.totalEvent <= 1) {
       console.log("this is call in header");
-      $('#navigation-logo').addClass('navigation-hide');
+      setTimeout(() => {
+        $('#navigation-logo').addClass('navigation-hide');
+      }, 100)
       this.displayLogo = false
     }
 

@@ -2,6 +2,10 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { config } from '../../config'
 import { EventService } from '../../services/event.service';
 import { ImageCroppedEvent, base64ToFile, Dimensions, ImageTransform } from 'ngx-image-cropper';
+import { Observable, Observer } from 'rxjs';
+// import {} from 'ca';
+
+
 declare var $;
 
 @Component({
@@ -11,7 +15,9 @@ declare var $;
 })
 export class EventProfilePicComponent implements OnInit {
 
-
+  base64TrimmedURL: any;
+  base64DefaultURL: any;
+  generatedImage: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
@@ -34,6 +40,11 @@ export class EventProfilePicComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    console.log(" ************ Yash Shukla ********* ")
+    console.log(" Image Url is this :::::", this.profilePhoto.profile)
+
+
   }
 
 
@@ -88,6 +99,11 @@ export class EventProfilePicComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
     this.eventId = this.profilePhoto.eventId
+
+    // var reader = new FileReader();
+    // reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
+    // this.getBase64ImageFromURL(this.profilePhoto.profile)
+    // reader.readAsDataURL(this.profilePhoto.profile);
   }
   addFile(event) {
     console.log("profile photo path", this.eventId);
@@ -110,6 +126,14 @@ export class EventProfilePicComponent implements OnInit {
     }
   }
 
+  _handleReaderLoaded(e) {
+
+    let reader = e.target;
+    this.croppedImage = reader.result.substr(reader.result.indexOf(',') + 1);
+    // console.log("what is the value of it", base64result);
+
+  }
+
   saveImage() {
     $('#imageUpload').modal("hide")
     this.isLoad = true
@@ -123,8 +147,121 @@ export class EventProfilePicComponent implements OnInit {
     })
   }
 
-  openImageModal() {
-    $('#imageUpload').modal("show")
+
+  getBase64ImageFromURL(url: string) {
+    return Observable.create((observer: Observer<string>) => {
+      // create an image object
+      let img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = url;
+      if (!img.complete) {
+        // This will call another method that will create image from url
+        img.onload = () => {
+          observer.next(this.getBase64Image(img));
+          observer.complete();
+        };
+        img.onerror = (err) => {
+          observer.error(err);
+        };
+      } else {
+        observer.next(this.getBase64Image(img));
+        observer.complete();
+      }
+    });
   }
+
+  getBase64Image(img: HTMLImageElement) {
+    // We create a HTML canvas object that will create a 2d image
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    // This will draw image    
+    ctx.drawImage(img, 0, 0);
+    // Convert the drawn image to Data URL
+    var dataURL = canvas.toDataURL("image/png");
+    this.base64DefaultURL = dataURL;
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  }
+
+  dataURItoBlob(dataURI): Observable<Blob> {
+    return Observable.create((observer: Observer<Blob>) => {
+      const byteString = window.atob(dataURI);
+      const arrayBuffer = new ArrayBuffer(byteString.length);
+      const int8Array = new Uint8Array(arrayBuffer);
+      for (let i = 0; i < byteString.length; i++) {
+        int8Array[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([int8Array], { type: 'image/jpeg' });
+      observer.next(blob);
+      observer.complete();
+    });
+  }
+
+
+  openImageModal() {
+
+
+    if (this.profilePhoto.profile) {
+      // First need to convert it into blob
+      console.log(" Yash Check this ", this.profilePhoto.profile)
+
+      $('#imageUpload').modal("show")
+
+
+      let dataURI = this.path + this.profilePhoto.profile
+
+
+      // convert base64 to raw binary data held in a string
+      function getBase64Image(img) {
+
+        console.log(" Image ", img)
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+
+        console.log(" Data url ", dataURL)
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      }
+
+      var base64 = getBase64Image(document.getElementById("profileImage"));
+
+      console.log(" Converted IMage== in base64", base64)
+      // this.croppedImage = base64
+      // console.log(" Url ", url)
+
+      // this.getBase64ImageFromURL(url)
+      // .subscribe((data:string) => {
+      //   this.base64TrimmedURL = data;
+      // });
+
+      // const date = new Date().valueOf();
+      // let text = '';
+      // const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      // for (let i = 0; i < 5; i++) {
+      //   text += possibleText.charAt(Math.floor(Math.random() *    possibleText.length) );
+      // }
+      // // Replace extension according to your media type like this 
+      // const imageName = date + '.' + text + '.jpeg';
+      // console.log(imageName);
+      // // call method that creates a blob from dataUri
+      // let imageBlob;
+      // this.dataURItoBlob(this.base64TrimmedURL).subscribe(data => {
+      //   imageBlob = data;
+      // });
+      // const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
+
+
+    }
+    else {
+      $('#imageUpload').modal("show")
+    }
+
+  }
+
+
 
 }

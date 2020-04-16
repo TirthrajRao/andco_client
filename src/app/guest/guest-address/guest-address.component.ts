@@ -35,12 +35,15 @@ export class GuestAddressComponent implements OnInit {
   }
 
   getAddressDetails() {
-    this.isLoad = true
+    // this.isLoad = true
     this.eventService.getAddressDetails().subscribe((response: any) => {
+      // this.isLoad = false
       console.log("response of address if", response);
-      this.addressDetails = response.response.sendData
-      this.isLoad = false
+      if (response.response.sendData) {
+        this.addressDetails = response.response.sendData
+      }
     }, error => {
+      // this.isLoad = false
       console.log("error while get address", error)
     })
   }
@@ -58,6 +61,7 @@ export class GuestAddressComponent implements OnInit {
       console.log("response of enter address", response);
       this.displayAccount.emit(4)
     }, error => {
+      this.isLoad = false
       console.log("error while enter address", error)
     })
   }

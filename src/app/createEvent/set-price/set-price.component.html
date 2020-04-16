@@ -153,7 +153,7 @@
                                             ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}"
                                             style="cursor: pointer;" [min]="time">
                                         <!-- </span> -->
-                                        <ngx-material-timepicker #default (opened)="opened($event)">
+                                        <ngx-material-timepicker #default>
                                         </ngx-material-timepicker>
                                         <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors"
                                             class="invalid-feedback">
@@ -216,8 +216,8 @@
                         <!-- <button class="btn set-price-custom-button" >Submit</button> -->
                     </div>
                 </form>
-                <button class="btn set-price-custom-button float-left" *ngIf="setPriceDetails"
-                    (click)="backToGroup()">Back</button>
+                <button class="btn set-price-custom-button float-left" (click)="backToGroup()"
+                    [disabled]="isBack">Back</button>
                 <button class="btn set-price-custom-button float-right"
                     (click)="setPriceDetails? updateSetPrice():  setPrice()" [disabled]="isDisable">Submit</button>
             </div>

@@ -12,7 +12,7 @@ declare var $;
 export class GroupSliderComponent implements OnInit {
 
   @Input('selectedActivity') selectedActivity;
-  @Input('newMaleObject') newOneMaleObject;
+  @Input('updateActivity') newActivityArray
   @Output() firstGroup: EventEmitter<any> = new EventEmitter<any>();
   @Output() singleGroup: EventEmitter<any> = new EventEmitter<any>()
   isDisable = false
@@ -24,6 +24,7 @@ export class GroupSliderComponent implements OnInit {
   selectedIndex: any;
   changeName
   notChangeGroupName
+  displayActivity: any
   constructor(
     private activatedRouter: ActivatedRoute,
     private eventService: EventService,
@@ -34,6 +35,7 @@ export class GroupSliderComponent implements OnInit {
   ngOnInit() {
     // console.log("selected activity id in group page", this.selectedActivity);
     if (this.selectedActivity) {
+      this.displayActivity = this.selectedActivity
       this.isDisable = true;
       //   // this.initGroupSlider()
     }
@@ -53,10 +55,25 @@ export class GroupSliderComponent implements OnInit {
         this.initGroupSlider()
       }, 50)
     }
+    console.log("what is the value of display activity", this.displayActivity);
+
+    if (changes.newActivityArray && changes.newActivityArray.currentValue) {
+      this.displayActivity = []
+      this.displayActivity = changes.newActivityArray.currentValue
+      console.log("check this", this.displayActivity);
+      this.$slideContainter = $('.group-slider');
+      this.$slideContainter.slick('unslick');
+      // this.selectedActivity.groups
+      setTimeout(() => {
+        this.initGroupSlider()
+      }, 50)
+    }
   }
 
 
   sendData(item, index) {
+    console.log("what is in main array", this.displayActivity);
+
     console.log(" item ", item, index)
     this.selectedIndex = index
     this.singleGroup.emit({ item: item, groupIndex: index })
@@ -183,7 +200,7 @@ export class GroupSliderComponent implements OnInit {
   }
 
   closeModel() {
-    console.log("name of group shold not be none", this.changeName);
+    // console.log("name of group shold not be none", this.changeName);
     let message = document.getElementById('message');
     if (this.editGroupName.groupName == "") {
       console.log("when model close");
@@ -193,6 +210,8 @@ export class GroupSliderComponent implements OnInit {
       if (this.changeName != undefined) {
         console.log("it is working good");
         this.editGroupName.groupName = this.notChangeGroupName
+        $('#editDeleteModal').modal("hide")
+      } else {
         $('#editDeleteModal').modal("hide")
       }
     }
@@ -216,7 +235,7 @@ export class GroupSliderComponent implements OnInit {
 
   editGroupNameOf() {
     console.log("total list of activity", this.editGroupName);
-    this.singleGroup.emit(this.editGroupName)
+    // this.singleGroup.emit(this.editGroupName)
     $('#editDeleteModal').modal("hide")
   }
   deleteGroup() {
@@ -234,8 +253,10 @@ export class GroupSliderComponent implements OnInit {
         setTimeout(() => {
           this.initGroupSlider()
         }, 50)
-        this.singleGroup.emit(this.selectedActivity.groups[0])
+        console.log("after remove group", this.selectedActivity);
+        this.singleGroup.emit({ item: this.selectedActivity.groups[0], groupIndex: 0 })
         this.selectedIndex = 0
+
       }, error => {
         console.log("error while remove group", error);
       })
@@ -248,7 +269,7 @@ export class GroupSliderComponent implements OnInit {
       setTimeout(() => {
         this.initGroupSlider()
       }, 50)
-      this.singleGroup.emit(this.selectedActivity.groups[0])
+      this.singleGroup.emit({ item: this.selectedActivity.groups[0], groupIndex: 0 })
       this.selectedIndex = 0
     }
   }
