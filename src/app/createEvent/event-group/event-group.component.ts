@@ -211,7 +211,8 @@ export class EventGroupComponent implements OnInit {
   updateGroups() {
     // console.log("for update group");
     this.isDisable = true
-    // this.isLoad = true
+    this.isLoad = true
+    this.isButton = false
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
       singleActivityDetails.groups.forEach((singleGroup) => {
@@ -239,6 +240,7 @@ export class EventGroupComponent implements OnInit {
       this.alertervice.getSuccess(response.message)
       this.isDisable = false
       this.isLoad = false
+      this.isButton = true
       let routerData = '/set-price/' + this.eventId
       let output = this.loginService.returnLogin(routerData);
       if (output == true) {

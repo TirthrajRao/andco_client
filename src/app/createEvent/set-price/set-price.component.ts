@@ -101,6 +101,7 @@ export class SetPriceComponent implements OnInit {
   }
 
   getBankDetails() {
+    this.isLoad = true
     this.loginService.getBankDetails().subscribe((response: any) => {
       console.log("details of bank", response);
       this.totalAccount = response.data
@@ -142,9 +143,9 @@ export class SetPriceComponent implements OnInit {
   }
 
   getSetPriceDetailsOfEvent(eventId) {
-
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
       // console.log("response of set price", response);
+      this.isLoad = false
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
         this.isBack = false
@@ -196,6 +197,7 @@ export class SetPriceComponent implements OnInit {
         this.isBack = true
       }
     }, error => {
+      this.isLoad = false
       console.log("error while get price ", error);
 
     })

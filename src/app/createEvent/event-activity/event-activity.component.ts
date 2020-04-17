@@ -300,6 +300,7 @@ export class EventActivityComponent implements OnInit {
    * To get all details of particular event 
    */
   viewDetailsOfEvent(eventId) {
+    this.isLoad = true
     this._eventService.getActivityDetails(eventId).subscribe((response: any) => {
       console.log("response of acitivty", response);
       this.isDisable = false
@@ -319,9 +320,10 @@ export class EventActivityComponent implements OnInit {
         // this.currentDay = this.eventActivities[0].activityStartDate
         // console.log("date picker validation", this.currentDay);
         this.getActivityFrom(this.eventActivities)
+        this.isLoad = false
       } else {
         console.log("log this or not");
-
+        this.isLoad = false
         // this.currentDay = new Date()
       }
       // console.log("display time of activity", this.activityForm.value);
