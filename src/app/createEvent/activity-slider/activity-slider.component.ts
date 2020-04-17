@@ -20,6 +20,7 @@ export class ActivitySliderComponent implements OnInit {
   activityDetails: any = []
   allActivities: any
   selectedIndex
+  isLoad = false
   constructor(
     private route: ActivatedRoute,
     public eventService: EventService
@@ -36,6 +37,7 @@ export class ActivitySliderComponent implements OnInit {
   }
 
   getEventDetails(eventId) {
+    this.isLoad = true
     this.eventService.getEventDetails(eventId).subscribe((res: any) => {
       console.log("details of activity", res)
       this.eventHashTag.emit(res.data.hashTag)
@@ -73,7 +75,9 @@ export class ActivitySliderComponent implements OnInit {
       setTimeout(() => {
         this.initSlickSlider()
       }, 50)
+      this.isLoad = false
     }, error => {
+      this.isLoad = false
       // console.log("error while details", error);
 
     })

@@ -51,7 +51,7 @@ export class GiftDonationComponent implements OnInit {
 
   displayAddress() {
     console.log("donation added", this.donation)
-    // this.isLoad = true
+    this.isLoad = true
     let addDonation = {
       eventId: this.hashTag,
       donation: this.donation,
@@ -59,8 +59,8 @@ export class GiftDonationComponent implements OnInit {
     this.eventId
     this.eventService.addDonation(addDonation).subscribe((response) => {
       console.log("final cart with total", response);
+      this.isLoad = false
       this.address.emit(3)
-      // this.isLoad = false
     }, error => {
       // this.isLoad = false
       console.log("error while enter final payment", error)

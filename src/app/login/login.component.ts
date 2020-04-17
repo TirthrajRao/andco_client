@@ -41,13 +41,13 @@ export class LoginComponent implements OnInit {
       // console.log("data of click", data)
     })
     this.socialLoginService.isLoad.subscribe(data => {
-      // console.log("details of loader", data);
+      console.log("details of loader", data);
       if (data == 'true') {
         this.isLoad = true
-      } else {
+      }
+      if (data == 'false') {
         this.isLoad = false
       }
-
     })
 
     if (this._loginService.currentUserValue) {

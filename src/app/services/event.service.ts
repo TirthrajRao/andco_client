@@ -164,7 +164,7 @@ export class EventService {
   }
 
   getAddressDetails() {
-    return this.http.get(config.baseApiUrl + "/address")
+    return this.http.get(config.baseApiUrl + "/addressDetails")
   }
 
 

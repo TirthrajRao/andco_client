@@ -27,8 +27,8 @@ export class BankDetailsComponent implements OnInit {
   displayDetails
   $sliderContainer
   $slider
-  bankList:any
-  cardList:any
+  bankList: any
+  cardList: any
   bankSelected
   coronaCard
   coronaBank
@@ -104,7 +104,7 @@ export class BankDetailsComponent implements OnInit {
       this.bankList = changes.totalAmount.currentValue.bankDetail
       this.cardList = changes.totalAmount.currentValue.cardDetails
       console.log("list of bank", this.bankList);
-      
+
       if (this.bankList && (changes.bankAccount && !changes.bankAccount.currentValue)) {
         this.$sliderContainer = $('.bank-slider');
         this.$sliderContainer.slick('unslick');
@@ -199,6 +199,8 @@ export class BankDetailsComponent implements OnInit {
 
 
   displayBankAccount(account) {
+    console.log("what is the value of account of bank", this.bankList);
+
     this.coronaBank = account._id
     if (this.bankList && this.bankList.length) {
       this.isBankSelected = true
