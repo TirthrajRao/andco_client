@@ -108,6 +108,7 @@ export class SetPriceComponent implements OnInit {
       // this.bankTotal = response.data.bankDetail
       // this.cardTotal = response.data.cardDetails
     }, error => {
+      this.isLoad = false
       console.log("error while get details", error);
 
     })
