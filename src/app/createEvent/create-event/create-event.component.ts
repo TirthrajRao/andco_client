@@ -63,6 +63,10 @@ export class CreateEventComponent implements OnInit {
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
     {
+      themeName: 'Default',
+      path: 'assets/images/guest.png'
+    },
+    {
       themeName: 'floral',
       path: 'assets/images/floral.png'
     },
