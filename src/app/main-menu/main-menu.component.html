@@ -1,16 +1,15 @@
-<!-- <section class="menu-main single" *ngIf="index == 0">
-    <app-header></app-header>
+<section class="menu-main single" *ngIf="index == 0">
     <div class="page-content">
+        <div class="hello-text">
+            <h2 class="tooltip-class" tooltipClass="my-custom-class" ngbTooltip="{{userName}}">
+                <span>{{userName}}, you're in yayyy !!</span>
+            </h2>
+        </div>
         <div class="menu-links-one">
-            <div class="hello-text">
-                <h2 class="tooltip-class" tooltipClass="my-custom-class" ngbTooltip="helllo">
-                    <span>{{userName}}, you're in yayyy !!</span>
-                </h2>
-            </div>
-            <button class="btn" (click)= "displaySecondMenu(index)">new event</button>
+            <button class="btn" (click)="displaySecondMenu(index)">new event</button>
         </div>
     </div>
-</section> -->
+</section>
 
 <section class="menu-main double">
     <div class="page-content flex-column">
