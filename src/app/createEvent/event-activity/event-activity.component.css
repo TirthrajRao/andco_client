@@ -174,10 +174,6 @@ button.remove {
 .event-next-btn {
     position: absolute;
     bottom: 20px;
-    margin: auto;
-    display: block;
-    right: 20px;
-    text-align: center;
 }
 
 .event-next-btn button {
