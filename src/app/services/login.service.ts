@@ -13,6 +13,7 @@ export class LoginService {
   bankDetails = "abc";
   isUserLoggedIn: false;
   private subject = new Subject<any>();
+  private newMenu = new Subject<any>();
   private openBank = new Subject<any>();
   private openBankNew = new BehaviorSubject<any>(this.bankDetails)
   sharedBankDetails = this.openBankNew.asObservable();
@@ -81,7 +82,7 @@ export class LoginService {
    * Login for guest and celebrant  
    */
   login(userCredentials) {
-    // console.log("helloooooooo", userCredentials);w
+    console.log("helloooooooo", userCredentials);
     const eventToken = JSON.parse(sessionStorage.getItem('guestHashTag'));
     // console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
@@ -90,6 +91,7 @@ export class LoginService {
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
           console.log("login user detaislllllllllll for link======", user);
+          sessionStorage.setItem('isMenu', JSON.stringify(0));
           if (user && user.data.accessToken) {
             sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
@@ -100,12 +102,10 @@ export class LoginService {
     else {
       return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
         .pipe(map(user => {
-          // console.log("login user detaislllllllllll======", user);
+          console.log("login user detaislllllllllll======", user);
+          sessionStorage.setItem('isMenu', JSON.stringify(0));
+
           let token = user.data.accessToken
-          // this.curl.post( https://timezoneapi.io/api/ip/?token=TOKEN)
-          // this.http.get('https://timezoneapi.io/api/ip/?token=CSnkwdUAziXs').subscribe(res => {
-          // console.log("give me time ", res);
-          // })
           if (user && user.data.accessToken) {
             sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
@@ -202,7 +202,15 @@ export class LoginService {
   getObservableResponse() {
     return this.subject.asObservable();
   }
+  returnMenu(value) {
+    this.newMenu.next({ menu: value })
+    sessionStorage.setItem('isMenu', JSON.stringify(1));
+    return true;
+  }
 
+  getNewMenu() {
+    return this.newMenu.asObservable();
+  }
 
   openBankModel(data) {
     console.log("in service");

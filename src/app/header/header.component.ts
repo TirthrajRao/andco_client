@@ -139,7 +139,9 @@ export class HeaderComponent implements OnInit {
     console.log("out put", output);
     if (output == true) {
       this.router.navigate(['/menu']);
+      let displaySecondMenu = this._loginService.returnMenu(1)
     }
+
   }
   // 434040
   getHeaderColor() {

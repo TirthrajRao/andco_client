@@ -125,6 +125,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         console.log("data of invalid user", data);
         sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
+        sessionStorage.setItem('isDisplayName', JSON.stringify(true))
         let firstName = data.data.firstName
         this.userName = firstName;
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));

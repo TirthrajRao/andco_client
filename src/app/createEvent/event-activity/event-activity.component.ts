@@ -109,8 +109,23 @@ export class EventActivityComponent implements OnInit {
     this.displayTime[i] = (new Date(event.value))
     for (let i = 0; i < this.activityForm.value.activity.length; i++) {
       this.activityForm.value.activity[i].activityStartDate = moment($('#activityStartDate' + i).val()).format('YYYY-MM-DD')
+      this.displayActivity = true
     }
+
     console.log("value of form group", this.activityForm);
+    const keys = Object.keys(this.activityForm.controls);
+    let form = this.activityForm.controls;
+    keys.every((element, value) => {
+      if (form[element].status == 'INVALID') {
+        // flag = 1;
+        this.displayActivity = false
+        return false
+      }
+      else {
+        this.displayActivity = true
+        return true
+      }
+    });
 
   }
 
@@ -183,6 +198,7 @@ export class EventActivityComponent implements OnInit {
    */
   removeActivityField(i: number, id): void {
     console.log("id of activity", id);
+    this.displayActivity = true
     if (!id.activityId) {
       const control = <FormArray>this.activityForm.controls.activity;
       control.removeAt(i);
@@ -233,7 +249,7 @@ export class EventActivityComponent implements OnInit {
     }));
     console.log("length of form", this.activityFormData.controls);
 
-
+    this.displayActivity = false
     console.log("form group total item", this.activityForm);
     if (control.length <= 2) {
       let secondDate = $('#activityStartDate' + (control.length - 2)).val()
@@ -255,17 +271,31 @@ export class EventActivityComponent implements OnInit {
 
   checkActivityName(event, dynamic) {
     let arrayName = this.activityName.includes(event.target.value)
-
+    console.log("what is in array name", arrayName);
     let message = document.getElementById(dynamic);
     if (arrayName == true) {
       this.displayActivity = false
-
       message.innerHTML = "Activity Name must be unique";
     } else if (arrayName == false) {
-      this.displayActivity = true
+      const keys = Object.keys(this.activityForm.controls);
+      let form = this.activityForm.controls;
+      keys.every((element, value) => {
+        console.log("what is in element", this.activityForm);
+        if (form[element].status == 'INVALID') {
+          // flag = 1;
+          this.displayActivity = false
+          return false
+        }
+        else {
+          this.displayActivity = true
+          return true
+        }
+      });
+      // this.displayActivity = false
       message.innerHTML = ""
 
     }
+
   }
 
 
@@ -305,13 +335,14 @@ export class EventActivityComponent implements OnInit {
       console.log("response of acitivty", response);
       this.isDisable = false
       if (response && !response.data.message) {
-        console.log("=============");
         this.eventActivities = response.data
         console.log("response of activity", this.eventActivities);
         this.eventActivities.forEach((element, index) => {
           console.log("elemtnt", element, index);
+          this.activityName.push(element.activityName)
           this.displayTime.push(element.activityStartDate)
         });
+        console.log("=============", this.activityName);
         var dates = this.eventActivities.map(function (x) { return new Date(x.activityStartDate); })
         var earliest = new Date(Math.min.apply(null, dates));
         console.log("ear =====>", earliest);
