@@ -387,6 +387,16 @@ export class EventActivityComponent implements OnInit {
     })
   }
 
+  backToEvent() {
+
+    let routerData = '/editEvent/' + this.eventId
+    let output = this.loginService.returnLogin(routerData);
+    if (output == true) {
+      // this.router.navigate(['/myevent']);
+      this.router.navigate(['/editEvent/' + this.eventId])
+    }
+  }
+
 
   openDatePicker(i) {
     this.datePicker.open();
