@@ -89,9 +89,10 @@
                 <div class="add-items">
                     <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName" required>
                     <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)" (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
+                    <input type="text" placeholder="Enter Description">
                 </div>
             </div>
-            <div class="modal-footer text-center">
+            <div class="modal-footer pt-0 text-center">
                 <button type="submit" class="btn add-btn" [disabled]="!isModel" (click)="addMaleItmes(object)">Add</button>
             </div>
         </div>
@@ -112,9 +113,10 @@
                 <div class="add-items">
                     <input type="text" placeholder="Enter item name" [(ngModel)]="femaleObject.itemName">
                     <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)" (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
+                    <input type="text" placeholder="Enter Description">
                 </div>
             </div>
-            <div class="modal-footer text-center">
+            <div class="modal-footer pt-0 text-center">
                 <button type="button" class="btn add-btn" data-dismiss="modal" (click)="addFemaleItmes(femaleObject)" [disabled]="!isModel">Add</button>
             </div>
         </div>
