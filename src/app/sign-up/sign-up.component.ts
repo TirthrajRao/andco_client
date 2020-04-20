@@ -98,9 +98,11 @@ export class SignUpComponent implements OnInit {
       let data = {}
       data['email'] = emailId
       data['password'] = JSON.parse(originalText)
+      // data['flag'] = true
       this._loginService.login(data).subscribe((response: any) => {
         // this.isLoad = false
         console.log("response of new sign up after login", response)
+        sessionStorage.setItem('isDisplayName', JSON.stringify(false))
         let firstName = response.data.firstName
         this.userName = firstName;
         sessionStorage.setItem('eventList', JSON.stringify(response.data.totalEvent))

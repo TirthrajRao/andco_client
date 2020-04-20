@@ -12,6 +12,7 @@ declare var $;
 export class MainMenuComponent implements OnInit {
   userName = JSON.parse(sessionStorage.getItem('userName'));
   eventOfUser = JSON.parse(sessionStorage.getItem('userEvent'));
+  isDisplay = JSON.parse(sessionStorage.getItem('isDisplayName'));
   index = 0
   constructor(
     public _loginService: LoginService,
@@ -24,7 +25,7 @@ export class MainMenuComponent implements OnInit {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-    // console.log("username", this.eventOfUser)
+    console.log("username", this.isDisplay)
     if (this.eventOfUser == 'false') {
       this.index = 0
     } else if (this.eventOfUser == 'true') {
