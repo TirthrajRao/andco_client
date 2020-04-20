@@ -1,24 +1,24 @@
-<section class="menu-main single" *ngIf="index == 0">
+<section class="menu-main single" *ngIf="isMenu === 0">
     <div class="page-content">
         <div class="hello-text">
             <h2 class="tooltip-class" tooltipClass="my-custom-class" ngbTooltip="{{userName}}">
-                <span>{{userName}}, you're in yayyy !!</span>
+                <span *ngIf="isDisplay == false">Yayyy !! {{userName}}, you're in</span>
+                <span *ngIf="isDisplay == true">Good to see you {{userName}} </span>
             </h2>
         </div>
         <div class="menu-links-one">
-            <button class="btn" (click)="displaySecondMenu(index)">new event</button>
+            <button class="btn" (click)="getHeader('/createEvent')">new event</button>
         </div>
     </div>
 </section>
 
-<section class="menu-main double">
+<section class="menu-main double" *ngIf="isMenu === 1">
     <div class="page-content flex-column">
-
         <div class="menu-main-box">
             <div class="hello-text">
                 <h2 class="tooltip-class" tooltipClass="my-custom-class" ngbTooltip="{{userName}}">
                     <span *ngIf="isDisplay == false">Yayyy !! {{userName}}, you're in </span>
-                    <span *ngIf="isDisplay == true">Good to see you  {{userName}} </span>
+                    <span *ngIf="isDisplay == true">Good to see you {{userName}} </span>
                 </h2>
             </div>
             <div class="menu-links">

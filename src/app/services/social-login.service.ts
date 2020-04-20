@@ -68,6 +68,7 @@ export class SocialLoginService {
         console.log("hash tag for guest", this.eventIdWithLogin)
         sessionStorage.setItem('isDisplayName', JSON.stringify(data.data.newUser))
         sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
+        sessionStorage.setItem('isMenu', JSON.stringify(0));
         let firstName = data.data.firstName
         this.userName = firstName;
         console.log("response of login user using google", data);
@@ -119,7 +120,7 @@ export class SocialLoginService {
             sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             sessionStorage.setItem('userName', JSON.stringify(this.userName));
             sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
-
+            sessionStorage.setItem('isMenu', JSON.stringify(0));
             if (this.eventIdWithLogin) {
               this.isLoad.emit('false')
               this.isUserLoggedIn = true;
