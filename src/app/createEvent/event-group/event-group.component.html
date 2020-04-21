@@ -99,7 +99,8 @@
                     <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)"
                         (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
-                    <input type="text" placeholder="Enter Description" [(ngModel)]="object.description">
+                    <input type="text" placeholder="Enter Description" (keydown)="maleItemAdd($event)"
+                        [(ngModel)]="object.description">
                 </div>
             </div>
             <div class="modal-footer pt-0 text-center">
@@ -126,7 +127,8 @@
                     <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)"
                         (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
-                    <input type="text" placeholder="Enter Description" [(ngModel)]="femaleObject.description">
+                    <input type="text" placeholder="Enter Description" [(ngModel)]="femaleObject.description"
+                        (keydown)="feMaleItemAdd($event)">
                 </div>
             </div>
             <div class="modal-footer pt-0 text-center">
@@ -152,7 +154,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{discriptionName}}</p>
+                <p *ngIf="discriptionName">{{discriptionName}}</p>
+                <p *ngIf="!discriptionName">Sorry, no description in this item</p>
             </div>
         </div>
     </div>
@@ -171,7 +174,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{discriptionName}}</p>
+                <p *ngIf="discriptionName">{{discriptionName}}</p>
+                <p *ngIf="!discriptionName">Sorry, no description in this item</p>
             </div>
         </div>
     </div>

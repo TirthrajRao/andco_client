@@ -17,6 +17,8 @@ export class MyEventActivityComponent implements OnInit {
   selectedActivityId
   itemNamePrint: any = [];
   groupIndex
+  discriptionName
+  discriptionItem
   constructor() { }
 
   ngOnInit() {
@@ -74,5 +76,15 @@ export class MyEventActivityComponent implements OnInit {
     this.selectedGender = event.target.value
     this.itemNamePrint = _.filter(this.totalItem, { 'itemGender': this.selectedGender });
     console.log("when click on female", this.itemNamePrint);
+  }
+
+
+
+  openModel(item) {
+    console.log("what is in item", item);
+    this.discriptionItem = item.itemName
+    this.discriptionName = item.description
+    $('#infoItemModal').modal("show")
+
   }
 }

@@ -575,6 +575,20 @@ export class EventGroupComponent implements OnInit {
       this.isModel = false
     }
   }
+  maleItemAdd(event) {
+    console.log("call this", event)
+    if (event.key === "Enter") {
+      this.addMaleItmes(this.object)
+      this.isModel = false
+    }
+  }
+  feMaleItemAdd(event) {
+    if (event.key === "Enter") {
+      // console.log("call this")
+      this.addFemaleItmes(this.femaleObject)
+      this.isModel = false
+    }
+  }
 
   numberValidationForMale(event) {
 
