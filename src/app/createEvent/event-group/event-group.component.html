@@ -55,7 +55,7 @@
                                         <li *ngFor="let item of selectedGroup.female; let i=index">
                                             <h5 class="float-left item-name">{{item.itemName}}</h5>
                                             <h5 class="float-right item-price">
-                                                {{ item.itemPrice | currency:'&#x20A6;': true }}</h5>
+                                                {{ item.itemPrice | currency:'&#x20A6; &nbsp;': true }}</h5>
 
                                             <div class="info">
                                                 <a data-toggle="modal" data-target="#descriptionModalFemale"
