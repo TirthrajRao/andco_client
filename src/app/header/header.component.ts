@@ -1,8 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, Input, SimpleChanges, HostListener, } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, RouterEvent, RoutesRecognized } from '@angular/router';
 // import { filter } from 'rxjs/operators';
+import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { filter, pairwise } from 'rxjs/operators';
 import { LoginService } from '../services/login.service';
+import { MatDialog } from '@angular/material';
+import { Observable } from 'rxjs/internal/Observable';
 // import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/pairwise';
 declare var $;
@@ -58,7 +61,9 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     public _change: ChangeDetectorRef,
-    public _loginService: LoginService
+    public _loginService: LoginService,
+    public dialog: MatDialog
+
   ) {
     this._loginService.getObservableResponse().subscribe(res => {
       console.log("response in header again", res);
@@ -108,19 +113,6 @@ export class HeaderComponent implements OnInit {
       }, 100)
       this.displayLogo = false
     }
-
-    // this.router.events
-    //   .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
-    //   .subscribe((events: RoutesRecognized[]) => {
-    //     console.log("event of url find", events)
-    //     this.currentUrl = events[1].urlAfterRedirects
-    //     console.log('current url', this.currentUrl);
-    //     if (this.currentUrl == '/menu') {
-    //       this.isDisplayMenu = false
-    //     } else {
-    //       this.isDisplayMenu = true
-    //     }
-    //   });
     console.log("login user name in heaedr", this.router.url)
     if (this.router.url) {
       this.currentUrl = this.router.url
@@ -138,11 +130,31 @@ export class HeaderComponent implements OnInit {
     let output = this._loginService.returnLogin(event);
     console.log("out put", output);
     if (output == true) {
-      this.router.navigate(['/menu']);
-      let displaySecondMenu = this._loginService.returnMenu(1)
+      //
+      if (!this.router.url.includes('/menu')) {
+        console.log("call this or not");
+        let data
+        let displaySecondMenu = this._loginService.returnMenu(1)
+        var addBank = this.openDialog(MainMenuComponent, data).subscribe((response) => {
+          console.log("what is in response", response);
+        })
+      } else {
+
+        console.log("else part");
+        this.router.navigate(['/menu']);
+        let displaySecondMenu = this._loginService.returnMenu(1)
+      }
     }
 
   }
+
+
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data, width: '700px', height: '700px' });
+    return dialogRef.afterClosed();
+  }
+
   // 434040
   getHeaderColor() {
     if (this.currentUrl.includes('createEvent')) {

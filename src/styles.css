@@ -12,6 +12,10 @@ body {
     color: #D2A0A1;
 }
 
+.mat-dialog-container{
+    overflow:  hidden !important;
+    }
+
 h1,
 h2,
 h3,
