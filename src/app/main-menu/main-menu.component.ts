@@ -18,6 +18,7 @@ export class MainMenuComponent implements OnInit {
   isMenu = JSON.parse(sessionStorage.getItem('isMenu'));
   data: any;
   dialogRef: MatDialogRef<unknown, unknown>;
+  isClosed = false
   constructor(
     public _loginService: LoginService,
     public router: Router,
@@ -25,11 +26,15 @@ export class MainMenuComponent implements OnInit {
     // public dialogRef: MatDialogRef<MainMenuComponent>,
     private injector: Injector
 
+
     // @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     if (!this.router.url.includes('/menu')) {
       this.data = this.injector.get(MAT_DIALOG_DATA)
       this.dialogRef = this.injector.get(MatDialogRef)
+      this.dialogRef.disableClose = true;
+      this.isClosed = true
+      // this.dialogRef.close('newOne');
     }
 
     this._loginService.getNewMenu().subscribe(res => {
@@ -100,6 +105,6 @@ export class MainMenuComponent implements OnInit {
   }
 
   closeModel() {
-    this.dialogRef.close();
+    this.dialogRef.close('newOne');
   }
 }

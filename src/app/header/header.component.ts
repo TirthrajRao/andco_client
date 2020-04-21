@@ -137,9 +137,19 @@ export class HeaderComponent implements OnInit {
         let displaySecondMenu = this._loginService.returnMenu(1)
         var addBank = this.openDialog(MainMenuComponent, data).subscribe((response) => {
           console.log("what is in response", response);
+          console.log("when model is close", this.router.url);
+          if (response == 'newOne') {
+            this.currentUrl = this.router.url
+            this.isDisplayMenu = true
+            // if (this.currentUrl == '/menu' || this.currentUrl == '/guest/' + this.hashTag) {
+            //   this.isDisplayMenu = false
+            // } else {
+            //   this.isDisplayMenu = true
+            // }
+          }
+
         })
       } else {
-
         console.log("else part");
         this.router.navigate(['/menu']);
         let displaySecondMenu = this._loginService.returnMenu(1)
@@ -151,7 +161,7 @@ export class HeaderComponent implements OnInit {
 
   openDialog(someComponent, data = {}): Observable<any> {
     console.log("OPENDIALOG", "DATA = ", data);
-    const dialogRef = this.dialog.open(someComponent, { data, width: '700px', height: '700px' });
+    const dialogRef = this.dialog.open(someComponent, { data, width: '100vw', height: '100vh' ,maxWidth:'100vw'});
     return dialogRef.afterClosed();
   }
 
