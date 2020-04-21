@@ -47,7 +47,7 @@
                         class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             <div class="event-next-btn w-100 d-inline-block mt-3">
-                <button class="btn back float-left ml-3">Back</button>
+                <button class="btn back float-left ml-3" (click)="backToEvent()">Back</button>
                 <button class="btn next float-right mr-3" (click)="eventActivities ? updateActivity(): addActivity()" [disabled]="activityForm.invalid || isDisable">Next
                 </button>
             </div>
