@@ -29,11 +29,13 @@ export class EventGroupComponent implements OnInit {
   selectedGroup: any
   object = {
     itemName: '',
-    itemPrice: Number
+    itemPrice: Number,
+    description: ''
   }
   femaleObject = {
     itemName: '',
-    itemPrice: Number
+    itemPrice: Number,
+    description: ''
   }
   displayItems: any;
   activityDate
@@ -42,10 +44,12 @@ export class EventGroupComponent implements OnInit {
   isModel = false
   eventHashTag
   types;
-  updateGroup
+  updateGroup = false
   groupIndex
   activityIndex
   updateActivities
+  discriptionName
+  discriptionItem
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
@@ -74,26 +78,28 @@ export class EventGroupComponent implements OnInit {
   getActivity(event) {
     this.isDisable = true
     console.log("he bhagvan ama avi jaje kaik", event.allActivities);
-    // console.log(" Allevent Data ", event.allActivities)
+    event.allActivities.forEach((singleOne) => {
+      console.log("single one", singleOne);
+      singleOne.groups.forEach((oldGroup) => {
+        if (oldGroup._id) {
+          this.updateGroup = oldGroup._id
+        }
+      })
+    })
     this.allActivities = event.allActivities
     this.selectedActivity = event.item
     this.selectedGroup = event.item.groups[0]
     this.groupIndex = 0
     this.activityIndex = event.index
-    // console.log("selected activity list", this.selectedActivity)
-    // console.log("selected group==========", this.selectedGroup);
     this.activityDate = event.item.activity.activityStartDate
     let female = []
     let male = []
     console.log("group name", this.selectedGroup)
-    this.updateGroup = this.selectedGroup._id
+    // this.updateGroup = this.selectedGroup._id
     if (this.selectedGroup.item) {
       this.isButton = true
-      // console.log("call for already", this.selectedGroup);
       this.selectedGroup.item.forEach((singleItem) => {
-        // console.log("single item of group", singleItem);
-        console.log("this is for update group", this.updateGroup);
-
+        // console.log("this is for update group", this.updateGroup);
         if (singleItem.itemGender == 'male') {
           singleItem.itemId = singleItem._id
           male.push(singleItem)
@@ -258,12 +264,12 @@ export class EventGroupComponent implements OnInit {
 
 
   editGroupDetails(activityId, singleGroup) {
-    console.log("single group details", singleGroup);
+    // console.log("single group details", singleGroup);
     let finalObject = {},
       female = [],
       male = []
     if (singleGroup.male) {
-      console.log("call this or not", singleGroup.male);
+      console.log("first one", singleGroup);
       singleGroup.item.forEach((femaleItem) => {
         // console.log("female items ", femaleItem);
         if (femaleItem.itemGender == 'female') {
@@ -278,10 +284,22 @@ export class EventGroupComponent implements OnInit {
             eventId: this.eventId
           }
         }
+        if (femaleItem.itemGender == 'male') {
+          femaleItem['itemId'] = femaleItem._id
+          male.push(femaleItem)
+          finalObject = {
+            activityId: activityId,
+            groupId: singleGroup._id,
+            groupName: singleGroup.groupName,
+            male: singleGroup.male,
+            female: singleGroup.female,
+            eventId: this.eventId
+          }
+        }
       })
       singleGroup.male.forEach((newMale) => {
         if (!newMale.itemId) {
-          console.log("this is first time while update for male", newMale);
+          // console.log("this is first time while update for male", newMale);
           male.push(newMale)
           finalObject = {
             activityId: activityId,
@@ -296,7 +314,7 @@ export class EventGroupComponent implements OnInit {
       return finalObject
       // console.log("female array ", finalObject);
     } else if (singleGroup.female) {
-      console.log("female items call this");
+      console.log("female items call this", singleGroup);
       singleGroup.item.forEach((maleItem) => {
         if (maleItem.itemGender == 'male') {
           maleItem['itemId'] = maleItem._id
@@ -310,10 +328,22 @@ export class EventGroupComponent implements OnInit {
             eventId: this.eventId
           }
         }
+        if (maleItem.itemGender == 'female') {
+          maleItem['itemId'] = maleItem._id
+          female.push(maleItem)
+          finalObject = {
+            activityId: activityId,
+            groupId: singleGroup._id,
+            groupName: singleGroup.groupName,
+            male: singleGroup.male,
+            female: singleGroup.female,
+            eventId: this.eventId
+          }
+        }
       })
       singleGroup.female.forEach((newFemale) => {
         if (!newFemale.itemId) {
-          console.log("this is first time while update for male", newFemale);
+          // console.log("this is first time while update for male", newFemale);
           male.push(newFemale)
           finalObject = {
             activityId: activityId,
@@ -327,6 +357,8 @@ export class EventGroupComponent implements OnInit {
       })
       return finalObject
     } else if (singleGroup.male && singleGroup.female) {
+
+      console.log("third one", singleGroup);
       finalObject = {
         activityId: activityId,
         groupId: singleGroup._id,
@@ -336,7 +368,20 @@ export class EventGroupComponent implements OnInit {
         eventId: this.eventId
       }
       return finalObject
-    } else {
+    } else if (singleGroup.item.length == 0) {
+
+      console.log("fourth one", singleGroup);
+      finalObject = {
+        activityId: activityId,
+        groupId: singleGroup._id,
+        groupName: singleGroup.groupName,
+        male: [],
+        female: [],
+        eventId: this.eventId
+      }
+      return finalObject
+    }
+    else {
       console.log("last final group which is not change", singleGroup);
       singleGroup.item.forEach((finalItem) => {
         if (finalItem.itemGender == 'male') {
@@ -348,7 +393,6 @@ export class EventGroupComponent implements OnInit {
           female.push(finalItem)
           singleGroup['female'] = female
         }
-        console.log("array of male and female");
         finalObject = {
           activityId: activityId,
           groupId: singleGroup._id,
@@ -357,17 +401,32 @@ export class EventGroupComponent implements OnInit {
           female: singleGroup.female,
           eventId: this.eventId
         }
+        // console.log("array of male and female", finalObject);
       })
       return finalObject
     }
   }
 
+  openDescription(itemData) {
+    console.log("data of item list", itemData);
+    this.discriptionName = itemData.description
+    this.discriptionItem = itemData.itemName
+    $('#descriptionModalMale').modal("show")
+  }
+
+  openFemaleDescription(item) {
+
+    this.discriptionName = item.description
+    this.discriptionItem = item.itemName
+    $('#descriptionModalFemale').modal("show")
+  }
 
 
   openMaleModel() {
     this.object = {
       itemName: '',
-      itemPrice: Number
+      itemPrice: Number,
+      description: ''
     }
     $('#addMaleItemModal').modal("show")
     this.isModel = false
@@ -375,7 +434,8 @@ export class EventGroupComponent implements OnInit {
   openFemaleModel() {
     this.femaleObject = {
       itemName: '',
-      itemPrice: Number
+      itemPrice: Number,
+      description: ''
     }
     $('#addFemaleItemModal').modal("show")
     this.isModel = false
@@ -384,7 +444,8 @@ export class EventGroupComponent implements OnInit {
   addMaleItmes(itemDetails) {
     let maleObject = {
       itemName: itemDetails.itemName,
-      itemPrice: itemDetails.itemPrice
+      itemPrice: itemDetails.itemPrice,
+      description: itemDetails.description
     }
     $('#addMaleItemModal').modal("hide")
     if (this.selectedGroup._id) {
@@ -394,7 +455,8 @@ export class EventGroupComponent implements OnInit {
       console.log("final array of page", this.selectedActivity);
       this.object = {
         itemName: '',
-        itemPrice: Number
+        itemPrice: Number,
+        description: ''
       }
       this.isButton = true
       console.log("which data is display", this.selectedActivity);
@@ -404,7 +466,8 @@ export class EventGroupComponent implements OnInit {
       this.selectedGroup.male.push(maleObject)
       this.object = {
         itemName: '',
-        itemPrice: Number
+        itemPrice: Number,
+        description: ''
       }
       this.isButton = true
     }
@@ -440,7 +503,8 @@ export class EventGroupComponent implements OnInit {
 
     let femaleObject = {
       itemName: data.itemName,
-      itemPrice: data.itemPrice
+      itemPrice: data.itemPrice,
+      description: data.description
     }
     $('#addFemaleItemModal').modal("hide")
     if (this.selectedGroup._id) {
@@ -450,7 +514,8 @@ export class EventGroupComponent implements OnInit {
       console.log("final array of page", this.selectedActivity);
       this.femaleObject = {
         itemName: '',
-        itemPrice: Number
+        itemPrice: Number,
+        description: ''
       }
       this.isButton = true
       console.log("which data is display", this.selectedActivity);
@@ -460,7 +525,8 @@ export class EventGroupComponent implements OnInit {
       this.selectedGroup.female.push(femaleObject)
       this.femaleObject = {
         itemName: '',
-        itemPrice: Number
+        itemPrice: Number,
+        description: ''
       }
       this.isButton = true
     }
@@ -506,6 +572,20 @@ export class EventGroupComponent implements OnInit {
     if (event.key === "Enter") {
       // console.log("call this")
       this.addMaleItmes(this.object)
+      this.isModel = false
+    }
+  }
+  maleItemAdd(event) {
+    console.log("call this", event)
+    if (event.key === "Enter") {
+      this.addMaleItmes(this.object)
+      this.isModel = false
+    }
+  }
+  feMaleItemAdd(event) {
+    if (event.key === "Enter") {
+      // console.log("call this")
+      this.addFemaleItmes(this.femaleObject)
       this.isModel = false
     }
   }

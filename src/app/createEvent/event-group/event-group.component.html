@@ -6,6 +6,7 @@
                 <h2>#{{eventHashTag}}</h2>
             </div>
             <div class="main-box-for-slider">
+                <p class="instruction">Tap on each Event activity to set pricing for your aso ebi.</p>
                 <div class="sales-inner sales-inner-box-main-box">
                     <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)"
                         (eventHashTag)="getHashTag($event)">
@@ -29,6 +30,12 @@
                                             <h5 class="float-right item-price">
                                                 {{item.itemPrice | currency:"&#x20A6; &nbsp;"}}
                                             </h5>
+                                            <div class="info">
+                                                <a data-toggle="modal" data-target="#descriptionModalMale"
+                                                    (click)="openDescription(item)">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
                                             <div class="delete-icon"
                                                 (click)="removeMaleItem(item , i , selectedGroup._id)">
                                                 <img src="../../../assets/images/bin.png" alt="delete icon">
@@ -48,7 +55,14 @@
                                         <li *ngFor="let item of selectedGroup.female; let i=index">
                                             <h5 class="float-left item-name">{{item.itemName}}</h5>
                                             <h5 class="float-right item-price">
-                                                {{ item.itemPrice | currency:'&#x20A6;': true }}</h5>
+                                                {{ item.itemPrice | currency:'&#x20A6; &nbsp;': true }}</h5>
+
+                                            <div class="info">
+                                                <a data-toggle="modal" data-target="#descriptionModalFemale"
+                                                    (click)="openFemaleDescription(item)">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
                                             <div class="delete-icon"
                                                 (click)="removeFemaleItem(item , i, selectedGroup._id)">
                                                 <img src="../../../assets/images/bin.png" alt="delete icon">
@@ -85,9 +99,11 @@
                     <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)"
                         (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
+                    <input type="text" placeholder="Enter Description" (keydown)="maleItemAdd($event)"
+                        [(ngModel)]="object.description">
                 </div>
             </div>
-            <div class="modal-footer text-center">
+            <div class="modal-footer pt-0 text-center">
                 <button type="submit" class="btn add-btn" [disabled]="!isModel"
                     (click)="addMaleItmes(object)">Add</button>
             </div>
@@ -111,9 +127,11 @@
                     <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');"
                         onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)"
                         (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
+                    <input type="text" placeholder="Enter Description" [(ngModel)]="femaleObject.description"
+                        (keydown)="feMaleItemAdd($event)">
                 </div>
             </div>
-            <div class="modal-footer text-center">
+            <div class="modal-footer pt-0 text-center">
                 <button type="button" class="btn add-btn" data-dismiss="modal" (click)="addFemaleItmes(femaleObject)"
                     [disabled]="!isModel">Add</button>
             </div>
@@ -122,3 +140,44 @@
 </div>
 
 <!-- female modal content end -->
+
+
+<!-- deescription modal male start -->
+<div class="modal fade description" id="descriptionModalMale" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <h5 class="modal-title">{{discriptionItem}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p *ngIf="discriptionName">{{discriptionName}}</p>
+                <p *ngIf="!discriptionName">Sorry, no description in this item</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- decsription modal male end -->
+
+<!-- deescription modal female start -->
+<div class="modal fade description" id="descriptionModalFemale" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <h5 class="modal-title">{{discriptionItem}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p *ngIf="discriptionName">{{discriptionName}}</p>
+                <p *ngIf="!discriptionName">Sorry, no description in this item</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- decsription modal female end -->

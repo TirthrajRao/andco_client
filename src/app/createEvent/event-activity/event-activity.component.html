@@ -11,13 +11,9 @@
                         <div class="element">
                             <form [formGroup]="activityForm">
                                 <div formArrayName="activity">
-                                    <div class="single-element" id="scrollHere-{{i}}" #activities [formGroupName]="i"
-                                        *ngFor="let tech of activityFormData.controls; let i = index">
-                                        <input type="text" formControlName="activityName"
-                                            placeholder="Event activity e.g. traditional engagement, birthday party"
-                                            (input)="checkActivityName($event , i)">
-                                        <button class="remove" *ngIf="activityFormData.controls.length>1"
-                                            (click)="removeActivityField(i,tech.value)">
+                                    <div class="single-element" id="scrollHere-{{i}}" #activities [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
+                                        <input type="text" formControlName="activityName" placeholder="Event activity e.g. traditional engagement, birthday party" (input)="checkActivityName($event , i)">
+                                        <button class="remove" *ngIf="activityFormData.controls.length>1" (click)="removeActivityField(i,tech.value)">
                                             <img src="../../../assets/images/remove.png" alt="remove icon">
                                         </button>
                                         <div id="{{i}}" class="w-100" style="color: #dc3545;"></div>
@@ -34,9 +30,7 @@
                                         </div>
                                         <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                                             <mat-label>Choose a date</mat-label>
-                                            <input matInput [matDatepicker]="picker" [min]="currentDay"
-                                                formControlName="activityStartDate" id="activityStartDate{{i}}"
-                                                (dateChange)="addEvent('input', $event , i)">
+                                            <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="activityStartDate" id="activityStartDate{{i}}" (dateChange)="addEvent('input', $event , i)">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                         </mat-form-field>
@@ -52,9 +46,9 @@
                 <button class="clone btn" (click)="addActivityField()" [disabled]="!displayActivity"><i
                         class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
-            <div class="event-next-btn mt-3">
-                <button class="btn" (click)="eventActivities ? updateActivity(): addActivity()"
-                    [disabled]="activityForm.invalid || isDisable">Next
+            <div class="event-next-btn w-100 d-inline-block mt-3">
+                <button class="btn back float-left ml-3" (click)="backToEvent()">Back</button>
+                <button class="btn next float-right mr-3" (click)="eventActivities ? updateActivity(): addActivity()" [disabled]="activityForm.invalid || isDisable">Next
                 </button>
             </div>
         </div>

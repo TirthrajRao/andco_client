@@ -10,8 +10,7 @@
                         <h3>Your event type <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
                         <div class="create-event-type-menu">
                             <ul class="mb-0">
-                                <li *ngFor="let type of eventType; let i =index" (click)="selectEvent(i)"
-                                    [class.active]="selctedIndex == i">
+                                <li *ngFor="let type of eventType; let i =index" (click)="selectEvent(i)" [class.active]="selctedIndex == i">
                                     <a>{{type}}</a>
                                 </li>
                                 <li [class.active]="customType == 0">
@@ -29,10 +28,7 @@
                     <div class="create-event-hashtag-box">
                         <h3>Your event hashtag</h3>
                         <div class="hashtag-form form-group">
-                            <input type="text" class="form-control" formControlName="hashTag"
-                                ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
-                                [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }"
-                                placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
+                            <input type="text" class="form-control" formControlName="hashTag" ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}" [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }" placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">
                             <div id="message1"></div>
                             <div *ngIf="f.hashTag.touched && f.hashTag.errors" class="invalid-feedback">
@@ -51,11 +47,7 @@
                         <div class="create-event-name-box">
                             <h3>Your Event Title</h3>
                             <div class="form-group">
-                                <input type="text" autocomplete="off" class="form-control"
-                                    placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle"
-                                    formControlName="eventTitle"
-                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
-                                    [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
+                                <input type="text" autocomplete="off" class="form-control" placeholder="e.g Lola Ajayi’s 70th birthday" id="eventTitle" formControlName="eventTitle" ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}" [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
                                 <div *ngIf="f.eventTitle.touched && f.eventTitle.errors" class="invalid-feedback">
                                     <div *ngIf="f.eventTitle.errors.required" id="title1">Event Title is Required.
                                     </div>
@@ -70,15 +62,13 @@
                         <div class="profile-picture">
                             <!-- <img *ngIf="displayImage == true" src="{{path}}{{createdEventDetails.profilePhoto}}"
                                 id="imageFilter"> -->
-                            <img [src]="croppedImage" height="200" class="float-right" id="imageFilter"
-                                onerror="this.src='/assets/images/profile_img.png'">
+                            <img [src]="croppedImage" height="200" class="float-right" id="imageFilter" onerror="this.src='/assets/images/profile_img.png'">
                         </div>
                         <div class="text-white font-h4 mt-2">
                             <h4>Upload your profile photo</h4>
                         </div>
                         <div class="profile-photo-upload mt-2">
-                            <button type="button" class="btn p-0" data-toggle="modal" tabindex="-1"
-                                (click)="openImageModal()">
+                            <button type="button" class="btn p-0" data-toggle="modal" tabindex="-1" (click)="openImageModal()">
                                 <label>
                                     <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                                 </label>
@@ -92,18 +82,14 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
-                            <a class="menuDefault" data-toggle="modal" data-target="#setDefault">
-                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                            </a>
                             <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/guest.png'">
                         </div>
                         <div class="background-photo-upload">
-                            <div class="row">
+                            <div class="row m-0">
                                 <div class="col-3" *ngFor="let theme of eventBackGround; let i =index">
                                     <div class="bg-select-div" [class.active]="selectedThemeIndex == i">
                                         <div class="sample_bg">
-                                            <img src="{{theme.path}}" alt="Theme" id="background1"
-                                                (click)="defaultBackgroundImage(theme.path , i)">
+                                            <img src="{{theme.path}}" alt="Theme" id="background1" (click)="defaultBackgroundImage(theme.path , i)">
                                         </div>
                                         <span>{{theme.themeName}}</span>
                                     </div>
@@ -119,8 +105,7 @@
                             <ol type="number" class="mb-0">
                                 <li>To each aso ebi order, a processing fee of 1.5% + &#x20A6;70 will be added.</li>
                                 <li>AndCo can deliver your fabric to guests.</li>
-                                <li>A delivery cost of &#x20A6;700 will be added to each cart, if you choose us to
-                                    handle logistics.
+                                <li>A delivery cost of &#x20A6;700 will be added to each cart, if you choose us to handle logistics.
                                 </li>
                             </ol>
                         </div>
@@ -128,14 +113,11 @@
                     <!-- your event prising tip end -->
                 </div>
             </form>
-            <button class="btn created-event-custom-button" (click)="createdEventDetails? updateEvent(): addEvent()"
-                *ngIf="saveEvent">Continue</button>
-            <button class="btn created-event-custom-button" id="nextOne" [disabled]="isDisableNext"
-                (click)="skipButton()" *ngIf="!saveEvent">
+            <button class="btn created-event-custom-button" (click)="createdEventDetails? updateEvent(): addEvent()" *ngIf="saveEvent">Continue</button>
+            <button class="btn created-event-custom-button" id="nextOne" [disabled]="isDisableNext" (click)="skipButton()" *ngIf="!saveEvent">
                 Next
             </button>
-            <button class="btn created-event-custom-button1" id="previouesOne" [disabled]="isDisable"
-                (click)="skipButtons()" *ngIf="prevIndex !=0">
+            <button class="btn created-event-custom-button1" id="previouesOne" [disabled]="isDisable" (click)="skipButtons()" *ngIf="prevIndex !=0">
                 Back
             </button>
         </div>
@@ -149,8 +131,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="input-group">
-                    <input type="text" class="form-control event-modal-input" placeholder="Enter event Type"
-                        [(ngModel)]="customEventType" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control event-modal-input" placeholder="Enter event Type" [(ngModel)]="customEventType" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn other-add" (click)="addEventType()">Add</button>
                     </div>
@@ -162,8 +143,7 @@
 <!-- Event type modal start -->
 
 <!-- image upload modal start -->
-<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -174,21 +154,15 @@
             </div>
             <div class="modal-body border-top">
                 <div class="image-cropper-box">
-                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                        [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
-                        [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
-                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
-                        format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl"
-                        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
-                        (loadImageFailed)="loadImageFailed()">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3" [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation" [transform]="transform"
+                        [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"  (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="choose_image w-100">
                     <label for="upload_profile">Choose Image</label>
-                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg"
-                        id="upload_profile">
+                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg" id="upload_profile">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="saveImage()">Save</button>
@@ -198,17 +172,3 @@
     </div>
 </div>
 <!-- image upload modal end -->
-
-<!-- set default modal start -->
-<div class="modal fade" id="setDefault" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body m-auto">
-                <button class="btn setDefault" (click)="setDefaultBackGround('/assets/images/guest.png')">Set default
-                    background</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- set default modal start -->

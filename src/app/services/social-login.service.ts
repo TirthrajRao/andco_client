@@ -62,27 +62,22 @@ export class SocialLoginService {
     // console.log("In func")
     this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
-      // console.log("response of google login ", res);
       const googleIdToken = res.idToken;
       googleIdToken
-      // console.log("google id of login user", googleIdToken);
       this.loginService.googleLogin(googleIdToken).subscribe(data => {
         console.log("hash tag for guest", this.eventIdWithLogin)
+        sessionStorage.setItem('isDisplayName', JSON.stringify(data.data.newUser))
         sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
+        sessionStorage.setItem('isMenu', JSON.stringify(0));
         let firstName = data.data.firstName
-        // let lastName = data.data.lastName
         this.userName = firstName;
-        // console.log(this.userName);
         console.log("response of login user using google", data);
         this.userRole = data.data.UserRole;
-        // console.log("admin login entry", data.data.UserRole);
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
-        // console.log("response positive of google", data);
         if (this.eventIdWithLogin) {
           console.log("is this call for guest");
           this.isLoad.emit('false')
-          // this.isLoad = false;
           this.isUserLoggedIn = true;
           sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/guest-join/', this.eventIdWithLogin])
@@ -97,10 +92,6 @@ export class SocialLoginService {
         }
       }, err => {
         this.isLoad.emit('false')
-
-        // this.isLoad = false;
-        // console.log("error display", err);
-        // this.alertService.getError(err.error.message);
       })
     }).catch((err) => {
       this.isLoad.emit('false')
@@ -116,27 +107,21 @@ export class SocialLoginService {
    */
   signWithFacebook() {
     this.isLoad.emit('true')
-    // this.isLoad = true;
-    // this.isDisable = true;
-    // console.log("submit login to facebook");
     this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     FB.login((response) => {
-      // console.log('submitLogin', response);
       let facebookId = response.authResponse.accessToken;
-      // console.log("facebook id of user", facebookId);
       if (response.authResponse) {
         this.loginService.facebookLogin(facebookId)
           .subscribe((data: any) => {
-            // console.log("data of facebook login user", data);
+            sessionStorage.setItem('isDisplayName', JSON.stringify(data.data.newUser))
             let firstName = data.data.firstName
             let lastName = data.data.lastName
             this.userName = firstName;
             sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             sessionStorage.setItem('userName', JSON.stringify(this.userName));
             sessionStorage.setItem('eventList', JSON.stringify(data.data.totalEvent))
-
+            sessionStorage.setItem('isMenu', JSON.stringify(0));
             if (this.eventIdWithLogin) {
-              // this.isLoad = false
               this.isLoad.emit('false')
               this.isUserLoggedIn = true;
               sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -144,9 +129,7 @@ export class SocialLoginService {
             }
             else {
               this.isLoad.emit('false')
-              // this.isLoad = false
               this.router.navigate(['/menu']);
-              // this.isDisable = false;
               this.isUserLoggedIn = true;
               sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
             }

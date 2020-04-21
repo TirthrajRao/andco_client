@@ -71,18 +71,21 @@ button.slick-arrow {
     overflow: auto;
 }
 
-.create-event-type-menu ul::-webkit-scrollbar-track {
+.create-event-type-menu ul::-webkit-scrollbar-track .background-photo-upload::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px transparent;
     border-radius: 3px;
     background-color: transparent;
 }
 
-.create-event-type-menu ul::-webkit-scrollbar {
+.create-event-type-menu ul::-webkit-scrollbar,
+.background-photo-upload::-webkit-scrollbar {
     width: 4px;
     background-color: transparent;
+    -webkit-box-shadow: inset 0 0 3px silver;
 }
 
-.create-event-type-menu ul::-webkit-scrollbar-thumb {
+.create-event-type-menu ul::-webkit-scrollbar-thumb,
+.background-photo-upload::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px transparent;
     background-color: #ffffff;
@@ -240,6 +243,11 @@ h5.modal-title {
     border: 2px solid #fff;
     border-radius: 32px;
     position: relative;
+}
+
+.background-photo-upload {
+    max-height: 210px;
+    overflow: auto;
 }
 
 .sample_bg {

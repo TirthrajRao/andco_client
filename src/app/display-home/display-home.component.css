@@ -34,6 +34,7 @@
 .display-screen-single-slide.home {
     background-image: url('../../assets/images/home.png');
     background-color: #a6b47e;
+    position: relative;
 }
 
 .display-screen-single-slide.ds-1 {

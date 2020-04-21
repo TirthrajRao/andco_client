@@ -10,6 +10,10 @@
     background-color: #a685be;
 }
 
+.menu-main.single .page-content {
+    flex-direction: column;
+}
+
 .menu-main-box {
     background-color: rgba(200, 200, 200, 0.93);
     border-radius: 20px;
@@ -27,8 +31,7 @@
     cursor: default;
 }
 
-.hello-text h2 span,
-.menu-main.single .hello-text h2 span {
+.hello-text h2 span {
     font-size: 40px;
     display: block;
     width: 100%;
@@ -39,12 +42,18 @@
 
 .hello-text h2 span {
     color: #B958D9;
-    text-shadow: 0px 2px 3px #b958d9;
+    text-shadow: 0px 1px 2px #b958d9;
 }
 
 .menu-main.single .hello-text h2 span {
     color: #ececec;
-    text-shadow: 0px 3px 6px #575555;
+    text-shadow: 0px 1px 3px #575555;
+}
+
+.menu-links-one {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
 }
 
 .menu-links ul {
@@ -74,11 +83,6 @@
 .menu-links ul li a:hover::after {
     width: 80px;
     transition: width .5s;
-}
-
-.menu-main.single .hello-text {
-    position: absolute;
-    top: 20%;
 }
 
 .menu-links-one button {
