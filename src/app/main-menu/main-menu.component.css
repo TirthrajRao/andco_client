@@ -97,6 +97,15 @@
 .menu-links-one button:focus {
     box-shadow: 1px 1px 30px #591d6b;
 }
+button.close-menu{
+background: transparent;
+border: none;
+outline: none;
+}
+
+button.close-menu img{
+    filter: brightness(11);
+}
 
 @media(max-width:1600px) {
     .menu-links ul li a,

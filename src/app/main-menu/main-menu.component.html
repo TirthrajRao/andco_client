@@ -13,6 +13,9 @@
 </section>
 
 <section class="menu-main double" *ngIf="isMenu === 1">
+    <button (click)="closeModel()" class="close-menu" *ngIf="isClosed">
+        <img src="../../assets/images/remove.png" alt="">
+    </button>
     <div class="page-content flex-column">
         <div class="menu-main-box">
             <div class="hello-text">
