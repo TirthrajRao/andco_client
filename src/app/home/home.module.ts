@@ -212,6 +212,9 @@ const routes: Routes = [
     ImageCropperModule
     // MatSelectModule
   ],
+  entryComponents: [
+    MainMenuComponent
+  ],
   exports: [
     LoaderComponent,
     // MatDatepickerModule

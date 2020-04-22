@@ -248,11 +248,13 @@ export class SetPriceComponent implements OnInit {
   setPrice() {
     console.log("value of form", this.setPriceForm);
     // let message
+    this.isLoad = true
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
     let flag = 0;
     keys.every((element, value) => {
       if (form[element].status == 'INVALID') {
+        this.isLoad = false
         flag = 1;
         if (element == 'welcomeMessage') {
           // console.log("thank you message error");
@@ -278,9 +280,11 @@ export class SetPriceComponent implements OnInit {
       console.log("value of set price", this.setPriceForm);
       this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
         console.log("response of set price of event", response);
+        this.isLoad = false
         this.alertService.getSuccess(response.message)
         this.router.navigate(['created-event-message'])
       }, error => {
+        this.isLoad = false
         console.log("error while set price of event", error)
       })
     }

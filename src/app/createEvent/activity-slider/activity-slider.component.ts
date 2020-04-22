@@ -44,8 +44,8 @@ export class ActivitySliderComponent implements OnInit {
       this.activityDetails = res.data.activity
       this.allActivities = []
       this.activityDetails.forEach(activity => {
+        console.log(" activity without group ", activity);
         if (activity.group.length == 0) {
-          console.log(" activity without group ", activity);
           let newAD = {
             activity: activity,
             groups: [
@@ -63,10 +63,11 @@ export class ActivitySliderComponent implements OnInit {
           }
           this.allActivities.push(newAD)
         } else {
-          console.log(" activity with group= ", activity);
+          // console.log(" activity with group= ", activity);
           let updateAD = {
             activity: activity,
-            groups: activity.group
+            groups: activity.group,
+            update: true
           }
           this.allActivities.push(updateAD)
         }

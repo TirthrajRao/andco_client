@@ -13,9 +13,10 @@
     <div class="myevent-groups-item">
         <div class="myevent-group">
             <div class="myevent-single-item" *ngFor="let item of itemNamePrint">
-                <span class="items-name" tooltipClass="my-custom-class" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
+                <span class="items-name" tooltipClass="my-custom-class"
+                    ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
                 <span class="items-price">{{item.itemPrice | currency:"&#x20A6;"}}</span>
-                <a href="" data-target="#infoItemModal" data-toggle="modal">
+                <a (click)="openModel(item)" data-toggle="modal">
                     <i class="fa fa-info" aria-hidden="true"></i>
                 </a>
             </div>
@@ -23,17 +24,21 @@
     </div>
 </div>
 
-<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal" aria-hidden="true">
+<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">
-                <h5 class="modal-title">Item name</h5>
+                <h5 class="modal-title">{{discriptionItem}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-body">
-                Description here
+            <div class="modal-body" *ngIf="discriptionName">
+                {{discriptionName}}
+            </div>
+            <div class="modal-body" *ngIf="!discriptionName">
+                Sorry, no description in this item
             </div>
         </div>
     </div>
