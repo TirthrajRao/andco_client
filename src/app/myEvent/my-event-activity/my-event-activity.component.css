@@ -230,6 +230,11 @@ span.items-name {
     span.items-price {
         text-align: left;
     }
+    .myevent-group a {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 5px;
+    }
 }
 
 @media(max-width:767px) {
