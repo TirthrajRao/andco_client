@@ -344,6 +344,10 @@ h5.item-price {
 }
 
 @media(max-width:1366px) {
+    .inner-box-group {
+        max-height: 100px;
+        min-height: 100px;
+    }
     .bg-box-set-price {
         width: 870px;
         height: 520px;
@@ -365,10 +369,6 @@ h5.item-price {
     }
     .sales-inner span {
         font-size: 20px;
-    }
-    .inner-box-group {
-        max-height: 100px;
-        min-height: 100px;
     }
     .add-items input {
         font-size: 18px;
