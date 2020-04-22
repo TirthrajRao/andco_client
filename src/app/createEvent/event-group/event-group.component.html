@@ -8,8 +8,7 @@
             <div class="main-box-for-slider">
                 <p class="instruction">Tap on each Event activity to set pricing for your aso ebi.</p>
                 <div class="sales-inner sales-inner-box-main-box">
-                    <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)"
-                        (eventHashTag)="getHashTag($event)">
+                    <app-activity-slider [activityDetails]="activities" (singleActivity)="getActivity($event)" (eventHashTag)="getHashTag($event)">
                     </app-activity-slider>
                     <div class="event-date-box" *ngIf="isDisable">
                         <h4>Event Date: <span>{{activityDate | date}}</span></h4>
@@ -24,20 +23,17 @@
                                 </h6>
                                 <div class="inner-box-group">
                                     <ul>
-                                        <li class="w-100 d-inline-block"
-                                            *ngFor="let item of selectedGroup.male; let i =index">
+                                        <li class="w-100 d-inline-block" *ngFor="let item of selectedGroup.male; let i =index">
                                             <h5 class="float-left item-name">{{item.itemName}}</h5>
                                             <h5 class="float-right item-price">
                                                 {{item.itemPrice | currency:"&#x20A6; &nbsp;"}}
                                             </h5>
                                             <div class="info">
-                                                <a data-toggle="modal" data-target="#descriptionModalMale"
-                                                    (click)="openDescription(item)">
-                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                <a data-toggle="modal" data-target="#descriptionModalMale">
+                                                    <img src="../../../assets/images/information.png" alt="">
                                                 </a>
                                             </div>
-                                            <div class="delete-icon"
-                                                (click)="removeMaleItem(item , i , selectedGroup._id)">
+                                            <div class="delete-icon" (click)="removeMaleItem(item , i , selectedGroup._id)">
                                                 <img src="../../../assets/images/bin.png" alt="delete icon">
                                             </div>
                                         </li>
@@ -47,8 +43,7 @@
                             </div>
                             <div class="col-md-6" *ngIf="selectedGroup && selectedGroup.female">
                                 <h6 class="text-left">Set Price for
-                                    <img src="../../../assets/images/girl.png" class="icon-img" alt="female icon">
-                                    Female
+                                    <img src="../../../assets/images/girl.png" class="icon-img" alt="female icon"> Female
                                 </h6>
                                 <div class="inner-box-group">
                                     <ul>
@@ -58,13 +53,11 @@
                                                 {{ item.itemPrice | currency:'&#x20A6; &nbsp;': true }}</h5>
 
                                             <div class="info">
-                                                <a data-toggle="modal" data-target="#descriptionModalFemale"
-                                                    (click)="openFemaleDescription(item)">
-                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                <a data-toggle="modal" data-target="#descriptionModalFemale" (click)="openFemaleDescription(item)">
+                                                    <img src="../../../assets/images/information.png" alt="">
                                                 </a>
                                             </div>
-                                            <div class="delete-icon"
-                                                (click)="removeFemaleItem(item , i, selectedGroup._id)">
+                                            <div class="delete-icon" (click)="removeFemaleItem(item , i, selectedGroup._id)">
                                                 <img src="../../../assets/images/bin.png" alt="delete icon">
                                             </div>
                                         </li>
@@ -76,8 +69,7 @@
                     </div>
                     <div class="next-back-button mt-2 w-100 d-inline-block">
                         <button class="btn float-left" (click)="backToActivity()">Back</button>
-                        <button class="btn float-right" (click)="updateGroup? updateGroups(): addGroup()"
-                            [disabled]="!isButton">Next</button>
+                        <button class="btn float-right" (click)="updateGroup? updateGroups(): addGroup()" [disabled]="!isButton">Next</button>
                     </div>
                 </div>
             </div>
@@ -96,16 +88,12 @@
             <div class="modal-body">
                 <div class="add-items">
                     <input type="text" placeholder="Enter Item Name" [(ngModel)]="object.itemName" required>
-                    <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');"
-                        onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)"
-                        (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
-                    <input type="text" placeholder="Enter Description" (keydown)="maleItemAdd($event)"
-                        [(ngModel)]="object.description">
+                    <input type="number" placeholder="Enter Item Price" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" (keydown)="addMaleItem($event)" (input)="numberValidationForMale($event)" id="codeInput" [(ngModel)]="object.itemPrice">
+                    <input type="text" placeholder="Enter Description" (keydown)="maleItemAdd($event)" [(ngModel)]="object.description">
                 </div>
             </div>
             <div class="modal-footer pt-0 text-center">
-                <button type="submit" class="btn add-btn" [disabled]="!isModel"
-                    (click)="addMaleItmes(object)">Add</button>
+                <button type="submit" class="btn add-btn" [disabled]="!isModel" (click)="addMaleItmes(object)">Add</button>
             </div>
         </div>
     </div>
@@ -124,16 +112,12 @@
             <div class="modal-body">
                 <div class="add-items">
                     <input type="text" placeholder="Enter item name" [(ngModel)]="femaleObject.itemName">
-                    <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');"
-                        onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)"
-                        (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
-                    <input type="text" placeholder="Enter Description" [(ngModel)]="femaleObject.description"
-                        (keydown)="feMaleItemAdd($event)">
+                    <input type="number" placeholder="Enter item price" min="0" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" (input)="numberValidationForFemale($event)" (keydown)="addFemaleItem($event)" [(ngModel)]="femaleObject.itemPrice">
+                    <input type="text" placeholder="Enter Description" [(ngModel)]="femaleObject.description" (keydown)="feMaleItemAdd($event)">
                 </div>
             </div>
             <div class="modal-footer pt-0 text-center">
-                <button type="button" class="btn add-btn" data-dismiss="modal" (click)="addFemaleItmes(femaleObject)"
-                    [disabled]="!isModel">Add</button>
+                <button type="button" class="btn add-btn" data-dismiss="modal" (click)="addFemaleItmes(femaleObject)" [disabled]="!isModel">Add</button>
             </div>
         </div>
     </div>
@@ -143,8 +127,7 @@
 
 
 <!-- deescription modal male start -->
-<div class="modal fade description" id="descriptionModalMale" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade description" id="descriptionModalMale" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">
@@ -163,8 +146,7 @@
 <!-- decsription modal male end -->
 
 <!-- deescription modal female start -->
-<div class="modal fade description" id="descriptionModalFemale" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade description" id="descriptionModalFemale" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">

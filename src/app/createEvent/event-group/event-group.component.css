@@ -174,19 +174,9 @@ p.instruction {
     color: #BBC1A1;
 }
 
-.info {
-    line-height: 1;
-}
-
-.info a {
-    line-height: 0;
-}
-
-.info i {
-    font-size: 22px;
-    color: #a5b138;
+.info a img {
+    height: 20px;
     margin-right: 5px;
-    margin-bottom: -10px;
 }
 
 .delete-icon,

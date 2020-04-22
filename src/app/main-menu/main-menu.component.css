@@ -10,6 +10,13 @@
     background-color: #a685be;
 }
 
+.main-box-inner {
+    min-height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .menu-main.single .page-content {
     flex-direction: column;
 }
@@ -97,13 +104,14 @@
 .menu-links-one button:focus {
     box-shadow: 1px 1px 30px #591d6b;
 }
-button.close-menu{
-background: transparent;
-border: none;
-outline: none;
+
+button.close-menu {
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
-button.close-menu img{
+button.close-menu img {
     filter: brightness(11);
 }
 
