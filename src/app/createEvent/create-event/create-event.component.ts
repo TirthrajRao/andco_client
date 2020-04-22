@@ -63,7 +63,7 @@ export class CreateEventComponent implements OnInit {
   eventType = ["Wedding", "Birthday", "Funeral", "Reunion", "Club/Group", "Anniversary"]
   eventBackGround = [
     {
-      themeName: 'Default',
+      themeName: 'balloons',
       path: 'assets/images/guest.png'
     },
     {
@@ -115,6 +115,16 @@ export class CreateEventComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isDisableNext = true
+
+
+
+    $('#otherEventType').on('hidden.bs.modal', () => {
+      // do something…
+      console.log("call for outside");
+      // this.customType = 1
+      // this.callNewOne()
+    })
 
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -149,9 +159,9 @@ export class CreateEventComponent implements OnInit {
     // Create New event form start
 
     this.eventForm = new FormGroup({
-      eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
       hashTag: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("^[A-Za-z0-9]+$")]),
+      eventTitle: new FormControl('', [Validators.required]),
       profile: new FormControl('', [Validators.required]),
       background: new FormControl(''),
     })
@@ -237,6 +247,7 @@ export class CreateEventComponent implements OnInit {
   getEditEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
       console.log("response for edit event", response);
+      this.isDisableNext = false
       this.createdEventDetails = response.data
       if (this.createdEventDetails.eventType) {
         console.log("what is value", this.createdEventDetails.eventType);
@@ -276,10 +287,11 @@ export class CreateEventComponent implements OnInit {
   selectEvent(i) {
     console.log("index of type", i);
     this.selctedIndex = i
+    this.customType = 1
     const selectedCategory = this.eventType[i];
     this.eventForm.controls.eventType.setValue(selectedCategory)
     console.log("selectedCategory", selectedCategory);
-
+    this.isDisableNext = false
   }
 
 
@@ -316,6 +328,7 @@ export class CreateEventComponent implements OnInit {
         // this.nextSlide(currentSlide)
         console.log("event on before", currentSlide, nextSlide);
         // this.hashTagIndex = currentSlide
+        // this.nextSlide()
         if (currentSlide == 1 && nextSlide == 0) {
           console.log("slider issue");
           this.prevIndex = 0
@@ -326,25 +339,23 @@ export class CreateEventComponent implements OnInit {
         } else {
           this.saveEvent = false
         }
+        if(currentSlide == 3 && nextSlide == 4){
+          this.isDisableNext = false
+        }
+        // if((currentSlide == 2 && nextSlide == 3))
+        if (this.eventForm.controls.profile.status == 'VALID') {
+      console.log("please");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
       })
     }, 100)
   }
 
 
-  nextSlide(event) {
+  nextSlide() {
     console.log("ama kaik avu joye", event);
-    const keys = Object.keys(this.eventForm.controls);
-    let form = this.eventForm.controls;
-    let flag = 0;
-    keys.every((element, value) => {
-      console.log("bank element", form[element], element)
-      if (form[element] == this.eventForm.controls.hashTag) {
-        console.log("call or not");
-        console.log("this is perfect", this.eventForm.controls.hashTag.value);
-      } else {
-        return true
-      }
-    })
   }
 
   /**
@@ -427,26 +438,24 @@ export class CreateEventComponent implements OnInit {
             if (response.data == true) {
               console.log("data is true of false");
               this.isDisable = false
-              this.isDisableNext = false
-
+              this.isDisableNext = true
               this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
             } else {
               let message = document.getElementById('message1');
               message.innerHTML = "Hashtag Already Exists";
               this.isDisable = true
-              this.isDisableNext = false
+              this.isDisableNext = true
 
             }
           }, error => {
             console.log("if it is avalible", error);
-            this.isDisableNext = false
+            this.isDisableNext = true
 
           })
         } else {
           console.log("what is ");
           this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
-          this.isDisableNext = false
-
+          this.isDisableNext = true
         }
       }
       else {
@@ -456,12 +465,13 @@ export class CreateEventComponent implements OnInit {
   }
   skipButtons() {
     this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
-    // this.isDisableNext = false
+    this.isDisableNext = false
   }
 
 
   enterCustomType() {
     this.customType = 0
+    this.isDisableNext = true
     $('#otherEventType').modal("show")
   }
 
@@ -471,6 +481,10 @@ export class CreateEventComponent implements OnInit {
     this.customEventType = ''
     this.customType = 1
     $('#otherEventType').modal("hide")
+  }
+  outsideClick(event) {
+    console.log("what when click outside for modal close", event);
+
   }
 
 
@@ -594,8 +608,30 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+  addEventTitle(event) {
+    // console.log("what is in that eveve", event.target.value);
+    if (this.eventForm.controls.eventTitle.status == 'VALID') {
+      console.log("please");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+  }
+
+
   removeSpace(value) {
+    console.log("what is in value", value);
+
     // let form = event.target.value
+    // console.log("value for event hashtag", this.eventForm.controls.hashTag);
+    if (this.eventForm.controls.hashTag.status == 'VALID') {
+      console.log("please");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+
+
     // console.log("name", form)
     const nameInput = /[a-zA-Z ]/;
     $("#hashTag").on({
@@ -617,13 +653,24 @@ export class CreateEventComponent implements OnInit {
   }
   openImageModal() {
     $('#imageUpload').modal("show")
-
+if (this.eventForm.controls.profile.status == 'VALID') {
+      console.log("please");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
     if (this.imgURL) {
       this.currentImgUrl = this.imgURL
     }
   }
   saveImage() {
     $('#imageUpload').modal("hide")
+    if (this.eventForm.controls.profile.status == 'VALID') {
+      console.log("please");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
   }
 
   closeImageModel() {

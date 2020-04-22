@@ -80,26 +80,30 @@ export class GuestItemTotalComponent implements OnInit {
     // this.current = 0
     $("#vivek0").trigger("click")
     this.values = Object.values(this.displayFinalItem)
+    console.log("what is value from get", this.displayFinalItem);
+
     // console.log("keys ==>", this.keys, " values ==>", this.values);
-    console.log("grouped", this.keys);
+    // console.log("grouped", this.keys);
     // this.current = this.keys[0]
     // this
     this.values.forEach((value) => {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
       value.forEach((valueOfSingle) => {
+        console.log("single item value", valueOfSingle);
         if (valueOfSingle.itemGender == 'male') {
           maleArrOfValue.push(valueOfSingle);
         }
         else if (valueOfSingle.itemGender == 'female') {
           femaleArrOfValue.push(valueOfSingle);
+          // console.log("female array to push =======", femaleArrOfValue);
         }
       });
       this.maleArray.push(maleArrOfValue)
       this.femaleArray.push(femaleArrOfValue);
     });
-    console.log("male array ============>", this.maleArray);
     console.log("female array ============>", this.femaleArray);
+    console.log("male array ============>", this.maleArray);
   }
 
   // removeMaleItem(i, k, itemId) {
