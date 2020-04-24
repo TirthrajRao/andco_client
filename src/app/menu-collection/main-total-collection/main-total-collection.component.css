@@ -14,7 +14,7 @@
 .total-second-slide .col-5 span,
 .total-second-slide .col-7 span {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .collection-tab .col-sm-2 span,
@@ -28,7 +28,7 @@
 }
 
 .total-activity-box {
-    min-height: 150px;
+    min-height: 220px;
 }
 
 .total-second-slide {
@@ -36,4 +36,16 @@
     justify-content: center;
     align-items: center;
     min-height: 140px;
+}
+
+@media(max-width:1600px) {
+    .total-activity-box {
+        min-height: 200px;
+    }
+}
+
+@media(max-width:1366px) {
+    .total-activity-box {
+        min-height: 180px;
+    }
 }

@@ -98,8 +98,8 @@ h3.total {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    min-height: 220px;
-    max-height: 220px;
+    min-height: 300px;
+    max-height: 300px;
     overflow: auto;
 }
 
@@ -116,6 +116,10 @@ h3.total {
     .nav-tabs .nav-link {
         padding: 5px 60px 3px;
     }
+    .tab-content {
+        min-height: 280px;
+        max-height: 280px;
+    }
 }
 
 @media (max-width: 1366px) {
@@ -131,6 +135,10 @@ h3.total {
     }
     li.nav-item a {
         font-size: 20px;
+    }
+    .tab-content {
+        min-height: 250px;
+        max-height: 250px;
     }
 }
 
