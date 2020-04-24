@@ -29,7 +29,7 @@
                                                 {{item.itemPrice | currency:"&#x20A6; &nbsp;"}}
                                             </h5>
                                             <div class="info">
-                                                <a data-toggle="modal" data-target="#descriptionModalMale">
+                                                <a data-toggle="modal" (click)="openDescription(item)">
                                                     <img src="../../../assets/images/information.png" alt="">
                                                 </a>
                                             </div>
@@ -53,7 +53,7 @@
                                                 {{ item.itemPrice | currency:'&#x20A6; &nbsp;': true }}</h5>
 
                                             <div class="info">
-                                                <a data-toggle="modal" data-target="#descriptionModalFemale" (click)="openFemaleDescription(item)">
+                                                <a data-toggle="modal" (click)="openFemaleDescription(item)">
                                                     <img src="../../../assets/images/information.png" alt="">
                                                 </a>
                                             </div>
