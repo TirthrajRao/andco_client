@@ -1,0 +1,54 @@
+<header></header>
+<section class="main-menu-collection">
+    <div class="page-content">
+        <div class="inner-box">
+            <div class="myEvent-slider-box">
+                <div class="myEvent-slider">
+                    <div class="myEvent-single-slide">
+                        <div class="myEvent-name event" [class.active]="selectedIndex === i">
+                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                                event name</p>
+                        </div>
+                    </div>
+                    <div class="myEvent-single-slide">
+                        <div class="myEvent-name event">
+                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                                event name</p>
+                        </div>
+                    </div>
+                    <div class="myEvent-single-slide">
+                        <div class="myEvent-name event">
+                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                                event name</p>
+                        </div>
+                    </div>
+                    <div class="myEvent-single-slide">
+                        <div class="myEvent-name event">
+                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                                event name</p>
+                        </div>
+                    </div>
+                    <div class="myEvent-single-slide">
+                        <div class="myEvent-name event" [class.active]="selectedIndex === i">
+                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                                event name</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active nav-item"><a class="nav-link" data-toggle="tab" href="#total">Total</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#guest">Guest</a></li>
+            </ul>
+            <h3 class="total text-center">Total : N 897462</h3>
+            <div class="tab-content mt-3">
+                <div id="total" class="tab-pane fade in active">
+                    <app-main-total-collection></app-main-total-collection>
+                </div>
+                <div id="guest" class="tab-pane fade">
+                    <app-main-guest-collection></app-main-guest-collection>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

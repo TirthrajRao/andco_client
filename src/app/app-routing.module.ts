@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { WelcomeGuestComponent } from './welcome-guest/welcome-guest.component';
 import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { AddBankAccountComponent } from './add-bank-account/add-bank-account.component';
+// import { MainCollectionComponent } from './menu-collection/main-collection/main-collection.component';
 import { HomeModule } from './home/home.module';
 import { from } from 'rxjs';
 
@@ -52,6 +53,7 @@ const routes: Routes = [
     path: 'guest-join/:hashTag',
     component: GuestJoinComponent
   },
+
 ];
 
 @NgModule({

@@ -1,0 +1,39 @@
+.total-activity-box h3 {
+    color: #0091ab;
+    font-weight: bold;
+}
+
+.arrow-right,
+.arrow-left {
+    border-top: 3px solid #0091ab;
+    border-left: 3px solid #0091ab;
+}
+
+.collection-tab .col-sm-2 span,
+.collection-tab .col-sm-10 span,
+.total-second-slide .col-5 span,
+.total-second-slide .col-7 span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.collection-tab .col-sm-2 span,
+.total-second-slide .col-5 span {
+    color: #686868;
+}
+
+.collection-tab .col-sm-10 span,
+.total-second-slide .col-7 span {
+    color: #000000;
+}
+
+.total-activity-box {
+    min-height: 150px;
+}
+
+.total-second-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 140px;
+}
