@@ -1,10 +1,10 @@
 <div class="total-collection-slider-main">
-    <div class="total-activity-box">
+    <div class="total-activity-box" *ngFor="let item of displayCollection; let i =index">
         <div class="inner-div">
-            <h3>Activity name
+            <h3>{{item._id|titlecase}} ({{item.total | currency:"&#x20A6;&nbsp;"}})
                 <span *ngIf="isClosed">(closed)</span>
             </h3>
-            <div class="collection-tab mt-3">
+            <!-- <div class="collection-tab mt-3">
                 <div class="row m-0">
                     <div class="col-sm-2">
                         <span>male</span>
@@ -19,7 +19,7 @@
                         <span>5367678</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="total-activity-box">
@@ -29,13 +29,15 @@
                     <span>all activities</span>
                 </div>
                 <div class="col-7">
-                    <span class="text-orange">03957097</span>
+                    <span class="text-orange"
+                        *ngIf="displayEventTotal">{{displayEventTotal.eventTotal | currency:"&#x20A6;&nbsp;"}}</span>
                 </div>
                 <div class="col-5">
                     <span>gifts</span>
                 </div>
                 <div class="col-7">
-                    <span class="text-orange">595632</span>
+                    <span class="text-orange"
+                        *ngIf="displayEventTotal">{{displayEventTotal.donationTotal | currency:"&#x20A6;&nbsp;"}}</span>
                 </div>
             </div>
         </div>

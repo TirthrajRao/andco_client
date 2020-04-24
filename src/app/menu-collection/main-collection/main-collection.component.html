@@ -4,48 +4,29 @@
         <div class="inner-box">
             <div class="myEvent-slider-box">
                 <div class="myEvent-slider">
-                    <div class="myEvent-single-slide">
-                        <div class="myEvent-name event" [class.active]="selectedIndex === i">
+                    <div class="myEvent-single-slide" *ngFor="let name of listOfEvent; let i =index">
+                        <div class="myEvent-name event" [class.active]="selectedIndex === i"
+                            (click)="getCollection(name , i)">
                             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
-                                event name</p>
-                        </div>
-                    </div>
-                    <div class="myEvent-single-slide">
-                        <div class="myEvent-name event">
-                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
-                                event name</p>
-                        </div>
-                    </div>
-                    <div class="myEvent-single-slide">
-                        <div class="myEvent-name event">
-                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
-                                event name</p>
-                        </div>
-                    </div>
-                    <div class="myEvent-single-slide">
-                        <div class="myEvent-name event">
-                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
-                                event name</p>
-                        </div>
-                    </div>
-                    <div class="myEvent-single-slide">
-                        <div class="myEvent-name event" [class.active]="selectedIndex === i">
-                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
-                                event name</p>
+                                {{name.eventTitle |titlecase}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <ul class="nav nav-tabs">
-                <li class="active nav-item"><a class="nav-link" data-toggle="tab" href="#total">Total</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#guest">Guest</a></li>
+            <ul class="nav nav-tabs" *ngIf="isDisplay">
+                <li class="active nav-item" *ngFor="let tabs of navTabs; let i =index">
+                    <a class="nav-link" data-toggle="tab" (click)="selectedTab(i)"
+                        [class.active]="selectedActiveTab===i">{{tabs}}</a>
+                </li>
+                <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#guest">Guest</a></li> -->
             </ul>
-            <h3 class="total text-center">Total : N 897462</h3>
-            <div class="tab-content mt-3">
-                <div id="total" class="tab-pane fade in active">
-                    <app-main-total-collection></app-main-total-collection>
+            <h3 class="total text-center" *ngIf="isDisplay">Total :
+                {{totalOfEvent.finalTotal | currency:"&#x20A6;&nbsp;"}}</h3>
+            <div class="tab-content mt-3" *ngIf="isDisplay">
+                <div id="total" class="tab-pane active" *ngIf="indexOfPage === 0">
+                    <app-main-total-collection [collections]="totalCollection"></app-main-total-collection>
                 </div>
-                <div id="guest" class="tab-pane fade">
+                <div id="guest" class="tab-pane active" *ngIf="indexOfPage === 1">
                     <app-main-guest-collection></app-main-guest-collection>
                 </div>
             </div>
