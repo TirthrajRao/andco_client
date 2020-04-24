@@ -104,6 +104,14 @@ export class MainMenuComponent implements OnInit {
     }
   }
 
+  getCollection(event){
+    let output = this._loginService.returnLogin(event);
+    if (output == true) {
+      this.router.navigate(['/main-collection']);
+      this.closeModel()
+    }
+  }
+
   closeModel() {
     this.dialogRef.close('newOne');
   }
