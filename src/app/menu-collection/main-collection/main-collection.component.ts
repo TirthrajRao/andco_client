@@ -103,8 +103,12 @@ export class MainCollectionComponent implements OnInit {
         this.selectedActiveTab = 0
         this.indexOfPage = 0
         this.isLoad = false
+        this.noValueMessage = ''
       } else {
         this.noValueMessage = response.data.eventTotal.message
+        // this.totalOfEvent = []
+        // this.totalCollection = []
+        this.isDisplay = false
         this.isLoad = false
         console.log("call this==============");
 
