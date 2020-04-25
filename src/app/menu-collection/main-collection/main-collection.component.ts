@@ -22,6 +22,7 @@ export class MainCollectionComponent implements OnInit {
   displayGuestItems = []
   isLoad = false
   noValueMessage
+  eventDetails
   constructor(
     public eventService: EventService
   ) { }
@@ -88,14 +89,23 @@ export class MainCollectionComponent implements OnInit {
     this.selectedIndex = index
     console.log("event id", event._id);
     this.eventId = event
-    this.collectionDetails()
+    this.isLoad = true
+    this.eventService.getSingleEventDetails(this.eventId).subscribe((response: any) => {
+      console.log("what is the response of that single event", response);
+      this.eventDetails = response.data
+      this.collectionDetails()
+    }, error => {
+      this.isLoad = false
+      console.log("error while get details", error);
+
+    })
   }
 
 
   collectionDetails() {
-    this.isLoad = true
     this.eventService.getEventCollection(this.eventId).subscribe((response: any) => {
       console.log("response of collection", response);
+      response.data['isClosed'] = this.eventDetails.isClosed
       if (!response.data.eventTotal.message) {
         this.isDisplay = true
         this.totalOfEvent = response.data.eventTotal
