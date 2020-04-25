@@ -23,7 +23,7 @@ export class EventActivityComponent implements OnInit {
   activityId
   createdActivity: any;
   today = new Date()
-  currentDay = new Date()
+  currentDay
   currentYear = this.today.getFullYear()
   maxYear = new Date(this.today.setFullYear(this.today.getFullYear() + 10)).getFullYear();
   sub: any;
@@ -52,8 +52,10 @@ export class EventActivityComponent implements OnInit {
       if (params.id) {
         this.eventId = params.id;
         this.viewDetailsOfEvent(this.eventId);
+        this.getActivityFrom()
       }
     })
+
   }
   ngOnInit() {
     // this.scrollToBottom()
@@ -72,7 +74,7 @@ export class EventActivityComponent implements OnInit {
 
 
 
-    this.getActivityFrom()
+    // this.getActivityFrom()
 
   }
 
@@ -321,11 +323,22 @@ export class EventActivityComponent implements OnInit {
         var dates = this.eventActivities.map(function (x) { return new Date(x.activityStartDate); })
         var earliest = new Date(Math.min.apply(null, dates));
         console.log("ear =====>", earliest);
+        let forNewDate = new Date()
+        if (forNewDate > earliest) {
+          console.log("first if condition")
+          this.currentDay = earliest
+        } else {
+          console.log("call for last position");
+          this.currentDay = forNewDate
+        }
         // this.currentDay = earliest
         this.displayActivity = true
         this.getActivityFrom(this.eventActivities)
         this.isLoad = false
       } else {
+        this.currentDay = new Date()
+        this.getActivityFrom()
+        // }
         console.log("log this or not");
         this.isLoad = false
         // this.currentDay = new Date()

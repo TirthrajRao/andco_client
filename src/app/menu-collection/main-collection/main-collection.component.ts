@@ -20,6 +20,8 @@ export class MainCollectionComponent implements OnInit {
   indexOfPage
   eventId
   displayGuestItems = []
+  isLoad = false
+  noValueMessage
   constructor(
     public eventService: EventService
   ) { }
@@ -27,7 +29,7 @@ export class MainCollectionComponent implements OnInit {
   ngOnInit() {
     this.getTotalEvent()
 
-    this.initEventSlider();
+    // this.initEventSlider();
   }
 
 
@@ -68,50 +70,72 @@ export class MainCollectionComponent implements OnInit {
 
 
   getTotalEvent() {
+    this.isLoad = true
     this.eventService.getLoginUserEvent().subscribe((response: any) => {
       console.log("total event of login user", response);
       this.listOfEvent = response.data
+      setTimeout(() => {
+        this.initEventSlider()
+      }, 100)
+      this.isLoad = false
     }, error => {
       console.log("error while get event", error);
-
+      this.isLoad = false
     })
   }
 
   getCollection(event, index) {
     this.selectedIndex = index
     console.log("event id", event._id);
-    this.eventId = event._id
-    this.eventService.getEventCollection(event._id).subscribe((response: any) => {
+    this.eventId = event
+    this.collectionDetails()
+  }
+
+
+  collectionDetails() {
+    this.isLoad = true
+    this.eventService.getEventCollection(this.eventId).subscribe((response: any) => {
       console.log("response of collection", response);
-      this.isDisplay = true
-      this.totalOfEvent = response.data.eventTotal
-      this.totalCollection = response.data
-      this.selectedActiveTab = 0
-      this.indexOfPage = 0
+      if (!response.data.eventTotal.message) {
+        this.isDisplay = true
+        this.totalOfEvent = response.data.eventTotal
+        this.totalCollection = response.data
+        this.selectedActiveTab = 0
+        this.indexOfPage = 0
+        this.isLoad = false
+      } else {
+        this.noValueMessage = response.data.eventTotal.message
+        this.isLoad = false
+        console.log("call this==============");
+
+      }
     }, error => {
       console.log("error while get collections", error);
-
+      this.isLoad = false
     })
   }
 
   selectedTab(i) {
     this.selectedActiveTab = i
-    console.log("selected event", this.eventId);
+    console.log("selected event", i);
     if (i == 1) {
       console.log("call this");
+      this.isLoad = true
       this.eventService.getItemsOfGuest(this.eventId).subscribe((response: any) => {
         console.log("details of guest list", response);
         if (response && response.data.length > 0) {
           this.displayGuestItems = response.data
           this.indexOfPage = 1
+          this.isLoad = false
         }
       }, error => {
         console.log("error while get details of guest", error);
-
+        this.isLoad = false
       })
-
     }
-
-
+    if (i == 0) {
+      console.log("call or not");
+      this.collectionDetails()
+    }
   }
 }

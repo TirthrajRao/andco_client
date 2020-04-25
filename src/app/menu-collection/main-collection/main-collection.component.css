@@ -103,6 +103,23 @@ h3.total {
     overflow: auto;
 }
 
+/* .empty-message {
+    background: #ffd6ad;
+    border-radius: 20px;
+    padding-bottom: 10px;
+} */
+
+.empty-message img {
+    height: 200px;
+    /* filter: invert(1); */
+}
+
+.empty-message p {
+    font-size: 20px;
+    color: #0091AB;
+    font-weight: 600;
+}
+
 @media (max-width: 1600px) {
     .inner-box {
         width: 1040px;

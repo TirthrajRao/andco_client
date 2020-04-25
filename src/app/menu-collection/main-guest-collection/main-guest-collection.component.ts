@@ -11,6 +11,8 @@ export class MainGuestCollectionComponent implements OnInit {
 
   displayGuestItems = []
   current: any
+  firstLetter: any = [];
+  secondLetter: any = [];
 
   constructor() { }
 
@@ -36,9 +38,8 @@ export class MainGuestCollectionComponent implements OnInit {
     }, 100)
 
     this.displayGuestItems.forEach((singleList) => {
-
-      singleList['firstLetter'] = singleList.firstName.charAt(0)
-      singleList['lastLetter'] = singleList.lastName.charAt(0)
+      this.firstLetter.push(singleList.firstName.charAt(0))
+      this.secondLetter.push(singleList.lastName.charAt(0))
     })
     console.log("display list", this.displayGuestItems);
 

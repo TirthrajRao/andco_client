@@ -6,7 +6,7 @@
                 data-toggle="collapse" aria-controls="collapseOne" (click)="current = i">
                 <div class="inner-header">
                     <div class="profile-name">
-                        <span>SC</span>
+                        <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
                     </div>
                     <div class="guest-name">
                         <h1>{{item.firstName}} {{item.lastName}}</h1>
