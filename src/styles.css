@@ -12,9 +12,9 @@ body {
     color: #D2A0A1;
 }
 
-.mat-dialog-container{
-    overflow:  hidden !important;
-    }
+.mat-dialog-container {
+    overflow: hidden !important;
+}
 
 h1,
 h2,
@@ -173,6 +173,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-top: 120px;
     min-height: calc(100vh - 60px);
     /* position: relative; */
+}
+
+.main-menu-collection .page-content {
+    padding-top: 230px;
 }
 
 
@@ -508,6 +512,18 @@ span.mat-form-field-ripple {
     border-radius: 7px;
 }
 
+.total-collection-slider-main .mat-tab-label {
+    background-color: #dfc544 !important;
+}
+
+.total-collection-slider-main .mat-tab-label-active:after {
+    border: 2px solid #0091ab;
+}
+
+.total-collection-slider-main .mat-tab-label {
+    height: 39px;
+}
+
 
 /* mat tab end */
 
@@ -578,6 +594,59 @@ span.mat-form-field-ripple {
 
 
 /* my event end */
+
+
+/* main collection start */
+
+.total-collection-slider-main ul.slick-dots {
+    list-style: none;
+    font-size: 0;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+.total-collection-slider-main ul.slick-dots li {
+    display: inline-block;
+}
+
+.total-collection-slider-main ul.slick-dots li button {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: none;
+    background: #43b6c0;
+    margin: 5px;
+}
+
+.total-collection-slider-main ul.slick-dots li.slick-active button {
+    background-color: #024b58;
+}
+
+.total-collection-slider-main button.slick-arrow {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    z-index: 11;
+}
+
+.total-collection-slider-main button.slick-arrow {
+    top: -20px;
+    right: 20px;
+}
+
+.total-collection-slider-main button.prevarrow.slick-arrow {
+    right: 40px;
+}
+
+.total-collection-slider-main .arrow-right,
+.total-collection-slider-main .arrow-left {
+    border-top: 3px solid #0091ab;
+    border-left: 3px solid #0091ab;
+}
+
+
+/* main collection ends */
 
 
 /* share button start */
@@ -680,6 +749,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-main .page-content {
         padding-top: 150px;
     }
+    .main-menu-collection .page-content {
+        padding-top: 160px;
+    }
     share-button.sb-button.sb-circles-dark button.sb-whatsapp,
     share-button.sb-button.sb-circles-dark button.sb-facebook,
     share-button.sb-button.sb-circles-dark button.sb-email,
@@ -732,6 +804,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         width: 250px !important;
     }
     .myEvent-main .page-content {
+        padding-top: 110px;
+    }
+    .main-menu-collection .page-content {
         padding-top: 110px;
     }
     .total-collection-slider ul.slick-dots {
@@ -865,6 +940,10 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .add-bank-modal {
         width: 300px;
+    }
+    .total-collection-slider-main button.slick-arrow {
+        top: 0px;
+        right: 0;
     }
 }
 

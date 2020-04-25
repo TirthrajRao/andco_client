@@ -1,0 +1,43 @@
+<!-- <header></header> -->
+<app-loader *ngIf="isLoad"></app-loader>
+
+<section class="main-menu-collection">
+    <div class="page-content">
+        <div class="inner-box">
+            <div class="text-center text-white empty-message" *ngIf="listOfEvent && listOfEvent.length == 0">
+                <img src="../../../assets/images/no-user-collection.gif" alt="no event">
+                <p>Sorry you have no event</p>
+            </div>
+            <div class="myEvent-slider-box">
+                <div class="myEvent-slider">
+                    <div class="myEvent-single-slide" *ngFor="let name of listOfEvent; let i =index">
+                        <div class="myEvent-name event" [class.active]="selectedIndex === i"
+                            (click)="getCollection(name._id , i)">
+                            <p data-container="body" tooltipClass="my-custom-class"
+                                ngbTooltip="{{name.eventTitle |titlecase}}">
+                                {{name.eventTitle |titlecase}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs" *ngIf="isDisplay">
+                <li class="active nav-item" *ngFor="let tabs of navTabs; let i =index">
+                    <a class="nav-link" data-toggle="tab" (click)="selectedTab(i)"
+                        [class.active]="selectedActiveTab===i">{{tabs}}</a>
+                </li>
+                <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#guest">Guest</a></li> -->
+            </ul>
+            <h3 class="total text-center" *ngIf="isDisplay">Total :
+                {{totalOfEvent.finalTotal | currency:"&#x20A6;&nbsp;"}}</h3>
+            <h3 class="total text-center" *ngIf="noValueMessage">{{noValueMessage}}</h3>
+            <div class="tab-content mt-3" *ngIf="isDisplay">
+                <div id="total" class="tab-pane active" *ngIf="indexOfPage === 0">
+                    <app-main-total-collection [collections]="totalCollection"></app-main-total-collection>
+                </div>
+                <div id="guest" class="tab-pane active" *ngIf="indexOfPage === 1">
+                    <app-main-guest-collection [guestList]="displayGuestItems"></app-main-guest-collection>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

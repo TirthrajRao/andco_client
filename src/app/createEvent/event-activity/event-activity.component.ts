@@ -23,7 +23,7 @@ export class EventActivityComponent implements OnInit {
   activityId
   createdActivity: any;
   today = new Date()
-  currentDay = new Date()
+  currentDay
   currentYear = this.today.getFullYear()
   maxYear = new Date(this.today.setFullYear(this.today.getFullYear() + 10)).getFullYear();
   sub: any;
@@ -52,8 +52,10 @@ export class EventActivityComponent implements OnInit {
       if (params.id) {
         this.eventId = params.id;
         this.viewDetailsOfEvent(this.eventId);
+        this.getActivityFrom()
       }
     })
+
   }
   ngOnInit() {
     // this.scrollToBottom()
@@ -72,37 +74,12 @@ export class EventActivityComponent implements OnInit {
 
 
 
-    this.getActivityFrom()
+    // this.getActivityFrom()
 
   }
 
 
 
-  ngAfterViewInit() {
-    // this.message = 'all done loading :)'
-    // this.cdr.detectChanges();
-    this.scrollToBottom();
-    // let anyChnages = this.activities.changes.subscribe(this.scrollToBottom);
-    // console.log("cahnges if ", anyChnages);
-
-  }
-  scrollToBottom = () => {
-    try {
-
-      // const el: HTMLDivElement = this.activities.nativeElement;
-      // console.log("what is in el ======", el.scrollHeight, el.offsetHeight);
-
-      // el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
-
-      this.activities.nativeElement.scrollTop = this.activities.nativeElement.scrollHeight;
-
-      // console.log("this.content.nativeElement.scrollHeight", this.content.nativeElement.scrollHeight);
-
-    } catch (err) {
-      console.log("if aby aroor", err);
-
-    }
-  }
 
 
   addEvent(type: string, event, i) {
@@ -331,9 +308,9 @@ export class EventActivityComponent implements OnInit {
    */
   viewDetailsOfEvent(eventId) {
     this.isLoad = true
+    this.isDisable = false
     this._eventService.getActivityDetails(eventId).subscribe((response: any) => {
       console.log("response of acitivty", response);
-      this.isDisable = false
       if (response && !response.data.message) {
         this.eventActivities = response.data
         console.log("response of activity", this.eventActivities);
@@ -346,13 +323,22 @@ export class EventActivityComponent implements OnInit {
         var dates = this.eventActivities.map(function (x) { return new Date(x.activityStartDate); })
         var earliest = new Date(Math.min.apply(null, dates));
         console.log("ear =====>", earliest);
+        let forNewDate = new Date()
+        if (forNewDate > earliest) {
+          console.log("first if condition")
+          this.currentDay = earliest
+        } else {
+          console.log("call for last position");
+          this.currentDay = forNewDate
+        }
         // this.currentDay = earliest
         this.displayActivity = true
-        // this.currentDay = this.eventActivities[0].activityStartDate
-        // console.log("date picker validation", this.currentDay);
         this.getActivityFrom(this.eventActivities)
         this.isLoad = false
       } else {
+        this.currentDay = new Date()
+        this.getActivityFrom()
+        // }
         console.log("log this or not");
         this.isLoad = false
         // this.currentDay = new Date()

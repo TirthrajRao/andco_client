@@ -57,6 +57,9 @@ import { PaymentDetailsComponent } from '../guest/payment-details/payment-detail
 import { PaymentMessageComponent } from '../guest/payment-message/payment-message.component';
 import { AddBankAccountComponent } from '../add-bank-account/add-bank-account.component';
 import { ExcelService } from '../services/excel.service';
+import { MainCollectionComponent } from '../menu-collection/main-collection/main-collection.component'
+import { MainGuestCollectionComponent } from '../menu-collection/main-guest-collection/main-guest-collection.component';
+import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component'; 
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 
@@ -151,6 +154,10 @@ const routes: Routes = [
       //   path: 'guestActivity',
       //   component: GuestActivitySliderComponent
       // },
+      {
+        path: 'main-collection',
+        component: MainCollectionComponent
+      },
     ]
   }
 ]
@@ -190,7 +197,11 @@ const routes: Routes = [
     PaymentComponent,
     PaymentDetailsComponent,
     PaymentMessageComponent,
-    AddBankAccountComponent
+    AddBankAccountComponent,
+    MainCollectionComponent,
+    MainTotalCollectionComponent,
+    MainGuestCollectionComponent
+    
     // SearchListPipe
   ],
   imports: [

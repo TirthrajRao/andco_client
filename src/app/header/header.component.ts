@@ -130,7 +130,6 @@ export class HeaderComponent implements OnInit {
     let output = this._loginService.returnLogin(event);
     console.log("out put", output);
     if (output == true) {
-      //
       if (!this.router.url.includes('/menu')) {
         console.log("call this or not");
         let data
@@ -141,11 +140,6 @@ export class HeaderComponent implements OnInit {
           if (response == 'newOne') {
             this.currentUrl = this.router.url
             this.isDisplayMenu = true
-            // if (this.currentUrl == '/menu' || this.currentUrl == '/guest/' + this.hashTag) {
-            //   this.isDisplayMenu = false
-            // } else {
-            //   this.isDisplayMenu = true
-            // }
           }
 
         })
@@ -161,7 +155,7 @@ export class HeaderComponent implements OnInit {
 
   openDialog(someComponent, data = {}): Observable<any> {
     console.log("OPENDIALOG", "DATA = ", data);
-    const dialogRef = this.dialog.open(someComponent, { data, width: '100vw', height: '100vh' ,maxWidth:'100vw'});
+    const dialogRef = this.dialog.open(someComponent, { data, width: '100vw', height: '100vh', maxWidth: '100vw' });
     return dialogRef.afterClosed();
   }
 

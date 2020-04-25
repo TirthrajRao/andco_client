@@ -86,14 +86,14 @@ export class SignUpComponent implements OnInit {
       console.log("user created completed", res)
       let password = res.data.password;
       let emailId = res.data.email
-      console.log("ready for email", emailId);
+      // console.log("ready for email", emailId);
 
       var bytes = CryptoJS.AES.decrypt(password, this.key);
-      console.log("this is important", bytes);
+      // console.log("this is important", bytes);
 
       var originalText = bytes.toString(CryptoJS.enc.Utf8);
       // var withOutString = bytes(CryptoJS.enc.Utf8)
-      console.log("this is use full or not", originalText);
+      // console.log("this is use full or not", originalText);
 
       let data = {}
       data['email'] = emailId

@@ -1,0 +1,30 @@
+.profile-name {
+    background-color: #0091ab !important;
+    line-height: 1;
+    padding-top: 6px;
+}
+
+.info-box {
+    border-top: 2px solid #0091ab !important;
+    border-bottom: 2px solid #0091ab !important;
+}
+
+.info img {
+    filter: grayscale(4);
+}
+
+.guest-list-box-scroll::-webkit-scrollbar-thumb {
+    background-color: #0091ab !important;
+}
+
+@media(max-width:1600px) {
+    .guest-list-box-scroll {
+        max-height: 230px !important;
+    }
+}
+
+@media(max-width:1366px) {
+    .guest-list-box-scroll {
+        max-height: 210px !important;
+    }
+}
