@@ -512,6 +512,18 @@ span.mat-form-field-ripple {
     border-radius: 7px;
 }
 
+.total-collection-slider-main .mat-tab-label {
+    background-color: #dfc544 !important;
+}
+
+.total-collection-slider-main .mat-tab-label-active:after {
+    border: 2px solid #0091ab;
+}
+
+.total-collection-slider-main .mat-tab-label {
+    height: 39px;
+}
+
 
 /* mat tab end */
 
@@ -928,6 +940,10 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .add-bank-modal {
         width: 300px;
+    }
+    .total-collection-slider-main button.slick-arrow {
+        top: 0px;
+        right: 0;
     }
 }
 

@@ -1,5 +1,7 @@
 .profile-name {
     background-color: #0091ab !important;
+    line-height: 1;
+    padding-top: 6px;
 }
 
 .info-box {
