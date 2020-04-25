@@ -145,7 +145,7 @@ h3.total {
 @media(max-width: 1199px) {
     .inner-box {
         width: 730px;
-        height: 470px;
+        height: 490px;
     }
     li.nav-item a {
         font-size: 18px;
@@ -170,6 +170,9 @@ h3.total {
     }
     .myEvent-name {
         line-height: 40px;
+    }
+    h3.total {
+        font-size: 20px;
     }
 }
 

@@ -49,3 +49,12 @@
         min-height: 180px;
     }
 }
+
+@media(max-width:575px) {
+    .collection-tab .col-sm-2 span,
+    .collection-tab .col-sm-10 span,
+    .total-second-slide .col-5 span,
+    .total-second-slide .col-7 span {
+        font-size: 20px;
+    }
+}
