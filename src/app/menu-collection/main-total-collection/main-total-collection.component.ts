@@ -12,6 +12,7 @@ export class MainTotalCollectionComponent implements OnInit {
   $slider
   $slideContainter
   displayEventTotal: any;
+  isClosed
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class MainTotalCollectionComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     console.log("what is in changes for collections", changes);
     if (changes.totalCollections && changes.totalCollections.currentValue) {
+      this.isClosed = changes.totalCollections.currentValue.isClosed
       this.collectionDisplay(changes.totalCollections.currentValue)
     }
   }
