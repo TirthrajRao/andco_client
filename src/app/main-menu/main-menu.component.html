@@ -30,7 +30,8 @@
                     <li (click)="getMenu('/myevent')"><a>my event</a></li>
                     <li><a (click)="getBankAccount('/add-bank-account')">add bank account</a></li>
                     <li><a href="#">messages</a></li>
-                    <li><a routerLink='/main-collection'>collections</a></li>
+                    <li><a (click)="getCollection('/main-collection')">collections</a>
+                    </li>
                     <li><a href="javascript:void(0)" (click)="logout()">exit</a></li>
                 </ul>
             </div>

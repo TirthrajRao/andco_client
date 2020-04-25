@@ -1,141 +1,52 @@
 <div class="guest-list-box p-0">
     <p class="text-center" id="message"></p>
     <div class="guest-list-box-scroll">
-        <div class="accordion" id="accordionExample">
-            <button type="button" class="btn w-100" data-toggle="collapse" data-target="#collapseOne">
-                            <div class="inner-header">
-                                <div class="profile-name">
-                                    <span>SC</span>
-                                </div>
-                                <div class="guest-name">
-                                    <h1>Swati Chauhan</h1>
-                                </div>
-                            </div>
-                        </button>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="info-box">
-                    <div class="row m-0">
-                        <div class="col-sm-4">
-                            <div class="info">
-                                <img src="assets/images/location-guest.png" alt="location icon">
-                                <p>Address</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="info">
-                                <img src="../../../assets/images/call-guest.png" alt="call icon">
-                                <p>9876543210</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="info">
-                                <img src="../../../assets/images/message-guest.png" alt="message icon">
-                                <p>swati@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul class="mt-3">
-                    <li class="guest-single-item">
-                        <div class="guest-item-name">
-                            <p>02 item name</p>
-                        </div>
-                        <div class="guest-event-name">
-                            <p>activity name</p>
-                        </div>
-                        <div class="guest-item-price">
-                            <p>8475</p>
-                        </div>
-                    </li>
-                    <li class="guest-single-item">
-                        <div class="guest-item-name">
-                            <p>02 item name</p>
-                        </div>
-                        <div class="guest-event-name">
-                            <p>activity name</p>
-                        </div>
-                        <div class="guest-item-price">
-                            <p>8475</p>
-                        </div>
-                    </li>
-                    <li class="guest-single-item">
-                        <div class="guest-item-name">
-                            <p>02 item name</p>
-                        </div>
-                        <div class="guest-event-name">
-                            <p>activity name</p>
-                        </div>
-                        <div class="guest-item-price">
-                            <p>8475</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <button type="button" class="btn w-100" data-toggle="collapse" data-target="#collapseTwo">
+        <div class="accordion" id="accordionExample" *ngFor="let item of displayGuestItems; let i =index">
+            <button type="button" [attr.data-target]="'#collapseOne' + i" id="bhudev{{i}}" class="btn w-100"
+                data-toggle="collapse" aria-controls="collapseOne" (click)="current = i">
                 <div class="inner-header">
                     <div class="profile-name">
                         <span>SC</span>
                     </div>
                     <div class="guest-name">
-                        <h1>Swati Chauhan</h1>
+                        <h1>{{item.firstName}} {{item.lastName}}</h1>
                     </div>
                 </div>
             </button>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne{{i}}" [class.collapse]='current != i' class="collapse" aria-labelledby="headingOne"
+                data-parent="#accordionExample">
                 <div class="info-box">
                     <div class="row m-0">
                         <div class="col-sm-4">
                             <div class="info">
                                 <img src="assets/images/location-guest.png" alt="location icon">
-                                <p>Address</p>
+                                <p>{{item.address}}</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="info">
                                 <img src="../../../assets/images/call-guest.png" alt="call icon">
-                                <p>9876543210</p>
+                                <p>{{item.phoneNo}}</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="info">
                                 <img src="../../../assets/images/message-guest.png" alt="message icon">
-                                <p>swati@gmail.com</p>
+                                <p>{{item.email}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <ul class="mt-3">
-                    <li class="guest-single-item">
+                    <li class="guest-single-item" *ngFor="let final of item.items">
                         <div class="guest-item-name">
-                            <p>02 item name</p>
+                            <p>{{final.quantity}} {{final.itemId.itemName}}</p>
                         </div>
                         <div class="guest-event-name">
-                            <p>activity name</p>
+                            <p>{{final.itemId.activityId.activityName}}</p>
                         </div>
                         <div class="guest-item-price">
-                            <p>8475</p>
-                        </div>
-                    </li>
-                    <li class="guest-single-item">
-                        <div class="guest-item-name">
-                            <p>02 item name</p>
-                        </div>
-                        <div class="guest-event-name">
-                            <p>activity name</p>
-                        </div>
-                        <div class="guest-item-price">
-                            <p>8475</p>
-                        </div>
-                    </li>
-                    <li class="guest-single-item">
-                        <div class="guest-item-name">
-                            <p>02 item name</p>
-                        </div>
-                        <div class="guest-event-name">
-                            <p>activity name</p>
-                        </div>
-                        <div class="guest-item-price">
-                            <p>8475</p>
+                            <p>{{final.itemId.itemPrice * final.quantity | currency:"&#x20A6;&nbsp;"}}</p>
                         </div>
                     </li>
                 </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../services/event.service';
 declare var $;
 
 @Component({
@@ -9,13 +10,28 @@ declare var $;
 export class MainCollectionComponent implements OnInit {
   $slideContainter;
   $slider;
-
-  constructor() { }
+  isDisplay = false
+  listOfEvent = []
+  selectedIndex
+  navTabs = ["Total", "Guests"]
+  selectedActiveTab
+  totalOfEvent
+  totalCollection
+  indexOfPage
+  eventId
+  displayGuestItems = []
+  constructor(
+    public eventService: EventService
+  ) { }
 
   ngOnInit() {
-this.initEventSlider();
+    this.getTotalEvent()
+
+    this.initEventSlider();
   }
-initEventSlider() {
+
+
+  initEventSlider() {
     setTimeout(() => {
       this.$slideContainter = $('.myEvent-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
@@ -50,4 +66,52 @@ initEventSlider() {
   }
 
 
+
+  getTotalEvent() {
+    this.eventService.getLoginUserEvent().subscribe((response: any) => {
+      console.log("total event of login user", response);
+      this.listOfEvent = response.data
+    }, error => {
+      console.log("error while get event", error);
+
+    })
+  }
+
+  getCollection(event, index) {
+    this.selectedIndex = index
+    console.log("event id", event._id);
+    this.eventId = event._id
+    this.eventService.getEventCollection(event._id).subscribe((response: any) => {
+      console.log("response of collection", response);
+      this.isDisplay = true
+      this.totalOfEvent = response.data.eventTotal
+      this.totalCollection = response.data
+      this.selectedActiveTab = 0
+      this.indexOfPage = 0
+    }, error => {
+      console.log("error while get collections", error);
+
+    })
+  }
+
+  selectedTab(i) {
+    this.selectedActiveTab = i
+    console.log("selected event", this.eventId);
+    if (i == 1) {
+      console.log("call this");
+      this.eventService.getItemsOfGuest(this.eventId).subscribe((response: any) => {
+        console.log("details of guest list", response);
+        if (response && response.data.length > 0) {
+          this.displayGuestItems = response.data
+          this.indexOfPage = 1
+        }
+      }, error => {
+        console.log("error while get details of guest", error);
+
+      })
+
+    }
+
+
+  }
 }
