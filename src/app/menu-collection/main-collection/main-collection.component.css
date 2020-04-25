@@ -188,6 +188,7 @@ h3.total {
     }
     .inner-box {
         width: 390px;
+        padding: 20px;
     }
 }
 
@@ -197,5 +198,11 @@ h3.total {
     }
     .nav-tabs .nav-link {
         padding: 5px 19px 0px;
+    }
+}
+
+@media(max-width: 360px) {
+    .inner-box {
+        width: 310px;
     }
 }
