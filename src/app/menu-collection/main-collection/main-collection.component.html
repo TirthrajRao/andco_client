@@ -7,7 +7,8 @@
                     <div class="myEvent-single-slide" *ngFor="let name of listOfEvent; let i =index">
                         <div class="myEvent-name event" [class.active]="selectedIndex === i"
                             (click)="getCollection(name , i)">
-                            <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="event name">
+                            <p data-container="body" tooltipClass="my-custom-class"
+                                ngbTooltip="{{name.eventTitle |titlecase}}">
                                 {{name.eventTitle |titlecase}}</p>
                         </div>
                     </div>
@@ -27,7 +28,7 @@
                     <app-main-total-collection [collections]="totalCollection"></app-main-total-collection>
                 </div>
                 <div id="guest" class="tab-pane active" *ngIf="indexOfPage === 1">
-                    <app-main-guest-collection></app-main-guest-collection>
+                    <app-main-guest-collection [guestList]="displayGuestItems"></app-main-guest-collection>
                 </div>
             </div>
         </div>
