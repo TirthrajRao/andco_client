@@ -52,7 +52,7 @@ export class GuestActivitySliderComponent implements OnInit {
       // console.log("hashtag is important", this.eventHashtag);
     })
     this.initActivitySlider()
-    this.getSelectedItems()
+    // this.getSelectedItems()
     // this.displayAllData()
     window.addEventListener('beforeunload', function (e) {
       console.log("a jyare page load thay tyare", e)
@@ -92,6 +92,8 @@ export class GuestActivitySliderComponent implements OnInit {
         this.eventHashtag = params.hashTag
       })
       this.displayActivity = changes.listOfActivity.currentValue
+      console.log("what is the value", this.displayActivity);
+
       this.initActivitySlider()
       // this.getSelectedItems()
       this.displayAllData()
@@ -101,8 +103,8 @@ export class GuestActivitySliderComponent implements OnInit {
       this.sub = this.activated.params.subscribe(params => {
         this.eventHashtag = params.hashTag
         // console.log("hashtag is important", this.eventHashtag);
+        this.getSelectedItems()
       })
-      this.getSelectedItems()
       // this.displayAllData()
     }
 
@@ -323,15 +325,17 @@ export class GuestActivitySliderComponent implements OnInit {
     // let body = {
     //   eventHashtag: this.eventHashtag
     // }
-    this.allCartList[0]['eventHashtag'] = this.eventHashtag
-    this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
-      console.log("resonse of cart details", response)
-      this.allCartList = response.data.data.cartList
-      this.totalItemList.emit({ allItems: response.data.data.cartList, index: 1 })
-      this.isLoad = false
-    }, error => {
-      console.log("error while add cart items", error);
-    })
+
+    this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
+    // this.allCartList[0]['eventHashtag'] = this.eventHashtag
+    // this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
+    //   console.log("resonse of cart details", response)
+    //   this.allCartList = response.data.data.cartList
+    //   this.totalItemList.emit({ allItems: response.data.data.cartList, index: 1 })
+    //   this.isLoad = false
+    // }, error => {
+    //   console.log("error while add cart items", error);
+    // })
   }
 
 

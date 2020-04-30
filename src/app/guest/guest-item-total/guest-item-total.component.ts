@@ -38,7 +38,7 @@ export class GuestItemTotalComponent implements OnInit {
       // console.log("hashtag ", param);
       this.eventHashTag = param.hashTag
     })
-    this.getCartItems()
+    // this.getCartItems()
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -52,7 +52,7 @@ export class GuestItemTotalComponent implements OnInit {
     // this.totlaItem = changes.displayTotalItem.currentValue.allItems
     // this.removeArray = []
     // this.displayList()
-    this.getCartItems()
+    // this.getCartItems()
   }
 
   getCartItems() {

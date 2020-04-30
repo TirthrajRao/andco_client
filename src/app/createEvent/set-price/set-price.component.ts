@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
 import { EventService } from '../../services/event.service';
@@ -11,6 +11,7 @@ declare var $: any
 import * as _ from 'lodash';
 import { async } from 'q';
 import * as moment from 'moment';
+import { element } from 'protractor';
 
 
 
@@ -20,6 +21,7 @@ import * as moment from 'moment';
   styleUrls: ['./set-price.component.css']
 })
 export class SetPriceComponent implements OnInit {
+  // timeChanged: EventEmitter<string> 
 
   private sub: any
   private eventId: any
@@ -57,6 +59,10 @@ export class SetPriceComponent implements OnInit {
   newTime
   default
   isBack = false
+  isDisableNext = false
+  selectedPaymentTransferDate: string;
+  backButtonIndex = 0
+  saveEvent = false
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -66,6 +72,10 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isDisableNext = true
+    if (this.backButtonIndex == 0) {
+      this.isBack = true
+    }
     console.log("what is current time", this.time);
 
     this.getBankDetails()
@@ -81,12 +91,12 @@ export class SetPriceComponent implements OnInit {
     this.setPriceForm = new FormGroup({
       welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
       thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
-      payMentTransferDate: new FormControl(''),
-      isLogistics: new FormControl(''),
+      payMentTransferDate: new FormControl('', [Validators.required]),
+      isLogistics: new FormControl('', [Validators.required]),
       paymentDeadlineDate: new FormControl('', [Validators.required]),
       paymentDeadlineTime: new FormControl('', [Validators.required]),
-      bankDetails: new FormControl('', [Validators.required]),
-      hearAbout: new FormControl(''),
+      bankDetails: new FormControl(''),
+      hearAbout: new FormControl('', [Validators.required]),
       linkOfEvent: new FormControl(''),
       message: new FormControl(''),
       vendorMessage: new FormControl(''),
@@ -123,25 +133,127 @@ export class SetPriceComponent implements OnInit {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: false,
-      arrows: true,
+      arrows: false,
       fade: true,
       swipe: false,
-      prevArrow: '<button type="button" class="prevarrow">Back</button>',
-      nextArrow: '<button type="button" class="nextarrow" (click)="nextArrowClick($event)">Next</button>',
+      // prevArrow: '<button type="button" class="prevarrow">Back</button>',
+      // nextArrow: '<button type="button" class="nextarrow" (click)="nextArrowClick($event)">Next</button>',
 
     })
 
     this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
       console.log("event on before", currentSlide, nextSlide);
-      // this.previousSlide(currentSlide)
+      this.previousSlide(currentSlide, nextSlide)
     })
   }
 
 
-  previousSlide(slide) {
-    // console.log("slide na click ma su ave", slide);
+  previousSlide(current, next) {
+    if (!this.setPriceDetails) {
+      this.isDisableNext = true
+    }
+    if ((current == 0 && next == 1) && ((this.setPriceForm.controls.welcomeMessage.status == 'VALID' && this.setPriceForm.controls.thankyouMessage.status == 'VALID'))) {
+      this.isDisableNext = false
+    }
+    if ((current == 2 && next == 3) && (this.setPriceForm.controls.payMentTransferDate.status == 'VALID')) {
+      this.isDisableNext = false
+    }
+    if ((current == 3 && next == 4) && (this.setPriceForm.controls.isLogistics.status == 'VALID')) {
+      this.isDisableNext = false
+    }
+
+    if ((current == 4 && next == 5) && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))) {
+      this.isDisableNext = false
+    }
+    if (current == 5 && next == 6) {
+      this.isDisableNext = false
+    }
+    if (current == 1 && next == 0) {
+      this.isBack = true
+    }
+    if (current == 6 && next == 7) {
+      console.log("for edit price details", this.setPriceForm);
+
+      this.saveEvent = true
+      this.isDisable = false
+    } else {
+      this.saveEvent = false
+    }
+  }
+
+  welcomeMessageEnter(event) {
+    console.log("what is in event", event.target.value);
+    if (this.setPriceForm.controls.welcomeMessage.status == 'VALID' && this.setPriceForm.controls.thankyouMessage.status == 'VALID') {
+      console.log("call this ");
+      this.setPriceForm.patchValue({
+        welcomeMessage: event.target.value
+      })
+      this.setPriceForm.get('welcomeMessage').updateValueAndValidity()
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+  }
+
+  thankyouMessageEnter(event) {
+    if (this.setPriceForm.controls.welcomeMessage.status == 'VALID' && this.setPriceForm.controls.thankyouMessage.status == 'VALID') {
+      // console.log("call this ");
+      this.setPriceForm.patchValue({
+        thankyouMessage: event.target.value
+      })
+      this.setPriceForm.get('thankyouMessage').updateValueAndValidity()
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+  }
+
+  paymentDate(event) {
+    // console.log("payment close date", event);
+    if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
+      console.log("this is perfect");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
 
   }
+
+  timeChanged(event) {
+    console.log("event of timer", event);
+
+  }
+
+  closeEvent() {
+    console.log("now it want to call");
+
+    if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
+      console.log("this is perfect");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+  }
+
+  nextSlide() {
+    this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) + 1);
+    this.backButtonIndex = 1
+    if (this.backButtonIndex == 1) {
+      this.isBack = false
+    }
+  }
+
+
+  backToGroup() {
+    // this.router.navigate(['/eventGroup/' + this.eventId])
+    if (!this.setPriceDetails) {
+      this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+      this.isDisableNext = false
+    } else {
+      this.router.navigate(['/eventGroup/', this.eventId])
+    }
+  }
+
 
   getSetPriceDetailsOfEvent(eventId) {
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
@@ -149,8 +261,10 @@ export class SetPriceComponent implements OnInit {
       this.isLoad = false
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
+        this.isDisableNext = false
         this.isBack = false
         this.setPriceDetails = response
+        this.isDisable = false
         console.log("response of set price", this.setPriceDetails);
         if (this.setPriceDetails.bankAccount != null) {
           console.log("call for bank account");
@@ -160,10 +274,20 @@ export class SetPriceComponent implements OnInit {
           this.selectedCardAccount = this.setPriceDetails.cardAccount
         }
         let selectedLogistics = this.setPriceDetails.isLogistics
+        if (selectedLogistics) {
+          this.setPriceForm.patchValue({
+            isLogistics: selectedLogistics
+          });
+          this.setPriceForm.get('isLogistics').updateValueAndValidity();
+        }
         this.aboutTypeOf = this.setPriceDetails.hearAbout
         // console.log("if about type is selected or not", this.aboutTypeOf);
         if (this.setPriceDetails.payMentTransferDate == 'true') {
           $('input:radio[id="test5"]').prop('checked', true);
+          this.setPriceForm.patchValue({
+            payMentTransferDate: this.setPriceDetails.payMentTransferDate
+          });
+          this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
         }
         if (selectedLogistics == "isdelivery") {
           console.log("call true==========");
@@ -179,6 +303,10 @@ export class SetPriceComponent implements OnInit {
         }
         if (this.setPriceDetails.regestery == 'true') {
           $('input:radio[id="test1"]').prop('checked', true);
+        }
+        if (this.setPriceDetails.linkOfEvent) {
+          $('input:radio[id="test2"]').prop('checked', true);
+          this.isRegestery = true
         }
         if (this.setPriceDetails.hearAbout && this.setPriceDetails.hearAbout.aboutType == 'planner') {
           console.log("this is called");
@@ -215,7 +343,11 @@ export class SetPriceComponent implements OnInit {
       bankDetails: obj
     })
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
-
+    if (this.setPriceForm.controls.bankDetails.status == 'VALID') {
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
   }
 
   selectCard(event) {
@@ -235,16 +367,6 @@ export class SetPriceComponent implements OnInit {
    */
   get f() { return this.setPriceForm.controls; }
 
-
-  newClick(data) {
-    // console.log("this is very important", data);
-
-  }
-
-  nextArrowClick(event) {
-    // console.log("nextArrowClick($event)", event);
-
-  }
   setPrice() {
     console.log("value of form", this.setPriceForm);
     // let message
@@ -292,37 +414,37 @@ export class SetPriceComponent implements OnInit {
 
   updateSetPrice() {
     console.log("call for update", this.setPriceForm.value);
-    this.isLoad = true
+    // this.isLoad = true
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
     let flag = 0;
     keys.every((element, value) => {
       // console.log("bank element", form[element], value)
       if (form[element] == this.setPriceForm.controls.bankDetails) {
-        if (form[element].status == 'INVALID') {
-          console.log("call or not");
-          console.log("this is perfect", element);
-          if (this.setPriceDetails.bankAccount) {
-            let obj = {
-              _id: this.setPriceDetails.bankAccount._id,
-              flag: 'bank'
-            }
-            this.setPriceForm.patchValue({
-              bankDetails: obj
-            })
-            this.setPriceForm.get('bankDetails').updateValueAndValidity()
-          } else {
-            let obj = {
-              _id: this.setPriceDetails.cardAccount._id,
-              flag: 'card'
-            }
-
-            this.setPriceForm.patchValue({
-              bankDetails: obj
-            })
-            this.setPriceForm.get('bankDetails').updateValueAndValidity()
+        // if (form[element].status == 'INVALID') {
+        console.log("call or not");
+        console.log("this is perfect", element);
+        if (this.setPriceDetails.bankAccount) {
+          let obj = {
+            _id: this.setPriceDetails.bankAccount._id,
+            flag: 'bank'
           }
+          this.setPriceForm.patchValue({
+            bankDetails: obj
+          })
+          this.setPriceForm.get('bankDetails').updateValueAndValidity()
+        } else {
+          let obj = {
+            _id: this.setPriceDetails.cardAccount._id,
+            flag: 'card'
+          }
+
+          this.setPriceForm.patchValue({
+            bankDetails: obj
+          })
+          this.setPriceForm.get('bankDetails').updateValueAndValidity()
         }
+        // }
       } else {
         if (form[element].status == 'INVALID') {
           flag = 1;
@@ -403,7 +525,6 @@ export class SetPriceComponent implements OnInit {
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
   }
   paymentCloseDate(data) {
-    // console.log("su ave che", data);
     if (data == 'test5') {
       this.setPriceForm.patchValue({
         payMentTransferDate: 'true'
@@ -411,15 +532,39 @@ export class SetPriceComponent implements OnInit {
       this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
       this.isTransfer = false
       this.isPayment = false
+      if (this.setPriceForm.controls.payMentTransferDate.status == 'VALID') {
+        console.log("for transfer");
+        this.isDisableNext = false
+      } else {
+        this.isDisableNext = true
+      }
     } else {
       if (this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') {
         this.isTransfer = false
         this.isPayment = true
+        // this.isDisableNext = false
       } else {
+        console.log("su ave che", data)
+        console.log("value of form", this.setPriceForm);
+        if (this.setPriceForm.controls.payMentTransferDate.value == 'true' && !this.selectedPaymentTransferDate) {
+          console.log("for transfer");
+          this.isDisableNext = true
+        } else if (this.selectedPaymentTransferDate) {
+          this.setPriceForm.patchValue({
+            payMentTransferDate: this.selectedPaymentTransferDate
+          });
+          this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
+          this.isDisableNext = false
+        }
+        else {
+          this.isDisableNext = false
+        }
+        // this.isDisableNext = true
         this.isTransfer = true
         this.isPayment = false
       }
     }
+
   }
   giftOfEvent(data) {
     if (data == 'test1') {
@@ -428,17 +573,41 @@ export class SetPriceComponent implements OnInit {
         regestery: 'true'
       })
       this.setPriceForm.get('regestery').updateValueAndValidity()
+      this.isDisableNext = false
     } else {
-      this.isRegestery = true
+      if (!this.setPriceDetails) {
+        this.isRegestery = true
+        this.isDisableNext = true
+      } else {
+        this.isRegestery = true
+        this.isDisableNext = false
+      }
     }
+  }
+
+  addRegestry(event) {
+    console.log("value of event regestry", event.target.value);
+    if (event.target.value) {
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+
   }
   getDate(event) {
     // console.log("hello ===>", event.value);
     // moment($(event.value).val()).format('YYYY-MM-DD')
+    this.selectedPaymentTransferDate = moment(event.value).format('YYYY-MM-DD')
     this.setPriceForm.patchValue({
       payMentTransferDate: moment(event.value).format('YYYY-MM-DD')
     });
     this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
+    if (this.setPriceForm.controls.payMentTransferDate.status == 'VALID') {
+      console.log("for transfer");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
   }
 
   selectedValue(event) {
@@ -455,6 +624,12 @@ export class SetPriceComponent implements OnInit {
       })
       this.setPriceForm.get('isLogistics').updateValueAndValidity();
     }
+    if (this.setPriceForm.controls.isLogistics.status == 'VALID') {
+      console.log("for logisctics");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
 
   }
 
@@ -464,9 +639,13 @@ export class SetPriceComponent implements OnInit {
       this.isEventPlannerSelected = true
       this.isEventVendorSelected = false
     } else if (event.target.value == 'vendor') {
+      console.log("second if");
+
       this.isEventVendorSelected = true
       this.isEventPlannerSelected = false
     } else {
+      console.log("final else condition is call ");
+
       this.isEventPlannerSelected = false
       this.isEventVendorSelected = false
       let hearAbout = {
@@ -476,6 +655,7 @@ export class SetPriceComponent implements OnInit {
         hearAbout: hearAbout
       })
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
+      this.isDisable = false
     }
   }
 
@@ -485,10 +665,12 @@ export class SetPriceComponent implements OnInit {
     if (event.target.value == 'planner') {
       this.isEventPlannerUpdate = true
       this.isEventVendorUpdate = false
+      this.isDisable = true
       console.log("hear about message", this.hearAboutMessage)
     } else if (event.target.value == 'vendor') {
       this.isEventVendorUpdate = true
       this.isEventPlannerUpdate = false
+      this.isDisable = true
     } else {
       let updateHear = {
         aboutType: event.target.value
@@ -511,38 +693,58 @@ export class SetPriceComponent implements OnInit {
 
   plannerValue(event) {
     console.log("planner value", event.target.value);
-    let hearAbout = {
-      aboutType: 'planner',
-      message: event.target.value
+    if (event.target.value) {
+
+      let hearAbout = {
+        aboutType: 'planner',
+        message: event.target.value
+      }
+      this.setPriceForm.patchValue({
+        hearAbout: hearAbout
+      })
+      this.setPriceForm.get('hearAbout').updateValueAndValidity()
+    } else {
+      this.isDisable = true
     }
-    this.setPriceForm.patchValue({
-      hearAbout: hearAbout
-    })
-    this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
 
   updatePlannerValue(event) {
     console.log("call or not", this.hearAboutMessage);
 
-    this.aboutTypeOf = this.aboutTypeOf
+    // this.aboutTypeOf = this.aboutTypeOf
+    if (event.target.value) {
+      this.aboutTypeOf = this.aboutTypeOf
+      this.isDisable = false
+    } else {
+      this.isDisable = true
+    }
   }
 
 
   updateVendorValue(event) {
     console.log("call or not", this.hearAboutMessage);
-    this.aboutTypeOf = this.aboutTypeOf
+    if (event.target.value) {
+      this.aboutTypeOf = this.aboutTypeOf
+      this.isDisable = false
+    } else {
+      this.isDisable = true
+    }
   }
 
 
   vendorValue(event) {
-    let hearAbout = {
-      aboutType: 'vendor',
-      message: event.target.value
+    if (event.target.value) {
+      let hearAbout = {
+        aboutType: 'vendor',
+        message: event.target.value
+      }
+      this.setPriceForm.patchValue({
+        hearAbout: hearAbout
+      })
+      this.setPriceForm.get('hearAbout').updateValueAndValidity()
+    } else {
+      this.isDisable = true
     }
-    this.setPriceForm.patchValue({
-      hearAbout: hearAbout
-    })
-    this.setPriceForm.get('hearAbout').updateValueAndValidity()
   }
 
   skipButton() {
@@ -550,9 +752,6 @@ export class SetPriceComponent implements OnInit {
   }
 
 
-  backToGroup() {
-    this.router.navigate(['/eventGroup/' + this.eventId])
-  }
 
 
   opened(event) {

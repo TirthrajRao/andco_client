@@ -12,6 +12,7 @@ import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { AddBankAccountComponent } from './add-bank-account/add-bank-account.component';
 // import { MainCollectionComponent } from './menu-collection/main-collection/main-collection.component';
 import { HomeModule } from './home/home.module';
+import { AuthGuard } from './auth.guard';
 import { from } from 'rxjs';
 
 

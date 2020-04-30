@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { LoginService } from '../../services/login.service'
 import { config } from '../../config'
@@ -37,12 +37,17 @@ export class MyEventComponent implements OnInit {
   printTitle
   printHashTag
   path = config.baseMediaUrl;
-
+  data
   constructor(
     private route: Router,
     public eventService: EventService,
-    public loginSerivce: LoginService
-  ) { }
+    public loginSerivce: LoginService,
+    // public activated: ActivatedRoute
+  ) {
+    this.route.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
 
   @HostListener('window:beforeprint', ['$event'])
   onBeforePrint(event) {
@@ -60,6 +65,12 @@ export class MyEventComponent implements OnInit {
 
 
   ngOnInit() {
+
+    // this.data = this.activated.params.subscribe(param => {
+    //   console.log("value of activated routes", param);
+
+    //   // this.hashTag = param.hashTag
+    // })
 
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -94,7 +105,6 @@ export class MyEventComponent implements OnInit {
       if (this.isCelebrant == true) {
         this.eventDetails = response.data
         console.log("event details", this.eventDetails);
-
         this.printHashTag = this.eventDetails.hashTag
         this.printTitle = this.eventDetails.eventTitle
         this.printPhoto = this.eventDetails.profilePhoto
@@ -103,6 +113,7 @@ export class MyEventComponent implements OnInit {
         this.changeMenuWithArraow(this.currenMenuIndex)
         if (this.currenMenuIndex == 0) {
           this.getActivity()
+          // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
         }
       } else {
         let data = '/guest/' + this.eventHashTag
@@ -133,6 +144,7 @@ export class MyEventComponent implements OnInit {
   getActivity() {
     this.totalActivity = this.eventDetails.activity
     console.log("call thay che ke nai ", this.totalActivity);
+    // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
   }
 
   getEventLink() {
@@ -242,10 +254,12 @@ export class MyEventComponent implements OnInit {
     // this.currenMenuIndex = null
     if (event == 0) {
       this.currenMenuIndex = event
+      // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
       this.getActivity()
     }
     if (event == 1) {
       this.currenMenuIndex = event
+      // this.route.navigate(['/myevent'], { queryParams: { profile: this.eventDetails.eventTitle } });
       this.getProfileOfEvent()
     }
     if (event == 2) {
