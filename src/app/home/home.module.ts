@@ -59,9 +59,10 @@ import { AddBankAccountComponent } from '../add-bank-account/add-bank-account.co
 import { ExcelService } from '../services/excel.service';
 import { MainCollectionComponent } from '../menu-collection/main-collection/main-collection.component'
 import { MainGuestCollectionComponent } from '../menu-collection/main-guest-collection/main-guest-collection.component';
-import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component'; 
+import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component';
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
+import { AuthGuard } from '../auth.guard';
 
 
 
@@ -69,6 +70,7 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'header',
@@ -123,8 +125,8 @@ const routes: Routes = [
         component: AllSliderComponent
       },
       {
-        path: "myEvent-activity",
-        component: MyEventActivityComponent
+        path: "eventActivity/:hashTag",
+        component: MyEventComponent
       },
       {
         path: 'myevent',
@@ -137,10 +139,6 @@ const routes: Routes = [
       {
         path: 'invited-guest',
         component: InvitedGuestComponent
-      },
-      {
-        path: 'guest/:hashTag',
-        component: GuestMainComponent
       },
       {
         path: 'add-bank-account',
@@ -159,7 +157,11 @@ const routes: Routes = [
         component: MainCollectionComponent
       },
     ]
-  }
+  },
+  {
+    path: 'guest/:hashTag',
+    component: GuestMainComponent
+  },
 ]
 
 
@@ -201,7 +203,7 @@ const routes: Routes = [
     MainCollectionComponent,
     MainTotalCollectionComponent,
     MainGuestCollectionComponent
-    
+
     // SearchListPipe
   ],
   imports: [
@@ -228,6 +230,7 @@ const routes: Routes = [
   ],
   exports: [
     LoaderComponent,
+    // GuestMainComponent
     // MatDatepickerModule
   ],
   providers: [

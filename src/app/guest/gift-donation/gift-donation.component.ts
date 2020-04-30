@@ -30,7 +30,7 @@ export class GiftDonationComponent implements OnInit {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
     })
-    this.getDonationAmount()
+    // this.getDonationAmount()
   }
 
   ngOnChanges(changes: SimpleChange) {
@@ -41,7 +41,7 @@ export class GiftDonationComponent implements OnInit {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
     })
-    this.getDonationAmount()
+    // this.getDonationAmount()
   }
 
 

@@ -339,16 +339,16 @@ export class CreateEventComponent implements OnInit {
         } else {
           this.saveEvent = false
         }
-        if(currentSlide == 3 && nextSlide == 4){
+        if (currentSlide == 3 && nextSlide == 4) {
           this.isDisableNext = false
         }
         // if((currentSlide == 2 && nextSlide == 3))
         if (this.eventForm.controls.profile.status == 'VALID') {
-      console.log("please");
-      this.isDisableNext = false
-    } else {
-      this.isDisableNext = true
-    }
+          console.log("please");
+          this.isDisableNext = false
+        } else {
+          this.isDisableNext = true
+        }
       })
     }, 100)
   }
@@ -653,7 +653,7 @@ export class CreateEventComponent implements OnInit {
   }
   openImageModal() {
     $('#imageUpload').modal("show")
-if (this.eventForm.controls.profile.status == 'VALID') {
+    if (this.eventForm.controls.profile.status == 'VALID') {
       console.log("please");
       this.isDisableNext = false
     } else {

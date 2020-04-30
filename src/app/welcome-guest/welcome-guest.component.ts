@@ -23,7 +23,7 @@ export class WelcomeGuestComponent implements OnInit {
       this.hashtag = params.id
       this.platForm = params.type
     })
-    console.log("if came form any platform", this.platForm);
+    // console.log("if came form any platform", this.platForm);
     if (this.platForm != undefined) {
       sessionStorage.setItem('platForm', JSON.stringify(this.platForm))
     } else {
@@ -34,17 +34,32 @@ export class WelcomeGuestComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("what us ======", this.route.url);
+
+    // let newHashTag = this.route.url.split("/")
+    // if (this.route.url != '/menu') {
+    //   console.log("what is in new", newHashTag);
+    //   sessionStorage.setItem('guestHashTag', JSON.stringify(newHashTag[1]))
+    //   this.route.navigate(['/guest', newHashTag[1]])
+    // } else {
+    //   console.log("call or not")
+    //   this.route.navigate(['/menu'])
+    // }
+
   }
 
 
   guestEventWithOutLogin(eventhashTag) {
     this.isLoad = true
-    this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
-      console.log("details of event with link", response)
-    }, error => {
-      this.isLoad = false
-      console.log("error while get link details", error)
-    })
+    this.route.navigate(['/guest',eventhashTag])
+    // console.log("what is in", eventhashTag);
+
+    // this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
+    //   console.log("details of event with link", response)
+    // }, error => {
+    //   this.isLoad = false
+    //   console.log("error while get link details", error)
+    // })
   }
 
 }

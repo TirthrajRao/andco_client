@@ -80,7 +80,10 @@ export class GuestMainComponent implements OnInit {
       this.eventTheme = this.eventDetails.eventTheme
       this.closedEvent = this.eventDetails.isClosed
       this.isClosed = this.eventDetails.isClosed
+      // this.isDisable = true
+      // this.index = 0
       // let day : number = 4;
+      this.displayActivity(0)
 
       switch (this.eventTheme) {
         case 'assets/images/floral.png':
