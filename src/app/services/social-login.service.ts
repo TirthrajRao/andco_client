@@ -60,7 +60,7 @@ export class SocialLoginService {
     this.isLoad.emit('true');
     // this.isDisable = true;
     // console.log("In func")
-    this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
+    // this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
       const googleIdToken = res.idToken;
       googleIdToken
@@ -107,7 +107,7 @@ export class SocialLoginService {
    */
   signWithFacebook() {
     this.isLoad.emit('true')
-    this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
+    // this.eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
     FB.login((response) => {
       let facebookId = response.authResponse.accessToken;
       if (response.authResponse) {

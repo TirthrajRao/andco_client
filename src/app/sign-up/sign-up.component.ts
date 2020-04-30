@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
   callVerifyCode = false
   userName
   isUserLoggedIn = false;
-  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
+  // eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
   // userDetails = {  firstName: '', lastName: '' }
   constructor(
     private route: ActivatedRoute,
@@ -108,12 +108,13 @@ export class SignUpComponent implements OnInit {
         sessionStorage.setItem('eventList', JSON.stringify(response.data.totalEvent))
         sessionStorage.setItem('userRole', JSON.stringify(response.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
-        if (this.eventIdWithLogin) {
-          this.isLoad = false;
-          this.isUserLoggedIn = true;
-          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/guest-join/', this.eventIdWithLogin])
-        } else if (response.data.UserRole == 'admin') {
+        // if (this.eventIdWithLogin) {
+        //   this.isLoad = false;
+        //   this.isUserLoggedIn = true;
+        //   sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+        //   this.router.navigate(['/guest-join/', this.eventIdWithLogin])
+        // }
+        if (response.data.UserRole == 'admin') {
           this.isLoad = false
           // this.router.navigate(['/home/admin-dashboard']);
         } else if (response.data.UserRole == 'user') {

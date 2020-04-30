@@ -18,40 +18,34 @@ export class WelcomeGuestComponent implements OnInit {
     public eventService: EventService
   ) {
 
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      console.log("params id for guest", params);
-      this.hashtag = params.id
-      this.platForm = params.type
-    })
-    // console.log("if came form any platform", this.platForm);
-    if (this.platForm != undefined) {
-      sessionStorage.setItem('platForm', JSON.stringify(this.platForm))
+
+    let vive = this.activatedRoute.snapshot.queryParamMap.get('event')
+    if (vive) {
+      console.log("vivek", vive);
+      let newHashTag = vive.split("/")
+      console.log("what is in new hastag", newHashTag.length);
+      if (newHashTag && newHashTag.length == 2) {
+        sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
+        sessionStorage.setItem('platForm', JSON.stringify(newHashTag[1]))
+        this.route.navigate(['/guest/', newHashTag[0]])
+      } else {
+        sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
+        sessionStorage.setItem('platForm', JSON.stringify('GN'))
+        this.route.navigate(['/guest/', vive])
+      }
     } else {
-      sessionStorage.setItem('platForm', JSON.stringify('GN'))
+      this.route.navigate(['/display-page'])
     }
-    this.guestEventWithOutLogin(this.hashtag)
-    sessionStorage.setItem('guestHashTag', JSON.stringify(this.hashtag))
   }
 
   ngOnInit() {
-    console.log("what us ======", this.route.url);
-
-    // let newHashTag = this.route.url.split("/")
-    // if (this.route.url != '/menu') {
-    //   console.log("what is in new", newHashTag);
-    //   sessionStorage.setItem('guestHashTag', JSON.stringify(newHashTag[1]))
-    //   this.route.navigate(['/guest', newHashTag[1]])
-    // } else {
-    //   console.log("call or not")
-    //   this.route.navigate(['/menu'])
-    // }
 
   }
 
 
   guestEventWithOutLogin(eventhashTag) {
     this.isLoad = true
-    this.route.navigate(['/guest',eventhashTag])
+    this.route.navigate(['/guest', eventhashTag])
     // console.log("what is in", eventhashTag);
 
     // this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {

@@ -17,14 +17,15 @@ import { from } from 'rxjs';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'display-page',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'display-page',
+  //   pathMatch: 'full'
+  // },  
   {
     path: 'display-page',
-    component: DisplayHomeComponent
+    component: DisplayHomeComponent,
+    // pathMatch: 'full'
   },
   {
     path: 'login',
@@ -42,12 +43,16 @@ const routes: Routes = [
     path: 'forgot-password/:id',
     component: ForgotPasswordComponent
   },
+  // {
+  //   path: 'welcome-guest/:id/:type',
+  //   component: WelcomeGuestComponent
+  // },
+  // {
+  //   path: 'welcome-guest/:id',
+  //   component: WelcomeGuestComponent
+  // },
   {
-    path: 'welcome-guest/:id/:type',
-    component: WelcomeGuestComponent
-  },
-  {
-    path: 'welcome-guest/:id',
+    path: '',
     component: WelcomeGuestComponent
   },
   {
@@ -58,7 +63,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
