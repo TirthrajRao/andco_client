@@ -13,6 +13,9 @@
                                 [bankAccount]="selectedAccount" [cardAccount]="selectedCardAccount"
                                 (selectedCardAccount)="selectCard($event)" [allAmount]="totalAccount">
                             </app-bank-details>
+                            <div class="skip">
+                                <a (click)="skipButton()">Add Later </a>
+                            </div>
                         </div>
                         <div class="sales-inner sales-inner-box-message">
                             <div class="single-main-box">
