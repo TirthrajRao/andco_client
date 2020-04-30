@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   isLoad = false;
   userName
   isCelebrant
-  eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
+  // eventIdWithLogin = JSON.parse(sessionStorage.getItem('guestHashTag'));
   varificationEmail
   displayPassword;
   show: boolean;
@@ -132,12 +132,13 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
         // console.log(this.isCelebrant);
         this.isDisable = true;
-        if (this.eventIdWithLogin) {
-          this.isLoad = false;
-          this.isUserLoggedIn = true;
-          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/guest-join/', this.eventIdWithLogin])
-        } else if (data.data.UserRole == 'admin') {
+        // if (this.eventIdWithLogin) {
+        //   this.isLoad = false;
+        //   this.isUserLoggedIn = true;
+        //   sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+        //   this.router.navigate(['/guest-join/', this.eventIdWithLogin])
+        // } 
+        if (data.data.UserRole == 'admin') {
           this.isLoad = false
           // this.router.navigate(['/home/admin-dashboard']);
         } else if (data.data.UserRole == 'user') {

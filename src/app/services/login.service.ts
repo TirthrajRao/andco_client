@@ -87,32 +87,32 @@ export class LoginService {
     // console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
     userCredentials['password'] = encrypted
-    if (eventToken) {
-      return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
-        .pipe(map(user => {
-          console.log("login user detaislllllllllll for link======", user);
-          sessionStorage.setItem('isMenu', JSON.stringify(0));
-          if (user && user.data.accessToken) {
-            sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
-            this.currentUserSubject.next(user);
-          }
-          return user;
-        }))
-    }
-    else {
-      return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
-        .pipe(map(user => {
-          console.log("login user detaislllllllllll======", user);
-          sessionStorage.setItem('isMenu', JSON.stringify(0));
+    // if (eventToken) {
+    //   return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
+    //     .pipe(map(user => {
+    //       console.log("login user detaislllllllllll for link======", user);
+    //       sessionStorage.setItem('isMenu', JSON.stringify(0));
+    //       if (user && user.data.accessToken) {
+    //         sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
+    //         this.currentUserSubject.next(user);
+    //       }
+    //       return user;
+    //     }))
+    // }
+    // else {
+    return this.http.post<any>(config.baseApiUrl + "/login", userCredentials)
+      .pipe(map(user => {
+        console.log("login user detaislllllllllll======", user);
+        sessionStorage.setItem('isMenu', JSON.stringify(0));
 
-          let token = user.data.accessToken
-          if (user && user.data.accessToken) {
-            sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
-            this.currentUserSubject.next(user);
-          }
-          return user;
-        }))
-    }
+        let token = user.data.accessToken
+        if (user && user.data.accessToken) {
+          sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
+          this.currentUserSubject.next(user);
+        }
+        return user;
+      }))
+    // }
 
   }
 
