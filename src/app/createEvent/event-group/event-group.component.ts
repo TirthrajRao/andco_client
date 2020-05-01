@@ -217,7 +217,7 @@ export class EventGroupComponent implements OnInit {
   updateGroups() {
     // console.log("for update group");
     this.isDisable = true
-    this.isLoad = true
+    // this.isLoad = true
     this.isButton = false
     console.log(this.allActivities)
     this.allActivities.forEach(singleActivityDetails => {
@@ -233,7 +233,8 @@ export class EventGroupComponent implements OnInit {
             activityId: singleActivityDetails.activity._id,
             groupName: singleGroup.groupName,
             male: singleGroup.male,
-            female: singleGroup.female
+            female: singleGroup.female,
+            eventId: this.eventId
           }
           this.finalArray.push(finalObject)
         }

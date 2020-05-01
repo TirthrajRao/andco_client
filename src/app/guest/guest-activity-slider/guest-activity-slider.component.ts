@@ -36,6 +36,8 @@ export class GuestActivitySliderComponent implements OnInit {
   removeItemArray: any = []
   isTotal
   isLoad = false
+  discriptionName
+  discriptionItem
   constructor(
     public eventService: EventService,
     public router: Router,
@@ -70,7 +72,7 @@ export class GuestActivitySliderComponent implements OnInit {
     //   console.log("When came from one page to another page", option)
     //   this.func(option);
     // }
-    
+
   }
 
 
@@ -97,34 +99,49 @@ export class GuestActivitySliderComponent implements OnInit {
       console.log("what is the value", this.displayActivity);
 
       this.initActivitySlider()
-      // this.getSelectedItems()
-      this.displayAllData()
+      this.getSelectedItems()
+      // this.displayAllData()
     }
     if (changes.removeItem && changes.removeItem.currentValue) {
       this.removeItemArray = changes.removeItem.currentValue
-      this.sub = this.activated.params.subscribe(params => {
-        this.eventHashtag = params.hashTag
-        // console.log("hashtag is important", this.eventHashtag);
-        this.getSelectedItems()
-      })
+      console.log("what is in remove array", this.removeItemArray);
+
+      this.getSelectedItems()
       // this.displayAllData()
     }
 
   }
 
   getSelectedItems() {
-    this.isLoad = true
-    this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
-      if (response.data.cartList) {
-        this.cartTotalItems = response.data.cartList
-        this.allCartList = response.data.cartList
-      }
-      console.log("response of cart items", this.allCartList)
-      this.displayAllData()
-      this.isLoad = false
-    }, error => {
-      console.log("error while get cart details", error)
-    })
+
+    let getListFromLocal = JSON.parse(localStorage.getItem('allCartList'))
+
+    console.log("what is the value of all cart", getListFromLocal);
+    if (getListFromLocal == null) {
+      this.allCartList = []
+      this.cartTotalItems = this.allCartList
+    } else {
+      this.allCartList = getListFromLocal
+      this.cartTotalItems = getListFromLocal
+    }
+
+    // this.cartTotalItems = JSON.parse(localStorage.getItem('allCartList'))
+    // this.allCartList = JSON.parse(localStorage.getItem('allCartList'))
+
+    this.displayAllData()
+
+    // this.isLoad = true
+    // this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
+    //   if (response.data.cartList) {
+    //     this.cartTotalItems = response.data.cartList
+    //     this.allCartList = response.data.cartList
+    //   }
+    //   console.log("response of cart items", this.allCartList)
+    //   this.displayAllData()
+    //   this.isLoad = false
+    // }, error => {
+    //   console.log("error while get cart details", error)
+    // })
   }
 
   removeItems() {
@@ -164,13 +181,21 @@ export class GuestActivitySliderComponent implements OnInit {
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     console.log("quntity with rank", this.cartTotalItems);
     this.itemList.forEach((singleItem) => {
-      if (this.cartTotalItems.length > 0) {
+      if (this.cartTotalItems && this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
           // console.log("call or not", singleCartItem);
           if (singleItem._id == singleCartItem.itemId) {
+            // console.log("call or not");
             singleItem['quantity'] = singleCartItem.quantity
+          } else {
+            this.removeItemArray.forEach((removeItem) => {
+              console.log("what is in remove item", removeItem)
+              if (singleItem._id == removeItem) {
+                singleItem['quantity'] = 0
+              }
+            })
           }
-          //  else {
+          // else {
           //   singleItem['quantity'] = 0
           // }
         })
@@ -199,9 +224,11 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 1
     this.selectedGender = item
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
-    console.log("list of female array", this.cartTotalItems);
+    // console.log("list of female array", this.cartTotalItems);
     this.itemList.forEach((singleItem) => {
-      if (this.cartTotalItems.length > 0) {
+      console.log("what is in single item", singleItem);
+
+      if (this.cartTotalItems && this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
           console.log("single cart items display ", singleCartItem)
           if (singleItem._id == singleCartItem.itemId) {
@@ -210,6 +237,7 @@ export class GuestActivitySliderComponent implements OnInit {
             // console.log("single item of itemlist", singleItem);
           } else {
             this.removeItemArray.forEach((removeItem) => {
+              console.log("what is in remove item", removeItem)
               if (singleItem._id == removeItem) {
                 singleItem['quantity'] = 0
               }
@@ -232,7 +260,7 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 0
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     this.itemList.forEach((singleItem) => {
-      if (this.cartTotalItems.length > 0) {
+      if (this.cartTotalItems && this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
           // console.log("call or not", singleCartItem);
           if (singleItem._id == singleCartItem.itemId) {
@@ -256,7 +284,7 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   maleTotal(event, item, index) {
-    console.log("kaik thay che ama bs", event);
+    console.log("kaik thay che ama bs", this.displayGroup);
     if (event.target.value != 0) {
 
       this.itemList[index]['quantity'] = event.target.value
@@ -264,11 +292,12 @@ export class GuestActivitySliderComponent implements OnInit {
 
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
-        itemGender: item.itemGender,
-        itemName: item.itemName,
-        itemPrice: item.itemPrice,
+        // itemGender: item.itemGender,
+        // itemName: item.itemName,
+        // itemPrice: item.itemPrice,
         quantity: item.quantity,
-        itemId: item._id
+        itemId: item._id,
+        groupName: this.displayGroup[0].groupName
       }
       var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
       if (tempIndex > -1) {
@@ -295,11 +324,12 @@ export class GuestActivitySliderComponent implements OnInit {
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
-        itemGender: item.itemGender,
-        itemName: item.itemName,
-        itemPrice: item.itemPrice,
+        // itemGender: item.itemGender,
+        // itemName: item.itemName,
+        // itemPrice: item.itemPrice,
         quantity: item.quantity,
-        itemId: item._id
+        itemId: item._id,
+        groupName: this.displayGroup[0].groupName
       }
       var tempIndex = _.findIndex(this.allCartList, function (o) { return o.itemId == item._id })
       if (tempIndex > -1) {
@@ -318,17 +348,20 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   addTocart() {
-    this.isLoad = true
+    // this.isLoad = true
     console.log("list of all item ", this.allCartList)
     if (this.allCartList.length == 0) {
       console.log("call this");
       this.allCartList = this.cartTotalItems
     }
+    localStorage.setItem('allCartList', JSON.stringify(this.allCartList))
     // let body = {
     //   eventHashtag: this.eventHashtag
     // }
 
     this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
+
+
     // this.allCartList[0]['eventHashtag'] = this.eventHashtag
     // this.eventService.addToCart(this.allCartList).subscribe((response: any) => {
     //   console.log("resonse of cart details", response)
@@ -340,5 +373,12 @@ export class GuestActivitySliderComponent implements OnInit {
     // })
   }
 
+  openModel(item) {
+    console.log("what is in item", item);
+    this.discriptionItem = item.itemName
+    this.discriptionName = item.description
+    $('#infoItemModal').modal("show")
+
+  }
 
 }

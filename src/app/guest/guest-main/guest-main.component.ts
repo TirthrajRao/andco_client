@@ -61,6 +61,15 @@ export class GuestMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log("response of query", params);
+      // if (params['activities']) {
+      //   this.displayActivity(0)
+      // } else if (params['total']) {
+      //   this.totalItem(1)
+      // }
+
+    })
   }
 
 
@@ -77,6 +86,7 @@ export class GuestMainComponent implements OnInit {
       console.log("details of event with link", response)
       this.eventDetails = response.data
       console.log("payment check date", this.eventDetails);
+      localStorage.setItem('eventId', this.eventDetails._id)
       this.eventTheme = this.eventDetails.eventTheme
       this.closedEvent = this.eventDetails.isClosed
       this.isClosed = this.eventDetails.isClosed
@@ -136,11 +146,16 @@ export class GuestMainComponent implements OnInit {
     this.index = event
     this.totalActivityList = this.eventDetails.activity
     this.isClosed = this.eventDetails.isClosed
+    // this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+
   }
   totalItem(event) {
     console.log("total item display in main", event);
+
     this.index = event.index
     this.totalItemList = event
+    // this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+
   }
 
   removeItemOfArray(event) {

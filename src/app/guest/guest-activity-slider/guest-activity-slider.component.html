@@ -33,8 +33,12 @@
                             <input type="number" oninput="validity.valid||(value='');"
                                 onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity"
                                 (change)="maleTotal($event , item , i)" *ngIf="!isClose">
+
                             <span *ngIf="!isClose && item.quantity">= {{item.itemPrice * item.quantity}} </span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
+                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
+                                ngbTooltip="{{item.description?item.description: 'No description '}}"
+                                data-container="body"></i>
                         </h4>
                     </div>
                 </li>
@@ -51,6 +55,9 @@
                                 (change)="femaleTotal($event , item , i)" *ngIf="!isClose">
                             <span *ngIf="!isClose && item.quantity">={{item.itemPrice * item.quantity}}</span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
+                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
+                                ngbTooltip="{{item.description?item.description: 'No description '}}"
+                                data-container="body"></i>
                         </h4>
                     </div>
                 </li>

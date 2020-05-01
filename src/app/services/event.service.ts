@@ -194,9 +194,10 @@ export class EventService {
     return this.http.get(config.baseApiUrl + "/event/getTotalOfCart/" + hashTag)
   }
 
-  addAccountDetails(data, flag, cartList) {
+  addAccountDetails(data, flag, cartList, guestDetails) {
     data['flag'] = flag
     data['cartItems'] = cartList
+    data['guestDetails'] = guestDetails
     console.log("flage value", data);
     // let newFlage = JSON.stringify(flag)
     return this.http.post(config.baseApiUrl + "/guestAccount", data)
@@ -283,6 +284,16 @@ export class EventService {
 
   addPayMessage(data) {
     return this.http.post(config.baseApiUrl + "/event/addPayMessage", data)
+  }
+
+
+  getItems(items, eventId) {
+    let data = {
+      allItems: items,
+      eventId: eventId
+    }
+
+    return this.http.get(config.baseApiUrl + "/itemDetails/" + JSON.stringify(data))
   }
 
 }
