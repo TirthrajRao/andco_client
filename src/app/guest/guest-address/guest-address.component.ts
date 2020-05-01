@@ -35,17 +35,18 @@ export class GuestAddressComponent implements OnInit {
   }
 
   getAddressDetails() {
+    this.addressDetails = JSON.parse(localStorage.getItem('addressDetails'))
     // this.isLoad = true
-    this.eventService.getAddressDetails().subscribe((response: any) => {
-      // this.isLoad = false
-      console.log("response of address if", response);
-      if (response.response.sendData) {
-        this.addressDetails = response.response.sendData
-      }
-    }, error => {
-      // this.isLoad = false
-      console.log("error while get address", error)
-    })
+    // this.eventService.getAddressDetails().subscribe((response: any) => {
+    //   // this.isLoad = false
+    //   console.log("response of address if", response);
+    //   if (response.response.sendData) {
+    //     this.addressDetails = response.response.sendData
+    //   }
+    // }, error => {
+    //   // this.isLoad = false
+    //   console.log("error while get address", error)
+    // })
   }
 
 
@@ -55,15 +56,16 @@ export class GuestAddressComponent implements OnInit {
   get f() { return this.addressForm.controls; }
 
   enterAddress() {
-    this.isLoad = true
+    // this.isLoad = true
     console.log("form value of cart", this.addressForm.value);
-    this.eventService.enterAddress(this.addressForm.value).subscribe((response) => {
-      console.log("response of enter address", response);
-      this.displayAccount.emit(4)
-    }, error => {
-      this.isLoad = false
-      console.log("error while enter address", error)
-    })
+    localStorage.setItem('addressDetails', JSON.stringify(this.addressForm.value))
+    this.displayAccount.emit(4)
+    // this.eventService.enterAddress(this.addressForm.value).subscribe((response) => {
+    //   console.log("response of enter address", response);
+    // }, error => {
+    //   this.isLoad = false
+    //   console.log("error while enter address", error)
+    // })
   }
 
 	/**

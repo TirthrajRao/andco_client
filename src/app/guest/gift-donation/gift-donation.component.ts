@@ -41,7 +41,7 @@ export class GiftDonationComponent implements OnInit {
       console.log("hashtag ", param);
       this.hashTag = param.hashTag
     })
-    // this.getDonationAmount()
+    this.getDonationAmount()
   }
 
 
@@ -51,34 +51,43 @@ export class GiftDonationComponent implements OnInit {
 
   displayAddress() {
     console.log("donation added", this.donation)
-    this.isLoad = true
+    // this.isLoad = true
     let addDonation = {
       eventId: this.hashTag,
       donation: this.donation,
     }
-    this.eventId
-    this.eventService.addDonation(addDonation).subscribe((response) => {
-      console.log("final cart with total", response);
-      this.isLoad = false
-      this.address.emit(3)
-    }, error => {
-      // this.isLoad = false
-      console.log("error while enter final payment", error)
-    })
+    localStorage.setItem('donation', JSON.stringify(addDonation))
+    this.address.emit(3)
+    // this.eventId
+    // this.eventService.addDonation(addDonation).subscribe((response) => {
+    //   console.log("final cart with total", response);
+    //   this.isLoad = false
+    // }, error => {
+    //   // this.isLoad = false
+    //   console.log("error while enter final payment", error)
+    // })
   }
 
   getDonationAmount() {
-    this.isLoad = true
-    this.eventService.getDonationAmount(this.hashTag).subscribe((response: any) => {
-      console.log("donation if hoy", response);
-      if (response && response.data) {
-        this.donation = response.data.donation
-      }
-      this.isLoad = false
-    }, error => {
+    let oldDonation = JSON.parse(localStorage.getItem('donation'))
+    if (oldDonation == null) {
+      this.donation = 0
+    } else {
+      this.donation = oldDonation.donation
+    }
+    console.log("donation of user", this.donation);
 
-      this.isLoad = false
-      console.log("error while get donation", error)
-    })
+    // this.isLoad = true
+    // this.eventService.getDonationAmount(this.hashTag).subscribe((response: any) => {
+    //   console.log("donation if hoy", response);
+    //   if (response && response.data) {
+    //     this.donation = response.data.donation
+    //   }
+    //   this.isLoad = false
+    // }, error => {
+
+    //   this.isLoad = false
+    //   console.log("error while get donation", error)
+    // })
   }
 }

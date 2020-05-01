@@ -166,6 +166,7 @@ export class LoginService {
   logout() {
     this.currentUserSubject.next(null);
     sessionStorage.clear();
+    localStorage.clear()
   }
 
 

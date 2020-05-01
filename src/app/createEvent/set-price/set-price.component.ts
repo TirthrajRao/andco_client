@@ -63,6 +63,9 @@ export class SetPriceComponent implements OnInit {
   selectedPaymentTransferDate: string;
   backButtonIndex = 0
   saveEvent = false
+  currentSlideIndex
+  nextSlideIndex
+  backSlider = false
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -142,13 +145,18 @@ export class SetPriceComponent implements OnInit {
     })
 
     this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
-      console.log("event on before", currentSlide, nextSlide);
+      console.log("event on before", event);
       this.previousSlide(currentSlide, nextSlide)
     })
   }
 
 
   previousSlide(current, next) {
+    this.currentSlideIndex = current
+    this.nextSlideIndex = next
+    if (this.currentSlideIndex) {
+      this.backSlider = false
+    }
     if (!this.setPriceDetails) {
       this.isDisableNext = true
     }
@@ -249,9 +257,17 @@ export class SetPriceComponent implements OnInit {
     if (!this.setPriceDetails) {
       this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
       this.isDisableNext = false
-    } else {
+    }
+    if (this.setPriceDetails && (this.currentSlideIndex == 1 && this.nextSlideIndex == 0)) {
       this.router.navigate(['/eventGroup/', this.eventId])
     }
+    // if (this.setPriceDetails && this.backSlider == true) {
+    //   this.router.navigate(['/eventGroup/', this.eventId])
+    // }
+    // if (this.setPriceDetails && this.backSlider == false) {
+    //   this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+    //   // this.backSlider = false
+    // }
   }
 
 
@@ -261,6 +277,7 @@ export class SetPriceComponent implements OnInit {
       this.isLoad = false
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
+        this.backSlider = true
         this.isDisableNext = false
         this.isBack = false
         this.setPriceDetails = response

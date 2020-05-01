@@ -52,19 +52,31 @@ export class GuestItemTotalComponent implements OnInit {
     // this.totlaItem = changes.displayTotalItem.currentValue.allItems
     // this.removeArray = []
     // this.displayList()
-    // this.getCartItems()
+    this.getCartItems()
   }
 
   getCartItems() {
-    this.isLoad = true
-    this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
-      this.totlaItem = response.data.cartList
-      console.log("response of cart list", this.totlaItem);
-      this.displayList()
-      this.isLoad = false
-    }, error => {
-      console.log("error while get cart details", error)
-    })
+    let total = JSON.parse(localStorage.getItem('allCartList'))
+    let eventId = localStorage.getItem('eventId')
+      console.log("total items in main list", this.totlaItem);
+      this.eventService.getItems(total, eventId).subscribe((response) => {
+        console.log("response of that evene", response);
+        this.totlaItem = response
+        this.displayList()
+      }, error => {
+        console.log("error while get cart list", error)
+      })
+    console.log("remove item array", this.removeArray);
+
+
+    // this.isLoad = true
+    // this.eventService.getCartItems(this.eventHashTag).subscribe((response: any) => {
+    //   this.totlaItem = response.data.cartList
+    //   console.log("response of cart list", this.totlaItem);
+    //   this.isLoad = false
+    // }, error => {
+    //   console.log("error while get cart details", error)
+    // })
   }
 
 
@@ -78,7 +90,10 @@ export class GuestItemTotalComponent implements OnInit {
     this.displayFinalItem = grouped
     this.keys = Object.keys(this.displayFinalItem);
     // this.current = 0
-    $("#vivek0").trigger("click")
+    setTimeout(() => {
+
+      $("#vivek0").trigger("click")
+    }, 100)
     this.values = Object.values(this.displayFinalItem)
     console.log("what is value from get", this.displayFinalItem);
 
@@ -90,7 +105,7 @@ export class GuestItemTotalComponent implements OnInit {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
       value.forEach((valueOfSingle) => {
-        console.log("single item value", valueOfSingle);
+        // console.log("single item value", valueOfSingle);
         if (valueOfSingle.itemGender == 'male') {
           maleArrOfValue.push(valueOfSingle);
         }
@@ -135,33 +150,45 @@ export class GuestItemTotalComponent implements OnInit {
   removeMaleItems(id, i, k) {
     console.log("id of remove item ", id);
     this.removeArray.push(id)
-    this.eventService.removeCartItem(id)
-      .subscribe(data => {
-        console.log("remove item data", data);
-        // this.myCartDetails(this.eventId);
-        this.maleArray[i].splice(k, 1);
-        console.log("male final array", this.maleArray);
+    this.maleArray[i].splice(k, 1);
+    console.log("male final array", this.maleArray);
 
-      }, (err: any) => {
-        console.log(err);
-        // this.alertService.getError(err.message);
-      })
+    let index = this.totlaItem.findIndex(x => x.itemId === id);
+    console.log("index of remove item", index);
+    this.totlaItem.splice(index, 1)
+
+    console.log("total items which is store in localstorage", this.totlaItem);
+    localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
+    // this.eventService.removeCartItem(id)
+    //   .subscribe(data => {
+    // console.log("remove item data", data);
+    // this.myCartDetails(this.eventId);
+
+    // }, (err: any) => {
+    //   console.log(err);
+    // })
   }
 
   removeFemaleItems(id, i, j) {
     console.log("item details", id);
     this.removeArray.push(id)
-    this.eventService.removeCartItem(id)
-      .subscribe(data => {
-        console.log("remove item data", data);
-        // this.myCartDetails(this.eventId);
+    this.femaleArray[i].splice(j, 1);
+    console.log("female array", this.femaleArray);
 
-        this.femaleArray[i].splice(j, 1);
-        console.log("female array", this.femaleArray);
-      }, (err: any) => {
-        console.log(err);
-        // this.alertService.getError(err.message);
-      })
+    let index = this.totlaItem.findIndex(x => x.itemId === id);
+    console.log("index of remove item", index);
+    this.totlaItem.splice(index, 1)
+
+    console.log("total items which is store in localstorage", this.totlaItem);
+    localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
+    // this.eventService.removeCartItem(id)
+    //   .subscribe(data => {
+    // console.log("remove item data", data);
+    // this.myCartDetails(this.eventId);
+
+    // }, (err: any) => {
+    //   console.log(err);
+    // })
   }
 
   display(i) {

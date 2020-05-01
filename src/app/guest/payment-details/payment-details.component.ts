@@ -31,6 +31,7 @@ export class PaymentDetailsComponent implements OnInit {
   donation: any;
   isDiable = false
   isLoad = false
+  guestDetails
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute
@@ -61,26 +62,47 @@ export class PaymentDetailsComponent implements OnInit {
       this.hashTag = param.hashTag
     })
     this.getItemDetails()
-    this.getAccountDetails(changes.accountType.currentValue.type)
+    // this.getAccountDetails(changes.accountType.currentValue.type)
   }
 
   getItemDetails() {
-    this.isLoad = true
-    this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
-      console.log("response of cart list", response);
-      this.isLoad = false
-      this.cartList = response.data.cartList
-      this.eventId = response.data.eventDetail._id
+    let totalItem = JSON.parse(localStorage.getItem('allCartList'))
+    let donation = JSON.parse(localStorage.getItem('donation'))
+    this.guestDetails = JSON.parse(localStorage.getItem('addressDetails'))
+    this.eventId = localStorage.getItem('eventId')
+    let platForm = JSON.parse(sessionStorage.getItem('platForm'))
+
+    this.guestDetails['platForm'] = platForm
+    this.guestDetails['eventId'] = this.eventId
+    this.donation = donation.donation
+
+    this.eventService.getItems(totalItem, this.eventId).subscribe((response: any) => {
+      console.log("response of that evene", response);
+      // this.totlaItem = response
+      this.cartList = response
       this.cartList.forEach((item: any) => {
-        console.log("single items of cart", item)
+        // console.log("single items of cart", item)
         this.subTotal = item.itemPrice * item.quantity
         this.grandTotal = this.grandTotal + this.subTotal
         this.finalGrandTotal = this.grandTotal
       });
     }, error => {
-      this.isLoad = false
-      console.log("error while get cart details", error)
+      console.log("error while get cart list", error)
     })
+
+
+
+    // this.isLoad = true
+    // this.eventService.getCartItems(this.hashTag).subscribe((response: any) => {
+    //   console.log("response of cart list", response);
+    //   this.isLoad = false
+    //   this.cartList = response.data.cartList
+    //   this.eventId = response.data.eventDetail._id
+    //   
+    // }, error => {
+    //   this.isLoad = false
+    //   console.log("error while get cart details", error)
+    // })
   }
 
 
@@ -153,9 +175,10 @@ export class PaymentDetailsComponent implements OnInit {
     }
     console.log("what is final ", myCart);
 
-    this.eventService.addAccountDetails(finalData, selectedValue, myCart).subscribe((response: any) => {
+    this.eventService.addAccountDetails(finalData, selectedValue, myCart, this.guestDetails).subscribe((response: any) => {
       console.log("response of payment completed", response);
       this.thankYouDetails.emit({ message: response.data, index: 6 })
+      localStorage.clear()
       this.isLoad = false
     }, error => {
       this.isLoad = false
