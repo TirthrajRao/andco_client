@@ -151,13 +151,20 @@
                                         </mat-form-field>
                                         <!-- <div class="12hr-example"> -->
                                         <!-- <span (click)="openModel(default)"> -->
+
+                                        <!-- <div id="datetimepicker3"> -->
+                                        <!-- <input type="time" placeholder="selectTime" name="time"
+                                            formControlName="paymentDeadlineTime" (input)="changeTime($event)">
+                                        <select>
+                                            <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
+                                        </select> -->
+                                        <!-- </div> -->
                                         <input placeholder="12hr format (default settings)"
                                             formControlName="paymentDeadlineTime" aria-label="12hr format"
                                             [ngxTimepicker]="default" readonly
                                             [ngClass]="{ 'is-invalid': f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors }"
                                             ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}"
                                             style="cursor: pointer;" [min]="time">
-                                        <!-- </span> -->
                                         <ngx-material-timepicker #default (timeChanged)="timeChanged($event)"
                                             (closed)="closeEvent()">
                                         </ngx-material-timepicker>

@@ -108,7 +108,7 @@ export class GuestCollectionComponent implements OnInit {
     this.displayGuestItems.forEach(singleList => {
       console.log("single item list", singleList);
       let newDate = moment(singleList.finalDate).format('DD-MM-YYYY')
-      console.log("convert into new formate", newDate);
+      // console.log("convert into new formate", newDate);
 
       let grandTotal = 0
       let finalTotalOfEvent
@@ -119,10 +119,16 @@ export class GuestCollectionComponent implements OnInit {
         // console.log("what is the finale total of single guest", finalTotalOfEvent);
       })
       singleList['total'] = finalTotalOfEvent
-      this.firstLetter.push(singleList.firstName.charAt(0))
-      this.secondLetter.push(singleList.lastName.charAt(0))
-      singleList['firstLetter'] = singleList.firstName.charAt(0)
-      singleList['lastLetter'] = singleList.lastName.charAt(0)
+
+      let vivek = singleList.firstName.split(" ")
+      console.log("whats the value of vivek", vivek);
+
+      this.firstLetter.push(vivek[0].charAt(0))
+      if (vivek[1]) {
+        this.secondLetter.push(vivek[1].charAt(0))
+        singleList['lastLetter'] = vivek[1].charAt(0)
+      }
+      singleList['firstLetter'] = vivek[0].charAt(0)
       singleList['finalDate'] = newDate
       // console.log("singleItem", this.firstLetter);
       // console.log("first letter of word", firstLetter);
