@@ -69,10 +69,19 @@ export class InvitedGuestComponent implements OnInit {
       this.selctedIndex = 4
       this.displayGuest.forEach(singleList => {
         console.log("single object is ready", singleList);
-        this.firstLetter.push(singleList.userName.firstName.charAt(0))
-        console.log("singleItem", this.firstLetter);
+
+        let vivek = singleList.userName.split(" ")
+
+        this.firstLetter.push(vivek[0].charAt(0))
+        if (vivek[1]) {
+          this.secondLetter.push(vivek[1].charAt(0))
+          // singleList['lastLetter'] = vivek[1].charAt(0)
+        }
+        // console.log("singleItem", this.firstLetter);
+
+        // this.firstLetter.push(singleList.userName.firstName.charAt(0))
         // console.log("first letter of word", firstLetter);
-        this.secondLetter.push(singleList.userName.lastName.charAt(0))
+        // this.secondLetter.push(singleList.userName.lastName.charAt(0))
       });
     } else {
       console.log("call this or not");
@@ -93,11 +102,16 @@ export class InvitedGuestComponent implements OnInit {
       if (this.displayGuest && this.displayGuest.length) {
         this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
-          console.log("single object is ready", singleList);
-          this.firstLetter.push(singleList.userName.firstName.charAt(0))
-          console.log("singleItem", this.firstLetter);
-          // console.log("first letter of word", firstLetter);
-          this.secondLetter.push(singleList.userName.lastName.charAt(0))
+          // console.log("single object is ready", singleList);
+          let vivek = singleList.userName.split(" ")
+          this.firstLetter.push(vivek[0].charAt(0))
+          if (vivek[1]) {
+            this.secondLetter.push(vivek[1].charAt(0))
+          }
+          // this.firstLetter.push(singleList.userName.firstName.charAt(0))
+          // console.log("singleItem", this.firstLetter);
+          // // console.log("first letter of word", firstLetter);
+          // this.secondLetter.push(singleList.userName.lastName.charAt(0))
         });
       } else {
         console.log("for whats up");
@@ -108,11 +122,13 @@ export class InvitedGuestComponent implements OnInit {
       if (this.displayGuest && this.displayGuest.length) {
         this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
-          console.log("single object is ready", singleList);
-          this.firstLetter.push(singleList.userName.firstName.charAt(0))
-          console.log("singleItem", this.firstLetter);
-          // console.log("first letter of word", firstLetter);
-          this.secondLetter.push(singleList.userName.lastName.charAt(0))
+          // console.log("single object is ready", singleList);
+          let vivek = singleList.userName.split(" ")
+          this.firstLetter.push(vivek[0].charAt(0))
+          if (vivek[1]) {
+            this.secondLetter.push(vivek[1].charAt(0))
+            // singleList['lastLetter'] = vivek[1].charAt(0)
+          }
         });
       } else {
         console.log("call face book or not");
@@ -123,11 +139,12 @@ export class InvitedGuestComponent implements OnInit {
       if (this.displayGuest && this.displayGuest.length) {
         this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
-          console.log("single object is ready", singleList);
-          this.firstLetter.push(singleList.userName.firstName.charAt(0))
-          console.log("singleItem", this.firstLetter);
-          // console.log("first letter of word", firstLetter);
-          this.secondLetter.push(singleList.userName.lastName.charAt(0))
+          // console.log("single object is ready", singleList);
+          let vivek = singleList.userName.split(" ")
+          this.firstLetter.push(vivek[0].charAt(0))
+          if (vivek[1]) {
+            this.secondLetter.push(vivek[1].charAt(0))
+          }
         });
       } else {
         this.noListMessage = 'There is no guest join from contacts'
@@ -137,11 +154,12 @@ export class InvitedGuestComponent implements OnInit {
       if (this.displayGuest && this.displayGuest.length) {
         this.noListMessage = ''
         this.displayGuest.forEach(singleList => {
-          console.log("single object is ready", singleList);
-          this.firstLetter.push(singleList.userName.firstName.charAt(0))
-          console.log("singleItem", this.firstLetter);
-          // console.log("first letter of word", firstLetter);
-          this.secondLetter.push(singleList.userName.lastName.charAt(0))
+          // console.log("single object is ready", singleList);
+          let vivek = singleList.userName.split(" ")
+          this.firstLetter.push(vivek[0].charAt(0))
+          if (vivek[1]) {
+            this.secondLetter.push(vivek[1].charAt(0))
+          }
         });
       } else {
         this.noListMessage = 'There is no guest join from gmail'
@@ -151,11 +169,12 @@ export class InvitedGuestComponent implements OnInit {
       this.noListMessage = ''
       // if (this.displayGuest && this.displayGuest.length) {
       this.displayGuest.forEach(singleList => {
-        console.log("single object is ready", singleList);
-        this.firstLetter.push(singleList.userName.firstName.charAt(0))
-        console.log("singleItem", this.firstLetter);
-        // console.log("first letter of word", firstLetter);
-        this.secondLetter.push(singleList.userName.lastName.charAt(0))
+        // console.log("single object is ready", singleList);
+        let vivek = singleList.userName.split(" ")
+        this.firstLetter.push(vivek[0].charAt(0))
+        if (vivek[1]) {
+          this.secondLetter.push(vivek[1].charAt(0))
+        }
       });
       // } else {
 

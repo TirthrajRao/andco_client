@@ -12,7 +12,8 @@ import * as _ from 'lodash';
 import { async } from 'q';
 import * as moment from 'moment';
 import { element } from 'protractor';
-
+import { timezone } from '../../timezone';
+// import{} from '../../config'
 
 
 @Component({
@@ -66,6 +67,7 @@ export class SetPriceComponent implements OnInit {
   currentSlideIndex
   nextSlideIndex
   backSlider = false
+  displayTimeZone = timezone
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -75,6 +77,27 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // get Curren Location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log("what is the current position of user", position);
+        // this.loginService.getTimeZone().subscribe((response) => {
+        //   console.log("response of user", response)
+        // })
+        var d = new Date(position.timestamp);
+        let time = d.getHours() + ":" + d.getMinutes()
+        console.log("whats is the current time", time);
+        // this.showPosition(position);
+      });
+    } else {
+      // alert("Geolocation is not supported by this browser.");
+    }
+
+
+
+
+    console.log("value of timezone", this.displayTimeZone)
     this.isDisableNext = true
     if (this.backButtonIndex == 0) {
       this.isBack = true
@@ -145,7 +168,7 @@ export class SetPriceComponent implements OnInit {
     })
 
     this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
-      console.log("event on before", event);
+      // console.log("event on before", event);
       this.previousSlide(currentSlide, nextSlide)
     })
   }
@@ -384,6 +407,18 @@ export class SetPriceComponent implements OnInit {
    */
   get f() { return this.setPriceForm.controls; }
 
+
+  changeTime(event) {
+    console.log("event of changes time", event.target.value);
+
+    if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
+      console.log("this is perfect");
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
+  }
+
   setPrice() {
     console.log("value of form", this.setPriceForm);
     // let message
@@ -417,15 +452,15 @@ export class SetPriceComponent implements OnInit {
     });
     if (flag == 0) {
       console.log("value of set price", this.setPriceForm);
-      this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
-        console.log("response of set price of event", response);
-        this.isLoad = false
-        this.alertService.getSuccess(response.message)
-        this.router.navigate(['created-event-message'])
-      }, error => {
-        this.isLoad = false
-        console.log("error while set price of event", error)
-      })
+      // this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
+      //   console.log("response of set price of event", response);
+      //   this.isLoad = false
+      //   this.alertService.getSuccess(response.message)
+      //   this.router.navigate(['created-event-message'])
+      // }, error => {
+      //   this.isLoad = false
+      //   console.log("error while set price of event", error)
+      // })
     }
   }
 
