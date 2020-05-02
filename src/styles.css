@@ -734,6 +734,33 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     max-width: 90vw !important;
 }
 
+.myEvent-slider button img {
+    height: 30px;
+}
+
+.myEvent-slider button.prevarrow.slick-arrow,
+.myEvent-slider button.nextarrow.slick-arrow {
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    z-index: 12;
+}
+
+.myEvent-slider button.prevarrow.slick-arrow {
+    left: -40px;
+    transform: rotate(180deg);
+}
+
+.myEvent-slider button.nextarrow.slick-arrow {
+    right: -40px;
+}
+
 
 /* responsive css start */
 
@@ -858,6 +885,22 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     }
     .myEvent-main .page-content {
         padding-top: 110px;
+    }
+    .myEvent-slider button img {
+        height: 20px;
+    }
+    .myEvent-slider button.prevarrow.slick-arrow,
+    .myEvent-slider button.nextarrow.slick-arrow {
+        top: -30px;
+        bottom: auto;
+        line-height: 0;
+    }
+    .myEvent-slider button.prevarrow.slick-arrow {
+        right: 40px;
+        left: auto;
+    }
+    .myEvent-slider button.nextarrow.slick-arrow {
+        right: 10px;
     }
 }
 
