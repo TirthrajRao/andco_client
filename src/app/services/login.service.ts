@@ -241,11 +241,14 @@ export class LoginService {
   }
 
 
-  // getTimeZone(){
-  //   // https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YOUR_API_KEY
-  //   return (https:'//maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YOUR_API_KEY')
-  // }
+  getTimeZone(location) {
+    console.log("what is in location", location);
+
+    // https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YOUR_API_KEY
+    return this.http.get('https://maps.googleapis.com/maps/api/timezone/json?location=22.2855168,70.77560319999999&timestamp=1588513048296&key=AIzaSyDICNuRAiR00lCvchscgIM9C6ip62nkbx4')
+  }
 
 
 
 }
+// AIzaSyDICNuRAiR00lCvchscgIM9C6ip62nkbx4

@@ -169,10 +169,13 @@
     border: 1px solid #a5b138;
     background-image: url('../../../assets/images/down.png');
     background-position: center right 10px;
-    background-size: 6%;
+    background-size: 4%;
     background-repeat: no-repeat;
     -webkit-appearance: none;
-    font-size: 22px;
+    font-size: 14px;
+    width: 70%;
+    -webkit-appearance: none;
+    padding: 6px 30px 6px 10px;
 }
 
 .how-did-u select:focus {
