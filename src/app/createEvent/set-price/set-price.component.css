@@ -116,7 +116,7 @@
     border: none;
     height: 50px;
     font-size: 22px;
-    padding: 0px 10px;
+    padding: 10px;
     background-color: #fff;
     margin-bottom: 20px;
 }
@@ -172,7 +172,7 @@
     background-size: 4%;
     background-repeat: no-repeat;
     -webkit-appearance: none;
-    font-size: 14px;
+    font-size: 18px;
     width: 70%;
     -webkit-appearance: none;
     padding: 6px 30px 6px 10px;

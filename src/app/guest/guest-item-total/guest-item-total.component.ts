@@ -78,7 +78,7 @@ export class GuestItemTotalComponent implements OnInit {
     //   console.log("error while get cart details", error)
     // })
   }
-
+x
 
 
   displayList() {
