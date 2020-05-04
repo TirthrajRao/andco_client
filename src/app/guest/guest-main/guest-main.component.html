@@ -50,7 +50,7 @@
                 <app-payment-message *ngIf="index == 6" [thankYouDetail]="thankYouDetails"></app-payment-message>
                 <!-- end -->
             </div>
-            <app-guest-menu [isClosed]="isClosed" (displayActivity)="displayActivity($event)">
+            <app-guest-menu (displayActivity)="menuIndex($event)">
             </app-guest-menu>
         </div>
     </div>

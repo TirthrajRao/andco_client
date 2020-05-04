@@ -35,6 +35,7 @@ export class GuestMainComponent implements OnInit {
   isClosed
   cartLength
   closedEvent
+  checkQuery = false
   themeList = ['assets/images/guest.png',
     'assets/images/floral.png',
     'assets/images/wood.png',
@@ -63,10 +64,35 @@ export class GuestMainComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log("response of query", params);
-      // if (params['activities']) {
-      //   this.displayActivity(0)
-      // } else if (params['total']) {
-      //   this.totalItem(1)
+      if (params['activities']) {
+        this.checkQuery = false
+        this.displayActivity(0)
+      } else if (params['total']) {
+        console.log("call or not");
+        this.checkQuery = true
+        let total = JSON.parse(localStorage.getItem('allCartList'))
+        let data = []
+        data['index'] = 1
+        data['allItems'] = total
+        this.totalItem(data)
+      } else if (params['donation']) {
+        this.checkQuery = true
+        this.index = 2
+        this.isDisable = true
+        // this.menuIndex(2)
+      } else if (params['address']) {
+        this.checkQuery = true
+        this.index = 3
+        this.isDisable = true
+      }
+      else if (params['payment']) {
+        this.checkQuery = true
+        this.index = 4
+        this.isDisable = true
+        this.route.navigate(['/guest/', this.hashtag], { queryParams: { payment: 'payment' } });
+      }
+      //  else {
+      //   this.guestEventWithOutLogin(this.hashtag)
       // }
 
     })
@@ -93,7 +119,9 @@ export class GuestMainComponent implements OnInit {
       // this.isDisable = true
       // this.index = 0
       // let day : number = 4;
-      this.displayActivity(0)
+      if (this.checkQuery == false) {
+        this.displayActivity(0)
+      }
 
       switch (this.eventTheme) {
         case 'assets/images/floral.png':
@@ -146,15 +174,15 @@ export class GuestMainComponent implements OnInit {
     this.index = event
     this.totalActivityList = this.eventDetails.activity
     this.isClosed = this.eventDetails.isClosed
-    // this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
 
   }
   totalItem(event) {
-    console.log("total item display in main", event);
-
+    console.log("total item display in main", this.eventDetails);
     this.index = event.index
     this.totalItemList = event
-    // this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+    this.isDisable = true
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
 
   }
 
@@ -162,6 +190,7 @@ export class GuestMainComponent implements OnInit {
     console.log("event of add more", event);
     this.index = event.index
     this.removeItem = event.removeItem
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
     console.log("event when item remove", this.removeItem);
   }
 
@@ -169,16 +198,28 @@ export class GuestMainComponent implements OnInit {
     console.log("add donation", event);
     this.cartLength = event.total
     this.index = event.index
+    if (event.index == 0) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+    } else if (event.index == 2) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+    }
   }
   displayItems(event) {
     this.index = event
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
   }
   displayAddress(event) {
     this.index = event
-
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { address: 'address' } });
   }
   selectPayment(event) {
+    console.log("when click by address", event)
     this.index = event
+    if (event == 2) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+    } else if (event == 4) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { payment: 'payment' } });
+    }
   }
   selectedAccountType(event) {
     this.index = event.index
@@ -193,5 +234,18 @@ export class GuestMainComponent implements OnInit {
   thankYouMessage(event) {
     this.index = event.index
     this.thankYouDetails = event.message
+    this.route.navigate(['/guest/', this.hashtag], { queryParams: { thankYou: 'thankYou' } });
+  }
+
+  menuIndex(event) {
+    console.log("what is in event when click on menu", event)
+    this.index = event
+    if (event == 0) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+    } else if (event == 1) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+    } else if (event == 2) {
+      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+    }
   }
 }

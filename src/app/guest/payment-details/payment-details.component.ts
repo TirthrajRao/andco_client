@@ -178,7 +178,10 @@ export class PaymentDetailsComponent implements OnInit {
     this.eventService.addAccountDetails(finalData, selectedValue, myCart, this.guestDetails).subscribe((response: any) => {
       console.log("response of payment completed", response);
       this.thankYouDetails.emit({ message: response.data, index: 6 })
-      localStorage.clear()
+      localStorage.removeItem('allCartList')
+      localStorage.removeItem('donation')
+      localStorage.removeItem('addressDetails')
+      // localStorage.clear()
       this.isLoad = false
     }, error => {
       this.isLoad = false
