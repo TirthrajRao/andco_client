@@ -68,6 +68,8 @@ export class SetPriceComponent implements OnInit {
   nextSlideIndex
   backSlider = false
   displayTimeZone = timezone
+  selectedTimeZone
+  defaultTimeZone
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -77,18 +79,33 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    console.log("value of timezone", this.timezone)
     // get Curren Location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         console.log("what is the current position of user", position);
-        // this.loginService.getTimeZone().subscribe((response) => {
+        let location = []
+        location[0] = position.coords.latitude
+        location[1] = position.coords.longitude
+        // this.loginService.getTimeZone(location).subscribe((response) => {
         //   console.log("response of user", response)
         // })
+        // var newOne = position.timestamp
         var d = new Date(position.timestamp);
         let time = d.getHours() + ":" + d.getMinutes()
         console.log("whats is the current time", time);
-        // this.showPosition(position);
+        // var d1 = new Date(1588428253);
+        var n = d.getTimezoneOffset() / -60;
+        console.log("what is value ===========", n)
+        let check = this.displayTimeZone.filter(x =>
+          x.offset == n
+        )
+        // setTimeout(() => {
+
+        this.defaultTimeZone = check[0].text
+        // }, 100)
+        console.log("check by all list", check);
+        console.log("check by direct=========", this.defaultTimeZone);
       });
     } else {
       // alert("Geolocation is not supported by this browser.");
@@ -126,7 +143,9 @@ export class SetPriceComponent implements OnInit {
       linkOfEvent: new FormControl(''),
       message: new FormControl(''),
       vendorMessage: new FormControl(''),
-      regestery: new FormControl('')
+      regestery: new FormControl(''),
+      timeZoneSelect: new FormControl(''),
+      defaultTime: new FormControl('')
     })
     this.sub = this.activated.params.subscribe(param => {
       this.eventId = param.id
@@ -296,7 +315,7 @@ export class SetPriceComponent implements OnInit {
 
   getSetPriceDetailsOfEvent(eventId) {
     this.eventService.getPriceOfEvent(eventId).subscribe((response: any) => {
-      // console.log("response of set price", response);
+      console.log("response of set price", response);
       this.isLoad = false
       // this.setPriceDetails = ''
       if (response.welcomeMessage) {
@@ -306,6 +325,9 @@ export class SetPriceComponent implements OnInit {
         this.setPriceDetails = response
         this.isDisable = false
         console.log("response of set price", this.setPriceDetails);
+        this.selectedTimeZone = this.setPriceDetails.timeZoneSelect
+        console.log("value of set price", this.selectedTimeZone);
+
         if (this.setPriceDetails.bankAccount != null) {
           console.log("call for bank account");
           this.selectedAccount = this.setPriceDetails.bankAccount
@@ -409,7 +431,13 @@ export class SetPriceComponent implements OnInit {
 
 
   changeTime(event) {
-    console.log("event of changes time", event.target.value);
+    console.log("event of changes time", this.setPriceForm);
+
+    // this.setPriceForm.patchValue({
+    //   paymentDeadlineTime: event.target.value
+    // })
+    // this.setPriceForm.get('paymentDeadlineTime').updateValueAndValidity()
+
 
     if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
       console.log("this is perfect");
@@ -418,6 +446,16 @@ export class SetPriceComponent implements OnInit {
       this.isDisableNext = true
     }
   }
+
+  selectTimeZone(event) {
+    console.log("what is the value of selected time", event);
+    this.setPriceForm.patchValue({
+      timeZoneSelect: event.target.value
+    })
+    this.setPriceForm.get('timeZoneSelect').updateValueAndValidity()
+  }
+
+
 
   setPrice() {
     console.log("value of form", this.setPriceForm);
@@ -452,21 +490,21 @@ export class SetPriceComponent implements OnInit {
     });
     if (flag == 0) {
       console.log("value of set price", this.setPriceForm);
-      // this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
-      //   console.log("response of set price of event", response);
-      //   this.isLoad = false
-      //   this.alertService.getSuccess(response.message)
-      //   this.router.navigate(['created-event-message'])
-      // }, error => {
-      //   this.isLoad = false
-      //   console.log("error while set price of event", error)
-      // })
+      this.eventService.setPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
+        console.log("response of set price of event", response);
+        this.isLoad = false
+        this.alertService.getSuccess(response.message)
+        this.router.navigate(['created-event-message'])
+      }, error => {
+        this.isLoad = false
+        console.log("error while set price of event", error)
+      })
     }
   }
 
   updateSetPrice() {
     console.log("call for update", this.setPriceForm.value);
-    // this.isLoad = true
+    this.isLoad = true
     const keys = Object.keys(this.setPriceForm.controls);
     let form = this.setPriceForm.controls;
     let flag = 0;
@@ -485,7 +523,7 @@ export class SetPriceComponent implements OnInit {
             bankDetails: obj
           })
           this.setPriceForm.get('bankDetails').updateValueAndValidity()
-        } else {
+        } else if (this.setPriceDetails.cardAccount) {
           let obj = {
             _id: this.setPriceDetails.cardAccount._id,
             flag: 'card'
@@ -618,6 +656,8 @@ export class SetPriceComponent implements OnInit {
     }
 
   }
+
+
   giftOfEvent(data) {
     if (data == 'test1') {
       this.isRegestery = false

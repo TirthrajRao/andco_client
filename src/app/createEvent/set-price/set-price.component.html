@@ -153,13 +153,28 @@
                                         <!-- <span (click)="openModel(default)"> -->
 
                                         <!-- <div id="datetimepicker3"> -->
-                                        <!-- <input type="time" placeholder="selectTime" name="time"
-                                            formControlName="paymentDeadlineTime" (input)="changeTime($event)">
-                                        <select>
-                                            <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
-                                        </select> -->
+                                        <input type="time" placeholder="selectTime" name="time"
+                                            formControlName="paymentDeadlineTime" (input)="changeTime($event)"
+                                            ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}">
+
+                                        <div class="sales-inner sales-inner-box-option">
+                                            <div class="option how-did-u">
+                                                <select (change)="selectTimeZone($event)" *ngIf="!selectedTimeZone"
+                                                    formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
+                                                    <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
+                                                </select>
+
+                                                <select (change)="selectTimeZone($event)" [hidden]="!selectedTimeZone"
+                                                    formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
+                                                    <option *ngFor="let time of displayTimeZone">
+                                                        {{time.text}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
                                         <!-- </div> -->
-                                        <input placeholder="12hr format (default settings)"
+                                        <!-- <input placeholder="12hr format (default settings)"
                                             formControlName="paymentDeadlineTime" aria-label="12hr format"
                                             [ngxTimepicker]="default" readonly
                                             [ngClass]="{ 'is-invalid': f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors }"
@@ -167,7 +182,7 @@
                                             style="cursor: pointer;" [min]="time">
                                         <ngx-material-timepicker #default (timeChanged)="timeChanged($event)"
                                             (closed)="closeEvent()">
-                                        </ngx-material-timepicker>
+                                        </ngx-material-timepicker> -->
                                         <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors"
                                             class="invalid-feedback">
                                             <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
