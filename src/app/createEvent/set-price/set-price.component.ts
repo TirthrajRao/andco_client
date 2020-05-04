@@ -218,7 +218,7 @@ export class SetPriceComponent implements OnInit {
     if (current == 5 && next == 6) {
       this.isDisableNext = false
     }
-    if (current == 1 && next == 0) {
+    if ((current == 1 && next == 0) && !this.setPriceDetails) {
       this.isBack = true
     }
     if (current == 6 && next == 7) {
@@ -295,13 +295,24 @@ export class SetPriceComponent implements OnInit {
 
 
   backToGroup() {
+    console.log("what is the value of slide", this.currentSlideIndex, this.nextSlideIndex)
     // this.router.navigate(['/eventGroup/' + this.eventId])
     if (!this.setPriceDetails) {
       this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
       this.isDisableNext = false
     }
-    if (this.setPriceDetails && (this.currentSlideIndex == 1 && this.nextSlideIndex == 0)) {
+    if (this.setPriceDetails && (this.currentSlideIndex == undefined && this.nextSlideIndex == undefined)) {
       this.router.navigate(['/eventGroup/', this.eventId])
+    }
+    if (this.setPriceDetails && (this.currentSlideIndex == 2 && this.nextSlideIndex == 1)) {
+      this.router.navigate(['/eventGroup/', this.eventId])
+    }
+    // if (this.setPriceDetails && (this.currentSlideIndex == 0 && this.nextSlideIndex == 1)) {
+    //   this.router.navigate(['/eventGroup/', this.eventId])
+    // }
+    if (this.setPriceDetails) {
+      this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
+      this.isDisableNext = false
     }
     // if (this.setPriceDetails && this.backSlider == true) {
     //   this.router.navigate(['/eventGroup/', this.eventId])
