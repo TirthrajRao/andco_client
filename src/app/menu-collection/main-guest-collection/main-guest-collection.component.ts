@@ -38,8 +38,16 @@ export class MainGuestCollectionComponent implements OnInit {
     }, 100)
 
     this.displayGuestItems.forEach((singleList) => {
-      this.firstLetter.push(singleList.firstName.charAt(0))
-      this.secondLetter.push(singleList.lastName.charAt(0))
+
+
+      let vivek = singleList.firstName.split(" ")
+      console.log("whats the value of vivek", vivek);
+
+      this.firstLetter.push(vivek[0].charAt(0))
+      if (vivek[1]) {
+        this.secondLetter.push(vivek[1].charAt(0))
+        singleList['lastLetter'] = vivek[1].charAt(0)
+      }
     })
     console.log("display list", this.displayGuestItems);
 

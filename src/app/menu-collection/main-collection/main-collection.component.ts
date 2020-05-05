@@ -42,7 +42,9 @@ export class MainCollectionComponent implements OnInit {
         slidesToShow: 2.5,
         slidesToScroll: 1,
         adaptiveHeight: true,
-        arrows: false,
+        arrows: true,
+        prevArrow: '<button type="button" class="prevarrow"><img src="assets/images/event-white-arrow.png" alt="arrow"></button>',
+        nextArrow: '<button type="button" class="nextarrow"><img src="assets/images/event-white-arrow.png" alt="arrow"></button>',
         responsive: [
           {
             breakpoint: 1600,
