@@ -1,0 +1,11 @@
+.descriptionContent{
+    height: 90px;
+    width: 350px;
+    /* color: #F18B2D; */
+    
+    border-radius: 50px !important;
+}
+.descriptionContent h5{
+    color:#F18B2D;
+    font-weight: bold;
+} 

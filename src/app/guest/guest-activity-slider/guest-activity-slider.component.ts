@@ -2,7 +2,10 @@ import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@
 import { EventService } from '../../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
-import { single } from 'rxjs/operators';
+// import { single } from 'rxjs/operators';
+import { DescriptionComponent } from './../description/description.component';
+import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
 declare var $;
 
 @Component({
@@ -41,7 +44,8 @@ export class GuestActivitySliderComponent implements OnInit {
   constructor(
     public eventService: EventService,
     public router: Router,
-    public activated: ActivatedRoute
+    public activated: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -174,6 +178,8 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   displayAllData() {
+    console.log("what is in activity", this.displayActivity);
+
     this.displayGroup = this.displayActivity[this.activityIndex].group
     // console.log("when dispplay group", this.displayGroup);
     this.selectedwallet = 0
@@ -372,13 +378,20 @@ export class GuestActivitySliderComponent implements OnInit {
     //   console.log("error while add cart items", error);
     // })
   }
-
   openModel(item) {
-    console.log("what is in item", item);
-    this.discriptionItem = item.itemName
-    this.discriptionName = item.description
-    $('#infoItemModal').modal("show")
-
+    console.log("call this", item)
+    let data = {
+      itemName: item.itemName,
+      description: item.description
+    }
+    var addBank = this.openDialog(DescriptionComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
+    })
   }
 
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data });
+    return dialogRef.afterClosed();
+  }
 }

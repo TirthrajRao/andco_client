@@ -38,8 +38,7 @@
                                 {{item.itemPrice * item.quantity | currency:" &#x20A6; "}} </span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
                             <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
-                                ngbTooltip="{{item.description?item.description: 'No description '}}"
-                                data-container="body"></i>
+                                data-container="body" (click)="openModel(item)"></i>
                         </h4>
                     </div>
                 </li>
@@ -58,8 +57,7 @@
                                 *ngIf="!isClose && item.quantity">={{item.itemPrice * item.quantity | currency:" &#x20A6; "}}</span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
                             <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
-                                ngbTooltip="{{item.description?item.description: 'No description '}}"
-                                data-container="body"></i>
+                                data-container="body" (click)="openModel(item)"></i>
                         </h4>
                     </div>
                 </li>
