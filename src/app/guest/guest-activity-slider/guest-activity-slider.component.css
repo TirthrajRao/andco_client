@@ -116,6 +116,9 @@ li.guest-item input[type="number"] {
 .guest-add-items {
     float: right;
 }
+.guest-add-items i {
+    cursor: pointer;
+}
 
 .guest-item-name {
     float: left;

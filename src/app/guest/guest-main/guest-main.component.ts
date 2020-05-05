@@ -66,7 +66,7 @@ export class GuestMainComponent implements OnInit {
       console.log("response of query", params);
       if (params['activities']) {
         this.checkQuery = false
-        this.displayActivity(0)
+        // this.displayActivity(0)
       } else if (params['total']) {
         console.log("call or not");
         this.checkQuery = true
@@ -169,11 +169,13 @@ export class GuestMainComponent implements OnInit {
     })
   }
   displayActivity(event) {
-    console.log("when click on activity", event);
+    console.log("when click on activity", this.eventDetails);
     this.isDisable = true
     this.index = event
+    // if (this.eventDetails) {
     this.totalActivityList = this.eventDetails.activity
     this.isClosed = this.eventDetails.isClosed
+    // }
     this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
 
   }
