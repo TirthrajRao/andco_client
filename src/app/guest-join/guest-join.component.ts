@@ -119,10 +119,10 @@ export class GuestJoinComponent implements OnInit {
   displayGuest() {
     // this.router.navigate(['/guest/', this.hashTag])
 
-    let data = '/guest/' + this.hashTag
+    let data = '/' + this.hashTag
     let output = this.loginSerivce.returnLogin(data);
     if (output == true) {
-      this.router.navigate(['/guest/', this.hashTag])
+      this.router.navigate(['/', this.hashTag])
     }
 
   }
