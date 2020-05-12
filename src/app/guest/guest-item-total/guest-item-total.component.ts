@@ -60,9 +60,13 @@ export class GuestItemTotalComponent implements OnInit {
     let total = JSON.parse(localStorage.getItem('allCartList'))
     let eventId = localStorage.getItem('eventId')
     console.log("total items in main list", this.totlaItem);
-    this.eventService.getItems(total, eventId).subscribe((response) => {
+    this.eventService.getItems(total, eventId).subscribe((response: any) => {
       console.log("response of that evene", response);
-      this.totlaItem = response
+      if (!response.message) {
+        this.totlaItem = response
+      } else {
+        this.totlaItem = []
+      }
       this.displayList()
       this.isLoad = false
     }, error => {
