@@ -57,17 +57,5 @@ export class WelcomeGuestComponent implements OnInit {
   }
 
 
-  // guestEventWithOutLogin(eventhashTag) {
-  //   this.isLoad = true
-  //   this.route.navigate(['/guest', eventhashTag])
-  //   // console.log("what is in", eventhashTag);
-
-  //   // this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
-  //   //   console.log("details of event with link", response)
-  //   // }, error => {
-  //   //   this.isLoad = false
-  //   //   console.log("error while get link details", error)
-  //   // })
-  // }
 
 }
