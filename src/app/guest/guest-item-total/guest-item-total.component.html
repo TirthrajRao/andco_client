@@ -28,40 +28,36 @@
                                             {{data.itemName}}</p>
                                     </div>
                                     <div class="guest-add-items">
-                                        <h4 class="font-weight-bold">{{data.itemPrice}}<span> x </span>
-                                            {{data.quantity}}
-                                            <span> = </span>{{data.itemPrice * data.quantity}}
-                                            <img src="../../../assets/images/x.png" alt="remove"
-                                                (click)="removeMaleItems(data.itemId, i ,k)">
-                                        </h4>
-                                    </div>
-                                </li>
-                            </ul>
-                            <h4 class="group">Female</h4>
-                            <ul>
-                                <li class="guest-item" *ngFor="let data of femaleArray[i]; let j = index">
-                                    <div class="guest-item-name">
-                                        <p>{{data.itemName}}</p>
-                                    </div>
-                                    <div class="guest-add-items">
-                                        <h4 class="font-weight-bold">{{data.itemPrice}} <span> x </span>
-                                            {{data.quantity}}
-                                            <span> =
-                                            </span>{{data.itemPrice * data.quantity}}
-                                            <img src="../../../assets/images/x.png" alt="remove"
-                                                (click)="removeFemaleItems(data.itemId, i ,j)">
-                                        </h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </span>
+                                        <h4 class="font-weight-bold">{{data.itemPrice}}<span> x </span> {{data.quantity}}
+            <span> = </span>{{data.itemPrice * data.quantity}}
+            <img src="../../../assets/images/x.png" alt="remove" (click)="removeMaleItems(data.itemId, i ,k)">
+            </h4>
         </div>
+        </li>
+        </ul>
+        <h4 class="group">Female</h4>
+        <ul>
+            <li class="guest-item" *ngFor="let data of femaleArray[i]; let j = index">
+                <div class="guest-item-name">
+                    <p>{{data.itemName}}</p>
+                </div>
+                <div class="guest-add-items">
+                    <h4 class="font-weight-bold">{{data.itemPrice}} <span> x </span> {{data.quantity}}
+                        <span> =
+                                            </span>{{data.itemPrice * data.quantity}}
+                        <img src="../../../assets/images/x.png" alt="remove" (click)="removeFemaleItems(data.itemId, i ,j)">
+                    </h4>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="buttons-pay-back">
-        <button class="btn" (click)="displayItemList()">Back</button>
-        <button class="btn" (click)="addDonationOfEvent()">Add Donation</button>
-    </div>
+</div>
+</div>
+</span>
+</div>
+</div>
+<div class="buttons-pay-back">
+    <button class="btn" (click)="displayItemList()">Back</button>
+    <button class="btn" (click)="addDonationOfEvent()">Pay Now</button>
+</div>
 </div>
