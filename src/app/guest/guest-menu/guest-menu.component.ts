@@ -31,12 +31,12 @@ export class GuestMenuComponent implements OnInit {
       $('#circularMenu').removeClass('active');
     });
 
-    if (this.totalEventList > 1) {
-      this.isMenu = true
-    } else {
-      console.log("call this ");
-      this.isMenu = false
-    }
+    // if (this.totalEventList > 1) {
+    //   this.isMenu = true
+    // } else {
+    //   console.log("call this ");
+    //   this.isMenu = false
+    // }
 
   }
   ngOnChanges(changes: SimpleChanges) {
@@ -71,6 +71,5 @@ export class GuestMenuComponent implements OnInit {
     this.loginService.logout()
     this.router.navigate(['/login']);
   }
-
 
 }

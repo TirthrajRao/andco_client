@@ -60,6 +60,7 @@ import { ExcelService } from '../services/excel.service';
 import { MainCollectionComponent } from '../menu-collection/main-collection/main-collection.component'
 import { MainGuestCollectionComponent } from '../menu-collection/main-guest-collection/main-guest-collection.component';
 import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component';
+import { DescriptionComponent } from '../guest/description/description.component';
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 import { AuthGuard } from '../auth.guard';
@@ -202,7 +203,8 @@ const routes: Routes = [
     AddBankAccountComponent,
     MainCollectionComponent,
     MainTotalCollectionComponent,
-    MainGuestCollectionComponent
+    MainGuestCollectionComponent,
+    DescriptionComponent
 
     // SearchListPipe
   ],
@@ -226,12 +228,11 @@ const routes: Routes = [
     // MatSelectModule
   ],
   entryComponents: [
-    MainMenuComponent
+    MainMenuComponent,
+    DescriptionComponent
   ],
   exports: [
     LoaderComponent,
-    // GuestMainComponent
-    // MatDatepickerModule
   ],
   providers: [
     DatePipe,
