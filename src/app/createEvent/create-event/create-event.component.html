@@ -155,9 +155,13 @@
             </div>
             <div class="modal-body border-top">
                 <div class="image-cropper-box">
-                    <image-cropper class="custom-class" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3" [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
-                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
-                        (loadImageFailed)="loadImageFailed()">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                        [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
+                        [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
+                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
+                        format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl"
+                        (imageLoaded)="imageLoaded()" [hideResizeSquares]="true" (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()" class="vivekBharda">
                     </image-cropper>
                 </div>
             </div>

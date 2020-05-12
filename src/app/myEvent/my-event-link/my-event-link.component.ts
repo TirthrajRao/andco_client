@@ -117,10 +117,12 @@ export class MyEventLinkComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
 
     console.log("display link of event", changes.eventLink);
-    this.displayEventLink = changes.eventLink.currentValue.eventLink
+    if (changes.eventLink && changes.eventLink.currentValue) {
+      this.displayEventLink = changes.eventLink.currentValue.eventLink
+      this.eventId = changes.eventLink.currentValue.eventId
+      this.getEventDetails(this.eventId)
+    }
 
-    this.eventId = changes.eventLink.currentValue.eventId
-    this.getEventDetails(this.eventId)
   }
 
   getEventDetails(eventId) {
@@ -280,6 +282,21 @@ export class MyEventLinkComponent implements OnInit {
     }, error => {
       console.log("error while set message", error);
 
+    })
+  }
+
+
+  addWelcomeMessage() {
+    let welcome = this.welcomeMessage
+    console.log("changes in welcome message", welcome)
+    let data = {
+      welcomeMessage: this.welcomeMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addWelcomeMessage(data).subscribe((response) => {
+      console.log("respinse of welcome message added", response)
+    }, error => {
+      console.log("errror while add welcome", error)
     })
   }
 

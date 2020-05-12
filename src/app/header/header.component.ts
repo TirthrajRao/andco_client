@@ -106,13 +106,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.log("hashtag and total event", this.hashTag, this.totalEvent);
-    if (this.hashTag && this.totalEvent <= 1) {
-      console.log("this is call in header");
-      setTimeout(() => {
-        $('#navigation-logo').addClass('navigation-hide');
-      }, 100)
-      this.displayLogo = false
-    }
+    // if (this.hashTag && this.totalEvent <= 1) {
+    //   console.log("this is call in header");
+    //   setTimeout(() => {
+    //     $('#navigation-logo').addClass('navigation-hide');
+    //   }, 100)
+    //   this.displayLogo = false
+    // }
     console.log("login user name in heaedr", this.router.url)
     if (this.router.url) {
       this.currentUrl = this.router.url

@@ -1,4 +1,4 @@
-<div class="thank-you">
+<div class="thank-you" [ngStyle]="{'background-image': 'url(' + eventTheme + ')'}">
     <div class="guest-header text-center" *ngIf="eventDetails">
         <div class="andco-logo">
             <img src="assets/images/andco_logo.png" alt="andco logo">
@@ -12,7 +12,7 @@
     <div>
         <p class="thank-you-message" *ngIf="eventDetails && eventDetails.welcomeMessage">{{eventDetails.welcomeMessage}}
         </p>
-        <button class="btn buy" *ngIf="isJoin == true" (click)="displayGuest()">Buy our aso ebi</button>
-        <button class="btn buy" *ngIf="isJoin == false" (click)="joinEvent(eventDetails._id)">Join Event</button>
+        <button class="btn buy" (click)="displayGuest()">Buy our aso ebi</button>
+        <!-- <button class="btn buy" *ngIf="isJoin == false" (click)="joinEvent(eventDetails._id)">Join Event</button> -->
     </div>
 </div>

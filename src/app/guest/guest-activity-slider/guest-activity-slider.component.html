@@ -11,8 +11,9 @@
     <!-- <button (click)="nextSlide()">next</button> -->
     <div class="guest-activity-group">
         <div class="radio" *ngFor="let group of displayGroup; let i = index">
-            <input id="{{i}}" name="radio" type="radio" value="{{i}}" (change)="changeGroup($event)">
-            <label for="{{i}}" class="radio-label" tooltipClass="my-custom-class" ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
+            <input *ngIf="group.item && group.item.length" id="{{i}}" name="radio" type="radio" value="{{i}}" (change)="changeGroup($event)">
+            <label *ngIf="group.item && group.item.length" for="{{i}}" class="radio-label"
+                tooltipClass="my-custom-class" ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
         </div>
     </div>
     <div class="guest-activity-item-tab">
@@ -60,5 +61,6 @@
     <div class="buttons-group">
         <!-- <button class="btn saved">Saved</button> -->
         <button class="btn total" (click)="addTocart()" [disabled]="!isTotal">Total</button>
+        <!-- <h1>hello</h1> -->
     </div>
 </div>

@@ -145,6 +145,7 @@ export class EventService {
   }
 
   getGuestEventDetails(hashTag) {
+    console.log('hashTag in service', hashTag)
     return this.http.get(config.baseApiUrl + "/event/guestEvent/" + hashTag)
   }
 
@@ -258,6 +259,10 @@ export class EventService {
   setReminderMessage(value, eventId) {
     value['eventId'] = eventId
     return this.http.post(config.baseApiUrl + "/event/setReminder", value)
+  }
+
+  addWelcomeMessage(message) {
+    return this.http.put(config.baseApiUrl + "/event/welcome", message)
   }
 
 

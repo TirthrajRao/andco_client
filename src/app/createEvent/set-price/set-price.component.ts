@@ -211,7 +211,6 @@ export class SetPriceComponent implements OnInit {
     if ((current == 3 && next == 4) && (this.setPriceForm.controls.isLogistics.status == 'VALID')) {
       this.isDisableNext = false
     }
-
     if ((current == 4 && next == 5) && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))) {
       this.isDisableNext = false
     }
@@ -304,12 +303,12 @@ export class SetPriceComponent implements OnInit {
     if (this.setPriceDetails && (this.currentSlideIndex == undefined && this.nextSlideIndex == undefined)) {
       this.router.navigate(['/eventGroup/', this.eventId])
     }
-    if (this.setPriceDetails && (this.currentSlideIndex == 2 && this.nextSlideIndex == 1)) {
-      this.router.navigate(['/eventGroup/', this.eventId])
-    }
-    // if (this.setPriceDetails && (this.currentSlideIndex == 0 && this.nextSlideIndex == 1)) {
+    // if (this.setPriceDetails && (this.currentSlideIndex == 2 && this.nextSlideIndex == 1)) {
     //   this.router.navigate(['/eventGroup/', this.eventId])
     // }
+    if (this.setPriceDetails && (this.currentSlideIndex == 1 && this.nextSlideIndex == 0)) {
+      this.router.navigate(['/eventGroup/', this.eventId])
+    }
     if (this.setPriceDetails) {
       this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
       this.isDisableNext = false

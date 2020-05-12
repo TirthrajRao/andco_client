@@ -89,7 +89,7 @@ export class GuestMainComponent implements OnInit {
         this.checkQuery = true
         this.index = 4
         this.isDisable = true
-        this.route.navigate(['/guest/', this.hashtag], { queryParams: { payment: 'payment' } });
+        this.route.navigate(['/', this.hashtag], { queryParams: { payment: 'payment' } });
       }
       //  else {
       //   this.guestEventWithOutLogin(this.hashtag)
@@ -100,12 +100,12 @@ export class GuestMainComponent implements OnInit {
 
 
 
-  getBackGround() {
-    // if (this.eventDetails.eventTheme) {
-    return `url(` + this.eventTheme + `)`;
-    // }
+    getBackGround() {
+      // if (this.eventDetails.eventTheme) {
+      return `url(` + this.eventTheme + `)`;
+      // }
 
-  }
+    }
 
   guestEventWithOutLogin(eventhashTag) {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
@@ -176,7 +176,7 @@ export class GuestMainComponent implements OnInit {
     this.totalActivityList = this.eventDetails.activity
     this.isClosed = this.eventDetails.isClosed
     // }
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
 
   }
   totalItem(event) {
@@ -184,7 +184,7 @@ export class GuestMainComponent implements OnInit {
     this.index = event.index
     this.totalItemList = event
     this.isDisable = true
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });
 
   }
 
@@ -192,7 +192,7 @@ export class GuestMainComponent implements OnInit {
     console.log("event of add more", event);
     this.index = event.index
     this.removeItem = event.removeItem
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     console.log("event when item remove", this.removeItem);
   }
 
@@ -201,26 +201,26 @@ export class GuestMainComponent implements OnInit {
     this.cartLength = event.total
     this.index = event.index
     if (event.index == 0) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     } else if (event.index == 2) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { donation: 'donation' } });
     }
   }
   displayItems(event) {
     this.index = event
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });
   }
   displayAddress(event) {
     this.index = event
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { address: 'address' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
   }
   selectPayment(event) {
     console.log("when click by address", event)
     this.index = event
     if (event == 2) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { donation: 'donation' } });
     } else if (event == 4) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { payment: 'payment' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { payment: 'payment' } });
     }
   }
   selectedAccountType(event) {
@@ -236,18 +236,18 @@ export class GuestMainComponent implements OnInit {
   thankYouMessage(event) {
     this.index = event.index
     this.thankYouDetails = event.message
-    this.route.navigate(['/guest/', this.hashtag], { queryParams: { thankYou: 'thankYou' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { thankYou: 'thankYou' } });
   }
 
   menuIndex(event) {
     console.log("what is in event when click on menu", event)
     this.index = event
     if (event == 0) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { activities: 'activities' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     } else if (event == 1) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { total: 'total' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });
     } else if (event == 2) {
-      this.route.navigate(['/guest/', this.hashtag], { queryParams: { donation: 'donation' } });
+      this.route.navigate(['/', this.hashtag], { queryParams: { donation: 'donation' } });
     }
   }
 }
