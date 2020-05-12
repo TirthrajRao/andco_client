@@ -93,29 +93,18 @@ export class MyEventLinkComponent implements OnInit {
 
       this.$slideContainter = $('.my-event-tab-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
-        infinite: false,
-        slidesToShow: 3.5,
+        infinite: true,
+        slidesToShow: 3,
         slidesToScroll: 1,
         adaptiveHeight: true,
         arrows: false,
         focusOnSelect: true,
+        centerMode: true,
         responsive: [
           {
-            breakpoint: 991,
+            breakpoint: 768,
             settings: {
-              slidesToShow: 2.5,
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-            }
-          },
-          {
-            breakpoint: 481,
-            settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
             }
           },
         ],

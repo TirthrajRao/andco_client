@@ -25,14 +25,15 @@
         <div class="tab-content">
             <ul *ngIf="selectedwallet == 0">
                 <li class="guest-item" *ngFor="let item of itemList; let i =index">
-                    <div class="guest-item-name">
+                    <div class="guest-item-name w-30">
                         <p tooltipClass="my-custom-class" ngbTooltip="{{item.itemName}}">{{item.itemName}}</p>
                     </div>
-                    <div class="guest-add-items">
+                    <div class="quantity-center w-30">
                         <h4>{{item.itemPrice | currency:"&#x20A6;"}} <span *ngIf="!isClose">x</span>
-                            <input type="number" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity" (change)="maleTotal($event , item , i)" *ngIf="!isClose">
-
-                            <span *ngIf="!isClose && item.quantity">=
+                            <input type="number" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity" (change)="maleTotal($event , item , i)" *ngIf="!isClose"></h4>
+                    </div>
+                    <div class="guest-add-items w-30">
+                        <h4><span *ngIf="!isClose && item.quantity">=
                                 {{item.itemPrice * item.quantity | currency:" &#x20A6; "}} </span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
                             <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class" data-container="body" (click)="openModel(item)"></i>
