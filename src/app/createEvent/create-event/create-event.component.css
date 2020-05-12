@@ -197,12 +197,15 @@ button.slick-arrow {
 
 .image-cropper-box {
     height: 300px;
-    width: 100%;
+    width: 300px;
     max-width: 100%;
     min-width: 100%;
     min-height: 100%;
     border: 1px solid lightgray;
     margin-bottom: 5px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .choose_image {
