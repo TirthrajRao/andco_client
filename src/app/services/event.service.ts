@@ -145,6 +145,7 @@ export class EventService {
   }
 
   getGuestEventDetails(hashTag) {
+    console.log('hashTag in service', hashTag)
     return this.http.get(config.baseApiUrl + "/event/guestEvent/" + hashTag)
   }
 

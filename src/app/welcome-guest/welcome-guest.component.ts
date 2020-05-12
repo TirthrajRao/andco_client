@@ -18,24 +18,37 @@ export class WelcomeGuestComponent implements OnInit {
     public eventService: EventService
   ) {
 
-
-    let vive = this.activatedRoute.snapshot.queryParamMap.get('event')
-    if (vive) {
-      console.log("vivek", vive);
-      let newHashTag = vive.split("/")
-      console.log("what is in new hastag", newHashTag.length);
-      if (newHashTag && newHashTag.length == 2) {
-        sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
-        sessionStorage.setItem('platForm', JSON.stringify(newHashTag[1]))
-        this.route.navigate(['/guest/', newHashTag[0]])
-      } else {
-        sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
-        sessionStorage.setItem('platForm', JSON.stringify('GN'))
-        this.route.navigate(['/guest/', vive])
-      }
-    } else {
+    // console.log("this.route.url", this.route.url)
+    let url = this.route.url
+    console.log("url", url)
+    if(url == '/'){
       this.route.navigate(['/display-page'])
     }
+    else{
+      let hashTag = url.split('/')[1].split('#')[1]
+      console.log("hashTag", hashTag)
+      
+      sessionStorage.setItem('guestHashTag', hashTag)
+      this.route.navigate(['/', hashTag])
+    }
+    // let vive = this.activatedRoute.snapshot.queryParamMap.get('event')
+    // console.log("vivek", vive);
+    // if (vive) {
+    //   console.log("vivek", vive);
+    //   let newHashTag = vive.split("/")
+    //   console.log("what is in new hastag", newHashTag.length);
+      // if (newHashTag && newHashTag.length == 2) {
+      //   sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
+      //   sessionStorage.setItem('platForm', JSON.stringify(newHashTag[1]))
+      //   this.route.navigate(['/guest/', newHashTag[0]])
+      // } else {
+      //   sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
+      //   sessionStorage.setItem('platForm', JSON.stringify('GN'))
+      //   this.route.navigate(['/guest/', vive])
+      // }
+    // } else {
+    //   // this.route.navigate(['/display-page'])
+    // }
   }
 
   ngOnInit() {
