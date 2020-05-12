@@ -162,7 +162,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'guest/:hashTag',
+    path: ':hashTag',
     component: GuestMainComponent
   },
 ]
