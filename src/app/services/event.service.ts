@@ -260,6 +260,10 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/event/setReminder", value)
   }
 
+  addWelcomeMessage(message) {
+    return this.http.put(config.baseApiUrl + "/event/welcome", message)
+  }
+
 
   updateReminder(data, eventId) {
     data['eventId'] = eventId

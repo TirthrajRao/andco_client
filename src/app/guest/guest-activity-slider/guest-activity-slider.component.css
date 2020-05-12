@@ -237,7 +237,11 @@ img.down {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
-
+.cart-div {
+    position: absolute;
+    right: 30px;
+    top: -70px;
+}
 
 /* radio button css end here */
 
@@ -346,6 +350,12 @@ img.down {
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         font-size: 18px;
+    }
+    .cart-div img {
+        height: 40px;
+    }
+    .cart-div {
+        top: -50px;
     }
 }
 

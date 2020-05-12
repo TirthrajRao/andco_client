@@ -83,7 +83,7 @@ export class LoginService {
    */
   login(userCredentials) {
     // console.log("helloooooooo", userCredentials);
-    const eventToken = JSON.parse(sessionStorage.getItem('guestHashTag'));
+    // const eventToken = JSON.parse(sessionStorage.getItem('guestHashTag'));
     // console.log("login with link ", eventToken);
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userCredentials.password), this.key).toString();
     userCredentials['password'] = encrypted

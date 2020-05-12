@@ -297,6 +297,21 @@ export class MyEventLinkComponent implements OnInit {
   }
 
 
+  addWelcomeMessage() {
+    let welcome = this.welcomeMessage
+    console.log("changes in welcome message", welcome)
+    let data = {
+      welcomeMessage: this.welcomeMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addWelcomeMessage(data).subscribe((response) => {
+      console.log("respinse of welcome message added", response)
+    }, error => {
+      console.log("errror while add welcome", error)
+    })
+  }
+
+
   enterPayMessage() {
     let message = {
       payMessage: this.payMessage,
