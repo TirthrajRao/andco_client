@@ -3,8 +3,11 @@ import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { LoginService } from '../../services/login.service'
 import { config } from '../../config'
+import { Subscription } from 'rxjs';
+export let browserRefresh = false;
 
-import { importExpr } from '@angular/compiler/src/output/output_ast';
+
+// import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-my-event',
   templateUrl: './my-event.component.html',
@@ -22,7 +25,7 @@ export class MyEventComponent implements OnInit {
   displayProfile = false
   eventDetails
   eventProfile
-  currenMenuIndex = 0;
+  currenMenuIndex = 'activity';
   eventLink
   guestList = []
   totalCollections
@@ -38,15 +41,26 @@ export class MyEventComponent implements OnInit {
   printHashTag
   path = config.baseMediaUrl;
   data
+  existingEvent
+  displayActivity = false
+  selectedMenu
+  subscription: Subscription;
+  pageRefresh: boolean
+  refreshEventId
   constructor(
     private route: Router,
     public eventService: EventService,
     public loginSerivce: LoginService,
-    // public activated: ActivatedRoute
+    public activated: ActivatedRoute
   ) {
-    this.route.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
+    // this.route.routeReuseStrategy.shouldReuseRoute = function () {
+    //   return false;
+    // };
+    this.subscription = route.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        browserRefresh = !route.navigated;
+      }
+    });
   }
 
   @HostListener('window:beforeprint', ['$event'])
@@ -65,17 +79,94 @@ export class MyEventComponent implements OnInit {
 
 
   ngOnInit() {
-
-    // this.data = this.activated.params.subscribe(param => {
-    //   console.log("value of activated routes", param);
-
-    //   // this.hashTag = param.hashTag
-    // })
-
+    this.pageRefresh = browserRefresh
+    console.log("when page is refresh", this.pageRefresh)
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
     this.getLoginUserEvent()
+
+    this.activated.queryParams.subscribe(params => {
+      console.log("value of params", params)
+      if (params['activity']) {
+        console.log("call for first time");
+        console.log("what is when refresh", this.subscription)
+        let obj = {
+          eventId: params.activity
+        }
+        console.log("details of event =================", this.eventDetails)
+        this.refreshEventId = params.activity
+        if (this.eventDetails == undefined) {
+          this.eventService.getSingleEventDetails(params.activity).subscribe((response: any) => {
+            console.log("response when page is load", response);
+            this.eventDetails = response.data
+            this.eventHashTag = response.data.hashTag
+            this.selectedEventId = this.eventDetails._id
+            this.changeMenuWithArraow('activity')
+          })
+        }
+      }
+      if (params['collection']) {
+        console.log("call for this ok ");
+
+        this.selectedEventId = params.collection
+        this.displayMenu = true
+        this.displayActivity = true
+        this.changeMenuWithArraow('collected')
+        if (!this.totalCollections) {
+          this.selectedMenu = 'collected'
+        }
+        let obj = {
+          eventId: params.collection
+        }
+        this.getSingleEvent(obj)
+        // this.getCollecctionOfEvent()
+        // this.currenMenuIndex = 2
+      }
+      if (params['profile']) {
+        this.displayActivity = true
+        this.displayMenu = true
+        this.selectedEventId = params.profile
+        let obj = {
+          eventId: params.profile
+        }
+        if (this.eventDetails == undefined) {
+          this.selectedMenu = 'profile photo'
+        }
+        this.getSingleEvent(obj)
+        this.changeMenuWithArraow('profile photo')
+      }
+      if (params['eventLink']) {
+        this.displayActivity = true
+        this.displayMenu = true
+        this.selectedEventId = params.eventLink
+        let obj = {
+          eventId: params.eventLink
+        }
+        if (this.eventDetails == undefined) {
+          this.selectedMenu = 'link'
+        }
+        this.getSingleEvent(obj)
+        this.changeMenuWithArraow('link')
+      }
+      if (params['guestList']) {
+
+        this.displayActivity = true
+        this.displayMenu = true
+        this.selectedEventId = params.guestList
+        let obj = {
+          eventId: params.guestList
+        }
+        if (this.eventDetails == undefined) {
+          this.selectedMenu = 'invited guest'
+        }
+        this.getSingleEvent(obj)
+        this.getGuestListOfEvent()
+        this.changeMenuWithArraow('invited guest')
+
+      }
+    })
+
   }
 
 
@@ -94,6 +185,9 @@ export class MyEventComponent implements OnInit {
 
     })
   }
+
+
+
   getSingleEvent(event) {
     this.isLoad = true
     console.log("right now current index is what", this.currenMenuIndex);
@@ -104,14 +198,15 @@ export class MyEventComponent implements OnInit {
       this.selectedEventId = response.data._id
       if (this.isCelebrant == true) {
         this.eventDetails = response.data
-        console.log("event details", this.eventDetails);
+        // console.log("event details", this.eventDetails);
         this.printHashTag = this.eventDetails.hashTag
         this.printTitle = this.eventDetails.eventTitle
         this.printPhoto = this.eventDetails.profilePhoto
         // this.eventLink = response.data.eventLink
         this.displayMenu = true
+
         this.changeMenuWithArraow(this.currenMenuIndex)
-        if (this.currenMenuIndex == 0) {
+        if (this.currenMenuIndex == 'activity' && this.displayActivity == false) {
           this.getActivity()
           // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
         }
@@ -125,7 +220,7 @@ export class MyEventComponent implements OnInit {
       // if (this.currenMenuIndex == 2) {
       //   this.getCollecctionOfEvent()
       // }
-      console.log("details of event with hastag", this.eventDetails);
+      // console.log("details of event with hastag", this.eventDetails);
     }, error => {
       console.log("error while get single event details", error);
 
@@ -133,22 +228,32 @@ export class MyEventComponent implements OnInit {
   }
 
   getProfileOfEvent() {
-    let profileArray =
-    {
-      profile: this.eventDetails.profilePhoto,
-      eventId: this.selectedEventId
+    if (this.eventDetails) {
+
+      let profileArray =
+      {
+        profile: this.eventDetails.profilePhoto,
+        eventId: this.selectedEventId
+      }
+      console.log("when profile change", profileArray)
+      this.eventProfile = profileArray
     }
-    this.eventProfile = profileArray
+    this.route.navigate(['/myevent'], { queryParams: { profile: this.selectedEventId } });
   }
 
   getActivity() {
+    // console.log("what is event details", this.eventDetails)
     this.totalActivity = this.eventDetails.activity
-    console.log("call thay che ke nai ", this.totalActivity);
-    // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
+    this.displayMenu = true
+    // console.log("call thay che ke nai ", this.totalActivity);
+    this.route.navigate(['/myevent'], { queryParams: { activity: this.selectedEventId } });
   }
 
   getEventLink() {
-    this.eventLink = ({ eventLink: this.eventDetails.eventLink, eventId: this.selectedEventId })
+    if (this.eventDetails) {
+      this.eventLink = ({ eventLink: this.eventDetails.eventLink, eventId: this.selectedEventId })
+    }
+    this.route.navigate(['/myevent'], { queryParams: { eventLink: this.selectedEventId } });
   }
 
 
@@ -157,6 +262,7 @@ export class MyEventComponent implements OnInit {
     this.eventService.getGuestList(this.selectedEventId).subscribe((response: any) => {
       console.log("response of guest list", response);
       this.guestList = response.data[0]
+      this.route.navigate(['/myevent'], { queryParams: { guestList: this.selectedEventId } });
       setTimeout(() => {
         this.isLoad = false
       })
@@ -166,25 +272,17 @@ export class MyEventComponent implements OnInit {
     })
   }
 
-  // getTotalListOfGuestWithCollection() {
-  //   this.eventService.getItemsOfGuest(this.selectedEventId).subscribe((response: any) => {
-  //     this.collectionWithGuest = response.data
-  //     console.log("list of total collection with guests", this.collectionWithGuest);
-  //   }, error => {
-  //     console.log("error while get collections", error);
-
-  //   })
-
-  // }
 
 
   getCollecctionOfEvent() {
     this.isLoad = true
     this.eventService.getEventCollection(this.selectedEventId).subscribe((response: any) => {
       console.log("response of collections", response);
-      response.data['isClosed'] = this.eventDetails.isClosed
+      // response.data['isClosed'] = this.eventDetails.isClosed
 
       this.totalCollections = response.data
+      this.route.navigate(['/myevent'], { queryParams: { collection: this.selectedEventId } });
+
       // this.isClosed = this.eventDetails.isClosed
       this.isLoad = false
     }, error => {
@@ -220,31 +318,6 @@ export class MyEventComponent implements OnInit {
   }
 
 
-  // getCurrentMenu(event) {
-  //   console.log("current menu index", event);
-  //   this.currenMenuIndex = event
-  //   if (this.currenMenuIndex == 1) {
-  //     this.getProfileOfEvent()
-  //   }
-  //   if (this.currenMenuIndex == 0) {
-  //     console.log("log this ");
-  //     this.getActivity()
-  //   }
-  //   if (this.currenMenuIndex == 3) {
-  //     this.getEventLink()
-  //   }
-  //   if (this.currenMenuIndex == 4) {
-  //     this.getGuestListOfEvent()
-  //   }
-  //   if (this.currenMenuIndex == 2) {
-  //     console.log("what in this");
-  //     this.getCollecctionOfEvent()
-  //   }
-  //   if (this.currenMenuIndex == 5) {
-  //     this.route.navigate(['edtiEvent/' + this.selectedEventId])
-  //   }
-  // }
-
   changeMenuWithArraow(event) {
     console.log("event when click on array of slider", event);
     // this.getCurrentMenu(event)
@@ -252,29 +325,35 @@ export class MyEventComponent implements OnInit {
     console.log("call menu");
 
     // this.currenMenuIndex = null
-    if (event == 0) {
+    if (event == 'activity') {
+      // 0
       this.currenMenuIndex = event
       // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
       this.getActivity()
     }
-    if (event == 1) {
+    if (event == 'profile photo') {
+      // 1
       this.currenMenuIndex = event
       // this.route.navigate(['/myevent'], { queryParams: { profile: this.eventDetails.eventTitle } });
       this.getProfileOfEvent()
     }
-    if (event == 2) {
+    if (event == 'collected') {
+      // 2
       this.currenMenuIndex = event
       this.getCollecctionOfEvent()
     }
-    if (event == 3) {
+    if (event == 'link') {
+      // 3
       this.currenMenuIndex = event
       this.getEventLink()
     }
-    if (event == 4) {
+    if (event == 'invited guest') {
+      // 4
       this.currenMenuIndex = event
       this.getGuestListOfEvent()
     }
-    if (event == 5) {
+    if (event == 'edit event') {
+      // 5
       this.currenMenuIndex = event
 
       let data = '/editEvent/' + this.selectedEventId

@@ -175,7 +175,7 @@
     font-size: 18px;
     width: 70%;
     -webkit-appearance: none;
-    padding: 6px 30px 6px 10px;
+    padding: 10px 30px 6px 10px;
 }
 
 .how-did-u select:focus {

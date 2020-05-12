@@ -28,6 +28,9 @@ export class CreateEventComponent implements OnInit {
   containWithinAspectRatio = false;
   cropImage: any
   transform: ImageTransform = {};
+  bharda: 200
+  vivek: 200
+
 
   private sub: any
   private eventId: any

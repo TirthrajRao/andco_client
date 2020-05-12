@@ -14,18 +14,23 @@
                     <img src="../../../assets/images/no-user.gif" alt="no event">
                     <p>Sorry you have no event</p>
                 </div>
-                <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"></app-all-slider>
+                <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"
+                    [selectedEventId]="refreshEventId"></app-all-slider>
                 <div>
-                    <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 0">
+                    <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 'activity'">
                     </app-my-event-activity>
                     <!-- <app-event-menu></app-event-menu> -->
-                    <app-my-event-link *ngIf="currenMenuIndex == 3" [eventLink]="eventLink"></app-my-event-link>
+                    <app-my-event-link *ngIf="currenMenuIndex == 'link'" [eventLink]="eventLink"></app-my-event-link>
 
-                    <app-invited-guest *ngIf="currenMenuIndex == 4" [guestList]="guestList"></app-invited-guest>
+                    <app-invited-guest *ngIf="currenMenuIndex == 'invited guest'" [guestList]="guestList">
+                    </app-invited-guest>
 
-                    <app-event-profile-pic *ngIf="currenMenuIndex == 1" [profile]="eventProfile">
+                    <app-event-profile-pic *ngIf="currenMenuIndex == 'profile photo'" [profile]="eventProfile">
                     </app-event-profile-pic>
-                    <app-collection *ngIf="currenMenuIndex == 2" [totalCollection]="totalCollections" (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems" (loaderValue)="collectionLoader($event)" (totalCollectionList)="finalCollectionPrint($event)" (printClick)="clickOnPrint($event)">
+                    <app-collection *ngIf="currenMenuIndex == 'collected'" [totalCollection]="totalCollections"
+                        (guestWithItem)="getItemsOfGuest($event)" [guestItems]="guestWithItems"
+                        (loaderValue)="collectionLoader($event)" (totalCollectionList)="finalCollectionPrint($event)"
+                        (printClick)="clickOnPrint($event)">
                     </app-collection>
                     <!-- <app-loader></app-loader> -->
                 </div>
@@ -33,7 +38,8 @@
         </div>
         <div class="event-menu-box-main">
             <div class="event-menu-box" *ngIf="displayMenu">
-                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()" (changeMenu)="changeMenuWithArraow($event)">
+                <app-event-menu [eventId]="selectedEventId" (activity)="getActivity()"
+                    (changeMenu)="changeMenuWithArraow($event)" [menuSelected]="selectedMenu">
                 </app-event-menu>
             </div>
         </div>

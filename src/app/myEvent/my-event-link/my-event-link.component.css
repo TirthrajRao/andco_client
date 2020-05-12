@@ -85,6 +85,13 @@
     background-color: rgba(0, 0, 0, 0.26);
     padding: 20px;
     margin: 10px 0;
+    position: relative;
+}
+
+img.attach-img {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
 
 textarea {
@@ -135,7 +142,7 @@ input.bottom-link {
     font-size: 26px;
     padding: 0 30px;
     background: transparent;
-    margin-top: -50px;
+    /* margin-top: -50px; */
     color: #ffffff;
     text-align: center;
     font-weight: 600;
@@ -160,18 +167,6 @@ input.bottom-link::placeholder {
     color: #985e28;
     border: 3px solid #975e27;
     transition: 0.5s all;
-}
-
-input.pay-input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    color: white;
-    outline: none !important;
-}
-
-input.pay-input::placeholder {
-    color: #ffffff;
 }
 
 
@@ -289,7 +284,6 @@ span.zone {
     }
     textarea {
         font-size: 22px;
-        height: 90px;
     }
     input.bottom-link {
         font-size: 22px;
@@ -328,9 +322,8 @@ span.zone {
     }
     textarea {
         font-size: 18px;
-        height: 90px;
         padding: 0;
-        margin: 5px 0;
+        margin: 0;
     }
     input.bottom-link {
         font-size: 18px;
@@ -345,9 +338,6 @@ span.zone {
     .share-button button {
         margin-top: 0;
         font-size: 20px;
-    }
-    .step-3-link textarea {
-        height: 70px;
     }
     .alert-success {
         font-size: 18px;

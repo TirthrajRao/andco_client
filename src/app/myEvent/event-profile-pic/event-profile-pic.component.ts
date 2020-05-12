@@ -48,7 +48,7 @@ export class EventProfilePicComponent implements OnInit {
   ngOnInit() {
 
     console.log(" ************ Yash Shukla ********* ")
-    console.log(" Image Url is this :::::", this.profilePhoto.profile)
+    // console.log(" Image Url is this :::::", this.profilePhoto.profile)
     // this.getBase64ImageFromURL(dataUri)
 
   }
@@ -104,8 +104,10 @@ export class EventProfilePicComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("when click on profile tab", this.profilePhoto);
-    this.displayPhoto = this.profilePhoto.profile
-    this.eventId = this.profilePhoto.eventId
+    if (changes.profilePhoto && changes.profilePhoto.currentValue) {
+      this.displayPhoto = this.profilePhoto.profile
+      this.eventId = this.profilePhoto.eventId
+    }
     // var reader = new FileReader();
     // reader.onloadend = this._handleReaderLoaded.bind(this.profilePhoto.profile);
     // this.getBase64ImageFromURL(this.profilePhoto.profile)

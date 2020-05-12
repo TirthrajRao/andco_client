@@ -42,7 +42,7 @@ export class MyEventLinkComponent implements OnInit {
   reminderDetails
   welcomeMessage
   payMessage
-  eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
+  eventLinkMenu = ["invitation", "Welcome", "Pay", "Reminder", "After Event"]
   isAll
   isOnly
   afterAll
@@ -128,10 +128,12 @@ export class MyEventLinkComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
 
     console.log("display link of event", changes.eventLink);
-    this.displayEventLink = changes.eventLink.currentValue.eventLink
+    if (changes.eventLink && changes.eventLink.currentValue) {
+      this.displayEventLink = changes.eventLink.currentValue.eventLink
+      this.eventId = changes.eventLink.currentValue.eventId
+      this.getEventDetails(this.eventId)
+    }
 
-    this.eventId = changes.eventLink.currentValue.eventId
-    this.getEventDetails(this.eventId)
   }
 
   getEventDetails(eventId) {
