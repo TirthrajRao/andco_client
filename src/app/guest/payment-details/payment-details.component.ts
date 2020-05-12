@@ -66,6 +66,7 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   getItemDetails() {
+    this.isLoad = true
     let totalItem = JSON.parse(localStorage.getItem('allCartList'))
     let donation = JSON.parse(localStorage.getItem('donation'))
     this.guestDetails = JSON.parse(localStorage.getItem('addressDetails'))
@@ -86,8 +87,10 @@ export class PaymentDetailsComponent implements OnInit {
         this.grandTotal = this.grandTotal + this.subTotal
         this.finalGrandTotal = this.grandTotal
       });
+      this.isLoad = false
     }, error => {
       console.log("error while get cart list", error)
+      this.isLoad = false
     })
 
 

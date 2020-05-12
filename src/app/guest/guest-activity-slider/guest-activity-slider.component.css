@@ -76,9 +76,27 @@
 
 li.guest-item {
     width: 100%;
-    display: inline-block;
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid #CBCBCB;
     margin-bottom: 5px;
+}
+
+.guest-item-name p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.guest-add-items {
+    text-align: right;
+    min-width: 30%;
 }
 
 li.guest-item:last-child {
@@ -89,6 +107,7 @@ li.guest-item:last-child {
 li.guest-item input[type="number"] {
     border: none;
     width: 90px;
+    background-color: transparent;
     /* padding-right: 35px; */
     text-align: right;
 }
@@ -113,15 +132,8 @@ li.guest-item input[type="number"] {
     font-weight: bold;
 }
 
-.guest-add-items {
-    float: right;
-}
 .guest-add-items i {
     cursor: pointer;
-}
-
-.guest-item-name {
-    float: left;
 }
 
 .buttons-group {
@@ -237,7 +249,11 @@ img.down {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
-
+.cart-div {
+    position: absolute;
+    right: 30px;
+    top: -70px;
+}
 
 /* radio button css end here */
 
@@ -316,6 +332,25 @@ img.down {
 }
 
 @media(max-width:575px) {
+    .w-30 {
+        width: 100%;
+    }
+    li.guest-item {
+        display: table;
+    }
+    .guest-add-items h4,
+    .quantity-center h4,
+    .guest-item-name p {
+        margin-bottom: 5px;
+    }
+    .guest-add-items h4 {
+        display: flex;
+        justify-content: space-between;
+    }
+    .guest-add-items {
+        text-align: left;
+        min-width: unset;
+    }
     .guest-activity-slider h2 {
         font-size: 22px;
     }
@@ -331,21 +366,18 @@ img.down {
     li.guest-item input[type="number"] {
         font-size: 18px;
     }
-    .guest-add-items,
-    .guest-item-name {
-        float: none;
-    }
-    .guest-add-items h4 {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0;
-    }
     .tab-content ul {
         max-height: 160px;
     }
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         font-size: 18px;
+    }
+    .cart-div img {
+        height: 40px;
+    }
+    .cart-div {
+        top: -50px;
     }
 }
 

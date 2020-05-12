@@ -56,16 +56,19 @@ export class GuestItemTotalComponent implements OnInit {
   }
 
   getCartItems() {
+    this.isLoad = true
     let total = JSON.parse(localStorage.getItem('allCartList'))
     let eventId = localStorage.getItem('eventId')
-      console.log("total items in main list", this.totlaItem);
-      this.eventService.getItems(total, eventId).subscribe((response) => {
-        console.log("response of that evene", response);
-        this.totlaItem = response
-        this.displayList()
-      }, error => {
-        console.log("error while get cart list", error)
-      })
+    console.log("total items in main list", this.totlaItem);
+    this.eventService.getItems(total, eventId).subscribe((response) => {
+      console.log("response of that evene", response);
+      this.totlaItem = response
+      this.displayList()
+      this.isLoad = false
+    }, error => {
+      console.log("error while get cart list", error)
+      this.isLoad = false
+    })
     console.log("remove item array", this.removeArray);
 
 
@@ -78,7 +81,7 @@ export class GuestItemTotalComponent implements OnInit {
     //   console.log("error while get cart details", error)
     // })
   }
-x
+  x
 
 
   displayList() {

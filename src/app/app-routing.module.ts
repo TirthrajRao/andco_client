@@ -55,6 +55,10 @@ const routes: Routes = [
     path: '',
     component: WelcomeGuestComponent
   },
+  // {
+  //   path: '#:hashTag',
+  //   component: WelcomeGuestComponent
+  // },
   {
     path: 'guest-join/:hashTag',
     component: GuestJoinComponent

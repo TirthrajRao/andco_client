@@ -8,15 +8,10 @@ li.guest-item {
     width: 100%;
     display: inline-block;
     color: #fff;
-    border-bottom: 1px solid #b8e6f2;
     font-size: 20px;
     font-weight: bold;
     padding: 5px;
     margin-bottom: 5px;
-}
-
-li.guest-item:last-child {
-    border: none;
 }
 
 .guest-item-name {

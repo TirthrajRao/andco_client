@@ -42,7 +42,7 @@ export class MyEventLinkComponent implements OnInit {
   reminderDetails
   welcomeMessage
   payMessage
-  eventLinkMenu = ["invitation", "Welcome", "Pay", "Remainder", "After Event"]
+  eventLinkMenu = ["invitation", "Welcome", "Pay", "Reminder", "After Event"]
   isAll
   isOnly
   afterAll
@@ -93,29 +93,18 @@ export class MyEventLinkComponent implements OnInit {
 
       this.$slideContainter = $('.my-event-tab-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
-        infinite: false,
-        slidesToShow: 3.5,
+        infinite: true,
+        slidesToShow: 3,
         slidesToScroll: 1,
         adaptiveHeight: true,
         arrows: false,
         focusOnSelect: true,
+        centerMode: true,
         responsive: [
           {
-            breakpoint: 991,
+            breakpoint: 768,
             settings: {
-              slidesToShow: 2.5,
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-            }
-          },
-          {
-            breakpoint: 481,
-            settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
             }
           },
         ],
@@ -128,10 +117,12 @@ export class MyEventLinkComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
 
     console.log("display link of event", changes.eventLink);
-    this.displayEventLink = changes.eventLink.currentValue.eventLink
+    if (changes.eventLink && changes.eventLink.currentValue) {
+      this.displayEventLink = changes.eventLink.currentValue.eventLink
+      this.eventId = changes.eventLink.currentValue.eventId
+      this.getEventDetails(this.eventId)
+    }
 
-    this.eventId = changes.eventLink.currentValue.eventId
-    this.getEventDetails(this.eventId)
   }
 
   getEventDetails(eventId) {
@@ -291,6 +282,21 @@ export class MyEventLinkComponent implements OnInit {
     }, error => {
       console.log("error while set message", error);
 
+    })
+  }
+
+
+  addWelcomeMessage() {
+    let welcome = this.welcomeMessage
+    console.log("changes in welcome message", welcome)
+    let data = {
+      welcomeMessage: this.welcomeMessage,
+      eventId: this.eventId
+    }
+    this.eventService.addWelcomeMessage(data).subscribe((response) => {
+      console.log("respinse of welcome message added", response)
+    }, error => {
+      console.log("errror while add welcome", error)
     })
   }
 

@@ -35,7 +35,7 @@ export class MyEventActivityComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("changes of event", changes.activityList);
-    if (changes.activityList.currentValue) {
+    if (changes.activityList && changes.activityList.currentValue) {
       this.listOfActivity = changes.activityList.currentValue
       this.displayItem = this.activityList.value
     }

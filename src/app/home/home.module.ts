@@ -64,6 +64,8 @@ import { DescriptionComponent } from '../guest/description/description.component
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 import { AuthGuard } from '../auth.guard';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -160,7 +162,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'guest/:hashTag',
+    path: ':hashTag',
     component: GuestMainComponent
   },
 ]
@@ -224,7 +226,9 @@ const routes: Routes = [
     ClipboardModule,
     MatTabsModule,
     NgbModule,
-    ImageCropperModule
+    ImageCropperModule,
+    ToastrModule.forRoot() // ToastrModule added
+
     // MatSelectModule
   ],
   entryComponents: [

@@ -6,6 +6,8 @@ import * as _ from 'lodash';
 import { DescriptionComponent } from './../description/description.component';
 import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
 declare var $;
 
 @Component({
@@ -45,7 +47,8 @@ export class GuestActivitySliderComponent implements OnInit {
     public eventService: EventService,
     public router: Router,
     public activated: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -290,9 +293,15 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   maleTotal(event, item, index) {
-    console.log("kaik thay che ama bs", this.displayGroup);
+    console.log("kaik thay che ama bs", item);
     if (event.target.value != 0) {
 
+      // let itemN = item.itemName+ ' ' + 'Added into cart'
+
+      this.toastr.success('added', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
       this.itemList[index]['quantity'] = event.target.value
       // this.displayActivity[this.activityIndex].activityName = []
 
@@ -316,6 +325,11 @@ export class GuestActivitySliderComponent implements OnInit {
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
+
+      this.toastr.error('removed', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
     }
     console.log("final list of cart", this.allCartList);
 
