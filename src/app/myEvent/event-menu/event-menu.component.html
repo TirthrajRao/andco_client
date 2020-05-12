@@ -1,6 +1,6 @@
 <div class="event-menu-slider">
-    <div class="single-slide" *ngFor="let item of menuArray; let i =index">
-        <div class="single-inner-slide">
+    <div class="single-slide" *ngFor="let item of menuArray; let i =index" id="vivek-{{i}}">
+        <div class="single-inner-slide" [class.active]="selectedIndex == i">
             <p>{{item}}</p>
         </div>
     </div>

@@ -100,12 +100,12 @@ export class GuestMainComponent implements OnInit {
 
 
 
-  getBackGround() {
-    // if (this.eventDetails.eventTheme) {
-    return `url(` + this.eventTheme + `)`;
-    // }
+    getBackGround() {
+      // if (this.eventDetails.eventTheme) {
+      return `url(` + this.eventTheme + `)`;
+      // }
 
-  }
+    }
 
   guestEventWithOutLogin(eventhashTag) {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {

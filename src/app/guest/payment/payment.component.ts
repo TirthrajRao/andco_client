@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
 
 
   getTotalOfItems() {
-
+    this.isLoad = true
     let totalItem = JSON.parse(localStorage.getItem('allCartList'))
     let donation = JSON.parse(localStorage.getItem('donation'))
     let eventId = localStorage.getItem('eventId')
@@ -60,8 +60,12 @@ export class PaymentComponent implements OnInit {
       } else {
         this.finalTotalDisplay = donation.donation
       }
+
+      this.isLoad = false
     }, error => {
       console.log("error while get cart list", error)
+
+      this.isLoad = false
     })
 
 

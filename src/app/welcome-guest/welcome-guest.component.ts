@@ -31,7 +31,7 @@ export class WelcomeGuestComponent implements OnInit {
       } else {
         sessionStorage.setItem('guestHashTag', JSON.stringify(vive))
         sessionStorage.setItem('platForm', JSON.stringify('GN'))
-        this.route.navigate(['/guest/', vive])
+        this.route.navigate(['/guest-join/', vive])
       }
     } else {
       this.route.navigate(['/display-page'])
