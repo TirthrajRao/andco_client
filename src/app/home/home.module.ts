@@ -61,6 +61,7 @@ import { MainCollectionComponent } from '../menu-collection/main-collection/main
 import { MainGuestCollectionComponent } from '../menu-collection/main-guest-collection/main-guest-collection.component';
 import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component';
 import { DescriptionComponent } from '../guest/description/description.component';
+import { CartComponent } from '../guest/cart/cart.component';
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 import { AuthGuard } from '../auth.guard';
@@ -206,7 +207,8 @@ const routes: Routes = [
     MainCollectionComponent,
     MainTotalCollectionComponent,
     MainGuestCollectionComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    CartComponent
 
     // SearchListPipe
   ],

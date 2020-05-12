@@ -22,6 +22,7 @@ import { GuestJoinComponent } from './guest-join/guest-join.component';
 import { SearchListPipe } from './search-list.pipe';
 import { AddBankModalComponent } from './add-bank-modal/add-bank-modal.component';
 import { AddCardmodalComponent } from './add-cardmodal/add-cardmodal.component';
+
 // import { DescriptionComponent } from './guest/description/description.component';
 // import { MainCollectionComponent } from './menu-collection/main-collection/main-collection.component';
 // import { MainTotalCollectionComponent } from './menu-collection/main-total-collection/main-total-collection.component';
