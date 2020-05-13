@@ -144,6 +144,15 @@ export class EventService {
     return this.http.post(config.baseApiUrl + '/event/changeProfile', formdata)
   }
 
+
+  afterEventAttachment(files: any, eventId) {
+
+    let formdata = new FormData
+    formdata.append("eventId", eventId)
+    formdata.append("profile", files);
+    return this.http.post(config.baseApiUrl + '/event/afterMessageAttachment', formdata)
+  }
+
   getGuestEventDetails(hashTag) {
     console.log('hashTag in service', hashTag)
     return this.http.get(config.baseApiUrl + "/event/guestEvent/" + hashTag)

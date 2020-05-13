@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 import * as _ from 'lodash';
 declare var $: any
 
+
 @Component({
   selector: 'app-my-event-activity',
   templateUrl: './my-event-activity.component.html',
@@ -19,6 +20,7 @@ export class MyEventActivityComponent implements OnInit {
   groupIndex
   discriptionName
   discriptionItem
+
   constructor() { }
 
   ngOnInit() {
@@ -87,4 +89,7 @@ export class MyEventActivityComponent implements OnInit {
     $('#infoItemModal').modal("show")
 
   }
+
+
+
 }
