@@ -16,7 +16,7 @@ declare var $;
 @Component({
   selector: 'app-my-event-link',
   templateUrl: './my-event-link.component.html',
-  styleUrls: ['./my-event-link.component.css', './../my-event-activity/my-event-activity.component.css','./../event-profile-pic/event-profile-pic.component.css']
+  styleUrls: ['./my-event-link.component.css', './../my-event-activity/my-event-activity.component.css', './../event-profile-pic/event-profile-pic.component.css']
 })
 export class MyEventLinkComponent implements OnInit {
 
@@ -60,6 +60,8 @@ export class MyEventLinkComponent implements OnInit {
   imgURL: any;
   public imagePath;
   path = config.baseMediaUrl;
+  currentIndex
+  previousIndex
 
   constructor(
     public eventService: EventService,
@@ -236,8 +238,18 @@ export class MyEventLinkComponent implements OnInit {
 
 
   selectedMenu(i) {
-    console.log("index of menu", i);
+    // this.currentIndex = i
+    // console.log("index of menu", this.currentIndex, this.previousIndex);
     this.selectedIndex = i
+    // if (this.currentIndex) {
+    //   console.log("call or not");
+
+    //   $('#vivek' + this.currentIndex).addClass('active')
+    // }
+    // if (this.previousIndex) {
+    //   $('#vivek' + i).removeClass('active')
+    // }
+
     if (i == 3) {
       this.index = 2
       this.getEventDetails(this.eventId)
