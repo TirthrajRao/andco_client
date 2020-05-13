@@ -16,7 +16,6 @@ body {
     overflow: hidden !important;
 }
 
-
 h1,
 h2,
 h3,
@@ -728,8 +727,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 
 .mat-dialog-container {
     padding: 0 !important;
-    border-radius: 20px !important;
+    /* border-radius: 20px !important; */
 }
+
 .add-bank-modal {
     width: 450px !important;
     max-width: 90vw !important;
