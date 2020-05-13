@@ -9,7 +9,11 @@ declare var $: any
 })
 export class MyEventActivityComponent implements OnInit {
   @Input('activityList') activityList;
-  @Input('displayItem') displayItem
+  @Input('displayItem') displayItem;
+  @Input('selectedActivityIndex') selectedActivityIndex;
+  @Input('selectedGroupIndex') selectedGroupIndex;
+  @Output() selectedActivity: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectedGroup: EventEmitter<any> = new EventEmitter<any>();
   groupOfActivity
   listOfActivity = []
   totalItem = []
@@ -34,10 +38,30 @@ export class MyEventActivityComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // this.selectedActivityIndex = -1
+    // this.selectedGroupIndex = -1
     console.log("changes of event", changes.activityList);
     if (changes.activityList && changes.activityList.currentValue) {
       this.listOfActivity = changes.activityList.currentValue
       this.displayItem = this.activityList.value
+    }
+    if (changes.selectedActivityIndex && changes.selectedActivityIndex.currentValue){
+      this.selectedActivityIndex = changes.selectedActivityIndex.currentValue
+      this.groupOfActivity = this.listOfActivity[this.selectedActivityIndex]
+      console.log("this.selectedActivityIndex", this.selectedActivityIndex)
+      console.log("this.groupOfActivity", this.groupOfActivity)
+    }
+    if (changes.selectedGroupIndex && changes.selectedGroupIndex.currentValue){
+      this.selectedGroupIndex = changes.selectedGroupIndex.currentValue
+      console.log("changes.selectedGroupIndex ====>>>>", changes.selectedGroupIndex.currentValue)
+      let temp = this.groupOfActivity.group[this.selectedGroupIndex].item
+      console.log("temp!!!!!", temp)
+      this.selectedGender = 'male'
+      this.displayItem = 'true'
+      this.itemNamePrint = _.filter(temp, { 'itemGender': this.selectedGender });
+      console.log("this.itemNamePrint!!!!!!!!!!", this.itemNamePrint)
+      
+      console.log("this.groupOfActivity", this.groupOfActivity)
     }
     console.log("data changes of page", this.listOfActivity);
 
@@ -46,6 +70,8 @@ export class MyEventActivityComponent implements OnInit {
   getActivityGroup(event) {
     console.log("total group of single activity with index", event);
     // console.log("group index if selected", this.groupIndex);
+    this.selectedGroupIndex = -1
+    this.selectedActivityIndex = event.index 
     this.selectedActivityId = event.activityId
     this.groupIndex = null
     let data = []
@@ -53,6 +79,7 @@ export class MyEventActivityComponent implements OnInit {
     data['selectedActivity'] = event.index
     this.groupOfActivity = data
     this.displayItem = event.value
+    this.selectedActivity.emit({ activityId: event.activityId, index: event.index})
   }
 
   getSingleGroupItem(event) {
@@ -68,6 +95,7 @@ export class MyEventActivityComponent implements OnInit {
     this.itemNamePrint = _.filter(event.item, { 'itemGender': this.selectedGender });
     console.log("name of item", this.itemNamePrint);
     this.totalItem = event.item
+    this.selectedGroup.emit({ activityId: event.activityId, index: event.index })
   }
 
 
