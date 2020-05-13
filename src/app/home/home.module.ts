@@ -62,6 +62,7 @@ import { MainGuestCollectionComponent } from '../menu-collection/main-guest-coll
 import { MainTotalCollectionComponent } from '../menu-collection/main-total-collection/main-total-collection.component';
 import { DescriptionComponent } from '../guest/description/description.component';
 import { AttachMentComponent } from '../myEvent/attach-ment/attach-ment.component';
+import { CartComponent } from '../guest/cart/cart.component';
 // import { SearchListPipe } from '../services/search-list.pipe';
 import { from } from 'rxjs';
 import { AuthGuard } from '../auth.guard';
@@ -209,6 +210,7 @@ const routes: Routes = [
     MainGuestCollectionComponent,
     DescriptionComponent,
     AttachMentComponent
+    CartComponent
 
     // SearchListPipe
   ],

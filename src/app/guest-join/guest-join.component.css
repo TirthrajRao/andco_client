@@ -12,6 +12,22 @@
     background-color: #000000;
 }
 
+.thank-you:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--guest-main-overlay);
+}
+
+.guest-header,
+.button-div {
+    position: relative;
+    z-index: 1;
+}
+
 .guest-profile {
     width: 200px;
     height: 200px;

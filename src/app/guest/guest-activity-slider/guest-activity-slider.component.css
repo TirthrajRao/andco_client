@@ -249,11 +249,14 @@ img.down {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
 .cart-div {
     position: absolute;
     right: 30px;
     top: -70px;
+    cursor: pointer;
 }
+
 
 /* radio button css end here */
 
