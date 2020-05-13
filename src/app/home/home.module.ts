@@ -209,7 +209,7 @@ const routes: Routes = [
     MainTotalCollectionComponent,
     MainGuestCollectionComponent,
     DescriptionComponent,
-    AttachMentComponent
+    AttachMentComponent,
     CartComponent
 
     // SearchListPipe
