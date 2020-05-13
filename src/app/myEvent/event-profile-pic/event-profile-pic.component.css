@@ -83,6 +83,9 @@
 .save button {
     background-color: #C4752D;
     color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
 }
 
 h5.modal-title {

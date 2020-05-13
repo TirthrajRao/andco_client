@@ -9,6 +9,7 @@
     font-family: 'Manjari', sans-serif !important;
     padding: 20px 0 0;
     overflow: hidden;
+    background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color));
 }
 
 .guest-main-background:after {
