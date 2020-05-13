@@ -93,6 +93,35 @@ h5.modal-title {
     color: #C4752D;
 }
 
+.image-cropper-box {
+    height: 300px;
+    width: 300px;
+    border: 1px solid lightgray;
+    margin-bottom: 5px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+image-cropper.custom-class {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    padding: 0;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media(max-width: 1600px) {
     .profile-photo {
         height: 240px;
