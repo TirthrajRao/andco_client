@@ -57,7 +57,7 @@ export class GiftDonationComponent implements OnInit {
       donation: this.donation,
     }
     localStorage.setItem('donation', JSON.stringify(addDonation))
-    this.address.emit(3)
+    this.address.emit(7)
     // this.eventId
     // this.eventService.addDonation(addDonation).subscribe((response) => {
     //   console.log("final cart with total", response);
