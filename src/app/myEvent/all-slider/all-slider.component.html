@@ -18,7 +18,7 @@
         <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
             <div class="myEvent-name activity" id={{i}} *ngIf="name.activityName" [class.active]="selectedActivityIndexFromUrl == i"
                 (click)="getSingleActivity(name.group , i , name._id)">
-                heer{{selectedActivityIndexFromUrl}}
+                <!-- heer{{selectedActivityIndexFromUrl}} -->
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName|titlecase}}">
                     {{name.activityName |titlecase}}</p>
             </div>

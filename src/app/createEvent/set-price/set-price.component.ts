@@ -783,6 +783,7 @@ export class SetPriceComponent implements OnInit {
       this.setPriceForm.patchValue({
         hearAbout: updateHear
       })
+      this.isDisable = false
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
       console.log("value of set price of hear about after update", this.setPriceForm.value);
       if (this.aboutTypeOf) {
