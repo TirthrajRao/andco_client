@@ -223,6 +223,9 @@ export class MyEventComponent implements OnInit {
       this.isCelebrant = response.data.isCelebrant
       this.eventHashTag = response.data.hashTag
       this.selectedEventId = response.data._id
+      var index = _.findIndex(this.listOfEvent, function (o) { return o._id == response.data._id })
+      console.log("------index of selected event on refresh is------", index)
+      this.refreshEventId = index
       if (this.isCelebrant == true) {
         this.eventDetails = response.data
         // console.log("event details", this.eventDetails);
@@ -243,6 +246,7 @@ export class MyEventComponent implements OnInit {
         if (output == true) {
           this.route.navigate(['/guest/', this.eventHashTag])
         }
+       
       }
       // if (this.currenMenuIndex == 2) {
       //   this.getCollecctionOfEvent()
@@ -250,8 +254,8 @@ export class MyEventComponent implements OnInit {
       // console.log("details of event with hastag", this.eventDetails);
     }, error => {
       console.log("error while get single event details", error);
-
     })
+
   }
 
   selectedActivity(event){
