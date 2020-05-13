@@ -9,6 +9,7 @@ declare var $;
 })
 export class GuestAddressComponent implements OnInit {
   @Output() displayAccount: EventEmitter<any> = new EventEmitter<any>()
+  @Output() backToCart: EventEmitter<any> = new EventEmitter<any>()
   addressForm: FormGroup;
   addressDetails
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
@@ -86,6 +87,7 @@ export class GuestAddressComponent implements OnInit {
 
   backToDonation() {
     console.log("call this or not")
-    this.displayAccount.emit(2)
+    // this.displayAccount.emit(2)
+    this.backToCart.emit(7)
   }
 }

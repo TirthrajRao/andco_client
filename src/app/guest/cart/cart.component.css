@@ -39,19 +39,22 @@
 }
 
 .cart-total,
-.gift-donation,
-.final-payment-price {
-    color: var(--total-title-font-color);
-    background-color: var(--total-title-background-color);
+.gift-donation {
+    color: var(--total-title-background-color);
+    font-weight: bold;
     width: 100%;
     display: inline-block;
     padding: 10px 5px 6px;
 }
 
+.border-bottom-custom{
+    border-bottom: 1px solid var(--total-title-background-color);
+}
 .final-payment-price {
-    color: var(--guest-total-add-more);
-    background-color: white;
-    margin-top: 20px;
+    color: white;
+    background-color: var(--total-title-background-color);
+    margin-top: 15px;
+    padding: 10px 5px 6px;
 }
 
 .final-payment-price span {
