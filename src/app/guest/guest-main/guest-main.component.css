@@ -1,5 +1,5 @@
 .guest-main-background {
-    background-image: url('../../../assets/images/guest.png');
+    background-image: url('../../../assets/images/guest.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -94,7 +94,7 @@
     margin: 20px 0;
 }
 
-span.eventClose{
+span.eventClose {
     color: white;
     font-size: 30px;
 }
@@ -122,10 +122,9 @@ span.eventClose{
         width: 100px;
         height: 100px;
     }
-
-span.eventClose{
-    font-size: 22px;
-}
+    span.eventClose {
+        font-size: 22px;
+    }
 }
 
 @media(max-width:1199px) {
@@ -159,10 +158,9 @@ span.eventClose{
     .guest-inner-box {
         margin-bottom: 100px;
     }
-
-span.eventClose{
-    font-size: 16px;
-}
+    span.eventClose {
+        font-size: 16px;
+    }
 }
 
 @media(max-width: 480px) {

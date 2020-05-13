@@ -1,0 +1,133 @@
+.cart-main-box {
+    max-height: 350px;
+    overflow: auto;
+    padding-right: 5px;
+}
+
+.cart-main-box::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cart-main-box::-webkit-scrollbar {
+    width: 3px;
+    padding-right: 3px;
+    background-color: transparent;
+}
+
+.cart-main-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px transparent;
+    background-color: #ffffff;
+}
+
+.item-name,
+.quantity,
+.item-price {
+    width: 33.33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quantity {
+    text-align: center;
+}
+
+.item-price {
+    text-align: right;
+}
+
+.cart-total,
+.gift-donation,
+.final-payment-price {
+    color: var(--total-title-font-color);
+    background-color: var(--total-title-background-color);
+    width: 100%;
+    display: inline-block;
+    padding: 10px 5px 6px;
+}
+
+.final-payment-price {
+    color: var(--guest-total-add-more);
+    background-color: white;
+    margin-top: 20px;
+}
+
+.final-payment-price span {
+    font-weight: bold;
+}
+
+.cart-total,
+.gift-donation,
+.final-payment-price,
+.cart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-total span,
+.gift-donation span {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.cart {
+    padding: 5px;
+}
+
+.cart p {
+    font-size: 18px;
+    color: var(--group-box-h4-group);
+}
+
+@media(max-width:1600px) {
+    .cart-main-box {
+        max-height: 240px;
+    }
+    .cart-total span,
+    .gift-donation span {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:1366px) {
+    .cart-main-box {
+        max-height: 180px
+    }
+    .cart-total span,
+    .gift-donation span {
+        font-size: 18px;
+    }
+}
+
+@media(max-width:1199px) {
+    .cart-main-box {
+        max-height: 100%;
+    }
+    .cart-total span,
+    .gift-donation span {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:575px) {
+    .item-name,
+    .quantity,
+    .item-price {
+        width: 100%;
+        text-align: left;
+    }
+    .cart {
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px solid #ffffff8c;
+    }
+    .final-payment-price {
+        margin-top: 10px;
+    }
+    .cart-total span,
+    .gift-donation span {
+        font-size: 14px;
+    }
+}
