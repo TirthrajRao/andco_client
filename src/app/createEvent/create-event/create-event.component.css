@@ -6,7 +6,7 @@
 /* your event type css start */
 
 .create-event-main {
-    background-image: url('/assets/images/event_create.png');
+    background-image: url('/assets/images/event_create.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -16,7 +16,6 @@
     padding: 20px;
     background-color: #58727f;
 }
-
 
 .create-event-main:before {
     content: "";
@@ -195,6 +194,8 @@ button.slick-arrow {
 .font-h4 h4 {
     font-size: 20px;
 }
+
+
 /* .vivekBharda > div{
     position: relative;
     padding-top: 100%;
@@ -208,6 +209,7 @@ button.slick-arrow {
     max-height: 100%;
     object-fit: cover;
 } */
+
 .image-cropper-box {
     height: 300px;
     width: 300px;
@@ -218,6 +220,7 @@ button.slick-arrow {
     overflow: hidden;
     position: relative;
 }
+
 image-cropper.vivekBharda {
     position: absolute;
     top: 0;
@@ -235,6 +238,7 @@ image-cropper.vivekBharda {
     justify-content: center;
     align-items: center;
 }
+
 .choose_image {
     text-align: center;
 }

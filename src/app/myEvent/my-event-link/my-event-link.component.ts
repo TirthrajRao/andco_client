@@ -2,15 +2,21 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, FormControlName } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
 import { EventService } from '../../services/event.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { LoginComponent } from 'src/app/login/login.component';
+import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+import { AttachMentComponent } from '../attach-ment/attach-ment.component';
+import { config } from '../../config';
+import Swal from 'sweetalert2';
+
+
 // import { LOADIPHLPAPI } from 'dns';
 declare var $;
 @Component({
   selector: 'app-my-event-link',
   templateUrl: './my-event-link.component.html',
-  styleUrls: ['./my-event-link.component.css', './../my-event-activity/my-event-activity.component.css']
+  styleUrls: ['./my-event-link.component.css', './../my-event-activity/my-event-activity.component.css', './../event-profile-pic/event-profile-pic.component.css']
 })
 export class MyEventLinkComponent implements OnInit {
 
@@ -28,7 +34,7 @@ export class MyEventLinkComponent implements OnInit {
   displayDate: Date;
   displayTime
   index = 0
-  selectedIndex
+  selectedIndex = 0
   eventId
   afterEventMessage
   hours: any;
@@ -50,9 +56,18 @@ export class MyEventLinkComponent implements OnInit {
   flag: any
   eventDetails
   time = this.currentDay.getHours() + ":" + this.currentDay.getMinutes();
+  files: Array<File> = [];
+  imgURL: any;
+  public imagePath;
+  path = config.baseMediaUrl;
+  currentIndex
+  previousIndex
+
   constructor(
     public eventService: EventService,
-    public activated: ActivatedRoute
+    public activated: ActivatedRoute,
+    public dialog: MatDialog,
+
   ) { }
 
   ngOnInit() {
@@ -146,7 +161,11 @@ export class MyEventLinkComponent implements OnInit {
             this.afterBuy = valueOfGuest
           }
         }
+        if (this.afterEventMessage && this.afterEventMessage.attachment) {
+          this.imgURL = this.path + this.afterEventMessage.attachment
+        }
       }
+      console.log("what is in after event mesaage details", this.afterEventMessage)
       this.invitatationMessage = response.data.invitationMessage
       this.payMessage = response.data.payMessage
       this.welcomeMessage = response.data.welcomeMessage
@@ -219,8 +238,18 @@ export class MyEventLinkComponent implements OnInit {
 
 
   selectedMenu(i) {
-    console.log("index of menu", i);
+    // this.currentIndex = i
+    // console.log("index of menu", this.currentIndex, this.previousIndex);
     this.selectedIndex = i
+    // if (this.currentIndex) {
+    //   console.log("call or not");
+
+    //   $('#vivek' + this.currentIndex).addClass('active')
+    // }
+    // if (this.previousIndex) {
+    //   $('#vivek' + i).removeClass('active')
+    // }
+
     if (i == 3) {
       this.index = 2
       this.getEventDetails(this.eventId)
@@ -437,4 +466,64 @@ export class MyEventLinkComponent implements OnInit {
     })
   }
 
+
+
+  openModel() {
+
+    $('#infoItemModal').modal("show")
+
+
+    // console.log("call this", item)
+    // let data = {
+    //   evenntId: this.eventId,
+    //   // description: item.description
+    // }
+    // var addBank = this.openDialog(AttachMentComponent, data).subscribe((response) => {
+    //   console.log("what is in response", response);
+    // })
+  }
+
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data });
+    return dialogRef.afterClosed();
+  }
+
+  addFile(event) {
+    console.log("profile photo path", event, this.imgURL);
+    if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+      this.files = event;
+      var reader = new FileReader();
+      this.imagePath = this.files;
+      reader.readAsDataURL(this.files[0]);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+        // this.displayImage = false
+        // console.log("image url", this.imgURL);
+        // this.eventForm.controls.profile.setValue(this.files)
+      }
+    }
+
+    else {
+      Swal.fire({
+        title: 'Error',
+        text: "You can upload only image",
+        // type: 'warning',
+      })
+
+    }
+  }
+  AddAttchment() {
+    console.log("call this");
+    this.eventService.afterEventAttachment(this.files[0], this.eventId).subscribe((response) => {
+      console.log("attachment added in after event", response)
+      $('#infoItemModal').modal("hide")
+    }, error => {
+      console.log("error while add attachment", error)
+    })
+
+
+
+
+  }
 }

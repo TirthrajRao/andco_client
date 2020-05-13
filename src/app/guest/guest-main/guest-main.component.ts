@@ -36,15 +36,15 @@ export class GuestMainComponent implements OnInit {
   cartLength
   closedEvent
   checkQuery = false
-  themeList = ['assets/images/guest.png',
-    'assets/images/floral.png',
-    'assets/images/wood.png',
+  themeList = ['assets/images/guest.jpg',
+    'assets/images/floral.jpg',
+    'assets/images/wood.jpg',
     'assets/images/marble.png',
-    'assets/images/origami.png',
-    'assets/images/classic.png',
-    'assets/images/lines.png',
-    'assets/images/luxury.png',
-    'assets/images/instrument.png']
+    'assets/images/origami.jpg',
+    'assets/images/classic.jpg',
+    'assets/images/lines.jpg',
+    'assets/images/luxury.jpg',
+    'assets/images/instrument.jpeg']
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
@@ -90,6 +90,12 @@ export class GuestMainComponent implements OnInit {
         this.index = 4
         this.isDisable = true
         this.route.navigate(['/', this.hashtag], { queryParams: { payment: 'payment' } });
+      } else if (params['cart']) {
+        this.checkQuery = true
+        this.index = 7
+        this.isDisable = true
+        this.route.navigate(['/', this.hashtag], { queryParams: { cart: 'cartItems' } });
+
       }
       //  else {
       //   this.guestEventWithOutLogin(this.hashtag)
@@ -100,12 +106,12 @@ export class GuestMainComponent implements OnInit {
 
 
 
-    getBackGround() {
-      // if (this.eventDetails.eventTheme) {
-      return `url(` + this.eventTheme + `)`;
-      // }
+  getBackGround() {
+    // if (this.eventDetails.eventTheme) {
+    return `url(` + this.eventTheme + `)`;
+    // }
 
-    }
+  }
 
   guestEventWithOutLogin(eventhashTag) {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
@@ -124,28 +130,28 @@ export class GuestMainComponent implements OnInit {
       }
 
       switch (this.eventTheme) {
-        case 'assets/images/floral.png':
+        case 'assets/images/floral.jpg':
           this.themeService.toggleFloral()
           break;
-        case 'assets/images/wood.png':
+        case 'assets/images/wood.jpg':
           this.themeService.toggleWood()
           break;
         case 'assets/images/marble.png':
           this.themeService.toggleMarble()
           break;
-        case 'assets/images/origami.png':
+        case 'assets/images/origami.jpg':
           this.themeService.toggleOrigami()
           break;
-        case 'assets/images/classic.png':
+        case 'assets/images/classic.jpg':
           this.themeService.toggleClassic()
           break;
-        case 'assets/images/lines.png':
+        case 'assets/images/lines.jpg':
           this.themeService.toggleLines()
           break;
-        case 'assets/images/luxury.png':
+        case 'assets/images/luxury.jpg':
           this.themeService.toggleLuxury()
           break;
-        case 'assets/images/instrument.png':
+        case 'assets/images/instrument.jpeg':
           this.themeService.toggleInstruments()
           break;
         default:
@@ -210,9 +216,10 @@ export class GuestMainComponent implements OnInit {
     this.index = event
     this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });
   }
-  displayAddress(event) {
+  displayCart(event) {
+    console.log("index of event", event)
     this.index = event
-    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { cart: 'cartItems' } });
   }
   selectPayment(event) {
     console.log("when click by address", event)
@@ -230,6 +237,18 @@ export class GuestMainComponent implements OnInit {
 
   displayAccount(event) {
     this.index = event
+  }
+
+  addMoreItems(event) {
+    this.index = event.index
+  }
+
+  displayDonation(event) {
+    this.index = event
+  }
+  addressDisplay(event) {
+    this.index = event
+    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
   }
 
 

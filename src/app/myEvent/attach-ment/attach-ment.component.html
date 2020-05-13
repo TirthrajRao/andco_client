@@ -1,0 +1,4 @@
+<img [src]="imgURL" height="200" class="float-right" id="imageFilter"
+    onerror="this.src='/assets/images/profile_img.png'">
+<input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg" id="upload_profile">
+<button (click)="AddAttchment()">AddAttchment</button>

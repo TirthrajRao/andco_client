@@ -67,11 +67,11 @@ export class CreateEventComponent implements OnInit {
   eventBackGround = [
     {
       themeName: 'balloons',
-      path: 'assets/images/guest.png'
+      path: 'assets/images/guest.jpg'
     },
     {
       themeName: 'floral',
-      path: 'assets/images/floral.png'
+      path: 'assets/images/floral.jpg'
     },
     {
       themeName: 'marble',
@@ -79,27 +79,27 @@ export class CreateEventComponent implements OnInit {
     },
     {
       themeName: 'wood',
-      path: 'assets/images/wood.png'
+      path: 'assets/images/wood.jpg'
     },
     {
       themeName: 'origami',
-      path: 'assets/images/origami.png'
+      path: 'assets/images/origami.jpg'
     },
     {
       themeName: 'classic',
-      path: 'assets/images/classic.png'
+      path: 'assets/images/classic.jpg'
     },
     {
       themeName: 'lines',
-      path: 'assets/images/lines.png'
+      path: 'assets/images/lines.jpg'
     },
     {
       themeName: 'luxury',
-      path: 'assets/images/luxury.png'
+      path: 'assets/images/luxury.jpg'
     },
     {
       themeName: 'instrument',
-      path: 'assets/images/instrument.png'
+      path: 'assets/images/instrument.jpeg'
     }
   ]
   cropPath: any;
@@ -522,7 +522,7 @@ export class CreateEventComponent implements OnInit {
       this.isLoad = true
       if (this.eventForm.controls.background.value == "") {
         console.log("when np bg selected");
-        let path = 'assets/images/guest.png'
+        let path = 'assets/images/guest.jpg'
         this.eventForm.controls.background.setValue(path)
       }
 

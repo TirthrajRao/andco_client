@@ -83,7 +83,7 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
-                            <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/guest.png'">
+                            <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/guest.jpg'">
                         </div>
                         <div class="background-photo-upload">
                             <div class="row m-0">
@@ -155,12 +155,8 @@
             </div>
             <div class="modal-body border-top">
                 <div class="image-cropper-box">
-                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                        [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
-                        [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
-                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
-                        format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl"
-                        (imageLoaded)="imageLoaded()" [hideResizeSquares]="true" (cropperReady)="cropperReady($event)"
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3" [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation" [transform]="transform"
+                        [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl" (imageLoaded)="imageLoaded()" [hideResizeSquares]="true" (cropperReady)="cropperReady($event)"
                         (loadImageFailed)="loadImageFailed()" class="vivekBharda">
                     </image-cropper>
                 </div>

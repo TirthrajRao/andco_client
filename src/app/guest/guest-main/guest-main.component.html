@@ -28,11 +28,21 @@
 
                 <!-- add Donation in final payment -->
                 <app-gift-donation *ngIf="index == 2" (displayItem)="displayItems($event)"
-                    (address)="displayAddress($event)" [cartLength]="cartLength"></app-gift-donation>
+                    (address)="displayCart($event)" [cartLength]="cartLength"></app-gift-donation>
                 <!-- end -->
 
+
+                <!-- Cart items in final payment -->
+                <app-cart *ngIf="index == 7" (addMore)="addMoreItems($event)" (backDonation)="displayDonation($event)"
+                    (address)="addressDisplay($event)">
+                </app-cart>
+                <!-- end -->
+
+
+
                 <!-- Adress of guest user -->
-                <app-guest-address *ngIf="index == 3" (displayAccount)="selectPayment($event)"></app-guest-address>
+                <app-guest-address *ngIf="index == 3" (displayAccount)="selectPayment($event)"
+                    (backToCart)="displayCart($event)"></app-guest-address>
                 <!-- end -->
 
                 <!-- finalPayMent of user -->

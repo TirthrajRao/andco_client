@@ -97,7 +97,7 @@ export class GuestActivitySliderComponent implements OnInit {
       this.isTotal = true
     }
     // this.getSelectedItems()
-    console.log("changes", this.removeItem);
+    console.log("changes", changes);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
       this.sub = this.activated.params.subscribe(params => {
         this.eventHashtag = params.hashTag
@@ -127,15 +127,16 @@ export class GuestActivitySliderComponent implements OnInit {
     if (getListFromLocal == null) {
       this.allCartList = []
       this.cartTotalItems = this.allCartList
+      this.displayAllData()
     } else {
       this.allCartList = getListFromLocal
       this.cartTotalItems = getListFromLocal
+      this.displayAllData()
     }
 
     // this.cartTotalItems = JSON.parse(localStorage.getItem('allCartList'))
     // this.allCartList = JSON.parse(localStorage.getItem('allCartList'))
 
-    this.displayAllData()
 
     // this.isLoad = true
     // this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
@@ -181,7 +182,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   displayAllData() {
-    console.log("what is in activity", this.displayActivity);
+    // console.log("what is in activity", this.displayActivity);
 
     this.displayGroup = this.displayActivity[this.activityIndex].group
     // console.log("when dispplay group", this.displayGroup);
@@ -298,10 +299,10 @@ export class GuestActivitySliderComponent implements OnInit {
 
       // let itemN = item.itemName+ ' ' + 'Added into cart'
 
-      // this.toastr.success('added', '', {
-      //   timeOut: 1000,
-      //   positionClass: 'toast-top-center'
-      // })
+      this.toastr.success('added', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
       this.itemList[index]['quantity'] = event.target.value
       // this.displayActivity[this.activityIndex].activityName = []
 
@@ -326,10 +327,10 @@ export class GuestActivitySliderComponent implements OnInit {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
 
-      // this.toastr.error('removed', '', {
-      //   timeOut: 1000,
-      //   positionClass: 'toast-top-center'
-      // })
+      this.toastr.error('removed', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
     }
     console.log("final list of cart", this.allCartList);
 
@@ -341,6 +342,11 @@ export class GuestActivitySliderComponent implements OnInit {
     // console.log("kaik thay che ama bs", event.target.value, item);
     if (event.target.value != 0) {
 
+
+      this.toastr.success('added', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
@@ -361,6 +367,11 @@ export class GuestActivitySliderComponent implements OnInit {
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
+
+      this.toastr.error('removed', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
     }
     console.log("final list of cart", this.allCartList);
 
@@ -411,6 +422,5 @@ export class GuestActivitySliderComponent implements OnInit {
 
   displayCart() {
     this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
-
   }
 }
