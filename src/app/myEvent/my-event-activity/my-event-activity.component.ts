@@ -44,6 +44,7 @@ export class MyEventActivityComponent implements OnInit {
     // this.selectedGroupIndex = -1
     console.log("changes of event", changes.activityList);
     if (changes.activityList && changes.activityList.currentValue) {
+      this.selectedActivityIndex = -1
       this.listOfActivity = changes.activityList.currentValue
       this.displayItem = this.activityList.value
     }
