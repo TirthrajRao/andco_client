@@ -207,7 +207,6 @@ export class HeaderComponent implements OnInit {
       this.imgUrl = '/assets/images/firework-white.png'
     }
     else {
-      console.log("in else this.currentUrl", this.currentUrl)
       this.imgUrl = '/assets/images/firework-white.png'
     }
   }

@@ -282,7 +282,10 @@ export class MyEventComponent implements OnInit {
       console.log("when profile change", profileArray)
       this.eventProfile = profileArray
     }
-    this.route.navigate(['/myevent'], { queryParams: { profile: this.selectedEventId } });
+    this.queryObj = {}
+    this.queryObj['profile'] = this.selectedEventId
+    this.changeQuery()
+    // this.route.navigate(['/myevent'], { queryParams: { profile: this.selectedEventId } });
   }
 
   getActivity() {
@@ -307,7 +310,10 @@ export class MyEventComponent implements OnInit {
     if (this.eventDetails) {
       this.eventLink = ({ eventLink: this.eventDetails.eventLink, eventId: this.selectedEventId })
     }
-    this.route.navigate(['/myevent'], { queryParams: { eventLink: this.selectedEventId } });
+    this.queryObj = {}
+    this.queryObj['eventLink'] = this.selectedEventId
+    this.changeQuery()
+    // this.route.navigate(['/myevent'], { queryParams: { eventLink: this.selectedEventId } });
   }
 
 
@@ -316,7 +322,10 @@ export class MyEventComponent implements OnInit {
     this.eventService.getGuestList(this.selectedEventId).subscribe((response: any) => {
       console.log("response of guest list", response);
       this.guestList = response.data[0]
-      this.route.navigate(['/myevent'], { queryParams: { guestList: this.selectedEventId } });
+      this.queryObj ={}
+      this.queryObj['guestList'] = this.selectedEventId
+      this.changeQuery()
+      // this.route.navigate(['/myevent'], { queryParams: { guestList: this.selectedEventId } });
       setTimeout(() => {
         this.isLoad = false
       })
@@ -335,7 +344,10 @@ export class MyEventComponent implements OnInit {
       // response.data['isClosed'] = this.eventDetails.isClosed
 
       this.totalCollections = response.data
-      this.route.navigate(['/myevent'], { queryParams: { collection: this.selectedEventId } });
+      this.queryObj = {}
+      this.queryObj['collection'] = this.selectedEventId
+      this.changeQuery()
+      // this.route.navigate(['/myevent'], { queryParams: { collection: this.selectedEventId } });
 
       // this.isClosed = this.eventDetails.isClosed
       this.isLoad = false
@@ -382,12 +394,14 @@ export class MyEventComponent implements OnInit {
     if (event == 'activity') {
       // 0
       this.currenMenuIndex = event
+      // this.queryObj['event'] = this.selectedEventId
       // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
       this.getActivity()
     }
     if (event == 'profile photo') {
       // 1
       this.currenMenuIndex = event
+      
       // this.route.navigate(['/myevent'], { queryParams: { profile: this.eventDetails.eventTitle } });
       this.getProfileOfEvent()
     }
@@ -414,6 +428,7 @@ export class MyEventComponent implements OnInit {
       let output = this.loginSerivce.returnLogin(data);
       if (output == true) {
         // this.router.navigate(['/myevent']);
+
         this.route.navigate(['/editEvent/', this.selectedEventId])
       }
 
