@@ -1,15 +1,15 @@
 .thank-you {
-    background-image: url('/assets/images/thank_you.png');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    background-position: bottom;
     height: auto;
     min-height: 100vh;
     font-family: 'Manjari', sans-serif !important;
     padding: 20px;
     text-align: center;
     color: #fff;
-    background-color: #000000;
+    /* background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color)); */
 }
 
 .thank-you:after {
@@ -50,7 +50,7 @@
 }
 
 .thank-you button {
-    background: linear-gradient(#72471D, #BA8A41);
+    background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color));
     border: none;
     font-size: 26px;
     font-weight: bold;

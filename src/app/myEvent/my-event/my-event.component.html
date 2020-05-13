@@ -17,7 +17,8 @@
                 <app-all-slider [eventList]="listOfEvent" (singleEvent)="getSingleEvent($event)"
                     [selectedEventId]="refreshEventId"></app-all-slider>
                 <div>
-                    <app-my-event-activity [activityList]="totalActivity" *ngIf="currenMenuIndex == 'activity'">
+                    <app-my-event-activity (selectedActivity)="selectedActivity($event)" (selectedGroup)="selectedGroup($event)" [selectedActivityIndex]="selectedActivityIndex"
+                     [selectedGroupIndex]="selectedGroupIndex" [activityList]="totalActivity" *ngIf="currenMenuIndex == 'activity'">
                     </app-my-event-activity>
                     <!-- <app-event-menu></app-event-menu> -->
                     <app-my-event-link *ngIf="currenMenuIndex == 'link'" [eventLink]="eventLink"></app-my-event-link>

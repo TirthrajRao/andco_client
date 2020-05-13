@@ -38,11 +38,16 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:popstate', ['$event'])
   onPopState(event) {
-    console.log('Back button pressed', event.target.location.hash);
-    let newRoute = event.target.location.hash.split("#")
+    console.log('Back button pressed', event.target.location.pathname);
+    let newRoute = event.target.location.pathname.split("/")
     console.log("what is in new route", newRoute)
     this.currentUrl = newRoute[1]
-    console.log("current url", this.router.url);
+    // 
+    if(!this.currentUrl){
+      this.currentUrl = this.router.url
+    }
+    // console.log()
+    console.log("this.router.url", this.router.url);
 
   }
 
@@ -198,6 +203,8 @@ export class HeaderComponent implements OnInit {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('set-message')) {
       this.imgUrl = '/assets/images/firework-green.png'
+    } else if (this.currentUrl.includes('editEvent')) {
+      this.imgUrl = '/assets/images/firework-white.png'
     }
     else {
       this.imgUrl = '/assets/images/firework-white.png'

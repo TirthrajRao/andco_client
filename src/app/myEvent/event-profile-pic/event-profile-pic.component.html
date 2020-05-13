@@ -17,11 +17,10 @@
 </div>
 
 <!-- image upload modal start -->
-<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header pb-0">
                 <h5 class="modal-title">Image Upload</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -29,21 +28,15 @@
             </div>
             <div class="modal-body border-top">
                 <div class="image-cropper-box">
-                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                        [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3"
-                        [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
-                        [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
-                        format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl"
-                        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
-                        (loadImageFailed)="loadImageFailed()">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="3 / 3" [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation" [transform]="transform"
+                        [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" [imageURL]="currentImgUrl" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="choose_image w-100 text-center">
                     <label for="upload_profile">Choose Image</label>
-                    <input type="file" (change)="fileChangeEvent($event)"
-                        accept="image/png, image/png, image/jpg , image/jpeg" id="upload_profile">
+                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg , image/jpeg" id="upload_profile">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="saveImage()">Save</button>
