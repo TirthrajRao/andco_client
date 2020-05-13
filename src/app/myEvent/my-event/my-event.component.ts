@@ -424,7 +424,7 @@ export class MyEventComponent implements OnInit {
   }
 
   changeQuery(){
-    this._location.go(
+    this._location.replaceState(
       this.route.createUrlTree(
         [this.locationStrategy.path().split('?')[0]], // Get uri
         { relativeTo: this.activated, queryParams: this.queryObj }).toString()

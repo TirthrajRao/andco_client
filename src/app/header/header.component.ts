@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:popstate', ['$event'])
   onPopState(event) {
     console.log('Back button pressed', event.target.location.pathname);
-    let newRoute = event.target.location.hash.split("/")
+    let newRoute = event.target.location.pathname.split("/")
     console.log("what is in new route", newRoute)
     this.currentUrl = newRoute[1]
     // 

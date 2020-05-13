@@ -26,10 +26,21 @@ export class WelcomeGuestComponent implements OnInit {
     }
     else{
       let hashTag = url.split('/')[1].split('#')[1]
+      let platform = url.split('/')[2]
       console.log("hashTag", hashTag)
+      console.log("platform", platform)
       
       sessionStorage.setItem('guestHashTag', hashTag)
+
+      if (platform){
+        sessionStorage.setItem('platForm', JSON.stringify(platform))
+      }
+      else{
+        sessionStorage.setItem('platForm', JSON.stringify('GN'))
+      }
+
       this.route.navigate(['/guest-join/', hashTag])
+      
       // this.route.navigate(['/', hashTag])
     }
     // let vive = this.activatedRoute.snapshot.queryParamMap.get('event')
