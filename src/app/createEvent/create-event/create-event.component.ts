@@ -95,7 +95,7 @@ export class CreateEventComponent implements OnInit {
     },
     {
       themeName: 'luxury',
-      path: 'assets/images/luxury.png'
+      path: 'assets/images/luxury.jpg'
     },
     {
       themeName: 'instrument',

@@ -43,7 +43,7 @@ export class GuestMainComponent implements OnInit {
     'assets/images/origami.jpg',
     'assets/images/classic.jpg',
     'assets/images/lines.jpg',
-    'assets/images/luxury.png',
+    'assets/images/luxury.jpg',
     'assets/images/instrument.jpeg']
   constructor(
     private route: Router,
@@ -148,7 +148,7 @@ export class GuestMainComponent implements OnInit {
         case 'assets/images/lines.jpg':
           this.themeService.toggleLines()
           break;
-        case 'assets/images/luxury.png':
+        case 'assets/images/luxury.jpg':
           this.themeService.toggleLuxury()
           break;
         case 'assets/images/instrument.jpeg':
