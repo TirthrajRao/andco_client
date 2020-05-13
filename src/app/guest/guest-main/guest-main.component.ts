@@ -90,6 +90,12 @@ export class GuestMainComponent implements OnInit {
         this.index = 4
         this.isDisable = true
         this.route.navigate(['/', this.hashtag], { queryParams: { payment: 'payment' } });
+      } else if (params['cart']) {
+        this.checkQuery = true
+        this.index = 7
+        this.isDisable = true
+        this.route.navigate(['/', this.hashtag], { queryParams: { cart: 'cartItems' } });
+
       }
       //  else {
       //   this.guestEventWithOutLogin(this.hashtag)
@@ -100,12 +106,12 @@ export class GuestMainComponent implements OnInit {
 
 
 
-    getBackGround() {
-      // if (this.eventDetails.eventTheme) {
-      return `url(` + this.eventTheme + `)`;
-      // }
+  getBackGround() {
+    // if (this.eventDetails.eventTheme) {
+    return `url(` + this.eventTheme + `)`;
+    // }
 
-    }
+  }
 
   guestEventWithOutLogin(eventhashTag) {
     this.eventService.getGuestEventDetails(eventhashTag).subscribe((response: any) => {
@@ -210,9 +216,10 @@ export class GuestMainComponent implements OnInit {
     this.index = event
     this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });
   }
-  displayAddress(event) {
+  displayCart(event) {
+    console.log("index of event", event)
     this.index = event
-    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
+    this.route.navigate(['/', this.hashtag], { queryParams: { cart: 'cartItems' } });
   }
   selectPayment(event) {
     console.log("when click by address", event)
@@ -230,6 +237,18 @@ export class GuestMainComponent implements OnInit {
 
   displayAccount(event) {
     this.index = event
+  }
+
+  addMoreItems(event) {
+    this.index = event.index
+  }
+
+  displayDonation(event) {
+    this.index = event
+  }
+  addressDisplay(event) {
+    this.index = event
+    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
   }
 
 

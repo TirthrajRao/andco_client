@@ -16,7 +16,7 @@ export class AllSliderComponent implements OnInit {
   @Input('groupOfActivity') groupOfActivity
   @Input('groupIndex') groupIndex
   @Input('selectedEventId') selectedEventId
-  @Input('selectedActivityIndex') selectedActivityIndexFromUrl = -1;
+  @Input('selectedActivityIndex') selectedActivityIndexFromUrl;
   @Input('selectedGroupIndex') selectedGroupIndexFromUrl;
   @Output() singleEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() activityGroup: EventEmitter<any> = new EventEmitter<any>();
@@ -56,6 +56,7 @@ export class AllSliderComponent implements OnInit {
     // this.selectedGroupIndexFromUrl = -1
     if (changes.selectedEventId){
       console.log("IN IF!!!!!")
+      
       this.selectedIndex = changes.selectedEventId.currentValue
     }
 
@@ -84,13 +85,14 @@ export class AllSliderComponent implements OnInit {
       console.log("call activty ot not", changes.groupOfActivity);
       console.log("this.selectedGroupIndexFromUrl ON ACTIVITY CHANGE", this.selectedGroupIndexFromUrl)
       // this.groupOfActivity = changes.groupOfActivity.currentValue
+      
       // console.log("group index right now", changes.groupOfActivity.currentValue.selectedActivity);
-      // if (changes.groupOfActivity.currentValue) {
-      //   $('#' + changes.groupOfActivity.currentValue.selectedActivity).addClass('active')
-      // }
-      // if (changes.groupOfActivity.previousValue) {
-      //   $('#' + changes.groupOfActivity.previousValue.selectedActivity).removeClass('active')
-      // }
+      if (changes.groupOfActivity.currentValue) {
+        $('#' + changes.groupOfActivity.currentValue.selectedActivity).addClass('active')
+      }
+      if (changes.groupOfActivity.previousValue) {
+        $('#' + changes.groupOfActivity.previousValue.selectedActivity).removeClass('active')
+      }
       this.displayGroup = changes.groupOfActivity.currentValue.group
       // this.displayGroup = changes.groupOfActivity.currentValue
       // this.groupItem.emit({ item: item, value: true, index: index, })

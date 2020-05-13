@@ -2,11 +2,8 @@
     <button class="btn add-more" (click)="addMoreItems()">add more</button>
 </div>
 <div class="cart-main-box">
-    <div class="cart-total">
-        <span>Total Items Price</span>
-        <span>N 2000</span>
-    </div>
-    <div class="cart">
+
+    <div class="cart border-bottom-custom">
         <div class="item-name">
             <p class="font-weight-bold">Item Name</p>
         </div>
@@ -17,89 +14,31 @@
             <p class="font-weight-bold">Item Price</p>
         </div>
     </div>
-    <div class="cart">
+    <div class="cart" *ngFor="let item of finalData">
         <div class="item-name">
-            <p>Item 1</p>
+            <p>{{item.itemName}}</p>
         </div>
         <div class="quantity">
-            <p>3</p>
+            <p>{{item.quantity}}</p>
         </div>
         <div class="item-price">
-            <p>N 900</p>
+            <p>{{(item.itemPrice * item.quantity )| currency:"&#x20A6;"}}</p>
         </div>
     </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
+    <div class="cart-total border-bottom-custom">
+        <span>Total Items Price</span>
+        <span>{{displayTotal | currency:"&#x20A6;"}}</span>
     </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
-    </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
-    </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
-    </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
-    </div>
-    <div class="cart">
-        <div class="item-name">
-            <p>Item 1</p>
-        </div>
-        <div class="quantity">
-            <p>3</p>
-        </div>
-        <div class="item-price">
-            <p>N 900</p>
-        </div>
-    </div>
-    <div class="gift-donation">
+    <div class="gift-donation" *ngIf="totalDonation">
         <span>Gift Donation</span>
-        <span>N 500</span>
+        <span>{{totalDonation | currency:"&#x20A6;"}}</span>
     </div>
 </div>
 <div class="final-payment-price">
     <span>Total Amount</span>
-    <span>N 2500</span>
+    <span>{{finalTotalDisplay | currency:"&#x20A6;"}}</span>
+</div>
+<div class="buttons-pay-back mt-3">
+    <button class="btn" (click)="backToDonation()">Back</button>
+    <button class="btn" (click)="addAddress()">Pay Now</button>
 </div>

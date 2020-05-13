@@ -97,7 +97,7 @@ export class GuestActivitySliderComponent implements OnInit {
       this.isTotal = true
     }
     // this.getSelectedItems()
-    console.log("changes", this.removeItem);
+    console.log("changes", changes);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
       this.sub = this.activated.params.subscribe(params => {
         this.eventHashtag = params.hashTag
@@ -127,15 +127,16 @@ export class GuestActivitySliderComponent implements OnInit {
     if (getListFromLocal == null) {
       this.allCartList = []
       this.cartTotalItems = this.allCartList
+      this.displayAllData()
     } else {
       this.allCartList = getListFromLocal
       this.cartTotalItems = getListFromLocal
+      this.displayAllData()
     }
 
     // this.cartTotalItems = JSON.parse(localStorage.getItem('allCartList'))
     // this.allCartList = JSON.parse(localStorage.getItem('allCartList'))
 
-    this.displayAllData()
 
     // this.isLoad = true
     // this.eventService.getCartItems(this.eventHashtag).subscribe((response: any) => {
@@ -181,7 +182,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   displayAllData() {
-    console.log("what is in activity", this.displayActivity);
+    // console.log("what is in activity", this.displayActivity);
 
     this.displayGroup = this.displayActivity[this.activityIndex].group
     // console.log("when dispplay group", this.displayGroup);
