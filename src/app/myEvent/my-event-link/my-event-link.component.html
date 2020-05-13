@@ -10,7 +10,7 @@
 
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
-        <div class="tab-name" [class.active]="selectedIndex === i">
+        <div class="tab-name" [class.active]="selectedIndex == i">
             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
     </div>
@@ -167,7 +167,8 @@
     presents and prayers." formControlName="afterEventMessage"
                 ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}"
                 (blur)="checkAfterMessage()"></textarea>
-            <a href=""><img class="attach-img" src="../../../assets/images/attach-img.png" alt="attachment icon"></a>
+            <a (click)="openModel()"><img class="attach-img" src="../../../assets/images/attach-img.png"
+                    alt="attachment icon"></a>
         </div>
         <div class="to">
             <h3>to :</h3>
@@ -198,3 +199,23 @@
     </div>
 </div>
 <!-- step 6 end -->
+
+
+
+
+
+
+<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- <img *ngIf="afterEventMessage && afterEventMessage.attachment"
+                src="{{path}}{{afterEventMessage.attachment}}" id="imageFilter" height="200"> -->
+            <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
+                onerror="this.src='/assets/images/profile_img.png'">
+            <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg"
+                id="upload_profile">
+            <button (click)="AddAttchment()">AddAttchment</button>
+        </div>
+    </div>
+</div>

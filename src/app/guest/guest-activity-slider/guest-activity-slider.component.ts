@@ -298,10 +298,10 @@ export class GuestActivitySliderComponent implements OnInit {
 
       // let itemN = item.itemName+ ' ' + 'Added into cart'
 
-      // this.toastr.success('added', '', {
-      //   timeOut: 1000,
-      //   positionClass: 'toast-top-center'
-      // })
+      this.toastr.success('added', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
       this.itemList[index]['quantity'] = event.target.value
       // this.displayActivity[this.activityIndex].activityName = []
 
@@ -326,10 +326,10 @@ export class GuestActivitySliderComponent implements OnInit {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
 
-      // this.toastr.error('removed', '', {
-      //   timeOut: 1000,
-      //   positionClass: 'toast-top-center'
-      // })
+      this.toastr.error('removed', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
     }
     console.log("final list of cart", this.allCartList);
 
@@ -341,6 +341,11 @@ export class GuestActivitySliderComponent implements OnInit {
     // console.log("kaik thay che ama bs", event.target.value, item);
     if (event.target.value != 0) {
 
+
+      this.toastr.success('added', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
@@ -361,6 +366,11 @@ export class GuestActivitySliderComponent implements OnInit {
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
+
+      this.toastr.error('removed', '', {
+        timeOut: 1000,
+        positionClass: 'toast-top-center'
+      })
     }
     console.log("final list of cart", this.allCartList);
 
@@ -411,6 +421,5 @@ export class GuestActivitySliderComponent implements OnInit {
 
   displayCart() {
     this.totalItemList.emit({ allItems: this.allCartList, index: 1 })
-
   }
 }
