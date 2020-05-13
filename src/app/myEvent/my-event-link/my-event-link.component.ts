@@ -102,8 +102,8 @@ export class MyEventLinkComponent implements OnInit {
 
 
   initMenuSlider() {
+   
     setTimeout(() => {
-
       this.$slideContainter = $('.my-event-tab-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
         infinite: true,
@@ -122,7 +122,61 @@ export class MyEventLinkComponent implements OnInit {
           },
         ],
       })
+      this.$slider.on('beforeChange', (event, slick, currentSlide, nextSlide, previousSlide) => {
+        // $('.tab-name').removeClass('active');
+        console.log("currentSlide", currentSlide)
+        console.log("nextSlide", nextSlide)
+        console.log("previousSlide", previousSlide);
+        // let slidesLength = slick.$slides.length - 1,
+        //   isCurrentFirstOrLast = currentSlide === 0 || currentSlide === slidesLength,
+        //   isNextFirstOrLast = nextSlide === 0 || nextSlide === slidesLength;
+
+        
+        // console.log("slidesLength", slidesLength)
+        // console.log("currentSlide === 0", currentSlide === 0);
+        // console.log("currentSlide === slidesLength", currentSlide === slidesLength);
+        // console.log("nextSlide === 0", nextSlide === 0);
+        // console.log("nextSlide === slidesLength", nextSlide === slidesLength);
+        // if (isCurrentFirstOrLast && isNextFirstOrLast) {
+        //   let nextClone = $(event.currentTarget).find('.slick-cloned.slick-active');
+        //   setTimeout(function () {
+        //     nextClone.addClass('slick-current');
+        //   }, 100)
+        // }
+        // if(nextSlide == 4 ){
+        //   $('.tab-name').removeClass('active');
+        // }
+        // if (currentSlide == 3) {
+        //   $('#4').addClass('active');
+        // }
+        if (currentSlide == 0 && nextSlide == 4){
+          $('.tab-name').removeClass('active');
+          $('#4').addClass('active');
+        }
+        if (currentSlide == 4 && nextSlide == 0) {
+          $('.tab-name').removeClass('active');
+          $('#0').addClass('active');
+        }
+        if (currentSlide == 3 && nextSlide == 4) {
+          $('.tab-name').removeClass('active');
+          $('#4').addClass('active');
+        }
+        if (currentSlide == 4 && nextSlide == 3) {
+          $('.tab-name').removeClass('active');
+          $('#3').addClass('active');
+        }
+        if (currentSlide == 0 && nextSlide == 1) {
+          $('.tab-name').removeClass('active');
+          $('#1').addClass('active');
+        }
+      })
+      this.$slider.on('afterChange', function (e, slick, currentSlide, nextSlide) {
+        if (nextSlide == 4) {
+          $('#4').addClass('active');
+        }
+      })
     }, 50)
+    
   }
 
 
@@ -237,6 +291,7 @@ export class MyEventLinkComponent implements OnInit {
 
   selectedMenu(i) {
     console.log("index of menu", i);
+    
     this.selectedIndex = i
     if (i == 3) {
       this.index = 2
