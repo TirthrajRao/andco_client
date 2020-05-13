@@ -4,7 +4,9 @@ import { EventService } from '../../services/event.service';
 import { LoginService } from '../../services/login.service'
 import { config } from '../../config'
 import { Subscription } from 'rxjs';
+import { LocationStrategy, Location } from '@angular/common';
 export let browserRefresh = false;
+import * as _ from 'lodash';
 
 
 // import { importExpr } from '@angular/compiler/src/output/output_ast';
@@ -47,15 +49,21 @@ export class MyEventComponent implements OnInit {
   subscription: Subscription;
   pageRefresh: boolean
   refreshEventId
+  queryObj = {};
+  allParams: any;
+  selectedActivityIndex: any = -1;
+  selectedGroupIndex: any;
   constructor(
     private route: Router,
     public eventService: EventService,
     public loginSerivce: LoginService,
-    public activated: ActivatedRoute
+    public activated: ActivatedRoute,
+    private locationStrategy: LocationStrategy, 
+    private _location: Location
   ) {
-    // this.route.routeReuseStrategy.shouldReuseRoute = function () {
-    //   return false;
-    // };
+    this.route.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
     this.subscription = route.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         browserRefresh = !route.navigated;
@@ -79,6 +87,7 @@ export class MyEventComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log("on init myEvent")
     this.pageRefresh = browserRefresh
     console.log("when page is refresh", this.pageRefresh)
     let vh = window.innerHeight * 0.01;
@@ -88,20 +97,27 @@ export class MyEventComponent implements OnInit {
 
     this.activated.queryParams.subscribe(params => {
       console.log("value of params", params)
-      if (params['activity']) {
+      this.allParams = params
+      this.queryObj['event'] = params['event']
+      this.queryObj['activity'] = params['activity']
+      this.queryObj['group'] = params['group']
+      if (params['event']) {
         console.log("call for first time");
         console.log("what is when refresh", this.subscription)
         let obj = {
-          eventId: params.activity
+          eventId: params.event
         }
         console.log("details of event =================", this.eventDetails)
         this.refreshEventId = params.activity
         if (this.eventDetails == undefined) {
-          this.eventService.getSingleEventDetails(params.activity).subscribe((response: any) => {
+          this.eventService.getSingleEventDetails(params.event).subscribe((response: any) => {
             console.log("response when page is load", response);
             this.eventDetails = response.data
             this.eventHashTag = response.data.hashTag
             this.selectedEventId = this.eventDetails._id
+            var index = _.findIndex(this.listOfEvent, function(o){ return o._id == response.data._id})
+            console.log("------index of selected event on refresh is------", index)
+            this.refreshEventId = index
             this.changeMenuWithArraow('activity')
           })
         }
@@ -189,7 +205,18 @@ export class MyEventComponent implements OnInit {
 
 
   getSingleEvent(event) {
+    console.log("getSingleEvent function in my-event", event)
     this.isLoad = true
+    
+    console.log("this.allParams before", typeof this.allParams, this.allParams)
+    
+    this.allParams = {}
+    this.queryObj = {}
+    console.log("this.allParams after", typeof this.allParams, this.allParams)
+    // this.allParams = null;
+    this.queryObj['event'] = event.eventId
+    this.selectedActivityIndex = -1;
+    this.changeQuery()
     console.log("right now current index is what", this.currenMenuIndex);
     this.eventService.getSingleEventDetails(event.eventId).subscribe((response: any) => {
       this.isLoad = false
@@ -227,6 +254,23 @@ export class MyEventComponent implements OnInit {
     })
   }
 
+  selectedActivity(event){
+    console.log("this.totalActivity", this.totalActivity, "event", event) 
+    this.queryObj['activity'] = event.index
+    if ("group" in this.queryObj ){
+      console.log("IN IF this.queryObj['group']", this.queryObj['group'])
+      delete this.queryObj['group']
+    }
+    console.log("this.queryObj on activity click", this.queryObj)
+    this.changeQuery()
+    // this.route.navigate(['/myevent'], { queryParams: { activity: '1' } });
+  }
+  selectedGroup(event){
+    console.log("selectedGroup", event)
+    this.selectedGroupIndex = event.index 
+    this.queryObj['group'] = event.index
+    this.changeQuery()
+  }
   getProfileOfEvent() {
     if (this.eventDetails) {
 
@@ -242,11 +286,21 @@ export class MyEventComponent implements OnInit {
   }
 
   getActivity() {
-    // console.log("what is event details", this.eventDetails)
+    console.log("getActivity() on refresh", this.eventDetails)
     this.totalActivity = this.eventDetails.activity
     this.displayMenu = true
+    if(this.allParams && this.allParams.activity){
+      console.log("the selected activity index is", this.allParams.activity)
+      this.selectedActivityIndex = this.allParams.activity
+      if (this.allParams && this.allParams.group){
+        this.selectedGroupIndex = this.allParams.group
+      }
+    }
+    else{
+      console.log("no activity selected")
+    }
     // console.log("call thay che ke nai ", this.totalActivity);
-    this.route.navigate(['/myevent'], { queryParams: { activity: this.selectedEventId } });
+    // this.route.navigate(['/myevent'], { queryParams: { event: this.selectedEventId } });
   }
 
   getEventLink() {
@@ -369,5 +423,13 @@ export class MyEventComponent implements OnInit {
     // }
   }
 
+  changeQuery(){
+    this._location.replaceState(
+      this.route.createUrlTree(
+        [this.locationStrategy.path().split('?')[0]], // Get uri
+        { relativeTo: this.activated, queryParams: this.queryObj }).toString()
+    );
+    // this.route.navigate(['.'], { relativeTo: this.activated, queryParams: this.queryObj });
+  }
 
 }
