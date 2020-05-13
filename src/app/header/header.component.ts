@@ -202,7 +202,7 @@ export class HeaderComponent implements OnInit {
     } else if (this.currentUrl.includes('add-bank-account')) {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('set-message')) {
-      this.imgUrl = '/assets/images/firework-green.png'
+      this.imgUrl = '/assets/images/firework-white.png'
     } else if (this.currentUrl.includes('editEvent')) {
       this.imgUrl = '/assets/images/firework-white.png'
     }
