@@ -186,11 +186,11 @@ button.btn.set-price-custom-button {
     background-color: #A6B138;
     color: #fff;
     font-size: 18px;
-    padding: 7px 23px;
+    padding: 8px 30px 3px;
     font-weight: 600;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 11;
     position: absolute;
     bottom: 0;

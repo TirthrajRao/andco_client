@@ -47,6 +47,7 @@ button.btn.add-more {
     height: 20px;
     margin-left: 20px;
     filter: var(--filter-in-img);
+    cursor: pointer;
 }
 
 .group-box {
