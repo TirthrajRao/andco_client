@@ -48,7 +48,7 @@ export class MyEventLinkComponent implements OnInit {
   reminderDetails
   welcomeMessage
   payMessage
-  eventLinkMenu = ["invitation", "Welcome", "Pay", "Reminder", "After Event"]
+  eventLinkMenu = ["Invitation", "Welcome", "Pay", "Reminder", "After Event"]
   isAll
   isOnly
   afterAll
