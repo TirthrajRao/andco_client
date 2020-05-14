@@ -296,6 +296,21 @@ h5.item-price {
     color: #668866;
 }
 
+.confirmBox h1{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+button.btn.edit {
+    background-color: #A6B138;
+    color: #fff;
+}
+.removeGroup{
+    background-color: red;
+    color: white;
+    }
+
 @media(max-width:1920px) {
     .bg-box-set-price {
         width: 1200px;

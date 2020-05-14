@@ -50,6 +50,9 @@ export class EventGroupComponent implements OnInit {
   updateActivities
   discriptionName
   discriptionItem
+  removeItemMale
+  removeItemFemale
+  removeGroupId
   constructor(
     private activatedRoute: ActivatedRoute,
     public eventService: EventService,
@@ -480,23 +483,52 @@ export class EventGroupComponent implements OnInit {
   removeMaleItem(data, index, groupId) {
     console.log("data to be removed", data);
     console.log("index of removed", groupId);
+    this.removeItemMale = data
+    this.removeGroupId = groupId
+    $('#maleItemRemove').modal("show")
 
     // if (data.itemId) {
     // }
-    if (!data.itemId) {
-      this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+    // if (!data.itemId) {
+    //   this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(data), 1);
+    // }
+    // console.log("group when remove from male", this.selectedActivity);
+    // if (data.itemId) {
+    //   this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
+    //   this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.indexOf(data), 1)
+    //   this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
+    //     console.log("item remove from data base", response);
+    //   }, error => {
+    //     console.log("error while remove items", error);
+    //   })
+    // }
+    // console.log("baki ni male items", this.selectedGroup.male);
+  }
+
+  itemRemove() {
+    console.log("value to be removed", this.removeItemMale);
+    console.log("value of group items =========", this.removeGroupId)
+
+    if (!this.removeItemMale.itemId) {
+      this.selectedGroup.male.splice(this.selectedGroup.male.indexOf(this.removeItemMale), 1);
     }
     console.log("group when remove from male", this.selectedActivity);
-    if (data.itemId) {
-      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
-      this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.indexOf(data), 1)
-      this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
+    if (this.removeItemMale.itemId) {
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(this.removeItemMale), 1)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].male.indexOf(this.removeItemMale), 1)
+      this.eventService.removeItem(this.removeItemMale.itemId, this.removeGroupId).subscribe((response) => {
         console.log("item remove from data base", response);
       }, error => {
         console.log("error while remove items", error);
       })
     }
-    // console.log("baki ni male items", this.selectedGroup.male);
+
+  }
+  notRemoveItem() {
+    $('#maleItemRemove').modal("hide")
+  }
+  closeMaleModel() {
+    $('#maleItemRemove').modal("hide")
   }
 
   addFemaleItmes(data) {
@@ -546,27 +578,54 @@ export class EventGroupComponent implements OnInit {
 
   removeFemaleItem(data, index, groupId) {
 
+    this.removeItemFemale = data
+    this.removeGroupId = groupId
 
+    $('#femaleItemRemove').modal("show")
     // this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
     // console.log("rest of female items========", this.selectedGroup.female);
 
 
 
-    if (!data.itemId) {
-      this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
+    // if (!data.itemId) {
+    //   this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(data), 1);
+    // }
+    // console.log("group when remove from male", this.selectedActivity);
+    // if (data.itemId) {
+    //   this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
+    //   this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.indexOf(data), 1)
+    //   this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
+    //     console.log("item remove from data base", response);
+    //   }, error => {
+    //     console.log("error while remove items", error);
+    //   })
+    // }
+
+  }
+  itemRemoveFemale() {
+
+    if (!this.removeItemFemale.itemId) {
+      this.selectedGroup.female.splice(this.selectedGroup.female.indexOf(this.removeItemFemale), 1);
     }
     console.log("group when remove from male", this.selectedActivity);
-    if (data.itemId) {
-      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(data), 1)
-      this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.indexOf(data), 1)
-      this.eventService.removeItem(data.itemId, groupId).subscribe((response) => {
+    if (this.removeItemFemale.itemId) {
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].item.indexOf(this.removeItemFemale), 1)
+      this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.splice(this.allActivities[this.activityIndex].activity.group[this.groupIndex].female.indexOf(this.removeItemFemale), 1)
+      this.eventService.removeItem(this.removeItemFemale.itemId, this.removeGroupId).subscribe((response) => {
         console.log("item remove from data base", response);
       }, error => {
         console.log("error while remove items", error);
       })
     }
+  }
+  notRemoveItemFemale() {
+    $('#femaleItemRemove').modal("hide")
 
   }
+  closeFemaleModel() {
+    $('#femaleItemRemove').modal("hide")
+  }
+
 
   addMaleItem(event) {
     // console.log("event=========", event.target.value.length);
