@@ -47,6 +47,7 @@ button.btn.add-more {
     height: 20px;
     margin-left: 20px;
     filter: var(--filter-in-img);
+    cursor: pointer;
 }
 
 .group-box {
@@ -243,6 +244,11 @@ button.btn.add-more {
 @media(max-width:575px) {
     .group-box ul {
         padding: 0;
+    }
+    .buttons-pay-back {
+        bottom: 2%;
+        left: 7%;
+        right: 7%;
     }
 }
 

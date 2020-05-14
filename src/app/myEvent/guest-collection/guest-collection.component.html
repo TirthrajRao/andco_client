@@ -34,8 +34,9 @@
             </a> -->
         </li>
         <li>
-            <a href="#" tooltipClass="my-custom-class"
-                ngbTooltip="Total Guest"><span>{{displayGuestItems.length}}</span> Guests</a>
+            <a tooltipClass="my-custom-class" ngbTooltip="Total Guest"
+                style="cursor: default !important;"><span>{{displayGuestItems.length}}</span>
+                Guests</a>
         </li>
     </ul>
 </div>
@@ -57,7 +58,7 @@
                     <!-- </button> -->
                     <div class="inner-header">
                         <div class="profile-name">
-                            <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
+                            <span>{{item.firstLetter | titlecase}}{{item.lastLetter | titlecase}}</span>
                         </div>
                         <div class="guest-name">
                             <h1>{{item.firstName}} {{item.lastName}}</h1>

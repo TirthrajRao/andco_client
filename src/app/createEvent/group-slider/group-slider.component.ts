@@ -239,7 +239,45 @@ export class GroupSliderComponent implements OnInit {
     $('#editDeleteModal').modal("hide")
   }
   deleteGroup() {
+    $('#checkModel').modal("show")
+
     // console.log("selected group ", this.editGroupName);
+
+    // if (this.editGroupName._id) {
+    //   console.log("call this", this.editGroupName);
+    //   this.eventService.removeGroup(this.editGroupName).subscribe((response) => {
+    //     console.log("group remove completed", response);
+    //     let index = this.selectedActivity.groups.findIndex(x => x.groupName === this.editGroupName.groupName);
+    //     console.log("index of element which is remove", index);
+    //     this.selectedActivity.groups.splice(index, 1);
+    //     this.$slideContainter = $('.group-slider');
+    //     this.$slideContainter.slick('unslick');
+    //     setTimeout(() => {
+    //       this.initGroupSlider()
+    //     }, 50)
+    //     console.log("after remove group", this.selectedActivity);
+    //     this.singleGroup.emit({ item: this.selectedActivity.groups[0], groupIndex: 0 })
+    //     this.selectedIndex = 0
+
+    //   }, error => {
+    //     console.log("error while remove group", error);
+    //   })
+    // } else {
+    //   let index = this.selectedActivity.groups.findIndex(x => x.groupName === this.editGroupName.groupName);
+    //   console.log("index of element which is remove", index);
+    //   this.selectedActivity.groups.splice(index, 1);
+    //   this.$slideContainter = $('.group-slider');
+    //   this.$slideContainter.slick('unslick');
+    //   setTimeout(() => {
+    //     this.initGroupSlider()
+    //   }, 50)
+    //   this.singleGroup.emit({ item: this.selectedActivity.groups[0], groupIndex: 0 })
+    //   this.selectedIndex = 0
+    // }
+  }
+
+  finalDeleted() {
+    console.log("what is the value of selected group", this.editGroupName);
 
     if (this.editGroupName._id) {
       console.log("call this", this.editGroupName);
@@ -272,5 +310,13 @@ export class GroupSliderComponent implements OnInit {
       this.singleGroup.emit({ item: this.selectedActivity.groups[0], groupIndex: 0 })
       this.selectedIndex = 0
     }
+
+  }
+  notRemoveGroup() {
+    $('#checkModel').modal("hide")
+
+  }
+  closeConfirmModel() {
+    $('#checkModel').modal("hide")
   }
 }

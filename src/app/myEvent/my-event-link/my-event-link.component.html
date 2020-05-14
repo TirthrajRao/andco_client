@@ -8,7 +8,7 @@
 
 <div class="my-event-tab-slider my-2">
     <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
-        <div class="tab-name" [class.active]="selectedIndex == i">
+        <div class="tab-name" [class.active]="selectedIndex == i" id={{i}}>
             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
     </div>
@@ -148,9 +148,7 @@
 <div class="step-4-link" *ngIf="index == 3">
     <form [formGroup]="afterEventForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="3" placeholder="Together with our parents, thank 
-    you for your presence, purchase,
-    presents and prayers." formControlName="afterEventMessage" ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}" (blur)="checkAfterMessage()"></textarea>
+            <textarea name="" id="" rows="2" placeholder="Together with our parents,thank you for your presence, purchase,presents and prayers." formControlName="afterEventMessage" ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}" (blur)="checkAfterMessage()"></textarea>
             <a (click)="openModel()"><img class="attach-img" src="../../../assets/images/attach-img.png" alt="attachment icon"></a>
         </div>
         <div class="to">

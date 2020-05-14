@@ -18,7 +18,7 @@
     <ul class="guest-list-inner-box">
         <li *ngFor="let name of displayGuest; let i =index">
             <div class="profile-name">
-                <span>{{firstLetter[i] | titlecase}}{{secondLetter[i] | titlecase}}</span>
+                <span>{{name.firstLetter | titlecase}}{{name.lastLetter | titlecase}}</span>
             </div>
             <div class="guest-name">
                 <p>{{name.userName | titlecase}} </p>

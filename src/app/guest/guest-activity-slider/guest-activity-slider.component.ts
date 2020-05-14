@@ -301,7 +301,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
       this.toastr.success('added', '', {
         timeOut: 1000,
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
       })
       this.itemList[index]['quantity'] = event.target.value
       // this.displayActivity[this.activityIndex].activityName = []
@@ -329,7 +329,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
       this.toastr.error('removed', '', {
         timeOut: 1000,
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
       })
     }
     console.log("final list of cart", this.allCartList);
@@ -345,7 +345,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
       this.toastr.success('added', '', {
         timeOut: 1000,
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
       })
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
@@ -370,7 +370,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
       this.toastr.error('removed', '', {
         timeOut: 1000,
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
       })
     }
     console.log("final list of cart", this.allCartList);

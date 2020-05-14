@@ -1,12 +1,15 @@
-.descriptionContent{
+.descriptionContent {
     height: auto;
     width: 400px;
-    padding: 5px;
 }
 
-
-
-.descriptionContent h5{
-    color:#F18B2D;
+.descriptionContent h5 {
+    color: #F18B2D;
     font-weight: bold;
-} 
+}
+
+@media(max-width:575px) {
+    .descriptionContent {
+        width: 100%;
+    }
+}

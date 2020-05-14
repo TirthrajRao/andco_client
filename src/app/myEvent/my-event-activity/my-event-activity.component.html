@@ -1,8 +1,11 @@
-<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex" [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
+<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex"
+    [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
 </app-all-slider>
-<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex" (groupItem)="getSingleGroupItem($event)">
+<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex"
+    (groupItem)="getSingleGroupItem($event)">
 </app-all-slider>
 
+<!-- <div *ngIf="!displayItem">Sorry</div> -->
 <div class="myevent-activity-box" *ngIf="displayItem">
     <div class="group-box">
         <input type="radio" name="radio-group1" id="test" (change)="handleChange($event)" value="male" checked>

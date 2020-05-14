@@ -67,7 +67,7 @@ button.slick-arrow {
 }
 
 .create-event-type-menu ul {
-    max-height: 490px;
+    max-height: 442px;
     overflow: auto;
 }
 
@@ -405,6 +405,12 @@ input:focus {
 
 .hashtag-form.form-group {
     min-height: 90px;
+}
+
+@media(max-width:1920px) {
+    .create-event-type-menu ul {
+        max-height: 490px;
+    }
 }
 
 

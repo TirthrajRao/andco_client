@@ -280,7 +280,7 @@ h5.item-price {
     color: #fff;
     font-size: 20px;
     font-weight: bold;
-    padding-top: 8px;
+    padding: 6px 30px;
 }
 
 .modal-footer {
@@ -295,6 +295,21 @@ h5.item-price {
 .description p {
     color: #668866;
 }
+
+.confirmBox h1{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+button.btn.edit {
+    background-color: #A6B138;
+    color: #fff;
+}
+.removeGroup{
+    background-color: red;
+    color: white;
+    }
 
 @media(max-width:1920px) {
     .bg-box-set-price {

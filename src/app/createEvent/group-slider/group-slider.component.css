@@ -103,7 +103,13 @@ button.btn.delete {
     background-color: #5D6C20;
     color: #fff;
 }
-
+.confirmBox h1{
+    font-size: 16px;
+}
+.removeGroup{
+background-color: red;
+color: white;
+}
 @media(max-width:1600px) {
     .group-header span {
         font-size: 18px;
