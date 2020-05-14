@@ -244,6 +244,11 @@ button.btn.add-more {
     .group-box ul {
         padding: 0;
     }
+    .buttons-pay-back {
+        bottom: 2%;
+        left: 7%;
+        right: 7%;
+    }
 }
 
 @media(max-width:400px) {
