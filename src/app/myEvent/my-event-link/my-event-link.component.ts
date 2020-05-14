@@ -104,7 +104,7 @@ export class MyEventLinkComponent implements OnInit {
 
 
   initMenuSlider() {
-   
+
     setTimeout(() => {
       this.$slideContainter = $('.my-event-tab-slider')
       this.$slider = this.$slideContainter.not('.slick-initialized').slick({
@@ -133,7 +133,7 @@ export class MyEventLinkComponent implements OnInit {
         //   isCurrentFirstOrLast = currentSlide === 0 || currentSlide === slidesLength,
         //   isNextFirstOrLast = nextSlide === 0 || nextSlide === slidesLength;
 
-        
+
         // console.log("slidesLength", slidesLength)
         // console.log("currentSlide === 0", currentSlide === 0);
         // console.log("currentSlide === slidesLength", currentSlide === slidesLength);
@@ -151,7 +151,7 @@ export class MyEventLinkComponent implements OnInit {
         // if (currentSlide == 3) {
         //   $('#4').addClass('active');
         // }
-        if (currentSlide == 0 && nextSlide == 4){
+        if (currentSlide == 0 && nextSlide == 4) {
           $('.tab-name').removeClass('active');
           $('#4').addClass('active');
         }
@@ -172,13 +172,14 @@ export class MyEventLinkComponent implements OnInit {
           $('#1').addClass('active');
         }
       })
-      this.$slider.on('afterChange', function (e, slick, currentSlide, nextSlide) {
+      this.$slider.on('afterChange', (e, slick, currentSlide, nextSlide) => {
+        this.selectedMenu(currentSlide)
         if (nextSlide == 4) {
           $('#4').addClass('active');
         }
       })
     }, 50)
-    
+
   }
 
 

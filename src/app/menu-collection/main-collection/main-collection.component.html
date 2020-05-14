@@ -27,7 +27,7 @@
                 </li>
                 <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#guest">Guest</a></li> -->
             </ul>
-            <h3 class="total text-center" *ngIf="isDisplay">Total :
+            <h3 class="total text-center" *ngIf="isDisplay && totalOfEvent">Total :
                 {{totalOfEvent.finalTotal | currency:"&#x20A6;&nbsp;"}}</h3>
             <h3 class="total text-center" *ngIf="noValueMessage">{{noValueMessage}}</h3>
             <div class="tab-content mt-3" *ngIf="isDisplay">

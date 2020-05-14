@@ -133,6 +133,10 @@ export class GuestCollectionComponent implements OnInit {
       // console.log("singleItem", this.firstLetter);
       // console.log("first letter of word", firstLetter);
     });
+    console.log("total first lettter array", this.firstLetter);
+    console.log("second letter array===========", this.secondLetter);
+
+
     console.log("what is in final output after adding", this.displayGuestItems);
 
     this.listForPrint.emit({ data: this.displayGuestItems, flag: false })
@@ -272,13 +276,22 @@ export class GuestCollectionComponent implements OnInit {
     }
     if (developer.length > 0) {
       _.forEach(developer, (content) => {
-        // console.log("content after search", content);
+        console.log("content after search", content);
         this.displayGuestItems.push(content);
 
-        this.firstLetter.push(content.firstName.charAt(0))
+        let vivek = content.firstName.split(" ")
+        console.log("whats the value of vivek", vivek);
+
+        this.firstLetter.push(vivek[0].charAt(0))
+        if (vivek[1]) {
+          this.secondLetter.push(vivek[1].charAt(0))
+          content['lastLetter'] = vivek[1].charAt(0)
+        }
+
+        // this.firstLetter.push(content.firstName.charAt(0))
         // console.log("singleItem", this.firstLetter);
         // console.log("first letter of word", firstLetter);
-        this.secondLetter.push(content.lastName.charAt(0))
+        // this.secondLetter.push(content.lastName.charAt(0))
       });
     } else {
       let message = document.getElementById('message')

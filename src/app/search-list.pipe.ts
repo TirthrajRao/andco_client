@@ -44,7 +44,7 @@ export class SearchListPipe implements PipeTransform {
       console.log("result in search", it)
       // if (it.name) {
 
-      if (it.firstName.toLowerCase().includes(searchText) || it.lastName.toLowerCase().includes(searchText)) {
+      if (it.firstName.toLowerCase().includes(searchText)) {
         console.log("it ==>", it.name);
 
         return it;
