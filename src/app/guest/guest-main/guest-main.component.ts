@@ -269,4 +269,9 @@ export class GuestMainComponent implements OnInit {
       this.route.navigate(['/', this.hashtag], { queryParams: { donation: 'donation' } });
     }
   }
+  displayAddress(event) {
+    this.index = event
+    this.route.navigate(['/', this.hashtag], { queryParams: { address: 'address' } });
+
+  }
 }
