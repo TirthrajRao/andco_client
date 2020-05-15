@@ -282,7 +282,7 @@ export class MyEventLinkComponent implements OnInit {
     if (this.invitatationMessage != null) {
       this.whatsupLink = this.invitatationMessage + '-' + whatsupLink
       this.googleLink = this.invitatationMessage + '-' + googleLink
-      this.faceBookLink = this.invitatationMessage + '-' + faceBookLink
+      this.faceBookLink = faceBookLink
       this.textMessageLink = this.invitatationMessage + '-' + textMessageLink
     } else {
       this.whatsupLink = whatsupLink
