@@ -200,6 +200,8 @@ export class MyEventLinkComponent implements OnInit {
       console.log("response of event in link page", response);
       this.eventDetails = response.data
       let checkMessage = response.data.afterEventMessage
+      console.log("details of message", checkMessage);
+
       if (checkMessage && checkMessage.afterEventMessage) {
         this.afterEventMessage = response.data.afterEventMessage
         if (this.afterEventMessage && this.afterEventMessage.listOfGuest) {
@@ -216,9 +218,9 @@ export class MyEventLinkComponent implements OnInit {
             this.afterBuy = valueOfGuest
           }
         }
-        if (this.afterEventMessage && this.afterEventMessage.attachment) {
-          this.imgURL = this.path + this.afterEventMessage.attachment
-        }
+      }
+      if (checkMessage && checkMessage.attachment) {
+        this.imgURL = this.path + checkMessage.attachment
       }
       console.log("what is in after event mesaage details", this.afterEventMessage)
       this.invitatationMessage = response.data.invitationMessage
