@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatNativeDateModule, MatInputModule, MatTabsModule } from '@angular/material';
+import { MatFormFieldModule, MatNativeDateModule, MatInputModule, MatTabsModule, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ShareModule } from '@ngx-share/core'
@@ -245,7 +245,8 @@ const routes: Routes = [
   ],
   providers: [
     DatePipe,
-    ExcelService
+    ExcelService,
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
   ]
 })
 export class HomeModule { }
