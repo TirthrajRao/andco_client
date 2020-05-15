@@ -194,7 +194,7 @@
             </div>
             <div class="modal-body border-top">
                 <div class="attachment-img">
-                    <img id="imageFilter" [src]="imgURL">
+                    <img id="imageFilter" [src]="imgURL" onerror="this.src='/assets/images/image.png'">
                 </div>
             </div>
             <div class="modal-footer">
