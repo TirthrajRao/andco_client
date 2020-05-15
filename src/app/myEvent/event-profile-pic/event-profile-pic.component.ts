@@ -115,7 +115,7 @@ export class EventProfilePicComponent implements OnInit {
   }
   addFile(event) {
     console.log("profile photo path", this.eventId);
-    if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+    if (event[0].type == "image/png" || event[0].type == "image/png" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
       this.imagePath = this.files;
@@ -198,7 +198,7 @@ export class EventProfilePicComponent implements OnInit {
     console.log("this is console or not", dataURL);
 
     this.base64DefaultURL = dataURL;
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL.replace(/^data:image\/(png|png);base64,/, "");
   }
 
   dataURItoBlob(dataURI): Observable<Blob> {
@@ -211,7 +211,7 @@ export class EventProfilePicComponent implements OnInit {
       for (let i = 0; i < byteString.length; i++) {
         int8Array[i] = byteString.charCodeAt(i);
       }
-      const blob = new Blob([int8Array], { type: 'image/jpeg' });
+      const blob = new Blob([int8Array], { type: 'image/png' });
       observer.next(blob);
       observer.complete();
     });
@@ -258,7 +258,7 @@ export class EventProfilePicComponent implements OnInit {
         console.log("what is in ctx=======", ctx);
         var dataURL = canvas.toDataURL("image/png");
         console.log(" Data url ", dataURL)
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        return dataURL.replace(/^data:image\/(png|png);base64,/, "");
       }
 
       var base64 = getBase64Image(document.getElementById("profileImage"));
@@ -279,14 +279,14 @@ export class EventProfilePicComponent implements OnInit {
       //   text += possibleText.charAt(Math.floor(Math.random() *    possibleText.length) );
       // }
       // // Replace extension according to your media type like this 
-      // const imageName = date + '.' + text + '.jpeg';
+      // const imageName = date + '.' + text + '.png';
       // console.log(imageName);
       // // call method that creates a blob from dataUri
       // let imageBlob;
       // this.dataURItoBlob(this.base64TrimmedURL).subscribe(data => {
       //   imageBlob = data;
       // });
-      // const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
+      // const imageFile = new File([imageBlob], imageName, { type: 'image/png' });
 
 
     }

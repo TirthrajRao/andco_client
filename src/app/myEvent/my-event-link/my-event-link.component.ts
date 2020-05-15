@@ -548,7 +548,7 @@ export class MyEventLinkComponent implements OnInit {
 
   addFile(event) {
     console.log("profile photo path", event, this.imgURL);
-    if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+    if (event[0].type == "image/png" || event[0].type == "image/png" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
       this.imagePath = this.files;

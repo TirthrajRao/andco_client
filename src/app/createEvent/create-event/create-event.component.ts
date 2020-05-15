@@ -67,11 +67,11 @@ export class CreateEventComponent implements OnInit {
   eventBackGround = [
     {
       themeName: 'balloons',
-      path: 'assets/images/guest.jpg'
+      path: 'assets/images/guest.png'
     },
     {
       themeName: 'floral',
-      path: 'assets/images/floral.jpg'
+      path: 'assets/images/floral.png'
     },
     {
       themeName: 'marble',
@@ -79,27 +79,27 @@ export class CreateEventComponent implements OnInit {
     },
     {
       themeName: 'wood',
-      path: 'assets/images/wood.jpg'
+      path: 'assets/images/wood.png'
     },
     {
       themeName: 'origami',
-      path: 'assets/images/origami.jpg'
+      path: 'assets/images/origami.png'
     },
     {
       themeName: 'classic',
-      path: 'assets/images/classic.jpg'
+      path: 'assets/images/classic.png'
     },
     {
       themeName: 'lines',
-      path: 'assets/images/lines.jpg'
+      path: 'assets/images/lines.png'
     },
     {
       themeName: 'luxury',
-      path: 'assets/images/luxury.jpg'
+      path: 'assets/images/luxury.png'
     },
     {
       themeName: 'instrument',
-      path: 'assets/images/instrument.jpeg'
+      path: 'assets/images/instrument.png'
     }
   ]
   cropPath: any;
@@ -368,7 +368,7 @@ export class CreateEventComponent implements OnInit {
 
   addFile(event) {
     console.log("profile photo path", event, this.imgURL);
-    if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+    if (event[0].type == "image/png" || event[0].type == "image/png" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
       this.imagePath = this.files;
@@ -522,7 +522,7 @@ export class CreateEventComponent implements OnInit {
       this.isLoad = true
       if (this.eventForm.controls.background.value == "") {
         console.log("when np bg selected");
-        let path = 'assets/images/guest.jpg'
+        let path = 'assets/images/guest.png'
         this.eventForm.controls.background.setValue(path)
       }
 
