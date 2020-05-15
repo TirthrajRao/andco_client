@@ -12,6 +12,12 @@
     /* background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color)); */
 }
 
+.bg-color-class {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color));
+}
+
 .thank-you:after {
     content: "";
     position: absolute;

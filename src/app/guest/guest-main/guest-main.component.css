@@ -1,5 +1,4 @@
 .guest-main-background {
-    background-image: url('../../../assets/images/guest.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -9,7 +8,12 @@
     font-family: 'Manjari', sans-serif !important;
     padding: 20px 0 0;
     overflow: hidden;
-    /* background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color)); */
+}
+
+.bg-color-class {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(var(--guest-inner-gradient-first-color), var(--guest-inner-gradient-second-color));
 }
 
 .guest-main-background:after {
