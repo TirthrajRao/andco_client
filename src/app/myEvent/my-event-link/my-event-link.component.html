@@ -194,13 +194,13 @@
             </div>
             <div class="modal-body border-top">
                 <div class="attachment-img">
-                    <img id="imageFilter" [src]="imgURL">
+                    <img id="imageFilter" [src]="imgURL" onerror="this.src='/assets/images/image.png'">
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="choose_image w-100 text-center">
                     <label for="upload_attachment">Choose Image</label>
-                    <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/jpg" id="upload_attachment">
+                    <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/png" id="upload_attachment">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="AddAttchment()">Add Attchment</button>

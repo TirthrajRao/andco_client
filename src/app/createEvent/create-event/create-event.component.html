@@ -74,7 +74,7 @@
                                     <img src="assets/images/camera.png" class="upload_img_icon" alt="camera icon">
                                 </label>
                                 <!-- <input type="file" (change)="addFile($event.target.files)"
-                                    accept="image/png, image/png, image/jpg" id="upload_profile" style="display: none;"> -->
+                                    accept="image/png, image/png, image/png" id="upload_profile" style="display: none;"> -->
                             </button>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="create-event-background-box">
                         <h3>Your Event Page Background</h3>
                         <div class="main-background-picture">
-                            <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/guest.jpg'">
+                            <img [src]="themeUrl" id="imageFilter" onerror="this.src='/assets/images/guest.png'">
                         </div>
                         <div class="background-photo-upload">
                             <div class="row m-0">
@@ -164,7 +164,7 @@
             <div class="modal-footer">
                 <div class="choose_image w-100">
                     <label for="upload_profile">Choose Image</label>
-                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/jpg" id="upload_profile">
+                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/png, image/png" id="upload_profile">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="saveImage()">Save</button>

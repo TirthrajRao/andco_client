@@ -40,7 +40,7 @@
 
 .pay button {
     background-color: #fff;
-    color: var(--guest-total-add-more);
+    color: var(--guest-total-add-more)!important;
     padding: 5px 30px;
     font-size: 20px;
     font-weight: 600;
@@ -134,8 +134,7 @@ input[type=radio]:checked+label:before {
     background-color: var(--guest-activity-group-background);
 }
 
-
-.customError{
+.customError {
     color: lightblue;
 }
 

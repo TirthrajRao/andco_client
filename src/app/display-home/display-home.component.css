@@ -32,37 +32,37 @@
 }
 
 .display-screen-single-slide.home {
-    background-image: url('/../assets/images/home.jpg');
+    background-image: url('/../assets/images/home.png');
     background-color: #a6b47e;
     position: relative;
 }
 
 .display-screen-single-slide.ds-1 {
-    background-image: url('../../assets/images/standard.jpg');
+    background-image: url('../../assets/images/standard.png');
     position: relative;
     background-color: #f0ced6;
 }
 
 .display-screen-single-slide.ds-2 {
-    background-image: url('../../assets/images/display_screen_2.jpg');
+    background-image: url('../../assets/images/display_screen_2.png');
     position: relative;
     background-color: #c2c5c9;
 }
 
 .display-screen-single-slide.ds-3 {
-    background-image: url('../../assets/images/display_screen_3.jpg');
+    background-image: url('../../assets/images/display_screen_3.png');
     position: relative;
     background-color: #e6ccc5;
 }
 
 .display-screen-single-slide.ds-4 {
-    background-image: url('../../assets/images/display_screen_4.jpg');
+    background-image: url('../../assets/images/display_screen_4.png');
     position: relative;
     background-color: #c9a86b;
 }
 
 .display-screen-single-slide.ds-5 {
-    background-image: url('../../assets/images/display_screen_5.jpg');
+    background-image: url('../../assets/images/display_screen_5.png');
     background-position: center;
     background-size: 100%;
     position: relative;
@@ -70,14 +70,14 @@
 }
 
 .display-screen-single-slide.ds-6 {
-    background-image: url('../../assets/images/display_screen_6.jpg');
+    background-image: url('../../assets/images/display_screen_6.png');
     background-position: top;
     position: relative;
     background-color: #060a2b;
 }
 
 .display-screen-single-slide.ds-7 {
-    background-image: url('../../assets/images/display_screen_7.jpg');
+    background-image: url('../../assets/images/display_screen_7.png');
     position: relative;
     background-color: #e3e2e8;
 }

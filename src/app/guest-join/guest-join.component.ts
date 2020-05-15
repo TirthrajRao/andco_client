@@ -20,15 +20,15 @@ export class GuestJoinComponent implements OnInit {
   platForm = JSON.parse(sessionStorage.getItem('platForm'))
   path = config.baseMediaUrl;
   eventTheme
-  themeList = ['assets/images/guest.jpg',
-    'assets/images/floral.jpg',
-    'assets/images/wood.jpg',
+  themeList = ['assets/images/guest.png',
+    'assets/images/floral.png',
+    'assets/images/wood.png',
     'assets/images/marble.png',
-    'assets/images/origami.jpg',
-    'assets/images/classic.jpg',
-    'assets/images/lines.jpg',
-    'assets/images/luxury.jpg',
-    'assets/images/instrument.jpeg']
+    'assets/images/origami.png',
+    'assets/images/classic.png',
+    'assets/images/lines.png',
+    'assets/images/luxury.png',
+    'assets/images/instrument.png']
   constructor(
     public router: Router,
     public activated: ActivatedRoute,
@@ -55,28 +55,28 @@ export class GuestJoinComponent implements OnInit {
       // console.log("details of event with link", response)
 
       switch (this.eventTheme) {
-        case 'assets/images/floral.jpg':
+        case 'assets/images/floral.png':
           this.themeService.toggleFloral()
           break;
-        case 'assets/images/wood.jpg':
+        case 'assets/images/wood.png':
           this.themeService.toggleWood()
           break;
         case 'assets/images/marble.png':
           this.themeService.toggleMarble()
           break;
-        case 'assets/images/origami.jpg':
+        case 'assets/images/origami.png':
           this.themeService.toggleOrigami()
           break;
-        case 'assets/images/classic.jpg':
+        case 'assets/images/classic.png':
           this.themeService.toggleClassic()
           break;
-        case 'assets/images/lines.jpg':
+        case 'assets/images/lines.png':
           this.themeService.toggleLines()
           break;
-        case 'assets/images/luxury.jpg':
+        case 'assets/images/luxury.png':
           this.themeService.toggleLuxury()
           break;
-        case 'assets/images/instrument.jpeg':
+        case 'assets/images/instrument.png':
           this.themeService.toggleInstruments()
           break;
         default:

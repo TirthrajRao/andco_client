@@ -6,7 +6,7 @@
 /* your event type css start */
 
 .create-event-main {
-    background-image: url('/assets/images/event_create.jpg');
+    background-image: url('/assets/images/event_create.png');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -68,6 +68,7 @@ button.slick-arrow {
 
 .create-event-type-menu ul {
     max-height: 442px;
+    min-height: 441px;
     overflow: auto;
 }
 
@@ -409,7 +410,8 @@ input:focus {
 
 @media(max-width:1920px) {
     .create-event-type-menu ul {
-        max-height: 490px;
+        max-height: 442px;
+        min-height: 440px;
     }
 }
 
