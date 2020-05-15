@@ -233,13 +233,13 @@ export class MyEventComponent implements OnInit {
         this.printTitle = this.eventDetails.eventTitle
         this.printPhoto = this.eventDetails.profilePhoto
         // this.eventLink = response.data.eventLink
-        this.displayMenu = true
-
+        
         this.changeMenuWithArraow(this.currenMenuIndex)
         if (this.currenMenuIndex == 'activity' && this.displayActivity == false) {
           this.getActivity()
           // this.route.navigate(['/myevent'], { queryParams: { activity: this.eventDetails.eventTitle } });
         }
+        this.displayMenu = true
       } else {
         let data = '/guest/' + this.eventHashTag
         let output = this.loginSerivce.returnLogin(data);
