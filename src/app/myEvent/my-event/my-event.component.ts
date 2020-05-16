@@ -94,7 +94,7 @@ export class MyEventComponent implements OnInit {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
     this.getLoginUserEvent()
-
+    
     this.activated.queryParams.subscribe(params => {
       console.log("value of params", params)
       this.allParams = params
@@ -195,6 +195,10 @@ export class MyEventComponent implements OnInit {
       this.listOfEvent = res.data
       this.isLoad = false
       console.log("list of total event of login user", this.listOfEvent);
+      let tempId = this.selectedEventId
+      var index = _.findIndex(this.listOfEvent, function (o) { return o._id == tempId })
+      console.log("------index of selected event on refresh is------", index)
+      this.refreshEventId = index
     }, error => {
       this.isLoad = false
       // console.log("error while get list of event", error);
