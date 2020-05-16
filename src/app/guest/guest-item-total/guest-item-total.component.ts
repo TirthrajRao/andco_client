@@ -124,7 +124,8 @@ export class GuestItemTotalComponent implements OnInit {
       this.maleArray.push(maleArrOfValue)
       this.femaleArray.push(femaleArrOfValue);
     });
-    console.log("female array ============>", this.femaleArray.length);
+    // console.log("female array ============>", Object.keys(this.femaleArray[0][0]).length);
+    // if(this.femaleArray[0])
     console.log("male array ============>", this.maleArray);
   }
 

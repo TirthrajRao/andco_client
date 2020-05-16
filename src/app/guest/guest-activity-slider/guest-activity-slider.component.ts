@@ -43,6 +43,8 @@ export class GuestActivitySliderComponent implements OnInit {
   isLoad = false
   discriptionName
   discriptionItem
+  previousQuantity
+  previousQuantityFemale
   constructor(
     public eventService: EventService,
     public router: Router,
@@ -230,6 +232,7 @@ export class GuestActivitySliderComponent implements OnInit {
 
 
   changeTab(item) {
+    // this.previousQuantity = undefined
     console.log("change tab item", this.displayGroup);
     this.selectedwallet = 1
     this.selectedGender = item
@@ -265,6 +268,8 @@ export class GuestActivitySliderComponent implements OnInit {
 
   changeGroup(event) {
     // console.log("index of group", event.target.value);
+
+    // this.previousQuantity = undefined
     this.groupIndex = event.target.value
     this.selectedGender = 'male'
     this.selectedwallet = 0
@@ -294,17 +299,48 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   maleTotal(event, item, index) {
-    console.log("kaik thay che ama bs", item);
+
     if (event.target.value != 0) {
+      console.log("value of pela ni", this.previousQuantity);
+      // console.log("total item list which is display", this.itemList);
+      if (this.previousQuantity == undefined) {
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
 
-      // let itemN = item.itemName+ ' ' + 'Added into cart'
+      if (this.previousQuantity == 1 && event.target.value == 1) {
+        console.log("this is important", this.previousQuantity);
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
+      if (this.previousQuantity < event.target.value) {
+        console.log("this is important", this.previousQuantity);
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
+      if (this.previousQuantity > event.target.value) {
+        console.log("this is not imporatant", this.previousQuantity);
+        this.toastr.error('removed', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
 
-      this.toastr.success('added', '', {
-        timeOut: 1000,
-        positionClass: 'toast-bottom-center'
-      })
+      // this.toastr.success('added', '', {
+      //   timeOut: 1000,
+      //   positionClass: 'toast-bottom-center'
+      // })
+
+
       this.itemList[index]['quantity'] = event.target.value
-      // this.displayActivity[this.activityIndex].activityName = []
+      console.log("kaik thay che ama bs", item);
+
 
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
@@ -322,12 +358,13 @@ export class GuestActivitySliderComponent implements OnInit {
       else {
         this.allCartList.push(obj)
       }
+      this.previousQuantity = event.target.value
       console.log("object of acitivity name", this.allCartList);
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
 
-      this.toastr.error('removed', '', {
+      this.toastr.error('Item removed from cart', '', {
         timeOut: 1000,
         positionClass: 'toast-bottom-center'
       })
@@ -343,10 +380,34 @@ export class GuestActivitySliderComponent implements OnInit {
     if (event.target.value != 0) {
 
 
-      this.toastr.success('added', '', {
-        timeOut: 1000,
-        positionClass: 'toast-bottom-center'
-      })
+      if (this.previousQuantityFemale == undefined) {
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
+
+      if (this.previousQuantityFemale == 1 && event.target.value == 1) {
+        console.log("this is important", this.previousQuantityFemale);
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
+      if (this.previousQuantityFemale < event.target.value) {
+        console.log("this is important", this.previousQuantityFemale);
+        this.toastr.success('added', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
+      if (this.previousQuantityFemale > event.target.value) {
+        console.log("this is not imporatant", this.previousQuantityFemale);
+        this.toastr.error('removed', '', {
+          timeOut: 1000,
+          positionClass: 'toast-bottom-center'
+        })
+      }
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
@@ -364,11 +425,12 @@ export class GuestActivitySliderComponent implements OnInit {
       else {
         this.allCartList.push(obj)
       }
+      this.previousQuantityFemale = event.target.value
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
 
-      this.toastr.error('removed', '', {
+      this.toastr.error('Item removed from cart', '', {
         timeOut: 1000,
         positionClass: 'toast-bottom-center'
       })
