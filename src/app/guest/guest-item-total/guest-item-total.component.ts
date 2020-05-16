@@ -115,7 +115,7 @@ export class GuestItemTotalComponent implements OnInit {
       value.forEach((valueOfSingle) => {
         console.log("single item value", valueOfSingle);
         console.log("Object.keys(valueOfSingle).length == 0 !!!!!", Object.keys(valueOfSingle).length)
-        
+
         if (valueOfSingle.itemGender == 'male') {
           maleArrOfValue.push(valueOfSingle);
         }
@@ -134,7 +134,7 @@ export class GuestItemTotalComponent implements OnInit {
       });
       this.maleArray.push(maleArrOfValue)
       this.femaleArray.push(femaleArrOfValue);
-     
+
     });
     console.log("female array ============>", this.femaleArray)
     // if(this.femaleArray[0])
@@ -178,6 +178,11 @@ export class GuestItemTotalComponent implements OnInit {
     this.totlaItem.splice(index, 1)
 
     console.log("total items which is store in localstorage", this.totlaItem);
+    if (this.totlaItem.length == 0) {
+      console.log("call this conditin or not ");
+
+      this.keys = []
+    }
     localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
     // this.eventService.removeCartItem(id)
     //   .subscribe(data => {
@@ -201,6 +206,11 @@ export class GuestItemTotalComponent implements OnInit {
 
     console.log("total items which is store in localstorage", this.totlaItem);
     localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
+    if (this.totlaItem.length == 0) {
+      console.log("call this conditin or not ");
+
+      this.keys = []
+    }
     // this.eventService.removeCartItem(id)
     //   .subscribe(data => {
     // console.log("remove item data", data);

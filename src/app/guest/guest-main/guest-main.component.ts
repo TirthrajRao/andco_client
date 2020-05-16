@@ -75,6 +75,11 @@ export class GuestMainComponent implements OnInit {
         data['index'] = 1
         data['allItems'] = total
         this.totalItem(data)
+        if (this.eventDetails == undefined) {
+          console.log("what is the hashtag", this.hashtag);
+          this.guestEventWithOutLogin(this.hashtag)
+
+        }
       } else if (params['donation']) {
         this.checkQuery = true
         this.index = 2
@@ -186,7 +191,7 @@ export class GuestMainComponent implements OnInit {
 
   }
   totalItem(event) {
-    console.log("total item display in main", this.eventDetails);
+    // console.log("total item display in main", this.eventDetails);
     this.index = event.index
     this.totalItemList = event
     this.isDisable = true
@@ -198,15 +203,17 @@ export class GuestMainComponent implements OnInit {
     console.log("event of add more", event);
     this.index = event.index
     this.removeItem = event.removeItem
+    this.totalActivityList = this.eventDetails.activity
     this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     console.log("event when item remove", this.removeItem);
   }
 
   donationAdd(event) {
-    console.log("add donation", event);
+    console.log("add donation=============", this.eventDetails);
     this.cartLength = event.total
     this.index = event.index
     if (event.index == 0) {
+      this.totalActivityList = this.eventDetails.activity
       this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     } else if (event.index == 2) {
       this.route.navigate(['/', this.hashtag], { queryParams: { donation: 'donation' } });
@@ -262,6 +269,7 @@ export class GuestMainComponent implements OnInit {
     console.log("what is in event when click on menu", event)
     this.index = event
     if (event == 0) {
+      this.totalActivityList = this.eventDetails.activity
       this.route.navigate(['/', this.hashtag], { queryParams: { activities: 'activities' } });
     } else if (event == 1) {
       this.route.navigate(['/', this.hashtag], { queryParams: { total: 'total' } });

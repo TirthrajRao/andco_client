@@ -3,7 +3,7 @@
     <img src="../../../assets/images/cart.png" alt="cart image" (click)="addTocart()">
 </div>
 <div class="guest-activity-single-slide">
-    <div class="guest-activity-slider slick-slide">
+    <div class="guest-activity-slider">
         <div *ngFor="let activity of displayActivity">
             <h2 class="tooltip-class text-white font-weight-bold mb-2" tooltipClass="my-custom-class" ngbTooltip="{{activity.activityName}}">{{activity.activityName}}</h2>
         </div>
