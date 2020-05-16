@@ -7,7 +7,7 @@ import { AlertService } from './alert.service';
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { from } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 declare const FB: any;
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,11 @@ export class SocialLoginService {
 
   eventIdWithLogin
 
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
+  public get currentUserValue(): any {
+    return this.currentUserSubject.value;
+  }
   constructor(
 
     private authService: AuthService,
@@ -28,6 +33,11 @@ export class SocialLoginService {
     public router: Router,
     // public environmentFile: environment
   ) {
+
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+
+
 
     (window as any).fbAsyncInit = function () {
       FB.init({

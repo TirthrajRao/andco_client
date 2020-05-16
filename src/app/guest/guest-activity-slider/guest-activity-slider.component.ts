@@ -43,7 +43,7 @@ export class GuestActivitySliderComponent implements OnInit {
   isLoad = false
   discriptionName
   discriptionItem
-  previousQuantity
+  previousQuantity: any
   previousQuantityFemale
   constructor(
     public eventService: EventService,
@@ -193,6 +193,8 @@ export class GuestActivitySliderComponent implements OnInit {
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     console.log("quntity with rank", this.cartTotalItems);
     this.itemList.forEach((singleItem) => {
+      console.log("single list", singleItem);
+
       if (this.cartTotalItems && this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
           // console.log("call or not", singleCartItem);
@@ -215,8 +217,15 @@ export class GuestActivitySliderComponent implements OnInit {
         console.log("check this else part", singleItem);
         singleItem['quantity'] = 0
       }
+      if (singleItem.quantity == singleItem.quantity) {
+        // console.log("call this condition or not", typeof this.previousQuantity, singleItem.quantity);
+        this.previousQuantity = singleItem.quantity
+        console.log("after assign the value", this.previousQuantity);
+      } else {
+        this.previousQuantity = undefined
+      }
     })
-    // console.log("final male items", this.itemList);
+    console.log("final male items", this.previousQuantity);
 
     setTimeout(() => {
       $('input:radio[id="0"]').attr('checked', true);
@@ -261,6 +270,24 @@ export class GuestActivitySliderComponent implements OnInit {
         console.log("check this else part", singleItem);
         singleItem['quantity'] = 0
       }
+      if (this.selectedGender == 'male') {
+        if (singleItem.quantity == singleItem.quantity) {
+          // console.log("call this condition or not", typeof this.previousQuantity, singleItem.quantity);
+          this.previousQuantity = singleItem.quantity
+          console.log("after assign the value", this.previousQuantity);
+        } else {
+          this.previousQuantity = undefined
+        }
+      }
+      if (this.selectedGender == 'female') {
+        if (singleItem.quantity == singleItem.quantity) {
+          // console.log("call this condition or not", typeof this.previousQuantity, singleItem.quantity);
+          this.previousQuantityFemale = singleItem.quantity
+          console.log("after assign the value", this.previousQuantityFemale);
+        } else {
+          this.previousQuantityFemale = undefined
+        }
+      }
     })
     console.log("final item list", this.itemList);
 
@@ -275,11 +302,13 @@ export class GuestActivitySliderComponent implements OnInit {
     this.selectedwallet = 0
     this.itemList = _.filter(this.displayGroup[this.groupIndex].item, { 'itemGender': this.selectedGender });
     this.itemList.forEach((singleItem) => {
+      // console.log("values of items ", typeof singleItem, singleItem['quantity'])
+
       if (this.cartTotalItems && this.cartTotalItems.length > 0) {
         this.cartTotalItems.forEach((singleCartItem) => {
           // console.log("call or not", singleCartItem);
           if (singleItem._id == singleCartItem.itemId) {
-            console.log("first of comdition");
+            // console.log("first of comdition");
             singleItem['quantity'] = singleCartItem.quantity
           } else {
             this.removeItemArray.forEach((removeItem) => {
@@ -293,12 +322,21 @@ export class GuestActivitySliderComponent implements OnInit {
         console.log("final else part", singleItem);
         singleItem['quantity'] = 0
       }
+      if (singleItem.quantity == singleItem.quantity) {
+        console.log("call this condition or not", typeof this.previousQuantity, singleItem.quantity);
+        this.previousQuantity = singleItem.quantity
+        console.log("after assign the value", this.previousQuantity);
+      } else {
+        this.previousQuantity = undefined
+      }
     })
     console.log("item list of male", this.itemList);
 
   }
 
   maleTotal(event, item, index) {
+    // console.log("");
+
 
     if (event.target.value != 0) {
       console.log("value of pela ni", this.previousQuantity);

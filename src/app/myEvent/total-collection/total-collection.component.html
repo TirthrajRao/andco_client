@@ -4,7 +4,7 @@
         <h1 *ngIf="noValueMessage">{{noValueMessage}}</h1>
     </div>
     <div class="total-collection-slider" *ngIf="isSlider">
-        <div class="total-activity-box" *ngFor="let item of displayCollection; let i =index">
+        <div class="total-activity-box slick-slide" *ngFor="let item of displayCollection; let i =index">
             <div class="inner-div">
                 <h1>{{item._id|titlecase}} ({{item.total | currency:"&#x20A6;&nbsp;"}})
                     <span *ngIf="isClosed">(closed)</span>

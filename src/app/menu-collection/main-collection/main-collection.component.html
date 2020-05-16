@@ -10,7 +10,7 @@
             </div>
             <div class="myEvent-slider-box mb-3">
                 <div class="myEvent-slider">
-                    <div class="myEvent-single-slide" *ngFor="let name of listOfEvent; let i =index">
+                    <div class="myEvent-single-slide slick-slide" *ngFor="let name of listOfEvent; let i =index">
                         <div class="myEvent-name event" [class.active]="selectedIndex === i" (click)="getCollection(name._id , i)">
                             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.eventTitle |titlecase}}">
                                 {{name.eventTitle |titlecase}}</p>

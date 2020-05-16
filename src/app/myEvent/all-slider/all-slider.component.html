@@ -1,6 +1,6 @@
 <div class="myEvent-slider-box">
     <div class="myEvent-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of displayList; let i =index">
+        <div class="myEvent-single-slide slick-slide" *ngFor="let name of displayList; let i =index">
             <div class="myEvent-name event" [class.active]="selectedIndex === i" (click)="getSingleEvent(name._id , i)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.eventTitle |titlecase}}">
                     {{name.eventTitle |titlecase}}</p>
@@ -15,7 +15,7 @@
 
 <div class="myEvent-slider-box">
     <div class="myEvent-activity-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of activityList; let i =index">
+        <div class="myEvent-single-slide slick-slide" *ngFor="let name of activityList; let i =index">
             <div class="myEvent-name activity" id={{i}} *ngIf="name.activityName" [class.active]="selectedActivityIndexFromUrl == i"
                 (click)="getSingleActivity(name.group , i , name._id)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.activityName|titlecase}}">
@@ -32,7 +32,7 @@
 
 <div class="myEvent-slider-box groupOfEvent" [hidden]="!isGroup">
     <div class="myEvent-group-slider">
-        <div class="myEvent-single-slide" *ngFor="let name of displayGroup; let i =index">
+        <div class="myEvent-single-slide slick-slide" *ngFor="let name of displayGroup; let i =index">
             <div class="myEvent-name group" id="{{name.activityId}}-{{i}}" [class.active1]="selectedGroupIndexFromUrl == i" (click)="getGroupItem(name.item, i , name)">
                 <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name.groupName |titlecase}}">
                     {{name.groupName |titlecase}}</p>

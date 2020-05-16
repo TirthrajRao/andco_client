@@ -1,8 +1,6 @@
-<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex"
-    [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
+<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex" [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
 </app-all-slider>
-<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex"
-    (groupItem)="getSingleGroupItem($event)">
+<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex" (groupItem)="getSingleGroupItem($event)">
 </app-all-slider>
 
 <!-- <div *ngIf="!displayItem">Sorry</div> -->
@@ -16,8 +14,7 @@
     <div class="myevent-groups-item">
         <div class="myevent-group">
             <div class="myevent-single-item" *ngFor="let item of itemNamePrint">
-                <span class="items-name" tooltipClass="my-custom-class"
-                    ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
+                <span class="items-name" tooltipClass="my-custom-class" placement="left" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
                 <span class="items-price">{{item.itemPrice | currency:"&#x20A6;"}}</span>
                 <a (click)="openModel(item)" data-toggle="modal">
                     <i class="fa fa-info" aria-hidden="true"></i>
@@ -27,8 +24,7 @@
     </div>
 </div>
 
-<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal"
-    aria-hidden="true">
+<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">

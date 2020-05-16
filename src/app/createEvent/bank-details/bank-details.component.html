@@ -34,7 +34,7 @@
                     <img src="../../assets/images/no-user.gif" alt="">
                     <p class="text-center">No bank account details added</p>
                 </div>
-                <div class="single-slide" *ngFor="let name of bankList">
+                <div class="single-slide slick-slide" *ngFor="let name of bankList">
                     <input type="radio" name="radio-group-{{name._id}}" id="radio-group-{{name._id}}"
                         (change)="selectBank($event)" [value]="name._id">
                     <label class="w-100 mb-0" for="radio-group-{{name._id}}">
@@ -79,7 +79,7 @@
                     <img src="../../assets/images/no-user.gif" alt="">
                     <p class="text-center">No card details added</p>
                 </div>
-                <div class="single-slide text-left" *ngFor="let card of cardList; let i =index">
+                <div class="single-slide text-left slick-slide" *ngFor="let card of cardList; let i =index">
                     <input name="radio-groupCard-{{card._id}}" id="radio-groupCard-{{card._id}}" [value]="card._id"
                         type="radio" (change)="selectCard($event)">
                     <label class="w-100 mb-0" for="radio-groupCard-{{card._id}}">

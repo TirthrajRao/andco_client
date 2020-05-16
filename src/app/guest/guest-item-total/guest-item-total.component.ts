@@ -111,8 +111,11 @@ export class GuestItemTotalComponent implements OnInit {
     this.values.forEach((value) => {
       let maleArrOfValue = [];
       let femaleArrOfValue = [];
+      console.log("valuevaluevaluevalue", value)
       value.forEach((valueOfSingle) => {
-        // console.log("single item value", valueOfSingle);
+        console.log("single item value", valueOfSingle);
+        console.log("Object.keys(valueOfSingle).length == 0 !!!!!", Object.keys(valueOfSingle).length)
+
         if (valueOfSingle.itemGender == 'male') {
           maleArrOfValue.push(valueOfSingle);
         }
@@ -120,11 +123,20 @@ export class GuestItemTotalComponent implements OnInit {
           femaleArrOfValue.push(valueOfSingle);
           // console.log("female array to push =======", femaleArrOfValue);
         }
+        // console.log("femaleArrOfValue.length============>", femaleArrOfValue.length)
+        // console.log("maleArrOfValue.length============>", maleArrOfValue.length)
+        // if (maleArrOfValue.length <= 0) {
+        //   maleArrOfValue.push({ notFound: 'NOT FOUND' })
+        // }
+        // if (femaleArrOfValue.length <= 0) {
+        //   femaleArrOfValue.push({ notFound: 'NOT FOUND' })
+        // }
       });
       this.maleArray.push(maleArrOfValue)
       this.femaleArray.push(femaleArrOfValue);
+
     });
-    // console.log("female array ============>", Object.keys(this.femaleArray[0][0]).length);
+    console.log("female array ============>", this.femaleArray)
     // if(this.femaleArray[0])
     console.log("male array ============>", this.maleArray);
   }
@@ -166,6 +178,11 @@ export class GuestItemTotalComponent implements OnInit {
     this.totlaItem.splice(index, 1)
 
     console.log("total items which is store in localstorage", this.totlaItem);
+    if (this.totlaItem.length == 0) {
+      console.log("call this conditin or not ");
+
+      this.keys = []
+    }
     localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
     // this.eventService.removeCartItem(id)
     //   .subscribe(data => {
@@ -189,6 +206,11 @@ export class GuestItemTotalComponent implements OnInit {
 
     console.log("total items which is store in localstorage", this.totlaItem);
     localStorage.setItem('allCartList', JSON.stringify(this.totlaItem))
+    if (this.totlaItem.length == 0) {
+      console.log("call this conditin or not ");
+
+      this.keys = []
+    }
     // this.eventService.removeCartItem(id)
     //   .subscribe(data => {
     // console.log("remove item data", data);

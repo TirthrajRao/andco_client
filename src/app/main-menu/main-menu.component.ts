@@ -17,7 +17,7 @@ export class MainMenuComponent implements OnInit {
   index
   isMenu = JSON.parse(sessionStorage.getItem('isMenu'));
   data: any;
-  dialogRef: MatDialogRef<unknown, unknown>;
+  dialogRef: MatDialogRef<any>;
   isClosed = false
   constructor(
     public _loginService: LoginService,
@@ -35,6 +35,9 @@ export class MainMenuComponent implements OnInit {
       this.dialogRef.disableClose = true;
       this.isClosed = true
       // this.dialogRef.close('newOne');
+    }
+    else{
+      
     }
 
     this._loginService.getNewMenu().subscribe(res => {
@@ -113,6 +116,8 @@ export class MainMenuComponent implements OnInit {
   }
 
   closeModel() {
-    this.dialogRef.close('newOne');
+    if (this.dialogRef){
+      this.dialogRef.close('newOne');
+    }
   }
 }
