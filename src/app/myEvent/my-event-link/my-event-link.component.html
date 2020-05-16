@@ -7,7 +7,7 @@
 
 
 <div class="my-event-tab-slider my-2">
-    <div class="single-tab-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
+    <div class="single-tab-slide slick-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
         <div class="tab-name" [class.active]="selectedIndex == i" id={{i}}>
             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
