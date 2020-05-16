@@ -14,7 +14,7 @@
     <div class="myevent-groups-item">
         <div class="myevent-group">
             <div class="myevent-single-item" *ngFor="let item of itemNamePrint">
-                <span class="items-name" tooltipClass="my-custom-class" placement="right" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
+                <span class="items-name" tooltipClass="my-custom-class" placement="left" ngbTooltip="{{item.itemName}}">{{item.itemName}}</span>
                 <span class="items-price">{{item.itemPrice | currency:"&#x20A6;"}}</span>
                 <a (click)="openModel(item)" data-toggle="modal">
                     <i class="fa fa-info" aria-hidden="true"></i>
