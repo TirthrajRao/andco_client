@@ -166,8 +166,12 @@ export class BankDetailsComponent implements OnInit {
             this.initCardSliderAfter()
           }, 5)
         } else {
-          this.$sliderContainer.slick('unslick');
-          this.$sliderContainer = $('.card-slider');
+          console.log("this is for card ");
+
+          // if (this.$sliderContainer) {
+          //   this.$sliderContainer.slick('unslick');
+          //   this.$sliderContainer = $('.card-slider');
+          // }
           setTimeout(() => {
             this.initCardSlider()
           }, 5)

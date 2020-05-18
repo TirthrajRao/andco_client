@@ -128,9 +128,9 @@ export class LoginService {
     // console.log(body);
     return this.http.post<any>(config.baseApiUrl + "/login/google", body)
       .pipe(map(googleUser => {
-        // console.log("google login user accesstoken", googleUser);
+        console.log("google login user accesstoken", googleUser);
         if (googleUser && googleUser.data.accessToken) {
-          sessionStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
+          sessionStorage.setItem('currentUser', JSON.stringify(googleUser.data.accessToken));
           sessionStorage.setItem('userRole', JSON.stringify(googleUser.data.UserRole));
           this.currentUserSubject.next(googleUser);
         }
@@ -151,7 +151,7 @@ export class LoginService {
       .pipe(map(facebookUser => {
         // console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {
-          sessionStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
+          sessionStorage.setItem('currentUser', JSON.stringify(facebookUser.data.accessToken));
           sessionStorage.setItem('userRole', JSON.stringify(facebookUser.data.UserRole));
           this.currentUserSubject.next(facebookUser);
 
