@@ -351,7 +351,6 @@ export class GuestActivitySliderComponent implements OnInit {
       if (this.maleQuantity && this.maleQuantity.length) {
         console.log("whats it the total item", this.maleQuantity);
         let newIndex = this.maleQuantity.filter(x => x.itemId === item._id)
-        console.log("8888888888888-- This Is fucking good--------", newIndex);
         if (newIndex && newIndex.length) {
           this.maleQuantity.forEach((singleItem) => {
             if (singleItem.itemId === item._id) {

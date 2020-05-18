@@ -7,7 +7,7 @@
                 <div class="create-event-slider text-center">
                     <!-- your event type start -->
                     <div class="create-event-type-box">
-                        <h3>Your event type <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
+                        <h3>Your Event Type <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
                         <div class="create-event-type-menu">
                             <ul class="mb-0">
                                 <li *ngFor="let type of eventType; let i =index" (click)="selectEvent(i)" [class.active]="selctedIndex == i">
@@ -26,7 +26,7 @@
                     <!-- your event type end -->
                     <!-- your event hashtag start -->
                     <div class="create-event-hashtag-box">
-                        <h3>Your event hashtag</h3>
+                        <h3>Your Event Hashtag</h3>
                         <div class="hashtag-form form-group">
                             <input type="text" class="form-control" formControlName="hashTag" ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}" [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }" placeholder="hashtag" pattern="[A-Za-z0-9]+" (input)="removeSpace(eventForm.value)"
                                 id="hashTag">

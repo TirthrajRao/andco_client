@@ -35,7 +35,9 @@
 <!-- step 3 start pay-->
 <div class="step-2-link" *ngIf="index == 5">
     <div class="textarea-box">
-        <textarea class="pay-input" type="text" [(ngModel)]="payMessage" (blur)="enterPayMessage()" placeholder="Enter message for guests after payment has been made e.g. Thank you for buying our aso ebi. We can’t wait to see you in all your loveliness."></textarea>
+        <textarea class="pay-input" rows="3" type="text" [(ngModel)]="payMessage" (blur)="enterPayMessage()" placeholder="Enter message for guests after payment has been made 
+        e.g. Thank you for buying our aso ebi. 
+        We can’t wait to see you in all your loveliness."></textarea>
     </div>
     <div class="share-button">
         <button class="btn">Share <i class="fa fa-share" aria-hidden="true"></i>
@@ -79,7 +81,8 @@
 <div class="step-3-link" *ngIf="index == 2">
     <form [formGroup]="reminderForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="1" (blur)="reminderMessageAdd()" formControlName="reminderMessage" placeholder="Enter message to send to guests that have not yet bought your aso ebi." ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
+            <textarea name="" id="" rows="2" (blur)="reminderMessageAdd()" formControlName="reminderMessage" placeholder="Enter message to send to guests that have not yet
+             bought your aso ebi." ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
         </div>
         <div class="send-message">
             <div class="float-left d-flex">
@@ -148,7 +151,8 @@
 <div class="step-4-link" *ngIf="index == 3">
     <form [formGroup]="afterEventForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="2" placeholder="Together with our parents,thank you for your presence, purchase,presents and prayers." formControlName="afterEventMessage" ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}" (blur)="checkAfterMessage()"></textarea>
+            <textarea name="" id="" rows="2" placeholder="Together with our parents,thank you for your presence,
+             purchase,presents and prayers." formControlName="afterEventMessage" ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}" (blur)="checkAfterMessage()"></textarea>
             <a (click)="openModel()"><img class="attach-img" src="../../../assets/images/attach-img.png" alt="attachment icon"></a>
         </div>
         <div class="to">
