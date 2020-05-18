@@ -104,8 +104,10 @@ export class SocialLoginService {
         this.isLoad.emit('false')
       })
     }).catch((err) => {
+      console.log("what is the error", err);
+
       this.isLoad.emit('false')
-      this.alertService.getError(err.error.message)
+      this.alertService.getError(err)
       // console.log(err);
     });
   }
@@ -146,8 +148,8 @@ export class SocialLoginService {
           }, err => {
             // this.isLoad = false;
             this.isLoad.emit('false')
-            // console.log("error display", err);
-            this.alertService.getError(err.error.message);
+            console.log("error display", err);
+            this.alertService.getError(err);
           })
       }
       else {

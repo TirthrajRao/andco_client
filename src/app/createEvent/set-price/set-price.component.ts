@@ -195,7 +195,7 @@ export class SetPriceComponent implements OnInit {
 
   previousSlide(current, next) {
     console.log("current slide and next slider every time==========", this.setPriceForm);
-    
+
     this.currentSlideIndex = current
     this.nextSlideIndex = next
     if (this.currentSlideIndex) {
@@ -298,7 +298,7 @@ export class SetPriceComponent implements OnInit {
   backToGroup() {
     console.log("what is the value of slide", this.currentSlideIndex, this.nextSlideIndex)
     console.log("form is ");
-    
+
     // this.router.navigate(['/eventGroup/' + this.eventId])
     if (!this.setPriceDetails) {
       this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
@@ -637,7 +637,7 @@ export class SetPriceComponent implements OnInit {
 
     if (data == 'test5') {
       console.log("this.setPriceForm.controls.payMentTransferDate ==== >>>>>>>", this.setPriceForm.controls.payMentTransferDate)
-      
+
       this.setPriceForm.patchValue({
         payMentTransferDate: 'true'
       });
@@ -655,16 +655,28 @@ export class SetPriceComponent implements OnInit {
         //   this.isDisableNext = false
         //   this.isPayment = false
         // } else {
-          this.isDisableNext = true
+        this.isDisableNext = true
         // }
       }
     } else {
       console.log("setPriceDetailssetPriceDetailssetPriceDetailssetPriceDetails", this.setPriceForm)
-      if (this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') {
+      if ((this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') && this.setPriceForm.controls.payMentTransferDate.value != 'true') {
+        console.log("this is first one to set---------");
+
         this.isTransfer = false
         this.isPayment = true
         // this.isDisableNext = false
-      } else {
+      } else if (this.setPriceForm.controls.payMentTransferDate.value == 'true' && this.setPriceDetails.payMentTransferDate) {
+        console.log("this is for perfect to join========", this.setPriceDetails.payMentTransferDate);
+        this.isTransfer = false
+        this.isPayment = true
+
+        this.setPriceForm.patchValue({
+          payMentTransferDate: this.setPriceDetails.payMentTransferDate
+        });
+        this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
+      }
+      else {
         console.log("su ave che", data)
         console.log("value of form", this.setPriceForm);
         if (this.setPriceForm.controls.payMentTransferDate.value == 'true' && !this.selectedPaymentTransferDate) {
