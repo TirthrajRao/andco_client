@@ -126,6 +126,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+/* .my-custom-class.left .arrow::before {
+    border-top-color: transparent;
+    border-left-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: transparent;
+} */
+
+
 /* tooltip design end */
 
 

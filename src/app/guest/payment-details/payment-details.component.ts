@@ -184,6 +184,8 @@ export class PaymentDetailsComponent implements OnInit {
       localStorage.removeItem('allCartList')
       localStorage.removeItem('donation')
       localStorage.removeItem('addressDetails')
+      localStorage.removeItem('maleQuantity')
+      localStorage.removeItem('femaleQuantity')
       // localStorage.clear()
       this.isLoad = false
     }, error => {
