@@ -45,6 +45,8 @@ export class GuestActivitySliderComponent implements OnInit {
   discriptionItem
   previousQuantity: any
   previousQuantityFemale
+  maleQuantity = []
+  femaleQuantity = []
   constructor(
     public eventService: EventService,
     public router: Router,
@@ -54,8 +56,16 @@ export class GuestActivitySliderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-
+    let allReadyAdded = JSON.parse(localStorage.getItem('maleQuantity'))
+    console.log("maleQuantity ======== allReadyAdded", allReadyAdded);
+    if (allReadyAdded && allReadyAdded.length) {
+      this.maleQuantity = allReadyAdded
+    }
+    let allReadyAddedFemale = JSON.parse(localStorage.getItem('maleQuantity'))
+    console.log("maleQuantity ======== allReadyAdded", allReadyAdded);
+    if (allReadyAddedFemale && allReadyAddedFemale.length) {
+      this.femaleQuantity = allReadyAddedFemale
+    }
 
 
     this.sub = this.activated.params.subscribe(params => {
@@ -335,47 +345,63 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   maleTotal(event, item, index) {
-    // console.log("");
-
+    console.log("what is in item", event.target.value);
 
     if (event.target.value != 0) {
-      console.log("value of pela ni", this.previousQuantity);
-      // console.log("total item list which is display", this.itemList);
-      if (this.previousQuantity == undefined) {
+      if (this.maleQuantity && this.maleQuantity.length) {
+        console.log("whats it the total item", this.maleQuantity);
+        let newIndex = this.maleQuantity.filter(x => x.itemId === item._id)
+        console.log("8888888888888-- This Is fucking good--------", newIndex);
+        if (newIndex && newIndex.length) {
+          this.maleQuantity.forEach((singleItem) => {
+            if (singleItem.itemId === item._id) {
+              console.log("call this or not =============", singleItem);
+              // console.log("single item of male", singleItem);
+              if (singleItem.quantity > event.target.value) {
+                console.log("this is first one");
+                this.toastr.error('removed', '', {
+                  timeOut: 1000,
+                  positionClass: 'toast-bottom-center'
+                })
+                singleItem['quantity'] = event.target.value
+              }
+              if (singleItem.quantity < event.target.value) {
+                console.log("this is last one");
+                this.toastr.success('added', '', {
+                  timeOut: 1000,
+                  positionClass: 'toast-bottom-center'
+                })
+                singleItem['quantity'] = event.target.value
+              }
+            }
+          })
+        } else {
+          // if (singleItem.itemId != item._id) {
+          console.log("this is so  much important============");
+          let newObject = {
+            itemId: item._id,
+            quantity: event.target.value
+          }
+          this.toastr.success('added', '', {
+            timeOut: 1000,
+            positionClass: 'toast-bottom-center'
+          })
+          this.maleQuantity.push(newObject)
+          // }
+        }
+      } else {
+        console.log("this is important");
+        let newObject = {
+          itemId: item._id,
+          quantity: event.target.value
+        }
         this.toastr.success('added', '', {
           timeOut: 1000,
           positionClass: 'toast-bottom-center'
         })
+        this.maleQuantity.push(newObject)
       }
-
-      if (this.previousQuantity == 1 && event.target.value == 1) {
-        console.log("this is important", this.previousQuantity);
-        this.toastr.success('added', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
-      if (this.previousQuantity < event.target.value) {
-        console.log("this is important", this.previousQuantity);
-        this.toastr.success('added', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
-      if (this.previousQuantity > event.target.value) {
-        console.log("this is not imporatant", this.previousQuantity);
-        this.toastr.error('removed', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
-
-      // this.toastr.success('added', '', {
-      //   timeOut: 1000,
-      //   positionClass: 'toast-bottom-center'
-      // })
-
-
+      console.log("this is final data", this.maleQuantity);
       this.itemList[index]['quantity'] = event.target.value
       console.log("kaik thay che ama bs", item);
 
@@ -402,6 +428,12 @@ export class GuestActivitySliderComponent implements OnInit {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
 
+      let removeIndex = this.maleQuantity.findIndex(x => x.itemId == item._id)
+      console.log("this is to be removed from array", removeIndex);
+      this.maleQuantity.splice(removeIndex, 1)
+      console.log("this is fial array with remove", this.maleQuantity);
+
+
       this.toastr.error('Item removed from cart', '', {
         timeOut: 1000,
         positionClass: 'toast-bottom-center'
@@ -417,35 +449,59 @@ export class GuestActivitySliderComponent implements OnInit {
     // console.log("kaik thay che ama bs", event.target.value, item);
     if (event.target.value != 0) {
 
-
-      if (this.previousQuantityFemale == undefined) {
+      if (this.femaleQuantity && this.femaleQuantity.length) {
+        console.log("whats it the total item", this.femaleQuantity);
+        let newIndex = this.femaleQuantity.filter(x => x.itemId === item._id)
+        console.log("8888888888888-- This Is fucking good--------", newIndex);
+        if (newIndex && newIndex.length) {
+          this.femaleQuantity.forEach((singleItem) => {
+            if (singleItem.itemId === item._id) {
+              // console.log("single item of male", singleItem);
+              if (singleItem.quantity > event.target.value) {
+                console.log("this is first one");
+                this.toastr.error('removed', '', {
+                  timeOut: 1000,
+                  positionClass: 'toast-bottom-center'
+                })
+                singleItem['quantity'] = event.target.value
+              }
+              if (singleItem.quantity < event.target.value) {
+                console.log("this is last one");
+                this.toastr.success('added', '', {
+                  timeOut: 1000,
+                  positionClass: 'toast-bottom-center'
+                })
+                singleItem['quantity'] = event.target.value
+              }
+            }
+          })
+        } else {
+          // if (singleItem.itemId != item._id) {
+          console.log("this is so  much important============");
+          let newObject = {
+            itemId: item._id,
+            quantity: event.target.value
+          }
+          this.toastr.success('added', '', {
+            timeOut: 1000,
+            positionClass: 'toast-bottom-center'
+          })
+          this.femaleQuantity.push(newObject)
+          // }
+        }
+      } else {
+        console.log("this is important");
+        let newObject = {
+          itemId: item._id,
+          quantity: event.target.value
+        }
         this.toastr.success('added', '', {
           timeOut: 1000,
           positionClass: 'toast-bottom-center'
         })
+        this.femaleQuantity.push(newObject)
       }
-
-      if (this.previousQuantityFemale == 1 && event.target.value == 1) {
-        console.log("this is important", this.previousQuantityFemale);
-        this.toastr.success('added', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
-      if (this.previousQuantityFemale < event.target.value) {
-        console.log("this is important", this.previousQuantityFemale);
-        this.toastr.success('added', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
-      if (this.previousQuantityFemale > event.target.value) {
-        console.log("this is not imporatant", this.previousQuantityFemale);
-        this.toastr.error('removed', '', {
-          timeOut: 1000,
-          positionClass: 'toast-bottom-center'
-        })
-      }
+      console.log("what is the finale value for female", this.femaleQuantity);
       this.itemList[index]['quantity'] = event.target.value
       let obj = {
         activityName: this.displayActivity[this.activityIndex].activityName,
@@ -467,6 +523,9 @@ export class GuestActivitySliderComponent implements OnInit {
     } else {
       let index1 = this.allCartList.findIndex(x => x.itemId === item._id);
       this.allCartList.splice(index1, 1);
+      let removeIndex = this.femaleQuantity.findIndex(x => x.itemId == item._id)
+      console.log("this is to be removed from array", removeIndex);
+      this.femaleQuantity.splice(removeIndex, 1)
 
       this.toastr.error('Item removed from cart', '', {
         timeOut: 1000,
@@ -486,6 +545,8 @@ export class GuestActivitySliderComponent implements OnInit {
       this.allCartList = this.cartTotalItems
     }
     localStorage.setItem('allCartList', JSON.stringify(this.allCartList))
+    localStorage.setItem('maleQuantity', JSON.stringify(this.maleQuantity))
+    localStorage.setItem('femaleQuantity', JSON.stringify(this.femaleQuantity))
     // let body = {
     //   eventHashtag: this.eventHashtag
     // }
