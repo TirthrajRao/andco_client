@@ -132,8 +132,8 @@ export class SetPriceComponent implements OnInit {
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
-      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
-      thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . ,]+$")]),
+      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . , ! ? '']+$")]),
+      thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . , ! ? '']+$")]),
       payMentTransferDate: new FormControl('', [Validators.required]),
       isLogistics: new FormControl('', [Validators.required]),
       paymentDeadlineDate: new FormControl('', [Validators.required]),
@@ -625,6 +625,8 @@ export class SetPriceComponent implements OnInit {
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
   }
   paymentCloseDate(data) {
+    console.log("whenn this one is call", this.setPriceForm);
+
     if (data == 'test5') {
       this.setPriceForm.patchValue({
         payMentTransferDate: 'true'
@@ -632,11 +634,19 @@ export class SetPriceComponent implements OnInit {
       this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
       this.isTransfer = false
       this.isPayment = false
+      console.log("payment close date=========", this.setPriceForm);
       if (this.setPriceForm.controls.payMentTransferDate.status == 'VALID') {
         console.log("for transfer");
         this.isDisableNext = false
       } else {
-        this.isDisableNext = true
+        if (this.setPriceDetails) {
+          this.setPriceForm.controls.payMentTransferDate.setValue('true');
+          console.log("call this else part", this.setPriceForm);
+          this.isDisableNext = false
+          this.isPayment = false
+        } else {
+          this.isDisableNext = true
+        }
       }
     } else {
       if (this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') {
@@ -763,7 +773,7 @@ export class SetPriceComponent implements OnInit {
 
 
   updateDropDown(event) {
-    console.log("selected drop down value", event.target.value);
+    console.log("selected drop down value",this.hearAboutMessage);
     if (event.target.value == 'planner') {
       this.isEventPlannerUpdate = true
       this.isEventVendorUpdate = false
