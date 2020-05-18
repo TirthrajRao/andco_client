@@ -610,15 +610,15 @@ export class SetPriceComponent implements OnInit {
         }
       }
       console.log("final data to  update", this.setPriceForm.value);
-      // this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
-      //   console.log("response of set price of event", response);
-      //   this.isLoad = false
-      //   this.alertService.getSuccess(response.message)
-      //   this.router.navigate(['set-message/' + 'update'])
-      // }, error => {
-      //   console.log("error while set price of event", error)
-      //   this.isLoad = false
-      // })
+      this.eventService.updateEetPriceOfEvent(this.setPriceForm.value, this.eventId).subscribe((response: any) => {
+        console.log("response of set price of event", response);
+        this.isLoad = false
+        this.alertService.getSuccess(response.message)
+        this.router.navigate(['set-message/' + 'update'])
+      }, error => {
+        console.log("error while set price of event", error)
+        this.isLoad = false
+      })
     }
 
   }
