@@ -101,7 +101,7 @@ export class GuestActivitySliderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("paynent is close", this.isClosed);
+    // console.log("paynent is close", this.isClosed);
     this.isClose = changes.isClosed.currentValue
     if (this.isClose == true) {
       this.isTotal = false
@@ -109,7 +109,7 @@ export class GuestActivitySliderComponent implements OnInit {
       this.isTotal = true
     }
     // this.getSelectedItems()
-    console.log("changes", changes);
+    console.log("changes of my event", changes);
     if (changes.listOfActivity && changes.listOfActivity.currentValue) {
       this.sub = this.activated.params.subscribe(params => {
         this.eventHashtag = params.hashTag
