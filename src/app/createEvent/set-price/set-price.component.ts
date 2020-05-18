@@ -132,7 +132,7 @@ export class SetPriceComponent implements OnInit {
     // console.log("link of event======", this.eventLink);
 
     this.setPriceForm = new FormGroup({
-      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . , ! ? '']+$")]),
+      welcomeMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . , ! \" ? '']+$")]),
       thankyouMessage: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z0-9 _ . , ! ? '']+$")]),
       payMentTransferDate: new FormControl('', [Validators.required]),
       isLogistics: new FormControl('', [Validators.required]),
@@ -194,6 +194,8 @@ export class SetPriceComponent implements OnInit {
 
 
   previousSlide(current, next) {
+    console.log("current slide and next slider every time==========", this.setPriceForm);
+    
     this.currentSlideIndex = current
     this.nextSlideIndex = next
     if (this.currentSlideIndex) {
@@ -295,6 +297,8 @@ export class SetPriceComponent implements OnInit {
 
   backToGroup() {
     console.log("what is the value of slide", this.currentSlideIndex, this.nextSlideIndex)
+    console.log("form is ");
+    
     // this.router.navigate(['/eventGroup/' + this.eventId])
     if (!this.setPriceDetails) {
       this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
@@ -370,6 +374,10 @@ export class SetPriceComponent implements OnInit {
         }
         if (this.setPriceDetails.payMentTransferDate != 'true') {
           $('input:radio[id="test6"]').prop('checked', true);
+          this.setPriceForm.patchValue({
+            payMentTransferDate: this.setPriceDetails.payMentTransferDate
+          });
+          this.setPriceForm.get('payMentTransferDate').updateValueAndValidity();
           // this.isTransfer = true
           this.isPayment = true
         }
@@ -628,6 +636,8 @@ export class SetPriceComponent implements OnInit {
     console.log("whenn this one is call", this.setPriceForm);
 
     if (data == 'test5') {
+      console.log("this.setPriceForm.controls.payMentTransferDate ==== >>>>>>>", this.setPriceForm.controls.payMentTransferDate)
+      
       this.setPriceForm.patchValue({
         payMentTransferDate: 'true'
       });
@@ -639,16 +649,17 @@ export class SetPriceComponent implements OnInit {
         console.log("for transfer");
         this.isDisableNext = false
       } else {
-        if (this.setPriceDetails) {
-          this.setPriceForm.controls.payMentTransferDate.setValue('true');
-          console.log("call this else part", this.setPriceForm);
-          this.isDisableNext = false
-          this.isPayment = false
-        } else {
+        // if (this.setPriceDetails) {
+        //   this.setPriceForm.controls.payMentTransferDate.setValue('true');
+        //   console.log("call this else part", this.setPriceForm);
+        //   this.isDisableNext = false
+        //   this.isPayment = false
+        // } else {
           this.isDisableNext = true
-        }
+        // }
       }
     } else {
+      console.log("setPriceDetailssetPriceDetailssetPriceDetailssetPriceDetails", this.setPriceForm)
       if (this.setPriceDetails && this.setPriceDetails.payMentTransferDate != 'true') {
         this.isTransfer = false
         this.isPayment = true
