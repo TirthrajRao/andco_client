@@ -257,6 +257,22 @@ img.down {
     cursor: pointer;
 }
 
+.empty-message {
+    text-align: center;
+}
+
+.empty-message img {
+    height: 80px;
+    filter: var(--filter-no-msg);
+}
+
+.empty-message p {
+    font-size: 20px;
+    color: var(--guest-activity-tab-content-color);
+    font-weight: 600;
+    font-size: 14px;
+}
+
 
 /* radio button css end here */
 
