@@ -70,6 +70,7 @@ export class SetPriceComponent implements OnInit {
   displayTimeZone = timezone
   selectedTimeZone
   defaultTimeZone
+  onlyDisplay = false
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -194,7 +195,7 @@ export class SetPriceComponent implements OnInit {
 
 
   previousSlide(current, next) {
-    console.log("current slide and next slider every time==========", this.setPriceForm);
+    console.log("current slide and next slider every time==========", current);
 
     this.currentSlideIndex = current
     this.nextSlideIndex = next
@@ -213,8 +214,32 @@ export class SetPriceComponent implements OnInit {
     if ((current == 3 && next == 4) && (this.setPriceForm.controls.isLogistics.status == 'VALID')) {
       this.isDisableNext = false
     }
-    if ((current == 4 && next == 5) && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))) {
-      this.isDisableNext = false
+    if ((current == 4 && next == 5)) {
+      // && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))
+      if (this.setPriceForm.controls.paymentDeadlineDate.status == 'INVALID') {
+        // console.log("this is for when date is past");
+        console.log("when slider is called ===========", this.setPriceDetails.paymentDeadlineDate);
+        console.log("Date.now for today============", this.currentDay);
+        if (moment(this.currentDay) > moment(this.setPriceDetails.paymentDeadlineDate)) {
+          console.log("this is what i want============");
+          this.isDisableNext = true
+          this.onlyDisplay = true
+        }
+        else {
+          this.isDisableNext = false
+        }
+
+      }
+      if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
+        this.isDisableNext = false
+      }
+      //  else {
+      //   // console.log();
+      //   this.isDisableNext = false
+      //   console.log("this is normal for close one");
+
+      // }
+      // this.isDisableNext = false
     }
     if (current == 5 && next == 6) {
       this.isDisableNext = false
@@ -261,6 +286,10 @@ export class SetPriceComponent implements OnInit {
 
   paymentDate(event) {
     // console.log("payment close date", event);
+    if (this.onlyDisplay == true) {
+      console.log("check to old data=========", this.onlyDisplay);
+      this.onlyDisplay = false
+    }
     if (this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID') {
       console.log("this is perfect");
       this.isDisableNext = false
@@ -324,6 +353,21 @@ export class SetPriceComponent implements OnInit {
     //   this.$slider.slick('slickGoTo', parseInt(this.$slider.slick('slickCurrentSlide')) - 1);
     //   // this.backSlider = false
     // }
+  }
+
+  loaderStart(event) {
+    if (event == 'true') {
+      console.log("what is event from bank page========", event);
+      this.isLoad = true
+    }
+    if (event == 'false') {
+      this.isLoad = false
+    }
+    // else {
+    //   this.isLoad = false
+    // }
+
+
   }
 
 

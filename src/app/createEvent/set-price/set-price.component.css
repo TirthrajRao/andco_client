@@ -251,8 +251,8 @@ button.btn.set-price-custom-button.float-left {
     height: 14px;
     background: #ffffff;
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 7px;
+    left: 8px;
     border-radius: 100%;
     transition: all 0.2s ease;
     transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
@@ -270,7 +270,12 @@ button.btn.set-price-custom-button.float-left {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
-
+.sales-inner h4{
+    font-size: 14px;
+    text-align: center;
+    color: red;
+    margin-bottom: 5px;
+}
 
 /* radio button css end here */
 

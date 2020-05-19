@@ -1,6 +1,6 @@
 <app-loader *ngIf="isLoad" id="loader"></app-loader>
 <div class="event-slider">
-    <div class="event-single-slide" *ngFor="let item of allActivities, let i = index">
+    <div class="event-single-slide slick-slide" *ngFor="let item of allActivities, let i = index">
         <div class="event-name" (click)="singleActivityDetails(item , allActivities , i)"
             [class.active]="selectedIndex === i">
             <p data-container="body" tooltipClass="my-custom-class"

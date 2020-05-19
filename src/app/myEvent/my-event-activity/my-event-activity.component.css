@@ -104,12 +104,12 @@ span.items-name {
 [type="radio"]:checked+label:after,
 [type="radio"]:not(:checked)+label:after {
     content: '';
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background: #F18B2D;
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 7px;
+    left: 7px;
     border-radius: 100%;
     transition: all 0.2s ease;
     transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
@@ -130,6 +130,23 @@ span.items-name {
 
 
 /* radio button css end here */
+
+.empty-message {
+    background: #ffd6ad;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.empty-message img {
+    height: 90px;
+}
+
+.empty-message p {
+    font-size: 20px;
+    color: #C4752D;
+    font-weight: 600;
+    font-size: 14px;
+}
 
 @media(max-width:1600px) {
     .myevent-activity-box {
