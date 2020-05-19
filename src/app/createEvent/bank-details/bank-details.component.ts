@@ -21,6 +21,8 @@ export class BankDetailsComponent implements OnInit {
   @Output() bankDetails: EventEmitter<any> = new EventEmitter<any>()
   @Output() selectedBankAccount: EventEmitter<any> = new EventEmitter<any>()
   @Output() selectedCardAccount: EventEmitter<any> = new EventEmitter<any>()
+  @Output() loaderFalse: EventEmitter<any> = new EventEmitter<any>()
+
   bankForm: FormGroup;
   isBankSelected
   isCardSelected
@@ -43,12 +45,13 @@ export class BankDetailsComponent implements OnInit {
     // this.getBankDetails()
     this.initBankSlider()
     this.initCardSlider()
-
+    // this.isLoad = true
   }
 
 
 
   initBankSlider() {
+    // setTimeout(() => {
     this.$sliderContainer = $('.bank-slider')
     this.$slider = this.$sliderContainer.not('.slick-initialized').slick({
       infinite: true,
@@ -58,6 +61,7 @@ export class BankDetailsComponent implements OnInit {
       prevArrow: '#prevarrow',
       nextArrow: '#nextarrow',
     })
+    // }, 300)
   }
 
   initBankSliderAfter() {
@@ -134,11 +138,15 @@ export class BankDetailsComponent implements OnInit {
 
   getBankDetails() {
     this.isLoad = true
+    this.loaderFalse.emit('true')
     this.loginService.getBankDetails().subscribe((response: any) => {
       console.log("details of bank", response);
+
       this.bankList = response.data.bankDetail
       this.cardList = response.data.cardDetails
       if (this.bankList) {
+
+        this.isLoad = false
         if (this.coronaBank) {
           // console.log("what is call");
           setTimeout(() => {
@@ -149,14 +157,18 @@ export class BankDetailsComponent implements OnInit {
           }, 5)
         } else {
           console.log("or else part");
-          // this.$sliderContainer.slick('unslick');
-          // this.$sliderContainer = $('.bank-slider');
+          if (this.$sliderContainer) {
+            this.$sliderContainer.slick('unslick');
+            this.$sliderContainer = $('.bank-slider');
+          }
           setTimeout(() => {
             this.initBankSlider()
           }, 5)
         }
       }
       if (this.cardList) {
+
+        this.isLoad = false
         if (this.coronaCard) {
           // console.log("what is call");
           setTimeout(() => {
@@ -168,17 +180,18 @@ export class BankDetailsComponent implements OnInit {
         } else {
           console.log("this is for card ");
 
-          // if (this.$sliderContainer) {
-          //   this.$sliderContainer.slick('unslick');
-          //   this.$sliderContainer = $('.card-slider');
-          // }
+          if (this.$sliderContainer) {
+            this.$sliderContainer.slick('unslick');
+            this.$sliderContainer = $('.card-slider');
+          }
           setTimeout(() => {
             this.initCardSlider()
           }, 5)
         }
       }
-      this.isLoad = false
+      this.loaderFalse.emit('false')
     }, error => {
+      this.loaderFalse.emit('false')
       console.log("error while get details", error);
 
     })
@@ -290,12 +303,14 @@ export class BankDetailsComponent implements OnInit {
         this.initBankSliderAfter()
       }, 5)
     } else {
-      console.log("or else part");
-      this.$sliderContainer.slick('unslick');
-      this.$sliderContainer = $('.bank-slider');
+      if (this.$sliderContainer) {
+        console.log("or else part");
+        this.$sliderContainer.slick('unslick');
+        this.$sliderContainer = $('.bank-slider');
+      }
       setTimeout(() => {
         this.initBankSlider()
-      }, 5)
+      }, 100)
     }
   }
   addBankAccount() {
@@ -312,6 +327,7 @@ export class BankDetailsComponent implements OnInit {
     let data
     var addBank = this.openDialog(AddCardmodalComponent, data).subscribe((response) => {
       console.log("what is in response", response);
+      // this.isLoad = true
       if (response != undefined)
         this.getBankDetails()
     })
@@ -328,16 +344,24 @@ export class BankDetailsComponent implements OnInit {
     this.isCardSelected = true
     this.isBankSelected = false
     if (this.coronaCard) {
-      // console.log("what is call");
+      console.log("what is call");
       setTimeout(() => {
         $('#radio-groupCard-' + this.coronaCard).prop('checked', true)
       }, 10)
+
+      if (this.$sliderContainer) {
+        this.$sliderContainer.slick('unslick');
+        this.$sliderContainer = $('.card-slider');
+      }
       setTimeout(() => {
         this.initCardSliderAfter()
-      }, 5)
+      }, 50)
     } else {
+      console.log("call this or not===========");
+      // if (this.$sliderContainer) {
       this.$sliderContainer.slick('unslick');
       this.$sliderContainer = $('.card-slider');
+      // }
       setTimeout(() => {
         this.initCardSlider()
       }, 5)
