@@ -149,8 +149,8 @@ export class BankDetailsComponent implements OnInit {
           }, 5)
         } else {
           console.log("or else part");
-          this.$sliderContainer.slick('unslick');
-          this.$sliderContainer = $('.bank-slider');
+          // this.$sliderContainer.slick('unslick');
+          // this.$sliderContainer = $('.bank-slider');
           setTimeout(() => {
             this.initBankSlider()
           }, 5)
