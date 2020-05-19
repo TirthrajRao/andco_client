@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 
 export const defaults = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#ffffff30',
   'guest-inner-gradient-first-color' : '#4FBCD9',
   'guest-inner-gradient-second-color' : '#C7F2FE',
@@ -25,6 +27,8 @@ export const defaults = {
 };
 
 export const floral = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#000000',
   'guest-inner-gradient-second-color' : '#0559E1',
@@ -48,6 +52,8 @@ export const floral = {
 };
 
 export const wood = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#2F3627',
   'guest-inner-gradient-second-color' : '#869359',
@@ -71,6 +77,8 @@ export const wood = {
 };
 
 export const marble = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#E7C9AE',
   'guest-inner-gradient-second-color' : '#A1A1A1',
@@ -94,6 +102,8 @@ export const marble = {
 };
 
 export const origami = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : 'transparent',
   'guest-inner-gradient-first-color' : '#a3021c',
   'guest-inner-gradient-second-color' : '#98bdc2',
@@ -117,6 +127,8 @@ export const origami = {
 };
 
 export const classic = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000070',
   'guest-inner-gradient-first-color' : '#231104',
   'guest-inner-gradient-second-color' : '#855F34',
@@ -140,6 +152,8 @@ export const classic = {
 };
 
 export const lines = {
+  'bg-repeat' : 'repeat',
+  'bg-cover' : 'contain',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#B0455E',
   'guest-inner-gradient-second-color' : '#D2A0A1',
@@ -163,20 +177,22 @@ export const lines = {
 };
 
 export const luxury = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000050',
-  'guest-inner-gradient-first-color' : '#c8771c',
-  'guest-inner-gradient-second-color' : '#321e09',
-  'guest-activity-group-background' : '#600e19',
-  'guest-activity-group-radio-check-color' : '#600e19',
+  'guest-inner-gradient-first-color' : '#600e19',
+  'guest-inner-gradient-second-color' : '#6a3401',
+  'guest-activity-group-background' : '#6b543a',
+  'guest-activity-group-radio-check-color' : '#6b543a',
   'guest-activity-tab-content-color' : '#bc701a',
-  'guest-total-add-more' : '#600e19',
-  'circular-menu-floating-button-color' : '#600e19',
+  'guest-total-add-more' : '#6b543a',
+  'circular-menu-floating-button-color' : '#6b543a',
   'total-title-font-color' : '#ffffff',
-  'total-title-background-color' : '#977626',
-  'group-box-h4-group' : '#000000',
+  'total-title-background-color' : '#6b543a',
+  'group-box-h4-group' : '#a87b29',
   'activity-accordian-arrow-color' : '#ffffff',
   'next-skip-back-color' : '#ffffff',
-  'guest-address-radio-color': '#ceb669',
+  'guest-address-radio-color': '#600e19',
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#b7a478',
   'ussd-bg-color' : '#886e41',
@@ -186,6 +202,8 @@ export const luxury = {
 };
 
 export const instruments = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#371206',
   'guest-inner-gradient-second-color' : '#882700',
