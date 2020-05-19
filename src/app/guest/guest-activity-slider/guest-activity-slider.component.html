@@ -5,25 +5,21 @@
 <div class="guest-activity-single-slide">
     <div class="guest-activity-slider">
         <div *ngFor="let activity of displayActivity">
-            <h2 class="tooltip-class text-white font-weight-bold mb-2" tooltipClass="my-custom-class"
-                ngbTooltip="{{activity.activityName}}">{{activity.activityName}}</h2>
+            <h2 class="tooltip-class text-white font-weight-bold mb-2" tooltipClass="my-custom-class" ngbTooltip="{{activity.activityName}}">{{activity.activityName}}</h2>
         </div>
     </div>
     <!-- <button (click)="nextSlide()">next</button> -->
     <div class="guest-activity-group">
         <div class="radio" *ngFor="let group of displayGroup; let i = index">
             <!-- {{group.item.length}} -->
-            <input *ngIf="group.item && group.item.length" id="{{i}}" name="radio" type="radio" value="{{i}}"
-                (change)="changeGroup($event)">
-            <label *ngIf="group.item && group.item.length" for="{{i}}" class="radio-label"
-                tooltipClass="my-custom-class" ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
+            <input *ngIf="group.item && group.item.length" id="{{i}}" name="radio" type="radio" value="{{i}}" (change)="changeGroup($event)">
+            <label *ngIf="group.item && group.item.length" for="{{i}}" class="radio-label" tooltipClass="my-custom-class" ngbTooltip="{{group.groupName}}">{{group.groupName}}</label>
         </div>
     </div>
     <div class="guest-activity-item-tab">
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let item of gender;let i  = index;">
-                <a class="nav-link" (click)="changeTab(item)" data-toggle="tab"
-                    [class.active]="selectedwallet===i">{{item}}</a>
+                <a class="nav-link" (click)="changeTab(item)" data-toggle="tab" [class.active]="selectedwallet===i">{{item}}</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -34,21 +30,19 @@
                     </div>
                     <div class="quantity-center w-30">
                         <h4>{{item.itemPrice | currency:"&#x20A6;"}} <span *ngIf="!isClose">x</span>
-                            <input type="number" oninput="validity.valid||(value='');"
-                                onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity"
-                                (change)="maleTotal($event , item , i)" *ngIf="!isClose"></h4>
+                            <input type="number" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity" (change)="maleTotal($event , item , i)" *ngIf="!isClose"></h4>
                     </div>
                     <div class="guest-add-items w-30">
                         <h4><span *ngIf="!isClose && item.quantity">=
                                 {{item.itemPrice * item.quantity | currency:" &#x20A6; "}} </span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
-                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
-                                data-container="body" (click)="openModel(item)"></i>
+                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class" data-container="body" (click)="openModel(item)"></i>
                         </h4>
                     </div>
                 </li>
-                <li *ngIf="itemList && !itemList.length">
-                    There is no items for male
+                <li *ngIf="itemList && !itemList.length" class="empty-message">
+                    <img src="../../../assets/images/no-user.gif" alt="no event">
+                    <p>There is no items for male</p>
                 </li>
             </ul>
             <ul *ngIf="selectedwallet === 1">
@@ -59,23 +53,20 @@
                     <div class="quantity-center w-30">
                         <h4>
                             {{item.itemPrice | currency: " &#x20A6; "}} <span *ngIf="!isClose">x</span>
-                            <input type="number" oninput="validity.valid||(value='');"
-                                onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity"
-                                (change)="femaleTotal($event , item , i)" *ngIf="!isClose">
+                            <input type="number" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69" min="0" [(ngModel)]="item.quantity" (change)="femaleTotal($event , item , i)" *ngIf="!isClose">
                         </h4>
                     </div>
                     <div class="guest-add-items w-30">
                         <h4>
-                            <span
-                                *ngIf="!isClose && item.quantity">={{item.itemPrice * item.quantity | currency:" &#x20A6; "}}</span>
+                            <span *ngIf="!isClose && item.quantity">={{item.itemPrice * item.quantity | currency:" &#x20A6; "}}</span>
                             <span *ngIf="!isClose && !item.quantity">= {{item.itemPrice *0}} </span>
-                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class"
-                                data-container="body" (click)="openModel(item)"></i>
+                            <i class="fa fa-info ml-2" aria-hidden="true" tooltipClass="my-custom-class" data-container="body" (click)="openModel(item)"></i>
                         </h4>
                     </div>
                 </li>
-                <li *ngIf="itemList && !itemList.length">
-                    There is no items for female
+                <li *ngIf="itemList && !itemList.length" class="empty-message">
+                    <img src="../../../assets/images/no-user.gif" alt="no event">
+                    <p>There is no items for female</p>
                 </li>
             </ul>
         </div>

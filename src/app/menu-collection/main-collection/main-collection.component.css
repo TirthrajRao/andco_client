@@ -79,11 +79,12 @@ li.nav-item a {
 }
 
 .nav-link.active {
-    border: 2px solid#0091ab !important;
+    background: #43b6c0 !important;
+    border: 2px solid#ffffff !important;
 }
 
 a.nav-link.active {
-    color: #000000 !important;
+    color: white !important;
     font-weight: 900 !important;
 }
 

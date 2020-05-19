@@ -1,8 +1,6 @@
-<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex"
-    [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
+<app-all-slider [activityListDisplay]="listOfActivity" [selectedActivityIndex]="selectedActivityIndex" [groupOfActivity]="null" (activityGroup)="getActivityGroup($event)">
 </app-all-slider>
-<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex"
-    (groupItem)="getSingleGroupItem($event)">
+<app-all-slider [groupOfActivity]="groupOfActivity" [selectedGroupIndex]="selectedGroupIndex" [groupIndex]="groupIndex" (groupItem)="getSingleGroupItem($event)">
 </app-all-slider>
 
 <!-- <div *ngIf="!displayItem">Sorry</div> -->
@@ -22,16 +20,17 @@
                     <i class="fa fa-info" aria-hidden="true"></i>
                 </a>
             </div>
-            <div *ngIf="itemNamePrint && !itemNamePrint.length">
+            <div class="empty-message" *ngIf="itemNamePrint && !itemNamePrint.length">
                 <img src="../../../assets/images/no-user.gif" alt="no event">
-                There is no item in this group
+                <p>
+                    There is no item in this group
+                </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal"
-    aria-hidden="true">
+<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">

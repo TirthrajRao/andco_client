@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 
 export const defaults = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#ffffff30',
   'guest-inner-gradient-first-color' : '#4FBCD9',
   'guest-inner-gradient-second-color' : '#C7F2FE',
@@ -21,10 +23,13 @@ export const defaults = {
   'ussd-bg-color' : '#00000036',
   'ussd-font-color' : '#444444',
   'payment-success-msg-name' : '#2B879B',
-  'filter-in-img' : 'none'
+  'filter-in-img' : 'none',
+  'filter-no-msg' : 'grayscale(1)'
 };
 
 export const floral = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#000000',
   'guest-inner-gradient-second-color' : '#0559E1',
@@ -44,10 +49,13 @@ export const floral = {
   'ussd-bg-color' : '#ffffff2e',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '#000000',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'invert(1)'
 };
 
 export const wood = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#2F3627',
   'guest-inner-gradient-second-color' : '#869359',
@@ -67,10 +75,13 @@ export const wood = {
   'ussd-bg-color' : '#84b9af',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'grayscale(1)'
 };
 
 export const marble = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#E7C9AE',
   'guest-inner-gradient-second-color' : '#A1A1A1',
@@ -90,10 +101,13 @@ export const marble = {
   'ussd-bg-color' : '#7a787896',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'none'
+  'filter-in-img' : 'none',
+  'filter-no-msg' : 'grayscale(1)'
 };
 
 export const origami = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : 'transparent',
   'guest-inner-gradient-first-color' : '#a3021c',
   'guest-inner-gradient-second-color' : '#98bdc2',
@@ -113,10 +127,13 @@ export const origami = {
   'ussd-bg-color' : '#7a787896',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'grayscale(1)'
 };
 
 export const classic = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000070',
   'guest-inner-gradient-first-color' : '#231104',
   'guest-inner-gradient-second-color' : '#855F34',
@@ -136,10 +153,13 @@ export const classic = {
   'ussd-bg-color' : '#997e5a61',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'none'
+  'filter-in-img' : 'none',
+  'filter-no-msg' : 'none'
 };
 
 export const lines = {
+  'bg-repeat' : 'repeat',
+  'bg-cover' : 'contain',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#B0455E',
   'guest-inner-gradient-second-color' : '#D2A0A1',
@@ -159,33 +179,39 @@ export const lines = {
   'ussd-bg-color' : '#c58395',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'hue-rotate(45deg)'
 };
 
 export const luxury = {
-  'guest-main-overlay' : '#00000030',
-  'guest-inner-gradient-first-color' : '#423823',
-  'guest-inner-gradient-second-color' : '#897650',
-  'guest-activity-group-background' : '#270D03',
-  'guest-activity-group-radio-check-color' : '#270D03',
-  'guest-activity-tab-content-color' : '#6A6D24',
-  'guest-total-add-more' : '#270D03',
-  'circular-menu-floating-button-color' : '#270D03',
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
+  'guest-main-overlay' : '#00000050',
+  'guest-inner-gradient-first-color' : '#600e19',
+  'guest-inner-gradient-second-color' : '#6a3401',
+  'guest-activity-group-background' : '#6b543a',
+  'guest-activity-group-radio-check-color' : '#6b543a',
+  'guest-activity-tab-content-color' : '#bc701a',
+  'guest-total-add-more' : '#6b543a',
+  'circular-menu-floating-button-color' : '#6b543a',
   'total-title-font-color' : '#ffffff',
-  'total-title-background-color' : '#977626',
-  'group-box-h4-group' : '#000000',
+  'total-title-background-color' : '#6b543a',
+  'group-box-h4-group' : '#a87b29',
   'activity-accordian-arrow-color' : '#ffffff',
   'next-skip-back-color' : '#ffffff',
-  'guest-address-radio-color': '#ceb669',
+  'guest-address-radio-color': '#600e19',
   'guest-address-label-color' : '#ffffff',
   'pay-by-color' : '#b7a478',
   'ussd-bg-color' : '#886e41',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'none'
 };
 
 export const instruments = {
+  'bg-repeat' : 'no-repeat',
+  'bg-cover' : 'cover',
   'guest-main-overlay' : '#00000030',
   'guest-inner-gradient-first-color' : '#371206',
   'guest-inner-gradient-second-color' : '#882700',
@@ -205,7 +231,8 @@ export const instruments = {
   'ussd-bg-color' : '#761b04',
   'ussd-font-color' : '#ffffff',
   'payment-success-msg-name' : '1111',
-  'filter-in-img' : 'brightness(11)'
+  'filter-in-img' : 'brightness(11)',
+  'filter-no-msg' : 'none'
 };
 
 
