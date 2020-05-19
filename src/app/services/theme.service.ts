@@ -163,14 +163,14 @@ export const lines = {
 };
 
 export const luxury = {
-  'guest-main-overlay' : '#00000030',
-  'guest-inner-gradient-first-color' : '#423823',
-  'guest-inner-gradient-second-color' : '#897650',
-  'guest-activity-group-background' : '#270D03',
-  'guest-activity-group-radio-check-color' : '#270D03',
-  'guest-activity-tab-content-color' : '#6A6D24',
-  'guest-total-add-more' : '#270D03',
-  'circular-menu-floating-button-color' : '#270D03',
+  'guest-main-overlay' : '#00000050',
+  'guest-inner-gradient-first-color' : '#c8771c',
+  'guest-inner-gradient-second-color' : '#321e09',
+  'guest-activity-group-background' : '#600e19',
+  'guest-activity-group-radio-check-color' : '#600e19',
+  'guest-activity-tab-content-color' : '#bc701a',
+  'guest-total-add-more' : '#600e19',
+  'circular-menu-floating-button-color' : '#600e19',
   'total-title-font-color' : '#ffffff',
   'total-title-background-color' : '#977626',
   'group-box-h4-group' : '#000000',
