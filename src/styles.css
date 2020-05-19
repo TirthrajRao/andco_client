@@ -770,6 +770,32 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
 }
 
 
+
+.event-slider button.prevarrow.slick-arrow,
+.event-slider button.nextarrow.slick-arrow {
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    z-index: 12;
+}
+
+.event-slider button.prevarrow.slick-arrow {
+    left: -40px;
+    transform: rotate(90deg);
+}
+
+.event-slider button.nextarrow.slick-arrow {
+    right: -40px;
+    transform: rotate(-90deg);
+}
+
+
 /* responsive css start */
 
 @media(max-width: 1600px) {
