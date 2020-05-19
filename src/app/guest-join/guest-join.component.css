@@ -1,6 +1,6 @@
 .thank-you {
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: var(--bg-repeat);
+    background-size: var(--bg-cover);
     position: relative;
     background-position: bottom;
     height: auto;
