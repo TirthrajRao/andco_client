@@ -216,12 +216,13 @@ export class SetPriceComponent implements OnInit {
     }
     if ((current == 4 && next == 5)) {
       // && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))
-      if (this.setPriceForm.controls.paymentDeadlineDate.status == 'INVALID') {
+      if (this.setPriceForm.controls.paymentDeadlineDate.status == 'INVALID' && this.setPriceDetails) {
+        console.log("this is what i want============");
         // console.log("this is for when date is past");
-        console.log("when slider is called ===========", this.setPriceDetails.paymentDeadlineDate);
-        console.log("Date.now for today============", this.currentDay);
+        // console.log("when slider is called ===========", this.setPriceDetails.paymentDeadlineDate);
+        // console.log("Date.now for today============", this.currentDay);
+
         if (moment(this.currentDay) > moment(this.setPriceDetails.paymentDeadlineDate)) {
-          console.log("this is what i want============");
           this.isDisableNext = true
           this.onlyDisplay = true
         }
