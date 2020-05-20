@@ -1,6 +1,6 @@
 .guest-main-background {
-    background-repeat: var(--bg-repeat);
-    background-size: var(--bg-cover);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: bottom;
     position: relative;
     height: auto;
