@@ -9,7 +9,7 @@ declare var $;
   styleUrls: ['./guest-menu.component.css']
 })
 export class GuestMenuComponent implements OnInit {
-  @Input('isClosed') isClosed
+  @Input('closed') isClosed
   @Output() displayActivity: EventEmitter<any> = new EventEmitter<any>()
   isClose
   totalEventList = JSON.parse(sessionStorage.getItem('eventList'))
@@ -17,7 +17,7 @@ export class GuestMenuComponent implements OnInit {
   guestMenu = [
     "activities", "total", "gift-donation", "exit"
   ]
-
+  isDisable
   constructor(
     public loginService: LoginService,
     public router: Router
@@ -40,8 +40,28 @@ export class GuestMenuComponent implements OnInit {
 
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("cahnges in menu", changes.isClosed.currentValue);
-    this.isClose = changes.isClosed.currentValue
+    // console.log("cahnges in menu for my event===========", changes.isClosed.currentValue);
+    // this.isClose = changes.isClosed.currentValue
+    let challenge = changes.isClosed.currentValue
+    console.log("what is the value of check", challenge);
+
+    if (challenge == true) {
+      console.log("call this when payment is closed")
+      // $(document)
+      // $("#donation")
+      //   // .css('pointer-events', 'none')
+      //   // .css('color', '#ccc')
+      //   .css('cursor', 'not-allowed')
+
+      this.isDisable = true
+    } else {
+      console.log("when payment is open");
+      this.isDisable = false
+
+    }
+  }
+  disabledFunction() {
+    console.log("value of =================", this.isDisable)
   }
 
 

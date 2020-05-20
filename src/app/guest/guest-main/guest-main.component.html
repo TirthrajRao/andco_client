@@ -15,38 +15,45 @@
             </div> -->
                 <div class="guest-inner-box" *ngIf="isDisable">
                     <!-- Display items with groups -->
-                    <app-guest-activity-slider *ngIf="index == 0" [totalActivityList]="totalActivityList" (totalItemList)="totalItem($event)" [removeItemOf]="removeItem" [isClosed]="isClosed">
+                    <app-guest-activity-slider *ngIf="index == 0" [totalActivityList]="totalActivityList"
+                        (totalItemList)="totalItem($event)" [removeItemOf]="removeItem" [isClosed]="isClosed">
                     </app-guest-activity-slider>
                     <!-- End -->
 
                     <!-- Display total of selected items in cart -->
-                    <app-guest-item-total *ngIf="index == 1" [totalItemList]="totalItemList" (removeItem)="removeItemOfArray($event)" (addDonation)="donationAdd($event)">
+                    <app-guest-item-total *ngIf="index == 1" [totalItemList]="totalItemList"
+                        (removeItem)="removeItemOfArray($event)" (addDonation)="donationAdd($event)">
                     </app-guest-item-total>
                     <!-- end -->
 
 
                     <!-- add Donation in final payment -->
-                    <app-gift-donation *ngIf="index == 2" (displayItem)="displayItems($event)" (address)="displayCart($event)" [cartLength]="cartLength"></app-gift-donation>
+                    <app-gift-donation *ngIf="index == 2" (displayItem)="displayItems($event)"
+                        (address)="displayCart($event)" [cartLength]="cartLength"></app-gift-donation>
                     <!-- end -->
 
 
                     <!-- Cart items in final payment -->
-                    <app-cart *ngIf="index == 7" (addMore)="addMoreItems($event)" (backDonation)="displayDonation($event)" (address)="addressDisplay($event)">
+                    <app-cart *ngIf="index == 7" (addMore)="addMoreItems($event)"
+                        (backDonation)="displayDonation($event)" (address)="addressDisplay($event)">
                     </app-cart>
                     <!-- end -->
 
 
 
                     <!-- Adress of guest user -->
-                    <app-guest-address *ngIf="index == 3" (displayAccount)="selectPayment($event)" (backToCart)="displayCart($event)"></app-guest-address>
+                    <app-guest-address *ngIf="index == 3" (displayAccount)="selectPayment($event)"
+                        (backToCart)="displayCart($event)"></app-guest-address>
                     <!-- end -->
 
                     <!-- finalPayMent of user -->
-                    <app-payment *ngIf="index == 4" (accountType)="selectedAccountType($event)" (index)="displayAddress($event)"></app-payment>
+                    <app-payment *ngIf="index == 4" (accountType)="selectedAccountType($event)"
+                        (index)="displayAddress($event)"></app-payment>
                     <!-- end -->
 
                     <!-- Choose payment method -->
-                    <app-payment-details *ngIf="index == 5" [accountType]="selectedAccount" (lastIndex)="displayAccount($event)" (thankYouDetails)="thankYouMessage($event)">
+                    <app-payment-details *ngIf="index == 5" [accountType]="selectedAccount"
+                        (lastIndex)="displayAccount($event)" (thankYouDetails)="thankYouMessage($event)">
                     </app-payment-details>
                     <!-- end -->
 
@@ -54,7 +61,7 @@
                     <app-payment-message *ngIf="index == 6" [thankYouDetail]="thankYouDetails"></app-payment-message>
                     <!-- end -->
                 </div>
-                <app-guest-menu (displayActivity)="menuIndex($event)">
+                <app-guest-menu (displayActivity)="menuIndex($event)" [closed]="isClosed">
                 </app-guest-menu>
             </div>
         </div>
