@@ -62,7 +62,8 @@ export class MyEventLinkComponent implements OnInit {
   path = config.baseMediaUrl;
   currentIndex
   previousIndex
-
+  finalImage = 'https://test.andcowith.me:9001/uploads/8e8bf7f15218072c4373a69090140f4a'
+vivekBharda = 'VivekBharda'
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute,
@@ -197,10 +198,12 @@ export class MyEventLinkComponent implements OnInit {
 
   getEventDetails(eventId) {
     this.eventService.getEventDetails(eventId).subscribe((response: any) => {
-      console.log("response of event in link page", response);
       this.eventDetails = response.data
       let checkMessage = response.data.afterEventMessage
       console.log("details of message", checkMessage);
+      console.log("response of event in link page", this.eventDetails);
+      // this.finalImage = this.path + this.eventDetails.profilePhoto
+      console.log("this is final image to send", this.finalImage);
 
       if (checkMessage && checkMessage.afterEventMessage) {
         this.afterEventMessage = response.data.afterEventMessage
