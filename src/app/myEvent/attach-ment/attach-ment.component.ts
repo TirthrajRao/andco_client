@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-
+import { FormGroup, Validators, FormControl, FormBuilder, FormArray, FormControlName } from '@angular/forms';
 @Component({
   selector: 'app-attach-ment',
   templateUrl: './attach-ment.component.html',
@@ -11,17 +11,31 @@ export class AttachMentComponent implements OnInit {
   files: Array<File> = [];
   imgURL: any;
   public imagePath;
-
+  mailForm: FormGroup
   constructor(
 
     public dialogRef: MatDialogRef<AttachMentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  ngOnInit() {
-    console.log("selected event", this.data);
+  ) {
+    // this.dialogRef.disableClose = true;
 
   }
+
+  ngOnInit() {
+
+    console.log("selected event", this.data);
+    this.mailForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email])
+    })
+  }
+
+
+
+  /**
+   * Display error message for signUp form
+   */
+  get f() { return this.mailForm.controls; }
+
 
 
 
@@ -49,9 +63,9 @@ export class AttachMentComponent implements OnInit {
 
     }
   }
-  AddAttchment(){
+  AddAttchment() {
     console.log("call this");
-    
+
   }
 
 }
