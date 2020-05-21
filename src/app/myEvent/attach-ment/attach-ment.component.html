@@ -11,7 +11,7 @@
                 *ngFor="let tech of activityFormData.controls; let i = index">
                 <input type="text" placeholder="Add email address" formControlName="email">
                 <button class="remove" *ngIf="activityFormData.controls.length>1"
-                    (click)="removeActivityField(i,tech.value)">
+                    (click)="removeActivityField(i)">
                     <img src="../../../assets/images/remove.png" alt="remove icon">
                 </button>
                 <!-- <div *ngIf="f[i].email.touched && f[i].email.errors" class="invalid-feedback ">
