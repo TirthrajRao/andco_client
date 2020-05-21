@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray, FormControlName } from '@angular/forms';
+import { EventService } from '../../services/event.service'
 @Component({
   selector: 'app-attach-ment',
   templateUrl: './attach-ment.component.html',
@@ -12,9 +13,10 @@ export class AttachMentComponent implements OnInit {
   imgURL: any;
   public imagePath;
   mailForm: FormGroup
+  eventId
   constructor(
     private fb: FormBuilder,
-
+    public eventService: EventService,
     public dialogRef: MatDialogRef<AttachMentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -54,7 +56,7 @@ export class AttachMentComponent implements OnInit {
   /**
    * Display error message for signUp form
    */
-  // get f() { return this.mailForm.controls.arrayOfEmail; }
+  get f() { return <FormArray>this.mailForm.controls.arrayOfEmail; }
 
 
 
@@ -95,6 +97,22 @@ export class AttachMentComponent implements OnInit {
     control.push(this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email])
     }))
+  }
+
+  removeActivityField(i) {
+
+    const control = <FormArray>this.mailForm.controls.arrayOfEmail;
+    control.removeAt(i);
+  }
+  sendMailToAll() {
+    console.log("this.mailform value", this.mailForm.value);
+    this.dialogRef.close();
+    this.eventService.shareLinkOnGmail(this.mailForm.value, this.data).subscribe((response) => {
+      console.log("response of mail share in gmail", response);
+    }, error => {
+      console.log("error while send mail", error);
+
+    })
   }
 
 }
