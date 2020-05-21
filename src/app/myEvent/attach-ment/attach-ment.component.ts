@@ -13,6 +13,7 @@ export class AttachMentComponent implements OnInit {
   public imagePath;
   mailForm: FormGroup
   constructor(
+    private fb: FormBuilder,
 
     public dialogRef: MatDialogRef<AttachMentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -23,18 +24,37 @@ export class AttachMentComponent implements OnInit {
 
   ngOnInit() {
 
+
+    this.mailDetails()
+
     console.log("selected event", this.data);
-    this.mailForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email])
-    })
+
+
+
+
   }
 
+  mailDetails() {
+    this.mailForm = new FormGroup({
+      // email: new FormControl('', [Validators.required, Validators.email])
+      arrayOfEmail: this.fb.array(this.formMail())
+    })
+  }
+  formMail() {
+    return [this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email])
+      // activityName: new FormControl('', Validators.required),
+      // activityStartDate: new FormControl('', Validators.required),
+      // eventId: new FormControl(this.eventId)
+    })]
+  }
+  get activityFormData() { return <FormArray>this.mailForm.get('arrayOfEmail'); }
 
 
   /**
    * Display error message for signUp form
    */
-  get f() { return this.mailForm.controls; }
+  // get f() { return this.mailForm.controls.arrayOfEmail; }
 
 
 
@@ -66,6 +86,15 @@ export class AttachMentComponent implements OnInit {
   AddAttchment() {
     console.log("call this");
 
+  }
+
+
+  addActivityField() {
+
+    const control = <FormArray>this.mailForm.controls.arrayOfEmail;
+    control.push(this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email])
+    }))
   }
 
 }

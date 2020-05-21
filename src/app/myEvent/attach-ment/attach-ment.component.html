@@ -4,14 +4,21 @@
 <button (click)="AddAttchment()">AddAttchment</button> -->
 
 
-<div class="">
+<div class="addEmail">
     <form [formGroup]="mailForm">
-        <input type="text" placeholder="Add email address" formControlName="email"
-            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
-        <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
+        <div formArrayName="arrayOfEmail">
+            <div class="single-element" [formGroupName]="i"
+                *ngFor="let tech of activityFormData.controls; let i = index">
+                <input type="text" placeholder="Add email address" formControlName="email">
+                <!-- <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
             <div *ngIf="f.email.errors.required">Email is required</div>
             <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+        </div> -->
+            </div>
         </div>
-        <button [disabled]="mailForm.invalid">Submit</button>
     </form>
+    <button [disabled]="mailForm.invalid">Submit</button>
+    <div class="buttons">
+        <button class="clone btn" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
 </div>
