@@ -6,7 +6,9 @@ import { config } from '../../config';
 import { saveAs } from "file-saver";
 import * as _ from 'lodash';
 import * as moment from 'moment';
-
+import { AttachMentComponent } from '../attach-ment/attach-ment.component';
+import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
 // import { EventEmitter } from 'protractor';
 declare var $: any
 
@@ -57,7 +59,8 @@ export class GuestCollectionComponent implements OnInit {
   constructor(
     public excelService: ExcelService,
     public searchPipe: SearchListPipe,
-    public eventService: EventService
+    public eventService: EventService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -221,6 +224,24 @@ export class GuestCollectionComponent implements OnInit {
     this.current = i
   }
 
+
+  sharePdfFile() {
+    $('#shareIconButton').modal("hide")
+    let data = {
+      eventId: this.newEventId,
+      pdfLink: this.finalUrl
+    }
+    var addBank = this.openDialog(AttachMentComponent, data).subscribe((response) => {
+      // console.log("what is in response", response);
+      // this.getBankDetails()
+    })
+  }
+
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data });
+    return dialogRef.afterClosed();
+  }
 
 
 

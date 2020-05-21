@@ -105,14 +105,25 @@ export class AttachMentComponent implements OnInit {
     control.removeAt(i);
   }
   sendMailToAll() {
-    console.log("this.mailform value", this.mailForm.value);
+    // console.log("this.mailform value", this.mailForm.value);
     this.dialogRef.close();
-    this.eventService.shareLinkOnGmail(this.mailForm.value, this.data).subscribe((response) => {
-      console.log("response of mail share in gmail", response);
-    }, error => {
-      console.log("error while send mail", error);
+    if (this.data.eventLink) {
+      console.log("this is for link share")
+      this.eventService.shareLinkOnGmail(this.mailForm.value, this.data).subscribe((response) => {
+        console.log("response of mail share in gmail", response);
+      }, error => {
+        console.log("error while send mail", error);
 
-    })
+      })
+    }
+    if (this.data.pdfLink) {
+      console.log("this is for pdf share")
+      this.eventService.sharePdf(this.mailForm.value, this.data).subscribe((response) => {
+        console.log("pdf share to that user", response);
+      }, error => {
+        console.log("error while share pdf", error)
+      })
+    }
   }
 
 }
