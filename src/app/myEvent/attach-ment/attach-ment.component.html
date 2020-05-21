@@ -10,14 +10,18 @@
             <div class="single-element" [formGroupName]="i"
                 *ngFor="let tech of activityFormData.controls; let i = index">
                 <input type="text" placeholder="Add email address" formControlName="email">
-                <!-- <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
-            <div *ngIf="f.email.errors.required">Email is required</div>
-            <div *ngIf="f.email.errors.email">Please enter valid Email</div>
-        </div> -->
+                <button class="remove" *ngIf="activityFormData.controls.length>1"
+                    (click)="removeActivityField(i,tech.value)">
+                    <img src="../../../assets/images/remove.png" alt="remove icon">
+                </button>
+                <!-- <div *ngIf="f[i].email.touched && f[i].email.errors" class="invalid-feedback ">
+                    <div *ngIf="f[i].email.errors.required">Email is required</div>
+                    <div *ngIf="f[i].email.errors.email">Please enter valid Email</div>
+                </div> -->
             </div>
         </div>
     </form>
-    <button [disabled]="mailForm.invalid">Submit</button>
+    <button [disabled]="mailForm.invalid" (click)="sendMailToAll()">Submit</button>
     <div class="buttons">
         <button class="clone btn" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     </div>

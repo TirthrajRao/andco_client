@@ -309,5 +309,9 @@ export class EventService {
 
     return this.http.get(config.baseApiUrl + "/itemDetails/" + JSON.stringify(data))
   }
+  shareLinkOnGmail(data, eventId) {
+    data['eventId'] = eventId
+    return this.http.post(config.baseApiUrl + "/shareLink", data)
+  }
 
 }
