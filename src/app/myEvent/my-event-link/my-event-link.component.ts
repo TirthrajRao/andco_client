@@ -63,7 +63,7 @@ export class MyEventLinkComponent implements OnInit {
   currentIndex
   previousIndex
   finalImage = 'https://test.andcowith.me:9001/uploads/8e8bf7f15218072c4373a69090140f4a'
-vivekBharda = 'VivekBharda'
+  vivekBharda = 'VivekBharda'
   constructor(
     public eventService: EventService,
     public activated: ActivatedRoute,
@@ -543,11 +543,26 @@ vivekBharda = 'VivekBharda'
     // })
   }
 
+
+  addBankAccount() {
+    console.log("click to check ");
+    let data
+    var addBank = this.openDialog(AttachMentComponent, data).subscribe((response) => {
+      console.log("what is in response", response);
+      // this.getBankDetails()
+    })
+  }
   openDialog(someComponent, data = {}): Observable<any> {
     console.log("OPENDIALOG", "DATA = ", data);
     const dialogRef = this.dialog.open(someComponent, { data });
     return dialogRef.afterClosed();
   }
+
+  // openDialog(someComponent, data = {}): Observable<any> {
+  //   console.log("OPENDIALOG", "DATA = ", data);
+  //   const dialogRef = this.dialog.open(someComponent, { data });
+  //   return dialogRef.afterClosed();
+  // }
 
   addFile(event) {
     console.log("profile photo path", event, this.imgURL);

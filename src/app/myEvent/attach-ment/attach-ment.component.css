@@ -1,0 +1,21 @@
+.addEmail{
+    height: 500px;
+    width: 500px;
+    background-color: whitesmoke;
+}
+
+
+.buttons {
+    text-align: center;
+}
+
+.buttons button.clone {
+    background-color: #A6B138;
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    font-size: 30px;
+    padding: 11px 14px;
+    line-height: 0;
+    outline: none;
+}

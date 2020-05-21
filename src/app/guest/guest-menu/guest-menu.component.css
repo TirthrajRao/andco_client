@@ -156,6 +156,17 @@
 .circular-menu.circular-menu-left.active .menu-item:nth-child(4) {
     transform: translate3d(7em, 1em, 0);
 }
+.disabledLink{
+    /* background-color: whitesmoke !important; */
+    opacity: 0.7;
+    pointer-events: none;
+    /* cursor: not-allowed !important; */
+}
+
+.disabledLink a{
+    cursor: not-allowed 
+}
+
 
 @-webkit-keyframes pulse {
     to {

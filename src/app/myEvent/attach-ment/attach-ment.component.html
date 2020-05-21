@@ -1,4 +1,24 @@
-<img [src]="imgURL" height="200" class="float-right" id="imageFilter"
+<!-- <img [src]="imgURL" height="200" class="float-right" id="imageFilter"
     onerror="this.src='/assets/images/profile_img.png'">
 <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/png" id="upload_profile">
-<button (click)="AddAttchment()">AddAttchment</button>
+<button (click)="AddAttchment()">AddAttchment</button> -->
+
+
+<div class="addEmail">
+    <form [formGroup]="mailForm">
+        <div formArrayName="arrayOfEmail">
+            <div class="single-element" [formGroupName]="i"
+                *ngFor="let tech of activityFormData.controls; let i = index">
+                <input type="text" placeholder="Add email address" formControlName="email">
+                <!-- <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback ">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+        </div> -->
+            </div>
+        </div>
+    </form>
+    <button [disabled]="mailForm.invalid">Submit</button>
+    <div class="buttons">
+        <button class="clone btn" (click)="addActivityField()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
+</div>

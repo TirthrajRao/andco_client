@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-
+import { FormGroup, Validators, FormControl, FormBuilder, FormArray, FormControlName } from '@angular/forms';
 @Component({
   selector: 'app-attach-ment',
   templateUrl: './attach-ment.component.html',
@@ -11,17 +11,51 @@ export class AttachMentComponent implements OnInit {
   files: Array<File> = [];
   imgURL: any;
   public imagePath;
-
+  mailForm: FormGroup
   constructor(
+    private fb: FormBuilder,
 
     public dialogRef: MatDialogRef<AttachMentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  ngOnInit() {
-    console.log("selected event", this.data);
+  ) {
+    // this.dialogRef.disableClose = true;
 
   }
+
+  ngOnInit() {
+
+
+    this.mailDetails()
+
+    console.log("selected event", this.data);
+
+
+
+
+  }
+
+  mailDetails() {
+    this.mailForm = new FormGroup({
+      // email: new FormControl('', [Validators.required, Validators.email])
+      arrayOfEmail: this.fb.array(this.formMail())
+    })
+  }
+  formMail() {
+    return [this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email])
+      // activityName: new FormControl('', Validators.required),
+      // activityStartDate: new FormControl('', Validators.required),
+      // eventId: new FormControl(this.eventId)
+    })]
+  }
+  get activityFormData() { return <FormArray>this.mailForm.get('arrayOfEmail'); }
+
+
+  /**
+   * Display error message for signUp form
+   */
+  // get f() { return this.mailForm.controls.arrayOfEmail; }
+
 
 
 
@@ -49,9 +83,18 @@ export class AttachMentComponent implements OnInit {
 
     }
   }
-  AddAttchment(){
+  AddAttchment() {
     console.log("call this");
-    
+
+  }
+
+
+  addActivityField() {
+
+    const control = <FormArray>this.mailForm.controls.arrayOfEmail;
+    control.push(this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email])
+    }))
   }
 
 }

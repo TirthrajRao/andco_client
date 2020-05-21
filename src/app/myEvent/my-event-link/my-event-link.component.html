@@ -1,13 +1,16 @@
 <div class="share-link">
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <!-- <h3>{{displayEventLink}}</h3> -->
-    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip="" readonly>
-    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget" aria-hidden="true" (click)="changeSuccessMessage()"></i>
+    <input type="text" #inputTarget [(ngModel)]="displayEventLink" tooltipClass="my-custom-class" ngbTooltip=""
+        readonly>
+    <i tooltipClass="my-custom-class" ngbTooltip="Copy to Clipboard" class="fa fa-link" [ngxClipboard]="inputTarget"
+        aria-hidden="true" (click)="changeSuccessMessage()"></i>
 </div>
 
 
 <div class="my-event-tab-slider my-2">
-    <div class="single-tab-slide slick-slide" *ngFor="let name of eventLinkMenu; let i =index" (click)="selectedMenu(i)">
+    <div class="single-tab-slide slick-slide" *ngFor="let name of eventLinkMenu; let i =index"
+        (click)="selectedMenu(i)">
         <div class="tab-name" [class.active]="selectedIndex == i" id={{i}}>
             <p data-container="body" tooltipClass="my-custom-class" ngbTooltip="{{name}}">{{name}}</p>
         </div>
@@ -16,7 +19,8 @@
 <!-- step 1 start invitation-->
 <div class="step-1-link" *ngIf="index == 0">
     <div class="textarea-box">
-        <textarea name="" id="" rows="1" placeholder="Enter your Invitation message to accompany your Event link" [(ngModel)]="invitatationMessage" (blur)="addInvitationMesage()"></textarea>
+        <textarea name="" id="" rows="1" placeholder="Enter your Invitation message to accompany your Event link"
+            [(ngModel)]="invitatationMessage" (blur)="addInvitationMesage()"></textarea>
         <input type="text" class="bottom-link" readonly placeholder="{{displayEventLink}}">
     </div>
     <div class="share-button">
@@ -35,7 +39,8 @@
 <!-- step 3 start pay-->
 <div class="step-2-link" *ngIf="index == 5">
     <div class="textarea-box">
-        <textarea class="pay-input" rows="3" type="text" [(ngModel)]="payMessage" (blur)="enterPayMessage()" placeholder="Enter message for guests after payment has been made 
+        <textarea class="pay-input" rows="3" type="text" [(ngModel)]="payMessage" (blur)="enterPayMessage()"
+            placeholder="Enter message for guests after payment has been made 
         e.g. Thank you for buying our aso ebi. 
         We can’t wait to see you in all your loveliness."></textarea>
     </div>
@@ -54,19 +59,24 @@
         <!-- <share-buttons theme="material-dark" show="11" image="https://loremflickr.com/320/240"></share-buttons> -->
         <ul>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'" [button]="'whatsapp'" [url]="whatsupLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Whatsapp" [theme]="'circles-dark'"
+                    [button]="'whatsapp'" [url]="whatsupLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'" [button]="'facebook'" [url]="faceBookLink">
+                <share-button tooltipClass="my-custom-class" ngbTooltip="facebook" [theme]="'circles-dark'"
+                    [button]="'facebook'" [url]="faceBookLink">
                 </share-button>
             </li>
             <li>
-                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'" [button]="'email'" [url]="googleLink"></share-button>
+                <!-- <button (click)="addBankAccount()">Gmail</button> -->
+                <share-button tooltipClass="my-custom-class" ngbTooltip="Email" [theme]="'circles-dark'"
+                    [button]="'email'" [url]="googleLink"></share-button>
             </li>
             <li>
 
-                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'" [url]="textMessageLink"></share-button>
+                <share-button tooltipClass="my-custom-class" ngbTooltip="SMS" [theme]="'circles-dark'" [button]="'sms'"
+                    [url]="textMessageLink"></share-button>
             </li>
             <li>
                 <!-- <a href="#">
@@ -81,7 +91,8 @@
 <div class="step-3-link" *ngIf="index == 2">
     <form [formGroup]="reminderForm">
         <div class="textarea-box">
-            <textarea name="" id="" rows="2" (blur)="reminderMessageAdd()" formControlName="reminderMessage" placeholder="Enter message to send to guests that have not yet
+            <textarea name="" id="" rows="2" (blur)="reminderMessageAdd()" formControlName="reminderMessage"
+                placeholder="Enter message to send to guests that have not yet
              bought your aso ebi." ngModel="{{reminderDetails ? reminderDetails.reminderMessage : ''}}"></textarea>
         </div>
         <div class="send-message">
@@ -98,7 +109,8 @@
                 </div>
                 <mat-form-field style="visibility:hidden; float: left; height: 0px;width: 0;">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate" (blur)="reminderdate()" (dateChange)="addEvent('input', $event)">
+                    <input matInput [matDatepicker]="picker" [min]="currentDay" formControlName="reminderStartDate"
+                        (blur)="reminderdate()" (dateChange)="addEvent('input', $event)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -113,7 +125,8 @@
                 </div>
                 <span class="pm-am">{{timeHour}}</span>
                 <span class="zone">{{timezone}}</span>
-                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12" (timeChanged)="timeChanged($event)">
+                <ngx-material-timepicker #default (closed)="timePickerClosed()" [format]="12"
+                    (timeChanged)="timeChanged($event)">
                 </ngx-material-timepicker>
             </div>
         </div>
@@ -131,9 +144,11 @@
         </div>
         <div class="all" *ngIf="reminderDetails">
             <div class="group-box">
-                <input type="radio" id="allList" name="radio-group2" checked="{{reminderDetails.guestList?isAll:''}}" (change)="selectList($event)">
+                <input type="radio" id="allList" name="radio-group2" checked="{{reminderDetails.guestList?isAll:''}}"
+                    (change)="selectList($event)">
                 <label class="w-100" for="allList">all invited guests</label>
-                <input type="radio" name="radio-group2" id="buyList" (change)="selectList($event)" checked="{{reminderDetails.guestList?isOnly:''}}">
+                <input type="radio" name="radio-group2" id="buyList" (change)="selectList($event)"
+                    checked="{{reminderDetails.guestList?isOnly:''}}">
                 <label class="w-100" for="buyList">only guests that bought aso ebi</label>
             </div>
         </div>
@@ -152,15 +167,19 @@
     <form [formGroup]="afterEventForm">
         <div class="textarea-box">
             <textarea name="" id="" rows="2" placeholder="Together with our parents,thank you for your presence,
-             purchase,presents and prayers." formControlName="afterEventMessage" ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}" (blur)="checkAfterMessage()"></textarea>
-            <a (click)="openModel()"><img class="attach-img" src="../../../assets/images/attach-img.png" alt="attachment icon"></a>
+             purchase,presents and prayers." formControlName="afterEventMessage"
+                ngModel="{{afterEventMessage ? afterEventMessage.afterEventMessage : ''}}"
+                (blur)="checkAfterMessage()"></textarea>
+            <a (click)="openModel()"><img class="attach-img" src="../../../assets/images/attach-img.png"
+                    alt="attachment icon"></a>
         </div>
         <div class="to">
             <h3>to :</h3>
         </div>
         <div class="all" *ngIf="!afterEventMessage">
             <div class="group-box">
-                <input type="radio" name="radio-group1" id="totalList" value="totalList" (change)="afterEventList($event)">
+                <input type="radio" name="radio-group1" id="totalList" value="totalList"
+                    (change)="afterEventList($event)">
                 <label class="w-100" for="totalList">all invited guests</label>
                 <input type="radio" name="radio-group1" value="onlyBuy" id="onlyBuy" (change)="afterEventList($event)">
                 <label class="w-100" for="onlyBuy">only guests that bought aso ebi</label>
@@ -168,9 +187,11 @@
         </div>
         <div class="all" *ngIf="afterEventMessage">
             <div class="group-box">
-                <input type="radio" id="totalList" name="radio-group2" checked="{{afterEventMessage.listOfGuest?afterAll:''}}" (change)="afterEventList($event)">
+                <input type="radio" id="totalList" name="radio-group2"
+                    checked="{{afterEventMessage.listOfGuest?afterAll:''}}" (change)="afterEventList($event)">
                 <label class="w-100" for="totalList">all invited guests</label>
-                <input type="radio" name="radio-group2" id="onlyBuy" (change)="afterEventList($event)" checked="{{afterEventMessage.listOfGuest?afterBuy:''}}">
+                <input type="radio" name="radio-group2" id="onlyBuy" (change)="afterEventList($event)"
+                    checked="{{afterEventMessage.listOfGuest?afterBuy:''}}">
                 <label class="w-100" for="onlyBuy">only guests that bought aso ebi</label>
             </div>
         </div>
@@ -187,12 +208,14 @@
 
 
 <!-- image upload modal start -->
-<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal" aria-hidden="true">
+<div class="modal fade my-event-info" id="infoItemModal" tabindex="-1" role="dialog" aria-labelledby="infoItemModal"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5>Upload Attachment</h5>
-                <button type="button" class="close p-3" style="line-height: normal;" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close p-3" style="line-height: normal;" data-dismiss="modal"
+                    aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -204,7 +227,8 @@
             <div class="modal-footer">
                 <div class="choose_image w-100 text-center">
                     <label for="upload_attachment">Choose Image</label>
-                    <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/png" id="upload_attachment">
+                    <input type="file" (change)="addFile($event.target.files)" accept="image/png, image/png, image/png"
+                        id="upload_attachment">
                 </div>
                 <div class="save text-right">
                     <button class="btn" (click)="AddAttchment()">Add Attchment</button>
