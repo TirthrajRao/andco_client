@@ -13,6 +13,7 @@ export class AttachMentComponent implements OnInit {
   imgURL: any;
   public imagePath;
   mailForm: FormGroup
+  eventId
   constructor(
     private fb: FormBuilder,
     public eventService: EventService,
@@ -105,6 +106,7 @@ export class AttachMentComponent implements OnInit {
   }
   sendMailToAll() {
     console.log("this.mailform value", this.mailForm.value);
+    this.dialogRef.close();
     this.eventService.shareLinkOnGmail(this.mailForm.value, this.data).subscribe((response) => {
       console.log("response of mail share in gmail", response);
     }, error => {
