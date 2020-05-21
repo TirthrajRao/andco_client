@@ -134,7 +134,7 @@ h3.title {
 @media(max-width: 575px) {
     h3.title {
         font-size: 16px;
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
     .plus img {
         width: 15px;
@@ -142,10 +142,19 @@ h3.title {
         margin: 5px;
     }
     .bank-slider,
-    .card {
-        padding-left: 40px;
+    .card-slider {
+        padding-left: 35px;
     }
     .single-slide {
         padding: 15px;
+    }
+    .sales-pricing-main h5 {
+        font-size: 16px;
+    }
+    .sales-pricing-main {
+        padding: 80px 20px 20px !important;
+    }
+    .add-bank-account1 {
+        margin: 20px 20px 10px;
     }
 }
