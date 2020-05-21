@@ -285,6 +285,11 @@ span.zone {
     object-fit: cover;
 }
 
+button.email-icon {
+    background-color: transparent;
+    border: none;
+}
+
 @media(max-width: 1600px) {
     .step-3-link {
         max-height: 220px;
@@ -316,6 +321,10 @@ span.zone {
     }
     .alert-success {
         font-size: 22px;
+    }
+    button.email-icon img {
+        height: 55px;
+        width: 55px;
     }
 }
 
