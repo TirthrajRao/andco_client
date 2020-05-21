@@ -315,4 +315,10 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "/shareLink", data)
   }
 
+  sharePdf(data, details) {
+    data['eventId'] = details.eventId
+    data['pdfLink'] = details.pdfLink
+    return this.http.post(config.baseApiUrl + "/sharePdf", data)
+  }
+
 }
