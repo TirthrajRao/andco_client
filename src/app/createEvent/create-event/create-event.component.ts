@@ -67,39 +67,39 @@ export class CreateEventComponent implements OnInit {
   eventBackGround = [
     {
       themeName: 'balloons',
-      path: 'assets/images/guest.png'
+      path: 'assets/images/guest-small.png'
     },
     {
       themeName: 'floral',
-      path: 'assets/images/floral.png'
+      path: 'assets/images/floral-small.png'
     },
     {
       themeName: 'marble',
-      path: 'assets/images/marble.png'
+      path: 'assets/images/marble-small.png'
     },
     {
       themeName: 'wood',
-      path: 'assets/images/wood.png'
+      path: 'assets/images/wood-small.png'
     },
     {
       themeName: 'origami',
-      path: 'assets/images/origami.png'
+      path: 'assets/images/origami-small.png'
     },
     {
       themeName: 'classic',
-      path: 'assets/images/classic.png'
+      path: 'assets/images/classic-small.png'
     },
     {
       themeName: 'lines',
-      path: 'assets/images/lines.png'
+      path: 'assets/images/lines-small.png'
     },
     {
       themeName: 'luxury',
-      path: 'assets/images/luxury.png'
+      path: 'assets/images/luxury-small.png'
     },
     {
       themeName: 'instrument',
-      path: 'assets/images/instrument.png'
+      path: 'assets/images/instrument-small.png'
     }
   ]
   cropPath: any;
