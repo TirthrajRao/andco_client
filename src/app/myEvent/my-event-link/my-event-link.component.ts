@@ -546,7 +546,7 @@ export class MyEventLinkComponent implements OnInit {
 
   addBankAccount() {
     console.log("click to check ");
-    let data
+    let data = this.eventId
     var addBank = this.openDialog(AttachMentComponent, data).subscribe((response) => {
       console.log("what is in response", response);
       // this.getBankDetails()
