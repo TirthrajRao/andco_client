@@ -285,7 +285,9 @@ button.btn.set-price-custom-button.float-left {
     color: #a5b138;
     cursor: pointer;
 }
-
+.no-click {
+    min-height: 300px;
+}
 /* responsive css start here */
 
 @media(max-width: 1600px) {
