@@ -64,7 +64,7 @@
 .display-screen-single-slide.ds-5 {
     background-image: url('../../assets/images/display_screen_5.png');
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
     position: relative;
     background-color: #ead79a;
 }

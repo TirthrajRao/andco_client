@@ -425,11 +425,11 @@ img.swal2-image {
 
 .mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
 .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
-    width: 2em !important;
-    height: 2em !important;
-    margin-left: 10px !important;
-    margin-bottom: 70px;
-    color: #545454 !important;
+    width: 0em !important;
+    height: 0em !important;
+    /* margin-left: 10px !important; */
+    /* margin-bottom: 70px; */
+    /* color: #545454 !important; */
 }
 
 .mat-icon-button {
@@ -1035,6 +1035,21 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
     .myEvent-slider button.prevarrow.slick-arrow {
         right: 20px;
         top: -50px;
+    }
+    .event-slider button.prevarrow.slick-arrow,
+    .event-slider button.nextarrow.slick-arrow {
+        top: -80px;
+    }
+    .event-slider button.prevarrow.slick-arrow {
+        left: auto;
+        right: 20px;
+    }
+    .event-slider button.nextarrow.slick-arrow {
+        right: 0;
+    }
+    .event-slider button.prevarrow.slick-arrow img,
+    .event-slider button.nextarrow.slick-arrow img {
+        height: 20px;
     }
 }
 

@@ -7,6 +7,10 @@
     padding: 20px;
 }
 
+.menu-space {
+    min-width: 80px;
+}
+
 .navigation_menu {
     float: left;
     max-width: 80px;
@@ -90,6 +94,9 @@
     .hello-text h2 span {
         font-size: 22px;
     }
+    .menu-space {
+        min-width: 60px;
+    }
     .navigation_menu {
         max-width: 60px;
     }
@@ -112,6 +119,9 @@
 }
 
 @media(max-width: 991px) {
+    .menu-space {
+        min-width: 45px;
+    }
     .navigation_menu {
         max-width: 45px;
         margin-right: 10px;

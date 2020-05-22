@@ -71,6 +71,7 @@ export class SetPriceComponent implements OnInit {
   selectedTimeZone
   defaultTimeZone
   onlyDisplay = false
+  displayTime = false
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -80,6 +81,8 @@ export class SetPriceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
     console.log("value of timezone", this.timezone)
     // get Curren Location
     if (navigator.geolocation) {
@@ -195,15 +198,20 @@ export class SetPriceComponent implements OnInit {
 
 
   previousSlide(current, next) {
-    console.log("current slide and next slider every time==========", current);
+    console.log("current slide and next slider every time==========", current, next);
 
     this.currentSlideIndex = current
     this.nextSlideIndex = next
-    if (this.currentSlideIndex) {
-      this.backSlider = false
-    }
+    // if (this.currentSlideIndex) {
+    //   this.backSlider = false
+    // }
     if (!this.setPriceDetails) {
       this.isDisableNext = true
+    }
+    if ((current == 0 && next == 1)) {
+      console.log("call this or not");
+
+      this.isBack = false
     }
     if ((current == 0 && next == 1) && ((this.setPriceForm.controls.welcomeMessage.status == 'VALID' && this.setPriceForm.controls.thankyouMessage.status == 'VALID'))) {
       this.isDisableNext = false
@@ -215,6 +223,7 @@ export class SetPriceComponent implements OnInit {
       this.isDisableNext = false
     }
     if ((current == 4 && next == 5)) {
+      this.displayTime = true
       // && ((this.setPriceForm.controls.paymentDeadlineDate.status == 'VALID' && this.setPriceForm.controls.paymentDeadlineTime.status == 'VALID'))
       if (this.setPriceForm.controls.paymentDeadlineDate.status == 'INVALID' && this.setPriceDetails) {
         // console.log("this is what i want============");
@@ -486,6 +495,11 @@ export class SetPriceComponent implements OnInit {
       bankDetails: obj
     })
     this.setPriceForm.get('bankDetails').updateValueAndValidity()
+    if (this.setPriceForm.controls.bankDetails.status == 'VALID') {
+      this.isDisableNext = false
+    } else {
+      this.isDisableNext = true
+    }
   }
   /**
    * Display error message

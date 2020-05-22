@@ -145,6 +145,7 @@
                                                 ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineDate : ''}}">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
+                                            <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
                                             <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors"
                                                 class="invalid-feedback text-center">
                                                 <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date
@@ -160,20 +161,21 @@
                                             formControlName="paymentDeadlineTime" (input)="changeTime($event)"
                                             ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}">
 
-                                        <div class="sales-inner sales-inner-box-option">
-                                            <div class="option how-did-u">
-                                                <select (change)="selectTimeZone($event)" *ngIf="!selectedTimeZone"
-                                                    formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
-                                                    <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
-                                                </select>
-
-                                                <select (change)="selectTimeZone($event)" [hidden]="!selectedTimeZone"
-                                                    formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
-                                                    <option *ngFor="let time of displayTimeZone">
-                                                        {{time.text}}</option>
-                                                </select>
-                                            </div>
+                                        <!-- <div class="sales-inner sales-inner-box-option"> -->
+                                        <div class="option how-did-u">
+                                            <select (change)="selectTimeZone($event)" class="bharda"
+                                                *ngIf="!selectedTimeZone" formControlName="defaultTime"
+                                                [(ngModel)]="defaultTimeZone">
+                                                <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
+                                            </select>
+                                            <select class="vivek" (change)="selectTimeZone($event)"
+                                                [hidden]="!selectedTimeZone" formControlName="timeZoneSelect"
+                                                [(ngModel)]="selectedTimeZone">
+                                                <option *ngFor="let time of displayTimeZone">
+                                                    {{time.text}}</option>
+                                            </select>
                                         </div>
+                                        <!-- </div> -->
 
 
                                         <!-- </div> -->
