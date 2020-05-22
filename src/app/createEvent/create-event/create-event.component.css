@@ -586,7 +586,8 @@ input:focus {
         font-size: 16px;
     }
     .image-cropper-box {
-        height: 240px;
+        height: 200px;
+        width: 200px;
     }
 }
 

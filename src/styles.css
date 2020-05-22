@@ -1036,6 +1036,21 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         right: 20px;
         top: -50px;
     }
+    .event-slider button.prevarrow.slick-arrow,
+    .event-slider button.nextarrow.slick-arrow {
+        top: -80px;
+    }
+    .event-slider button.prevarrow.slick-arrow {
+        left: auto;
+        right: 20px;
+    }
+    .event-slider button.nextarrow.slick-arrow {
+        right: 0;
+    }
+    .event-slider button.prevarrow.slick-arrow img,
+    .event-slider button.nextarrow.slick-arrow img {
+        height: 20px;
+    }
 }
 
 @media(max-width:440px) {
