@@ -1,6 +1,8 @@
 <div class="header-content" id="navigation-logo" *ngIf="!isPrint">
-    <div class="navigation_menu" *ngIf="displayLogo">
-        <a (click)="getHeader('/menu')"><img [src]="imgUrl" [ngStyle]="setLogo()" alt="menu logo"></a>
+    <div class="menu-space">
+        <div class="navigation_menu" *ngIf="displayLogo">
+            <a (click)="getHeader('/menu')"><img [src]="imgUrl" [ngStyle]="setLogo()" alt="menu logo"></a>
+        </div>
     </div>
     <div class="andco-logo">
         <img src="assets/images/andco_logo.png" alt="andco logo">
