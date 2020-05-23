@@ -332,6 +332,10 @@ ul.guest-list-inner-box {
     border-bottom-left-radius: 20px;
 }
 
+button.email-icon {
+    background-color: transparent;
+    border: none;
+}
 @media(max-width: 1600px) {
     .guest-name h1 {
         font-size: 32px;
@@ -352,6 +356,8 @@ ul.guest-list-inner-box {
         height: 170px;
     }
 }
+
+
 
 @media(max-width:1366px) {
     .guest-name h1 {
