@@ -9,10 +9,7 @@
                 <form [formGroup]="setPriceForm">
                     <div class="set-price-main-slider">
                         <div class="sales-inner sales-inner-box-message">
-                            <app-bank-details (selectedBankAccount)="selectbankAccount($event)"
-                                [bankAccount]="selectedAccount" [cardAccount]="selectedCardAccount"
-                                (selectedCardAccount)="selectCard($event)" [allAmount]="totalAccount"
-                                (loaderFalse)="loaderStart($event)">
+                            <app-bank-details (selectedBankAccount)="selectbankAccount($event)" [bankAccount]="selectedAccount" [cardAccount]="selectedCardAccount" (selectedCardAccount)="selectCard($event)" [allAmount]="totalAccount" (loaderFalse)="loaderStart($event)">
                             </app-bank-details>
                             <div class="skip">
                                 <a (click)="skipButton()">Add Later </a>
@@ -21,27 +18,18 @@
                         <div class="sales-inner sales-inner-box-message">
                             <div class="single-main-box">
                                 <h3>Your welcome message </h3>
-                                <textarea formControlName="welcomeMessage"
-                                    placeholder="Your event page welcome message." pattern="[A-Za-z0-9 _ . , ! ? '']+"
-                                    [ngClass]="{ 'is-invalid': f.welcomeMessage.touched && f.welcomeMessage.errors }"
-                                    ngModel="{{setPriceDetails ? setPriceDetails.welcomeMessage: ''}}"
+                                <textarea formControlName="welcomeMessage" placeholder="Your event page welcome message." pattern="[A-Za-z0-9 _ . , ! ? '']+" [ngClass]="{ 'is-invalid': f.welcomeMessage.touched && f.welcomeMessage.errors }" ngModel="{{setPriceDetails ? setPriceDetails.welcomeMessage: ''}}"
                                     (input)="welcomeMessageEnter($event)"></textarea>
-                                <div class="col-md-2" *ngIf=" f.welcomeMessage.touched && f.welcomeMessage.errors"
-                                    class="invalid-feedback">
+                                <div class="col-md-2" *ngIf=" f.welcomeMessage.touched && f.welcomeMessage.errors" class="invalid-feedback">
                                     <div *ngIf="f.welcomeMessage.errors.required">Message is required</div>
                                     <div *ngIf="f.welcomeMessage.errors.pattern">Please enter only alphabates</div>
                                 </div>
                             </div>
                             <div class="single-main-box mt-sm-4">
                                 <h3>Thank you message</h3>
-                                <textarea formControlName="thankyouMessage"
-                                    placeholder="Thank you for buying our aso-ebi. We can’t wait to see you."
-                                    pattern="[A-Za-z0-9 _ . , ! ? '']+"
-                                    [ngClass]="{ 'is-invalid': f.thankyouMessage.touched && f.thankyouMessage.errors }"
-                                    ngModel="{{setPriceDetails ? setPriceDetails.thankyouMessage : ''}}"
+                                <textarea formControlName="thankyouMessage" placeholder="Thank you for buying our aso-ebi. We can’t wait to see you." pattern="[A-Za-z0-9 _ . , ! ? '']+" [ngClass]="{ 'is-invalid': f.thankyouMessage.touched && f.thankyouMessage.errors }" ngModel="{{setPriceDetails ? setPriceDetails.thankyouMessage : ''}}"
                                     (input)="thankyouMessageEnter($event)"></textarea>
-                                <div *ngIf=" f.thankyouMessage.touched && f.thankyouMessage.errors"
-                                    class="invalid-feedback">
+                                <div *ngIf=" f.thankyouMessage.touched && f.thankyouMessage.errors" class="invalid-feedback">
                                     <div *ngIf="f.thankyouMessage.errors.required">Message is required</div>
                                     <div *ngIf="f.thankyouMessage.errors.pattern">Please enter only alphabates</div>
                                 </div>
@@ -66,9 +54,7 @@
                                     <a (click)="skipButton()">Skip</a>
                                 </div>
                                 <div [hidden]="!isRegestery">
-                                    <input class="w-100" type="text" formControlName="linkOfEvent"
-                                        placeholder="Your registry link" (input)="addRegestry($event)"
-                                        ngModel="{{setPriceDetails ? setPriceDetails.linkOfEvent : ''}}">
+                                    <input class="w-100" type="text" formControlName="linkOfEvent" placeholder="Your registry link" (input)="addRegestry($event)" ngModel="{{setPriceDetails ? setPriceDetails.linkOfEvent : ''}}">
                                 </div>
                             </div>
                         </div>
@@ -77,12 +63,10 @@
                                 <span>Transfer to my account</span>
                                 <div class="inner-radio-box">
                                     <div>
-                                        <p><input type="radio" name="radio3" id="test5" value="test5"
-                                                (click)="paymentCloseDate('test5')">
+                                        <p><input type="radio" name="radio3" id="test5" value="test5" (click)="paymentCloseDate('test5')">
                                             <label for="test5">instantly</label>
                                         </p>
-                                        <p><input type="radio" (change)="paymentCloseDate('test6')" name="radio3"
-                                                id="test6">
+                                        <p><input type="radio" (change)="paymentCloseDate('test6')" name="radio3" id="test6">
                                             <label for="test6">on later
                                                 date</label>
                                         </p>
@@ -91,8 +75,7 @@
                                 <div [hidden]="!isTransfer">
                                     <mat-form-field>
                                         <!-- <mat-label>Choose a date</mat-label> -->
-                                        <input matInput [matDatepicker]="picker1" readonly
-                                            (dateChange)="getDate($event)" [min]="currentDay">
+                                        <input matInput [matDatepicker]="picker1" readonly (dateChange)="getDate($event)" [min]="currentDay">
                                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
@@ -104,10 +87,7 @@
                                 <div *ngIf="isPayment == true">
                                     <mat-form-field>
                                         <!-- <mat-label>Choose a date</mat-label> -->
-                                        <input matInput [matDatepicker]="picker1" readonly
-                                            (dateChange)="getDate($event)" [min]="currentDay"
-                                            [ngModelOptions]="{standalone: true}"
-                                            ngModel="{{setPriceDetails ? setPriceDetails.payMentTransferDate : ''}}">
+                                        <input matInput [matDatepicker]="picker1" readonly (dateChange)="getDate($event)" [min]="currentDay" [ngModelOptions]="{standalone: true}" ngModel="{{setPriceDetails ? setPriceDetails.payMentTransferDate : ''}}">
                                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
@@ -120,11 +100,9 @@
                                 <span>I would like andco to handle my delivery</span>
                                 <div class="inner-radio-box">
                                     <div>
-                                        <p><input type="radio" (change)="selectedValue($event)" name="radio4"
-                                                id="isdelivery">
+                                        <p><input type="radio" (change)="selectedValue($event)" name="radio4" id="isdelivery">
                                             <label for="isdelivery">yes</label></p>
-                                        <p><input type="radio" name="radio4" id="noDelivery"
-                                                (change)="selectedValue($event)">
+                                        <p><input type="radio" name="radio4" id="noDelivery" (change)="selectedValue($event)">
                                             <label for="noDelivery">no</label>
                                         </p>
                                     </div>
@@ -138,17 +116,11 @@
                                     <div>
                                         <mat-form-field>
                                             <!-- <mat-label>Choose a date</mat-label> -->
-                                            <input matInput [matDatepicker]="picker"
-                                                formControlName="paymentDeadlineDate"
-                                                [ngClass]="{ 'is-invalid': f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors }"
-                                                readonly [min]="currentDay" (dateChange)="paymentDate($event)"
-                                                ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineDate : ''}}">
+                                            <input matInput [matDatepicker]="picker" formControlName="paymentDeadlineDate" [ngClass]="{ 'is-invalid': f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors }" readonly [min]="currentDay" (dateChange)="paymentDate($event)" ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineDate : ''}}">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
-                                            <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors"
-                                                class="invalid-feedback text-center">
-                                                <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date
-                                                    is required </div>
+                                            <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors" class="invalid-feedback text-center">
+                                                <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date is required </div>
                                             </div>
                                         </mat-form-field>
                                         <h4 *ngIf="onlyDisplay == true">Please change the paymentDeadlineDate</h4>
@@ -156,19 +128,15 @@
                                         <!-- <span (click)="openModel(default)"> -->
 
                                         <!-- <div id="datetimepicker3"> -->
-                                        <input type="time" placeholder="selectTime" name="time"
-                                            formControlName="paymentDeadlineTime" (input)="changeTime($event)"
-                                            ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}">
+                                        <input type="time" placeholder="selectTime" name="time" formControlName="paymentDeadlineTime" (input)="changeTime($event)" ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}">
 
                                         <div class="sales-inner sales-inner-box-option">
                                             <div class="option how-did-u">
-                                                <select (change)="selectTimeZone($event)" *ngIf="!selectedTimeZone"
-                                                    formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
+                                                <select (change)="selectTimeZone($event)" tabindex="-1" *ngIf="!selectedTimeZone" formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
                                                     <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
                                                 </select>
 
-                                                <select (change)="selectTimeZone($event)" [hidden]="!selectedTimeZone"
-                                                    formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
+                                                <select (change)="selectTimeZone($event)" tabindex="-1" [hidden]="!selectedTimeZone" formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
                                                     <option *ngFor="let time of displayTimeZone">
                                                         {{time.text}}</option>
                                                 </select>
@@ -186,10 +154,8 @@
                                         <ngx-material-timepicker #default (timeChanged)="timeChanged($event)"
                                             (closed)="closeEvent()">
                                         </ngx-material-timepicker> -->
-                                        <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors"
-                                            class="invalid-feedback">
-                                            <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is
-                                                required </div>
+                                        <div *ngIf=" f.paymentDeadlineTime.touched && f.paymentDeadlineTime.errors" class="invalid-feedback">
+                                            <div *ngIf="f.paymentDeadlineTime.errors.required">Payment Deadline Time is required </div>
                                         </div>
                                         <!-- </div> -->
                                         <!-- <h6 class="mt-2">{{timezone}} Standard Time</h6> -->
@@ -206,8 +172,7 @@
                         <div class="sales-inner sales-inner-box-option">
                             <div class="option how-did-u">
                                 <span>How did you hear about andco?</span>
-                                <select class="form-control m-auto" *ngIf="!aboutTypeOf" name="" id=""
-                                    (change)="onDropDown($event)">
+                                <select class="form-control m-auto" *ngIf="!aboutTypeOf" name="" id="" (change)="onDropDown($event)">
                                     <option style="line-height: 2rem;" value="">Select</option>
                                     <option value="planner">Event Planner</option>
                                     <option value="vendor">Event Vendor</option>
@@ -216,8 +181,7 @@
                                     <option value="online">Online Search </option>
                                 </select>
 
-                                <select class="form-control w-75 m-auto" *ngIf="aboutTypeOf" formControlName="hearAbout"
-                                    [(ngModel)]="aboutTypeOf.aboutType" (change)="updateDropDown($event)">
+                                <select class="form-control w-75 m-auto" *ngIf="aboutTypeOf" formControlName="hearAbout" [(ngModel)]="aboutTypeOf.aboutType" (change)="updateDropDown($event)">
                                     <option value="">Select</option>
                                     <option value="planner">Event Planner</option>
                                     <option value="vendor">Event Vendor</option>
@@ -226,35 +190,26 @@
                                     <option value="online">Online Search </option>
                                 </select>
                                 <div [hidden]="!isEventPlannerSelected" class="how-did-u-input mt-3">
-                                    <input type="text" (input)="plannerValue($event)" *ngIf="!hearAboutMessage"
-                                        placeholder="Type here">
+                                    <input type="text" (input)="plannerValue($event)" *ngIf="!hearAboutMessage" placeholder="Type here">
                                 </div>
                                 <div [hidden]="!isEventPlannerUpdate" class="how-did-u-input mt-3">
-                                    <input type="text" (input)="updatePlannerValue($event)"
-                                        [(ngModel)]="hearAboutMessage" placeholder="Type here"
-                                        *ngIf="hearAboutMessage || aboutTypeOf" formControlName="message">
+                                    <input type="text" (input)="updatePlannerValue($event)" [(ngModel)]="hearAboutMessage" placeholder="Type here" *ngIf="hearAboutMessage || aboutTypeOf" formControlName="message">
                                 </div>
                                 <div [hidden]="!isEventVendorSelected" class="how-did-u-input mt-3">
                                     <input type="text" placeholder="Type here" (input)="vendorValue($event)">
                                 </div>
                                 <div [hidden]="!isEventVendorUpdate" class="how-did-u-input mt-3">
-                                    <input type="text" placeholder="Type here" (input)="updateVendorValue($event)"
-                                        *ngIf="vendorMessage || aboutTypeOf" formControlName="vendorMessage"
-                                        [(ngModel)]="vendorMessage">
+                                    <input type="text" placeholder="Type here" (input)="updateVendorValue($event)" *ngIf="vendorMessage || aboutTypeOf" formControlName="vendorMessage" [(ngModel)]="vendorMessage">
                                 </div>
                             </div>
                         </div>
                         <!-- <button class="btn set-price-custom-button" >Submit</button> -->
                     </div>
                 </form>
-                <button class="btn set-price-custom-button float-left" (click)="backToGroup()"
-                    [disabled]="isBack">Back</button>
+                <button class="btn set-price-custom-button float-left" (click)="backToGroup()" [disabled]="isBack">Back</button>
 
-                <button class="btn set-price-custom-button float-right" [disabled]="isDisableNext" (click)="nextSlide()"
-                    *ngIf="!saveEvent">Next</button>
-                <button class="btn set-price-custom-button float-right"
-                    (click)="setPriceDetails? updateSetPrice():  setPrice()"
-                    [disabled]="setPriceForm.invalid || isDisable" *ngIf="saveEvent">Submit</button>
+                <button class="btn set-price-custom-button float-right" [disabled]="isDisableNext" (click)="nextSlide()" *ngIf="!saveEvent">Next</button>
+                <button class="btn set-price-custom-button float-right" (click)="setPriceDetails? updateSetPrice():  setPrice()" [disabled]="setPriceForm.invalid || isDisable" *ngIf="saveEvent">Submit</button>
             </div>
         </div>
     </div>
