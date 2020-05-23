@@ -278,8 +278,16 @@ button.btn.set-price-custom-button.float-left {
 }
 
 /* radio button css end here */
-
-
+.inner-radio-box i{
+    position: absolute;
+    right: -40px;
+    font-size: 26px;
+    color: #a5b138;
+    cursor: pointer;
+}
+.no-click {
+    min-height: 300px;
+}
 /* responsive css start here */
 
 @media(max-width: 1600px) {

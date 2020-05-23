@@ -8,7 +8,7 @@
                 </div>
                 <form [formGroup]="setPriceForm">
                     <div class="set-price-main-slider">
-                        <div class="sales-inner sales-inner-box-message">
+                        <div class="sales-inner sales-inner-box-message no-click">
                             <app-bank-details (selectedBankAccount)="selectbankAccount($event)" [bankAccount]="selectedAccount" [cardAccount]="selectedCardAccount" (selectedCardAccount)="selectCard($event)" [allAmount]="totalAccount" (loaderFalse)="loaderStart($event)">
                             </app-bank-details>
                             <div class="skip">
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <!-- </div> -->
-                        <div class="sales-inner sales-inner-box-option">
+                        <div class="sales-inner sales-inner-box-option no-click">
                             <div class="option">
                                 <span>Would you prefer your guests not bring a present, but gift you with:</span>
                                 <div class="inner-radio-box">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sales-inner sales-inner-box-option transfer" id="payMentSlide">
+                        <div class="sales-inner sales-inner-box-option no-click transfer" id="payMentSlide">
                             <div class="option">
                                 <span>Transfer to my account</span>
                                 <div class="inner-radio-box">
@@ -95,7 +95,7 @@
                                 <!-- </span> -->
                             </div>
                         </div>
-                        <div class="sales-inner sales-inner-box-option">
+                        <div class="sales-inner sales-inner-box-option no-click">
                             <div class="option">
                                 <span>I would like andco to handle my delivery</span>
                                 <div class="inner-radio-box">
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sales-inner sales-inner-box-option">
+                        <div class="sales-inner sales-inner-box-option" tabindex="-1">
                             <div class="option">
                                 <span>Close collections for my event on</span>
                                 <div class="inner-radio-box timepicker-class">
@@ -119,6 +119,7 @@
                                             <input matInput [matDatepicker]="picker" formControlName="paymentDeadlineDate" [ngClass]="{ 'is-invalid': f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors }" readonly [min]="currentDay" (dateChange)="paymentDate($event)" ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineDate : ''}}">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
+                                            <i class="fa fa-calendar" aria-hidden="true" (click)="picker.open()"></i>
                                             <div *ngIf=" f.paymentDeadlineDate.touched && f.paymentDeadlineDate.errors" class="invalid-feedback text-center">
                                                 <div *ngIf="f.paymentDeadlineDate.errors.required">Payment Deadline Date is required </div>
                                             </div>
@@ -130,18 +131,17 @@
                                         <!-- <div id="datetimepicker3"> -->
                                         <input type="time" placeholder="selectTime" name="time" formControlName="paymentDeadlineTime" (input)="changeTime($event)" ngModel="{{setPriceDetails ? setPriceDetails.paymentDeadlineTime : ''}}">
 
-                                        <div class="sales-inner sales-inner-box-option">
-                                            <div class="option how-did-u">
-                                                <select (change)="selectTimeZone($event)" tabindex="-1" *ngIf="!selectedTimeZone" formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
-                                                    <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
-                                                </select>
-
-                                                <select (change)="selectTimeZone($event)" tabindex="-1" [hidden]="!selectedTimeZone" formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
-                                                    <option *ngFor="let time of displayTimeZone">
-                                                        {{time.text}}</option>
-                                                </select>
-                                            </div>
+                                        <!-- <div class="sales-inner sales-inner-box-option"> -->
+                                        <div class="option how-did-u">
+                                            <select (change)="selectTimeZone($event)" tabindex="-1" class="bharda" *ngIf="!selectedTimeZone" formControlName="defaultTime" [(ngModel)]="defaultTimeZone">
+                                                <option *ngFor="let time of displayTimeZone">{{time.text}}</option>
+                                            </select>
+                                            <select class="vivek" (change)="selectTimeZone($event)" tabindex="-1" [hidden]="!selectedTimeZone" formControlName="timeZoneSelect" [(ngModel)]="selectedTimeZone">
+                                                <option *ngFor="let time of displayTimeZone">
+                                                    {{time.text}}</option>
+                                            </select>
                                         </div>
+                                        <!-- </div> -->
 
 
                                         <!-- </div> -->
@@ -163,13 +163,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sales-inner sales-inner-box-option thank-you">
+                        <div class="sales-inner sales-inner-box-option thank-you no-click">
                             <div class="option">
                                 <span>Your event #{{hashTag}} is now live</span>
                                 <h6>Just one more thing……</h6>
                             </div>
                         </div>
-                        <div class="sales-inner sales-inner-box-option">
+                        <div class="sales-inner sales-inner-box-option no-click">
                             <div class="option how-did-u">
                                 <span>How did you hear about andco?</span>
                                 <select class="form-control m-auto" *ngIf="!aboutTypeOf" name="" id="" (change)="onDropDown($event)">

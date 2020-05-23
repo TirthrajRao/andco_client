@@ -425,11 +425,11 @@ img.swal2-image {
 
 .mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
 .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
-    width: 2em !important;
-    height: 2em !important;
-    margin-left: 10px !important;
-    margin-bottom: 70px;
-    color: #545454 !important;
+    width: 0em !important;
+    height: 0em !important;
+    /* margin-left: 10px !important; */
+    /* margin-bottom: 70px; */
+    /* color: #545454 !important; */
 }
 
 .mat-icon-button {
