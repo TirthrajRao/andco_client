@@ -336,6 +336,7 @@ button.email-icon {
     background-color: transparent;
     border: none;
 }
+
 @media(max-width: 1600px) {
     .guest-name h1 {
         font-size: 32px;
@@ -355,9 +356,11 @@ button.email-icon {
     .empty-message img {
         height: 170px;
     }
+    button.email-icon img {
+        height: 55px;
+        width: 55px;
+    }
 }
-
-
 
 @media(max-width:1366px) {
     .guest-name h1 {
@@ -411,6 +414,10 @@ button.email-icon {
     }
     .guest-list-box-scroll {
         max-height: 330px;
+    }
+    button.email-icon img {
+        height: 45px;
+        width: 45px;
     }
 }
 
