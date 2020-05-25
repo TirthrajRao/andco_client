@@ -150,6 +150,9 @@ span.eventClose {
     .guest-main-box {
         width: 560px;
     }
+    .guest-inner-box {
+        padding: 30px 30px 90px;
+    }
 }
 
 @media(max-width: 575px) {

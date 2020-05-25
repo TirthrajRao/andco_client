@@ -294,7 +294,7 @@ button.btn.forgot-btn {
 @media (max-width: 480px) {
     .enter-inner-box {
         width: 400px;
-        height: 360px;
+        height: auto;
     }
 }
 

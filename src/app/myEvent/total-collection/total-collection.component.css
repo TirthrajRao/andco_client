@@ -238,4 +238,7 @@ span.text-orange {
     .inner-div {
         padding: 10px;
     }
+    .total-second-slide {
+        min-height: 207;
+    }
 }
