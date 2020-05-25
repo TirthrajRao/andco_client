@@ -172,9 +172,6 @@ h2 img:hover {
     .event-menu-box-main {
         width: 480px;
     }
-    .event-menu-box-main {
-        position: unset;
-    }
     .empty-message img {
         height: 130px;
     }
@@ -187,6 +184,9 @@ h2 img:hover {
     .myevent-inner-box,
     .event-menu-box-main {
         width: 90%;
+    }
+    .event-menu-box-main {
+        position: unset;
     }
 }
 
