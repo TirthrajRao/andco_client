@@ -147,6 +147,7 @@ h3.title {
     }
     .single-slide {
         padding: 15px;
+        /* min-height: 170px; */
     }
     .sales-pricing-main h5 {
         font-size: 16px;

@@ -60,7 +60,11 @@ export class BankDetailsComponent implements OnInit {
       arrows: true,
       prevArrow: '#prevarrow',
       nextArrow: '#nextarrow',
+      rows: 0
     })
+    .on('setPosition', function (event, slick) {
+      slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  });
     // }, 300)
   }
 
@@ -73,7 +77,11 @@ export class BankDetailsComponent implements OnInit {
       arrows: true,
       prevArrow: '#prevarrow',
       nextArrow: '#nextarrow',
+      rows: 0
     })
+    .on('setPosition', function (event, slick) {
+      slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  });
   }
 
   initCardSlider() {
@@ -85,7 +93,11 @@ export class BankDetailsComponent implements OnInit {
       arrows: true,
       prevArrow: '#prevarrow1',
       nextArrow: '#nextarrow1',
+      rows: 0
     })
+    .on('setPosition', function (event, slick) {
+      slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  });
   }
 
 
@@ -98,7 +110,11 @@ export class BankDetailsComponent implements OnInit {
       arrows: true,
       prevArrow: '#prevarrow1',
       nextArrow: '#nextarrow1',
+      rows: 0
     })
+    .on('setPosition', function (event, slick) {
+      slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  });
   }
 
 

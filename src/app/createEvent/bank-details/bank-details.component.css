@@ -25,3 +25,10 @@
 .slider-box {
     position: relative;
 }
+
+.bank-slider,
+.bank-sliderAfter,
+.card-slider,
+.card-sliderAfter {
+    height: 100%;
+}

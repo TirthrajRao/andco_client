@@ -11,24 +11,10 @@
 }
 
 .cart-main-box::-webkit-scrollbar {
+    height: 3px;
     width: 3px;
     padding-right: 3px;
     background-color: transparent;
-}
-
-.table-responsive::-webkit-scrollbar-track {
-    height: 2px;
-    background-color: transparent;
-}
-
-.table-responsive::-webkit-scrollbar {
-    height: 2px;
-    background-color: transparent;
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    height: 2px;
 }
 
 .cart-main-box::-webkit-scrollbar-thumb {

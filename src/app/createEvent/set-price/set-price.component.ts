@@ -72,6 +72,8 @@ export class SetPriceComponent implements OnInit {
   defaultTimeZone
   onlyDisplay = false
   displayTime = false
+  firstPlannerValue
+  firstVendorValue
   constructor(
     public alertService: AlertService,
     public eventService: EventService,
@@ -832,11 +834,20 @@ export class SetPriceComponent implements OnInit {
     if (event.target.value == 'planner') {
       this.isEventPlannerSelected = true
       this.isEventVendorSelected = false
+      this.isDisable = true
+      console.log("value of first planner", this.firstPlannerValue);
+      if (this.firstPlannerValue != undefined) {
+        this.isDisable = false
+      }
+
     } else if (event.target.value == 'vendor') {
       console.log("second if");
-
       this.isEventVendorSelected = true
       this.isEventPlannerSelected = false
+      this.isDisable = true
+      if (this.firstVendorValue != undefined) {
+        this.isDisable = false
+      }
     } else {
       console.log("final else condition is call ");
 
@@ -904,6 +915,8 @@ export class SetPriceComponent implements OnInit {
         hearAbout: hearAbout
       })
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
+      this.firstPlannerValue = event.target.value
+      this.isDisable = false
     } else {
       this.isDisable = true
     }
@@ -943,6 +956,8 @@ export class SetPriceComponent implements OnInit {
         hearAbout: hearAbout
       })
       this.setPriceForm.get('hearAbout').updateValueAndValidity()
+      this.isDisable = false
+      this.firstVendorValue = event.target.value
     } else {
       this.isDisable = true
     }

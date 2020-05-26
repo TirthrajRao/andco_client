@@ -265,10 +265,17 @@ span.items-name {
     }
 }
 
-@media(max-width:480px) {
+@media(max-width: 575px) {
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         font-size: 22px;
+    }
+}
+
+@media(max-width:480px) {
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
+        font-size: 20px;
     }
     .myevent-activity-box {
         font-size: 20px;

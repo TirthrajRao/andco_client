@@ -169,6 +169,10 @@ input.bottom-link::placeholder {
     transition: 0.5s all;
 }
 
+.step-1-link textarea {
+    height: 40px;
+}
+
 
 /* step 2 start*/
 
@@ -223,7 +227,7 @@ span.middle {
 }
 
 .step-3-link {
-    max-height: 350px;
+    max-height: 352px;
     overflow: auto;
 }
 
@@ -397,6 +401,9 @@ button.email-icon {
     .step-3-link {
         max-height: 100%;
     }
+    .step-4-link {
+        max-height: 100%;
+    }
 }
 
 @media(max-width: 991px) {
@@ -415,6 +422,9 @@ button.email-icon {
     textarea,
     input.bottom-link {
         font-size: 16px;
+    }
+    .to h3 {
+        font-size: 22px;
     }
 }
 
@@ -442,12 +452,42 @@ button.email-icon {
         height: 50px;
         width: 50px;
     }
+    .step-1-link textarea {
+        height: 30px;
+    }
+    img.attach-img {
+        bottom: 20px;
+        right: 20px;
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @media(max-width:575px) {
     .share-link i {
         right: 12px;
         font-size: 20px;
+    }
+    .to h3 {
+        font-size: 20px;
+    }
+    .all {
+        padding-left: 40px;
+    }
+    .to {
+        width: 40px;
+    }
+    .step-1-link textarea {
+        height: 50px;
+    }
+    textarea.pay-input {
+        min-height: 70px;
+    }
+}
+
+@media(max-width:480px) {
+    textarea.pay-input {
+        min-height: 150px;
     }
 }
 
