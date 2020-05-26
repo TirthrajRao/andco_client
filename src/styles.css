@@ -971,6 +971,9 @@ share-button.sb-button.sb-circles-dark button.sb-sms {
         padding: 0 33.33% !important;
         width: 100% !important;
     }
+    .input_with_icont span {
+        top: 9px;
+    }
 }
 
 @media(max-width: 575px) {

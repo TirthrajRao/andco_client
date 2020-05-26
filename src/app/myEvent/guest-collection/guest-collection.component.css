@@ -370,10 +370,14 @@ button.email-icon {
         font-size: 22px;
         width: 50px;
         height: 50px;
+        line-height: 1;
     }
     .guest-single-item p {
         width: 150px;
         font-size: 18px;
+    }
+    .social-icon ul {
+        padding: 0 0 0 90px;
     }
     .social-icon ul li a img {
         height: 50px;
@@ -387,6 +391,9 @@ button.email-icon {
     }
     #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
         width: 600px;
+    }
+    .social-icon ul li a {
+        font-size: 18px;
     }
 }
 
@@ -406,11 +413,17 @@ button.email-icon {
     .guest-list-box-scroll {
         max-height: 500px;
     }
+    .masthead-search-search>* {
+        margin-top: -1px;
+    }
 }
 
 @media(max-width:767px) {
     #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
-        width: 450px;
+        width: 457px;
+    }
+    .guest-list-box {
+        padding: 15px;
     }
     .guest-list-box-scroll {
         max-height: 330px;
@@ -418,6 +431,17 @@ button.email-icon {
     button.email-icon img {
         height: 45px;
         width: 45px;
+    }
+    .masthead-search-search>* {
+        margin-top: -1px;
+    }
+    #masthead-search-toggle:checked+.masthead-search-indicator:before,
+    #masthead-search-toggle:checked+.masthead-search-indicator:after {
+        top: 22px;
+    }
+    .accordion button.collapsed:after,
+    .accordion button:after {
+        right: 0;
     }
 }
 
@@ -470,9 +494,15 @@ button.email-icon {
     .masthead-search-search input {
         padding: 10px;
     }
+    .social-icon ul li a {
+        font-size: 16px;
+    }
 }
 
 @media(max-width:480px) {
+    .guest-name h1 {
+        font-size: 18px;
+    }
     .masthead-search-toggle {
         width: 50px;
         height: 50px;
@@ -495,7 +525,7 @@ button.email-icon {
 
 @media(max-width: 440px) {
     .guest-list-box {
-        padding: 20px;
+        padding: 10px;
         border-radius: 20px;
     }
     .info p {
@@ -510,7 +540,7 @@ button.email-icon {
         height: 30px;
     }
     #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
-        width: 320px;
+        width: 310px;
     }
     .masthead-search-indicator:after {
         top: 30px
@@ -528,7 +558,10 @@ button.email-icon {
 
 @media(max-width: 380px) {
     #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
-        width: 280px;
+        width: 260px;
+    }
+    .guest-name h1 {
+        font-size: 16px;
     }
 }
 
