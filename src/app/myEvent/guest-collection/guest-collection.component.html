@@ -4,7 +4,7 @@
     <div class="masthead">
         <div class="masthead-search">
             <label for="masthead-search-toggle" class="masthead-search-toggle">Toggle Search</label>
-            <input type="checkbox" id="masthead-search-toggle" class="isHidden" />
+            <input type="checkbox" id="masthead-search-toggle" class="isHidden" (click)="displayTotalList($event)" />
             <div class="masthead-search-indicator"></div>
             <div class="masthead-search-search">
                 <label for="masthead-search-search" class="isHidden">Search</label>
