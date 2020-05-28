@@ -274,6 +274,19 @@ img.down {
     min-width: 662px;
 }
 
+.table tr {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tr:last-child {
+    border: none;
+}
+
+.table td,
+.table th {
+    border: none;
+}
+
 
 /* radio button css end here */
 
