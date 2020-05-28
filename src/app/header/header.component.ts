@@ -196,7 +196,7 @@ export class HeaderComponent implements OnInit {
     } else if (this.currentUrl.includes('eventGroup')) {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('created-event-message')) {
-      this.imgUrl = '/assets/images/firework-green.png'
+      this.imgUrl = '/assets/images/firework-white.png'
     } else if (this.currentUrl.includes('set-price')) {
       this.imgUrl = '/assets/images/firework-green.png'
     } else if (this.currentUrl.includes('add-bank-account')) {

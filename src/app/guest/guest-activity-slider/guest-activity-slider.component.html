@@ -1,5 +1,5 @@
 <app-loader *ngIf="isLoad" id="loader"></app-loader>
-<div class="cart-div">
+<div class="cart-div" *ngIf="!isClose">
     <img src="../../../assets/images/cart.png" alt="cart image" (click)="addTocart()">
 </div>
 <div class="guest-activity-single-slide">
