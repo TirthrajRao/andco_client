@@ -493,7 +493,6 @@ button.email-icon {
 
 @media(max-width:440px) {
     span.zone {
-        line-height: normal;
         font-size: 12px;
     }
 }
