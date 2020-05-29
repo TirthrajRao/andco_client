@@ -99,11 +99,11 @@ h3.title {
     background-color: #A6B138;
     color: #fff;
     font-size: 18px;
-    padding: 7px 23px;
+    padding: 9px 23px 5px;
     font-weight: 600;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 7px;
     margin: auto;
 }
 

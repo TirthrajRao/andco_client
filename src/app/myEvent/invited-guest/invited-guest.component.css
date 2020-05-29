@@ -79,6 +79,7 @@ ul.guest-list-inner-box::-webkit-scrollbar-thumb {
 .guest-name p {
     font-weight: 600;
     font-size: 26px;
+    margin-top: 8px;
 }
 
 .profile-name {

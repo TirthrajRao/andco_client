@@ -179,7 +179,7 @@ input[type=radio]:checked+label:before {
         height: 22px;
     }
     .pay button {
-        padding: 5px 30px 0px;
+        padding: 5px 30px;
         font-size: 18px;
     }
     .days p,

@@ -72,7 +72,7 @@
 
 .guest-activity-item-tab li.nav-item a.nav-link {
     font-size: 20px;
-    padding: 10px 30px;
+    padding: 12px 30px 8px;
 }
 
 li.guest-item {
@@ -151,7 +151,7 @@ button.btn.total {
     background-color: #fff;
     font-size: 20px;
     font-weight: bold;
-    padding: 5px 37px;
+    padding: 7px 37px 3px;
 }
 
 .design-number-arrow {
@@ -303,7 +303,7 @@ img.down {
     }
     .guest-activity-item-tab li.nav-item a.nav-link {
         font-size: 18px;
-        padding: 8px 24px;
+        padding: 10px 24px 6px;
     }
     .guest-activity-item-tab .tab-content {
         padding: 20px;
@@ -371,17 +371,12 @@ img.down {
 }
 
 @media(max-width:575px) {
-    .guest-add-items h4,
-    .quantity-center h4,
-    .guest-item-name p {
-        margin-bottom: 5px;
-    }
     .guest-activity-slider h2 {
         font-size: 22px;
     }
     .guest-activity-item-tab li.nav-item a.nav-link {
         font-size: 18px;
-        padding: 5px 20px;
+        padding: 7px 20px 3px;
     }
     .guest-activity-item-tab .tab-content {
         padding: 20px;

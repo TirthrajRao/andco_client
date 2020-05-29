@@ -341,7 +341,7 @@ button.btn.created-event-custom-button {
     background-color: #9D3742;
     color: #fff;
     font-size: 22px;
-    padding: 7px 52px;
+    padding: 9px 52px 5px;
     font-weight: 600;
     border: none;
     outline: none;
@@ -356,7 +356,7 @@ button.btn.created-event-custom-button1 {
     background-color: #9D3742;
     color: #fff;
     font-size: 22px;
-    padding: 7px 52px;
+    padding: 9px 52px 5px;
     font-weight: 600;
     border: none;
     outline: none;
@@ -460,7 +460,7 @@ input:focus {
     }
     button.btn.created-event-custom-button,
     button.btn.created-event-custom-button1 {
-        padding: 5px 35px;
+        padding: 7px 35px 3px;
         bottom: 10px;
         font-size: 18px;
     }
@@ -582,8 +582,9 @@ input:focus {
     }
     button.btn.created-event-custom-button,
     button.btn.created-event-custom-button1 {
-        padding: 3px 25px;
+        padding: 5px 25px 2px;
         font-size: 16px;
+        border-radius: 5px;
     }
     .image-cropper-box {
         height: 200px;
@@ -648,7 +649,7 @@ input:focus {
     button.btn.created-event-custom-button,
     button.btn.created-event-custom-button1 {
         bottom: 8px;
-        border-radius: 5px;
+        border-radius: 3px;
     }
 }
 
@@ -663,7 +664,7 @@ input:focus {
     button.btn.created-event-custom-button,
     button.btn.created-event-custom-button1 {
         bottom: 28px;
-        border-radius: 5px;
+        border-radius: 3px;
     }
 }
 

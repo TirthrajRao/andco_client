@@ -71,7 +71,7 @@
 .choose_image label {
     background-color: #C4752D;
     color: #ffffff;
-    padding: 5px 10px;
+    padding: 7px 10px 3px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -86,6 +86,7 @@
     border: none;
     outline: none;
     border-radius: 5px;
+    padding-top: 7px;
 }
 
 h5.modal-title {

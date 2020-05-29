@@ -6,8 +6,8 @@
     background-color: rgba(255, 255, 255, 0.74);
     border-radius: 10px;
     line-height: 50px;
-    margin: 5px;
-    padding: 5px 16px;
+    margin: 7px;
+    padding: 10px 16px 4px;
     text-align: center;
     cursor: pointer;
     position: relative;
@@ -29,7 +29,8 @@
 .myEvent-group-slider .myEvent-name p {
     color: #C48042;
 }
-.myEvent-name.event.active:after{
+
+.myEvent-name.event.active:after {
     content: "";
     position: absolute;
     top: -4px;
@@ -40,6 +41,7 @@
     display: block;
     border-radius: 13px;
 }
+
 .myEvent-name.activity.active:after {
     content: "";
     position: absolute;
@@ -51,7 +53,8 @@
     display: block;
     border-radius: 13px;
 }
-.myEvent-name.group.active1:after{
+
+.myEvent-name.group.active1:after {
     content: "";
     position: absolute;
     top: -4px;
@@ -115,7 +118,6 @@
 @media(max-width: 1366px) {
     .myEvent-name p {
         font-size: 18px;
-        padding-top: 3px;
         line-height: 26px;
     }
 }
@@ -138,6 +140,7 @@
         font-size: 40px;
     }
     .myEvent-name {
+        padding: 8px 16px 6px;
         border-radius: 7px;
     }
 }
