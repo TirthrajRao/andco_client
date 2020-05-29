@@ -62,7 +62,7 @@
     font-weight: bold;
     margin: 20px 0;
     color: #fff;
-    padding: 10px 30px;
+    padding: 11px 30px 8px;
 }
 
 p.thank-you-message {
@@ -135,7 +135,7 @@ p.thank-you-message::-webkit-scrollbar-thumb {
     }
     .thank-you button {
         font-size: 18px;
-        padding: 7px 20px;
+        padding: 9px 20px 5px;
     }
 }
 

@@ -46,7 +46,7 @@ h3.pay-by {
     background-color: #fff;
     color: var(--guest-total-add-more);
     font-weight: bold;
-    padding: 7px 30px;
+    padding: 9px 30px 5px;
     font-size: 18px;
 }
 

@@ -5,7 +5,7 @@
     text-align: center;
     margin: 10px 0;
     position: relative;
-    padding: 12px 45px 6px 6px;
+    padding: 9px 45px 4px 6px;
 }
 
 .alert-success {
@@ -61,7 +61,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     margin: 5px;
-    padding: 5px;
+    padding: 7px 5px 3px;
     text-align: center;
     cursor: pointer;
 }
@@ -160,6 +160,7 @@ input.bottom-link::placeholder {
     font-weight: 600;
     color: #F8D0AD;
     margin-top: 15px;
+    padding: 8px 5px 4px;
 }
 
 .share-button button:hover {
@@ -300,9 +301,6 @@ button.email-icon {
     }
     .step-4-link {
         max-height: 230px;
-    }
-    .share-link {
-        padding: 6px 25px 4px 4px;
     }
     .share-link h3,
     .tab-name p {
@@ -493,7 +491,6 @@ button.email-icon {
 
 @media(max-width:440px) {
     span.zone {
-        line-height: normal;
         font-size: 12px;
     }
 }

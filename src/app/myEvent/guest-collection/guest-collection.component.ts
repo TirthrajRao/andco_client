@@ -7,7 +7,7 @@ import { saveAs } from "file-saver";
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { AttachMentComponent } from '../attach-ment/attach-ment.component';
-import { MatPaginator, PageEvent, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
 // import { EventEmitter } from 'protractor';
 declare var $: any
@@ -56,6 +56,8 @@ export class GuestCollectionComponent implements OnInit {
   pdfPath = config.pdfUrl
   finalUrl
   sendUrl
+  totalList = []
+  // displayInput = false
   constructor(
     public excelService: ExcelService,
     public searchPipe: SearchListPipe,
@@ -84,6 +86,7 @@ export class GuestCollectionComponent implements OnInit {
     if (changes.guestItems && changes.guestItems.currentValue) {
       // console.log("guest details list changes", changes.guestItems);
       this.displayGuestList(changes.guestItems.currentValue)
+      this.totalList = changes.guestItems.currentValue
     }
     if (changes.noListOfGuest && changes.noListOfGuest.currentValue) {
       // console.log("call this for no list of guest", changes.noListOfGuest.currentValue);
@@ -320,4 +323,19 @@ export class GuestCollectionComponent implements OnInit {
     }
   }
 
+
+
+  displayTotalList(event) {
+    // console.log("call or not ==========", event);
+    // this.displayGuestList(this.totalList)
+    this.displayGuestItems = this.totalList
+    this.searchText = ''
+
+    let message = document.getElementById('message')
+    message.innerHTML = ""
+    // setTimeout(() => {
+
+    //   $("#bhudev0").trigger("click")
+    // }, 100)
+  }
 }
