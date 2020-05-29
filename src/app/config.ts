@@ -1,5 +1,5 @@
 let envs = [];
-let env = "development";
+let env = "testing";
 // const baseUrl = ''
 // const baseMediaUrl = ''
 envs['production'] = {
